@@ -145,15 +145,18 @@
                     </span>
                     <div class="flex items-center gap-2">
                         <span id="zoomVal" class="text-amber-400 font-mono">100%</span>
+                        <button id="cornerPipBtn" type="button" class="text-amber-400 hover:text-amber-300 text-[11px] hover:underline font-medium" title="ຍັບໄວ້ມຸມຈໍ (Mini-Map)">
+                            📌 ມຸມ
+                        </button>
                         <button id="resetViewBtn" type="button" class="text-amber-400 hover:text-amber-300 text-[11px] hover:underline font-medium" title="ຈັດມຸມມອງກາງ (100%)">
                             ↺ ຈັດກາງ
                         </button>
                     </div>
                 </div>
-                <input id="zoomSlider" type="range" min="40" max="300" step="5" value="100" class="w-full accent-amber-500 cursor-pointer">
+                <input id="zoomSlider" type="range" min="15" max="900" step="5" value="100" class="w-full accent-amber-500 cursor-pointer">
                 <p class="text-[10px] text-slate-400 mt-1.5 leading-relaxed">
-                    💡 <b>ຄອມພິວເຕີ:</b> ເລື່ອນລໍ້ເມົາສ໌ເພື່ອຊູມເຂົ້າຫາຈຸດທີ່ຊີ້ • ຄລິກຂວາລາກເພື່ອຍັບມຸມມອງ<br>
-                    💡 <b>ມືຖື:</b> ໃຊ້ 2 ນິ້ວຢິບຊູມ ແລະ ເລື່ອນຍັບໄດ້ຢ່າງອິດສະຫຼະ
+                    💡 <b>ຄອມພິວເຕີ:</b> ເລື່ອນລໍ້ເມົາສ໌ເພື່ອຊູມ (15% - 900%) • ຄລິກຂວາລາກເພື່ອຍັບມຸມມອງ<br>
+                    💡 <b>ມືຖື:</b> ໃຊ້ 2 ນິ້ວຖ່າງຊູມໄດ້ເຖິງ 900% ຫຼື ຫຍໍ້ນ້ອຍລົງ 15% ຍັບໄວ້ມຸມ
                 </p>
             </div>
 
@@ -300,6 +303,35 @@
             </label>
         </div>
 
+        <!-- SECTION 4.5: 🔮 ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ -->
+        <div class="bg-slate-900/80 p-3 rounded-xl border border-purple-500/30 flex flex-col gap-2.5 shadow-sm">
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-purple-300 flex items-center gap-1.5">
+                    <span>🔮</span> ບົດທຳນາຍດາວເຫີນ & ແປດທິດ
+                </span>
+                <!-- Period Selector -->
+                <div class="flex items-center gap-1">
+                    <span class="text-[10px] text-slate-400 font-medium">ຍຸກ:</span>
+                    <select id="desktopPeriodSelect" class="bg-slate-950 border border-purple-500/40 text-amber-300 text-xs font-bold rounded-lg px-2 py-0.5 focus:outline-none cursor-pointer">
+                        <option value="9" selected>ຍຸກ 9 (2024-43) ★</option>
+                        <option value="8">ຍຸກ 8 (2004-23)</option>
+                        <option value="7">ຍຸກ 7 (1984-03)</option>
+                        <option value="6">ຍຸກ 6 (1964-83)</option>
+                        <option value="5">ຍຸກ 5 (1944-63)</option>
+                        <option value="4">ຍຸກ 4 (1924-43)</option>
+                        <option value="3">ຍຸກ 3 (1904-23)</option>
+                        <option value="2">ຍຸກ 2 (1884-03)</option>
+                        <option value="1">ຍຸກ 1 (1864-83)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Dynamic Live Prediction Content -->
+            <div id="desktopPredictionContent" class="flex flex-col gap-2 text-xs">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </div>
+
         <!-- SECTION 5: ວາງທັບຮູບແປນບ້ານ -->
         <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex flex-col gap-2 shadow-sm">
             <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
@@ -353,6 +385,10 @@
 
         <!-- Quick Action Buttons -->
         <div class="pointer-events-auto flex items-center gap-1.5">
+            <!-- Corner PIP toggle -->
+            <button id="mobileCornerPipBtn" type="button" class="bg-slate-900/90 hover:bg-slate-800 text-amber-300 border border-slate-700/80 px-2 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 backdrop-blur-md transition" title="ຍັບໄວ້ມຸມຈໍ (Mini-Map)">
+                <span>📌</span> <span id="mobileCornerText">ມຸມ</span>
+            </button>
             <!-- Mode Toggle between Rotate & Pan on Mobile -->
             <button id="mobileDragToggleBtn" type="button" class="bg-slate-900/90 hover:bg-slate-800 text-amber-300 border border-slate-700/80 px-2.5 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 backdrop-blur-md transition" title="ສະຫຼັບໂໝດໝຸນ / ຍັບ">
                 <span id="mobileDragIcon">🔄</span> <span id="mobileDragText">ໝຸນ</span>
@@ -364,7 +400,7 @@
                 <span id="mobileModeIcon">📐</span>
             </button>
             <button id="openMobileDrawerBtn" type="button" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-2.5 py-1.5 rounded-xl text-xs shadow-xl flex items-center gap-1 transition">
-                <span>⚙️</span> ເມນູ
+                <span>⚙️</span>
             </button>
         </div>
     </div>
@@ -383,8 +419,11 @@
         <button id="mobileLiveCompassBtn" type="button" class="pointer-events-auto bg-slate-900/90 hover:bg-slate-800 text-amber-300 border border-slate-700/80 p-2.5 rounded-xl shadow-xl flex items-center justify-center text-sm transition" title="ເຊື່ອມຕໍ່ເຂັມທິດຈິງ">
             <span>🧭</span>
         </button>
-        <button id="mobileOpenMenuFab" type="button" class="pointer-events-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold p-2.5 rounded-xl shadow-xl flex items-center justify-center text-sm" title="ເປີດເມນູຕັ້ງຄ່າ ແລະ ມິ່ງກວ້າ">
+        <button id="mobilePredictionFab" type="button" class="pointer-events-auto bg-purple-900/90 hover:bg-purple-800 text-purple-200 border border-purple-400/60 p-2.5 rounded-xl shadow-xl flex items-center justify-center text-sm transition" title="ເບິ່ງບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ">
             <span>🔮</span>
+        </button>
+        <button id="mobileOpenMenuFab" type="button" class="pointer-events-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold p-2.5 rounded-xl shadow-xl flex items-center justify-center text-sm" title="ເປີດເມນູຕັ້ງຄ່າ ແລະ ມິ່ງກວ້າ">
+            <span>⚙️</span>
         </button>
     </div>
 
@@ -398,6 +437,23 @@
             <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
             <span>📷 ກຳລັງສ່ອງກ້ອງຈິງ (AR Camera)</span>
             <button id="closeArBtn" type="button" class="ml-1 text-slate-400 hover:text-white font-bold px-1.5 py-0.5 rounded-md hover:bg-slate-800" title="ປິດກ້ອງ AR">✕</button>
+        </div>
+
+        <!-- Live AR Flying Stars HUD: Shows Aimed Stars Without Needing VR -->
+        <div id="arStarHud" class="absolute top-14 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 select-none pointer-events-none transition-all">
+            <div class="flex items-center gap-2 bg-slate-950/90 backdrop-blur-md border border-amber-500/40 px-3 py-1 rounded-2xl shadow-2xl pointer-events-auto">
+                <div class="flex items-center gap-2 text-[11px] font-bold text-slate-200">
+                    <span class="text-blue-400 font-mono" id="hudMountainStar" title="ດາວພູເຂົາ (ສຸຂະພາບ/ຄົນ)">🏔️ ພູ: 9</span>
+                    <span class="text-slate-500">|</span>
+                    <span class="text-amber-400 font-mono" id="hudPeriodStar" title="ດາວຍຸກ">🌟 ຍຸກ: 9</span>
+                    <span class="text-slate-500">|</span>
+                    <span class="text-emerald-400 font-mono" id="hudWaterStar" title="ດາວນ້ຳ (ໂຊກລາບ/ເງິນຄຳ)">💧 ນ້ຳ: 9</span>
+                </div>
+            </div>
+            <!-- Best Spot Glow Badge (Target Locked) -->
+            <div id="hudBestSpotBadge" class="hidden items-center gap-1.5 bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 px-3 py-0.5 rounded-full text-[10px] font-black shadow-2xl animate-bounce pointer-events-auto">
+                <span id="hudBestSpotText">🎯 ຈຸດມຸງຄຸນໂຊກລາບສູງສຸດ 🌟🌟🌟🌟🌟</span>
+            </div>
         </div>
 
         <!-- Blueprint Grid Background -->
@@ -454,6 +510,44 @@
             </svg>
         </div>
     </main>
+
+    <!-- MOBILE PREDICTION DRAWER / BOTTOM SHEET -->
+    <div id="predictionBackdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden transition-opacity md:hidden"></div>
+    <div id="predictionDrawer" class="fixed inset-x-0 bottom-0 z-50 max-h-[85vh] rounded-t-3xl transform transition-transform duration-300 translate-y-full md:hidden bg-slate-900/95 backdrop-blur-md border-t border-purple-500/40 p-4 flex flex-col gap-3 overflow-y-auto shadow-2xl text-slate-100">
+        <div class="flex items-center justify-between pb-1 relative border-b border-slate-800">
+            <div class="flex items-center gap-2">
+                <span class="text-xl">🔮</span>
+                <div>
+                    <h3 class="text-sm font-bold text-purple-300 leading-tight">ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ</h3>
+                    <p class="text-[10px] text-slate-400">ວິເຄາະທິດທີ່ກ້ອງ/ເຂັມທິດກຳລັງສ່ອງໄປແບບສົດໆ</p>
+                </div>
+            </div>
+            <button id="closePredictionDrawerBtn" type="button" class="text-slate-400 hover:text-white bg-slate-800 rounded-lg w-7 h-7 flex items-center justify-center font-bold">✕</button>
+        </div>
+
+        <!-- Period Selector Dropdown -->
+        <div class="flex items-center justify-between bg-slate-950 p-2 rounded-xl border border-slate-800">
+            <span class="text-xs font-semibold text-amber-400 flex items-center gap-1.5">
+                <span>⏳</span> ເລືອກຍຸກດາວເຫີນ:
+            </span>
+            <select id="mobilePeriodSelect" class="bg-slate-900 border border-amber-500/40 text-amber-300 text-xs font-bold rounded-lg px-2.5 py-1 focus:outline-none cursor-pointer">
+                <option value="9" selected>ຍຸກ 9 (2024 - 2043) ★ ປັດຈຸບັນ</option>
+                <option value="8">ຍຸກ 8 (2004 - 2023)</option>
+                <option value="7">ຍຸກ 7 (1984 - 2003)</option>
+                <option value="6">ຍຸກ 6 (1964 - 1983)</option>
+                <option value="5">ຍຸກ 5 (1944 - 1963)</option>
+                <option value="4">ຍຸກ 4 (1924 - 1943)</option>
+                <option value="3">ຍຸກ 3 (1904 - 1923)</option>
+                <option value="2">ຍຸກ 2 (1884 - 1903)</option>
+                <option value="1">ຍຸກ 1 (1864 - 1883)</option>
+            </select>
+        </div>
+
+        <!-- Dynamic Live Prediction Content on Mobile -->
+        <div id="mobilePredictionContent" class="flex flex-col gap-2 text-xs">
+            <!-- Populated dynamically via JS -->
+        </div>
+    </div>
 
     <!-- QR CODE MODAL FOR MOBILE ACCESS -->
     <div id="mobileQrModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
@@ -1375,6 +1469,301 @@
             }
         }
 
+        // ==========================================
+        // XUAN KONG FLYING STARS ALL-PERIOD ENGINE & LIVE PREDICTION
+        // ==========================================
+        let currentPeriod = 9;
+
+        const LO_SHU_FLIGHT_PATH = [5, 6, 7, 8, 9, 1, 2, 3, 4];
+        const XUAN_KONG_PALACES = {
+            1: { name: 'Kan', lao: 'ຄານ', dir: 'ທິດເໜືອ', deg: 0, baguaCode: 'N', mountains: [
+                { name: '壬', lao: 'ຍິມ', yuan: 'di', pol: 1, start: 337.5, end: 352.5 },
+                { name: '子', lao: 'ຈື (ໜູ)', yuan: 'tian', pol: -1, start: 352.5, end: 7.5 },
+                { name: '癸', lao: 'ກຸ່ຍ', yuan: 'ren', pol: -1, start: 7.5, end: 22.5 }
+            ]},
+            2: { name: 'Kun', lao: 'ຄຸນ', dir: 'ທິດຕາເວັນຕົກສ່ຽງໃຕ້', deg: 225, baguaCode: 'SW', mountains: [
+                { name: '未', lao: 'ເວີ່ຍ (ແບ້)', yuan: 'di', pol: -1, start: 202.5, end: 217.5 },
+                { name: '坤', lao: 'ຄຸນ', yuan: 'tian', pol: 1, start: 217.5, end: 232.5 },
+                { name: '申', lao: 'ເຊີນ (ລີງ)', yuan: 'ren', pol: 1, start: 232.5, end: 247.5 }
+            ]},
+            3: { name: 'Zhen', lao: 'ເຈິ້ນ', dir: 'ທິດຕາເວັນອອກ', deg: 90, baguaCode: 'E', mountains: [
+                { name: '甲', lao: 'ຈຍ່າ', yuan: 'di', pol: 1, start: 67.5, end: 82.5 },
+                { name: '卯', lao: 'ມາວ (ກະຕ່າຍ)', yuan: 'tian', pol: -1, start: 82.5, end: 97.5 },
+                { name: '乙', lao: 'ອີກ', yuan: 'ren', pol: -1, start: 97.5, end: 112.5 }
+            ]},
+            4: { name: 'Xun', lao: 'ຊຸ່ນ', dir: 'ທິດຕາເວັນອອກສ່ຽງໃຕ້', deg: 135, baguaCode: 'SE', mountains: [
+                { name: '辰', lao: 'ເສີນ (ມັງກອນ)', yuan: 'di', pol: -1, start: 112.5, end: 127.5 },
+                { name: '巽', lao: 'ຊຸ່ນ', yuan: 'tian', pol: 1, start: 127.5, end: 142.5 },
+                { name: '巳', lao: 'ຊື່ (ງູນ້ອຍ)', yuan: 'ren', pol: 1, start: 142.5, end: 157.5 }
+            ]},
+            6: { name: 'Qian', lao: 'ສຽນ', dir: 'ທິດຕາເວັນຕົກສ່ຽງເໜືອ', deg: 315, baguaCode: 'NW', mountains: [
+                { name: '戌', lao: 'ຊວີ (ໝາ)', yuan: 'di', pol: -1, start: 292.5, end: 307.5 },
+                { name: '乾', lao: 'ສຽນ', yuan: 'tian', pol: 1, start: 307.5, end: 322.5 },
+                { name: '亥', lao: 'ຫາຍ (ໝູ)', yuan: 'ren', pol: 1, start: 322.5, end: 337.5 }
+            ]},
+            7: { name: 'Dui', lao: 'ຕຸ້ຍ', dir: 'ທິດຕາເວັນຕົກ', deg: 270, baguaCode: 'W', mountains: [
+                { name: '庚', lao: 'ເກີງ', yuan: 'di', pol: 1, start: 247.5, end: 262.5 },
+                { name: '酉', lao: 'ໂຢ່ວ (ໄກ່)', yuan: 'tian', pol: -1, start: 262.5, end: 277.5 },
+                { name: '辛', lao: 'ຊິນ', yuan: 'ren', pol: -1, start: 277.5, end: 292.5 }
+            ]},
+            8: { name: 'Gen', lao: 'ເກິ້ນ', dir: 'ທິດຕາເວັນອອກສ່ຽງເໜືອ', deg: 45, baguaCode: 'NE', mountains: [
+                { name: '丑', lao: 'ໂສ່ວ (ງົວ)', yuan: 'di', pol: -1, start: 22.5, end: 37.5 },
+                { name: '艮', lao: 'ເກິ້ນ', yuan: 'tian', pol: 1, start: 37.5, end: 52.5 },
+                { name: '寅', lao: 'ອິ໋ນ (ເສືອ)', yuan: 'ren', pol: 1, start: 52.5, end: 67.5 }
+            ]},
+            9: { name: 'Li', lao: 'ຫຼີ', dir: 'ທິດໃຕ້', deg: 180, baguaCode: 'S', mountains: [
+                { name: '丙', lao: 'ປິ້ງ', yuan: 'di', pol: 1, start: 157.5, end: 172.5 },
+                { name: '午', lao: 'ອູ່ (ມ້າ)', yuan: 'tian', pol: -1, start: 172.5, end: 187.5 },
+                { name: '丁', lao: 'ຕິງ', yuan: 'ren', pol: -1, start: 187.5, end: 202.5 }
+            ]}
+        };
+
+        function flyLoShu(centerStar, pol) {
+            const res = {};
+            const step = pol >= 0 ? 1 : -1;
+            LO_SHU_FLIGHT_PATH.forEach((palId, idx) => {
+                let val = (centerStar - 1 + idx * step) % 9;
+                if (val < 0) val += 9;
+                res[palId] = val + 1;
+            });
+            return res;
+        }
+
+        function findMountainInfo(deg) {
+            const d = ((deg % 360) + 360) % 360;
+            for (const palId in XUAN_KONG_PALACES) {
+                const pal = XUAN_KONG_PALACES[palId];
+                for (let i = 0; i < pal.mountains.length; i++) {
+                    const m = pal.mountains[i];
+                    if (m.start > m.end) {
+                        if (d >= m.start || d < m.end) return { palId: parseInt(palId), mtnIdx: i, mtn: m, pal };
+                    } else {
+                        if (d >= m.start && d < m.end) return { palId: parseInt(palId), mtnIdx: i, mtn: m, pal };
+                    }
+                }
+            }
+            return { palId: 1, mtnIdx: 1, mtn: XUAN_KONG_PALACES[1].mountains[1], pal: XUAN_KONG_PALACES[1] };
+        }
+
+        function calculateFlyingStarsChart(period, faceDeg) {
+            const faceInfo = findMountainInfo(faceDeg);
+            const sitDeg = (faceDeg + 180) % 360;
+            const sitInfo = findMountainInfo(sitDeg);
+
+            const base = flyLoShu(period, 1);
+
+            function getPol(star, mtn) {
+                if (star === 5) return mtn.pol;
+                const pal = XUAN_KONG_PALACES[star];
+                if (!pal) return 1;
+                const targetMtn = pal.mountains.find(x => x.yuan === mtn.yuan);
+                return targetMtn ? targetMtn.pol : 1;
+            }
+
+            const mCenter = base[sitInfo.palId];
+            const mPol = getPol(mCenter, sitInfo.mtn);
+            const mStars = flyLoShu(mCenter, mPol);
+
+            const wCenter = base[faceInfo.palId];
+            const wPol = getPol(wCenter, faceInfo.mtn);
+            const wStars = flyLoShu(wCenter, wPol);
+
+            const sitPal = sitInfo.palId;
+            const facePal = faceInfo.palId;
+            let chartType = 'ຜັງປະສົມຍຸກ ' + period;
+            let chartColor = 'text-amber-400';
+            let chartDesc = '';
+
+            if (mStars[sitPal] === period && wStars[facePal] === period) {
+                chartType = '旺山旺向 (ຮັ່ງມີທັງເງິນຄຳ ແລະ ສຸຂະພາບ)';
+                chartColor = 'text-emerald-400';
+                chartDesc = 'ມຸງຄຸນສູງສຸດ! ດາວພູຄອງຫຼັງພິງ, ດາວນ້ຳຄອງໜ້າບ້ານ ເຮັດໃຫ້ຮັ່ງມີທັງຊັບສິນເງິນຄຳ ແລະ ຄອບຄົວອົບອຸ່ນສຸຂະພາບແຂງແຮງ.';
+            } else if (mStars[facePal] === period && wStars[facePal] === period) {
+                chartType = '双星到向 (ດາວຄູ່ໜ້າບ້ານ - ມະຫາໂຊກລາບ)';
+                chartColor = 'text-emerald-400';
+                chartDesc = 'ດາວໂຊກລາບ ແລະ ດາວບາຣະມີ ມາຊຸມນຸມກັນຢູ່ໜ້າບ້ານ! ຫາກໜ້າບ້ານມີນ້ຳພຸ/ຕູ້ປາ ຫຼື ຖະໜົນເປີດໂລ່ງ ຈະດຶງດູດຊັບສິນເງິນຄຳມະຫາສານ.';
+            } else if (mStars[sitPal] === period && wStars[sitPal] === period) {
+                chartType = '双星到山 (ດາວຄູ່ຫຼັງພິງ - ສຸຂະພາບ/ບາຣະມີເດັ່ນ)';
+                chartColor = 'text-blue-400';
+                chartDesc = 'ດາວຄູ່ຕົກຢູ່ຫຼັງບ້ານ ເດັ່ນເລື່ອງສຸຂະພາບ, ຊື່ສຽງ ແລະ ຄວາມຮັກແພງ. ຫາກຢາກກະຕຸ້ນເງິນຄຳ ຄວນຕັ້ງຕູ້ປາ ຫຼື ນ້ຳພຸໄວ້ຫຼັງບ້ານ.';
+            } else if (mStars[facePal] === period && wStars[sitPal] === period) {
+                chartType = '上山下水 (ດາວປີ້ນກັບ - ຕ້ອງແກ້ຮວງຈຸ້ຍ)';
+                chartColor = 'text-rose-400';
+                chartDesc = 'ດາວນ້ຳຕົກຫຼັງ, ດາວພູຕົກໜ້າ. ຄວນແກ້ດ້ວຍວິທີ "ກັບຫຼັງເປັນໜ້າ" (ຕັ້ງນ້ຳພຸ/ຕູ້ປາຫຼັງບ້ານ, ຕັ້ງຫີນໜັກ/ຕົ້ນໄມ້ໜ້າບ້ານ) ຈະພິກກັບມາຮັ່ງມີ.';
+            }
+
+            let bestWealthPal = null;
+            let bestHealthPal = null;
+            let fiveYellowPal = null;
+            let illnessPal = null;
+
+            for (const pId in XUAN_KONG_PALACES) {
+                const id = parseInt(pId);
+                if (wStars[id] === period) bestWealthPal = id;
+                if (mStars[id] === period) bestHealthPal = id;
+                if (wStars[id] === 5 || mStars[id] === 5) fiveYellowPal = id;
+                if (wStars[id] === 2 || mStars[id] === 2) illnessPal = id;
+            }
+
+            return {
+                period,
+                faceInfo,
+                sitInfo,
+                base,
+                mStars,
+                wStars,
+                chartType,
+                chartColor,
+                chartDesc,
+                bestWealthPal,
+                bestHealthPal,
+                fiveYellowPal,
+                illnessPal
+            };
+        }
+
+        function updateLivePrediction(faceDeg) {
+            const chart = calculateFlyingStarsChart(currentPeriod, faceDeg);
+            const curPal = chart.faceInfo.palId;
+            const curM = chart.mStars[curPal];
+            const curP = chart.base[curPal];
+            const curW = chart.wStars[curPal];
+
+            // 1. Update AR Star HUD (Top Screen Overlay)
+            const hudM = document.getElementById('hudMountainStar');
+            const hudP = document.getElementById('hudPeriodStar');
+            const hudW = document.getElementById('hudWaterStar');
+            const hudBadge = document.getElementById('hudBestSpotBadge');
+            const hudBadgeText = document.getElementById('hudBestSpotText');
+
+            if (hudM) hudM.textContent = `🏔️ ພູ: ${curM}`;
+            if (hudP) hudP.textContent = `🌟 ຍຸກ: ${curP}`;
+            if (hudW) hudW.textContent = `💧 ນ້ຳ: ${curW}`;
+
+            // Check if current direction is the Best Spot
+            if (hudBadge && hudBadgeText) {
+                if (curPal === chart.bestWealthPal) {
+                    hudBadge.className = "flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 px-3.5 py-1 rounded-full text-[10px] font-black shadow-2xl animate-bounce pointer-events-auto border border-white/60";
+                    hudBadgeText.textContent = `🎯 【ຈຸດມຸງຄຸນໂຊກລາບສູງສຸດຍຸກ ${currentPeriod}! ດາວນ້ຳ ${curW}】 🌟🌟🌟🌟🌟`;
+                } else if (curPal === chart.bestHealthPal) {
+                    hudBadge.className = "flex items-center gap-1.5 bg-gradient-to-r from-blue-500 to-teal-400 text-slate-950 px-3.5 py-1 rounded-full text-[10px] font-black shadow-2xl animate-bounce pointer-events-auto border border-white/60";
+                    hudBadgeText.textContent = `🛌 【ຈຸດມຸງຄຸນສຸຂະພາບ-ບາຣະມີສູງສຸດ! ດາວພູ ${curM}】 🌟🌟🌟🌟`;
+                } else if (curPal === chart.fiveYellowPal) {
+                    hudBadge.className = "flex items-center gap-1.5 bg-rose-600 text-white px-3.5 py-1 rounded-full text-[10px] font-black shadow-2xl pointer-events-auto border border-rose-300";
+                    hudBadgeText.textContent = `⚠️ 【ຈຸດຕ້ອງຫ້າມ: ດາວ 5 ຫ້າເຫຼືອງ】 ຫ້າມເຈາະທຸບ`;
+                } else if (curPal === chart.illnessPal) {
+                    hudBadge.className = "flex items-center gap-1.5 bg-amber-600 text-white px-3.5 py-1 rounded-full text-[10px] font-black shadow-2xl pointer-events-auto border border-amber-300";
+                    hudBadgeText.textContent = `⚠️ 【ຈຸດດາວ 2 ພະຍາດ】 ລະວັງສຸຂະພາບ`;
+                } else {
+                    hudBadge.className = "hidden";
+                }
+            }
+
+            // 2. Determine BaZhai match for the current direction
+            let bazhaiTag = '';
+            let bazhaiColor = 'text-slate-300';
+            if (currentGuaData) {
+                const dirCode = chart.faceInfo.pal.baguaCode;
+                const goodItem = currentGuaData.auspicious.find(a => a.dir === dirCode);
+                const badItem = currentGuaData.inauspicious.find(b => b.dir === dirCode);
+                if (goodItem) {
+                    bazhaiTag = `✨ ທິດດີ (${goodItem.name} - ${goodItem.desc})`;
+                    bazhaiColor = 'text-emerald-400 font-bold';
+                } else if (badItem) {
+                    bazhaiTag = `⚠️ ທິດຮ້າຍ (${badItem.name} - ${badItem.desc})`;
+                    bazhaiColor = 'text-rose-400 font-bold';
+                }
+            }
+
+            // 3. Best Spot Palaces labels
+            const bestWealthPalObj = XUAN_KONG_PALACES[chart.bestWealthPal];
+            const bestHealthPalObj = XUAN_KONG_PALACES[chart.bestHealthPal];
+            const fiveYellowPalObj = XUAN_KONG_PALACES[chart.fiveYellowPal];
+
+            // 4. Render HTML for Drawer & Sidebar
+            const html = `
+                <!-- Facing & Sitting Header -->
+                <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-amber-300 font-bold">🏠 ໜ້າບ້ານ: ${faceDeg.toFixed(1)}° ${chart.faceInfo.pal.dir}</span>
+                        <span class="bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded text-[10px] font-mono font-bold">${chart.faceInfo.mtn.name} (${chart.faceInfo.mtn.lao})</span>
+                    </div>
+                    <div class="flex items-center justify-between text-slate-400 text-[11px]">
+                        <span>🛡️ ຫຼັງພິງ: ${((faceDeg + 180) % 360).toFixed(1)}° ${chart.sitInfo.pal.dir}</span>
+                        <span class="text-slate-400 text-[10px] font-mono">${chart.sitInfo.mtn.name} (${chart.sitInfo.mtn.lao})</span>
+                    </div>
+                </div>
+
+                <!-- Flying Star Chart Pattern -->
+                <div class="bg-purple-950/40 border border-purple-500/30 p-2.5 rounded-xl flex flex-col gap-1">
+                    <div class="flex items-center justify-between">
+                        <span class="text-purple-300 font-bold text-[11px]">🌟 ຜັງດາວເຫີນຍຸກ ${currentPeriod}:</span>
+                        <span class="${chart.chartColor} font-bold text-[11px]">${chart.chartType}</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed mt-0.5">${chart.chartDesc}</p>
+                </div>
+
+                <!-- Best Spots Finder Cards -->
+                <div class="grid grid-cols-2 gap-1.5">
+                    <div class="bg-emerald-950/40 border border-emerald-500/40 p-2 rounded-xl flex flex-col gap-0.5">
+                        <span class="text-emerald-400 font-bold text-[10px] flex items-center gap-1">
+                            <span>💰</span> ຈຸດດີສຸດ: ໂຊກລາບ
+                        </span>
+                        <span class="text-white font-bold text-xs">${bestWealthPalObj ? bestWealthPalObj.dir : '-'}</span>
+                        <span class="text-[10px] text-emerald-300">ດາວນ້ຳ ${currentPeriod} (ເໝາະຕັ້ງປະຕູ/ນ້ຳພຸ)</span>
+                    </div>
+
+                    <div class="bg-blue-950/40 border border-blue-500/40 p-2 rounded-xl flex flex-col gap-0.5">
+                        <span class="text-blue-400 font-bold text-[10px] flex items-center gap-1">
+                            <span>🛌</span> ຈຸດດີສຸດ: ສຸຂະພາບ
+                        </span>
+                        <span class="text-white font-bold text-xs">${bestHealthPalObj ? bestHealthPalObj.dir : '-'}</span>
+                        <span class="text-[10px] text-blue-300">ດາວພູ ${currentPeriod} (ເໝາະຕັ້ງຫ້ອງນອນ/ຕຽງ)</span>
+                    </div>
+                </div>
+
+                <!-- Danger Spot Notice -->
+                ${fiveYellowPalObj ? `
+                <div class="bg-rose-950/30 border border-rose-500/30 px-2.5 py-1.5 rounded-xl flex items-center justify-between text-[11px]">
+                    <span class="text-rose-400 font-semibold flex items-center gap-1">
+                        <span>⚠️</span> ຈຸດຕ້ອງຫ້າມ (ຫ້າເຫຼືອງ):
+                    </span>
+                    <span class="text-rose-300 font-bold">${fiveYellowPalObj.dir} (ຫ້າມເຈາະທຸບ)</span>
+                </div>
+                ` : ''}
+
+                <!-- Aimed Direction Current Stars Analysis -->
+                <div class="bg-slate-950/90 border border-amber-500/30 p-2.5 rounded-xl flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-1">
+                        <span class="text-slate-300 font-semibold text-[11px]">🎯 ທິດທີ່ກຳລັງສ່ອງຢູ່ຕອນນີ້:</span>
+                        <div class="flex items-center gap-1 text-[11px] font-mono font-bold">
+                            <span class="text-blue-400">ພູ:${curM}</span> •
+                            <span class="text-amber-400">ຍຸກ:${curP}</span> •
+                            <span class="text-emerald-400">ນ້ຳ:${curW}</span>
+                        </div>
+                    </div>
+                    ${bazhaiTag ? `
+                    <div class="text-[11px] flex justify-between items-center">
+                        <span class="text-slate-400">ດວງເຈົ້າຂອງບ້ານ:</span>
+                        <span class="${bazhaiColor}">${bazhaiTag}</span>
+                    </div>
+                    ` : ''}
+                    <div class="text-[10px] text-slate-300 leading-relaxed bg-slate-900/60 p-2 rounded-lg border border-slate-800/80">
+                        💡 <b>ຄຳແນະນຳຈັດວາງ:</b>
+                        ${curW === currentPeriod ? 'ທິດນີ້ມີດາວໂຊກ ' + currentPeriod + ' ມາສະຖິດ! ຄວນເປີດເປັນປະຕູຫຼັກ, ຕັ້ງຫ້ອງຮັບແຂກ, ຕູ້ປາ ຫຼື ນ້ຳພຸ ເພື່ອກະຕຸ້ນໂຊກລາບເງິນຄຳ.' : ''}
+                        ${curM === currentPeriod && curW !== currentPeriod ? 'ທິດນີ້ມີດາວບາຣະມີ ' + currentPeriod + ' ມາສະຖິດ! ຄວນຕັ້ງຫ້ອງນອນ, ຫ້ອງເຮັດວຽກ ຫຼື ວາງຫີນໜັກ ເພື່ອເສີມສຸຂະພາບ ແລະ ອຳນາດບາຣະມີ.' : ''}
+                        ${curW === 5 || curM === 5 ? 'ທິດນີ້ມີດາວ 5 ໂມຫະ (ຫ້າເຫຼືອງ)! ຫ້າມເຈາະທຸບ, ຫ້າມຕັ້ງເຕົາໄຟ ຫຼື ນ້ຳພຸ. ຄວນແກ້ດ້ວຍວັດຖຸໂລຫະທອງເຫຼືອງ ຫຼື ກະດິ່ງລົມ.' : ''}
+                        ${curW !== currentPeriod && curM !== currentPeriod && curW !== 5 && curM !== 5 ? 'ທິດນີ້ພະລັງງານປານກາງ ສາມາດຈັດເປັນຫ້ອງທົ່ວໄປ, ຫ້ອງອາຫານ ຫຼື ທາງຍ່າງໄດ້.' : ''}
+                    </div>
+                </div>
+            `;
+
+            const mobContent = document.getElementById('mobilePredictionContent');
+            const pcContent = document.getElementById('desktopPredictionContent');
+            if (mobContent) mobContent.innerHTML = html;
+            if (pcContent) pcContent.innerHTML = html;
+        }
+
         function updateCompassTransform(deltaAngle = null) {
             const normRot = ((currentRotation % 360) + 360) % 360;
             compassDisk.setAttribute('transform', `rotate(${normRot.toFixed(2)}, ${CX}, ${CY})`);
@@ -1382,8 +1771,14 @@
 
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
             const bottomCompassDeg = (topCompassDeg + 180) % 360;
-            const topText = `ໜ້າບ້ານ: ${topCompassDeg.toFixed(1)}° ${getDirectionLabel(topCompassDeg)}`;
-            const sittingText = `ຫຼັງພິງ: ${bottomCompassDeg.toFixed(1)}° ${getDirectionLabel(bottomCompassDeg)}`;
+
+            const faceInfo = findMountainInfo(topCompassDeg);
+            const sitInfo = findMountainInfo(bottomCompassDeg);
+
+            const topText = cameraActive
+                ? `📷 ກ້ອງຫັນ: ${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name} ${faceInfo.mtn.lao})`
+                : `ໜ້າບ້ານ: ${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name} ${faceInfo.mtn.lao})`;
+            const sittingText = `ຫຼັງພິງ: ${bottomCompassDeg.toFixed(1)}° ${sitInfo.pal.dir} (${sitInfo.mtn.name} ${sitInfo.mtn.lao})`;
 
             degreeBadge.textContent = topText;
             const sittingBadge = document.getElementById('sittingBadge');
@@ -1399,6 +1794,9 @@
                 mobileSittingBadge.textContent = sittingText;
             }
 
+            // Real-time Flying Stars & BaZhai Live Prediction Update
+            updateLivePrediction(topCompassDeg);
+
             // Real Magnetic Needle with fluid physics
             if (deltaAngle !== null && Math.abs(deltaAngle) > 0.05) {
                 triggerNeedlePhysics(deltaAngle);
@@ -1413,7 +1811,37 @@
             }
         }
 
+        let isCornerPip = false;
+        let prevPipZoom = 100;
+        let prevPipPanX = 0;
+        let prevPipPanY = 0;
+
+        function toggleCornerMiniMap() {
+            isCornerPip = !isCornerPip;
+            const mobCornerText = document.getElementById('mobileCornerText');
+            const pcCornerBtn = document.getElementById('cornerPipBtn');
+            if (isCornerPip) {
+                prevPipZoom = currentZoom;
+                prevPipPanX = panX;
+                prevPipPanY = panY;
+                currentZoom = 25;
+                const rect = viewport.getBoundingClientRect();
+                panX = (rect.width / 2) - 100;
+                panY = (rect.height / 2) - 100;
+                if (mobCornerText) mobCornerText.textContent = 'ກາງ';
+                if (pcCornerBtn) pcCornerBtn.textContent = '↺ ກາງ';
+            } else {
+                currentZoom = prevPipZoom || 100;
+                panX = prevPipPanX || 0;
+                panY = prevPipPanY || 0;
+                if (mobCornerText) mobCornerText.textContent = 'ມຸມ';
+                if (pcCornerBtn) pcCornerBtn.textContent = '📌 ມຸມ';
+            }
+            updateZoom();
+        }
+
         function updateZoom() {
+            currentZoom = Math.min(900, Math.max(15, currentZoom));
             compassWrapper.style.transform = `translate(${panX}px, ${panY}px) scale(${currentZoom / 100})`;
             document.getElementById('zoomVal').textContent = `${currentZoom}%`;
             zoomSlider.value = currentZoom;
@@ -1425,9 +1853,14 @@
         }
 
         function resetView() {
+            isCornerPip = false;
             panX = 0;
             panY = 0;
             currentZoom = 100;
+            const mobCornerText = document.getElementById('mobileCornerText');
+            const pcCornerBtn = document.getElementById('cornerPipBtn');
+            if (mobCornerText) mobCornerText.textContent = 'ມຸມ';
+            if (pcCornerBtn) pcCornerBtn.textContent = '📌 ມຸມ';
             updateZoom();
         }
 
@@ -1567,7 +2000,7 @@
         });
 
         viewport.addEventListener('pointerdown', (e) => {
-            if (e.target.closest('button, input, select, label, a, aside, #mobileQrModal, .pointer-events-auto')) {
+            if (e.target.closest('button, input, select, label, a, aside, #mobileQrModal, #predictionDrawer, .pointer-events-auto')) {
                 return;
             }
             isDragging = true;
@@ -1635,7 +2068,7 @@
 
             const oldZoom = currentZoom;
             const delta = e.deltaY < 0 ? 10 : -10;
-            const newZoom = Math.min(300, Math.max(40, currentZoom + delta));
+            const newZoom = Math.min(900, Math.max(15, currentZoom + delta));
             if (newZoom === oldZoom) return;
 
             const s1 = oldZoom / 100;
@@ -1650,7 +2083,7 @@
         }, { passive: false });
 
         viewport.addEventListener('dblclick', (e) => {
-            if (e.target.closest('button, input, select, label, a, aside, #mobileQrModal, .pointer-events-auto')) return;
+            if (e.target.closest('button, input, select, label, a, aside, #mobileQrModal, #predictionDrawer, .pointer-events-auto')) return;
             resetView();
         });
 
@@ -2037,6 +2470,53 @@
             if (closeArBtn) {
                 closeArBtn.addEventListener('click', stopCameraAR);
             }
+
+            // Corner Mini-Map HUD Buttons
+            const cornerBtn = document.getElementById('cornerPipBtn');
+            if (cornerBtn) cornerBtn.addEventListener('click', toggleCornerMiniMap);
+            const mobCornerBtn = document.getElementById('mobileCornerPipBtn');
+            if (mobCornerBtn) mobCornerBtn.addEventListener('click', toggleCornerMiniMap);
+
+            // Prediction Drawer Controls
+            const predFab = document.getElementById('mobilePredictionFab');
+            const predDrawer = document.getElementById('predictionDrawer');
+            const predBackdrop = document.getElementById('predictionBackdrop');
+            const closePredBtn = document.getElementById('closePredictionDrawerBtn');
+
+            function openPredictionDrawer() {
+                if (predDrawer) {
+                    predDrawer.classList.remove('translate-y-full');
+                    predDrawer.classList.add('translate-y-0');
+                }
+                if (predBackdrop) predBackdrop.classList.remove('hidden');
+            }
+            function closePredictionDrawer() {
+                if (predDrawer) {
+                    predDrawer.classList.add('translate-y-full');
+                    predDrawer.classList.remove('translate-y-0');
+                }
+                if (predBackdrop) predBackdrop.classList.add('hidden');
+            }
+
+            if (predFab) predFab.addEventListener('click', openPredictionDrawer);
+            if (closePredBtn) closePredBtn.addEventListener('click', closePredictionDrawer);
+            if (predBackdrop) predBackdrop.addEventListener('click', closePredictionDrawer);
+
+            // Period Selector Sync
+            const dtPeriodSelect = document.getElementById('desktopPeriodSelect');
+            const mbPeriodSelect = document.getElementById('mobilePeriodSelect');
+
+            function onPeriodChange(e) {
+                currentPeriod = parseInt(e.target.value, 10);
+                if (dtPeriodSelect) dtPeriodSelect.value = currentPeriod;
+                if (mbPeriodSelect) mbPeriodSelect.value = currentPeriod;
+                const normRot = ((currentRotation % 360) + 360) % 360;
+                const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+                updateLivePrediction(topCompassDeg);
+            }
+
+            if (dtPeriodSelect) dtPeriodSelect.addEventListener('change', onPeriodChange);
+            if (mbPeriodSelect) mbPeriodSelect.addEventListener('change', onPeriodChange);
         }
 
         // ==========================================
@@ -2082,6 +2562,24 @@
                     badgeEl.classList.add('flex');
                 }
                 if (bgGrid) bgGrid.classList.add('hidden');
+
+                // Auto-connect Live Compass Sensor so it follows phone movement automatically
+                if (!liveCompassActive) {
+                    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+                        try {
+                            const perm = await DeviceOrientationEvent.requestPermission();
+                            if (perm === 'granted') {
+                                startLiveCompass(false);
+                            }
+                        } catch(err) {
+                            console.warn('Auto sensor permission in camera:', err);
+                        }
+                    } else if ('ondeviceorientationabsolute' in window) {
+                        startLiveCompass(true);
+                    } else if ('ondeviceorientation' in window) {
+                        startLiveCompass(false);
+                    }
+                }
 
                 // Update UI state
                 if (btnLabel) btnLabel.textContent = 'ປິດກ້ອງ AR (Stop)';
@@ -2241,7 +2739,7 @@
         let initialPanY = 0;
 
         viewport.addEventListener('touchstart', (e) => {
-            if (e.target.closest('button, input, select, label, a, aside, #mobileQrModal, .pointer-events-auto')) return;
+            if (e.target.closest('button, input, select, label, a, aside, #mobileQrModal, #predictionDrawer, .pointer-events-auto')) return;
             if (e.touches.length === 2) {
                 isDragging = false;
                 const p1 = e.touches[0];
@@ -2266,7 +2764,7 @@
                 const currentMidY = (p1.clientY + p2.clientY) / 2 - (rect.top + rect.height / 2);
 
                 const factor = currentDist / initialPinchDist;
-                const newZoom = Math.min(300, Math.max(40, Math.round(initialPinchZoom * factor)));
+                const newZoom = Math.min(900, Math.max(15, Math.round(initialPinchZoom * factor)));
                 
                 const s1 = initialPinchZoom / 100;
                 const s2 = newZoom / 100;
