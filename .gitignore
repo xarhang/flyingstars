@@ -1,0 +1,14 @@
+# Ignore all files and directories by default
+/*
+
+# Whitelist ONLY files needed for the public web app
+!/.gitignore
+!/README.md
+!/index.html
+
+# Whitelist asset/js/qrcode.min.js
+!/asset/
+/asset/*
+!/asset/js/
+/asset/js/*
+!/asset/js/qrcode.min.js

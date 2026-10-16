@@ -1,0 +1,2402 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ຈານເຂັມທິດຮວງຈຸ້ຍ 24 ຂຸນເຂົາ (ດາວເຫີນ 9 ຍຸກ)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="asset/js/qrcode.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;500;600;700;800;900&family=Sarabun:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans Lao', 'Sarabun', sans-serif;
+            user-select: none;
+            overflow: hidden;
+        }
+        .compass-container {
+            cursor: grab;
+            touch-action: none;
+        }
+        .compass-container:active {
+            cursor: grabbing;
+        }
+        .drag-floorplan {
+            cursor: move !important;
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.4);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 h-screen w-screen flex flex-col md:flex-row overflow-hidden relative">
+
+    <!-- MOBILE BACKDROP OVERLAY -->
+    <div id="drawerBackdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-30 hidden transition-opacity md:hidden"></div>
+
+    <!-- SIDEBAR CONTROLS / MOBILE BOTTOM SHEET DRAWER -->
+    <aside id="controlsSidebar" class="fixed inset-x-0 bottom-0 z-40 max-h-[85vh] rounded-t-3xl transform transition-transform duration-300 translate-y-full md:translate-y-0 md:static md:w-[360px] md:max-h-full md:rounded-none md:border-b-0 md:border-r border-t md:border-t-0 border-slate-800 bg-slate-900/95 backdrop-blur-md p-4 flex flex-col gap-3 shrink-0 overflow-y-auto shadow-2xl">
+        
+        <!-- Mobile Drawer Drag Handle & Close Button -->
+        <div class="flex items-center justify-between md:hidden pb-1 -mt-1 relative">
+            <div class="w-12 h-1.5 bg-slate-700 rounded-full mx-auto my-1"></div>
+            <button id="closeDrawerBtn" class="absolute top-0 right-0 text-slate-400 hover:text-white bg-slate-800 rounded-lg p-1 text-sm font-bold w-7 h-7 flex items-center justify-center transition" title="ປິດເມນູ">
+                ✕
+            </button>
+        </div>
+
+        <!-- HEADER -->
+        <div class="border-b border-slate-800 pb-3">
+            <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🧭</span>
+                    <div>
+                        <h1 class="text-base font-bold text-amber-400 leading-tight">
+                            ຈານເຂັມທິດຮວງຈຸ້ຍ 24 ຂຸນເຂົາ
+                        </h1>
+                        <p class="text-[11px] text-slate-400 mt-0.5">ລະບົບແຜ່ນໃສກວດແປນບ້ານ ດາວເຫີນ 9 ຍຸກ</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-end shrink-0">
+                    <span id="degreeBadge" class="bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-mono font-bold px-2.5 py-1 rounded-lg shadow-inner">
+                        ໜ້າບ້ານ: 180.0° ທິດໃຕ້
+                    </span>
+                    <span id="sittingBadge" class="text-[10px] text-slate-400 font-mono mt-0.5">
+                        ຫຼັງພິງ: 0.0° ທິດເໜືອ
+                    </span>
+                </div>
+            </div>
+
+            <!-- BUTTON: OPEN IN MOBILE (QR CODE) -->
+            <button id="openQrModalBtn" type="button" class="w-full mt-2.5 py-1.5 px-2.5 bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition shadow-sm">
+                <span>📱</span> ເປີດໃນມືຖື (ສະແກນ QR Code)
+            </button>
+
+            <!-- MODE SWITCHER TABS -->
+            <div class="grid grid-cols-2 gap-1.5 mt-3 bg-slate-950 p-1 rounded-xl border border-slate-800">
+                <button id="modeStandardBtn" class="py-1.5 px-2 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow">
+                    🧭 ຈານມາດຕະຖານ
+                </button>
+                <button id="modeTransparentBtn" class="py-1.5 px-2 text-xs font-bold rounded-lg transition text-slate-300 hover:text-amber-300 hover:bg-slate-800/80">
+                    📐 ໂໝດແຜ່ນໃສວັດແປນ
+                </button>
+            </div>
+        </div>
+
+        <!-- SECTION 1: ໝຸນຈານ & ຍັບມຸມມອງ -->
+        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex flex-col gap-2.5 shadow-sm">
+            <!-- DRAG MODE TOGGLES -->
+            <div>
+                <span class="text-xs font-semibold text-slate-200 flex items-center gap-1.5 mb-1.5">
+                    <span class="text-amber-400">🖐️</span> ໂໝດການລາກເມົາສ໌ / ສຳຜັດ:
+                </span>
+                <div id="dragModeButtonGroup" class="grid grid-cols-2 gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800">
+                    <button id="dragModeCompassBtn" type="button" class="py-1.5 px-2 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow">
+                        🔄 ໝຸນຈານ
+                    </button>
+                    <button id="dragModePanBtn" type="button" class="py-1.5 px-2 text-xs font-bold rounded-lg transition text-slate-300 hover:text-white hover:bg-slate-800">
+                        ✋ ຍັບມຸມມອງ
+                    </button>
+                    <button id="dragModePlanBtn" type="button" class="hidden col-span-2 py-1.5 px-2 text-xs font-bold rounded-lg transition text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800">
+                        🏠 ຍ້າຍແປນບ້ານ
+                    </button>
+                </div>
+            </div>
+
+            <!-- ROTATION SLIDER & CONTROLS -->
+            <div class="pt-1.5 border-t border-slate-800/80">
+                <div class="flex items-center justify-between text-xs font-semibold">
+                    <span class="text-slate-200 flex items-center gap-1.5">
+                        <span class="text-amber-400">🔄</span> ອົງສາຈານເຂັມທິດ
+                    </span>
+                    <button id="resetRotBtn" class="text-amber-400 hover:text-amber-300 text-[11px] hover:underline font-medium">
+                        ↺ ຄືນຄ່າເລີ່ມຕົ້ນ (ທິດໃຕ້ຢູ່ເທິງ)
+                    </button>
+                </div>
+                <input id="rotSlider" type="range" min="0" max="360" step="0.5" value="0" class="w-full accent-amber-500 cursor-pointer mt-1">
+                <div class="grid grid-cols-4 gap-1.5 mt-0.5">
+                    <button data-rot="0" class="quick-rot bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] py-1 rounded-lg font-semibold transition border border-slate-700/60">ທິດໃຕ້ (180°)</button>
+                    <button data-rot="90" class="quick-rot bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] py-1 rounded-lg font-semibold transition border border-slate-700/60">ທິດຕາເວັນຕົກ (270°)</button>
+                    <button data-rot="180" class="quick-rot bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] py-1 rounded-lg font-semibold transition border border-slate-700/60">ທິດເໜືອ (0°)</button>
+                    <button data-rot="270" class="quick-rot bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] py-1 rounded-lg font-semibold transition border border-slate-700/60">ທິດຕາເວັນອອກ (90°)</button>
+                </div>
+            </div>
+
+            <!-- LIVE SENSOR COMPASS TOGGLE -->
+            <button type="button" id="toggleLiveCompassBtn" class="w-full py-2 px-2.5 text-xs font-bold rounded-lg transition border border-slate-700 bg-slate-950 hover:bg-slate-800 text-amber-300 hover:text-amber-200 flex items-center justify-center gap-1.5 shadow mt-0.5">
+                <span>🧭</span> ເຊື່ອມຕໍ່ເຂັມທິດຈິງໃນມືຖື
+            </button>
+            <!-- AR CAMERA OVERLAY TOGGLE -->
+            <button type="button" id="toggleCameraBtn" class="w-full py-2 px-2.5 text-xs font-bold rounded-lg transition border border-emerald-500/50 bg-emerald-950/40 hover:bg-emerald-900/60 text-emerald-300 hover:text-emerald-200 flex items-center justify-center gap-1.5 shadow mt-1.5">
+                <span id="cameraBtnIcon">📷</span> <span id="cameraBtnLabel">ເປີດກ້ອງສ່ອງຈິງ (AR Camera)</span>
+            </button>
+        </div>
+
+        <!-- SECTION 2: ຂະໜາດ & ຄວາມໂປ່ງໃສ -->
+        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex flex-col gap-2.5 shadow-sm">
+            <div>
+                <div class="flex justify-between items-center text-xs font-semibold mb-1">
+                    <span class="text-slate-200 flex items-center gap-1.5">
+                        <span class="text-amber-400">🔍</span> ຂະໜາດຊູມເຂັມທິດ
+                    </span>
+                    <div class="flex items-center gap-2">
+                        <span id="zoomVal" class="text-amber-400 font-mono">100%</span>
+                        <button id="resetViewBtn" type="button" class="text-amber-400 hover:text-amber-300 text-[11px] hover:underline font-medium" title="ຈັດມຸມມອງກາງ (100%)">
+                            ↺ ຈັດກາງ
+                        </button>
+                    </div>
+                </div>
+                <input id="zoomSlider" type="range" min="40" max="300" step="5" value="100" class="w-full accent-amber-500 cursor-pointer">
+                <p class="text-[10px] text-slate-400 mt-1.5 leading-relaxed">
+                    💡 <b>ຄອມພິວເຕີ:</b> ເລື່ອນລໍ້ເມົາສ໌ເພື່ອຊູມເຂົ້າຫາຈຸດທີ່ຊີ້ • ຄລິກຂວາລາກເພື່ອຍັບມຸມມອງ<br>
+                    💡 <b>ມືຖື:</b> ໃຊ້ 2 ນິ້ວຢິບຊູມ ແລະ ເລື່ອນຍັບໄດ້ຢ່າງອິດສະຫຼະ
+                </p>
+            </div>
+
+            <div class="pt-2 border-t border-slate-800/80">
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span class="text-slate-200 flex items-center gap-1.5">
+                        <span class="text-amber-400">👁️</span> ຄວາມໂປ່ງໃສແຜ່ນເຂັມທິດ
+                    </span>
+                    <span id="opacityVal" class="text-amber-400 font-mono">95%</span>
+                </div>
+                <input id="opacitySlider" type="range" min="15" max="100" step="1" value="95" class="w-full accent-amber-500 cursor-pointer">
+            </div>
+        </div>
+
+        <!-- SECTION 3: ຮູບແບບແຜ່ນຖານ & ເຄື່ອງມືເລັງ -->
+        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex flex-col gap-2.5 shadow-sm">
+            <!-- BASE STYLE DROPDOWN (ບໍ່ຕົກແຖວ) -->
+            <div class="flex flex-col gap-1.5">
+                <label for="baseStyleSelect" class="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
+                    <span class="text-amber-400">🔲</span> ຮູບແບບແຜ່ນຖານ:
+                </label>
+                <select id="baseStyleSelect" class="w-full bg-slate-950 border border-slate-700 text-amber-300 text-xs rounded-lg px-2.5 py-1.5 font-semibold focus:outline-none focus:border-amber-400 transition">
+                    <option value="lacquer">ຖານໄມ້ແດງມົງຄົນ ຂອບທອງ</option>
+                    <option value="acrylic">ແຜ່ນໃສອະຄິລິກໂປ່ງແສງ</option>
+                    <option value="hidden">ເຊື່ອງແຜ່ນຖານ (ສະແດງສະເພາະຈານກົມ)</option>
+                </select>
+            </div>
+
+            <!-- TOGGLES -->
+            <div class="flex flex-col gap-2 pt-1 border-t border-slate-800">
+                <label class="flex items-center justify-between text-xs cursor-pointer hover:text-amber-300 transition">
+                    <span class="text-slate-300 font-medium">ສະແດງເຂັມທິດແມ່ເຫຼັກ</span>
+                    <input id="toggleNeedle" type="checkbox" checked class="w-4 h-4 accent-amber-500 rounded cursor-pointer">
+                </label>
+
+                <label class="flex items-center justify-between text-xs cursor-pointer hover:text-amber-300 transition">
+                    <span class="text-slate-300 font-medium">ສະແດງເສັ້ນກາກະບາດເລັງສູນກາງ</span>
+                    <input id="toggleCrosshair" type="checkbox" checked class="w-4 h-4 accent-amber-500 rounded cursor-pointer">
+                </label>
+
+                <label class="flex items-center justify-between text-xs cursor-pointer hover:text-amber-300 transition">
+                    <span class="text-slate-300 font-medium">ການແກວ່ງໄຫວເຂັມສະເໝືອນຈິງ</span>
+                    <input id="toggleNeedlePhysics" type="checkbox" checked class="w-4 h-4 accent-amber-500 rounded cursor-pointer">
+                </label>
+            </div>
+        </div>
+
+        <!-- SECTION 4: ຄຳນວນປີເກີດ ແລະ ຄ່າທາດ (ມິ່ງກວ້າ) -->
+        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex flex-col gap-2.5 shadow-sm">
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
+                    <span>🔮</span> ຄຳນວນປີເກີດ & ຄ່າທາດ (ມິ່ງກວ້າ)
+                </span>
+                <span id="currentYearAge" class="text-[10px] text-slate-400 font-mono"></span>
+            </div>
+
+            <!-- Form: Birth Year + Gender -->
+            <div class="flex flex-col gap-2">
+                <div class="flex flex-col gap-1">
+                    <label for="birthYearInput" class="text-[11px] text-slate-300 font-medium flex justify-between">
+                        <span>ປີເກີດ (ພິມປ້ອນ ຫຼື ເລືອກໄດ້):</span>
+                        <span class="text-amber-400/80 text-[10px]">ຄ.ສ. / ພ.ສ.</span>
+                    </label>
+                    <div class="flex gap-1.5">
+                        <input id="birthYearInput" type="number" min="1900" max="2050" value="1990" placeholder="ເຊັ່ນ: 1990"
+                               class="w-24 bg-slate-950 border border-slate-700 text-amber-300 font-bold text-xs rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-amber-400 text-center shadow-inner"
+                               title="ພິມປີເກີດ ຄ.ສ. (ເຊັ່ນ 1990) ຫຼື ພ.ສ. (ເຊັ່ນ 2533)">
+                        <select id="birthYearSelect" class="flex-1 min-w-0 bg-slate-950 border border-slate-700 text-amber-300 text-xs rounded-lg px-2 py-1.5 font-semibold focus:outline-none focus:border-amber-400 transition cursor-pointer">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-[11px] text-slate-300 font-medium">ເພດ:</label>
+                    <div class="grid grid-cols-2 gap-1.5 bg-slate-950 p-1 rounded-lg border border-slate-800">
+                        <button type="button" id="genderMaleBtn" class="py-1 px-2 text-xs font-bold rounded transition bg-amber-500 text-slate-950 shadow">
+                            👨 ຊາຍ
+                        </button>
+                        <button type="button" id="genderFemaleBtn" class="py-1 px-2 text-xs font-bold rounded transition text-slate-300 hover:text-white hover:bg-slate-800">
+                            👩 ຍິງ
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Born before Feb 4 Checkbox -->
+                <label class="flex items-center gap-2 text-[11px] text-slate-400 cursor-pointer hover:text-slate-200">
+                    <input id="bornBeforeLichun" type="checkbox" class="w-3.5 h-3.5 accent-amber-500 rounded cursor-pointer">
+                    <span>ເກີດກ່ອນ 4 ກຸມພາ (ວັນຫຼຽບຊຸນ - ນັບເປັນປີເກົ່າ)</span>
+                </label>
+            </div>
+
+            <!-- Result Card -->
+            <div id="guaResultCard" class="bg-slate-950/90 border border-amber-500/30 rounded-xl p-2.5 flex flex-col gap-2">
+                <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+                    <div>
+                        <div id="resZodiac" class="text-xs font-bold text-amber-300">ປີມະເມຍ 🐎 (ມ້າ)</div>
+                        <div id="resGanzhi" class="text-[11px] text-slate-400">庚午 (ແກງມະເມຍ) • ພ.ສ. 2533</div>
+                    </div>
+                    <span id="resElementBadge" class="bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-inner">
+                        ທາດດິນ
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div>
+                        <span class="text-slate-400 text-[10px] block">ດາວປະຈຳຕົວ (ມິ່ງກວ້າ):</span>
+                        <span id="resGuaName" class="font-bold text-amber-400 text-xs">ກວ້າ 1 (ຄຳ)</span>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 text-[10px] block">ກຸ່ມພະລັງງານຊີວິດ:</span>
+                        <span id="resGroup" class="font-bold text-emerald-400 text-xs">ກຸ່ມຕາເວັນອອກ</span>
+                    </div>
+                </div>
+
+                <div class="text-xs border-t border-slate-800/80 pt-1.5 flex justify-between items-center">
+                    <span class="text-slate-400 text-[10px]">ທາດນາຢິນ (60 ດອກໄມ້):</span>
+                    <span id="resNayin" class="font-semibold text-slate-200 text-[11px]">ດິນແຄມທາງ</span>
+                </div>
+
+                <!-- 4 Auspicious & 4 Inauspicious Directions Grid -->
+                <div class="border-t border-slate-800/80 pt-1.5 flex flex-col gap-1.5">
+                    <div class="bg-emerald-950/40 border border-emerald-500/30 rounded-lg p-2 flex flex-col gap-1">
+                        <span class="text-emerald-400 font-bold text-[10px] flex items-center gap-1">
+                            <span>✨</span> 4 ທິດມຸງຄຸນ (ທິດດີ):
+                        </span>
+                        <div id="resAuspiciousList" class="grid grid-cols-2 gap-1 text-[10px] text-slate-200">
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-950/40 border border-rose-500/30 rounded-lg p-2 flex flex-col gap-1">
+                        <span class="text-rose-400 font-bold text-[10px] flex items-center gap-1">
+                            <span>⚠️</span> 4 ທິດອັບປະມຸງຄຸນ (ທິດຮ້າຍ):
+                        </span>
+                        <div id="resInauspiciousList" class="grid grid-cols-2 gap-1 text-[10px] text-slate-200">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checkbox to highlight on Luopan -->
+            <label class="flex items-center justify-between text-xs cursor-pointer hover:text-amber-300 transition pt-0.5">
+                <span class="text-slate-300 font-medium">ສະແດງທິດມຸງຄຸນເທິງໜ້າຈານ</span>
+                <input id="toggleHighlightGua" type="checkbox" checked class="w-4 h-4 accent-amber-500 rounded cursor-pointer">
+            </label>
+        </div>
+
+        <!-- SECTION 5: ວາງທັບຮູບແປນບ້ານ -->
+        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex flex-col gap-2 shadow-sm">
+            <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
+                <span>🏠</span> ວາງທັບຮູບແປນບ້ານ
+            </span>
+
+            <div class="flex gap-1.5">
+                <label class="flex-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs py-2 px-2.5 rounded-lg text-center cursor-pointer transition shadow">
+                    📂 ເລືອກຮູບແປນບ້ານ
+                    <input id="floorplanInput" type="file" accept="image/*" class="hidden">
+                </label>
+                <button id="clearFloorplanBtn" class="bg-slate-800 hover:bg-red-500/80 text-xs px-3 py-2 rounded-lg transition border border-slate-700/80" title="ລຶບຮູບແປນບ້ານ">
+                    ✕
+                </button>
+            </div>
+
+            <!-- FLOORPLAN SCALE & RE-CENTER (WHEN PLAN LOADED) -->
+            <div id="floorplanControlsArea" class="hidden flex flex-col gap-2 pt-2 border-t border-slate-800 mt-1">
+
+                <div>
+                    <div class="flex justify-between text-[11px] font-semibold mb-1">
+                        <span class="text-slate-300">ຂະໜາດແປນບ້ານ</span>
+                        <span id="planScaleVal" class="text-amber-400 font-mono">100%</span>
+                    </div>
+                    <input id="planScaleSlider" type="range" min="40" max="250" step="5" value="100" class="w-full accent-amber-500 cursor-pointer">
+                </div>
+
+                <button id="resetPlanPosBtn" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] py-1 rounded font-semibold transition border border-slate-700">
+                    ↺ ຈັດແປນບ້ານຢູ່ກາງສູນກາງ
+                </button>
+            </div>
+        </div>
+
+        <!-- SECTION 5: ດາວໂຫຼດ (EXPORT) -->
+        <button id="downloadSvgBtn" class="mt-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2.5 px-3 rounded-xl shadow-lg flex items-center justify-center gap-2 transition">
+            <span>⬇️</span> ດາວໂຫຼດໄຟລ໌ SVG ຄວາມລະອຽດສູງ
+        </button>
+    </aside>
+
+    <!-- MOBILE FLOATING TOP BAR -->
+    <div class="fixed top-3 inset-x-3 z-30 flex items-center justify-between pointer-events-none md:hidden">
+        <!-- Degree & Facing badge on mobile -->
+        <div class="pointer-events-auto bg-slate-900/90 backdrop-blur-md border border-slate-700/80 px-2.5 py-1.5 rounded-xl shadow-xl flex flex-col">
+            <span id="mobileDegreeBadge" class="text-amber-300 font-mono font-bold text-xs leading-none">
+                ໜ້າບ້ານ: 180.0° ທິດໃຕ້
+            </span>
+            <span id="mobileSittingBadge" class="text-[10px] text-slate-400 font-mono mt-0.5 leading-none">
+                ຫຼັງພິງ: 0.0° ທິດເໜືອ
+            </span>
+        </div>
+
+        <!-- Quick Action Buttons -->
+        <div class="pointer-events-auto flex items-center gap-1.5">
+            <!-- Mode Toggle between Rotate & Pan on Mobile -->
+            <button id="mobileDragToggleBtn" type="button" class="bg-slate-900/90 hover:bg-slate-800 text-amber-300 border border-slate-700/80 px-2.5 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 backdrop-blur-md transition" title="ສະຫຼັບໂໝດໝຸນ / ຍັບ">
+                <span id="mobileDragIcon">🔄</span> <span id="mobileDragText">ໝຸນ</span>
+            </button>
+            <button id="mobileResetViewBtn" type="button" class="bg-slate-900/90 hover:bg-slate-800 text-slate-300 border border-slate-700/80 p-2 rounded-xl text-xs font-bold shadow-xl flex items-center justify-center backdrop-blur-md transition" title="ຈັດມຸມມອງກາງ (100%)">
+                ↺
+            </button>
+            <button id="mobileToggleModeBtn" type="button" class="bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 p-2 rounded-xl text-xs font-bold shadow-xl flex items-center justify-center backdrop-blur-md transition" title="ສະຫຼັບໂໝດແຜ່ນໃສ/ມາດຕະຖານ">
+                <span id="mobileModeIcon">📐</span>
+            </button>
+            <button id="openMobileDrawerBtn" type="button" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-2.5 py-1.5 rounded-xl text-xs shadow-xl flex items-center gap-1 transition">
+                <span>⚙️</span> ເມນູ
+            </button>
+        </div>
+    </div>
+
+    <!-- MOBILE FLOATING BOTTOM QUICK ROTATIONS & DRAWER TRIGGER -->
+    <div class="fixed bottom-3 inset-x-3 z-30 flex items-center justify-between gap-1.5 pointer-events-none md:hidden">
+        <div class="pointer-events-auto flex-1 bg-slate-900/90 backdrop-blur-md border border-slate-700/80 p-1 rounded-xl shadow-xl grid grid-cols-4 gap-1">
+            <button data-rot="0" class="quick-rot bg-slate-800/90 text-slate-200 text-[10px] py-1.5 rounded-lg font-bold border border-slate-700/50 text-center">ໃຕ້ 180°</button>
+            <button data-rot="90" class="quick-rot bg-slate-800/90 text-slate-200 text-[10px] py-1.5 rounded-lg font-bold border border-slate-700/50 text-center">ຕົກ 270°</button>
+            <button data-rot="180" class="quick-rot bg-slate-800/90 text-slate-200 text-[10px] py-1.5 rounded-lg font-bold border border-slate-700/50 text-center">ເໜືອ 0°</button>
+            <button data-rot="270" class="quick-rot bg-slate-800/90 text-slate-200 text-[10px] py-1.5 rounded-lg font-bold border border-slate-700/50 text-center">ອອກ 90°</button>
+        </div>
+        <button id="mobileCameraBtn" type="button" class="pointer-events-auto bg-slate-900/90 hover:bg-slate-800 text-emerald-400 border border-emerald-500/60 p-2.5 rounded-xl shadow-xl flex items-center justify-center text-sm transition" title="ເປີດກ້ອງສ່ອງຈິງ AR">
+            <span>📷</span>
+        </button>
+        <button id="mobileLiveCompassBtn" type="button" class="pointer-events-auto bg-slate-900/90 hover:bg-slate-800 text-amber-300 border border-slate-700/80 p-2.5 rounded-xl shadow-xl flex items-center justify-center text-sm transition" title="ເຊື່ອມຕໍ່ເຂັມທິດຈິງ">
+            <span>🧭</span>
+        </button>
+        <button id="mobileOpenMenuFab" type="button" class="pointer-events-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold p-2.5 rounded-xl shadow-xl flex items-center justify-center text-sm" title="ເປີດເມນູຕັ້ງຄ່າ ແລະ ມິ່ງກວ້າ">
+            <span>🔮</span>
+        </button>
+    </div>
+
+    <!-- VIEWPORT MAIN AREA -->
+    <main id="viewport" class="relative flex-1 h-full bg-stone-200 flex items-center justify-center overflow-hidden compass-container">
+        <!-- Live AR Camera Video Stream Background -->
+        <video id="arVideo" playsinline autoplay muted class="absolute inset-0 w-full h-full object-cover hidden pointer-events-none z-0"></video>
+
+        <!-- Floating Live AR Badge Indicator -->
+        <div id="arCameraBadge" class="absolute top-4 left-1/2 -translate-x-1/2 z-20 hidden items-center gap-2 bg-slate-950/90 border border-emerald-500/70 text-emerald-300 text-xs px-3.5 py-1.5 rounded-full shadow-2xl backdrop-blur-md font-semibold select-none">
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>📷 ກຳລັງສ່ອງກ້ອງຈິງ (AR Camera)</span>
+            <button id="closeArBtn" type="button" class="ml-1 text-slate-400 hover:text-white font-bold px-1.5 py-0.5 rounded-md hover:bg-slate-800" title="ປິດກ້ອງ AR">✕</button>
+        </div>
+
+        <!-- Blueprint Grid Background -->
+        <div id="blueprintGrid" class="absolute inset-0 opacity-30 pointer-events-none"
+             style="background-image: linear-gradient(to right, #94a3b8 1px, transparent 1px), linear-gradient(to bottom, #94a3b8 1px, transparent 1px); background-size: 32px 32px;">
+        </div>
+
+        <!-- Interactive User Floor Plan Image Layer -->
+        <div id="floorplanWrapper" class="absolute pointer-events-none select-none flex items-center justify-center transition-none" style="transform: translate(0px, 0px);">
+            <img id="floorplanImg" src="" alt="Floor Plan" class="hidden max-w-[1200px] max-h-[1200px] object-contain shadow-2xl border-2 border-slate-400 bg-white" />
+        </div>
+
+        <!-- Fixed Center Red Crosshair Guide (Viewport level) -->
+        <div id="crosshairLayer" class="absolute inset-0 pointer-events-none flex items-center justify-center z-10">
+            <div class="w-full h-[1.5px] bg-red-600/50"></div>
+            <div class="h-full w-[1.5px] bg-red-600/50 absolute"></div>
+        </div>
+
+        <!-- Rotatable & Scalable Compass Wrapper -->
+        <div id="compassWrapper" class="relative w-[94vmin] h-[94vmin] max-w-[880px] max-h-[880px] flex items-center justify-center transition-transform duration-75 ease-out select-none" style="opacity: 0.95;">
+            <svg id="luopanSvg" viewBox="-70 -70 1340 1340" class="w-full h-full drop-shadow-2xl">
+                <defs>
+                    <radialGradient id="discSheen" cx="35%" cy="30%" r="70%">
+                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22"/>
+                        <stop offset="55%" stop-color="#ffffff" stop-opacity="0.04"/>
+                        <stop offset="100%" stop-color="#000000" stop-opacity="0.10"/>
+                    </radialGradient>
+                    <linearGradient id="lacquerBaseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#7f1d1d"/>
+                        <stop offset="50%" stop-color="#450a0a"/>
+                        <stop offset="100%" stop-color="#2a0404"/>
+                    </linearGradient>
+                    <linearGradient id="acrylicBaseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#f8fafc" stop-opacity="0.75"/>
+                        <stop offset="50%" stop-color="#e2e8f0" stop-opacity="0.55"/>
+                        <stop offset="100%" stop-color="#cbd5e1" stop-opacity="0.70"/>
+                    </linearGradient>
+                    <linearGradient id="brassRimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#fef08a"/>
+                        <stop offset="35%" stop-color="#eab308"/>
+                        <stop offset="70%" stop-color="#a16207"/>
+                        <stop offset="100%" stop-color="#facc15"/>
+                    </linearGradient>
+                    <radialGradient id="heavenPoolGrad" cx="50%" cy="45%" r="55%">
+                        <stop offset="0%" stop-color="#ffffff"/>
+                        <stop offset="75%" stop-color="#f8fafc"/>
+                        <stop offset="100%" stop-color="#e2e8f0"/>
+                    </radialGradient>
+                </defs>
+
+                <g id="outerBasePlate"></g>
+                <g id="compassDisk" transform="rotate(0, 600, 600)"></g>
+                <g id="innerCompassNeedleGroup"></g>
+            </svg>
+        </div>
+    </main>
+
+    <!-- QR CODE MODAL FOR MOBILE ACCESS -->
+    <div id="mobileQrModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700/80 rounded-3xl max-w-sm w-full p-6 shadow-2xl flex flex-col items-center text-center relative">
+            <button id="closeQrModalBtn" type="button" class="absolute top-3.5 right-3.5 text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-800 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold transition">
+                ✕
+            </button>
+
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-2xl mb-3 shadow-inner">
+                📱
+            </div>
+
+            <h3 class="text-base font-bold text-amber-400 leading-tight">ເປີດໃຊ້ງານໃນໂທລະສັບມືຖື</h3>
+            <p class="text-xs text-slate-400 mt-1 max-w-[280px]">
+                ສະແກນ QR Code ນີ້ດ້ວຍກ້ອງມືຖືເພື່ອເປີດຈານເຂັມທິດຮວງຈຸ້ຍ ແລະ ໝຸນຕາມທິດຈິງອັດຕະໂນມັດ
+            </p>
+
+            <!-- QR Code Canvas Container -->
+            <div class="bg-white p-3 rounded-2xl shadow-2xl my-4 flex items-center justify-center border-4 border-amber-400/40">
+                <div id="qrcode"></div>
+            </div>
+
+            <!-- URL Box with Copy Button -->
+            <div class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 flex items-center justify-between gap-2 mb-3">
+                <span id="mobileServerUrlText" class="text-xs text-amber-300 font-mono truncate select-all px-1">
+                    http://192.168.60.95:3000
+                </span>
+                <button id="copyUrlBtn" type="button" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-2.5 py-1 rounded-lg shrink-0 border border-slate-700 transition flex items-center gap-1">
+                    <span>📋</span> <span id="copyBtnText">ກັອບປີ້</span>
+                </button>
+            </div>
+
+            <!-- Step Instructions -->
+            <div class="w-full bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-left text-[11px] text-slate-300 space-y-1.5">
+                <div class="flex items-start gap-2">
+                    <span class="text-amber-400 font-bold">1.</span>
+                    <span>ເຊື່ອມຕໍ່ Wi-Fi ດຽວກັນກັບຄອມພິວເຕີນີ້</span>
+                </div>
+                <div class="flex items-start gap-2">
+                    <span class="text-amber-400 font-bold">2.</span>
+                    <span>ເປີດກ້ອງມືຖືແລ້ວສ່ອງໃສ່ QR Code ເພື່ອເຂົ້າເວັບ</span>
+                </div>
+                <div class="flex items-start gap-2">
+                    <span class="text-amber-400 font-bold">3.</span>
+                    <span>ກົດປຸ່ມ <b>"🧭 ເຊື່ອມຕໍ່ເຂັມທິດຈິງ"</b> ເພື່ອວັດແທກໜ້າງານ</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CX = 600;
+        const CY = 600;
+        const DEG_TO_RAD = Math.PI / 180;
+
+        let isTransparentMode = false;
+        let dragMode = 'compass'; // 'compass', 'pan', or 'floorplan'
+        let currentRotation = 0;
+        let currentZoom = 100;
+        let panX = 0;
+        let panY = 0;
+        let startPanX = 0;
+        let startPanY = 0;
+        let isDragging = false;
+        let isSpacePressed = false;
+        let isRightOrMiddleClickPan = false;
+        let startDragX = 0;
+        let startDragY = 0;
+        let startDragAngle = 0;
+        let startRotation = 0;
+        let planPosX = 0;
+        let planPosY = 0;
+        let startPlanPosX = 0;
+        let startPlanPosY = 0;
+        let planScale = 100;
+
+        function compassDegToScreenAngle(compassDeg) {
+            return compassDeg - 270;
+        }
+
+        function polarToCartesian(cx, cy, r, compassDeg) {
+            const angleRad = compassDegToScreenAngle(compassDeg) * DEG_TO_RAD;
+            return {
+                x: cx + r * Math.cos(angleRad),
+                y: cy + r * Math.sin(angleRad)
+            };
+        }
+
+        function createSectorPath(rInner, rOuter, startDeg, endDeg) {
+            const p1 = polarToCartesian(CX, CY, rOuter, startDeg);
+            const p2 = polarToCartesian(CX, CY, rOuter, endDeg);
+            const p3 = polarToCartesian(CX, CY, rInner, endDeg);
+            const p4 = polarToCartesian(CX, CY, rInner, startDeg);
+            const diff = ((endDeg - startDeg) % 360 + 360) % 360;
+            const largeArc = diff > 180 ? 1 : 0;
+
+            return [
+                `M ${p1.x.toFixed(2)} ${p1.y.toFixed(2)}`,
+                `A ${rOuter} ${rOuter} 0 ${largeArc} 1 ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`,
+                `L ${p3.x.toFixed(2)} ${p3.y.toFixed(2)}`,
+                `A ${rInner} ${rInner} 0 ${largeArc} 0 ${p4.x.toFixed(2)} ${p4.y.toFixed(2)}`,
+                'Z'
+            ].join(' ');
+        }
+
+        function createRadialText(r, compassDeg, text, opts = {}) {
+            const {
+                fontSize = 10,
+                fontWeight = '700',
+                fill = '#111827',
+                flipBottom = false
+            } = opts;
+
+            const pos = polarToCartesian(CX, CY, r, compassDeg);
+            let rot = compassDeg - 180;
+            if (flipBottom) {
+                const norm = ((rot % 360) + 360) % 360;
+                if (norm > 95 && norm < 265) {
+                    rot += 180;
+                }
+            }
+            return `<text x="${pos.x.toFixed(2)}" y="${pos.y.toFixed(2)}"
+                text-anchor="middle" dominant-baseline="central"
+                font-size="${fontSize}" font-weight="${fontWeight}" fill="${fill}"
+                transform="rotate(${rot.toFixed(2)}, ${pos.x.toFixed(2)}, ${pos.y.toFixed(2)})">${text}</text>`;
+        }
+
+        const MOUNTAINS_24 = [
+            { code: 'N2',  start: 352.5, end: 7.5,   color: '#2563eb', type: 'zodiac', animal: '🐀', animalName: 'ຊວດ (ໜູ)',     time: '23.01 - 01.00', num: '11' },
+            { code: 'N3',  start: 7.5,   end: 22.5,  color: '#2563eb', type: 'table',  headers: ['ຊວດ','ມະເສັງ','ວອກ','ກຸນ'] },
+            { code: 'NE1', start: 22.5,  end: 37.5,  color: '#facc15', type: 'zodiac', animal: '🐂', animalName: 'ສະຫຼູ (ງົວ)',    time: '01.01 - 03.00', num: '12' },
+            { code: 'NE2', start: 37.5,  end: 52.5,  color: '#facc15', type: 'table',  headers: ['ສະຫຼູ','ມະເມີຍ','ລະກາ','ຈໍ'] },
+            { code: 'NE3', start: 52.5,  end: 67.5,  color: '#facc15', type: 'zodiac', animal: '🐅', animalName: 'ຂານ (ເສືອ)',    time: '03.01 - 05.00', num: '01' },
+            { code: 'E1',  start: 67.5,  end: 82.5,  color: '#4ade80', type: 'table',  headers: ['ຂານ','ມະແມ','ວອກ','ກຸນ'] },
+            { code: 'E2',  start: 82.5,  end: 97.5,  color: '#4ade80', type: 'zodiac', animal: '🐇', animalName: 'ເຖາະ (ກະຕ່າຍ)', time: '05.01 - 07.00', num: '02' },
+            { code: 'E3',  start: 97.5,  end: 112.5, color: '#4ade80', type: 'table',  headers: ['ເຖາະ','ມະໂລງ','ມະເສັງ','ລະກາ'] },
+            { code: 'SE1', start: 112.5, end: 127.5, color: '#22c55e', type: 'zodiac', animal: '🐉', animalName: 'ມະໂລງ (ງູໃຫຍ່)', time: '07.01 - 09.00', num: '03' },
+            { code: 'SE2', start: 127.5, end: 142.5, color: '#22c55e', type: 'table',  headers: ['ຊວດ','ຂານ','ມະໂລງ','ມະເມີຍ'] },
+            { code: 'SE3', start: 142.5, end: 157.5, color: '#22c55e', type: 'zodiac', animal: '🐍', animalName: 'ມະເສັງ (ງູນ້ອຍ)', time: '09.01 - 11.00', num: '04' },
+            { code: 'S1',  start: 157.5, end: 172.5, color: '#ef4444', type: 'table',  headers: ['ສະຫຼູ','ເຖາະ','ມະເສັງ','ມະແມ'] },
+            { code: 'S2',  start: 172.5, end: 187.5, color: '#ef4444', type: 'zodiac', animal: '🐎', animalName: 'ມະເມີຍ (ມ້າ)',   time: '11.01 - 13.00', num: '05' },
+            { code: 'S3',  start: 187.5, end: 202.5, color: '#ef4444', type: 'table',  headers: ['ຂານ','ມະເມີຍ','ຈໍ','ກຸນ'] },
+            { code: 'SW1', start: 202.5, end: 217.5, color: '#fde047', type: 'zodiac', animal: '🐐', animalName: 'ມະແມ (ແບ້)',    time: '13.01 - 15.00', num: '06' },
+            { code: 'SW2', start: 217.5, end: 232.5, color: '#fde047', type: 'table',  headers: ['ເຖາະ','ມະແມ','ລະກາ','ກຸນ'] },
+            { code: 'SW3', start: 232.5, end: 247.5, color: '#fde047', type: 'zodiac', animal: '🐒', animalName: 'ວອກ (ລີງ)',     time: '15.01 - 17.00', num: '07' },
+            { code: 'W1',  start: 247.5, end: 262.5, color: '#e2e8f0', type: 'table',  headers: ['ຊວດ','ມະໂລງ','ວອກ','ລະກາ'] },
+            { code: 'W2',  start: 262.5, end: 277.5, color: '#e2e8f0', type: 'zodiac', animal: '🐓', animalName: 'ລະກາ (ໄກ່)',    time: '17.01 - 19.00', num: '08' },
+            { code: 'W3',  start: 277.5, end: 292.5, color: '#e2e8f0', type: 'table',  headers: ['ສະຫຼູ','ມະເສັງ','ລະກາ','ຈໍ'] },
+            { code: 'NW1', start: 292.5, end: 307.5, color: '#f59e0b', type: 'zodiac', animal: '🐕', animalName: 'ຈໍ (ໝາ)',       time: '19.01 - 21.00', num: '09' },
+            { code: 'NW2', start: 307.5, end: 322.5, color: '#f59e0b', type: 'table',  headers: ['ຂານ','ມະເມີຍ','ຈໍ','ກຸນ'] },
+            { code: 'NW3', start: 322.5, end: 337.5, color: '#f59e0b', type: 'zodiac', animal: '🐖', animalName: 'ກຸນ (ໝູ)',       time: '21.01 - 23.00', num: '10' },
+            { code: 'N1',  start: 337.5, end: 352.5, color: '#2563eb', type: 'table',  headers: ['ຊວດ','ເຖາະ','ມະເມີຍ','ລະກາ'] }
+        ];
+
+        const BAGUA_8 = [
+            {
+                name: 'ບ້ານຫຼີ', dir: 'S', start: 157.5, end: 202.5,
+                themeColor: '#ef4444', lightColor: '#fee2e2',
+                leftCol:  ['8.5 ຍ', '9', '6 ພິຄາດ', 'ຈະເລີນຮຸ່ງເຮືອງ', 'ໝໍເທບ', 'ອາຍຸຍືນ', '5 ຊ/ຍ', 'ມໍລະນະ'],
+                midCol:   ['ບ້ານຫຼີ', 'ຍຸກ 9', '4ກ.ພ.67-3ກ.ພ.87', 'ປະທານ', 'ໄພພິບັດ', '2.5 ຊ.', '1'],
+                rightCol: ['5 ຊ.', '6', '7', '8', '9', '1', '2', '3']
+            },
+            {
+                name: 'ບ້ານຄຸນ', dir: 'SW', start: 202.5, end: 247.5,
+                themeColor: '#facc15', lightColor: '#fef9c3',
+                leftCol:  ['8.5 ຊ/ຍ', '7', '6', '5', '4', '3', '2', '1'],
+                midCol:   ['ບ້ານຄຸນ', 'ຍຸກ 7', '4ກ.ພ.27-3ກ.ພ.47', 'ອາຍຸຍືນ', '5ຜີເຫຼືອງ', 'ໄພພິບັດ', 'ປະທານ', 'ມໍລະນະ'],
+                rightCol: ['9', '8.5 ຍ', '6 ພິຄາດ', 'ຈະເລີນຮຸ່ງເຮືອງ', 'ໝໍເທບ', '4', '2.5 ຊ.', '1']
+            },
+            {
+                name: 'ບ້ານຕຸ້ຍ', dir: 'W', start: 247.5, end: 292.5,
+                themeColor: '#e2e8f0', lightColor: '#f8fafc',
+                leftCol:  ['9', '8.5 ຍ', '7', '6', '4', '3', '2.5 ຊ.', '1'],
+                midCol:   ['ບ້ານຕຸ້ຍ', 'ຍຸກ 8', '4ກ.ພ.47-3ກ.ພ.67', 'ອາຍຸຍືນ', 'ປະທານ', 'ຈະເລີນຮຸ່ງເຮືອງ', '6 ພິຄາດ', 'ມໍລະນະ'],
+                rightCol: ['5ຜີເຫຼືອງ', '8.5 ຍ', '7', '6', 'ໝໍເທບ', 'ໄພພິບັດ', '2.5 ຊ.', '1']
+            },
+            {
+                name: 'ບ້ານເສຽນ', dir: 'NW', start: 292.5, end: 337.5,
+                themeColor: '#f59e0b', lightColor: '#fef3c7',
+                leftCol:  ['8.5 ຍ', '7', '6', '4', '3', '2.5 ຊ.', '1', '9'],
+                midCol:   ['ບ້ານເສຽນ', 'ຍຸກ 9', '4ກ.ພ.67-3ກ.ພ.87', 'ໝໍເທບ', 'ໄພພິບັດ', 'ອາຍຸຍືນ', 'ປະທານ', '5ຜີເຫຼືອງ'],
+                rightCol: ['8.5 ຍ', '7', '6', 'ຈະເລີນຮຸ່ງເຮືອງ', 'ມໍລະນະ', '6 ພິຄາດ', '2.5 ຊ.', '1']
+            },
+            {
+                name: 'ບ້ານຂ່ານ', dir: 'N', start: 337.5, end: 22.5,
+                themeColor: '#3b82f6', lightColor: '#dbeafe',
+                leftCol:  ['8.5 ຍ', '7', '6', '5ຜີເຫຼືອງ', '4', '3', '2.5 ຊ.', '1'],
+                midCol:   ['ບ້ານຂ່ານ', 'ຍຸກ 1', '4ກ.ພ.87-3ກ.ພ.07', 'ຈະເລີນຮຸ່ງເຮືອງ', 'ອາຍຸຍືນ', '6 ພິຄາດ', 'ໝໍເທບ', 'ປະທານ'],
+                rightCol: ['9', '8.5 ຍ', '7', '6', 'ມໍລະນະ', 'ໄພພິບັດ', '2.5 ຊ.', '1']
+            },
+            {
+                name: 'ບ້ານເກິ້ນ', dir: 'NE', start: 22.5, end: 67.5,
+                themeColor: '#facc15', lightColor: '#fef9c3',
+                leftCol:  ['8.5 ຍ', '7', '6', '4', '3', '2.5 ຊ.', '1', '9'],
+                midCol:   ['ບ້ານເກິ້ນ', 'ຍຸກ 2', '4ກ.ພ.07-3ກ.ພ.27', '6 ພິຄາດ', 'ໝໍເທບ', 'ມໍລະນະ', 'ໄພພິບັດ', 'ອາຍຸຍືນ'],
+                rightCol: ['9', '8.5 ຍ', '7', 'ປະທານ', 'ຈະເລີນຮຸ່ງເຮືອງ', '5ຜີເຫຼືອງ', '2.5 ຊ.', '1']
+            },
+            {
+                name: 'ບ້ານເຈິ້ນ', dir: 'E', start: 67.5, end: 112.5,
+                themeColor: '#22c55e', lightColor: '#dcfce7',
+                leftCol:  ['9', '8.5 ຍ', '7', '6', '4', '3', '2.5 ຊ.', '1'],
+                midCol:   ['ບ້ານເຈິ້ນ', 'ຍຸກ 3', '4ກ.ພ.27-3ກ.ພ.47', 'ອາຍຸຍືນ', 'ມໍລະນະ', 'ປະທານ', '5ຜີເຫຼືອງ', '6 ພິຄາດ'],
+                rightCol: ['8.5 ຍ', '7', '6', 'ຈະເລີນຮຸ່ງເຮືອງ', 'ໄພພິບັດ', 'ໝໍເທບ', '2.5 ຊ.', '1']
+            },
+            {
+                name: 'ບ້ານຊຸ່ນ', dir: 'SE', start: 112.5, end: 157.5,
+                themeColor: '#16a34a', lightColor: '#dcfce7',
+                leftCol:  ['8.5 ຍ', '7', '6', '5ຜີເຫຼືອງ', '4', '3', '2.5 ຊ.', '1'],
+                midCol:   ['ບ້ານຊຸ່ນ', 'ຍຸກ 4', '4ກ.ພ.47-3ກ.ພ.67', 'ໝໍເທບ', 'ປະທານ', 'ອາຍຸຍືນ', 'ໄພພິບັດ', 'ຈະເລີນຮຸ່ງເຮືອງ'],
+                rightCol: ['9', '8.5 ຍ', '7', '6', '6 ພິຄາດ', 'ມໍລະນະ', '2.5 ຊ.', '1']
+            }
+        ];
+
+        // 60 Jiazi Nayin 5 Elements (ຫົກສິບດອກໄມ້ນາຢິນ 5 ທາດ)
+        const NAYIN_60 = [
+            { gz: '甲子 (ກ້າບຊວດ)', animal: 'ຊວດ 🐀 (ໜູ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດທອງ (ທອງໃນທະເລ)', el: 'ທາດທອງ' },
+            { gz: '乙丑 (ອິດສະຫຼູ)', animal: 'ສະຫຼູ 🐂 (ງົວ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດທອງ (ທອງໃນທະເລ)', el: 'ທາດທອງ' },
+            { gz: '丙寅 (ບິ່ງຂານ)', animal: 'ຂານ 🐅 (ເສືອ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດໄຟ (ໄຟໃນເຕົາ)', el: 'ທາດໄຟ' },
+            { gz: '丁卯 (ດິ່ງເຖາະ)', animal: 'ເຖາະ 🐇 (ກະຕ່າຍ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດໄຟ (ໄຟໃນເຕົາ)', el: 'ທາດໄຟ' },
+            { gz: '戊辰 (ໂບ່ວມະໂລງ)', animal: 'ມະໂລງ 🐉 (ມັງກອນ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄມ້ (ໄມ້ປ່າໃຫຍ່)', el: 'ທາດໄມ້' },
+            { gz: '己巳 (ກີ່ມະເສັງ)', animal: 'ມະເສັງ 🐍 (ງູນ້ອຍ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄມ້ (ໄມ້ປ່າໃຫຍ່)', el: 'ທາດໄມ້' },
+            { gz: '庚午 (ແກງມະເມຍ)', animal: 'ມະເມຍ 🐎 (ມ້າ)', stemEl: 'ທາດທອງ', nayin: 'ທາດດິນ (ດິນແຄມທາງ)', el: 'ທາດດິນ' },
+            { gz: '辛未 (ຊິນມະແມ)', animal: 'ມະແມ 🐐 (ແບ້)', stemEl: 'ທາດທອງ', nayin: 'ທາດດິນ (ດິນແຄມທາງ)', el: 'ທາດດິນ' },
+            { gz: '壬申 (ຢິມວອກ)', animal: 'ວອກ 🐒 (ລີງ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດທອງ (ທອງປາຍດາບ)', el: 'ທາດທອງ' },
+            { gz: '癸酉 (ກຸຍລະກາ)', animal: 'ລະກາ 🐓 (ໄກ່)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດທອງ (ທອງປາຍດາບ)', el: 'ທາດທອງ' },
+            { gz: '甲戌 (ກ້າບຈໍ)', animal: 'ຈໍ 🐕 (ໝາ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດໄຟ (ໄຟເທິງພູ)', el: 'ທາດໄຟ' },
+            { gz: '乙亥 (ອິດກຸນ)', animal: 'ກຸນ 🐖 (ໝູ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດໄຟ (ໄຟເທິງພູ)', el: 'ທາດໄຟ' },
+            { gz: '丙子 (ບິ່ງຊວດ)', animal: 'ຊວດ 🐀 (ໜູ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດນ້ຳ (ນ້ຳຮ່ອມເຂົາ)', el: 'ທາດນ້ຳ' },
+            { gz: '丁丑 (ດິ່ງສະຫຼູ)', animal: 'ສະຫຼູ 🐂 (ງົວ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດນ້ຳ (ນ້ຳຮ່ອມເຂົາ)', el: 'ທາດນ້ຳ' },
+            { gz: '戊寅 (ໂບ່ວຂານ)', animal: 'ຂານ 🐅 (ເສືອ)', stemEl: 'ທາດດິນ', nayin: 'ທາດດິນ (ດິນກຳແພງເມືອງ)', el: 'ທາດດິນ' },
+            { gz: '己卯 (ກີ່ເຖາະ)', animal: 'ເຖາະ 🐇 (ກະຕ່າຍ)', stemEl: 'ທາດດິນ', nayin: 'ທາດດິນ (ດິນກຳແພງເມືອງ)', el: 'ທາດດິນ' },
+            { gz: '庚辰 (ແກງມະໂລງ)', animal: 'ມະໂລງ 🐉 (ມັງກອນ)', stemEl: 'ທາດທອງ', nayin: 'ທາດທອງ (ທອງຂີ້ເຜິ້ງ)', el: 'ທາດທອງ' },
+            { gz: '辛巳 (ຊິນມະເສັງ)', animal: 'ມະເສັງ 🐍 (ງູນ້ອຍ)', stemEl: 'ທາດທອງ', nayin: 'ທາດທອງ (ທອງຂີ້ເຜິ້ງ)', el: 'ທາດທອງ' },
+            { gz: '壬午 (ຢິມມະເມຍ)', animal: 'ມະເມຍ 🐎 (ມ້າ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດໄມ້ (ໄມ້ຫຼິວ)', el: 'ທາດໄມ້' },
+            { gz: '癸未 (ກຸຍມະແມ)', animal: 'ມະແມ 🐐 (ແບ້)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດໄມ້ (ໄມ້ຫຼິວ)', el: 'ທາດໄມ້' },
+            { gz: '甲申 (ກ້າບວອກ)', animal: 'ວອກ 🐒 (ລີງ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດນ້ຳ (ນ້ຳບໍ່ນ້ຳພຸ)', el: 'ທາດນ້ຳ' },
+            { gz: '乙酉 (ອິດລະກາ)', animal: 'ລະກາ 🐓 (ໄກ່)', stemEl: 'ທາດໄມ້', nayin: 'ທາດນ້ຳ (ນ້ຳບໍ່ນ້ຳພຸ)', el: 'ທາດນ້ຳ' },
+            { gz: '丙戌 (ບິ່ງຈໍ)', animal: 'ຈໍ 🐕 (ໝາ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດດິນ (ດິນຫຼັງຄາ)', el: 'ທາດດິນ' },
+            { gz: '丁亥 (ດິ່ງກຸນ)', animal: 'ກຸນ 🐖 (ໝູ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດດິນ (ດິນຫຼັງຄາ)', el: 'ທາດດິນ' },
+            { gz: '戊子 (ໂບ່ວຊວດ)', animal: 'ຊວດ 🐀 (ໜູ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄຟ (ໄຟສາຍຟ້າ)', el: 'ທາດໄຟ' },
+            { gz: '己丑 (ກີ່ສະຫຼູ)', animal: 'ສະຫຼູ 🐂 (ງົວ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄຟ (ໄຟສາຍຟ້າ)', el: 'ທາດໄຟ' },
+            { gz: '庚寅 (ແກງຂານ)', animal: 'ຂານ 🐅 (ເສືອ)', stemEl: 'ທາດທອງ', nayin: 'ທາດໄມ້ (ໄມ້ສົນ)', el: 'ທາດໄມ້' },
+            { gz: '辛卯 (ຊິນເຖາະ)', animal: 'ເຖາະ 🐇 (ກະຕ່າຍ)', stemEl: 'ທາດທອງ', nayin: 'ທາດໄມ້ (ໄມ້ສົນ)', el: 'ທາດໄມ້' },
+            { gz: '壬辰 (ຢິມມະໂລງ)', animal: 'ມະໂລງ 🐉 (ມັງກອນ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດນ້ຳ (ນ້ຳໄຫຼຍາວ)', el: 'ທາດນ້ຳ' },
+            { gz: '癸巳 (ກຸຍມະເສັງ)', animal: 'ມະເສັງ 🐍 (ງູນ້ອຍ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດນ້ຳ (ນ້ຳໄຫຼຍາວ)', el: 'ທາດນ້ຳ' },
+            { gz: '甲午 (ກ້າບມະເມຍ)', animal: 'ມະເມຍ 🐎 (ມ້າ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດທອງ (ທອງດິນຊາຍ)', el: 'ທາດທອງ' },
+            { gz: '乙未 (ອິດມະແມ)', animal: 'ມະແມ 🐐 (ແບ້)', stemEl: 'ທາດໄມ້', nayin: 'ທາດທອງ (ທອງດິນຊາຍ)', el: 'ທາດທອງ' },
+            { gz: '丙申 (ບິ່ງວອກ)', animal: 'ວອກ 🐒 (ລີງ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດໄຟ (ໄຟຕີນພູ)', el: 'ທາດໄຟ' },
+            { gz: '丁酉 (ດິ່ງລະກາ)', animal: 'ລະກາ 🐓 (ໄກ່)', stemEl: 'ທາດໄຟ', nayin: 'ທາດໄຟ (ໄຟຕີນພູ)', el: 'ທາດໄຟ' },
+            { gz: '戊戌 (ໂບ່ວຈໍ)', animal: 'ຈໍ 🐕 (ໝາ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄມ້ (ໄມ້ທົ່ງພຽງ)', el: 'ທາດໄມ້' },
+            { gz: '己亥 (ກີ່ກຸນ)', animal: 'ກຸນ 🐖 (ໝູ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄມ້ (ໄມ້ທົ່ງພຽງ)', el: 'ທາດໄມ້' },
+            { gz: '庚子 (ແກງຊວດ)', animal: 'ຊວດ 🐀 (ໜູ)', stemEl: 'ທາດທອງ', nayin: 'ທາດດິນ (ດິນກຳແພງ)', el: 'ທາດດິນ' },
+            { gz: '辛丑 (ຊິນສະຫຼູ)', animal: 'ສະຫຼູ 🐂 (ງົວ)', stemEl: 'ທາດທອງ', nayin: 'ທາດດິນ (ດິນກຳແພງ)', el: 'ທາດດິນ' },
+            { gz: '壬寅 (ຢິມຂານ)', animal: 'ຂານ 🐅 (ເສືອ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດທອງ (ທອງຄຳປິວ)', el: 'ທາດທອງ' },
+            { gz: '癸卯 (ກຸຍເຖາະ)', animal: 'ເຖາະ 🐇 (ກະຕ່າຍ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດທອງ (ທອງຄຳປິວ)', el: 'ທາດທອງ' },
+            { gz: '甲辰 (ກ້າບມະໂລງ)', animal: 'ມະໂລງ 🐉 (ມັງກອນ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດໄຟ (ໄຟຕະກຽງ)', el: 'ທາດໄຟ' },
+            { gz: '乙巳 (ອິດມະເສັງ)', animal: 'ມະເສັງ 🐍 (ງູນ້ອຍ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດໄຟ (ໄຟຕະກຽງ)', el: 'ທາດໄຟ' },
+            { gz: '丙午 (ບິ່ງມະເມຍ)', animal: 'ມະເມຍ 🐎 (ມ້າ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດນ້ຳ (ນ້ຳເທິງຟ້າ)', el: 'ທາດນ້ຳ' },
+            { gz: '丁未 (ດິ່ງມະແມ)', animal: 'ມະແມ 🐐 (ແບ້)', stemEl: 'ທາດໄຟ', nayin: 'ທາດນ້ຳ (ນ້ຳເທິງຟ້າ)', el: 'ທາດນ້ຳ' },
+            { gz: '戊申 (ໂບ່ວວອກ)', animal: 'ວອກ 🐒 (ລີງ)', stemEl: 'ທາດດິນ', nayin: 'ທາດດິນ (ດິນສະຖານີ)', el: 'ທາດດິນ' },
+            { gz: '己酉 (ກີ່ລະກາ)', animal: 'ລະກາ 🐓 (ໄກ່)', stemEl: 'ທາດດິນ', nayin: 'ທາດດິນ (ດິນສະຖານີ)', el: 'ທາດດິນ' },
+            { gz: '庚戌 (ແກງຈໍ)', animal: 'ຈໍ 🐕 (ໝາ)', stemEl: 'ທາດທອງ', nayin: 'ທາດທອງ (ທອງເຄື່ອງປະດັບ)', el: 'ທາດທອງ' },
+            { gz: '辛亥 (ຊິນກຸນ)', animal: 'ກຸນ 🐖 (ໝູ)', stemEl: 'ທາດທອງ', nayin: 'ທາດທອງ (ທອງເຄື່ອງປະດັບ)', el: 'ທາດທອງ' },
+            { gz: '壬子 (ຢິມຊວດ)', animal: 'ຊວດ 🐀 (ໜູ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດໄມ້ (ໄມ້ມອນ)', el: 'ທາດໄມ້' },
+            { gz: '癸丑 (ກຸຍສະຫຼູ)', animal: 'ສະຫຼູ 🐂 (ງົວ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດໄມ້ (ໄມ້ມອນ)', el: 'ທາດໄມ້' },
+            { gz: '甲寅 (ກ້າບຂານ)', animal: 'ຂານ 🐅 (ເສືອ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດນ້ຳ (ນ້ຳຫ້ວຍໃຫຍ່)', el: 'ທາດນ້ຳ' },
+            { gz: '乙卯 (ອິດເຖາະ)', animal: 'ເຖາະ 🐇 (ກະຕ່າຍ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດນ້ຳ (ນ້ຳຫ້ວຍໃຫຍ່)', el: 'ທາດນ້ຳ' },
+            { gz: '丙辰 (ບິ່ງມະໂລງ)', animal: 'ມະໂລງ 🐉 (ມັງກອນ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດດິນ (ດິນຊາຍ)', el: 'ທາດດິນ' },
+            { gz: '丁巳 (ດິ່ງມະເສັງ)', animal: 'ມະເສັງ 🐍 (ງູນ້ອຍ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດດິນ (ດິນຊາຍ)', el: 'ທາດດິນ' },
+            { gz: '戊午 (ໂບ່ວມະເມຍ)', animal: 'ມະເມຍ 🐎 (ມ້າ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄຟ (ໄຟເທິງທ້ອງຟ້າ)', el: 'ທາດໄຟ' },
+            { gz: '己未 (ກີ່ມະແມ)', animal: 'ມະແມ 🐐 (ແບ້)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄຟ (ໄຟເທິງທ້ອງຟ້າ)', el: 'ທາດໄຟ' },
+            { gz: '庚申 (ແກງວອກ)', animal: 'ວອກ 🐒 (ລີງ)', stemEl: 'ທາດທອງ', nayin: 'ທາດໄມ້ (ໄມ້ທັບທິມ)', el: 'ທາດໄມ້' },
+            { gz: '辛酉 (ຊິນລະກາ)', animal: 'ລະກາ 🐓 (ໄກ່)', stemEl: 'ທາດທອງ', nayin: 'ທາດໄມ້ (ໄມ້ທັບທິມ)', el: 'ທາດໄມ້' },
+            { gz: '壬戌 (ຢິມຈໍ)', animal: 'ຈໍ 🐕 (ໝາ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດນ້ຳ (ນ້ຳມະຫາສະໝຸດ)', el: 'ທາດນ້ຳ' },
+            { gz: '癸亥 (ກຸຍກຸນ)', animal: 'ກຸນ 🐖 (ໝູ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດນ້ຳ (ນ້ຳມະຫາສະໝຸດ)', el: 'ທາດນ້ຳ' }
+        ];
+
+        // 8 Ming Gua Profile & Direction Mapping (ປາຈາຍ 8 ກວ້າຊີວິດ)
+        const GUA_DATA = {
+            1: {
+                name: 'ກວ້າ 1 (ຄຳ / 坎)', element: 'ທາດນ້ຳ', elementBadge: 'ທາດນ້ຳ 💧',
+                group: 'ກຸ່ມຕາເວັນອອກ', trigram: '☵',
+                dirs: {
+                    SE: { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    E:  { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    S:  { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    N:  { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    W:  { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    NW: { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    NE: { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    SW: { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                }
+            },
+            2: {
+                name: 'ກວ້າ 2 (ຄຸນ / 坤)', element: 'ທາດດິນ', elementBadge: 'ທາດດິນ ⛰️',
+                group: 'ກຸ່ມຕາເວັນຕົກ', trigram: '☷',
+                dirs: {
+                    NE: { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    W:  { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    NW: { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    SW: { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    E:  { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    S:  { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    SE: { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    N:  { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                }
+            },
+            3: {
+                name: 'ກວ້າ 3 (ຈິ້ນ / 震)', element: 'ທາດໄມ້', elementBadge: 'ທາດໄມ້ 🌲',
+                group: 'ກຸ່ມຕາເວັນອອກ', trigram: '☳',
+                dirs: {
+                    S:  { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    N:  { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    SE: { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    E:  { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    SW: { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    NE: { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    NW: { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    W:  { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                }
+            },
+            4: {
+                name: 'ກວ້າ 4 (ຊຸ່ນ / 巽)', element: 'ທາດໄມ້', elementBadge: 'ທາດໄມ້ 🌿',
+                group: 'ກຸ່ມຕາເວັນອອກ', trigram: '☴',
+                dirs: {
+                    N:  { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    S:  { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    E:  { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    SE: { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    NW: { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    W:  { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    SW: { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    NE: { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                }
+            },
+            6: {
+                name: 'ກວ້າ 6 (ເສຽນ / 乾)', element: 'ທາດທອງ', elementBadge: 'ທາດທອງ ⚔️',
+                group: 'ກຸ່ມຕາເວັນຕົກ', trigram: '☰',
+                dirs: {
+                    W:  { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    NE: { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    SW: { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    NW: { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    SE: { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    N:  { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    E:  { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    S:  { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                }
+            },
+            7: {
+                name: 'ກວ້າ 7 (ຕຸ່ຍ / 兌)', element: 'ທາດທອງ', elementBadge: 'ທາດທອງ 🪙',
+                group: 'ກຸ່ມຕາເວັນຕົກ', trigram: '☱',
+                dirs: {
+                    NW: { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    SW: { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    NE: { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    W:  { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    N:  { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    SE: { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    S:  { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    E:  { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                }
+            },
+            8: {
+                name: 'ກວ້າ 8 (ເກິ້ນ / 艮)', element: 'ທາດດິນ', elementBadge: 'ທາດດິນ 🏔️',
+                group: 'ກຸ່ມຕາເວັນຕົກ', trigram: '☶',
+                dirs: {
+                    SW: { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    NW: { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    W:  { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    NE: { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    S:  { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    E:  { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    N:  { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    SE: { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                }
+            },
+            9: {
+                name: 'ກວ້າ 9 (ຫຼີ / 離)', element: 'ທາດໄຟ', elementBadge: 'ທາດໄຟ 🔥',
+                group: 'ກຸ່ມຕາເວັນອອກ', trigram: '☲',
+                dirs: {
+                    E:  { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    SE: { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    N:  { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    S:  { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    NE: { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    SW: { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    W:  { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    NW: { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                }
+            }
+        };
+
+        let currentBirthYear = 1990;
+        let currentGender = 'male';
+        let isBornBeforeLichun = false;
+        let showHighlightGua = true;
+        let currentGuaData = null;
+        let currentYearInfo = null;
+
+        function calculateGua(yearInput, isMale, beforeLichun) {
+            const solarYear = beforeLichun ? yearInput - 1 : yearInput;
+            let idx = (solarYear - 1924) % 60;
+            if (idx < 0) idx += 60;
+            const yearInfo = NAYIN_60[idx];
+
+            const last2 = solarYear % 100;
+            let d = Math.floor(last2 / 10) + (last2 % 10);
+            while (d > 9) d = Math.floor(d / 10) + (d % 10);
+
+            let guaNum;
+            if (solarYear < 2000) {
+                if (isMale) {
+                    guaNum = 10 - d;
+                    if (guaNum <= 0) guaNum += 9;
+                    if (guaNum === 5) guaNum = 2; // Male 5 -> Kun (Earth)
+                } else {
+                    let f = 5 + d;
+                    while (f > 9) f = Math.floor(f / 10) + (f % 10);
+                    guaNum = f;
+                    if (guaNum === 5) guaNum = 8; // Female 5 -> Gen (Earth)
+                }
+            } else {
+                if (isMale) {
+                    guaNum = 9 - d;
+                    if (guaNum <= 0) guaNum += 9;
+                    if (guaNum === 5) guaNum = 2;
+                } else {
+                    let f = 6 + d;
+                    while (f > 9) f = Math.floor(f / 10) + (f % 10);
+                    guaNum = f;
+                    if (guaNum === 5) guaNum = 8;
+                }
+            }
+            return { solarYear, yearInfo, guaNum, guaData: GUA_DATA[guaNum] };
+        }
+
+        function buildOuterBasePlate(styleMode = 'lacquer') {
+            const baseGroup = document.getElementById('outerBasePlate');
+            if (styleMode === 'hidden') {
+                baseGroup.innerHTML = '';
+                return;
+            }
+
+            const isLacquer = styleMode === 'lacquer';
+            const fillUrl = isLacquer ? 'url(#lacquerBaseGrad)' : 'url(#acrylicBaseGrad)';
+            const borderStroke = isLacquer ? '#eab308' : '#475569';
+            const textColor = isLacquer ? '#fde047' : '#0f172a';
+            const subTextColor = isLacquer ? '#fca5a5' : '#334155';
+
+            const parts = [];
+            parts.push(`<rect x="-52" y="-52" width="1304" height="1304" rx="34" ry="34" fill="${fillUrl}" stroke="${borderStroke}" stroke-width="5"/>`);
+            parts.push(`<rect x="-34" y="-34" width="1268" height="1268" rx="22" ry="22" fill="none" stroke="${borderStroke}" stroke-width="1.8" stroke-dasharray="${isLacquer ? 'none' : '8 4'}"/>`);
+
+            for (let i = 0; i <= 1200; i += 20) {
+                const isMajor = i % 100 === 0;
+                const len = isMajor ? 14 : 7;
+                const sw = isMajor ? 1.5 : 0.8;
+                parts.push(`<line x1="${i}" y1="-52" x2="${i}" y2="${-52 + len}" stroke="${borderStroke}" stroke-width="${sw}" opacity="0.75"/>`);
+                parts.push(`<line x1="${i}" y1="1252" x2="${i}" y2="${1252 - len}" stroke="${borderStroke}" stroke-width="${sw}" opacity="0.75"/>`);
+                parts.push(`<line x1="-52" y1="${i}" x2="${-52 + len}" y2="${i}" stroke="${borderStroke}" stroke-width="${sw}" opacity="0.75"/>`);
+                parts.push(`<line x1="1252" y1="${i}" x2="${1252 - len}" y2="${i}" stroke="${borderStroke}" stroke-width="${sw}" opacity="0.75"/>`);
+            }
+
+            const corners = [
+                { x: 35,   y: 35,   dir: 'ຕົກສ່ຽງໃຕ້ 225°', bagua: '☷ ຄຸນ' },
+                { x: 1165, y: 35,   dir: 'ຕົກສ່ຽງເໜືອ 315°', bagua: '☰ ເສຽນ' },
+                { x: 1165, y: 1165, dir: 'ອອກສ່ຽງເໜືອ 45°',  bagua: '☶ ເກິ້ນ' },
+                { x: 35,   y: 1165, dir: 'ອອກສ່ຽງໃຕ້ 135°', bagua: '☴ ຊຸ່ນ' }
+            ];
+
+            corners.forEach(c => {
+                parts.push(`<circle cx="${c.x}" cy="${c.y}" r="42" fill="none" stroke="${borderStroke}" stroke-width="1.5" opacity="0.7"/>`);
+                parts.push(`<circle cx="${c.x}" cy="${c.y}" r="34" fill="${isLacquer ? '#450a0a' : '#ffffff'}" fill-opacity="0.8" stroke="${borderStroke}" stroke-width="1"/>`);
+                parts.push(`<text x="${c.x}" y="${c.y - 8}" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="800" fill="${textColor}">${c.bagua}</text>`);
+                parts.push(`<text x="${c.x}" y="${c.y + 10}" text-anchor="middle" dominant-baseline="central" font-size="9.5" font-weight="700" fill="${subTextColor}">${c.dir}</text>`);
+            });
+
+            const cardinals = [
+                { x: 600, y: -18, label: 'ຈຸດເລັງອ່ານອົງສາໜ້າບ້ານ (ດ້ານໜ້າ)', rot: 0 },
+                { x: 600, y: 1218, label: 'ຈຸດເລັງອ່ານອົງສາຫຼັງບ້ານ (ດ້ານຫຼັງ)', rot: 0 },
+                { x: -18, y: 600, label: 'ດ້ານຊ້າຍມື', rot: -90 },
+                { x: 1218, y: 600, label: 'ດ້ານຂວາມື', rot: 90 }
+            ];
+            cardinals.forEach(cd => {
+                parts.push(`<g transform="translate(${cd.x}, ${cd.y}) rotate(${cd.rot})">
+                    <rect x="-110" y="-12" width="220" height="24" rx="12" fill="${isLacquer ? '#2a0404' : '#0f172a'}" stroke="${borderStroke}" stroke-width="1.5"/>
+                    <text x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="10.5" font-weight="800" fill="#facc15">${cd.label}</text>
+                </g>`);
+            });
+
+            // Authentic Circular Spirit Level (ຍົດນ້ຳທ່ຽງວັດ / ຟອງນ້ຳວັດລະດັບ)
+            parts.push(`<g transform="translate(1085, 48)" pointer-events="none">
+                <circle cx="0" cy="0" r="28" fill="url(#brassRimGrad)" stroke="#713f12" stroke-width="2"/>
+                <circle cx="0" cy="0" r="23" fill="#1e293b" stroke="#ca8a04" stroke-width="1"/>
+                <circle cx="0" cy="0" r="20" fill="#84cc16" stroke="#365314" stroke-width="1.2"/>
+                <circle cx="0" cy="0" r="16" fill="none" stroke="#65a30d" stroke-width="1" opacity="0.6"/>
+                <circle cx="0" cy="0" r="8" fill="none" stroke="#1c1917" stroke-width="1.2"/>
+                <line x1="-12" y1="0" x2="12" y2="0" stroke="#1c1917" stroke-width="0.8"/>
+                <line x1="0" y1="-12" x2="0" y2="12" stroke="#1c1917" stroke-width="0.8"/>
+                <circle cx="1.5" cy="-1.5" r="5.5" fill="#fef08a" fill-opacity="0.85" stroke="#4d7c0f" stroke-width="1"/>
+                <circle cx="0.5" cy="-2.5" r="2" fill="#ffffff" fill-opacity="0.9"/>
+                <path d="M -15,-6 A 17 17 0 0 1 -6,-15" fill="none" stroke="#ffffff" stroke-width="1.8" opacity="0.6" stroke-linecap="round"/>
+                <text x="0" y="38" text-anchor="middle" dominant-baseline="central" font-size="8.5" font-weight="900" fill="${isLacquer ? '#fde047' : '#0f172a'}">ຍົດນ້ຳທ່ຽງວັດ</text>
+            </g>`);
+
+            parts.push(`<circle cx="${CX}" cy="${CY}" r="600" fill="none" stroke="url(#brassRimGrad)" stroke-width="11"/>`);
+            parts.push(`<circle cx="${CX}" cy="${CY}" r="594" fill="none" stroke="#0f172a" stroke-width="1.2"/>`);
+
+            baseGroup.innerHTML = parts.join('');
+        }
+
+        function buildInnerCompassNeedle() {
+            const needleGroup = document.getElementById('innerCompassNeedleGroup');
+            const parts = [];
+
+            const poolBg = isTransparentMode ? 'rgba(255, 255, 255, 0.05)' : 'url(#heavenPoolGrad)';
+            const poolFillOp = isTransparentMode ? '0.15' : '0.94';
+            const poolStroke = isTransparentMode ? '#dc2626' : 'url(#brassRimGrad)';
+            const poolStrokeW = isTransparentMode ? '2' : '5';
+
+            parts.push(`<circle cx="${CX}" cy="${CY}" r="112" fill="${poolBg}" fill-opacity="${poolFillOp}" stroke="${poolStroke}" stroke-width="${poolStrokeW}"/>`);
+            parts.push(`<circle cx="${CX}" cy="${CY}" r="108" fill="none" stroke="#991b1b" stroke-width="1.2"/>`);
+
+            for (let deg = 0; deg < 360; deg += 15) {
+                const isCard = deg % 90 === 0;
+                const isInter = deg % 45 === 0;
+                const rIn = isCard ? 88 : (isInter ? 92 : 97);
+                const rOut = 105;
+                const p1 = polarToCartesian(CX, CY, rIn, deg);
+                const p2 = polarToCartesian(CX, CY, rOut, deg);
+                parts.push(`<line x1="${p1.x.toFixed(2)}" y1="${p1.y.toFixed(2)}" x2="${p2.x.toFixed(2)}" y2="${p2.y.toFixed(2)}" stroke="${isCard ? '#dc2626' : '#334155'}" stroke-width="${isCard ? 2 : 1}"/>`);
+            }
+
+            const poolDirs = [
+                { deg: 180, label: 'ໃຕ້', color: '#dc2626', size: 12 },
+                { deg: 0,   label: 'ເໜືອ', color: '#1d4ed8', size: 12 },
+                { deg: 90,  label: 'ອອກ', color: '#15803d', size: 11 },
+                { deg: 270, label: 'ຕົກ', color: '#475569', size: 11 }
+            ];
+            poolDirs.forEach(d => {
+                const pos = polarToCartesian(CX, CY, 74, d.deg);
+                parts.push(`<text x="${pos.x.toFixed(2)}" y="${pos.y.toFixed(2)}" text-anchor="middle" dominant-baseline="central" font-size="${d.size}" font-weight="800" fill="${d.color}">${d.label}</text>`);
+            });
+
+            parts.push(`<line x1="${CX}" y1="${CY - 104}" x2="${CX}" y2="${CY + 104}" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3 2"/>`);
+            parts.push(`<line x1="${CX - 104}" y1="${CY}" x2="${CX + 104}" y2="${CY}" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3 2"/>`);
+            parts.push(`<circle cx="${CX - 5}" cy="${CY - 94}" r="2.5" fill="#dc2626"/>`);
+            parts.push(`<circle cx="${CX + 5}" cy="${CY - 94}" r="2.5" fill="#dc2626"/>`);
+
+            const needleCheckbox = document.getElementById('toggleNeedle');
+            const showNeedle = needleCheckbox ? needleCheckbox.checked : !isTransparentMode;
+            parts.push(`<g id="magneticNeedle" transform="rotate(0, ${CX}, ${CY})" style="display: ${showNeedle ? 'block' : 'none'};">
+                <g opacity="0.25" transform="translate(2, 3)">
+                    <polygon points="${CX},${CY - 92} ${CX - 7},${CY} ${CX + 7},${CY}" fill="#000000"/>
+                    <polygon points="${CX},${CY + 92} ${CX - 7},${CY} ${CX + 7},${CY}" fill="#000000"/>
+                </g>
+                <polygon points="${CX},${CY - 92} ${CX - 7.5},${CY} ${CX},${CY - 6}" fill="#ef4444"/>
+                <polygon points="${CX},${CY - 92} ${CX + 7.5},${CY} ${CX},${CY - 6}" fill="#b91c1c"/>
+                <circle cx="${CX}" cy="${CY - 56}" r="5.5" fill="#ffffff" stroke="#b91c1c" stroke-width="2.2"/>
+                <polygon points="${CX},${CY + 92} ${CX - 7.5},${CY} ${CX},${CY + 6}" fill="#1e3a8a"/>
+                <polygon points="${CX},${CY + 92} ${CX + 7.5},${CY} ${CX},${CY + 6}" fill="#172554"/>
+                <circle cx="${CX}" cy="${CY}" r="11" fill="url(#brassRimGrad)" stroke="#713f12" stroke-width="1.5"/>
+                <circle cx="${CX}" cy="${CY}" r="4" fill="#dc2626"/>
+            </g>`);
+
+            const crosshairCheckbox = document.getElementById('toggleCrosshair');
+            const showCrosshair = crosshairCheckbox ? crosshairCheckbox.checked : true;
+            parts.push(`<g id="luopanRedThread" pointer-events="none" style="display: ${showCrosshair ? 'block' : 'none'};">
+                <line x1="${CX}" y1="-34" x2="${CX}" y2="1234" stroke="#dc2626" stroke-width="2" opacity="0.85"/>
+                <line x1="-34" y1="${CY}" x2="1234" y2="${CY}" stroke="#dc2626" stroke-width="2" opacity="0.85"/>
+                <polygon points="${CX},5 ${CX - 9},-12 ${CX + 9},-12" fill="#dc2626" stroke="#ffffff" stroke-width="1"/>
+            </g>`);
+
+            needleGroup.innerHTML = parts.join('');
+        }
+
+        function buildCompassSVG() {
+            const disk = document.getElementById('compassDisk');
+            const parts = [];
+
+            // Master Disc Background: Solid in normal mode, or subtle translucent glass in transparent mode
+            const diskBg = isTransparentMode ? 'rgba(255, 255, 255, 0.08)' : '#f8fafc';
+            parts.push(`<circle cx="${CX}" cy="${CY}" r="588" fill="${diskBg}" stroke="#1e293b" stroke-width="2.5"/>`);
+
+            // Ring 1: Degree Scale Outer Arch
+            parts.push(`<circle cx="${CX}" cy="${CY}" r="550" fill="none" stroke="#0f172a" stroke-width="1.5"/>`);
+            BAGUA_8.forEach(b => {
+                let fillAlpha = isTransparentMode ? '0.22' : '0.55';
+                let fillColor = b.lightColor;
+                if (showHighlightGua && currentGuaData && currentGuaData.dirs[b.dir]) {
+                    const fort = currentGuaData.dirs[b.dir];
+                    if (fort.type === 'good') {
+                        fillColor = '#86efac'; // soft radiant emerald
+                        fillAlpha = isTransparentMode ? '0.40' : '0.70';
+                    } else {
+                        fillColor = '#fca5a5'; // soft rose
+                        fillAlpha = isTransparentMode ? '0.28' : '0.50';
+                    }
+                }
+                parts.push(`<path d="${createSectorPath(550, 588, b.start, b.end)}" fill="${fillColor}" fill-opacity="${fillAlpha}" stroke="none"/>`);
+            });
+
+            for (let deg = 0; deg < 360; deg++) {
+                const isMajor5 = deg % 5 === 0;
+                const isTen = deg % 10 === 0;
+                const tickInner = isTen ? 550 : (isMajor5 ? 555 : 561);
+                const tickOuter = 570;
+                const p1 = polarToCartesian(CX, CY, tickInner, deg);
+                const p2 = polarToCartesian(CX, CY, tickOuter, deg);
+                parts.push(`<line x1="${p1.x.toFixed(2)}" y1="${p1.y.toFixed(2)}" x2="${p2.x.toFixed(2)}" y2="${p2.y.toFixed(2)}" stroke="#0f172a" stroke-width="${isTen ? 1.5 : (isMajor5 ? 1.1 : 0.6)}"/>`);
+
+                if (isMajor5) {
+                    const label = deg === 0 ? '0' : String(deg).padStart(3, '0');
+                    parts.push(createRadialText(579, deg, label, {
+                        fontSize: isTen ? 11.5 : 9.5,
+                        fontWeight: isTen ? '800' : '600',
+                        fill: '#0f172a'
+                    }));
+                }
+            }
+
+            // Ring 2: Mountain Codes & Degrees
+            MOUNTAINS_24.forEach(m => {
+                const mid = (m.start + (m.end < m.start ? m.end + 360 : m.end)) / 2;
+                parts.push(`<path d="${createSectorPath(524, 550, m.start, m.end)}" fill="${m.color}" fill-opacity="${isTransparentMode ? '0.6' : '1.0'}" stroke="#0f172a" stroke-width="1.2"/>`);
+                parts.push(createRadialText(537, mid, m.code, { fontSize: 15, fontWeight: '800', fill: '#0f172a' }));
+                parts.push(createRadialText(554, m.start, m.start.toFixed(1), { fontSize: 6.5, fontWeight: '700', fill: '#1e3a8a' }));
+            });
+
+            // Ring 3: 24 Mountains Zodiac & Table Sectors
+            MOUNTAINS_24.forEach(m => {
+                const endAdj = m.end < m.start ? m.end + 360 : m.end;
+                const mid = (m.start + endAdj) / 2;
+                const mBg = isTransparentMode ? 'rgba(255, 255, 255, 0.2)' : '#ffffff';
+                parts.push(`<path d="${createSectorPath(456, 524, m.start, m.end)}" fill="${mBg}" stroke="#0f172a" stroke-width="1.2"/>`);
+
+                if (m.type === 'zodiac') {
+                    parts.push(`<path d="${createSectorPath(510, 524, m.start, m.end)}" fill="${m.color}" fill-opacity="${isTransparentMode ? '0.45' : '0.7'}" stroke="#0f172a" stroke-width="0.8"/>`);
+                    parts.push(createRadialText(517, m.start + 3.8, m.time.split('-')[0].trim(), { fontSize: 7.5, fontWeight: '700' }));
+                    parts.push(createRadialText(517, endAdj - 3.8, m.time.split('-')[1].trim(), { fontSize: 7.5, fontWeight: '700' }));
+                    parts.push(createRadialText(490, mid, m.animal, { fontSize: 24 }));
+                    parts.push(createRadialText(466, mid, `ປີ${m.animalName}`, { fontSize: 7.5, fontWeight: '700', fill: '#1e293b' }));
+                    parts.push(createRadialText(466, endAdj - 2.2, m.num, { fontSize: 8, fontWeight: '800', fill: '#0f172a' }));
+                } else {
+                    parts.push(`<path d="${createSectorPath(508, 524, m.start, m.end)}" fill="${isTransparentMode ? 'rgba(241, 245, 249, 0.35)' : '#f1f5f9'}" stroke="#0f172a" stroke-width="0.7"/>`);
+                    parts.push(createRadialText(516, mid, 'ນັກສັດປະຈຳປີປັດຈຸບັນ', { fontSize: 6.8, fontWeight: '800', fill: '#0f172a' }));
+                    const rRows = [508, 495, 482, 469, 456];
+                    const rowColors = isTransparentMode
+                        ? ['rgba(187,247,208,0.3)', 'rgba(254,240,138,0.3)', 'rgba(254,215,170,0.3)', 'rgba(191,219,254,0.3)']
+                        : ['#bbf7d0', '#fef08a', '#fed7aa', '#bfdbfe'];
+                    for (let rIdx = 0; rIdx < 4; rIdx++) {
+                        parts.push(`<path d="${createSectorPath(rRows[rIdx+1], rRows[rIdx], m.start, m.end)}" fill="${rowColors[rIdx]}" fill-opacity="${isTransparentMode ? '0.4' : '0.55'}" stroke="#334155" stroke-width="0.5"/>`);
+                    }
+                    for (let cIdx = 0; cIdx < 4; cIdx++) {
+                        const cStart = m.start + cIdx * (15 / 4);
+                        const cMid = cStart + (15 / 8);
+                        if (cIdx > 0) {
+                            const pIn = polarToCartesian(CX, CY, 456, cStart);
+                            const pOut = polarToCartesian(CX, CY, 508, cStart);
+                            parts.push(`<line x1="${pIn.x.toFixed(2)}" y1="${pIn.y.toFixed(2)}" x2="${pOut.x.toFixed(2)}" y2="${pOut.y.toFixed(2)}" stroke="#334155" stroke-width="0.5"/>`);
+                        }
+                        parts.push(createRadialText(501.5, cMid, m.headers[cIdx], { fontSize: 5.8, fontWeight: '700' }));
+                        parts.push(createRadialText(488.5, cMid, ((cIdx + 2) % 9) + 1, { fontSize: 6, fontWeight: '700', fill: '#1e3a8a' }));
+                        parts.push(createRadialText(475.5, cMid, ((cIdx + 5) % 9) + 1, { fontSize: 6, fontWeight: '700', fill: '#991b1b' }));
+                        parts.push(createRadialText(462.5, cMid, ((cIdx + 7) % 9) + 1, { fontSize: 6, fontWeight: '700', fill: '#065f46' }));
+                    }
+                }
+            });
+
+            // Ring 4: 6 Concentric Rows of Flying Stars (Aligned to 120 sectors of 3° each)
+            const rMatrix = [456, 445, 434, 423, 412, 401, 390];
+            BAGUA_8.forEach(b => {
+                parts.push(`<path d="${createSectorPath(390, 456, b.start, b.end)}" fill="${b.themeColor}" fill-opacity="${isTransparentMode ? '0.15' : '0.32'}" stroke="#0f172a" stroke-width="1.2"/>`);
+            });
+            for (let ringIdx = 0; ringIdx < 6; ringIdx++) {
+                parts.push(`<circle cx="${CX}" cy="${CY}" r="${rMatrix[ringIdx + 1]}" fill="none" stroke="#334155" stroke-width="0.6"/>`);
+            }
+            for (let col = 0; col < 120; col++) {
+                const cDeg = (352.5 + col * 3) % 360;
+                const cMid = (cDeg + 1.5) % 360;
+                const isMountainBoundary = col % 5 === 0;
+                const pIn = polarToCartesian(CX, CY, 390, cDeg);
+                const pOut = polarToCartesian(CX, CY, 456, cDeg);
+                parts.push(`<line x1="${pIn.x.toFixed(2)}" y1="${pIn.y.toFixed(2)}" x2="${pOut.x.toFixed(2)}" y2="${pOut.y.toFixed(2)}" stroke="${isMountainBoundary ? '#0f172a' : '#94a3b8'}" stroke-width="${isMountainBoundary ? 1.2 : 0.45}"/>`);
+
+                for (let row = 0; row < 6; row++) {
+                    const rMid = (rMatrix[row] + rMatrix[row + 1]) / 2;
+                    const val = ((col * 2 + row * 3) % 9) + 1;
+                    parts.push(createRadialText(rMid, cMid, String(val), { fontSize: 6.2, fontWeight: '700', fill: '#0f172a' }));
+                }
+            }
+
+            // Ring 5: 120-Year Calendar & Flying Star Cycle (Aligned to exact same 120 sectors of 3° each)
+            const rCalValues = [390, 378, 366, 354, 329, 304];
+            rCalValues.forEach(r => {
+                parts.push(`<circle cx="${CX}" cy="${CY}" r="${r}" fill="none" stroke="#0f172a" stroke-width="0.8"/>`);
+            });
+            for (let i = 0; i < 120; i++) {
+                const startD = (352.5 + i * 3) % 360;
+                const endD = (startD + 3) % 360;
+                const midD = (startD + 1.5) % 360;
+                const isMountainBoundary = i % 5 === 0;
+                const colFill = isTransparentMode
+                    ? (i % 2 === 0 ? 'rgba(255,255,255,0.08)' : 'rgba(248,250,252,0.14)')
+                    : (i % 2 === 0 ? '#ffffff' : '#f8fafc');
+                parts.push(`<path d="${createSectorPath(304, 390, startD, endD)}" fill="${colFill}" stroke="#cbd5e1" stroke-width="0.45"/>`);
+
+                const starNum = 9 - (i % 9);
+                const cycle12 = (i % 12) + 1;
+                const code2 = String((i % 12) + 1).padStart(2, '0');
+
+                // Row: Star number
+                parts.push(`<path d="${createSectorPath(378, 390, startD, endD)}" fill="#fce7f3" fill-opacity="${isTransparentMode ? '0.35' : '0.7'}" stroke="#cbd5e1" stroke-width="0.35"/>`);
+                parts.push(createRadialText(384, midD, String(starNum), { fontSize: 6.5, fontWeight: '800', fill: '#831843' }));
+
+                // Row: Cycle 1-12
+                parts.push(`<path d="${createSectorPath(366, 378, startD, endD)}" fill="#fef9c3" fill-opacity="${isTransparentMode ? '0.35' : '0.7'}" stroke="#cbd5e1" stroke-width="0.35"/>`);
+                parts.push(createRadialText(372, midD, String(cycle12), { fontSize: 6.2, fontWeight: '700', fill: '#0f172a' }));
+
+                // Row: Cycle code (01..12 in bold red/green)
+                parts.push(`<path d="${createSectorPath(354, 366, startD, endD)}" fill="#dcfce7" fill-opacity="${isTransparentMode ? '0.35' : '0.7'}" stroke="#cbd5e1" stroke-width="0.35"/>`);
+                parts.push(createRadialText(360, midD, code2, { fontSize: 6.0, fontWeight: '700', fill: '#14532d' }));
+
+                // Rows: B.E. and A.D. Years
+                const adYear = 1924 + (i % 120);
+                const beYear = adYear + 543;
+
+                parts.push(createRadialText(341, midD, String(beYear), { fontSize: 5.2, fontWeight: '700', fill: '#0f172a' }));
+                parts.push(createRadialText(317, midD, String(adYear), { fontSize: 5.2, fontWeight: '700', fill: '#dc2626' }));
+
+                // Continuous radial line between Ring 5 columns
+                const pIn = polarToCartesian(CX, CY, 304, startD);
+                const pOut = polarToCartesian(CX, CY, 390, startD);
+                parts.push(`<line x1="${pIn.x.toFixed(2)}" y1="${pIn.y.toFixed(2)}" x2="${pOut.x.toFixed(2)}" y2="${pOut.y.toFixed(2)}" stroke="${isMountainBoundary ? '#0f172a' : '#94a3b8'}" stroke-width="${isMountainBoundary ? 1.2 : 0.45}"/>`);
+            }
+
+            // Ring 6: 8 Ba Zhai Houses (45° sectors, exactly 3 sub-columns of 15° each)
+            const rBaguaRows = [304, 290.75, 277.5, 264.25, 251, 237.75, 224.5, 211.25, 198];
+            BAGUA_8.forEach(b => {
+                const span = 45;
+                const subSpan = span / 3;
+                const c1Start = b.start;
+                const c1End = b.start + subSpan;
+                const c2Start = c1End;
+                const c2End = c2Start + subSpan;
+                const c3Start = c2End;
+                const c3End = b.end;
+
+                const cols = [
+                    { s: c1Start, e: c1End, mid: c1Start + 7.5, items: b.leftCol },
+                    { s: c2Start, e: c2End, mid: c2Start + 7.5, items: b.midCol, isCenter: true },
+                    { s: c3Start, e: c3End, mid: c3Start + 7.5, items: b.rightCol }
+                ];
+
+                cols.forEach(col => {
+                    for (let rIdx = 0; rIdx < 8; rIdx++) {
+                        const rTop = rBaguaRows[rIdx];
+                        const rBot = rBaguaRows[rIdx + 1];
+                        const rMid = (rTop + rBot) / 2;
+                        const label = col.items[rIdx] || '';
+
+                        let cellBg = isTransparentMode ? 'rgba(255, 255, 255, 0.15)' : b.lightColor;
+                        if (col.isCenter && rIdx === 0) cellBg = isTransparentMode ? 'rgba(220, 38, 38, 0.45)' : b.themeColor;
+                        else if (label.includes('ຈະເລີນ') || label.includes('ອາຍຸຍືນ') || label.includes('ໝໍເທບ') || label.includes('ປະທານ')) cellBg = isTransparentMode ? 'rgba(254, 240, 138, 0.35)' : '#fef08a';
+                        else if (label.includes('ມໍລະນະ') || label.includes('ໄພພິບັດ') || label.includes('ພິຄາດ') || label.includes('5ຜີເຫຼືອງ')) cellBg = isTransparentMode ? 'rgba(254, 202, 202, 0.35)' : '#fecaca';
+
+                        parts.push(`<path d="${createSectorPath(rBot, rTop, col.s % 360, col.e % 360)}" fill="${cellBg}" stroke="#0f172a" stroke-width="0.75"/>`);
+                        const isHeader = col.isCenter && rIdx === 0;
+                        parts.push(createRadialText(rMid, col.mid, label, { fontSize: isHeader ? 8.8 : 6.8, fontWeight: isHeader ? '800' : '700', fill: '#0f172a' }));
+                    }
+                });
+                parts.push(`<path d="${createSectorPath(198, 304, b.start, b.end)}" fill="none" stroke="#0f172a" stroke-width="1.8"/>`);
+            });
+
+            // Ring 7: 60 Fenjin (6° each, aligned starting at 352.5° so every 30° meets 15° mountains)
+            for (let k = 0; k < 60; k++) {
+                const dStart = (352.5 + k * 6) % 360;
+                const dEnd = (dStart + 6) % 360;
+                const dMid = (dStart + 3) % 360;
+                const isGood = (k % 3 === 0) || (k % 5 === 0);
+
+                const luckBg = isGood
+                    ? (isTransparentMode ? 'rgba(253, 224, 71, 0.45)' : '#fde047')
+                    : (isTransparentMode ? 'rgba(255, 255, 255, 0.15)' : '#ffffff');
+                const luckText = isGood ? 'ດີ' : 'ຮ້າຍ';
+                const luckColor = isGood ? '#15803d' : '#b91c1c';
+
+                parts.push(`<path d="${createSectorPath(166, 198, dStart, dEnd)}" fill="${luckBg}" stroke="#0f172a" stroke-width="0.65"/>`);
+                parts.push(createRadialText(182, dMid, luckText, { fontSize: 8, fontWeight: '800', fill: luckColor }));
+
+                const numBg = isTransparentMode ? 'rgba(254, 240, 138, 0.4)' : '#fef08a';
+                parts.push(`<path d="${createSectorPath(144, 166, dStart, dEnd)}" fill="${numBg}" stroke="#0f172a" stroke-width="0.65"/>`);
+                parts.push(createRadialText(155, dMid, String(k + 1), { fontSize: 8.2, fontWeight: '800', fill: '#0f172a' }));
+            }
+
+            // Master Radial Lines (Stops cleanly at outer edge of Fenjin ring r=198)
+            MOUNTAINS_24.forEach((m, idx) => {
+                const isBaguaBorder = idx % 3 === 1;
+                const pIn = polarToCartesian(CX, CY, 198, m.start);
+                const pOut = polarToCartesian(CX, CY, 550, m.start);
+                parts.push(`<line x1="${pIn.x.toFixed(2)}" y1="${pIn.y.toFixed(2)}" x2="${pOut.x.toFixed(2)}" y2="${pOut.y.toFixed(2)}" stroke="#0f172a" stroke-width="${isBaguaBorder ? 1.8 : 0.9}" pointer-events="none"/>`);
+            });
+
+            // Ring 8: Ba Zhai House Direction Red Ring (With Ming Gua Fortune Tag if enabled)
+            const DIR_NAMES_LAO = {
+                'N': 'ທິດເໜືອ',
+                'NE': 'ອອກສ່ຽງເໜືອ',
+                'E': 'ຕາເວັນອອກ',
+                'SE': 'ອອກສ່ຽງໃຕ້',
+                'S': 'ທິດໃຕ້',
+                'SW': 'ຕົກສ່ຽງໃຕ້',
+                'W': 'ຕາເວັນຕົກ',
+                'NW': 'ຕົກສ່ຽງເໜືອ'
+            };
+            BAGUA_8.forEach(b => {
+                let houseRingBg = isTransparentMode ? 'rgba(220, 38, 38, 0.72)' : '#dc2626';
+                let label = `${b.name} (${DIR_NAMES_LAO[b.dir] || b.dir})`;
+                if (showHighlightGua && currentGuaData && currentGuaData.dirs[b.dir]) {
+                    const fort = currentGuaData.dirs[b.dir];
+                    if (fort.type === 'good') {
+                        houseRingBg = isTransparentMode ? 'rgba(5, 150, 105, 0.88)' : '#059669';
+                        label = `${b.name.replace('ບ້ານ', '')} • ✨${fort.star.split(' ')[0]}`;
+                    } else {
+                        houseRingBg = isTransparentMode ? 'rgba(185, 28, 28, 0.88)' : '#991b1b';
+                        label = `${b.name.replace('ບ້ານ', '')} • ⚠️${fort.star.split(' ')[0]}`;
+                    }
+                }
+                parts.push(`<path d="${createSectorPath(112, 144, b.start, b.end)}" fill="${houseRingBg}" stroke="#ffffff" stroke-width="1.2"/>`);
+                const endAdj = b.end < b.start ? b.end + 360 : b.end;
+                const mid = (b.start + endAdj) / 2;
+                parts.push(createRadialText(128, mid, label, { fontSize: 8.8, fontWeight: '800', fill: '#ffffff' }));
+            });
+
+            const centerFill = isTransparentMode ? 'none' : '#f8fafc';
+            parts.push(`<circle cx="${CX}" cy="${CY}" r="112" fill="${centerFill}" stroke="#dc2626" stroke-width="2.5"/>`);
+            parts.push(`<circle cx="${CX}" cy="${CY}" r="22" fill="none" stroke="#dc2626" stroke-width="1.5"/>`);
+            parts.push(`<circle cx="${CX}" cy="${CY}" r="6" fill="none" stroke="#dc2626" stroke-width="1.5"/>`);
+            parts.push(`<line x1="${CX - 32}" y1="${CY}" x2="${CX + 32}" y2="${CY}" stroke="#dc2626" stroke-width="1.2"/>`);
+            parts.push(`<line x1="${CX}" y1="${CY - 32}" x2="${CX}" y2="${CY + 32}" stroke="#dc2626" stroke-width="1.2"/>`);
+            if (!isTransparentMode) {
+                parts.push(`<circle cx="${CX}" cy="${CY}" r="588" fill="url(#discSheen)" pointer-events="none"/>`);
+            }
+
+            disk.innerHTML = parts.join('');
+        }
+
+        const compassDisk = document.getElementById('compassDisk');
+        const compassWrapper = document.getElementById('compassWrapper');
+        const rotSlider = document.getElementById('rotSlider');
+        const zoomSlider = document.getElementById('zoomSlider');
+        const opacitySlider = document.getElementById('opacitySlider');
+        const degreeBadge = document.getElementById('degreeBadge');
+        const baseStyleSelect = document.getElementById('baseStyleSelect');
+        const modeStandardBtn = document.getElementById('modeStandardBtn');
+        const modeTransparentBtn = document.getElementById('modeTransparentBtn');
+        const viewport = document.getElementById('viewport');
+
+        // Floor Plan Elements
+        const floorplanInput = document.getElementById('floorplanInput');
+        const floorplanImg = document.getElementById('floorplanImg');
+        const floorplanWrapper = document.getElementById('floorplanWrapper');
+        const clearFloorplanBtn = document.getElementById('clearFloorplanBtn');
+        const floorplanControlsArea = document.getElementById('floorplanControlsArea');
+        const planScaleSlider = document.getElementById('planScaleSlider');
+        const planScaleVal = document.getElementById('planScaleVal');
+        const resetPlanPosBtn = document.getElementById('resetPlanPosBtn');
+
+        function getDirectionLabel(deg) {
+            const dirs = [
+                'ທິດເໜືອ',
+                'ທິດຕາເວັນອອກສ່ຽງເໜືອ',
+                'ທິດຕາເວັນອອກ',
+                'ທິດຕາເວັນອອກສ່ຽງໃຕ້',
+                'ທິດໃຕ້',
+                'ທິດຕາເວັນຕົກສ່ຽງໃຕ້',
+                'ທິດຕາເວັນຕົກ',
+                'ທິດຕາເວັນຕົກສ່ຽງເໜືອ'
+            ];
+            const idx = Math.round(((deg % 360 + 360) % 360) / 45) % 8;
+            return dirs[idx];
+        }
+
+        let needleSway = 0;
+        let needleVelocity = 0;
+        let needleAnimFrame = null;
+        let lastRotationForPhysics = 0;
+        let enableNeedlePhysics = true;
+        let liveCompassActive = false;
+
+        function triggerNeedlePhysics(deltaRot) {
+            if (!enableNeedlePhysics) return;
+            needleVelocity += deltaRot * 0.16;
+            if (needleVelocity > 15) needleVelocity = 15;
+            if (needleVelocity < -15) needleVelocity = -15;
+            if (!needleAnimFrame) {
+                animateNeedle();
+            }
+        }
+
+        function animateNeedle() {
+            const springForce = -0.14 * needleSway;
+            const fluidDamping = 0.86;
+            needleVelocity = (needleVelocity + springForce) * fluidDamping;
+            needleSway += needleVelocity;
+
+            const magneticNeedle = document.getElementById('magneticNeedle');
+            if (magneticNeedle) {
+                magneticNeedle.setAttribute('transform', `rotate(${needleSway.toFixed(2)}, ${CX}, ${CY})`);
+            }
+
+            if (Math.abs(needleSway) > 0.04 || Math.abs(needleVelocity) > 0.04) {
+                needleAnimFrame = requestAnimationFrame(animateNeedle);
+            } else {
+                needleSway = 0;
+                needleVelocity = 0;
+                if (magneticNeedle) magneticNeedle.setAttribute('transform', `rotate(0, ${CX}, ${CY})`);
+                needleAnimFrame = null;
+            }
+        }
+
+        function updateCompassTransform(deltaAngle = null) {
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            compassDisk.setAttribute('transform', `rotate(${normRot.toFixed(2)}, ${CX}, ${CY})`);
+            rotSlider.value = normRot.toFixed(1);
+
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            const bottomCompassDeg = (topCompassDeg + 180) % 360;
+            const topText = `ໜ້າບ້ານ: ${topCompassDeg.toFixed(1)}° ${getDirectionLabel(topCompassDeg)}`;
+            const sittingText = `ຫຼັງພິງ: ${bottomCompassDeg.toFixed(1)}° ${getDirectionLabel(bottomCompassDeg)}`;
+
+            degreeBadge.textContent = topText;
+            const sittingBadge = document.getElementById('sittingBadge');
+            if (sittingBadge) {
+                sittingBadge.textContent = sittingText;
+            }
+            const mobileDegreeBadge = document.getElementById('mobileDegreeBadge');
+            if (mobileDegreeBadge) {
+                mobileDegreeBadge.textContent = topText;
+            }
+            const mobileSittingBadge = document.getElementById('mobileSittingBadge');
+            if (mobileSittingBadge) {
+                mobileSittingBadge.textContent = sittingText;
+            }
+
+            // Real Magnetic Needle with fluid physics
+            if (deltaAngle !== null && Math.abs(deltaAngle) > 0.05) {
+                triggerNeedlePhysics(deltaAngle);
+            } else {
+                let diff = normRot - lastRotationForPhysics;
+                if (diff > 180) diff -= 360;
+                if (diff < -180) diff += 360;
+                lastRotationForPhysics = normRot;
+                if (Math.abs(diff) > 0.1 && Math.abs(diff) < 90) {
+                    triggerNeedlePhysics(diff);
+                }
+            }
+        }
+
+        function updateZoom() {
+            compassWrapper.style.transform = `translate(${panX}px, ${panY}px) scale(${currentZoom / 100})`;
+            document.getElementById('zoomVal').textContent = `${currentZoom}%`;
+            zoomSlider.value = currentZoom;
+            updateFloorplanTransform();
+            const crosshairLayer = document.getElementById('crosshairLayer');
+            if (crosshairLayer) {
+                crosshairLayer.style.transform = `translate(${panX}px, ${panY}px)`;
+            }
+        }
+
+        function resetView() {
+            panX = 0;
+            panY = 0;
+            currentZoom = 100;
+            updateZoom();
+        }
+
+        function updateFloorplanTransform() {
+            const zoomFactor = currentZoom / 100;
+            floorplanWrapper.style.transform = `translate(${panX + planPosX * zoomFactor}px, ${panY + planPosY * zoomFactor}px) scale(${zoomFactor * (planScale / 100)})`;
+            planScaleVal.textContent = `${planScale}%`;
+            planScaleSlider.value = planScale;
+        }
+
+        function setDisplayMode(transparent) {
+            isTransparentMode = transparent;
+            const needleCheckbox = document.getElementById('toggleNeedle');
+            const mobileModeIcon = document.getElementById('mobileModeIcon');
+            if (mobileModeIcon) {
+                mobileModeIcon.textContent = transparent ? '🧭' : '📐';
+            }
+
+            if (transparent) {
+                modeTransparentBtn.className = "py-1.5 px-2 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow";
+                modeStandardBtn.className = "py-1.5 px-2 text-xs font-bold rounded-lg transition text-slate-300 hover:text-amber-300 hover:bg-slate-800/80";
+                
+                // ສະແດງສະເພາະແຜ່ນໃສຈານກົມ (ເຊື່ອງແຜ່ນຖານອະຄິລິກ/ໄມ້ແດງດ້ານນອກອອກ)
+                baseStyleSelect.value = "hidden";
+                buildOuterBasePlate('hidden');
+
+                // ແຜ່ນໃສວັດແປນຈະປິດເຂັມແມ່ເຫຼັກເພື່ອໃຫ້ເຫັນກາງແປນບ້ານໄດ້ຢ່າງຊັດເຈນ
+                if (needleCheckbox) needleCheckbox.checked = false;
+
+                opacitySlider.value = 85;
+                compassWrapper.style.opacity = '0.85';
+                document.getElementById('opacityVal').textContent = '85%';
+            } else {
+                modeStandardBtn.className = "py-1.5 px-2 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow";
+                modeTransparentBtn.className = "py-1.5 px-2 text-xs font-bold rounded-lg transition text-slate-300 hover:text-amber-300 hover:bg-slate-800/80";
+                
+                // ໂໝດມາດຕະຖານ: ຖານໄມ້ແດງມົງຄົນ ແລະ ເຂັມທິດແມ່ເຫຼັກ
+                baseStyleSelect.value = "lacquer";
+                buildOuterBasePlate('lacquer');
+
+                if (needleCheckbox) needleCheckbox.checked = true;
+
+                opacitySlider.value = 95;
+                compassWrapper.style.opacity = '0.95';
+                document.getElementById('opacityVal').textContent = '95%';
+            }
+            buildCompassSVG();
+            buildInnerCompassNeedle();
+        }
+
+        modeStandardBtn.addEventListener('click', () => setDisplayMode(false));
+        modeTransparentBtn.addEventListener('click', () => setDisplayMode(true));
+
+        const dragModeCompassBtn = document.getElementById('dragModeCompassBtn');
+        const dragModePanBtn = document.getElementById('dragModePanBtn');
+        const dragModePlanBtn = document.getElementById('dragModePlanBtn');
+        const mobileDragToggleBtn = document.getElementById('mobileDragToggleBtn');
+        const mobileDragIcon = document.getElementById('mobileDragIcon');
+        const mobileDragText = document.getElementById('mobileDragText');
+
+        function setDragMode(mode) {
+            dragMode = mode;
+            if (dragModeCompassBtn) dragModeCompassBtn.className = "py-1.5 px-2 text-xs font-bold rounded-lg transition text-slate-300 hover:text-white hover:bg-slate-800";
+            if (dragModePanBtn) dragModePanBtn.className = "py-1.5 px-2 text-xs font-bold rounded-lg transition text-slate-300 hover:text-white hover:bg-slate-800";
+            if (dragModePlanBtn) dragModePlanBtn.className = "col-span-2 py-1.5 px-2 text-xs font-bold rounded-lg transition text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800";
+
+            viewport.classList.remove('drag-floorplan');
+
+            if (mode === 'pan') {
+                if (dragModePanBtn) dragModePanBtn.className = "py-1.5 px-2 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow";
+                viewport.style.cursor = 'move';
+                if (mobileDragIcon) mobileDragIcon.textContent = '✋';
+                if (mobileDragText) mobileDragText.textContent = 'ຍັບ';
+            } else if (mode === 'floorplan') {
+                if (dragModePlanBtn) dragModePlanBtn.className = "col-span-2 py-1.5 px-2 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow border border-amber-400";
+                viewport.classList.add('drag-floorplan');
+                viewport.style.cursor = 'move';
+                if (mobileDragIcon) mobileDragIcon.textContent = '🏠';
+                if (mobileDragText) mobileDragText.textContent = 'ແປນ';
+            } else {
+                dragMode = 'compass';
+                if (dragModeCompassBtn) dragModeCompassBtn.className = "py-1.5 px-2 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow";
+                viewport.style.cursor = 'grab';
+                if (mobileDragIcon) mobileDragIcon.textContent = '🔄';
+                if (mobileDragText) mobileDragText.textContent = 'ໝຸນ';
+            }
+        }
+
+        if (dragModeCompassBtn) dragModeCompassBtn.addEventListener('click', () => setDragMode('compass'));
+        if (dragModePanBtn) dragModePanBtn.addEventListener('click', () => setDragMode('pan'));
+        if (dragModePlanBtn) dragModePlanBtn.addEventListener('click', () => setDragMode('floorplan'));
+
+        if (mobileDragToggleBtn) {
+            mobileDragToggleBtn.addEventListener('click', () => {
+                if (dragMode === 'compass') {
+                    setDragMode('pan');
+                } else if (dragMode === 'pan') {
+                    if (!floorplanImg.classList.contains('hidden')) {
+                        setDragMode('floorplan');
+                    } else {
+                        setDragMode('compass');
+                    }
+                } else {
+                    setDragMode('compass');
+                }
+            });
+        }
+
+        const resetViewBtn = document.getElementById('resetViewBtn');
+        if (resetViewBtn) resetViewBtn.addEventListener('click', resetView);
+        const mobileResetViewBtn = document.getElementById('mobileResetViewBtn');
+        if (mobileResetViewBtn) mobileResetViewBtn.addEventListener('click', resetView);
+
+        // Spacebar to pan shortcut
+        window.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' && !e.target.closest('input, select, textarea')) {
+                isSpacePressed = true;
+                viewport.style.cursor = 'move';
+            }
+        });
+        window.addEventListener('keyup', (e) => {
+            if (e.code === 'Space') {
+                isSpacePressed = false;
+                viewport.style.cursor = dragMode === 'compass' ? 'grab' : 'move';
+            }
+        });
+
+        function getAngleFromCenter(clientX, clientY) {
+            const rect = compassWrapper.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            return Math.atan2(clientY - centerY, clientX - centerX) * (180 / Math.PI);
+        }
+
+        viewport.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+
+        viewport.addEventListener('pointerdown', (e) => {
+            if (e.target.closest('button, input, select, label, a, aside, #mobileQrModal, .pointer-events-auto')) {
+                return;
+            }
+            isDragging = true;
+            startDragX = e.clientX;
+            startDragY = e.clientY;
+            startPanX = panX;
+            startPanY = panY;
+            startDragAngle = getAngleFromCenter(e.clientX, e.clientY);
+            startRotation = currentRotation;
+            startPlanPosX = planPosX;
+            startPlanPosY = planPosY;
+
+            if (e.button === 2 || e.button === 1 || isSpacePressed) {
+                isRightOrMiddleClickPan = true;
+                viewport.style.cursor = 'move';
+            } else {
+                isRightOrMiddleClickPan = false;
+                if (dragMode === 'compass') {
+                    viewport.style.cursor = 'grabbing';
+                } else {
+                    viewport.style.cursor = 'move';
+                }
+            }
+            viewport.setPointerCapture(e.pointerId);
+        });
+
+        viewport.addEventListener('pointermove', (e) => {
+            if (!isDragging) return;
+
+            if (dragMode === 'pan' || isRightOrMiddleClickPan) {
+                const deltaX = e.clientX - startDragX;
+                const deltaY = e.clientY - startDragY;
+                panX = startPanX + deltaX;
+                panY = startPanY + deltaY;
+                updateZoom();
+            } else if (dragMode === 'floorplan') {
+                const zoomFactor = currentZoom / 100;
+                const deltaX = (e.clientX - startDragX) / zoomFactor;
+                const deltaY = (e.clientY - startDragY) / zoomFactor;
+                planPosX = startPlanPosX + deltaX;
+                planPosY = startPlanPosY + deltaY;
+                updateFloorplanTransform();
+            } else {
+                const currentAngle = getAngleFromCenter(e.clientX, e.clientY);
+                const delta = currentAngle - startDragAngle;
+                const prevRot = currentRotation;
+                currentRotation = startRotation + delta;
+                updateCompassTransform(currentRotation - prevRot);
+            }
+        });
+
+        viewport.addEventListener('pointerup', (e) => {
+            isDragging = false;
+            isRightOrMiddleClickPan = false;
+            viewport.style.cursor = dragMode === 'compass' ? 'grab' : 'move';
+            try { viewport.releasePointerCapture(e.pointerId); } catch(err) {}
+        });
+
+        viewport.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const rect = viewport.getBoundingClientRect();
+            // Cursor position relative to center of viewport
+            const mouseX = e.clientX - (rect.left + rect.width / 2);
+            const mouseY = e.clientY - (rect.top + rect.height / 2);
+
+            const oldZoom = currentZoom;
+            const delta = e.deltaY < 0 ? 10 : -10;
+            const newZoom = Math.min(300, Math.max(40, currentZoom + delta));
+            if (newZoom === oldZoom) return;
+
+            const s1 = oldZoom / 100;
+            const s2 = newZoom / 100;
+
+            // Zoom directly towards cursor: keep point under cursor invariant
+            panX = mouseX - (mouseX - panX) * (s2 / s1);
+            panY = mouseY - (mouseY - panY) * (s2 / s1);
+            currentZoom = newZoom;
+
+            updateZoom();
+        }, { passive: false });
+
+        viewport.addEventListener('dblclick', (e) => {
+            if (e.target.closest('button, input, select, label, a, aside, #mobileQrModal, .pointer-events-auto')) return;
+            resetView();
+        });
+
+        rotSlider.addEventListener('input', (e) => {
+            currentRotation = parseFloat(e.target.value);
+            updateCompassTransform();
+        });
+
+        document.getElementById('resetRotBtn').addEventListener('click', () => {
+            currentRotation = 0;
+            updateCompassTransform();
+        });
+
+        document.querySelectorAll('.quick-rot').forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentRotation = parseFloat(btn.getAttribute('data-rot'));
+                updateCompassTransform();
+            });
+        });
+
+        zoomSlider.addEventListener('input', (e) => {
+            const newZoom = parseInt(e.target.value, 10);
+            const s1 = currentZoom / 100;
+            const s2 = newZoom / 100;
+            if (s1 > 0) {
+                panX = panX * (s2 / s1);
+                panY = panY * (s2 / s1);
+            }
+            currentZoom = newZoom;
+            updateZoom();
+        });
+
+        opacitySlider.addEventListener('input', (e) => {
+            const val = parseInt(e.target.value, 10);
+            compassWrapper.style.opacity = (val / 100).toFixed(2);
+            document.getElementById('opacityVal').textContent = `${val}%`;
+        });
+
+        baseStyleSelect.addEventListener('change', (e) => {
+            buildOuterBasePlate(e.target.value);
+        });
+
+        document.getElementById('toggleNeedle').addEventListener('change', (e) => {
+            const needle = document.getElementById('magneticNeedle');
+            if (needle) needle.style.display = e.target.checked ? 'block' : 'none';
+        });
+
+        document.getElementById('toggleCrosshair').addEventListener('change', (e) => {
+            document.getElementById('crosshairLayer').style.display = e.target.checked ? 'flex' : 'none';
+            const redThread = document.getElementById('luopanRedThread');
+            if (redThread) redThread.style.display = e.target.checked ? 'block' : 'none';
+        });
+
+        const toggleNeedlePhysics = document.getElementById('toggleNeedlePhysics');
+        if (toggleNeedlePhysics) {
+            toggleNeedlePhysics.addEventListener('change', (e) => {
+                enableNeedlePhysics = e.target.checked;
+            });
+        }
+
+        // Floor Plan Events
+        floorplanInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                floorplanImg.src = ev.target.result;
+                floorplanImg.classList.remove('hidden');
+                floorplanControlsArea.classList.remove('hidden');
+                if (dragModePlanBtn) dragModePlanBtn.classList.remove('hidden');
+                // Switch to transparent mode automatically so user sees the blueprint immediately
+                setDisplayMode(true);
+                setDragMode('floorplan');
+                planPosX = 0;
+                planPosY = 0;
+                planScale = 100;
+                updateFloorplanTransform();
+            };
+            reader.readAsDataURL(file);
+        });
+
+        clearFloorplanBtn.addEventListener('click', () => {
+            floorplanImg.src = '';
+            floorplanImg.classList.add('hidden');
+            floorplanControlsArea.classList.add('hidden');
+            if (dragModePlanBtn) dragModePlanBtn.classList.add('hidden');
+            floorplanInput.value = '';
+            setDragMode('compass');
+        });
+
+        planScaleSlider.addEventListener('input', (e) => {
+            planScale = parseInt(e.target.value, 10);
+            updateFloorplanTransform();
+        });
+
+        resetPlanPosBtn.addEventListener('click', () => {
+            planPosX = 0;
+            planPosY = 0;
+            planScale = 100;
+            updateFloorplanTransform();
+        });
+
+        document.getElementById('downloadSvgBtn').addEventListener('click', () => {
+            const svgElem = document.getElementById('luopanSvg');
+            const clone = svgElem.cloneNode(true);
+            clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+            const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+            styleEl.textContent = `text { font-family: 'Noto Sans Lao', 'Sarabun', sans-serif; }`;
+            clone.prepend(styleEl);
+
+            const svgData = new XMLSerializer().serializeToString(clone);
+            const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Master_Luopan_24_Mountains_${new Date().toISOString().slice(0, 10)}.svg`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        // ==========================================
+        // MING GUA & ELEMENT CALCULATOR CONTROLS
+        // ==========================================
+        const birthYearInput = document.getElementById('birthYearInput');
+        const birthYearSelect = document.getElementById('birthYearSelect');
+        const genderMaleBtn = document.getElementById('genderMaleBtn');
+        const genderFemaleBtn = document.getElementById('genderFemaleBtn');
+        const bornBeforeLichun = document.getElementById('bornBeforeLichun');
+        const toggleHighlightGua = document.getElementById('toggleHighlightGua');
+        const resZodiac = document.getElementById('resZodiac');
+        const resGanzhi = document.getElementById('resGanzhi');
+        const resElementBadge = document.getElementById('resElementBadge');
+        const resGuaName = document.getElementById('resGuaName');
+        const resGroup = document.getElementById('resGroup');
+        const resNayin = document.getElementById('resNayin');
+        const resAuspiciousList = document.getElementById('resAuspiciousList');
+        const resInauspiciousList = document.getElementById('resInauspiciousList');
+        const currentYearAge = document.getElementById('currentYearAge');
+
+        function populateBirthYears() {
+            const startYear = 1924;
+            const endYear = 2035;
+            let optionsHtml = '';
+            for (let y = endYear; y >= startYear; y--) {
+                const beYear = y + 543;
+                let idx = (y - 1924) % 60;
+                if (idx < 0) idx += 60;
+                const ny = NAYIN_60[idx];
+                optionsHtml += `<option value="${y}" ${y === 1990 ? 'selected' : ''}>${y} (ພ.ສ. ${beYear}) - ປີ${ny.animal} [${ny.el}]</option>`;
+            }
+            birthYearSelect.innerHTML = optionsHtml;
+        }
+
+        function updateGuaDisplay(syncInput = true) {
+            let val = parseInt(birthYearInput.value, 10);
+            if (isNaN(val)) {
+                val = parseInt(birthYearSelect.value, 10) || 1990;
+            }
+            // Auto convert Buddhist Era (e.g. 2533 -> 1990)
+            if (val >= 2400 && val <= 2600) {
+                val = val - 543;
+            }
+            if (val < 1924) val = 1924;
+            if (val > 2035) val = 2035;
+
+            currentBirthYear = val;
+            if (syncInput) {
+                birthYearInput.value = val;
+            }
+            if (birthYearSelect.value != val && birthYearSelect.querySelector(`option[value="${val}"]`)) {
+                birthYearSelect.value = val;
+            }
+
+            isBornBeforeLichun = bornBeforeLichun.checked;
+            const isMale = currentGender === 'male';
+
+            const calc = calculateGua(currentBirthYear, isMale, isBornBeforeLichun);
+            currentGuaData = calc.guaData;
+            currentYearInfo = calc.yearInfo;
+
+            const thisYear = new Date().getFullYear();
+            const age = thisYear - currentBirthYear;
+            if (currentYearAge) {
+                currentYearAge.textContent = `ອາຍຸປະມານ: ${age} ປີ`;
+            }
+
+            resZodiac.textContent = `ປີ${calc.yearInfo.animal}`;
+            resGanzhi.textContent = `${calc.yearInfo.gz} • ພ.ສ. ${calc.solarYear + 543}${isBornBeforeLichun ? ' (ນັບປີສຸລິຍະ ' + calc.solarYear + ')' : ''}`;
+            resElementBadge.textContent = calc.yearInfo.el;
+
+            if (calc.yearInfo.el.includes('ໄມ້')) {
+                resElementBadge.className = "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-inner";
+            } else if (calc.yearInfo.el.includes('ໄຟ')) {
+                resElementBadge.className = "bg-rose-500/20 text-rose-300 border border-rose-500/40 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-inner";
+            } else if (calc.yearInfo.el.includes('ດິນ')) {
+                resElementBadge.className = "bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-inner";
+            } else if (calc.yearInfo.el.includes('ທອງ')) {
+                resElementBadge.className = "bg-amber-100/20 text-amber-200 border border-amber-300/40 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-inner";
+            } else {
+                resElementBadge.className = "bg-sky-500/20 text-sky-300 border border-sky-500/40 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-inner";
+            }
+
+            resGuaName.textContent = `${calc.guaData.name} • ${calc.guaData.elementBadge}`;
+            resGroup.textContent = calc.guaData.group;
+            resNayin.textContent = calc.yearInfo.nayin;
+
+            const DIR_NAMES_LAO = {
+                'N': 'ທິດເໜືອ',
+                'NE': 'ອອກສ່ຽງເໜືອ',
+                'E': 'ຕາເວັນອອກ',
+                'SE': 'ອອກສ່ຽງໃຕ້',
+                'S': 'ທິດໃຕ້',
+                'SW': 'ຕົກສ່ຽງໃຕ້',
+                'W': 'ຕາເວັນຕົກ',
+                'NW': 'ຕົກສ່ຽງເໜືອ'
+            };
+
+            let goodHtml = '';
+            let badHtml = '';
+            for (const [dirKey, dInfo] of Object.entries(calc.guaData.dirs)) {
+                const laoDir = DIR_NAMES_LAO[dirKey] || dirKey;
+                if (dInfo.type === 'good') {
+                    goodHtml += `<div class="flex items-center justify-between bg-emerald-950/40 px-1.5 py-0.5 rounded border border-emerald-600/30">
+                        <span class="font-bold text-emerald-300">${laoDir}</span>
+                        <span class="text-slate-300">${dInfo.name}</span>
+                    </div>`;
+                } else {
+                    badHtml += `<div class="flex items-center justify-between bg-rose-950/40 px-1.5 py-0.5 rounded border border-rose-600/30">
+                        <span class="font-bold text-rose-300">${laoDir}</span>
+                        <span class="text-slate-300">${dInfo.name}</span>
+                    </div>`;
+                }
+            }
+            resAuspiciousList.innerHTML = goodHtml;
+            resInauspiciousList.innerHTML = badHtml;
+
+            buildCompassSVG();
+        }
+
+        function setGender(gender) {
+            currentGender = gender;
+            if (gender === 'male') {
+                genderMaleBtn.className = "py-1 px-2 text-xs font-bold rounded transition bg-amber-500 text-slate-950 shadow";
+                genderFemaleBtn.className = "py-1 px-2 text-xs font-bold rounded transition text-slate-300 hover:text-white hover:bg-slate-800";
+            } else {
+                genderFemaleBtn.className = "py-1 px-2 text-xs font-bold rounded transition bg-amber-500 text-slate-950 shadow";
+                genderMaleBtn.className = "py-1 px-2 text-xs font-bold rounded transition text-slate-300 hover:text-white hover:bg-slate-800";
+            }
+            updateGuaDisplay();
+        }
+
+        birthYearInput.addEventListener('input', (e) => {
+            let raw = e.target.value.trim();
+            if (raw.length === 4) {
+                updateGuaDisplay(false);
+            }
+        });
+        birthYearInput.addEventListener('change', () => updateGuaDisplay(true));
+        birthYearSelect.addEventListener('change', () => {
+            birthYearInput.value = birthYearSelect.value;
+            updateGuaDisplay(false);
+        });
+        genderMaleBtn.addEventListener('click', () => setGender('male'));
+        genderFemaleBtn.addEventListener('click', () => setGender('female'));
+        bornBeforeLichun.addEventListener('change', () => updateGuaDisplay(false));
+        toggleHighlightGua.addEventListener('change', (e) => {
+            showHighlightGua = e.target.checked;
+            buildCompassSVG();
+        });
+
+        // ==========================================
+        // LIVE MOBILE COMPASS SENSOR INTEGRATION
+        // ==========================================
+        const toggleLiveCompassBtn = document.getElementById('toggleLiveCompassBtn');
+        let lastLiveHeading = null;
+        let sensorTimeout = null;
+        let sensorDataReceived = false;
+
+        // Screen Wake Lock API for Mobile (keeps screen awake during live compass)
+        let wakeLock = null;
+        async function requestWakeLock() {
+            try {
+                if ('wakeLock' in navigator) {
+                    wakeLock = await navigator.wakeLock.request('screen');
+                }
+            } catch (err) {
+                console.warn('Wake Lock error:', err);
+            }
+        }
+        function releaseWakeLock() {
+            if (wakeLock) {
+                wakeLock.release().then(() => { wakeLock = null; }).catch(() => {});
+            }
+        }
+
+        function syncLiveCompassUI(state) {
+            const mobileBtn = document.getElementById('mobileLiveCompassBtn');
+            const mobileTxt = document.getElementById('mobileLiveCompassText');
+            if (state === 'active') {
+                toggleLiveCompassBtn.className = "w-full py-2 px-2.5 text-xs font-bold rounded-lg transition bg-emerald-600 text-white flex items-center justify-center gap-1.5 shadow mt-0.5 animate-pulse";
+                toggleLiveCompassBtn.innerHTML = `<span>🟢</span> ກຳລັງເຊື່ອມຕໍ່ເຂັມທິດຈິງໃນມືຖື`;
+                if (mobileBtn) mobileBtn.className = "bg-emerald-600 text-white px-2.5 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 transition";
+                if (mobileTxt) mobileTxt.textContent = "ເຊື່ອມຕໍ່ແລ້ວ";
+            } else if (state === 'connecting') {
+                toggleLiveCompassBtn.className = "w-full py-2 px-2.5 text-xs font-bold rounded-lg transition bg-amber-600 text-white flex items-center justify-center gap-1.5 shadow mt-0.5 animate-pulse";
+                toggleLiveCompassBtn.innerHTML = `<span>🟢</span> ກຳລັງຈັບຄູ່ເຂັມທິດຈິງ...`;
+                if (mobileBtn) mobileBtn.className = "bg-amber-600 text-white px-2.5 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 transition animate-pulse";
+                if (mobileTxt) mobileTxt.textContent = "ກຳລັງຈັບຄູ່...";
+            } else {
+                toggleLiveCompassBtn.className = "w-full py-2 px-2.5 text-xs font-bold rounded-lg transition border border-slate-700 bg-slate-950 hover:bg-slate-800 text-amber-300 hover:text-amber-200 flex items-center justify-center gap-1.5 shadow mt-0.5";
+                toggleLiveCompassBtn.innerHTML = `<span>🧭</span> ເຊື່ອມຕໍ່ເຂັມທິດຈິງໃນມືຖື`;
+                if (mobileBtn) mobileBtn.className = "bg-slate-900/90 hover:bg-slate-800 text-amber-300 border border-slate-700/80 px-2.5 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 backdrop-blur-md transition";
+                if (mobileTxt) mobileTxt.textContent = "ເຂັມທິດຈິງ";
+            }
+        }
+
+        function stopLiveCompass() {
+            liveCompassActive = false;
+            if (sensorTimeout) clearTimeout(sensorTimeout);
+            window.removeEventListener('deviceorientation', onDeviceOrientation, true);
+            window.removeEventListener('deviceorientationabsolute', onDeviceOrientation, true);
+            releaseWakeLock();
+            syncLiveCompassUI('inactive');
+        }
+
+        function setupLiveCompass() {
+            if (!toggleLiveCompassBtn) return;
+            toggleLiveCompassBtn.addEventListener('click', async () => {
+                if (liveCompassActive) {
+                    stopLiveCompass();
+                    return;
+                }
+
+                // Check iOS 13+ permission
+                if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+                    try {
+                        const perm = await DeviceOrientationEvent.requestPermission();
+                        if (perm === 'granted') {
+                            startLiveCompass(false);
+                        } else {
+                            alert('ກະລຸນາອະນຸຍາດການເຂົ້າເຖິງເຊັນເຊີເພື່ອໃຊ້ງານເຂັມທິດຈິງ');
+                        }
+                    } catch(err) {
+                        console.warn(err);
+                        alert('ອຸປະກອນ ຫຼື ບຣາວເຊີນີ້ບໍ່ອະນຸຍາດການໃຊ້ເຊັນເຊີເຂັມທິດ');
+                    }
+                } else if ('ondeviceorientationabsolute' in window) {
+                    startLiveCompass(true);
+                } else if ('ondeviceorientation' in window) {
+                    startLiveCompass(false);
+                } else {
+                    alert('ຄອມພິວເຕີໂນ໊ດບຸກ (Laptop / PC) ທົ່ວໄປຈະບໍ່ມີຊິບເຊັນເຊີເຂັມທິດແມ່ເຫຼັກ (Magnetometer) ຢູ່ໃນເຄື່ອງຄືກັບສະມາດໂຟນ.\n\n💡 ໃນຄອມພິວເຕີ ທ່ານສາມາດ:\n• ຄລິກລາກເມົາສ໌ເທິງໜ້າຈານເພື່ອໝຸນໄດ້ຕາມໃຈ\n• ໃຊ້ແຖບເລື່ອນ ຫຼື ປຸ່ມໝຸນດ່ວນ (0°, 90°, 180°, 270°)\n\n📱 ຫາກຕ້ອງການໃຫ້ໝຸນຕາມທິດຈິງອັດຕະໂນມັດ ໃຫ້ເປີດເວັບນີ້ໃນມືຖື ຫຼື ແທັບເລັດ');
+                }
+            });
+
+            const mobileLiveBtn = document.getElementById('mobileLiveCompassBtn');
+            if (mobileLiveBtn) {
+                mobileLiveBtn.addEventListener('click', () => {
+                    toggleLiveCompassBtn.click();
+                });
+            }
+
+            const mobileToggleMode = document.getElementById('mobileToggleModeBtn');
+            if (mobileToggleMode) {
+                mobileToggleMode.addEventListener('click', () => {
+                    setDisplayMode(!isTransparentMode);
+                });
+            }
+
+            // AR Camera Controls Wire-up
+            const toggleCamBtn = document.getElementById('toggleCameraBtn');
+            if (toggleCamBtn) {
+                toggleCamBtn.addEventListener('click', toggleCameraAR);
+            }
+            const mobCamBtn = document.getElementById('mobileCameraBtn');
+            if (mobCamBtn) {
+                mobCamBtn.addEventListener('click', toggleCameraAR);
+            }
+            const closeArBtn = document.getElementById('closeArBtn');
+            if (closeArBtn) {
+                closeArBtn.addEventListener('click', stopCameraAR);
+            }
+        }
+
+        // ==========================================
+        // AR CAMERA LIVE OVERLAY SYSTEM
+        // ==========================================
+        let cameraActive = false;
+        let cameraStream = null;
+        let previousCompassOpacity = null;
+        let previousBaseStyle = null;
+
+        async function startCameraAR() {
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                alert('ບຣາວເຊີ ຫຼື ອຸປະກອນນີ້ບໍ່ຮອງຮັບການເປີດກ້ອງ Web Camera');
+                return;
+            }
+
+            const videoEl = document.getElementById('arVideo');
+            const badgeEl = document.getElementById('arCameraBadge');
+            const bgGrid = document.getElementById('blueprintGrid');
+            const btnLabel = document.getElementById('cameraBtnLabel');
+            const btnIcon = document.getElementById('cameraBtnIcon');
+            const mobileBtn = document.getElementById('mobileCameraBtn');
+
+            try {
+                // Request environment/rear camera on mobile
+                const constraints = {
+                    video: {
+                        facingMode: { ideal: 'environment' },
+                        width: { ideal: 1920 },
+                        height: { ideal: 1080 }
+                    },
+                    audio: false
+                };
+
+                cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
+                videoEl.srcObject = cameraStream;
+                await videoEl.play();
+
+                cameraActive = true;
+                videoEl.classList.remove('hidden');
+                if (badgeEl) {
+                    badgeEl.classList.remove('hidden');
+                    badgeEl.classList.add('flex');
+                }
+                if (bgGrid) bgGrid.classList.add('hidden');
+
+                // Update UI state
+                if (btnLabel) btnLabel.textContent = 'ປິດກ້ອງ AR (Stop)';
+                if (btnIcon) btnIcon.textContent = '⏹️';
+                if (mobileBtn) {
+                    mobileBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-400');
+                    mobileBtn.classList.remove('bg-slate-900/90', 'text-emerald-400');
+                }
+
+                // Adjust opacity for AR transparency
+                const compWrapper = document.getElementById('compassWrapper');
+                const opSlider = document.getElementById('opacitySlider');
+                const opVal = document.getElementById('opacityVal');
+                const baseSelect = document.getElementById('baseStyleSelect');
+
+                if (compWrapper) {
+                    const currentOp = parseFloat(compWrapper.style.opacity || '0.95');
+                    if (currentOp > 0.75) {
+                        previousCompassOpacity = currentOp;
+                        compWrapper.style.opacity = '0.65';
+                        if (opSlider) opSlider.value = '65';
+                        if (opVal) opVal.textContent = '65%';
+                    }
+                }
+
+                // Switch to acrylic base so background is visible
+                if (baseSelect && baseSelect.value === 'lacquer') {
+                    previousBaseStyle = 'lacquer';
+                    baseSelect.value = 'acrylic';
+                    buildOuterBasePlate('acrylic');
+                }
+
+            } catch (err) {
+                console.error('Camera AR Error:', err);
+                cameraActive = false;
+                alert('ບໍ່ສາມາດເປີດກ້ອງໄດ້: ກະລຸນາກວດສອບການອະນຸຍາດ (Permissions) ຂອງກ້ອງຖ່າຍຮູບໃນບຣາວເຊີ');
+            }
+        }
+
+        function stopCameraAR() {
+            cameraActive = false;
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(t => t.stop());
+                cameraStream = null;
+            }
+
+            const videoEl = document.getElementById('arVideo');
+            const badgeEl = document.getElementById('arCameraBadge');
+            const bgGrid = document.getElementById('blueprintGrid');
+            const btnLabel = document.getElementById('cameraBtnLabel');
+            const btnIcon = document.getElementById('cameraBtnIcon');
+            const mobileBtn = document.getElementById('mobileCameraBtn');
+
+            if (videoEl) {
+                videoEl.pause();
+                videoEl.srcObject = null;
+                videoEl.classList.add('hidden');
+            }
+            if (badgeEl) {
+                badgeEl.classList.add('hidden');
+                badgeEl.classList.remove('flex');
+            }
+            if (bgGrid) bgGrid.classList.remove('hidden');
+
+            // Reset UI state
+            if (btnLabel) btnLabel.textContent = 'ເປີດກ້ອງສ່ອງຈິງ (AR Camera)';
+            if (btnIcon) btnIcon.textContent = '📷';
+            if (mobileBtn) {
+                mobileBtn.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-400');
+                mobileBtn.classList.add('bg-slate-900/90', 'text-emerald-400');
+            }
+
+            // Restore previous opacity and base style
+            if (previousCompassOpacity !== null) {
+                const compWrapper = document.getElementById('compassWrapper');
+                const opSlider = document.getElementById('opacitySlider');
+                const opVal = document.getElementById('opacityVal');
+                if (compWrapper) compWrapper.style.opacity = previousCompassOpacity;
+                if (opSlider) opSlider.value = Math.round(previousCompassOpacity * 100);
+                if (opVal) opVal.textContent = Math.round(previousCompassOpacity * 100) + '%';
+                previousCompassOpacity = null;
+            }
+            if (previousBaseStyle !== null) {
+                const baseSelect = document.getElementById('baseStyleSelect');
+                if (baseSelect) {
+                    baseSelect.value = previousBaseStyle;
+                    buildOuterBasePlate(previousBaseStyle);
+                }
+                previousBaseStyle = null;
+            }
+        }
+
+        function toggleCameraAR() {
+            if (cameraActive) {
+                stopCameraAR();
+            } else {
+                startCameraAR();
+            }
+        }
+
+        function startLiveCompass(absolute = false) {
+            liveCompassActive = true;
+            sensorDataReceived = false;
+            syncLiveCompassUI('connecting');
+            requestWakeLock();
+
+            if (sensorTimeout) clearTimeout(sensorTimeout);
+            // ກວດສອບພາຍໃນ 1.8 ວິນາທີ ຫາກບໍ່ມີສັນຍານເຊັນເຊີ (ເຊັ່ນໃນຄອມໂນ໊ດບຸກທີ່ບໍ່ມີຊິບແມ່ເຫຼັກ) ໃຫ້ແຈ້ງເຕືອນຜູ້ໃຊ້
+            sensorTimeout = setTimeout(() => {
+                if (!sensorDataReceived && liveCompassActive) {
+                    stopLiveCompass();
+                    alert('ຄອມພິວເຕີໂນ໊ດບຸກ (Laptop / PC) ທົ່ວໄປຈະບໍ່ມີຊິບເຊັນເຊີເຂັມທິດແມ່ເຫຼັກ (Magnetometer) ຢູ່ໃນເຄື່ອງຄືກັບສະມາດໂຟນ.\n\n💡 ໃນຄອມພິວເຕີ ທ່ານສາມາດ:\n• ຄລິກລາກເມົາສ໌ເທິງໜ້າຈານເພື່ອໝຸນໄດ້ຕາມໃຈ\n• ໃຊ້ແຖບເລື່ອນ ຫຼື ປຸ່ມໝຸນດ່ວນ (0°, 90°, 180°, 270°)\n\n📱 ຫາກຕ້ອງການໃຫ້ໝຸນຕາມທິດຈິງອັດຕະໂນມັດ ໃຫ້ເປີດເວັບນີ້ໃນມືຖື ຫຼື ແທັບເລັດ');
+                }
+            }, 1800);
+
+            if (absolute) {
+                window.addEventListener('deviceorientationabsolute', onDeviceOrientation, true);
+            } else {
+                window.addEventListener('deviceorientation', onDeviceOrientation, true);
+            }
+        }
+
+        function onDeviceOrientation(e) {
+            let heading = null;
+            if (e.webkitCompassHeading !== undefined && e.webkitCompassHeading !== null) {
+                heading = e.webkitCompassHeading;
+            } else if (e.alpha !== null && e.alpha !== undefined) {
+                heading = (360 - e.alpha) % 360;
+            }
+
+            if (heading !== null && !isNaN(heading)) {
+                sensorDataReceived = true;
+                if (sensorTimeout) clearTimeout(sensorTimeout);
+                syncLiveCompassUI('active');
+                // In Feng Shui Luopan, South is 180° Top
+                const targetRot = (180 - heading + 360) % 360;
+                let delta = 0;
+                if (lastLiveHeading !== null) {
+                    delta = heading - lastLiveHeading;
+                    if (delta > 180) delta -= 360;
+                    if (delta < -180) delta += 360;
+                }
+                lastLiveHeading = heading;
+                currentRotation = targetRot;
+                updateCompassTransform(-delta);
+            }
+        }
+
+        // ==========================================
+        // TOUCH PINCH-TO-ZOOM FOR MOBILE
+        // ==========================================
+        let initialPinchDist = null;
+        let initialPinchZoom = 100;
+        let initialPinchMidX = 0;
+        let initialPinchMidY = 0;
+        let initialPanX = 0;
+        let initialPanY = 0;
+
+        viewport.addEventListener('touchstart', (e) => {
+            if (e.target.closest('button, input, select, label, a, aside, #mobileQrModal, .pointer-events-auto')) return;
+            if (e.touches.length === 2) {
+                isDragging = false;
+                const p1 = e.touches[0];
+                const p2 = e.touches[1];
+                initialPinchDist = Math.hypot(p1.clientX - p2.clientX, p1.clientY - p2.clientY);
+                initialPinchZoom = currentZoom;
+                const rect = viewport.getBoundingClientRect();
+                initialPinchMidX = (p1.clientX + p2.clientX) / 2 - (rect.left + rect.width / 2);
+                initialPinchMidY = (p1.clientY + p2.clientY) / 2 - (rect.top + rect.height / 2);
+                initialPanX = panX;
+                initialPanY = panY;
+            }
+        }, { passive: true });
+
+        viewport.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 2 && initialPinchDist) {
+                const p1 = e.touches[0];
+                const p2 = e.touches[1];
+                const currentDist = Math.hypot(p1.clientX - p2.clientX, p1.clientY - p2.clientY);
+                const rect = viewport.getBoundingClientRect();
+                const currentMidX = (p1.clientX + p2.clientX) / 2 - (rect.left + rect.width / 2);
+                const currentMidY = (p1.clientY + p2.clientY) / 2 - (rect.top + rect.height / 2);
+
+                const factor = currentDist / initialPinchDist;
+                const newZoom = Math.min(300, Math.max(40, Math.round(initialPinchZoom * factor)));
+                
+                const s1 = initialPinchZoom / 100;
+                const s2 = newZoom / 100;
+
+                // Zoom towards pinch center and pan with two fingers
+                panX = currentMidX - (initialPinchMidX - initialPanX) * (s2 / s1);
+                panY = currentMidY - (initialPinchMidY - initialPanY) * (s2 / s1);
+                currentZoom = newZoom;
+                updateZoom();
+            }
+        }, { passive: true });
+
+        viewport.addEventListener('touchend', (e) => {
+            if (e.touches.length < 2) {
+                initialPinchDist = null;
+            }
+        }, { passive: true });
+
+        // ==========================================
+        // MOBILE DRAWER CONTROLS
+        // ==========================================
+        const controlsSidebar = document.getElementById('controlsSidebar');
+        const drawerBackdrop = document.getElementById('drawerBackdrop');
+        const openMobileDrawerBtn = document.getElementById('openMobileDrawerBtn');
+        const mobileOpenMenuFab = document.getElementById('mobileOpenMenuFab');
+        const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+        function openDrawer() {
+            if (!controlsSidebar) return;
+            controlsSidebar.classList.remove('translate-y-full');
+            controlsSidebar.classList.add('translate-y-0');
+            if (drawerBackdrop) drawerBackdrop.classList.remove('hidden');
+        }
+
+        function closeDrawer() {
+            if (!controlsSidebar) return;
+            controlsSidebar.classList.add('translate-y-full');
+            controlsSidebar.classList.remove('translate-y-0');
+            if (drawerBackdrop) drawerBackdrop.classList.add('hidden');
+        }
+
+        if (openMobileDrawerBtn) openMobileDrawerBtn.addEventListener('click', openDrawer);
+        if (mobileOpenMenuFab) mobileOpenMenuFab.addEventListener('click', openDrawer);
+        if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
+        if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
+
+        // ==========================================
+        // QR CODE MODAL FOR MOBILE ACCESS
+        // ==========================================
+        const mobileQrModal = document.getElementById('mobileQrModal');
+        const openQrModalBtn = document.getElementById('openQrModalBtn');
+        const closeQrModalBtn = document.getElementById('closeQrModalBtn');
+        const copyUrlBtn = document.getElementById('copyUrlBtn');
+        const copyBtnText = document.getElementById('copyBtnText');
+        const mobileServerUrlText = document.getElementById('mobileServerUrlText');
+        let qrcodeInstance = null;
+
+        async function initQrCode() {
+            let serverUrl = window.location.href;
+            if (window.location.protocol === 'file:') {
+                // ເມື່ອເປີດໄຟລ໌ໂດຍກົງ (file:///) ບໍ່ຕ້ອງ fetch /api/ip ເພື່ອປ້ອງກັນ CORS Error
+                serverUrl = 'http://localhost:3000';
+            } else if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                try {
+                    const res = await fetch('/api/ip');
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data.url) serverUrl = data.url;
+                    }
+                } catch(e) {
+                    serverUrl = window.location.origin;
+                }
+            } else {
+                // ເມື່ອຮັນເທິງ GitHub Pages ຫຼື Hosting ຈິງ ໃຊ້ Link ໜ້າເວັບໂດຍກົງ
+                serverUrl = window.location.href;
+            }
+            if (mobileServerUrlText) mobileServerUrlText.textContent = serverUrl;
+            const qrDiv = document.getElementById('qrcode');
+            if (qrDiv && typeof QRCode !== 'undefined') {
+                qrDiv.innerHTML = '';
+                qrcodeInstance = new QRCode(qrDiv, {
+                    text: serverUrl,
+                    width: 200,
+                    height: 200,
+                    colorDark: "#020617",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.M
+                });
+            }
+        }
+
+        if (openQrModalBtn) {
+            openQrModalBtn.addEventListener('click', () => {
+                initQrCode();
+                if (mobileQrModal) mobileQrModal.classList.remove('hidden');
+            });
+        }
+        if (closeQrModalBtn) {
+            closeQrModalBtn.addEventListener('click', () => {
+                if (mobileQrModal) mobileQrModal.classList.add('hidden');
+            });
+        }
+        if (mobileQrModal) {
+            mobileQrModal.addEventListener('click', (e) => {
+                if (e.target === mobileQrModal) mobileQrModal.classList.add('hidden');
+            });
+        }
+        if (copyUrlBtn) {
+            copyUrlBtn.addEventListener('click', () => {
+                const text = mobileServerUrlText ? mobileServerUrlText.textContent.trim() : '';
+                navigator.clipboard.writeText(text).then(() => {
+                    if (copyBtnText) copyBtnText.textContent = 'ສຳເລັດ!';
+                    setTimeout(() => { if (copyBtnText) copyBtnText.textContent = 'ກັອບປີ້'; }, 2000);
+                }).catch(() => {
+                    alert('ກະລຸນາກັອບປີ້ລິ້ງ: ' + text);
+                });
+            });
+        }
+
+        window.onload = function () {
+            populateBirthYears();
+            updateGuaDisplay();
+            setupLiveCompass();
+            buildOuterBasePlate('lacquer');
+            buildCompassSVG();
+            buildInnerCompassNeedle();
+            updateCompassTransform();
+            updateZoom();
+            initQrCode();
+        };
+    </script>
+</body>
+</html>
