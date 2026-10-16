@@ -44,16 +44,14 @@
         <!-- Mobile Drawer Drag Handle & Close Button -->
         <div class="flex items-center justify-between md:hidden pb-1 -mt-1 relative">
             <div class="w-12 h-1.5 bg-slate-700 rounded-full mx-auto my-1"></div>
-            <button id="closeDrawerBtn" class="absolute top-0 right-0 text-slate-400 hover:text-white bg-slate-800 rounded-lg p-1 text-sm font-bold w-7 h-7 flex items-center justify-center transition" title="ປິດເມນູ">
-                ✕
-            </button>
+            <button id="closeDrawerBtn" class="absolute top-0 right-0 text-slate-400 hover:text-white bg-slate-800 rounded-lg p-1 text-sm font-bold w-7 h-7 flex items-center justify-center transition" title="ປິດເມນູ"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         </div>
 
         <!-- HEADER -->
         <div class="border-b border-slate-800 pb-3">
             <div class="flex items-center justify-between gap-2">
                 <div class="flex items-center gap-2">
-                    <span class="text-2xl">🧭</span>
+                    <svg class="w-7 h-7 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
                     <div>
                         <h1 class="text-base font-bold text-amber-400 leading-tight">
                             ຈານເຂັມທິດຮວງຈຸ້ຍ 24 ຂຸນເຂົາ
@@ -73,16 +71,16 @@
 
             <!-- BUTTON: OPEN IN MOBILE (QR CODE) -->
             <button id="openQrModalBtn" type="button" class="w-full mt-2.5 py-1.5 px-2.5 bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition shadow-sm">
-                <span>📱</span> ເປີດໃນມືຖື (ສະແກນ QR Code)
+                <svg class="w-4 h-4 inline-block text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> ເປີດໃນມືຖື (ສະແກນ QR Code)
             </button>
 
             <!-- MODE SWITCHER TABS -->
             <div class="grid grid-cols-2 gap-1.5 mt-3 bg-slate-950 p-1 rounded-xl border border-slate-800">
                 <button id="modeStandardBtn" class="py-1.5 px-2 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow">
-                    🧭 ຈານມາດຕະຖານ
+                    <svg class="w-3.5 h-3.5 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>ຈານມາດຕະຖານ
                 </button>
                 <button id="modeTransparentBtn" class="py-1.5 px-2 text-xs font-bold rounded-lg transition text-slate-300 hover:text-amber-300 hover:bg-slate-800/80">
-                    📐 ໂໝດແຜ່ນໃສວັດແປນ
+                    <svg class="w-3.5 h-3.5 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M20 12v8H4v-8"/><path d="M6 12v4"/><path d="M10 12v2"/><path d="M14 12v4"/><path d="M18 12v2"/></svg>ໂໝດແຜ່ນໃສວັດແປນ
                 </button>
             </div>
         </div>
@@ -92,17 +90,17 @@
             <!-- DRAG MODE TOGGLES -->
             <div>
                 <span class="text-xs font-semibold text-slate-200 flex items-center gap-1.5 mb-1.5">
-                    <span class="text-amber-400">🖐️</span> ໂໝດການລາກເມົາສ໌ / ສຳຜັດ:
+                    <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg> ໂໝດການລາກເມົາສ໌ / ສຳຜັດ:
                 </span>
                 <div id="dragModeButtonGroup" class="grid grid-cols-2 gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800">
                     <button id="dragModeCompassBtn" type="button" class="py-1.5 px-2 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow">
-                        🔄 ໝຸນຈານ
+                        <svg class="w-3.5 h-3.5 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>ໝຸນຈານ
                     </button>
                     <button id="dragModePanBtn" type="button" class="py-1.5 px-2 text-xs font-bold rounded-lg transition text-slate-300 hover:text-white hover:bg-slate-800">
-                        ✋ ຍັບມຸມມອງ
+                        <svg class="w-3.5 h-3.5 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>ຍັບມຸມມອງ
                     </button>
                     <button id="dragModePlanBtn" type="button" class="hidden col-span-2 py-1.5 px-2 text-xs font-bold rounded-lg transition text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800">
-                        🏠 ຍ້າຍແປນບ້ານ
+                        <svg class="w-3.5 h-3.5 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>ຍ້າຍແປນ
                     </button>
                 </div>
             </div>
@@ -111,7 +109,7 @@
             <div class="pt-1.5 border-t border-slate-800/80">
                 <div class="flex items-center justify-between text-xs font-semibold">
                     <span class="text-slate-200 flex items-center gap-1.5">
-                        <span class="text-amber-400">🔄</span> ອົງສາຈານເຂັມທິດ
+                        <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> ອົງສາຈານເຂັມທິດ
                     </span>
                     <button id="resetRotBtn" class="text-amber-400 hover:text-amber-300 text-[11px] hover:underline font-medium">
                         ↺ ຄືນຄ່າເລີ່ມຕົ້ນ (ທິດໃຕ້ຢູ່ເທິງ)
@@ -128,11 +126,11 @@
 
             <!-- LIVE SENSOR COMPASS TOGGLE -->
             <button type="button" id="toggleLiveCompassBtn" class="w-full py-2 px-2.5 text-xs font-bold rounded-lg transition border border-slate-700 bg-slate-950 hover:bg-slate-800 text-amber-300 hover:text-amber-200 flex items-center justify-center gap-1.5 shadow mt-0.5">
-                <span>🧭</span> ເຊື່ອມຕໍ່ເຂັມທິດຈິງໃນມືຖື
+                <span id="liveCompassIcon"><svg class="w-4 h-4 inline-block mr-1 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span> ເຊື່ອມຕໍ່ເຂັມທິດຈິງໃນມືຖື
             </button>
             <!-- AR CAMERA OVERLAY TOGGLE -->
             <button type="button" id="toggleCameraBtn" class="w-full py-2 px-2.5 text-xs font-bold rounded-lg transition border border-emerald-500/50 bg-emerald-950/40 hover:bg-emerald-900/60 text-emerald-300 hover:text-emerald-200 flex items-center justify-center gap-1.5 shadow mt-1.5">
-                <span id="cameraBtnIcon">📷</span> <span id="cameraBtnLabel">ເປີດກ້ອງສ່ອງຈິງ (AR Camera)</span>
+                <span id="cameraBtnIcon"><svg class="w-4 h-4 inline-block mr-1 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span> <span id="cameraBtnLabel">ເປີດກ້ອງສ່ອງຈິງ (AR Camera)</span>
             </button>
         </div>
 
@@ -141,12 +139,12 @@
             <div>
                 <div class="flex justify-between items-center text-xs font-semibold mb-1">
                     <span class="text-slate-200 flex items-center gap-1.5">
-                        <span class="text-amber-400">🔍</span> ຂະໜາດຊູມເຂັມທິດ
+                        <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg> ຂະໜາດຊູມເຂັມທິດ
                     </span>
                     <div class="flex items-center gap-2">
                         <span id="zoomVal" class="text-amber-400 font-mono">100%</span>
                         <button id="cornerPipBtn" type="button" class="text-amber-400 hover:text-amber-300 text-[11px] hover:underline font-medium" title="ຍັບໄວ້ມຸມຈໍ (Mini-Map)">
-                            📌 ມຸມ
+                            <svg class="w-3.5 h-3.5 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="13" y="13" width="6" height="6" rx="1"/></svg>ມຸມ
                         </button>
                         <button id="resetViewBtn" type="button" class="text-amber-400 hover:text-amber-300 text-[11px] hover:underline font-medium" title="ຈັດມຸມມອງກາງ (100%)">
                             ↺ ຈັດກາງ
@@ -155,15 +153,15 @@
                 </div>
                 <input id="zoomSlider" type="range" min="15" max="900" step="5" value="100" class="w-full accent-amber-500 cursor-pointer">
                 <p class="text-[10px] text-slate-400 mt-1.5 leading-relaxed">
-                    💡 <b>ຄອມພິວເຕີ:</b> ເລື່ອນລໍ້ເມົາສ໌ເພື່ອຊູມ (15% - 900%) • ຄລິກຂວາລາກເພື່ອຍັບມຸມມອງ<br>
-                    💡 <b>ມືຖື:</b> ໃຊ້ 2 ນິ້ວຖ່າງຊູມໄດ້ເຖິງ 900% ຫຼື ຫຍໍ້ນ້ອຍລົງ 15% ຍັບໄວ້ມຸມ
+                    <b>ຄອມພິວເຕີ:</b> ເລື່ອນລໍ້ເມົາສ໌ເພື່ອຊູມ (15% - 900%) • ຄລິກຂວາລາກເພື່ອຍັບມຸມມອງ<br>
+                    <b>ມືຖື:</b> ໃຊ້ 2 ນິ້ວຖ່າງຊູມໄດ້ເຖິງ 900% ຫຼື ຫຍໍ້ນ້ອຍລົງ 15% ຍັບໄວ້ມຸມ
                 </p>
             </div>
 
             <div class="pt-2 border-t border-slate-800/80">
                 <div class="flex justify-between text-xs font-semibold mb-1">
                     <span class="text-slate-200 flex items-center gap-1.5">
-                        <span class="text-amber-400">👁️</span> ຄວາມໂປ່ງໃສແຜ່ນເຂັມທິດ
+                        <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> ຄວາມໂປ່ງໃສແຜ່ນເຂັມທິດ
                     </span>
                     <span id="opacityVal" class="text-amber-400 font-mono">95%</span>
                 </div>
@@ -176,7 +174,7 @@
             <!-- BASE STYLE DROPDOWN (ບໍ່ຕົກແຖວ) -->
             <div class="flex flex-col gap-1.5">
                 <label for="baseStyleSelect" class="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
-                    <span class="text-amber-400">🔲</span> ຮູບແບບແຜ່ນຖານ:
+                    <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> ຮູບແບບແຜ່ນຖານ:
                 </label>
                 <select id="baseStyleSelect" class="w-full bg-slate-950 border border-slate-700 text-amber-300 text-xs rounded-lg px-2.5 py-1.5 font-semibold focus:outline-none focus:border-amber-400 transition">
                     <option value="lacquer">ຖານໄມ້ແດງມົງຄົນ ຂອບທອງ</option>
@@ -208,7 +206,7 @@
         <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex flex-col gap-2.5 shadow-sm">
             <div class="flex items-center justify-between">
                 <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
-                    <span>🔮</span> ຄຳນວນປີເກີດ & ຄ່າທາດ (ມິ່ງກວ້າ)
+                    <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ຄຳນວນປີເກີດ & ຄ່າທາດ (ມິ່ງກວ້າ)
                 </span>
                 <span id="currentYearAge" class="text-[10px] text-slate-400 font-mono"></span>
             </div>
@@ -233,10 +231,10 @@
                     <label class="text-[11px] text-slate-300 font-medium">ເພດ:</label>
                     <div class="grid grid-cols-2 gap-1.5 bg-slate-950 p-1 rounded-lg border border-slate-800">
                         <button type="button" id="genderMaleBtn" class="py-1 px-2 text-xs font-bold rounded transition bg-amber-500 text-slate-950 shadow">
-                            👨 ຊາຍ
+                            <svg class="w-3.5 h-3.5 inline-block mr-1 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="5"/><line x1="19" y1="5" x2="13.6" y2="10.4"/><polyline points="19 9 19 5 15 5"/></svg>ຊາຍ
                         </button>
                         <button type="button" id="genderFemaleBtn" class="py-1 px-2 text-xs font-bold rounded transition text-slate-300 hover:text-white hover:bg-slate-800">
-                            👩 ຍິງ
+                            <svg class="w-3.5 h-3.5 inline-block mr-1 text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><line x1="12" y1="14" x2="12" y2="21"/><line x1="9" y1="18" x2="15" y2="18"/></svg>ຍິງ
                         </button>
                     </div>
                 </div>
@@ -252,7 +250,7 @@
             <div id="guaResultCard" class="bg-slate-950/90 border border-amber-500/30 rounded-xl p-2.5 flex flex-col gap-2">
                 <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
                     <div>
-                        <div id="resZodiac" class="text-xs font-bold text-amber-300">ປີມະເມຍ 🐎 (ມ້າ)</div>
+                        <div id="resZodiac" class="text-xs font-bold text-amber-300">ປີມະເມຍ (ມ້າ)</div>
                         <div id="resGanzhi" class="text-[11px] text-slate-400">庚午 (ແກງມະເມຍ) • ພ.ສ. 2533</div>
                     </div>
                     <span id="resElementBadge" class="bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-inner">
@@ -280,7 +278,7 @@
                 <div class="border-t border-slate-800/80 pt-1.5 flex flex-col gap-1.5">
                     <div class="bg-emerald-950/40 border border-emerald-500/30 rounded-lg p-2 flex flex-col gap-1">
                         <span class="text-emerald-400 font-bold text-[10px] flex items-center gap-1">
-                            <span>✨</span> 4 ທິດມຸງຄຸນ (ທິດດີ):
+                            <span class="text-emerald-400 flex items-center gap-1 font-bold"><svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 4 ທິດມຸງຄຸນ (ທິດດີ):</span>
                         </span>
                         <div id="resAuspiciousList" class="grid grid-cols-2 gap-1 text-[10px] text-slate-200">
                         </div>
@@ -288,7 +286,7 @@
 
                     <div class="bg-rose-950/40 border border-rose-500/30 rounded-lg p-2 flex flex-col gap-1">
                         <span class="text-rose-400 font-bold text-[10px] flex items-center gap-1">
-                            <span>⚠️</span> 4 ທິດອັບປະມຸງຄຸນ (ທິດຮ້າຍ):
+                            <span class="text-rose-400 flex items-center gap-1 font-bold"><svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> 4 ທິດອັບປະມຸງຄຸນ (ທິດຮ້າຍ):</span>
                         </span>
                         <div id="resInauspiciousList" class="grid grid-cols-2 gap-1 text-[10px] text-slate-200">
                         </div>
@@ -303,17 +301,17 @@
             </label>
         </div>
 
-        <!-- SECTION 4.5: 🔮 ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ -->
+        <!-- SECTION 4.5: ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ -->
         <div class="bg-slate-900/80 p-3 rounded-xl border border-purple-500/30 flex flex-col gap-2.5 shadow-sm">
             <div class="flex items-center justify-between">
                 <span class="text-xs font-bold text-purple-300 flex items-center gap-1.5">
-                    <span>🔮</span> ບົດທຳນາຍດາວເຫີນ & ແປດທິດ
+                    <svg class="w-4 h-4 inline-block text-purple-300 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ບົດທຳນາຍດາວເຫີນ & ແປດທິດ
                 </span>
                 <!-- Period Selector -->
                 <div class="flex items-center gap-1">
                     <span class="text-[10px] text-slate-400 font-medium">ຍຸກ:</span>
                     <select id="desktopPeriodSelect" class="bg-slate-950 border border-purple-500/40 text-amber-300 text-xs font-bold rounded-lg px-2 py-0.5 focus:outline-none cursor-pointer">
-                        <option value="9" selected>ຍຸກ 9 (2024-43) ★</option>
+                        <option value="9" selected>ຍຸກ 9 (2024-43) ປັດຈຸບັນ</option>
                         <option value="8">ຍຸກ 8 (2004-23)</option>
                         <option value="7">ຍຸກ 7 (1984-03)</option>
                         <option value="6">ຍຸກ 6 (1964-83)</option>
@@ -335,17 +333,15 @@
         <!-- SECTION 5: ວາງທັບຮູບແປນບ້ານ -->
         <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex flex-col gap-2 shadow-sm">
             <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
-                <span>🏠</span> ວາງທັບຮູບແປນບ້ານ
+                <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> ວາງທັບຮູບແປນບ້ານ
             </span>
 
             <div class="flex gap-1.5">
                 <label class="flex-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs py-2 px-2.5 rounded-lg text-center cursor-pointer transition shadow">
-                    📂 ເລືອກຮູບແປນບ້ານ
+                    <svg class="w-3.5 h-3.5 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>ເລືອກຮູບແປນບ້ານ
                     <input id="floorplanInput" type="file" accept="image/*" class="hidden">
                 </label>
-                <button id="clearFloorplanBtn" class="bg-slate-800 hover:bg-red-500/80 text-xs px-3 py-2 rounded-lg transition border border-slate-700/80" title="ລຶບຮູບແປນບ້ານ">
-                    ✕
-                </button>
+                <button id="clearFloorplanBtn" class="bg-slate-800 hover:bg-red-500/80 text-xs px-3 py-2 rounded-lg transition border border-slate-700/80" title="ລຶບຮູບແປນບ້ານ"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
             </div>
 
             <!-- FLOORPLAN SCALE & RE-CENTER (WHEN PLAN LOADED) -->
@@ -367,64 +363,87 @@
 
         <!-- SECTION 5: ດາວໂຫຼດ (EXPORT) -->
         <button id="downloadSvgBtn" class="mt-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2.5 px-3 rounded-xl shadow-lg flex items-center justify-center gap-2 transition">
-            <span>⬇️</span> ດາວໂຫຼດໄຟລ໌ SVG ຄວາມລະອຽດສູງ
+            <svg class="w-4 h-4 inline-block mr-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>ດາວໂຫຼດໄຟລ໌ SVG ຄວາມລະອຽດສູງ
         </button>
     </aside>
 
-    <!-- MOBILE FLOATING TOP BAR -->
+    <!-- MOBILE TOP BAR / HUD -->
     <div class="fixed top-3 inset-x-3 z-30 flex items-center justify-between pointer-events-none md:hidden">
-        <!-- Degree & Facing badge on mobile -->
-        <div class="pointer-events-auto bg-slate-900/90 backdrop-blur-md border border-slate-700/80 px-2.5 py-1.5 rounded-xl shadow-xl flex flex-col">
-            <span id="mobileDegreeBadge" class="text-amber-300 font-mono font-bold text-xs leading-none">
-                ໜ້າບ້ານ: 180.0° ທິດໃຕ້
-            </span>
-            <span id="mobileSittingBadge" class="text-[10px] text-slate-400 font-mono mt-0.5 leading-none">
+        <!-- Degree & Facing badge on mobile with Kong Wang status -->
+        <div class="pointer-events-auto bg-slate-950/90 backdrop-blur-md border border-slate-800 px-3 py-1.5 rounded-2xl shadow-2xl flex flex-col gap-0.5">
+            <div class="flex items-center gap-1.5">
+                <span id="mobileDegreeBadge" class="text-amber-400 font-mono font-black text-xs leading-none">
+                    ໜ້າບ້ານ: 180.0° ທິດໃຕ້
+                </span>
+                <span id="mobileKongWangBadge" class="text-[9px] px-1.5 py-0.5 rounded-md font-mono font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-500/50">
+                    正针 (ທິດກົງ)
+                </span>
+            </div>
+            <span id="mobileSittingBadge" class="text-[10px] text-slate-400 font-mono leading-none">
                 ຫຼັງພິງ: 0.0° ທິດເໜືອ
             </span>
         </div>
 
-        <!-- Quick Action Buttons -->
+        <!-- Quick Action Buttons on Mobile Header -->
         <div class="pointer-events-auto flex items-center gap-1.5">
             <!-- Corner PIP toggle -->
-            <button id="mobileCornerPipBtn" type="button" class="bg-slate-900/90 hover:bg-slate-800 text-amber-300 border border-slate-700/80 px-2 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 backdrop-blur-md transition" title="ຍັບໄວ້ມຸມຈໍ (Mini-Map)">
-                <span>📌</span> <span id="mobileCornerText">ມຸມ</span>
+            <button id="mobileCornerPipBtn" type="button" class="bg-slate-950/90 hover:bg-slate-800 text-amber-300 border border-slate-700/80 px-2 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 backdrop-blur-md transition" title="ຍັບໄວ້ມຸມຈໍ (Mini-Map)">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="13" y="13" width="6" height="6" rx="1"/></svg>
+                <span id="mobileCornerText">ມຸມ</span>
             </button>
             <!-- Mode Toggle between Rotate & Pan on Mobile -->
-            <button id="mobileDragToggleBtn" type="button" class="bg-slate-900/90 hover:bg-slate-800 text-amber-300 border border-slate-700/80 px-2.5 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 backdrop-blur-md transition" title="ສະຫຼັບໂໝດໝຸນ / ຍັບ">
-                <span id="mobileDragIcon">🔄</span> <span id="mobileDragText">ໝຸນ</span>
+            <button id="mobileDragToggleBtn" type="button" class="bg-slate-950/90 hover:bg-slate-800 text-amber-300 border border-slate-700/80 px-2 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 backdrop-blur-md transition" title="ສະຫຼັບໂໝດໝຸນ / ຍັບ">
+                <span id="mobileDragIcon">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                </span>
+                <span id="mobileDragText">ໝຸນ</span>
             </button>
-            <button id="mobileResetViewBtn" type="button" class="bg-slate-900/90 hover:bg-slate-800 text-slate-300 border border-slate-700/80 p-2 rounded-xl text-xs font-bold shadow-xl flex items-center justify-center backdrop-blur-md transition" title="ຈັດມຸມມອງກາງ (100%)">
-                ↺
+            <button id="mobileResetViewBtn" type="button" class="bg-slate-950/90 hover:bg-slate-800 text-slate-300 border border-slate-700/80 p-2 rounded-xl text-xs font-bold shadow-xl flex items-center justify-center backdrop-blur-md transition" title="ຈັດມຸມມອງກາງ (100%)">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
             </button>
-            <button id="mobileToggleModeBtn" type="button" class="bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 p-2 rounded-xl text-xs font-bold shadow-xl flex items-center justify-center backdrop-blur-md transition" title="ສະຫຼັບໂໝດແຜ່ນໃສ/ມາດຕະຖານ">
-                <span id="mobileModeIcon">📐</span>
-            </button>
-            <button id="openMobileDrawerBtn" type="button" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-2.5 py-1.5 rounded-xl text-xs shadow-xl flex items-center gap-1 transition">
-                <span>⚙️</span>
+            <button id="mobileToggleModeBtn" type="button" class="bg-slate-950/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 p-2 rounded-xl text-xs font-bold shadow-xl flex items-center justify-center backdrop-blur-md transition" title="ສະຫຼັບໂໝດແຜ່ນໃສ/ມາດຕະຖານ">
+                <span id="mobileModeIcon">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M20 12v8H4v-8"/><path d="M6 12v4"/><path d="M10 12v2"/><path d="M14 12v4"/><path d="M18 12v2"/></svg>
+                </span>
             </button>
         </div>
     </div>
 
-    <!-- MOBILE FLOATING BOTTOM QUICK ROTATIONS & DRAWER TRIGGER -->
-    <div class="fixed bottom-3 inset-x-3 z-30 flex items-center justify-between gap-1.5 pointer-events-none md:hidden">
-        <div class="pointer-events-auto flex-1 bg-slate-900/90 backdrop-blur-md border border-slate-700/80 p-1 rounded-xl shadow-xl grid grid-cols-4 gap-1">
-            <button data-rot="0" class="quick-rot bg-slate-800/90 text-slate-200 text-[10px] py-1.5 rounded-lg font-bold border border-slate-700/50 text-center">ໃຕ້ 180°</button>
-            <button data-rot="90" class="quick-rot bg-slate-800/90 text-slate-200 text-[10px] py-1.5 rounded-lg font-bold border border-slate-700/50 text-center">ຕົກ 270°</button>
-            <button data-rot="180" class="quick-rot bg-slate-800/90 text-slate-200 text-[10px] py-1.5 rounded-lg font-bold border border-slate-700/50 text-center">ເໜືອ 0°</button>
-            <button data-rot="270" class="quick-rot bg-slate-800/90 text-slate-200 text-[10px] py-1.5 rounded-lg font-bold border border-slate-700/50 text-center">ອອກ 90°</button>
+    <!-- MOBILE FLOATING CARDINAL ROTATIONS (SLIM FLOATING PILL) -->
+    <div class="fixed bottom-16 inset-x-0 z-20 flex justify-center pointer-events-none md:hidden">
+        <div class="pointer-events-auto flex items-center gap-1 bg-slate-950/85 backdrop-blur-md border border-slate-800 px-2 py-1 rounded-full shadow-2xl text-[10px]">
+            <span class="text-slate-400 font-mono text-[9px] px-1">ທິດຫຼັກ:</span>
+            <button data-rot="0" class="quick-rot px-2.5 py-0.5 rounded-full bg-slate-800/90 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold border border-slate-700/60 transition">ໃຕ້ 180°</button>
+            <button data-rot="90" class="quick-rot px-2.5 py-0.5 rounded-full bg-slate-800/90 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold border border-slate-700/60 transition">ຕົກ 270°</button>
+            <button data-rot="180" class="quick-rot px-2.5 py-0.5 rounded-full bg-slate-800/90 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold border border-slate-700/60 transition">ເໜືອ 0°</button>
+            <button data-rot="270" class="quick-rot px-2.5 py-0.5 rounded-full bg-slate-800/90 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold border border-slate-700/60 transition">ອອກ 90°</button>
         </div>
-        <button id="mobileCameraBtn" type="button" class="pointer-events-auto bg-slate-900/90 hover:bg-slate-800 text-emerald-400 border border-emerald-500/60 p-2.5 rounded-xl shadow-xl flex items-center justify-center text-sm transition" title="ເປີດກ້ອງສ່ອງຈິງ AR">
-            <span>📷</span>
-        </button>
-        <button id="mobileLiveCompassBtn" type="button" class="pointer-events-auto bg-slate-900/90 hover:bg-slate-800 text-amber-300 border border-slate-700/80 p-2.5 rounded-xl shadow-xl flex items-center justify-center text-sm transition" title="ເຊື່ອມຕໍ່ເຂັມທິດຈິງ">
-            <span>🧭</span>
-        </button>
-        <button id="mobilePredictionFab" type="button" class="pointer-events-auto bg-purple-900/90 hover:bg-purple-800 text-purple-200 border border-purple-400/60 p-2.5 rounded-xl shadow-xl flex items-center justify-center text-sm transition" title="ເບິ່ງບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ">
-            <span>🔮</span>
-        </button>
-        <button id="mobileOpenMenuFab" type="button" class="pointer-events-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold p-2.5 rounded-xl shadow-xl flex items-center justify-center text-sm" title="ເປີດເມນູຕັ້ງຄ່າ ແລະ ມິ່ງກວ້າ">
-            <span>⚙️</span>
-        </button>
+    </div>
+
+    <!-- MOBILE MAIN DOCK (4 MASTER ACTION BUTTONS) -->
+    <div class="fixed bottom-3 inset-x-3 z-30 flex items-center justify-between gap-2 pointer-events-none md:hidden">
+        <div class="pointer-events-auto w-full bg-slate-950/95 backdrop-blur-md border border-slate-800 p-1.5 rounded-2xl shadow-2xl grid grid-cols-4 gap-1.5">
+            <!-- 1. AR Camera -->
+            <button id="mobileCameraBtn" type="button" class="flex flex-col items-center justify-center gap-0.5 py-1.5 px-1 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-emerald-500/40 transition shadow-sm" title="ເປີດກ້ອງສ່ອງຈິງ AR">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                <span class="text-[10px] font-bold text-slate-200">ກ້ອງ AR</span>
+            </button>
+            <!-- 2. Live Compass Sensor -->
+            <button id="mobileLiveCompassBtn" type="button" class="flex flex-col items-center justify-center gap-0.5 py-1.5 px-1 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 border border-slate-700/60 transition shadow-sm" title="ເຊື່ອມຕໍ່ເຂັມທິດຈິງ">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                <span class="text-[10px] font-bold text-slate-200">ເຂັມທິດຈິງ</span>
+            </button>
+            <!-- 3. Master Prediction Sheet -->
+            <button id="mobilePredictionFab" type="button" class="flex flex-col items-center justify-center gap-0.5 py-1.5 px-1 rounded-xl bg-purple-950/80 hover:bg-purple-900 text-purple-300 border border-purple-500/50 transition shadow-sm" title="ເບິ່ງບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span class="text-[10px] font-bold text-purple-200">ບົດທຳນາຍ</span>
+            </button>
+            <!-- 4. Settings & Kua Menu -->
+            <button id="mobileOpenMenuFab" type="button" class="flex flex-col items-center justify-center gap-0.5 py-1.5 px-1 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 transition shadow-sm" title="ເປີດເມນູຕັ້ງຄ່າ ແລະ ມິ່ງກວ້າ">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                <span class="text-[10px] font-black text-slate-950">ຕັ້ງຄ່າ</span>
+            </button>
+        </div>
     </div>
 
     <!-- VIEWPORT MAIN AREA -->
@@ -435,24 +454,24 @@
         <!-- Floating Live AR Badge Indicator -->
         <div id="arCameraBadge" class="absolute top-4 left-1/2 -translate-x-1/2 z-20 hidden items-center gap-2 bg-slate-950/90 border border-emerald-500/70 text-emerald-300 text-xs px-3.5 py-1.5 rounded-full shadow-2xl backdrop-blur-md font-semibold select-none">
             <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-            <span>📷 ກຳລັງສ່ອງກ້ອງຈິງ (AR Camera)</span>
-            <button id="closeArBtn" type="button" class="ml-1 text-slate-400 hover:text-white font-bold px-1.5 py-0.5 rounded-md hover:bg-slate-800" title="ປິດກ້ອງ AR">✕</button>
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> <span>ກຳລັງສ່ອງກ້ອງຈິງ (AR Camera)</span></span>
+            <button id="closeArBtn" type="button" class="ml-1 text-slate-400 hover:text-white font-bold p-1 rounded-md hover:bg-slate-800" title="ປິດກ້ອງ AR"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         </div>
 
         <!-- Live AR Flying Stars HUD: Shows Aimed Stars Without Needing VR -->
         <div id="arStarHud" class="absolute top-14 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 select-none pointer-events-none transition-all">
             <div class="flex items-center gap-2 bg-slate-950/90 backdrop-blur-md border border-amber-500/40 px-3 py-1 rounded-2xl shadow-2xl pointer-events-auto">
                 <div class="flex items-center gap-2 text-[11px] font-bold text-slate-200">
-                    <span class="text-blue-400 font-mono" id="hudMountainStar" title="ດາວພູເຂົາ (ສຸຂະພາບ/ຄົນ)">🏔️ ພູ: 9</span>
+                    <span class="text-blue-400 font-mono font-bold flex items-center gap-1" id="hudMountainStar" title="ດາວພູເຂົາ (ສຸຂະພາບ/ຄົນ)">ພູ: 9</span>
                     <span class="text-slate-500">|</span>
-                    <span class="text-amber-400 font-mono" id="hudPeriodStar" title="ດາວຍຸກ">🌟 ຍຸກ: 9</span>
+                    <span class="text-amber-400 font-mono font-bold flex items-center gap-1" id="hudPeriodStar" title="ດາວຍຸກ">ຍຸກ: 9</span>
                     <span class="text-slate-500">|</span>
-                    <span class="text-emerald-400 font-mono" id="hudWaterStar" title="ດາວນ້ຳ (ໂຊກລາບ/ເງິນຄຳ)">💧 ນ້ຳ: 9</span>
+                    <span class="text-emerald-400 font-mono font-bold flex items-center gap-1" id="hudWaterStar" title="ດາວນ້ຳ (ໂຊກລາບ/ເງິນຄຳ)">ນ້ຳ: 9</span>
                 </div>
             </div>
             <!-- Best Spot Glow Badge (Target Locked) -->
             <div id="hudBestSpotBadge" class="hidden items-center gap-1.5 bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 px-3 py-0.5 rounded-full text-[10px] font-black shadow-2xl animate-bounce pointer-events-auto">
-                <span id="hudBestSpotText">🎯 ຈຸດມຸງຄຸນໂຊກລາບສູງສຸດ 🌟🌟🌟🌟🌟</span>
+                <span id="hudBestSpotText">ວັງໂຊກລາບສູງສຸດ</span>
             </div>
         </div>
 
@@ -516,22 +535,22 @@
     <div id="predictionDrawer" class="fixed inset-x-0 bottom-0 z-50 max-h-[85vh] rounded-t-3xl transform transition-transform duration-300 translate-y-full md:hidden bg-slate-900/95 backdrop-blur-md border-t border-purple-500/40 p-4 flex flex-col gap-3 overflow-y-auto shadow-2xl text-slate-100">
         <div class="flex items-center justify-between pb-1 relative border-b border-slate-800">
             <div class="flex items-center gap-2">
-                <span class="text-xl">🔮</span>
+                <svg class="w-5 h-5 text-purple-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 <div>
                     <h3 class="text-sm font-bold text-purple-300 leading-tight">ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ</h3>
                     <p class="text-[10px] text-slate-400">ວິເຄາະທິດທີ່ກ້ອງ/ເຂັມທິດກຳລັງສ່ອງໄປແບບສົດໆ</p>
                 </div>
             </div>
-            <button id="closePredictionDrawerBtn" type="button" class="text-slate-400 hover:text-white bg-slate-800 rounded-lg w-7 h-7 flex items-center justify-center font-bold">✕</button>
+            <button id="closePredictionDrawerBtn" type="button" class="text-slate-400 hover:text-white bg-slate-800 rounded-lg w-7 h-7 flex items-center justify-center font-bold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         </div>
 
         <!-- Period Selector Dropdown -->
         <div class="flex items-center justify-between bg-slate-950 p-2 rounded-xl border border-slate-800">
             <span class="text-xs font-semibold text-amber-400 flex items-center gap-1.5">
-                <span>⏳</span> ເລືອກຍຸກດາວເຫີນ:
+                <svg class="w-3.5 h-3.5 text-amber-400 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ເລືອກຍຸກດາວເຫີນ:
             </span>
             <select id="mobilePeriodSelect" class="bg-slate-900 border border-amber-500/40 text-amber-300 text-xs font-bold rounded-lg px-2.5 py-1 focus:outline-none cursor-pointer">
-                <option value="9" selected>ຍຸກ 9 (2024 - 2043) ★ ປັດຈຸບັນ</option>
+                <option value="9" selected>ຍຸກ 9 (2024 - 2043) · ປັດຈຸບັນ</option>
                 <option value="8">ຍຸກ 8 (2004 - 2023)</option>
                 <option value="7">ຍຸກ 7 (1984 - 2003)</option>
                 <option value="6">ຍຸກ 6 (1964 - 1983)</option>
@@ -552,13 +571,9 @@
     <!-- QR CODE MODAL FOR MOBILE ACCESS -->
     <div id="mobileQrModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700/80 rounded-3xl max-w-sm w-full p-6 shadow-2xl flex flex-col items-center text-center relative">
-            <button id="closeQrModalBtn" type="button" class="absolute top-3.5 right-3.5 text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-800 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold transition">
-                ✕
-            </button>
+            <button id="closeQrModalBtn" type="button" class="absolute top-3.5 right-3.5 text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-800 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold transition"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
 
-            <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-2xl mb-3 shadow-inner">
-                📱
-            </div>
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center mb-3 shadow-inner"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
 
             <h3 class="text-base font-bold text-amber-400 leading-tight">ເປີດໃຊ້ງານໃນໂທລະສັບມືຖື</h3>
             <p class="text-xs text-slate-400 mt-1 max-w-[280px]">
@@ -576,7 +591,7 @@
                     http://192.168.60.95:3000
                 </span>
                 <button id="copyUrlBtn" type="button" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-2.5 py-1 rounded-lg shrink-0 border border-slate-700 transition flex items-center gap-1">
-                    <span>📋</span> <span id="copyBtnText">ກັອບປີ້</span>
+                    <svg class="w-3.5 h-3.5 inline-block mr-1 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span id="copyBtnText">ກັອບປີ້</span>
                 </button>
             </div>
 
@@ -592,7 +607,7 @@
                 </div>
                 <div class="flex items-start gap-2">
                     <span class="text-amber-400 font-bold">3.</span>
-                    <span>ກົດປຸ່ມ <b>"🧭 ເຊື່ອມຕໍ່ເຂັມທິດຈິງ"</b> ເພື່ອວັດແທກໜ້າງານ</span>
+                    <span>ກົດປຸ່ມ <b>"ເຊື່ອມຕໍ່ເຂັມທິດຈິງ"</b> ເພື່ອວັດແທກໜ້າງານ</span>
                 </div>
             </div>
         </div>
@@ -676,29 +691,29 @@
         }
 
         const MOUNTAINS_24 = [
-            { code: 'N2',  start: 352.5, end: 7.5,   color: '#2563eb', type: 'zodiac', animal: '🐀', animalName: 'ຊວດ (ໜູ)',     time: '23.01 - 01.00', num: '11' },
+            { code: 'N2',  start: 352.5, end: 7.5,   color: '#2563eb', type: 'zodiac', animal: '鼠', animalName: 'ຊວດ (ໜູ)',     time: '23.01 - 01.00', num: '11' },
             { code: 'N3',  start: 7.5,   end: 22.5,  color: '#2563eb', type: 'table',  headers: ['ຊວດ','ມະເສັງ','ວອກ','ກຸນ'] },
-            { code: 'NE1', start: 22.5,  end: 37.5,  color: '#facc15', type: 'zodiac', animal: '🐂', animalName: 'ສະຫຼູ (ງົວ)',    time: '01.01 - 03.00', num: '12' },
+            { code: 'NE1', start: 22.5,  end: 37.5,  color: '#facc15', type: 'zodiac', animal: '牛', animalName: 'ສະຫຼູ (ງົວ)',    time: '01.01 - 03.00', num: '12' },
             { code: 'NE2', start: 37.5,  end: 52.5,  color: '#facc15', type: 'table',  headers: ['ສະຫຼູ','ມະເມີຍ','ລະກາ','ຈໍ'] },
-            { code: 'NE3', start: 52.5,  end: 67.5,  color: '#facc15', type: 'zodiac', animal: '🐅', animalName: 'ຂານ (ເສືອ)',    time: '03.01 - 05.00', num: '01' },
+            { code: 'NE3', start: 52.5,  end: 67.5,  color: '#facc15', type: 'zodiac', animal: '虎', animalName: 'ຂານ (ເສືອ)',    time: '03.01 - 05.00', num: '01' },
             { code: 'E1',  start: 67.5,  end: 82.5,  color: '#4ade80', type: 'table',  headers: ['ຂານ','ມະແມ','ວອກ','ກຸນ'] },
-            { code: 'E2',  start: 82.5,  end: 97.5,  color: '#4ade80', type: 'zodiac', animal: '🐇', animalName: 'ເຖາະ (ກະຕ່າຍ)', time: '05.01 - 07.00', num: '02' },
+            { code: 'E2',  start: 82.5,  end: 97.5,  color: '#4ade80', type: 'zodiac', animal: '兔', animalName: 'ເຖາະ (ກະຕ່າຍ)', time: '05.01 - 07.00', num: '02' },
             { code: 'E3',  start: 97.5,  end: 112.5, color: '#4ade80', type: 'table',  headers: ['ເຖາະ','ມະໂລງ','ມະເສັງ','ລະກາ'] },
-            { code: 'SE1', start: 112.5, end: 127.5, color: '#22c55e', type: 'zodiac', animal: '🐉', animalName: 'ມະໂລງ (ງູໃຫຍ່)', time: '07.01 - 09.00', num: '03' },
+            { code: 'SE1', start: 112.5, end: 127.5, color: '#22c55e', type: 'zodiac', animal: '龙', animalName: 'ມະໂລງ (ງູໃຫຍ່)', time: '07.01 - 09.00', num: '03' },
             { code: 'SE2', start: 127.5, end: 142.5, color: '#22c55e', type: 'table',  headers: ['ຊວດ','ຂານ','ມະໂລງ','ມະເມີຍ'] },
-            { code: 'SE3', start: 142.5, end: 157.5, color: '#22c55e', type: 'zodiac', animal: '🐍', animalName: 'ມະເສັງ (ງູນ້ອຍ)', time: '09.01 - 11.00', num: '04' },
+            { code: 'SE3', start: 142.5, end: 157.5, color: '#22c55e', type: 'zodiac', animal: '蛇', animalName: 'ມະເສັງ (ງູນ້ອຍ)', time: '09.01 - 11.00', num: '04' },
             { code: 'S1',  start: 157.5, end: 172.5, color: '#ef4444', type: 'table',  headers: ['ສະຫຼູ','ເຖາະ','ມະເສັງ','ມະແມ'] },
-            { code: 'S2',  start: 172.5, end: 187.5, color: '#ef4444', type: 'zodiac', animal: '🐎', animalName: 'ມະເມີຍ (ມ້າ)',   time: '11.01 - 13.00', num: '05' },
+            { code: 'S2',  start: 172.5, end: 187.5, color: '#ef4444', type: 'zodiac', animal: '马', animalName: 'ມະເມີຍ (ມ້າ)',   time: '11.01 - 13.00', num: '05' },
             { code: 'S3',  start: 187.5, end: 202.5, color: '#ef4444', type: 'table',  headers: ['ຂານ','ມະເມີຍ','ຈໍ','ກຸນ'] },
-            { code: 'SW1', start: 202.5, end: 217.5, color: '#fde047', type: 'zodiac', animal: '🐐', animalName: 'ມະແມ (ແບ້)',    time: '13.01 - 15.00', num: '06' },
+            { code: 'SW1', start: 202.5, end: 217.5, color: '#fde047', type: 'zodiac', animal: '羊', animalName: 'ມະແມ (ແບ້)',    time: '13.01 - 15.00', num: '06' },
             { code: 'SW2', start: 217.5, end: 232.5, color: '#fde047', type: 'table',  headers: ['ເຖາະ','ມະແມ','ລະກາ','ກຸນ'] },
-            { code: 'SW3', start: 232.5, end: 247.5, color: '#fde047', type: 'zodiac', animal: '🐒', animalName: 'ວອກ (ລີງ)',     time: '15.01 - 17.00', num: '07' },
+            { code: 'SW3', start: 232.5, end: 247.5, color: '#fde047', type: 'zodiac', animal: '猴', animalName: 'ວອກ (ລີງ)',     time: '15.01 - 17.00', num: '07' },
             { code: 'W1',  start: 247.5, end: 262.5, color: '#e2e8f0', type: 'table',  headers: ['ຊວດ','ມະໂລງ','ວອກ','ລະກາ'] },
-            { code: 'W2',  start: 262.5, end: 277.5, color: '#e2e8f0', type: 'zodiac', animal: '🐓', animalName: 'ລະກາ (ໄກ່)',    time: '17.01 - 19.00', num: '08' },
+            { code: 'W2',  start: 262.5, end: 277.5, color: '#e2e8f0', type: 'zodiac', animal: '鸡', animalName: 'ລະກາ (ໄກ່)',    time: '17.01 - 19.00', num: '08' },
             { code: 'W3',  start: 277.5, end: 292.5, color: '#e2e8f0', type: 'table',  headers: ['ສະຫຼູ','ມະເສັງ','ລະກາ','ຈໍ'] },
-            { code: 'NW1', start: 292.5, end: 307.5, color: '#f59e0b', type: 'zodiac', animal: '🐕', animalName: 'ຈໍ (ໝາ)',       time: '19.01 - 21.00', num: '09' },
+            { code: 'NW1', start: 292.5, end: 307.5, color: '#f59e0b', type: 'zodiac', animal: '狗', animalName: 'ຈໍ (ໝາ)',       time: '19.01 - 21.00', num: '09' },
             { code: 'NW2', start: 307.5, end: 322.5, color: '#f59e0b', type: 'table',  headers: ['ຂານ','ມະເມີຍ','ຈໍ','ກຸນ'] },
-            { code: 'NW3', start: 322.5, end: 337.5, color: '#f59e0b', type: 'zodiac', animal: '🐖', animalName: 'ກຸນ (ໝູ)',       time: '21.01 - 23.00', num: '10' },
+            { code: 'NW3', start: 322.5, end: 337.5, color: '#f59e0b', type: 'zodiac', animal: '猪', animalName: 'ກຸນ (ໝູ)',       time: '21.01 - 23.00', num: '10' },
             { code: 'N1',  start: 337.5, end: 352.5, color: '#2563eb', type: 'table',  headers: ['ຊວດ','ເຖາະ','ມະເມີຍ','ລະກາ'] }
         ];
 
@@ -763,72 +778,72 @@
 
         // 60 Jiazi Nayin 5 Elements (ຫົກສິບດອກໄມ້ນາຢິນ 5 ທາດ)
         const NAYIN_60 = [
-            { gz: '甲子 (ກ້າບຊວດ)', animal: 'ຊວດ 🐀 (ໜູ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດທອງ (ທອງໃນທະເລ)', el: 'ທາດທອງ' },
-            { gz: '乙丑 (ອິດສະຫຼູ)', animal: 'ສະຫຼູ 🐂 (ງົວ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດທອງ (ທອງໃນທະເລ)', el: 'ທາດທອງ' },
-            { gz: '丙寅 (ບິ່ງຂານ)', animal: 'ຂານ 🐅 (ເສືອ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດໄຟ (ໄຟໃນເຕົາ)', el: 'ທາດໄຟ' },
-            { gz: '丁卯 (ດິ່ງເຖາະ)', animal: 'ເຖາະ 🐇 (ກະຕ່າຍ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດໄຟ (ໄຟໃນເຕົາ)', el: 'ທາດໄຟ' },
-            { gz: '戊辰 (ໂບ່ວມະໂລງ)', animal: 'ມະໂລງ 🐉 (ມັງກອນ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄມ້ (ໄມ້ປ່າໃຫຍ່)', el: 'ທາດໄມ້' },
-            { gz: '己巳 (ກີ່ມະເສັງ)', animal: 'ມະເສັງ 🐍 (ງູນ້ອຍ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄມ້ (ໄມ້ປ່າໃຫຍ່)', el: 'ທາດໄມ້' },
-            { gz: '庚午 (ແກງມະເມຍ)', animal: 'ມະເມຍ 🐎 (ມ້າ)', stemEl: 'ທາດທອງ', nayin: 'ທາດດິນ (ດິນແຄມທາງ)', el: 'ທາດດິນ' },
-            { gz: '辛未 (ຊິນມະແມ)', animal: 'ມະແມ 🐐 (ແບ້)', stemEl: 'ທາດທອງ', nayin: 'ທາດດິນ (ດິນແຄມທາງ)', el: 'ທາດດິນ' },
-            { gz: '壬申 (ຢິມວອກ)', animal: 'ວອກ 🐒 (ລີງ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດທອງ (ທອງປາຍດາບ)', el: 'ທາດທອງ' },
-            { gz: '癸酉 (ກຸຍລະກາ)', animal: 'ລະກາ 🐓 (ໄກ່)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດທອງ (ທອງປາຍດາບ)', el: 'ທາດທອງ' },
-            { gz: '甲戌 (ກ້າບຈໍ)', animal: 'ຈໍ 🐕 (ໝາ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດໄຟ (ໄຟເທິງພູ)', el: 'ທາດໄຟ' },
-            { gz: '乙亥 (ອິດກຸນ)', animal: 'ກຸນ 🐖 (ໝູ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດໄຟ (ໄຟເທິງພູ)', el: 'ທາດໄຟ' },
-            { gz: '丙子 (ບິ່ງຊວດ)', animal: 'ຊວດ 🐀 (ໜູ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດນ້ຳ (ນ້ຳຮ່ອມເຂົາ)', el: 'ທາດນ້ຳ' },
-            { gz: '丁丑 (ດິ່ງສະຫຼູ)', animal: 'ສະຫຼູ 🐂 (ງົວ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດນ້ຳ (ນ້ຳຮ່ອມເຂົາ)', el: 'ທາດນ້ຳ' },
-            { gz: '戊寅 (ໂບ່ວຂານ)', animal: 'ຂານ 🐅 (ເສືອ)', stemEl: 'ທາດດິນ', nayin: 'ທາດດິນ (ດິນກຳແພງເມືອງ)', el: 'ທາດດິນ' },
-            { gz: '己卯 (ກີ່ເຖາະ)', animal: 'ເຖາະ 🐇 (ກະຕ່າຍ)', stemEl: 'ທາດດິນ', nayin: 'ທາດດິນ (ດິນກຳແພງເມືອງ)', el: 'ທາດດິນ' },
-            { gz: '庚辰 (ແກງມະໂລງ)', animal: 'ມະໂລງ 🐉 (ມັງກອນ)', stemEl: 'ທາດທອງ', nayin: 'ທາດທອງ (ທອງຂີ້ເຜິ້ງ)', el: 'ທາດທອງ' },
-            { gz: '辛巳 (ຊິນມະເສັງ)', animal: 'ມະເສັງ 🐍 (ງູນ້ອຍ)', stemEl: 'ທາດທອງ', nayin: 'ທາດທອງ (ທອງຂີ້ເຜິ້ງ)', el: 'ທາດທອງ' },
-            { gz: '壬午 (ຢິມມະເມຍ)', animal: 'ມະເມຍ 🐎 (ມ້າ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດໄມ້ (ໄມ້ຫຼິວ)', el: 'ທາດໄມ້' },
-            { gz: '癸未 (ກຸຍມະແມ)', animal: 'ມະແມ 🐐 (ແບ້)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດໄມ້ (ໄມ້ຫຼິວ)', el: 'ທາດໄມ້' },
-            { gz: '甲申 (ກ້າບວອກ)', animal: 'ວອກ 🐒 (ລີງ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດນ້ຳ (ນ້ຳບໍ່ນ້ຳພຸ)', el: 'ທາດນ້ຳ' },
-            { gz: '乙酉 (ອິດລະກາ)', animal: 'ລະກາ 🐓 (ໄກ່)', stemEl: 'ທາດໄມ້', nayin: 'ທາດນ້ຳ (ນ້ຳບໍ່ນ້ຳພຸ)', el: 'ທາດນ້ຳ' },
-            { gz: '丙戌 (ບິ່ງຈໍ)', animal: 'ຈໍ 🐕 (ໝາ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດດິນ (ດິນຫຼັງຄາ)', el: 'ທາດດິນ' },
-            { gz: '丁亥 (ດິ່ງກຸນ)', animal: 'ກຸນ 🐖 (ໝູ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດດິນ (ດິນຫຼັງຄາ)', el: 'ທາດດິນ' },
-            { gz: '戊子 (ໂບ່ວຊວດ)', animal: 'ຊວດ 🐀 (ໜູ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄຟ (ໄຟສາຍຟ້າ)', el: 'ທາດໄຟ' },
-            { gz: '己丑 (ກີ່ສະຫຼູ)', animal: 'ສະຫຼູ 🐂 (ງົວ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄຟ (ໄຟສາຍຟ້າ)', el: 'ທາດໄຟ' },
-            { gz: '庚寅 (ແກງຂານ)', animal: 'ຂານ 🐅 (ເສືອ)', stemEl: 'ທາດທອງ', nayin: 'ທາດໄມ້ (ໄມ້ສົນ)', el: 'ທາດໄມ້' },
-            { gz: '辛卯 (ຊິນເຖາະ)', animal: 'ເຖາະ 🐇 (ກະຕ່າຍ)', stemEl: 'ທາດທອງ', nayin: 'ທາດໄມ້ (ໄມ້ສົນ)', el: 'ທາດໄມ້' },
-            { gz: '壬辰 (ຢິມມະໂລງ)', animal: 'ມະໂລງ 🐉 (ມັງກອນ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດນ້ຳ (ນ້ຳໄຫຼຍາວ)', el: 'ທາດນ້ຳ' },
-            { gz: '癸巳 (ກຸຍມະເສັງ)', animal: 'ມະເສັງ 🐍 (ງູນ້ອຍ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດນ້ຳ (ນ້ຳໄຫຼຍາວ)', el: 'ທາດນ້ຳ' },
-            { gz: '甲午 (ກ້າບມະເມຍ)', animal: 'ມະເມຍ 🐎 (ມ້າ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດທອງ (ທອງດິນຊາຍ)', el: 'ທາດທອງ' },
-            { gz: '乙未 (ອິດມະແມ)', animal: 'ມະແມ 🐐 (ແບ້)', stemEl: 'ທາດໄມ້', nayin: 'ທາດທອງ (ທອງດິນຊາຍ)', el: 'ທາດທອງ' },
-            { gz: '丙申 (ບິ່ງວອກ)', animal: 'ວອກ 🐒 (ລີງ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດໄຟ (ໄຟຕີນພູ)', el: 'ທາດໄຟ' },
-            { gz: '丁酉 (ດິ່ງລະກາ)', animal: 'ລະກາ 🐓 (ໄກ່)', stemEl: 'ທາດໄຟ', nayin: 'ທາດໄຟ (ໄຟຕີນພູ)', el: 'ທາດໄຟ' },
-            { gz: '戊戌 (ໂບ່ວຈໍ)', animal: 'ຈໍ 🐕 (ໝາ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄມ້ (ໄມ້ທົ່ງພຽງ)', el: 'ທາດໄມ້' },
-            { gz: '己亥 (ກີ່ກຸນ)', animal: 'ກຸນ 🐖 (ໝູ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄມ້ (ໄມ້ທົ່ງພຽງ)', el: 'ທາດໄມ້' },
-            { gz: '庚子 (ແກງຊວດ)', animal: 'ຊວດ 🐀 (ໜູ)', stemEl: 'ທາດທອງ', nayin: 'ທາດດິນ (ດິນກຳແພງ)', el: 'ທາດດິນ' },
-            { gz: '辛丑 (ຊິນສະຫຼູ)', animal: 'ສະຫຼູ 🐂 (ງົວ)', stemEl: 'ທາດທອງ', nayin: 'ທາດດິນ (ດິນກຳແພງ)', el: 'ທາດດິນ' },
-            { gz: '壬寅 (ຢິມຂານ)', animal: 'ຂານ 🐅 (ເສືອ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດທອງ (ທອງຄຳປິວ)', el: 'ທາດທອງ' },
-            { gz: '癸卯 (ກຸຍເຖາະ)', animal: 'ເຖາະ 🐇 (ກະຕ່າຍ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດທອງ (ທອງຄຳປິວ)', el: 'ທາດທອງ' },
-            { gz: '甲辰 (ກ້າບມະໂລງ)', animal: 'ມະໂລງ 🐉 (ມັງກອນ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດໄຟ (ໄຟຕະກຽງ)', el: 'ທາດໄຟ' },
-            { gz: '乙巳 (ອິດມະເສັງ)', animal: 'ມະເສັງ 🐍 (ງູນ້ອຍ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດໄຟ (ໄຟຕະກຽງ)', el: 'ທາດໄຟ' },
-            { gz: '丙午 (ບິ່ງມະເມຍ)', animal: 'ມະເມຍ 🐎 (ມ້າ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດນ້ຳ (ນ້ຳເທິງຟ້າ)', el: 'ທາດນ້ຳ' },
-            { gz: '丁未 (ດິ່ງມະແມ)', animal: 'ມະແມ 🐐 (ແບ້)', stemEl: 'ທາດໄຟ', nayin: 'ທາດນ້ຳ (ນ້ຳເທິງຟ້າ)', el: 'ທາດນ້ຳ' },
-            { gz: '戊申 (ໂບ່ວວອກ)', animal: 'ວອກ 🐒 (ລີງ)', stemEl: 'ທາດດິນ', nayin: 'ທາດດິນ (ດິນສະຖານີ)', el: 'ທາດດິນ' },
-            { gz: '己酉 (ກີ່ລະກາ)', animal: 'ລະກາ 🐓 (ໄກ່)', stemEl: 'ທາດດິນ', nayin: 'ທາດດິນ (ດິນສະຖານີ)', el: 'ທາດດິນ' },
-            { gz: '庚戌 (ແກງຈໍ)', animal: 'ຈໍ 🐕 (ໝາ)', stemEl: 'ທາດທອງ', nayin: 'ທາດທອງ (ທອງເຄື່ອງປະດັບ)', el: 'ທາດທອງ' },
-            { gz: '辛亥 (ຊິນກຸນ)', animal: 'ກຸນ 🐖 (ໝູ)', stemEl: 'ທາດທອງ', nayin: 'ທາດທອງ (ທອງເຄື່ອງປະດັບ)', el: 'ທາດທອງ' },
-            { gz: '壬子 (ຢິມຊວດ)', animal: 'ຊວດ 🐀 (ໜູ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດໄມ້ (ໄມ້ມອນ)', el: 'ທາດໄມ້' },
-            { gz: '癸丑 (ກຸຍສະຫຼູ)', animal: 'ສະຫຼູ 🐂 (ງົວ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດໄມ້ (ໄມ້ມອນ)', el: 'ທາດໄມ້' },
-            { gz: '甲寅 (ກ້າບຂານ)', animal: 'ຂານ 🐅 (ເສືອ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດນ້ຳ (ນ້ຳຫ້ວຍໃຫຍ່)', el: 'ທາດນ້ຳ' },
-            { gz: '乙卯 (ອິດເຖາະ)', animal: 'ເຖາະ 🐇 (ກະຕ່າຍ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດນ້ຳ (ນ້ຳຫ້ວຍໃຫຍ່)', el: 'ທາດນ້ຳ' },
-            { gz: '丙辰 (ບິ່ງມະໂລງ)', animal: 'ມະໂລງ 🐉 (ມັງກອນ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດດິນ (ດິນຊາຍ)', el: 'ທາດດິນ' },
-            { gz: '丁巳 (ດິ່ງມະເສັງ)', animal: 'ມະເສັງ 🐍 (ງູນ້ອຍ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດດິນ (ດິນຊາຍ)', el: 'ທາດດິນ' },
-            { gz: '戊午 (ໂບ່ວມະເມຍ)', animal: 'ມະເມຍ 🐎 (ມ້າ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄຟ (ໄຟເທິງທ້ອງຟ້າ)', el: 'ທາດໄຟ' },
-            { gz: '己未 (ກີ່ມະແມ)', animal: 'ມະແມ 🐐 (ແບ້)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄຟ (ໄຟເທິງທ້ອງຟ້າ)', el: 'ທາດໄຟ' },
-            { gz: '庚申 (ແກງວອກ)', animal: 'ວອກ 🐒 (ລີງ)', stemEl: 'ທາດທອງ', nayin: 'ທາດໄມ້ (ໄມ້ທັບທິມ)', el: 'ທາດໄມ້' },
-            { gz: '辛酉 (ຊິນລະກາ)', animal: 'ລະກາ 🐓 (ໄກ່)', stemEl: 'ທາດທອງ', nayin: 'ທາດໄມ້ (ໄມ້ທັບທິມ)', el: 'ທາດໄມ້' },
-            { gz: '壬戌 (ຢິມຈໍ)', animal: 'ຈໍ 🐕 (ໝາ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດນ້ຳ (ນ້ຳມະຫາສະໝຸດ)', el: 'ທາດນ້ຳ' },
-            { gz: '癸亥 (ກຸຍກຸນ)', animal: 'ກຸນ 🐖 (ໝູ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດນ້ຳ (ນ້ຳມະຫາສະໝຸດ)', el: 'ທາດນ້ຳ' }
+            { gz: '甲子 (ກ້າບຊວດ)', animal: 'ຊວດ (ໜູ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດທອງ (ທອງໃນທະເລ)', el: 'ທາດທອງ' },
+            { gz: '乙丑 (ອິດສະຫຼູ)', animal: 'ສະຫຼູ (ງົວ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດທອງ (ທອງໃນທະເລ)', el: 'ທາດທອງ' },
+            { gz: '丙寅 (ບິ່ງຂານ)', animal: 'ຂານ (ເສືອ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດໄຟ (ໄຟໃນເຕົາ)', el: 'ທາດໄຟ' },
+            { gz: '丁卯 (ດິ່ງເຖາະ)', animal: 'ເຖາະ (ກະຕ່າຍ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດໄຟ (ໄຟໃນເຕົາ)', el: 'ທາດໄຟ' },
+            { gz: '戊辰 (ໂບ່ວມະໂລງ)', animal: 'ມະໂລງ (ມັງກອນ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄມ້ (ໄມ້ປ່າໃຫຍ່)', el: 'ທາດໄມ້' },
+            { gz: '己巳 (ກີ່ມະເສັງ)', animal: 'ມະເສັງ (ງູນ້ອຍ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄມ້ (ໄມ້ປ່າໃຫຍ່)', el: 'ທາດໄມ້' },
+            { gz: '庚午 (ແກງມະເມຍ)', animal: 'ມະເມຍ (ມ້າ)', stemEl: 'ທາດທອງ', nayin: 'ທາດດິນ (ດິນແຄມທາງ)', el: 'ທາດດິນ' },
+            { gz: '辛未 (ຊິນມະແມ)', animal: 'ມະແມ (ແບ້)', stemEl: 'ທາດທອງ', nayin: 'ທາດດິນ (ດິນແຄມທາງ)', el: 'ທາດດິນ' },
+            { gz: '壬申 (ຢິມວອກ)', animal: 'ວອກ (ລີງ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດທອງ (ທອງປາຍດາບ)', el: 'ທາດທອງ' },
+            { gz: '癸酉 (ກຸຍລະກາ)', animal: 'ລະກາ (ໄກ່)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດທອງ (ທອງປາຍດາບ)', el: 'ທາດທອງ' },
+            { gz: '甲戌 (ກ້າບຈໍ)', animal: 'ຈໍ (ໝາ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດໄຟ (ໄຟເທິງພູ)', el: 'ທາດໄຟ' },
+            { gz: '乙亥 (ອິດກຸນ)', animal: 'ກຸນ (ໝູ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດໄຟ (ໄຟເທິງພູ)', el: 'ທາດໄຟ' },
+            { gz: '丙子 (ບິ່ງຊວດ)', animal: 'ຊວດ (ໜູ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດນ້ຳ (ນ້ຳຮ່ອມເຂົາ)', el: 'ທາດນ້ຳ' },
+            { gz: '丁丑 (ດິ່ງສະຫຼູ)', animal: 'ສະຫຼູ (ງົວ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດນ້ຳ (ນ້ຳຮ່ອມເຂົາ)', el: 'ທາດນ້ຳ' },
+            { gz: '戊寅 (ໂບ່ວຂານ)', animal: 'ຂານ (ເສືອ)', stemEl: 'ທາດດິນ', nayin: 'ທາດດິນ (ດິນກຳແພງເມືອງ)', el: 'ທາດດິນ' },
+            { gz: '己卯 (ກີ່ເຖາະ)', animal: 'ເຖາະ (ກະຕ່າຍ)', stemEl: 'ທາດດິນ', nayin: 'ທາດດິນ (ດິນກຳແພງເມືອງ)', el: 'ທາດດິນ' },
+            { gz: '庚辰 (ແກງມະໂລງ)', animal: 'ມະໂລງ (ມັງກອນ)', stemEl: 'ທາດທອງ', nayin: 'ທາດທອງ (ທອງຂີ້ເຜິ້ງ)', el: 'ທາດທອງ' },
+            { gz: '辛巳 (ຊິນມະເສັງ)', animal: 'ມະເສັງ (ງູນ້ອຍ)', stemEl: 'ທາດທອງ', nayin: 'ທາດທອງ (ທອງຂີ້ເຜິ້ງ)', el: 'ທາດທອງ' },
+            { gz: '壬午 (ຢິມມະເມຍ)', animal: 'ມະເມຍ (ມ້າ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດໄມ້ (ໄມ້ຫຼິວ)', el: 'ທາດໄມ້' },
+            { gz: '癸未 (ກຸຍມະແມ)', animal: 'ມະແມ (ແບ້)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດໄມ້ (ໄມ້ຫຼິວ)', el: 'ທາດໄມ້' },
+            { gz: '甲申 (ກ້າບວອກ)', animal: 'ວອກ (ລີງ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດນ້ຳ (ນ້ຳບໍ່ນ້ຳພຸ)', el: 'ທາດນ້ຳ' },
+            { gz: '乙酉 (ອິດລະກາ)', animal: 'ລະກາ (ໄກ່)', stemEl: 'ທາດໄມ້', nayin: 'ທາດນ້ຳ (ນ້ຳບໍ່ນ້ຳພຸ)', el: 'ທາດນ້ຳ' },
+            { gz: '丙戌 (ບິ່ງຈໍ)', animal: 'ຈໍ (ໝາ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດດິນ (ດິນຫຼັງຄາ)', el: 'ທາດດິນ' },
+            { gz: '丁亥 (ດິ່ງກຸນ)', animal: 'ກຸນ (ໝູ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດດິນ (ດິນຫຼັງຄາ)', el: 'ທາດດິນ' },
+            { gz: '戊子 (ໂບ່ວຊວດ)', animal: 'ຊວດ (ໜູ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄຟ (ໄຟສາຍຟ້າ)', el: 'ທາດໄຟ' },
+            { gz: '己丑 (ກີ່ສະຫຼູ)', animal: 'ສະຫຼູ (ງົວ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄຟ (ໄຟສາຍຟ້າ)', el: 'ທາດໄຟ' },
+            { gz: '庚寅 (ແກງຂານ)', animal: 'ຂານ (ເສືອ)', stemEl: 'ທາດທອງ', nayin: 'ທາດໄມ້ (ໄມ້ສົນ)', el: 'ທາດໄມ້' },
+            { gz: '辛卯 (ຊິນເຖາະ)', animal: 'ເຖາະ (ກະຕ່າຍ)', stemEl: 'ທາດທອງ', nayin: 'ທາດໄມ້ (ໄມ້ສົນ)', el: 'ທາດໄມ້' },
+            { gz: '壬辰 (ຢິມມະໂລງ)', animal: 'ມະໂລງ (ມັງກອນ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດນ້ຳ (ນ້ຳໄຫຼຍາວ)', el: 'ທາດນ້ຳ' },
+            { gz: '癸巳 (ກຸຍມະເສັງ)', animal: 'ມະເສັງ (ງູນ້ອຍ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດນ້ຳ (ນ້ຳໄຫຼຍາວ)', el: 'ທາດນ້ຳ' },
+            { gz: '甲午 (ກ້າບມະເມຍ)', animal: 'ມະເມຍ (ມ້າ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດທອງ (ທອງດິນຊາຍ)', el: 'ທາດທອງ' },
+            { gz: '乙未 (ອິດມະແມ)', animal: 'ມະແມ (ແບ້)', stemEl: 'ທາດໄມ້', nayin: 'ທາດທອງ (ທອງດິນຊາຍ)', el: 'ທາດທອງ' },
+            { gz: '丙申 (ບິ່ງວອກ)', animal: 'ວອກ (ລີງ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດໄຟ (ໄຟຕີນພູ)', el: 'ທາດໄຟ' },
+            { gz: '丁酉 (ດິ່ງລະກາ)', animal: 'ລະກາ (ໄກ່)', stemEl: 'ທາດໄຟ', nayin: 'ທາດໄຟ (ໄຟຕີນພູ)', el: 'ທາດໄຟ' },
+            { gz: '戊戌 (ໂບ່ວຈໍ)', animal: 'ຈໍ (ໝາ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄມ້ (ໄມ້ທົ່ງພຽງ)', el: 'ທາດໄມ້' },
+            { gz: '己亥 (ກີ່ກຸນ)', animal: 'ກຸນ (ໝູ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄມ້ (ໄມ້ທົ່ງພຽງ)', el: 'ທາດໄມ້' },
+            { gz: '庚子 (ແກງຊວດ)', animal: 'ຊວດ (ໜູ)', stemEl: 'ທາດທອງ', nayin: 'ທາດດິນ (ດິນກຳແພງ)', el: 'ທາດດິນ' },
+            { gz: '辛丑 (ຊິນສະຫຼູ)', animal: 'ສະຫຼູ (ງົວ)', stemEl: 'ທາດທອງ', nayin: 'ທາດດິນ (ດິນກຳແພງ)', el: 'ທາດດິນ' },
+            { gz: '壬寅 (ຢິມຂານ)', animal: 'ຂານ (ເສືອ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດທອງ (ທອງຄຳປິວ)', el: 'ທາດທອງ' },
+            { gz: '癸卯 (ກຸຍເຖາະ)', animal: 'ເຖາະ (ກະຕ່າຍ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດທອງ (ທອງຄຳປິວ)', el: 'ທາດທອງ' },
+            { gz: '甲辰 (ກ້າບມະໂລງ)', animal: 'ມະໂລງ (ມັງກອນ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດໄຟ (ໄຟຕະກຽງ)', el: 'ທາດໄຟ' },
+            { gz: '乙巳 (ອິດມະເສັງ)', animal: 'ມະເສັງ (ງູນ້ອຍ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດໄຟ (ໄຟຕະກຽງ)', el: 'ທາດໄຟ' },
+            { gz: '丙午 (ບິ່ງມະເມຍ)', animal: 'ມະເມຍ (ມ້າ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດນ້ຳ (ນ້ຳເທິງຟ້າ)', el: 'ທາດນ້ຳ' },
+            { gz: '丁未 (ດິ່ງມະແມ)', animal: 'ມະແມ (ແບ້)', stemEl: 'ທາດໄຟ', nayin: 'ທາດນ້ຳ (ນ້ຳເທິງຟ້າ)', el: 'ທາດນ້ຳ' },
+            { gz: '戊申 (ໂບ່ວວອກ)', animal: 'ວອກ (ລີງ)', stemEl: 'ທາດດິນ', nayin: 'ທາດດິນ (ດິນສະຖານີ)', el: 'ທາດດິນ' },
+            { gz: '己酉 (ກີ່ລະກາ)', animal: 'ລະກາ (ໄກ່)', stemEl: 'ທາດດິນ', nayin: 'ທາດດິນ (ດິນສະຖານີ)', el: 'ທາດດິນ' },
+            { gz: '庚戌 (ແກງຈໍ)', animal: 'ຈໍ (ໝາ)', stemEl: 'ທາດທອງ', nayin: 'ທາດທອງ (ທອງເຄື່ອງປະດັບ)', el: 'ທາດທອງ' },
+            { gz: '辛亥 (ຊິນກຸນ)', animal: 'ກຸນ (ໝູ)', stemEl: 'ທາດທອງ', nayin: 'ທາດທອງ (ທອງເຄື່ອງປະດັບ)', el: 'ທາດທອງ' },
+            { gz: '壬子 (ຢິມຊວດ)', animal: 'ຊວດ (ໜູ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດໄມ້ (ໄມ້ມອນ)', el: 'ທາດໄມ້' },
+            { gz: '癸丑 (ກຸຍສະຫຼູ)', animal: 'ສະຫຼູ (ງົວ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດໄມ້ (ໄມ້ມອນ)', el: 'ທາດໄມ້' },
+            { gz: '甲寅 (ກ້າບຂານ)', animal: 'ຂານ (ເສືອ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດນ້ຳ (ນ້ຳຫ້ວຍໃຫຍ່)', el: 'ທາດນ້ຳ' },
+            { gz: '乙卯 (ອິດເຖາະ)', animal: 'ເຖາະ (ກະຕ່າຍ)', stemEl: 'ທາດໄມ້', nayin: 'ທາດນ້ຳ (ນ້ຳຫ້ວຍໃຫຍ່)', el: 'ທາດນ້ຳ' },
+            { gz: '丙辰 (ບິ່ງມະໂລງ)', animal: 'ມະໂລງ (ມັງກອນ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດດິນ (ດິນຊາຍ)', el: 'ທາດດິນ' },
+            { gz: '丁巳 (ດິ່ງມະເສັງ)', animal: 'ມະເສັງ (ງູນ້ອຍ)', stemEl: 'ທາດໄຟ', nayin: 'ທາດດິນ (ດິນຊາຍ)', el: 'ທາດດິນ' },
+            { gz: '戊午 (ໂບ່ວມະເມຍ)', animal: 'ມະເມຍ (ມ້າ)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄຟ (ໄຟເທິງທ້ອງຟ້າ)', el: 'ທາດໄຟ' },
+            { gz: '己未 (ກີ່ມະແມ)', animal: 'ມະແມ (ແບ້)', stemEl: 'ທາດດິນ', nayin: 'ທາດໄຟ (ໄຟເທິງທ້ອງຟ້າ)', el: 'ທາດໄຟ' },
+            { gz: '庚申 (ແກງວອກ)', animal: 'ວອກ (ລີງ)', stemEl: 'ທາດທອງ', nayin: 'ທາດໄມ້ (ໄມ້ທັບທິມ)', el: 'ທາດໄມ້' },
+            { gz: '辛酉 (ຊິນລະກາ)', animal: 'ລະກາ (ໄກ່)', stemEl: 'ທາດທອງ', nayin: 'ທາດໄມ້ (ໄມ້ທັບທິມ)', el: 'ທາດໄມ້' },
+            { gz: '壬戌 (ຢິມຈໍ)', animal: 'ຈໍ (ໝາ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດນ້ຳ (ນ້ຳມະຫາສະໝຸດ)', el: 'ທາດນ້ຳ' },
+            { gz: '癸亥 (ກຸຍກຸນ)', animal: 'ກຸນ (ໝູ)', stemEl: 'ທາດນ້ຳ', nayin: 'ທາດນ້ຳ (ນ້ຳມະຫາສະໝຸດ)', el: 'ທາດນ້ຳ' }
         ];
 
         // 8 Ming Gua Profile & Direction Mapping (ປາຈາຍ 8 ກວ້າຊີວິດ)
         const GUA_DATA = {
             1: {
-                name: 'ກວ້າ 1 (ຄຳ / 坎)', element: 'ທາດນ້ຳ', elementBadge: 'ທາດນ້ຳ 💧',
+                name: 'ກວ້າ 1 (ຄຳ / 坎)', element: 'ທາດນ້ຳ', elementBadge: 'ທາດນ້ຳ',
                 group: 'ກຸ່ມຕາເວັນອອກ', trigram: '☵',
                 dirs: {
                     SE: { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
@@ -842,7 +857,7 @@
                 }
             },
             2: {
-                name: 'ກວ້າ 2 (ຄຸນ / 坤)', element: 'ທາດດິນ', elementBadge: 'ທາດດິນ ⛰️',
+                name: 'ກວ້າ 2 (ຄຸນ / 坤)', element: 'ທາດດິນ', elementBadge: 'ທາດດິນ',
                 group: 'ກຸ່ມຕາເວັນຕົກ', trigram: '☷',
                 dirs: {
                     NE: { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
@@ -856,7 +871,7 @@
                 }
             },
             3: {
-                name: 'ກວ້າ 3 (ຈິ້ນ / 震)', element: 'ທາດໄມ້', elementBadge: 'ທາດໄມ້ 🌲',
+                name: 'ກວ້າ 3 (ຈິ້ນ / 震)', element: 'ທາດໄມ້', elementBadge: 'ທາດໄມ້',
                 group: 'ກຸ່ມຕາເວັນອອກ', trigram: '☳',
                 dirs: {
                     S:  { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
@@ -870,7 +885,7 @@
                 }
             },
             4: {
-                name: 'ກວ້າ 4 (ຊຸ່ນ / 巽)', element: 'ທາດໄມ້', elementBadge: 'ທາດໄມ້ 🌿',
+                name: 'ກວ້າ 4 (ຊຸ່ນ / 巽)', element: 'ທາດໄມ້', elementBadge: 'ທາດໄມ້',
                 group: 'ກຸ່ມຕາເວັນອອກ', trigram: '☴',
                 dirs: {
                     N:  { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
@@ -884,7 +899,7 @@
                 }
             },
             6: {
-                name: 'ກວ້າ 6 (ເສຽນ / 乾)', element: 'ທາດທອງ', elementBadge: 'ທາດທອງ ⚔️',
+                name: 'ກວ້າ 6 (ເສຽນ / 乾)', element: 'ທາດທອງ', elementBadge: 'ທາດທອງ',
                 group: 'ກຸ່ມຕາເວັນຕົກ', trigram: '☰',
                 dirs: {
                     W:  { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
@@ -912,7 +927,7 @@
                 }
             },
             8: {
-                name: 'ກວ້າ 8 (ເກິ້ນ / 艮)', element: 'ທາດດິນ', elementBadge: 'ທາດດິນ 🏔️',
+                name: 'ກວ້າ 8 (ເກິ້ນ / 艮)', element: 'ທາດດິນ', elementBadge: 'ທາດດິນ',
                 group: 'ກຸ່ມຕາເວັນຕົກ', trigram: '☶',
                 dirs: {
                     SW: { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
@@ -926,7 +941,7 @@
                 }
             },
             9: {
-                name: 'ກວ້າ 9 (ຫຼີ / 離)', element: 'ທາດໄຟ', elementBadge: 'ທາດໄຟ 🔥',
+                name: 'ກວ້າ 9 (ຫຼີ / 離)', element: 'ທາດໄຟ', elementBadge: 'ທາດໄຟ',
                 group: 'ກຸ່ມຕາເວັນອອກ', trigram: '☲',
                 dirs: {
                     E:  { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
@@ -1370,10 +1385,10 @@
                     const fort = currentGuaData.dirs[b.dir];
                     if (fort.type === 'good') {
                         houseRingBg = isTransparentMode ? 'rgba(5, 150, 105, 0.88)' : '#059669';
-                        label = `${b.name.replace('ບ້ານ', '')} • ✨${fort.star.split(' ')[0]}`;
+                        label = `${b.name.replace('ບ້ານ', '')} • ${fort.star.split(' ')[0]}`;
                     } else {
                         houseRingBg = isTransparentMode ? 'rgba(185, 28, 28, 0.88)' : '#991b1b';
-                        label = `${b.name.replace('ບ້ານ', '')} • ⚠️${fort.star.split(' ')[0]}`;
+                        label = `${b.name.replace('ບ້ານ', '')} • ${fort.star.split(' ')[0]}`;
                     }
                 }
                 parts.push(`<path d="${createSectorPath(112, 144, b.start, b.end)}" fill="${houseRingBg}" stroke="#ffffff" stroke-width="1.2"/>`);
@@ -1622,142 +1637,346 @@
             };
         }
 
+
+        // === ICONS REPOSITORY FOR PROFESSIONAL RENDERING ===
+        const ICONS = {
+            compass: '<svg class="w-4 h-4 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>',
+            camera: '<svg class="w-4 h-4 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+            star: '<svg class="w-4 h-4 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+            mountain: '<svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>',
+            water: '<svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
+            period: '<svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+            alert: '<svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+            shield: '<svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+            check: '<svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+            rotate: '<svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>',
+            pan: '<svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>',
+            corner: '<svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="13" y="13" width="6" height="6" rx="1"/></svg>'
+        };
+
+        // === COMPLETE 81 XUAN KONG COMBINATIONS ===
+        const XUAN_KONG_81_COMBOS = {"1-1":{"title":"比和同水 (ວາລີຄູ່ສະຫງົບ)","type":"吉带平","luck":"neutral","health":"ລະວັງລະບົບໝາກໄຂ່ຫຼັງ, ພົກຍ່ຽວ, ຫູອື້, ອາການບວມນ້ຳ","wealth":"ເໝາະກັບງານສື່ສານ, ການຂົນສົ່ງ, ສິລະປະ, ເດີນທາງຕ່າງປະເທດ ແຕ່ເງິນຄຳໄຫຼອອກໄວ","remedy":"ຄວນເພີ່ມທາດໄມ້ (ຕົ້ນໄມ້ຂຽວໃບມົນ) ເພື່ອດູດຊັບແລະຖ່າຍເທພະລັງນ້ຳທີ່ລົ້ນເກີນ"},"1-2":{"title":"坤艮克水 腹疾发水 (ດິນທັບນ້ຳ - ລະວັງໂລກຊ່ອງທ້ອງ)","type":"凶","luck":"inauspicious","health":"ໂລກກະເພາະ, ມົດລູກ, ພົກຍ່ຽວອັກເສບ, ແມ່ຍິງຄອບງຳເຮັດໃຫ້ຜູ້ຊາຍປ່ວຍ","wealth":"ການເງິນຕິດຂັດ, ຖືກເອົາປຽບເລື່ອງສັນຍາ, ຜູ້ໃຫຍ່ເພດຍິງຂັດຂວາງໂຊກ","remedy":"ວາງຫຼຽນ 6 ຈັກກະພັດ (六帝钱) ຫຼື ນ້ຳເຕົ້າທອງເຫຼືອງ ເພື່ອໃຊ້ທອງຖ່າຍເທດິນ ແລະ ປົກປ້ອງນ້ຳ"},"1-3":{"title":"水生木旺 荡产招盗 (ນ້ຳລ້ຽງໄມ້ລົ້ນ - ລະວັງເສຍຊັບ)","type":"凶带吉","luck":"inauspicious","health":"ລະວັງຕັບ, ເສັ້ນເອັນ, ອາການເຈັບຂາ, ລະບົບປະສາດເຄັ່ງຕຶງ","wealth":"ລາຍຈ່າຍຫຼາຍກວ່າລາຍຮັບ, ລູກຫຼານໃຊ້ຈ່າຍຟຸມເຟືອຍ, ລະວັງໂຈນຂະໂມຍ","remedy":"ວາງໂຄມໄຟສີແດງ ຫຼື ວັດຖຸສີແດງອ່ອນ (ທາດໄຟ) ເພື່ອລະບາຍໄມ້"},"1-4":{"title":"一四同宫 准发科名 (1-4 ຮ່ວມວັງ - ບັນລຸຊື່ສຽງສະຕິປັນຍາ)","type":"大吉","luck":"auspicious","health":"ສາຍຕາດີ, ສະໝອງປອດໂປ່ງ, ອາລົມແຈ່ມໃສ, ສຸຂະພາບຈິດແຂງແຮງ","wealth":"ສອບເສັງຕິດອັນດັບ 1, ໄດ້ເລື່ອນຂັ້ນເລື່ອນຕຳແໜ່ງ, ຊື່ສຽງໂດ່ງດັງ, ງານວິຊາການແລະຂຽນປຶ້ມຮຸ່ງເຮືອງ","remedy":"ວາງໄຜ່ກວນອິມ 4 ຕົ້ນແຊ່ນ້ຳ, ປາກກາບຸນຊິມ (文昌笔 4 ດວມ), ຕັ້ງໂຕະຮຽນໜັງສື"},"1-5":{"title":"戊己克水 毒疮肾病 (ດິນພິດທັບນ້ຳ - ໂລກໝາກໄຂ່ຫຼັງ)","type":"大凶","luck":"inauspicious","health":"ໝາກໄຂ່ຫຼັງຊຸດໂຊມ, ຫູອັກເສບ, ໂລກລະບົບສືບພັນ, ພິດໃນເລືອດ","wealth":"ຖືກໂກງເງິນ, ໜີ້ສູນ, ທຸລະກິດຖືກຟ້ອງຮ້ອງ, ເສຍຊັບກະທັນຫັນ","remedy":"ວາງນ້ຳອັນຢິນ (安忍水), ຫຼຽນ 6 ຈັກກະພັດ, ນ້ຳເຕົ້າທອງເຫຼືອງ"},"1-6":{"title":"金水相生 鼎足登科 (ທອງເກີດນ້ຳ - ວາດສະໜາເຈົ້າຄົນນາຍຄົນ)","type":"大吉","luck":"auspicious","health":"ປອດ, ຫົວ, ກະດູກ ແລະ ໝາກໄຂ່ຫຼັງແຂງແຮງດີ","wealth":"ໄດ້ຮັບການສະໜັບສະໜູນຈາກຜູ້ໃຫຍ່, ລາຊະການກ້າວໜ້າ, ທຸລະກິດຄ້າຂາຍມີກຳໄລໃຫຍ່","remedy":"ວາງນ້ຳພຸເຄື່ອນໄຫວ (动水) ຫຼື ມ້າທອງເຫຼືອງ ເພື່ອກະຕຸ້ນໂຊກ"},"1-7":{"title":"金水多情 贪花恋酒 (ທອງປົນນ້ຳ - ລະວັງເລື່ອງຊູ້ສາວ)","type":"平带凶","luck":"neutral","health":"ລະວັງພະຍາດຕິດຕໍ່, ລະບົບຫາຍໃຈ, ດື່ມເຫຼົ້າເມົາຢາເກີນຂະໜາດ","wealth":"ຫາເງິນໄດ້ຄ່ອງແຕ່ເສຍໄປກັບຄວາມບັນເທີງ, ງານກາງຄືນເດັ່ນ ແຕ່ລະວັງຂ່າວສານດ້ານລົບ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水) ເພື່ອດັບພະລັງຊູ້ສາວ"},"1-8":{"title":"艮土遏水 小儿受难 (ພູຂັງນ້ຳ - ລະວັງສຸຂະພາບເດັກ)","type":"凶带吉","luck":"neutral","health":"ເດັກນ້ອຍເຈັບປ່ວຍງ່າຍ, ລະວັງກະດູກສັນຫຼັງ, ຈົມູກ, ຫູ","wealth":"ອະສັງຫາລິມະຊັບໝັ້ນຄົງ ແຕ່ເງິນສົດໝຸນວຽນຊ້າ, ລົງທຶນໄລຍະຍາວໄດ້ດີ","remedy":"ວາງລະຄັງລົມໂລຫະ ຫຼື ວັດຖຸທອງເຫຼືອງ ເພື່ອເຊື່ອມທາດດິນຫາທາດນ້ຳ"},"1-9":{"title":"水火既济 喜庆交加 (ນ້ຳໄຟສົມດຸນ - ຂ່າວດິມຸງຄຸນ)","type":"吉","luck":"auspicious","health":"ຫົວໃຈແລະໝາກໄຂ່ຫຼັງສົມດຸນກັນດີ, ລະວັງຄວາມດັນເລືອດເລັກນ້ອຍ","wealth":"ມີຊື່ສຽງ, ມີງານມຸງຄຸນ, ການຄ້າອອນລາຍແລະສື່ບັນເທີງປະສົບຜົນສຳເລັດ","remedy":"ວາງຕົ້ນໄມ້ສີຂຽວໃບມົນ ເພື່ອໃຫ້ທາດໄມ້ເປັນຂົວເຊື່ອມລະຫວ່າງນ້ຳກັບໄຟ"},"2-1":{"title":"土克水 中男不利 (ດິນພະຍາດຂົ່ມນ້ຳ)","type":"凶","luck":"inauspicious","health":"ລູກຊາຍຄົນກາງເຈັບປ່ວຍ, ລະວັງໝາກໄຂ່ຫຼັງ, ກະເພາະ, ລະບົບຍ່ອຍອາຫານ","wealth":"ເງິນທອງໄຫຼອອກຍ້ອນຄ່າປິ່ນປົວ, ແມ່ຍິງໃນບ້ານມີອຳນາດເໜືອຜູ້ຊາຍ","remedy":"ວາງຫຼຽນ 6 ຈັກກະພັດ (六帝钱) ເພື່ອຖ່າຍເທພະລັງດິນຮ້າຍ"},"2-2":{"title":"比和重土 寡妇当家 (ດາວ 2 ຄູ່ - ໂລກາຊຳເຮື້ອ)","type":"大凶","luck":"inauspicious","health":"ພະຍາດຊຳເຮື້ອ, ໂລກກະເພາະ, ມະເຮັງ, ຜ່າຕັດ, ອ່ອນເພຍຕະຫຼອດເວລາ","wealth":"ທຸລະກິດຢຸດສະງັກ, ເງິນທອງຈົມຢູ່ກັບໜີ້ສິນ, ແມ່ໝ້າຍຄອງເຮືອນ","remedy":"ວາງນ້ຳເຕົ້າທອງເຫຼືອງຄູ່ (双铜葫芦) ແລະ ຫຼຽນ 6 ຈັກກະພັດ, ຫ້າມຈູດໄຟຈູດທູບ"},"2-3":{"title":"斗牛煞 刑狱是非 (ດາວປະທະເຂົາຄວາຍ - ຜິດຖຽງຄະດີຄວາມ)","type":"凶","luck":"inauspicious","health":"ລະວັງຕັບ, ກະເພາະ, ມ້າມ, ອາການເຈັບທ້ອງກະທັນຫັນ","wealth":"ຜິດຖຽງກັນໃນຄອບຄົວ, ຄູ່ຮ່ວມທຸລະກິດແຕກແຍກ, ຂຶ້ນໂຮງຂຶ້ນສານ","remedy":"ວາງພົມສີແດງ ຫຼື ໂຄມໄຟສີແດງ ເພື່ອໃຊ້ທາດໄຟໄກ່ເກ່ຍທາດໄມ້ແລະທາດດິນ"},"2-4":{"title":"风木破土 婆媳不和 (ໄມ້ແຕກດິນ - ແມ່ຍ່າລູກໃພ້ຜິດກັນ)","type":"凶","luck":"inauspicious","health":"ມົດລູກ, ປະຈຳເດືອນຜິດປົກກະຕິ, ຜິວໜັງອັກເສບ, ພະຍາດລະບົບຫາຍໃຈ","wealth":"ຄອບຄົວຂາດຄວາມສະຫງົບ, ແມ່ຍິງໃນບ້ານຂັດແຍ້ງກັນ, ຊັບສິນຮົ່ວໄຫຼ","remedy":"ວາງວັດຖຸສີແດງ ຫຼື ໂຄມໄຟສີແດງ ເພື່ອປ່ຽນໄມ້ເປັນໄຟ ແລະ ໄຟລ້ຽງດິນ"},"2-5":{"title":"二五交加 必损主 (2-5 ໂລກາພະຍາດໂມຫະ - ຕ້ອງຫ້າມຮ້າຍແຮງ)","type":"大凶","luck":"inauspicious","health":"ອຸບັດຕິເຫດໃຫຍ່, ພະຍາດຮ້າຍແຮງ, ຜ່າຕັດດ່ວນ, ເສຍຊີວິດກະທັນຫັນ","wealth":"ລົ້ມລະລາຍ, ຖືກຍຶດຊັບ, ທຸລະກິດພັງທະລາຍ, ເສຍເງິນກ້ອນໃຫຍ່","remedy":"ວາງນ້ຳອັນຢິນ (安忍水), ຫຼຽນ 6 ຈັກກະພັດ, ລະຄັງລົມໂລຫະ 6 ທໍ່, ຫ້າມເຈາະທຸບເດັດຂາດ"},"2-6":{"title":"土生金 富比陶朱 (ດິນລ້ຽງທອງ - ມະຫາເສດຖີອະສັງຫາ)","type":"大吉","luck":"auspicious","health":"ສຸຂະພາບແຂງແຮງ, ຜູ້ສູງອາຍຸອາຍຸຍືນຍາວ, ລະວັງພະຍາດກະເພາະເລັກນ້ອຍ","wealth":"ຮັ່ງມີດ້ວຍທີ່ດິນ, ໂຄງການອະສັງຫາລິມະຊັບ, ລາຊະການມີຕຳແໜ່ງໃຫຍ່","remedy":"ວາງອ່າງທອງເຫຼືອງ ຫຼື ຫີນສີເຫຼືອງ ເພື່ອກະຕຸ້ນໂຊກຊັບສິນ"},"2-7":{"title":"庶妾寡妇 易生火灾 (ດິນເກີດທອງ - ລະວັງໄຟແລະຄວາມໂລບ)","type":"平带凶","luck":"neutral","health":"ປາກເປື່ອຍ, ຕຸ່ມຮ້ອນໃນ, ໂລກປອດ, ລະວັງໄຟໄໝ້ນ້ຳຮ້ອນລວກ","wealth":"ຫາເງິນໄດ້ງ່າຍແຕ່ໃຊ້ຈ່າຍໝົດໄປກັບສິ່ງໄຮ້ສາລະ, ແມ່ຍິງມີປາກສຽງກັນ","remedy":"ວາງໂຖນ້ຳສະອາດນິ້ງ (一怀清水) ເພື່ອຫຼຸດຜ່ອນຄວາມຮ້ອນ"},"2-8":{"title":"巨室之富 丑未相冲 (ດິນຄູ່ - ມະຫາຊັບແຜ່ນດິນ)","type":"吉","luck":"auspicious","health":"ລະວັງລະບົບຍ່ອຍອາຫານ, ກະເພາະ, ກິນອາຫານໃຫ້ຕົງເວລາ","wealth":"ຄອງຊັບສົມບັດມະຫາສານ, ທີ່ດິນເພີ່ມມູນຄ່າ, ໄດ້ຮັບມໍລະດົກຕົກທອດ","remedy":"ວາງເຄື່ອງປັ້ນດິນເຜົາ ຫຼື ຫີນຄຣິສຕັລສີເຫຼືອງ"},"2-9":{"title":"火炎土燥 愚钝生疾 (ໄຟເຜົາດິນແຫ້ງ - ລະວັງສາຍຕາ)","type":"平带凶","luck":"neutral","health":"ສາຍຕາມົວ, ຄວາມດັນເລືອດສູງ, ຫົວໃຈເຕັ້ນໄວ, ອາການຮ້ອນໃນຮ່າງກາຍ","wealth":"ລວຍໄວແຕ່ສຸຂະພາບຊຸດໂຊມ, ຄອບຄົວໃຈຮ້ອນຂາດຄວາມອົດທົນ","remedy":"ວາງເຄື່ອງເຄືອບດິນເຜົາສີຂາວ ຫຼື ວັດຖຸທອງເຫຼືອງ ເພື່ອລະບາຍໄຟ"},"3-1":{"title":"震雷水泛 长子劳碌 (ນ້ຳລ້ຽງໄມ້ຟົດ - ວຽກໜັກເມື່ອຍລ້າ)","type":"吉带平","luck":"neutral","health":"ຕັບ, ເສັ້ນປະສາດ, ອາການເຈັບຂາ, ນອນບໍ່ຄ່ອຍຫຼັບ","wealth":"ຫາເງິນໄດ້ດີຈາກການເດີນທາງ, ຄ້າຂາຍຕ່າງແດນ, ແຕ່ຕ້ອງແລກດ້ວຍຄວາມເມື່ອຍ","remedy":"ວາງໂຄມໄຟສີແດງ ເພື່ອປ່ຽນແຮງໄມ້ໃຫ້ກາຍເປັນປັນຍາ"},"3-2":{"title":"斗牛煞 刑狱是非 (ດາວປະທະເຂົາຄວາຍ - ຜິດຖຽງຄະດີຄວາມ)","type":"凶","luck":"inauspicious","health":"ກະເພາະ, ຕັບ, ມ້າມ, ອາການປວດທ້ອງຊຳເຮື້ອ","wealth":"ຂຶ້ນໂຮງຂຶ້ນສານ, ຖືກປັບໄໝ, ຫຸ້ນສ່ວນທໍລະຍົດ, ສູນເສຍເງິນຄຳ","remedy":"ວາງພົມສີແດງ ຫຼື ໂຄມໄຟສີແດງ ເພື່ອສະຫຼາຍແຮງປະທະ"},"3-3":{"title":"蚩尤碧木 盗贼官非 (ດາວ 3 ຄູ່ - ຜິດຖຽງໂຈນປຸ້ນ)","type":"大凶","luck":"inauspicious","health":"ໂລກປະສາດ, ເຈັບແຂນຂາ, ອາລົມຮ້າຍແຮງຂາດສະຕິ","wealth":"ຖືກໂຈນຂະໂມຍຂຶ້ນບ້ານ, ຂັດແຍ້ງເລື່ອງສັນຍາ, ເສຍຊັບຍ້ອນຄະດີຄວາມ","remedy":"ວາງໂຄມໄຟສີແດງສະຫວ່າງ, ພົມແດງ, ຫ້າມວາງຕົ້ນໄມ້ໃນທິດນີ້"},"3-4":{"title":"碧绿风魔 颠狂之症 (ໄມ້ຄູ່ລົມພັດ - ອາລົມແປປ່ວນ)","type":"凶","luck":"inauspicious","health":"ພະຍາດປະສາດ, ພະຍາດຫອບຫືດ, ພູມແພ້, ນອນຝັນຮ້າຍ","wealth":"ຊີວິດເລື່ອນລອຍ, ປ່ຽນວຽກເລື້ອຍໆ, ເງິນທອງເກັບບໍ່ຢູ່","remedy":"ວາງໂຄມໄຟສີແດງອຸ່ນ, ເປີດໄຟໃຫ້ສະຫວ່າງສະເໝີ"},"3-5":{"title":"寒户生瘟 伤及长房 (ໄມ້ແຕກດິນພິດ - ລະວັງໂລກລະບາດ)","type":"大凶","luck":"inauspicious","health":"ຕັບອັກເສບ, ກະດູກຫັກ, ແຂນຂາບາດເຈັບ, ພະຍາດຕິດຕໍ່","wealth":"ທຸລະກິດພົບອຸປະສັກໃຫຍ່, ລູກຊາຍກົກປະສົບເຄາະຮ້າຍ, ເງິນທອງຂາດມື","remedy":"ວາງລະຄັງລົມທອງເຫຼືອງ, ຫຼຽນ 6 ຈັກກະພັດ, ນ້ຳອັນຢິນ (安忍水)"},"3-6":{"title":"震乾相克 刀剑砍伐 (ມີດຟັນໄມ້ - ອຸບັດຕິເຫດແຂນຂາ)","type":"凶","luck":"inauspicious","health":"ຖືກຂອງມີຄົມບາດ, ກະດູກຫັກ, ອຸບັດຕິເຫດຕາມທ້ອງຖະໜົນ, ພະຍາດຫົວ","wealth":"ຂັດແຍ້ງກັບເຈົ້ານາຍ/ຜູ້ໃຫຍ່, ຖືກກວດສອບພາສີ, ການງານຕິດຂັດ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水) ເພື່ອໃຫ້ທາດນ້ຳເຊື່ອມລະຫວ່າງທອງກັບໄມ້"},"3-7":{"title":"穿心煞 贼盗侵凌 (ດາວກະບີ່ແທງຫົວໃຈ - ໂຈນປຸ້ນລັກ)","type":"大凶","luck":"inauspicious","health":"ລະວັງຖືກຜ່າຕັດ, ຖືກອາວຸດ, ເລືອດຕົກຍາງອອກ, ພະຍາດຕັບແລະປອດ","wealth":"ຖືກໂຈນປຸ້ນ, ຖືກຫັກຫຼັງ, ຖືກສໍ້ໂກງ, ສູນເສຍຊັບສິນມີຄ່າ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水) ຫຼື ນ້ຳອັນຢິນ, ຫ້າມວາງວັດຖຸໂລຫະແຫຼມຄົມ"},"3-8":{"title":"伤小口 筋骨之痛 (ໄມ້ທັບພູ - ເດັກນ້ອຍເຈັບກະດູກ)","type":"平带凶","luck":"neutral","health":"ເຈັບເສັ້ນເອັນ, ຂໍ້ຕໍ່, ກະດູກສັນຫຼັງ, ເດັກນ້ອຍດື້ດ້ານບໍ່ເຊື່ອຟັງ","wealth":"ການລົງທຶນຊັກຊ້າ, ວຽກງານບໍ່ຄືບໜ້າຕາມເປົ້າໝາຍ","remedy":"ວາງໂຄມໄຟສີແດງ ຫຼື ວັດຖຸສີແດງ ເພື່ອເຊື່ອມທາດ"},"3-9":{"title":"木火通明 聪明利官 (ໄມ້ເກີດໄຟສະຫວ່າງ - ປັນຍາເລີດລ້ຳ)","type":"大吉","luck":"auspicious","health":"ຈິດໃຈແຈ່ມໃສ, ຫົວໃຈແຂງແຮງ, ສາຍຕາຄົມແຫຼວ","wealth":"ຊື່ສຽງໂດ່ງດັງ, ງານອອກແບບ, ສິລະປະ, ເທັກໂນໂລຢີ, ໄດ້ເລື່ອນຕຳແໜ່ງສູງ","remedy":"ວາງຕົ້ນໄມ້ຂຽວ ແລະ ໂຄມໄຟສະຫວ່າງ ເພື່ອເພີ່ມພະລັງ"},"4-1":{"title":"名扬天下 科甲连绵 (1-4 ຮ່ວມວັງ - ປັນຍາຊື່ສຽງໂດ່ງດັງ)","type":"大吉","luck":"auspicious","health":"ສຸຂະພາບຈິດດີເລີດ, ສາຍຕາແຈ່ມໃສ, ຊີວິດມີຄວາມສຸກ","wealth":"ສອບເສັງຜ່ານງ່າຍດາຍ, ໄດ້ຮັບທຶນການສຶກສາ, ຊື່ສຽງໃນວົງສັງຄົມ, ງານຂຽນຮຸ່ງເຮືອງ","remedy":"ວາງໄຜ່ກວນອິມ 4 ຕົ້ນ, ປາກກາບຸນຊິມ 4 ດວມ, ຕັ້ງໂຕະຮຽນ/ໂຕະເຮັດວຽກ"},"4-2":{"title":"风黄煞 婆媳不和 (ລົມຕີດິນ - ແມ່ຍ່າລູກໃພ້ຜິດກັນ)","type":"凶","luck":"inauspicious","health":"ພະຍາດມົດລູກ, ທ້ອງອືດ, ຜິວໜັງຄັນ, ອາການວິນຫົວ","wealth":"ຄອບຄົວແຕກແຍກ, ແມ່ຍິງໃນເຮືອນເຈັບປ່ວຍເສຍເງິນຄຳ","remedy":"ວາງໂຄມໄຟສີແດງ ຫຼື ພົມສີແດງ"},"4-3":{"title":"同类相残 狂风拔树 (ລົມພະຍຸພັດຕົ້ນໄມ້ - ຄວາມບໍ່ສະຫງົບ)","type":"凶","luck":"inauspicious","health":"ລະວັງລະບົບປະສາດ, ພູມແພ້, ເຈັບຄໍ, ອາລົມວຸ້ນວາຍ","wealth":"ຖືກຄົນໃກ້ຊິດແຂ່ງຂັນ, ລາຍຈ່າຍບໍ່ຄາດຝັນ, ການງານປ່ຽນແປງໄວ","remedy":"ວາງໂຄມໄຟສີແດງອ່ອນ ເພື່ອດູດຊັບພະລັງໄມ້ທີ່ເກີນ"},"4-4":{"title":"双木成林 文昌大发 (ດາວ 4 ຄູ່ - ມະຫາປັນຍາວິຊາການ)","type":"大吉","luck":"auspicious","health":"ສຸຂະພາບແຂງແຮງດີ, ຈິດໃຈສະຫງົບ, ອາຍຸຍືນຍາວ","wealth":"ປະສົບຜົນສຳເລັດດ້ານການຮຽນ, ວັດທະນະທຳ, ສື່ສານມວນຊົນ, ມີສະເໜ່ເມດຕາມະຫານິຍົມ","remedy":"ວາງຫໍບຸນຊິມ (文昌塔) ຫຼື ໄຜ່ກວນອິມ 4 ຕົ້ນ"},"4-5":{"title":"瘟癀发病 股肱受损 (ລົມພັດດິນພິດ - ພະຍາດລະບົບຫາຍໃຈ)","type":"大凶","luck":"inauspicious","health":"ພູມແພ້ຮ້າຍແຮງ, ພະຍາດຜິວໜັງ, ຕິດເຊື້ອ, ເຈັບແຂນຂາ","wealth":"ທຸລະກິດຖືກໂຈະ, ເງິນທອງຕິດຂັດ, ຖືກສໍ້ໂກງ","remedy":"ວາງຫຼຽນ 6 ຈັກກະພັດ, ລະຄັງລົມໂລຫະ, ນ້ຳອັນຢິນ (安忍水)"},"4-6":{"title":"悬梁煞 刀伤骨折 (ມີດຕັດໄມ້ - ລະວັງກະດູກແລະຄໍ)","type":"凶","luck":"inauspicious","health":"ເຈັບກະດູກຄໍ, ປວດບ່າໄຫຼ່, ໄມເກຣນ, ພະຍາດປອດ","wealth":"ຖືກເຈົ້ານາຍກົດດັນ, ຄະດີຄວາມເລື່ອງສັນຍາ, ເສຍຊັບ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水) ເພື່ອເຊື່ອມທາດ"},"4-7":{"title":"刀光剑影 桃花受损 (ມີດແຫຼມຕັດດອກໄມ້ - ຊູ້ສາວເສຍຊັບ)","type":"凶","luck":"inauspicious","health":"ພະຍາດລະບົບຫາຍໃຈ, ໄອຊຳເຮື້ອ, ຖືກຂອງມີຄົມບາດ","wealth":"ເສຍເງິນຍ້ອນເລື່ອງຊູ້ສາວ, ຖືກແບລັກເມລ, ຊື່ສຽງເສື່ອມເສຍ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水) ເພື່ອດັບໄຟຮ້າຍ"},"4-8":{"title":"幼童受克 关节酸痛 (ໄມ້ທັບພູ - ລະວັງສຸຂະພາບເດັກ)","type":"平带凶","luck":"neutral","health":"ເດັກນ້ອຍເຈັບຂໍ້ຕໍ່, ກະດູກ, ພະຍາດຈົມູກ, ພູມແພ້","wealth":"ທຸລະກິດອະສັງຫາລິມະຊັບຊັກຊ້າ, ເງິນທອງເຂົ້າຊ້າ","remedy":"ວາງໂຄມໄຟສີແດງ ຫຼື ວັດຖຸສີແດງ"},"4-9":{"title":"木火相生 辉光照耀 (ໄມ້ເກີດໄຟ - ລາບຍົດຊື່ສຽງ)","type":"大吉","luck":"auspicious","health":"ສາຍຕາດີ, ຫົວໃຈແຂງແຮງ, ຈິດໃຈເບີກບານ","wealth":"ໄດ້ຮັບລາງວັນໃຫຍ່, ທຸລະກິດອອນລາຍແລະການສື່ສານຈະເລີນກ້າວໜ້າ, ມີຂ່າວດີຕະຫຼອດ","remedy":"ວາງຕົ້ນໄມ້ສີຂຽວ ແລະ ເປີດໄຟສະຫວ່າງ"},"5-1":{"title":"土遏流水 毒疮中耳 (ດິນພິດຂັງນ້ຳ - ໂລກໝາກໄຂ່ຫຼັງ)","type":"大凶","luck":"inauspicious","health":"ພະຍາດໝາກໄຂ່ຫຼັງ, ພົກຍ່ຽວ, ຫູອັກເສບ, ຕິດເຊື້ອໃນກະແສເລືອດ","wealth":"ຖືກໂກງເງິນ, ໜີ້ສູນ, ລົ້ມລະລາຍ, ເສຍຊັບກະທັນຫັນ","remedy":"ວາງນ້ຳອັນຢິນ (安忍水), ຫຼຽນ 6 ຈັກກະພັດ, ນ້ຳເຕົ້າທອງເຫຼືອງ"},"5-2":{"title":"二五交加 疾病缠身 (2-5 ໂລກາພະຍາດໂມຫະ - ຕ້ອງຫ້າມຮ້າຍແຮງ)","type":"大凶","luck":"inauspicious","health":"ອຸບັດຕິເຫດໃຫຍ່, ພະຍາດມະເຮັງ, ຜ່າຕັດດ່ວນ, ພະຍາດຊຳເຮື້ອຮັກສາບໍ່ເຊົາ","wealth":"ເສຍຊັບສິນໝົດຕົວ, ທຸລະກິດພັງທະລາຍ, ໜີ້ສິນລົ້ນພົ້ນ","remedy":"ວາງນ້ຳອັນຢິນ (安忍水), ຫຼຽນ 6 ຈັກກະພັດ, ລະຄັງລົມໂລຫະ 6 ທໍ່, ຫ້າມເຈາະທຸບເດັດຂາດ"},"5-3":{"title":"碧瘟毒菌 脾胃损伤 (ໄມ້ແຕກດິນພິດ - ລະວັງໂລກກະເພາະ)","type":"大凶","luck":"inauspicious","health":"ໂລກກະເພາະລຳໄສ້, ຕັບອັກເສບ, ອາຫານເປັນພິດ, ບາດເຈັບແຂນຂາ","wealth":"ຖືກຟ້ອງຮ້ອງ, ຖືກປັບໄໝ, ທຸລະກິດຕິດຂັດຢ່າງໜັກ","remedy":"ວາງຫຼຽນ 6 ຈັກກະພັດ ແລະ ນ້ຳເຕົ້າທອງເຫຼືອງ"},"5-4":{"title":"风疾毒疮 股肱之灾 (ລົມພິດ - ລະວັງພູມແພ້ແລະຜິວໜັງ)","type":"大凶","luck":"inauspicious","health":"ໂລກຜິວໜັງອັກເສບ, ພູມແພ້ຮ້າຍແຮງ, ພະຍາດລະບົບຫາຍໃຈ","wealth":"ເງິນທອງຮົ່ວໄຫຼ, ທຸລະກິດຢຸດສະງັກ, ຖືກຫຼອກລວງ","remedy":"ວາງຫຼຽນ 6 ຈັກກະພັດ, ລະຄັງລົມໂລຫະ"},"5-5":{"title":"双黄大煞 祸患频生 (ດາວ 5 ຄູ່ - ມະຫາວິບັດ)","type":"大凶","luck":"inauspicious","health":"ອຸບັດຕິເຫດເຖິງຊີວິດ, ພະຍາດຮ້າຍແຮງທີ່ສຸດ, ຜ່າຕັດໃຫຍ່","wealth":"ລົ້ມລະລາຍສິ້ນເຊີງ, ຖືກຍຶດຊັບ, ສູນເສຍຄົນຮັກແລະຊັບສິນ","remedy":"ວາງນ້ຳອັນຢິນໃຫຍ່ (大号安忍水), ຫຼຽນ 6 ຈັກກະພັດ, ລະຄັງລົມທອງເຫຼືອງ 6 ທໍ່, ຫ້າມເຄື່ອນໄຫວ/ເຈາະທຸບ"},"5-6":{"title":"土生乾金 官非化解 (ດິນພິດເກີດທອງ - ອຳນາດແຕ່ເມື່ອຍ)","type":"吉带凶","luck":"neutral","health":"ລະວັງໂລກປອດ, ຫົວ, ໄມເກຣນ, ຄວາມດັນເລືອດ","wealth":"ມີອຳນາດວາດສະໜາ, ໄດ້ເລື່ອນຕຳແໜ່ງ ແຕ່ຕ້ອງຜ່ານອຸປະສັກໜັກໜ່ວງ","remedy":"ວາງນ້ຳເຕົ້າທອງເຫຼືອງ ຫຼື ລະຄັງລົມໂລຫະ ເພື່ອດູດພະລັງດິນຮ້າຍ"},"5-7":{"title":"毒煞交侵 肺痈口疮 (ດິນພິດເກີດທອງແຫຼມ - ໂລກປອດແລະປາກ)","type":"大凶","luck":"inauspicious","health":"ໂລກປອດ, ວັນນະໂລກ, ປາກເປື່ອຍ, ຕິດສິ່ງເສບຕິດ, ອາຫານເປັນພິດ","wealth":"ຖືກໂກງ, ຖືກປັບໄໝ, ເສຍຊັບຍ້ອນຄົນຫຼອກລວງ, ຄະດີຄວາມ","remedy":"ວາງນ້ຳອັນຢິນ (安忍水) ແລະ ຫຼຽນ 6 ຈັກກະພັດ"},"5-8":{"title":"困顿难行 伤及幼男 (ດິນທັບດິນ - ທຸລະກິດຕິດຂັດ)","type":"凶","luck":"inauspicious","health":"ເດັກນ້ອຍເຈັບປ່ວຍງ່າຍ, ລະບົບຍ່ອຍອາຫານອຸດຕັນ, ກະດູກສັນຫຼັງ","wealth":"ເງິນທອງຈົມ, ຂາຍທີ່ດິນບໍ່ອອກ, ລົງທຶນຕິດຂັດ","remedy":"ວາງລະຄັງລົມທອງເຫຼືອງ ຫຼື ຫຼຽນ 6 ຈັກກະພັດ"},"5-9":{"title":"烈火生毒 火灾血光 (ໄຟລ້ຽງດິນພິດ - ລະວັງໄຟແລະເສັ້ນເລືອດ)","type":"大凶","luck":"inauspicious","health":"ພະຍາດຫົວໃຈ, ເສັ້ນເລືອດໃນສະໝອງ, ຕາບອດ, ຄວາມດັນສູງສຸດຂີດ","wealth":"ໄຟໄໝ້, ສູນເສຍຊັບສິນກະທັນຫັນ, ລົ້ມລະລາຍໄວວາ","remedy":"ວາງນ້ຳອັນຢິນ (安忍水), ນ້ຳເຕົ້າທອງເຫຼືອງ, ຫ້າມວາງສີແດງຫຼືຈູດໄຟ"},"6-1":{"title":"金生丽水 官运亨通 (ທອງເກີດນ້ຳງາມ - ວາດສະໜານາຍຄົນ)","type":"大吉","luck":"auspicious","health":"ປອດ, ຫົວ, ກະດູກ ແລະ ໝາກໄຂ່ຫຼັງແຂງແຮງ, ຈິດໃຈສະຫງົບ","wealth":"ລາຊະການກ້າວໜ້າ, ເປັນເຈົ້າຄົນນາຍຄົນ, ທຸລະກິດໃຫຍ່ປະສົບຜົນສຳເລັດ, ມີຜູ້ໃຫຍ່ອຸປະຖຳ","remedy":"ວາງນ້ຳພຸເຄື່ອນໄຫວ (动水) ຫຼື ຮູບປັ້ນມ້າທອງເຫຼືອງ"},"6-2":{"title":"乾坤交泰 富甲一方 (ດິນລ້ຽງທອງໃຫຍ່ - ມະຫາເສດຖີທີ່ດິນ)","type":"大吉","luck":"auspicious","health":"ອາຍຸຍືນຍາວ, ສຸຂະພາບແຂງແຮງ, ລະວັງກະເພາະເລັກນ້ອຍ","wealth":"ຄອບຄອງອະສັງຫາລິມະຊັບມະຫາສານ, ທຸລະກິດໝັ້ນຄົງຖາວອນ, ຄອບຄົວອົບອຸ່ນ","remedy":"ວາງອ່າງທອງເຫຼືອງ ຫຼື ເຄື່ອງເຄືອບດິນເຜົາສີເຫຼືອງ"},"6-3":{"title":"金伐长男 足疾官非 (ມີດຟັນໄມ້ - ຜິດຖຽງຜູ້ໃຫຍ່)","type":"凶","luck":"inauspicious","health":"ເຈັບຂາ, ຕັບ, ເສັ້ນເອັນ, ຖືກຂອງມີຄົມບາດ","wealth":"ຂັດແຍ້ງກັບເຈົ້ານາຍ, ຖືກກວດສອບບັນຊີ, ເສຍຊັບຍ້ອນຄະດີຄວາມ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水) ເພື່ອເຊື່ອມທາດ"},"6-4":{"title":"劈柴破木 颈椎劳损 (ມີດຕັດໄມ້ - ລະວັງກະດູກຄໍ)","type":"凶","luck":"inauspicious","health":"ເຈັບກະດູກຄໍ, ໄມເກຣນ, ພະຍາດຫົວ, ພະຍາດລະບົບຫາຍໃຈ","wealth":"ຖືກຜູ້ໃຫຍ່ກົດດັນ, ຜິດສັນຍາ, ເສຍຊັບສິນ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水) ເພື່ອເຊື່ອມທາດ"},"6-5":{"title":"土金相生 权威显赫 (ດິນພິດເກີດທອງ - ອຳນາດແຕ່ລະວັງປອດ)","type":"吉带凶","luck":"neutral","health":"ໂລກປອດ, ຫົວ, ຄວາມດັນເລືອດ, ເມື່ອຍລ້າສະສົມ","wealth":"ມີອຳນາດເດັດຂາດ, ຄຸມຄົນໄດ້ດີ, ແຕ່ມີສັດຕູຮອບດ້ານ","remedy":"ວາງນ້ຳເຕົ້າທອງເຫຼືອງ ຫຼື ລະຄັງລົມໂລຫະ"},"6-6":{"title":"双乾并照 武职升迁 (ດາວ 6 ຄູ່ - ມະຫາອຳນາດຜູ້ນຳ)","type":"大吉","luck":"auspicious","health":"ຮ່າງກາຍແຂງແກ່ນ, ລະວັງເຈັບຫົວຫຼືຄວາມດັນເລືອດຍ້ອນຄວາມຄຽດ","wealth":"ເປັນຜູ້ນຳສູງສຸດ, ທະຫານ/ຕຳຫຼວດ/ນັກບໍລິຫານໄດ້ເລື່ອນຍົດໃຫຍ່, ຊື່ສຽງກ້ອງກັງວານ","remedy":"ວາງຫີນສີດຳ ຫຼື ໂຖນ້ຳນິ້ງ ເພື່ອຫຼຸດຄວາມແຂງກະດ້າງ"},"6-7":{"title":"交剑煞 兵戈相见 (ດາວກະບີ່ປະທະ - ອຸບັດຕິເຫດຜ່າຕັດ)","type":"大凶","luck":"inauspicious","health":"ຖືກຂອງມີຄົມບາດ, ອຸບັດຕິເຫດລົດຊົນ, ຜ່າຕັດ, ໂລກປອດແລະຄໍ","wealth":"ການແຂ່ງຂັນດຸເດືອດ, ຂຶ້ນໂຮງຂຶ້ນສານ, ຖືກຫັກຫຼັງທາງທຸລະກິດ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水) ຫຼື ນ້ຳອັນຢິນ ເພື່ອຫຼຸດຜ່ອນພະລັງທອງ"},"6-8":{"title":"富贵吉祥 武贵登峰 (ດິນເກີດທອງ - ມະຫາລາບຍົດສັກ)","type":"大吉","luck":"auspicious","health":"ກະດູກແຂງແຮງ, ປອດແລະກະເພາະສົມດຸນ, ອາຍຸໝັ້ນຂວັນຍືນ","wealth":"ຮັ່ງມີມະຫາສານ, ທຸລະກິດໝັ້ນຄົງ, ໄດ້ເລື່ອນຂັ້ນເລື່ອນຕຳແໜ່ງ, ບາຣະມີສູງສົ່ງ","remedy":"ວາງອ່າງທອງເຫຼືອງ ຫຼື ກ້ອນຫີນທຳມະຊາດ"},"6-9":{"title":"火烧天门 家长受难 (ໄຟເຜົາປະຕູສະຫວັນ - ລະວັງຫົວໃຈແລະພໍ່)","type":"大凶","luck":"inauspicious","health":"ເສັ້ນເລືອດໃນສະໝອງແຕກ, ໂລກຫົວໃຈ, ໄມເກຣນ, ພໍ່/ຜູ້ນຳຄອບຄົວເຈັບປ່ວຍໜັກ","wealth":"ລູກຫຼານກະບົດຕໍ່ພໍ່ແມ່, ຖືກເຈົ້ານາຍລົງໂທດ, ເສຍຊັບກະທັນຫັນ","remedy":"ວາງເຄື່ອງເຄືອບດິນເຜົາສີເຫຼືອງ (ທາດດິນ) ເພື່ອດູດໄຟແລະລ້ຽງທອງ"},"7-1":{"title":"金水相生 辩才无碍 (ທອງເກີດນ້ຳ - ວາຈາເປັນຊັບ)","type":"吉","luck":"auspicious","health":"ສຽງດັງຟັງຊັດ, ປອດແລະໝາກໄຂ່ຫຼັງດີ, ລະວັງເລື່ອງຊູ້ສາວ","wealth":"ນັກຂາຍ, ນັກເຈລະຈາ, ທະນາຍຄວາມ, ພິທີກອນປະສົບຜົນສຳເລັດສູງ, ເງິນທອງໄຫຼມາເທມາ","remedy":"ວາງນ້ຳພຸເຄື່ອນໄຫວ (动水) ຫຼື ຕູ້ປາ"},"7-2":{"title":"庶妾寡妇 阴气过盛 (ດິນລ້ຽງທອງແຫຼມ - ຜູ້ຍິງຄອບງຳ)","type":"平带凶","luck":"neutral","health":"ພະຍາດມົດລູກ, ປາກເປື່ອຍ, ຜິວໜັງອັກເສບ, ອາລົມຊຶມເສົ້າ","wealth":"ແມ່ຍິງໃນບ້ານມີອຳນາດແຕ່ມັກຜິດຖຽງກັນ, ເງິນທອງຮົ່ວໄຫຼ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水) ເພື່ອຫຼຸດພະລັງ"},"7-3":{"title":"穿心煞 贼盗侵凌 (ດາວກະບີ່ແທງຫົວໃຈ - ໂຈນປຸ້ນລັກ)","type":"大凶","luck":"inauspicious","health":"ຖືກອາວຸດ, ເລືອດຕົກຍາງອອກ, ຜ່າຕັດ, ໂລກຕັບແລະປອດ","wealth":"ຖືກໂຈນປຸ້ນ, ຖືກຫັກຫຼັງ, ຖືກສໍ້ໂກງ, ສູນເສຍຊັບສິນມີຄ່າ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水) ຫຼື ນ້ຳອັນຢິນ"},"7-4":{"title":"刀光剑影 桃花受损 (ມີດຕັດດອກໄມ້ - ຊູ້ສາວເສຍຊັບ)","type":"凶","luck":"inauspicious","health":"ພະຍາດລະບົບຫາຍໃຈ, ໄອຊຳເຮື້ອ, ຖືກຂອງມີຄົມບາດ","wealth":"ເສຍເງິນຍ້ອນເລື່ອງຊູ້ສາວ, ຖືກແບລັກເມລ, ຊື່ສຽງເສື່ອມເສຍ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水)"},"7-5":{"title":"毒煞交侵 肺痈口疮 (ດິນພິດເກີດທອງແຫຼມ - ໂລກປອດແລະປາກ)","type":"大凶","luck":"inauspicious","health":"ໂລກປອດ, ວັນນະໂລກ, ປາກເປື່ອຍ, ຕິດສິ່ງເສບຕິດ, ອາຫານເປັນພິດ","wealth":"ຖືກໂກງ, ຖືກປັບໄໝ, ເສຍຊັບຍ້ອນຄົນຫຼອກລວງ, ຄະດີຄວາມ","remedy":"ວາງນ້ຳອັນຢິນ (安忍水) ແລະ ຫຼຽນ 6 ຈັກກະພັດ"},"7-6":{"title":"交剑煞 兵戈相见 (ດາວກະບີ່ປະທະ - ອຸບັດຕິເຫດຜ່າຕັດ)","type":"大凶","luck":"inauspicious","health":"ຖືກຂອງມີຄົມບາດ, ອຸບັດຕິເຫດລົດຊົນ, ຜ່າຕັດ, ໂລກປອດແລະຄໍ","wealth":"ການແຂ່ງຂັນດຸເດືອດ, ຂຶ້ນໂຮງຂຶ້ນສານ, ຖືກຫັກຫຼັງທາງທຸລະກິດ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水) ຫຼື ນ້ຳອັນຢິນ"},"7-7":{"title":"双金破军 盗贼横行 (ດາວ 7 ຄູ່ - ໂຈນປຸ້ນປາກສຽງ)","type":"大凶","luck":"inauspicious","health":"ໂລກປອດ, ເຈັບຄໍ, ຖືກຂອງມີຄົມ, ລະວັງໄຟໄໝ້ນ້ຳຮ້ອນລວກ","wealth":"ຖືກຂະໂມຍ, ຖືກສໍ້ໂກງ, ຜິດຖຽງກັນຍ້ອນຄຳເວົ້າ, ເສຍຊັບສິນ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水) ຫຼື ແຈກັນໃສ່ນ້ຳ"},"7-8":{"title":"生财有道 少男相助 (ດິນລ້ຽງທອງ - ໂຊກລາບຄ່ອງຕົວ)","type":"吉","luck":"auspicious","health":"ສຸຂະພາບແຂງແຮງ, ປອດແລະກະເພາະດີ, ຮ່າງກາຍກະປີ້ກະເປົ່າ","wealth":"ຄ້າຂາຍຄ່ອງຕົວ, ທຸລະກິດບັນເທີງ, ອາຫານ, ອະສັງຫາລິມະຊັບມີກຳໄລງາມ","remedy":"ວາງອ່າງທອງເຫຼືອງ ຫຼື ຫີນສີເຫຼືອງ"},"7-9":{"title":"九七穿心 回禄之灾 (ໄຟເຜົາທອງ - ລະວັງໄຟໄໝ້ເສຍຊັບ)","type":"大凶","luck":"inauspicious","health":"ໂລກຫົວໃຈ, ປອດ, ຕາອັກເສບ, ເລືອດອອກຕາມຮ່າງກາຍ","wealth":"ລະວັງໄຟໄໝ້ບ້ານ/ຮ້ານ, ຖືກຟ້ອງຮ້ອງ, ເລື່ອງຊູ້ສາວເຮັດໃຫ້ສູນເສຍຊັບ","remedy":"ວາງເຄື່ອງເຄືອບດິນເຜົາ (ທາດດິນ) ເພື່ອດູດໄຟ ແລະ ວາງນ້ຳສະອາດ"},"8-1":{"title":"土克水 伤幼少男 (ດິນທັບນ້ຳ - ລະວັງສຸຂະພາບເດັກ)","type":"平带凶","luck":"neutral","health":"ຫູອັກເສບ, ໝາກໄຂ່ຫຼັງອ່ອນແອ, ເດັກນ້ອຍເຈັບປ່ວຍງ່າຍ","wealth":"ລາຍຮັບສະໝ່ຳສະເໝີແຕ່ໝຸນວຽນຊ້າ, ຕ້ອງອົດທົນລໍຖ້າຜົນຕອບແທນ","remedy":"ວາງລະຄັງລົມໂລຫະ ຫຼື ຫຼຽນ 6 ຈັກກະພັດ"},"8-2":{"title":"坤艮相合 田产丰盛 (ດິນຄູ່ມິດຕະພາບ - ມະຫາທີ່ດິນ)","type":"吉","luck":"auspicious","health":"ລະວັງລະບົບຍ່ອຍອາຫານ, ກະເພາະ, ຄວນອອກກຳລັງກາຍສະໝ່ຳສະເໝີ","wealth":"ລວຍທີ່ດິນ, ອະສັງຫາລິມະຊັບເຕີບໂຕ, ໄດ້ຮັບມໍລະດົກ, ທຸລະກິດໝັ້ນຄົງ","remedy":"ວາງເຄື່ອງປັ້ນດິນເຜົາ ຫຼື ຫີນຄຣິສຕັລ"},"8-3":{"title":"伤小儿 筋骨伤残 (ໄມ້ແຕກພູ - ລະວັງກະດູກແລະເດັກ)","type":"凶","luck":"inauspicious","health":"ເຈັບເສັ້ນເອັນ, ຂໍ້ຕໍ່, ກະດູກຫັກ, ເດັກນ້ອຍດື້ດ້ານບໍ່ເຊື່ອຟັງ","wealth":"ການລົງທຶນຖືກຂັດຂວາງ, ເງິນທອງຖືກດຶງໄວ້, ວຽກງານບໍ່ກ້າວໜ້າ","remedy":"ວາງໂຄມໄຟສີແດງ ເພື່ອເຊື່ອມທາດ"},"8-4":{"title":"损小口 风湿骨痛 (ໄມ້ທັບພູ - ລະວັງໂລກກະດູກ)","type":"凶","luck":"inauspicious","health":"ໂລກຂໍ້ຕໍ່ອັກເສບ, ປວດຫຼັງ, ພະຍາດຈົມູກ, ພູມແພ້","wealth":"ເດັກນ້ອຍຮຽນໜັງສືບໍ່ເກັ່ງ, ເງິນທອງເກັບບໍ່ຢູ່","remedy":"ວາງໂຄມໄຟສີແດງ"},"8-5":{"title":"尊卑失序 脾胃受寒 (ດິນພິດທັບດິນ - ໂລກກະເພາະລຳໄສ້)","type":"大凶","luck":"inauspicious","health":"ໂລກກະເພາະລຳໄສ້ຊຳເຮື້ອ, ມະເຮັງຊ່ອງທ້ອງ, ເດັກນ້ອຍເຈັບປ່ວຍ","wealth":"ລົງທຶນອະສັງຫາລິມະຊັບຕິດລົບ, ເງິນຈົມ, ທຸລະກິດຕິດຂັດ","remedy":"ວາງຫຼຽນ 6 ຈັກກະພັດ, ລະຄັງລົມໂລຫະ, ນ້ຳອັນຢິນ (安忍水)"},"8-6":{"title":"富比石崇 官贵双全 (ດິນລ້ຽງທອງ - ມະຫາເສດຖີຍົດສັກ)","type":"大吉","luck":"auspicious","health":"ສຸຂະພາບແຂງແຮງ, ກະດູກແລະປອດດີ, ຈິດໃຈສະຫງົບໝັ້ນຄົງ","wealth":"ຮັ່ງມີມະຫາສານ, ທຸລະກິດໝັ້ນຄົງ, ໄດ້ເລື່ອນຂັ້ນເລື່ອນຕຳແໜ່ງ, ບາຣະມີສູງສົ່ງ","remedy":"ວາງອ່າງທອງເຫຼືອງ ຫຼື ຫີນພູເຂົາ"},"8-7":{"title":"陶朱之富 延年益寿 (ດິນເກີດທອງ - ມະຫາເສດຖີອາຍຸຍືນ)","type":"大吉","luck":"auspicious","health":"ສຸຂະພາບແຂງແຮງ, ອາຍຸຍືນຍາວ, ຄອບຄົວມີຄວາມສຸກ","wealth":"ທຸລະກິດການຄ້າຂາຍຈະເລີນຮຸ່ງເຮືອງ, ການເຈລະຈາປະສົບຜົນສຳເລັດ, ມີລາຍໄດ້ຫຼັ່ງໄຫຼ","remedy":"ວາງອ່າງທອງເຫຼືອງ ຫຼື ຫີນສີເຫຼືອງ"},"8-8":{"title":"双八到向 盛世富贵 (ດາວ 8 ຄູ່ - ມະຫາຊັບອະສັງຫາ)","type":"吉","luck":"auspicious","health":"ສຸຂະພາບດີ, ຄອບຄົວອົບອຸ່ນ, ຈິດໃຈສະຫງົບ","wealth":"ຊັບສິນອະສັງຫາລິມະຊັບໝັ້ນຄົງ, ລາຍໄດ້ສະໝ່ຳສະເໝີ (ໃນຍຸກ 9 ເປັນໂຊກຮອງ/ຊັບເກົ່າ)","remedy":"ວາງລູກແກ້ວຄຣິສຕັລສີເຫຼືອງ ຫຼື ຫີນພູເຂົາ"},"8-9":{"title":"喜庆重来 婚嫁添丁 (ໄຟເກີດດິນ - ຂ່າວດີມຸງຄຸນແຕ່ງງານມີລູກ)","type":"大吉","luck":"auspicious","health":"ສຸຂະພາບດີ, ອາລົມແຈ່ມໃສ, ສາຍຕາແລະຫົວໃຈແຂງແຮງ","wealth":"ມີຂ່າວດິມຸງຄຸນ, ແຕ່ງງານ, ໄດ້ລູກ, ຊື້ເຮືອນໃໝ່, ທຸລະກິດໄດ້ກຳໄລໃຫຍ່","remedy":"ວາງໂຄມໄຟສີແດງ/ມ່ວງ, ຫີນຄຣິສຕັລສີມ່ວງ (Amethyst)"},"9-1":{"title":"水火既济 利于名利 (ນ້ຳໄຟສົມດຸນ - ຊື່ສຽງແລະໂຊກລາບ)","type":"大吉","luck":"auspicious","health":"ຫົວໃຈແລະໝາກໄຂ່ຫຼັງສົມດຸນກັນດີ, ອາລົມແຈ່ມໃສ, ສາຍຕາແຈ້ງ","wealth":"ມີຊື່ສຽງໂດ່ງດັງໃນໂລກອອນລາຍ, ສື່ບັນເທີງ, ເທັກໂນໂລຢີ, ໂຊກລາບເງິນຄຳຫຼັ່ງໄຫຼ","remedy":"ວາງຕົ້ນໄມ້ສີຂຽວໃບມົນ ເພື່ອເຊື່ອມທາດນ້ຳແລະທາດໄຟ"},"9-2":{"title":"愚顽之疾 眼目昏暗 (ໄຟເຜົາດິນພະຍາດ - ລະວັງສາຍຕາ)","type":"平带凶","luck":"neutral","health":"ໂລກຕາ, ຕໍ້ຕາ, ຄວາມດັນເລືອດສູງ, ໂລກຫົວໃຈ, ອາການຮ້ອນໃນ","wealth":"ຫາເງິນໄດ້ແຕ່ເສຍໄປກັບຄ່າປິ່ນປົວ, ສະມາຊິກໃນບ້ານຂາດຄວາມກະຕືລືລົ້ນ","remedy":"ວາງເຄື່ອງເຄືອບສີຂາວ ຫຼື ນ້ຳເຕົ້າທອງເຫຼືອງ ເພື່ອລະບາຍໄຟ"},"9-3":{"title":"木火通明 才华横溢 (ໄມ້ລ້ຽງໄຟ - ສະຕິປັນຍາຊື່ສຽງດັງ)","type":"大吉","luck":"auspicious","health":"ຈິດໃຈເບີກບານ, ຫົວໃຈແຂງແຮງ, ສາຍຕາຄົມແຫຼວ","wealth":"ຄວາມຄິດສ້າງສັນໂດດເດັ່ນ, ງານສື່ສານ, ອອກແບບ, ໂຄສະນາ, ໄດ້ຮັບການຍ້ອງຍໍສູງ","remedy":"ວາງຕົ້ນໄມ້ສີຂຽວ ແລະ ເປີດໄຟສະຫວ່າງ"},"9-4":{"title":"栋梁之材 文星高照 (ໄມ້ລ້ຽງໄຟງາມ - ປັນຍາວິຊາການສູງສຸດ)","type":"大吉","luck":"auspicious","health":"ສຸຂະພາບຈິດດີເລີດ, ສາຍຕາດີ, ອາລົມແຈ່ມໃສ","wealth":"ສອບເສັງຕິດອັນດັບ 1, ງານວິຊາການ, ເທັກໂນໂລຢີ, ໄດ້ເລື່ອນຕຳແໜ່ງໃຫຍ່","remedy":"ວາງໄຜ່ກວນອິມ 4 ຕົ້ນ ແລະ ໂຄມໄຟສີແດງ"},"9-5":{"title":"火炎土焦 毒热眼疾 (ໄຟເຜົາດິນພິດ - ລະວັງໂລກຮ້ອນໃນແລະຕາ)","type":"大凶","luck":"inauspicious","health":"ໂລກຫົວໃຈ, ເສັ້ນເລືອດໃນສະໝອງ, ຕາອັກເສບຮ້າຍແຮງ, ຄວາມດັນສູງ","wealth":"ລະວັງໄຟໄໝ້, ສູນເສຍຊັບສິນກະທັນຫັນ, ລົ້ມລະລາຍໄວວາ","remedy":"ວາງນ້ຳອັນຢິນ (安忍水), ຫຼຽນ 6 ຈັກກະພັດ, ຫ້າມວາງສີແດງ"},"9-6":{"title":"火烧天门 长者受克 (ໄຟເຜົາປະຕູສະຫວັນ - ລະວັງຫົວໃຈແລະພໍ່)","type":"大凶","luck":"inauspicious","health":"ເສັ້ນເລືອດໃນສະໝອງ, ໂລກຫົວໃຈ, ໄມເກຣນ, ພໍ່/ຜູ້ໃຫຍ່ເຈັບປ່ວຍໜັກ","wealth":"ຖືກເຈົ້ານາຍລົງໂທດ, ຖືກກວດສອບພາສີ, ເສຍຊັບກະທັນຫັນ","remedy":"ວາງເຄື່ອງເຄືອບດິນເຜົາສີເຫຼືອງ (ທາດດິນ) ເພື່ອດູດໄຟແລະລ້ຽງທອງ"},"9-7":{"title":"回禄之灾 桃花官非 (ໄຟເຜົາທອງ - ລະວັງໄຟໄໝ້ແລະຊູ້ສາວ)","type":"大凶","luck":"inauspicious","health":"ໂລກຫົວໃຈ, ປອດ, ຕາອັກເສບ, ເລືອດຕົກຍາງອອກ","wealth":"ລະວັງໄຟໄໝ້, ຖືກຟ້ອງຮ້ອງ, ເລື່ອງຊູ້ສາວເຮັດໃຫ້ສູນເສຍຊັບສິນ","remedy":"ວາງໂຖນ້ຳນິ້ງສະອາດ (一怀清水) ຫຼື ນ້ຳອັນຢິນ"},"9-8":{"title":"添丁进财 喜事连连 (ໄຟເກີດດິນ - ຂ່າວດີມຸງຄຸນຊັບສິນ)","type":"大吉","luck":"auspicious","health":"ສຸຂະພາບແຂງແຮງ, ຈິດໃຈເບີກບານ, ສາຍຕາແຈ້ງ","wealth":"ໄດ້ເຮືອນໃໝ່, ໄດ້ລູກ, ງານມຸງຄຸນ, ການລົງທຶນໄດ້ກຳໄລໃຫຍ່ຫຼວງ","remedy":"ວາງໂຄມໄຟສີແດງ ຫຼື ຫີນຄຣິສຕັລສີມ່ວງ"},"9-9":{"title":"双九同辉 旺丁旺财 (ດາວ 9 ຄູ່ - ມະຫາໂຊກຍຸກ 9 ສູງສຸດ)","type":"大吉","luck":"auspicious","health":"ຈິດໃຈເບີກບານມີພະລັງ, ຫົວໃຈແຂງແຮງ, ສາຍຕາຄົມແຫຼວ, ອາຍຸຍືນຍາວ","wealth":"ມຸງຄຸນສູງສຸດແຫ່ງຍຸກ 9 (2024-2043)! ມະຫາເສດຖີ, ທຸລະກິດເທັກໂນໂລຢີ, AI, ພະລັງງານ, ຄວາມງາມ ຈະເລີນຮຸ່ງເຮືອງສູງສຸດ","remedy":"ຕັ້ງນ້ຳພຸເຄື່ອນໄຫວ (动水), ຕູ້ປາ, ເປີດໄຟສະຫວ່າງ, ວາງຫີນພູເຂົາ (靠山)"}};
+
+        function checkKongWang(deg) {
+            const d = ((deg % 360) + 360) % 360;
+            const bigBoundaries = [22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5];
+            const smallBoundaries = [
+                352.5, 7.5, 37.5, 52.5, 82.5, 97.5, 127.5, 142.5,
+                172.5, 187.5, 217.5, 232.5, 262.5, 277.5, 307.5, 322.5
+            ];
+            function dist(a, b) {
+                let diff = Math.abs(a - b) % 360;
+                return diff > 180 ? 360 - diff : diff;
+            }
+            for (const b of bigBoundaries) {
+                if (dist(d, b) <= 1.5) {
+                    return {
+                        type: 'big',
+                        badgeText: '大空亡 (ມະຫາວ່າງເປົ່າ)',
+                        badgeClass: 'bg-rose-950 text-rose-300 border-rose-500/80 animate-pulse',
+                        desc: 'ເສັ້ນແບ່ງວັງໃຫຍ່ (大空亡): ພະລັງງານສອງທາດປະທະກັນ ຮວງຈຸ້ຍປັ່ນປ່ວນ ຄວນບ່ຽງແກນບ້ານ 2-3 ອົງສາເພື່ອຫຼີກລ່ຽງ'
+                    };
+                }
+            }
+            for (const b of smallBoundaries) {
+                if (dist(d, b) <= 1.5) {
+                    return {
+                        type: 'small',
+                        badgeText: '小空亡 (ວ່າງເປົ່າສາຍ)',
+                        badgeClass: 'bg-amber-950 text-amber-300 border-amber-500/80',
+                        desc: 'ເສັ້ນແບ່ງສອງພູເຂົາ (小空亡): ພະລັງງານຊີ່ສັບສົນ ໂຊກລາບແລະສຸຂະພາບບໍ່ໝັ້ນຄົງ'
+                    };
+                }
+            }
+            return {
+                type: 'pure',
+                badgeText: '正针 (ທິດກົງ)',
+                badgeClass: 'bg-emerald-950 text-emerald-300 border-emerald-500/60',
+                desc: 'ທິດກົງກາງພູເຂົາ (正针): ພະລັງງານຊີ່ບໍລິສຸດ ມຸງຄຸນສູງສຸດ'
+            };
+        }
+
+        let activePredictionTab = 'tab_stars';
+        function setPredictionTab(tabName) {
+            activePredictionTab = tabName;
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            updateLivePrediction(topCompassDeg);
+        }
+
         function updateLivePrediction(faceDeg) {
             const chart = calculateFlyingStarsChart(currentPeriod, faceDeg);
             const curPal = chart.faceInfo.palId;
             const curM = chart.mStars[curPal];
             const curP = chart.base[curPal];
             const curW = chart.wStars[curPal];
+            const comboKey = curM + '-' + curW;
+            const comboInfo = XUAN_KONG_81_COMBOS[comboKey] || {
+                title: 'ຄູ່ດາວ ' + curM + '-' + curW,
+                type: '平',
+                luck: 'neutral',
+                health: 'ຮ່າງກາຍທົ່ວໄປ, ຄວນຮັກສາຄວາມສົມດຸນ',
+                wealth: 'ລາຍຮັບປານກາງຕາມຄວາມສາມາດ',
+                remedy: 'ຮັກສາຄວາມສະອາດ ແລະ ໂປ່ງແຈ້ງ'
+            };
+            const kw = checkKongWang(faceDeg);
 
-            // 1. Update AR Star HUD (Top Screen Overlay)
+            // 1. Update Top AR & HUD Badges
             const hudM = document.getElementById('hudMountainStar');
             const hudP = document.getElementById('hudPeriodStar');
             const hudW = document.getElementById('hudWaterStar');
             const hudBadge = document.getElementById('hudBestSpotBadge');
             const hudBadgeText = document.getElementById('hudBestSpotText');
+            const mobileKongWangBadge = document.getElementById('mobileKongWangBadge');
 
-            if (hudM) hudM.textContent = `🏔️ ພູ: ${curM}`;
-            if (hudP) hudP.textContent = `🌟 ຍຸກ: ${curP}`;
-            if (hudW) hudW.textContent = `💧 ນ້ຳ: ${curW}`;
+            if (mobileKongWangBadge) {
+                mobileKongWangBadge.textContent = kw.badgeText;
+                mobileKongWangBadge.className = 'text-[9px] px-1.5 py-0.5 rounded-md font-mono font-bold border ' + kw.badgeClass;
+            }
 
-            // Check if current direction is the Best Spot
+            if (hudM) hudM.innerHTML = ICONS.mountain + ' <span>ພູ: ' + curM + '</span>';
+            if (hudP) hudP.innerHTML = ICONS.period + ' <span>ຍຸກ: ' + curP + '</span>';
+            if (hudW) hudW.innerHTML = ICONS.water + ' <span>ນ້ຳ: ' + curW + '</span>';
+
             if (hudBadge && hudBadgeText) {
                 if (curPal === chart.bestWealthPal) {
                     hudBadge.className = "flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 px-3.5 py-1 rounded-full text-[10px] font-black shadow-2xl animate-bounce pointer-events-auto border border-white/60";
-                    hudBadgeText.textContent = `🎯 【ຈຸດມຸງຄຸນໂຊກລາບສູງສຸດຍຸກ ${currentPeriod}! ດາວນ້ຳ ${curW}】 🌟🌟🌟🌟🌟`;
+                    hudBadgeText.innerHTML = ICONS.water + ' <span>【ວັງໂຊກລາບສູງສຸດຍຸກ ' + currentPeriod + '! ດາວນ້ຳ ' + curW + '】</span>';
                 } else if (curPal === chart.bestHealthPal) {
-                    hudBadge.className = "flex items-center gap-1.5 bg-gradient-to-r from-blue-500 to-teal-400 text-slate-950 px-3.5 py-1 rounded-full text-[10px] font-black shadow-2xl animate-bounce pointer-events-auto border border-white/60";
-                    hudBadgeText.textContent = `🛌 【ຈຸດມຸງຄຸນສຸຂະພາບ-ບາຣະມີສູງສຸດ! ດາວພູ ${curM}】 🌟🌟🌟🌟`;
+                    hudBadge.className = "flex items-center gap-1.5 bg-gradient-to-r from-blue-600 to-teal-400 text-white px-3.5 py-1 rounded-full text-[10px] font-black shadow-2xl animate-bounce pointer-events-auto border border-white/60";
+                    hudBadgeText.innerHTML = ICONS.mountain + ' <span>【ວັງສຸຂະພາບ & ບາຣະມີສູງສຸດ! ດາວພູ ' + curM + '】</span>';
                 } else if (curPal === chart.fiveYellowPal) {
                     hudBadge.className = "flex items-center gap-1.5 bg-rose-600 text-white px-3.5 py-1 rounded-full text-[10px] font-black shadow-2xl pointer-events-auto border border-rose-300";
-                    hudBadgeText.textContent = `⚠️ 【ຈຸດຕ້ອງຫ້າມ: ດາວ 5 ຫ້າເຫຼືອງ】 ຫ້າມເຈາະທຸບ`;
+                    hudBadgeText.innerHTML = ICONS.alert + ' <span>【ຈຸດຕ້ອງຫ້າມ: ດາວ 5 ຫ້າເຫຼືອງ】 ຫ້າມເຈາະທຸບ</span>';
                 } else if (curPal === chart.illnessPal) {
                     hudBadge.className = "flex items-center gap-1.5 bg-amber-600 text-white px-3.5 py-1 rounded-full text-[10px] font-black shadow-2xl pointer-events-auto border border-amber-300";
-                    hudBadgeText.textContent = `⚠️ 【ຈຸດດາວ 2 ພະຍາດ】 ລະວັງສຸຂະພາບ`;
+                    hudBadgeText.innerHTML = ICONS.alert + ' <span>【ຈຸດດາວ 2 ພະຍາດ】 ລະວັງສຸຂະພາບ</span>';
                 } else {
                     hudBadge.className = "hidden";
                 }
             }
 
-            // 2. Determine BaZhai match for the current direction
+            // 2. Determine BaZhai match
             let bazhaiTag = '';
             let bazhaiColor = 'text-slate-300';
+            let bazhaiDesc = '';
             if (currentGuaData) {
                 const dirCode = chart.faceInfo.pal.baguaCode;
                 const goodItem = currentGuaData.auspicious.find(a => a.dir === dirCode);
                 const badItem = currentGuaData.inauspicious.find(b => b.dir === dirCode);
                 if (goodItem) {
-                    bazhaiTag = `✨ ທິດດີ (${goodItem.name} - ${goodItem.desc})`;
+                    bazhaiTag = goodItem.name + ' (' + goodItem.desc + ')';
                     bazhaiColor = 'text-emerald-400 font-bold';
+                    bazhaiDesc = 'ທິດນີ້ເປັນທິດມຸງຄຸນຂອງທ່ານ ເໝາະສົມຢ່າງຍິ່ງໃນການເປີດຮັບພະລັງງານຊີວິດ.';
                 } else if (badItem) {
-                    bazhaiTag = `⚠️ ທິດຮ້າຍ (${badItem.name} - ${badItem.desc})`;
+                    bazhaiTag = badItem.name + ' (' + badItem.desc + ')';
                     bazhaiColor = 'text-rose-400 font-bold';
+                    bazhaiDesc = 'ທິດນີ້ເປັນທິດອັບປະມຸງຄຸນຕາມດວງຊະຕາ ຄວນຫຼີກລ່ຽງການຫັນຫົວຕຽງ ຫຼື ຕັ້ງໂຕະເຮັດວຽກ.';
                 }
             }
 
-            // 3. Best Spot Palaces labels
             const bestWealthPalObj = XUAN_KONG_PALACES[chart.bestWealthPal];
             const bestHealthPalObj = XUAN_KONG_PALACES[chart.bestHealthPal];
             const fiveYellowPalObj = XUAN_KONG_PALACES[chart.fiveYellowPal];
+            const illnessPalObj = XUAN_KONG_PALACES[chart.illnessPal];
 
-            // 4. Render HTML for Drawer & Sidebar
-            const html = `
-                <!-- Facing & Sitting Header -->
-                <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1.5">
-                    <div class="flex items-center justify-between">
-                        <span class="text-amber-300 font-bold">🏠 ໜ້າບ້ານ: ${faceDeg.toFixed(1)}° ${chart.faceInfo.pal.dir}</span>
-                        <span class="bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded text-[10px] font-mono font-bold">${chart.faceInfo.mtn.name} (${chart.faceInfo.mtn.lao})</span>
-                    </div>
-                    <div class="flex items-center justify-between text-slate-400 text-[11px]">
-                        <span>🛡️ ຫຼັງພິງ: ${((faceDeg + 180) % 360).toFixed(1)}° ${chart.sitInfo.pal.dir}</span>
-                        <span class="text-slate-400 text-[10px] font-mono">${chart.sitInfo.mtn.name} (${chart.sitInfo.mtn.lao})</span>
-                    </div>
-                </div>
+            // 3. Tab Bar
+            const tabsBar = '<div class="grid grid-cols-4 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 text-[10px] font-bold select-none mb-1">' +
+                '<button type="button" onclick="setPredictionTab(\'tab_stars\')" class="py-1 px-1 rounded-lg text-center transition ' + (activePredictionTab === 'tab_stars' ? 'bg-purple-900/80 text-purple-200 border border-purple-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">81 ຄູ່ດາວ</button>' +
+                '<button type="button" onclick="setPredictionTab(\'tab_spots\')" class="py-1 px-1 rounded-lg text-center transition ' + (activePredictionTab === 'tab_spots' ? 'bg-purple-900/80 text-purple-200 border border-purple-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">ຈຸດຍຸດທະສາດ</button>' +
+                '<button type="button" onclick="setPredictionTab(\'tab_bazhai\')" class="py-1 px-1 rounded-lg text-center transition ' + (activePredictionTab === 'tab_bazhai' ? 'bg-purple-900/80 text-purple-200 border border-purple-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">ມິ່ງກວ້າ</button>' +
+                '<button type="button" onclick="setPredictionTab(\'tab_remedies\')" class="py-1 px-1 rounded-lg text-center transition ' + (activePredictionTab === 'tab_remedies' ? 'bg-purple-900/80 text-purple-200 border border-purple-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">ເຄັດລັບແກ້</button>' +
+            '</div>';
 
-                <!-- Flying Star Chart Pattern -->
-                <div class="bg-purple-950/40 border border-purple-500/30 p-2.5 rounded-xl flex flex-col gap-1">
-                    <div class="flex items-center justify-between">
-                        <span class="text-purple-300 font-bold text-[11px]">🌟 ຜັງດາວເຫີນຍຸກ ${currentPeriod}:</span>
-                        <span class="${chart.chartColor} font-bold text-[11px]">${chart.chartType}</span>
-                    </div>
-                    <p class="text-[11px] text-slate-300 leading-relaxed mt-0.5">${chart.chartDesc}</p>
-                </div>
+            let tabContent = '';
+            if (activePredictionTab === 'tab_stars') {
+                const luckBadge = comboInfo.luck === 'auspicious'
+                    ? '<span class="bg-emerald-950/80 text-emerald-300 border border-emerald-500/50 px-2 py-0.5 rounded text-[10px] font-bold">' + comboInfo.type + ' (ມຸງຄຸນ)</span>'
+                    : (comboInfo.luck === 'inauspicious'
+                        ? '<span class="bg-rose-950/80 text-rose-300 border border-rose-500/50 px-2 py-0.5 rounded text-[10px] font-bold">' + comboInfo.type + ' (ອັບປະມຸງຄຸນ)</span>'
+                        : '<span class="bg-slate-800 text-slate-300 border border-slate-700 px-2 py-0.5 rounded text-[10px] font-bold">' + comboInfo.type + ' (ປານກາງ)</span>');
 
-                <!-- Best Spots Finder Cards -->
-                <div class="grid grid-cols-2 gap-1.5">
-                    <div class="bg-emerald-950/40 border border-emerald-500/40 p-2 rounded-xl flex flex-col gap-0.5">
-                        <span class="text-emerald-400 font-bold text-[10px] flex items-center gap-1">
-                            <span>💰</span> ຈຸດດີສຸດ: ໂຊກລາບ
-                        </span>
-                        <span class="text-white font-bold text-xs">${bestWealthPalObj ? bestWealthPalObj.dir : '-'}</span>
-                        <span class="text-[10px] text-emerald-300">ດາວນ້ຳ ${currentPeriod} (ເໝາະຕັ້ງປະຕູ/ນ້ຳພຸ)</span>
-                    </div>
+                tabContent =
+                    '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1.5">' +
+                        '<div class="flex items-center justify-between">' +
+                            '<span class="text-amber-300 font-bold text-xs flex items-center gap-1.5">' +
+                                ICONS.compass + ' <span>' + chart.faceInfo.pal.dir + ' ' + faceDeg.toFixed(1) + '° · ' + chart.faceInfo.pal.name + '宮</span>' +
+                            '</span>' +
+                            '<span class="bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded text-[10px] font-mono font-bold">' + chart.faceInfo.mtn.name + '山 (' + chart.faceInfo.mtn.lao + ')</span>' +
+                        '</div>' +
+                        '<div class="flex items-center justify-between text-[11px] text-slate-400">' +
+                            '<span>ຫຼັງພິງ: ' + ((faceDeg + 180) % 360).toFixed(1) + '° ' + chart.sitInfo.pal.dir + ' · ' + chart.sitInfo.mtn.name + '山</span>' +
+                            '<span class="text-[10px] font-mono font-bold ' + kw.badgeClass + ' px-1.5 py-0.5 rounded">' + kw.badgeText + '</span>' +
+                        '</div>' +
+                        '<p class="text-[10px] text-slate-400 leading-tight pt-0.5 border-t border-slate-800/80">' + kw.desc + '</p>' +
+                    '</div>' +
 
-                    <div class="bg-blue-950/40 border border-blue-500/40 p-2 rounded-xl flex flex-col gap-0.5">
-                        <span class="text-blue-400 font-bold text-[10px] flex items-center gap-1">
-                            <span>🛌</span> ຈຸດດີສຸດ: ສຸຂະພາບ
-                        </span>
-                        <span class="text-white font-bold text-xs">${bestHealthPalObj ? bestHealthPalObj.dir : '-'}</span>
-                        <span class="text-[10px] text-blue-300">ດາວພູ ${currentPeriod} (ເໝາະຕັ້ງຫ້ອງນອນ/ຕຽງ)</span>
-                    </div>
-                </div>
+                    '<div class="bg-purple-950/40 border border-purple-500/40 p-2.5 rounded-xl flex flex-col gap-1.5">' +
+                        '<div class="flex items-center justify-between">' +
+                            '<span class="text-purple-200 font-bold text-xs">ຄູ່ດາວ: 山' + curM + ' 向' + curW + ' (ພື້ນ ' + curP + ')</span>' +
+                            luckBadge +
+                        '</div>' +
+                        '<div class="text-amber-300 font-bold text-xs leading-snug">' +
+                            comboInfo.title +
+                        '</div>' +
+                    '</div>' +
 
-                <!-- Danger Spot Notice -->
-                ${fiveYellowPalObj ? `
-                <div class="bg-rose-950/30 border border-rose-500/30 px-2.5 py-1.5 rounded-xl flex items-center justify-between text-[11px]">
-                    <span class="text-rose-400 font-semibold flex items-center gap-1">
-                        <span>⚠️</span> ຈຸດຕ້ອງຫ້າມ (ຫ້າເຫຼືອງ):
-                    </span>
-                    <span class="text-rose-300 font-bold">${fiveYellowPalObj.dir} (ຫ້າມເຈາະທຸບ)</span>
-                </div>
-                ` : ''}
+                    '<div class="flex flex-col gap-1.5">' +
+                        '<div class="bg-slate-950 p-2 rounded-xl border border-slate-800 flex flex-col gap-0.5">' +
+                            '<span class="text-blue-300 font-bold text-[11px] flex items-center gap-1">' +
+                                ICONS.mountain + ' <span>ສຸຂະພາບ & ອະໄວຍະວະທີ່ໄດ້ຮັບຜົນ:</span>' +
+                            '</span>' +
+                            '<p class="text-[11px] text-slate-300 leading-relaxed">' + comboInfo.health + '</p>' +
+                        '</div>' +
 
-                <!-- Aimed Direction Current Stars Analysis -->
-                <div class="bg-slate-950/90 border border-amber-500/30 p-2.5 rounded-xl flex flex-col gap-1.5">
-                    <div class="flex items-center justify-between border-b border-slate-800 pb-1">
-                        <span class="text-slate-300 font-semibold text-[11px]">🎯 ທິດທີ່ກຳລັງສ່ອງຢູ່ຕອນນີ້:</span>
-                        <div class="flex items-center gap-1 text-[11px] font-mono font-bold">
-                            <span class="text-blue-400">ພູ:${curM}</span> •
-                            <span class="text-amber-400">ຍຸກ:${curP}</span> •
-                            <span class="text-emerald-400">ນ້ຳ:${curW}</span>
-                        </div>
-                    </div>
-                    ${bazhaiTag ? `
-                    <div class="text-[11px] flex justify-between items-center">
-                        <span class="text-slate-400">ດວງເຈົ້າຂອງບ້ານ:</span>
-                        <span class="${bazhaiColor}">${bazhaiTag}</span>
-                    </div>
-                    ` : ''}
-                    <div class="text-[10px] text-slate-300 leading-relaxed bg-slate-900/60 p-2 rounded-lg border border-slate-800/80">
-                        💡 <b>ຄຳແນະນຳຈັດວາງ:</b>
-                        ${curW === currentPeriod ? 'ທິດນີ້ມີດາວໂຊກ ' + currentPeriod + ' ມາສະຖິດ! ຄວນເປີດເປັນປະຕູຫຼັກ, ຕັ້ງຫ້ອງຮັບແຂກ, ຕູ້ປາ ຫຼື ນ້ຳພຸ ເພື່ອກະຕຸ້ນໂຊກລາບເງິນຄຳ.' : ''}
-                        ${curM === currentPeriod && curW !== currentPeriod ? 'ທິດນີ້ມີດາວບາຣະມີ ' + currentPeriod + ' ມາສະຖິດ! ຄວນຕັ້ງຫ້ອງນອນ, ຫ້ອງເຮັດວຽກ ຫຼື ວາງຫີນໜັກ ເພື່ອເສີມສຸຂະພາບ ແລະ ອຳນາດບາຣະມີ.' : ''}
-                        ${curW === 5 || curM === 5 ? 'ທິດນີ້ມີດາວ 5 ໂມຫະ (ຫ້າເຫຼືອງ)! ຫ້າມເຈາະທຸບ, ຫ້າມຕັ້ງເຕົາໄຟ ຫຼື ນ້ຳພຸ. ຄວນແກ້ດ້ວຍວັດຖຸໂລຫະທອງເຫຼືອງ ຫຼື ກະດິ່ງລົມ.' : ''}
-                        ${curW !== currentPeriod && curM !== currentPeriod && curW !== 5 && curM !== 5 ? 'ທິດນີ້ພະລັງງານປານກາງ ສາມາດຈັດເປັນຫ້ອງທົ່ວໄປ, ຫ້ອງອາຫານ ຫຼື ທາງຍ່າງໄດ້.' : ''}
-                    </div>
-                </div>
-            `;
+                        '<div class="bg-slate-950 p-2 rounded-xl border border-slate-800 flex flex-col gap-0.5">' +
+                            '<span class="text-emerald-300 font-bold text-[11px] flex items-center gap-1">' +
+                                ICONS.water + ' <span>ການເງິນ, ທຸລະກິດ & ອາຊີບ:</span>' +
+                            '</span>' +
+                            '<p class="text-[11px] text-slate-300 leading-relaxed">' + comboInfo.wealth + '</p>' +
+                        '</div>' +
 
+                        '<div class="bg-slate-950 p-2 rounded-xl border border-amber-500/40 flex flex-col gap-0.5">' +
+                            '<span class="text-amber-300 font-bold text-[11px] flex items-center gap-1">' +
+                                ICONS.shield + ' <span>ວິທີແກ້ & ເສີມພະລັງສະເພາະທິດນີ້:</span>' +
+                            '</span>' +
+                            '<p class="text-[11px] text-slate-200 leading-relaxed">' + comboInfo.remedy + '</p>' +
+                        '</div>' +
+                    '</div>';
+            } else if (activePredictionTab === 'tab_spots') {
+                tabContent =
+                    '<div class="bg-slate-950 p-2.5 rounded-xl border border-purple-500/40 flex flex-col gap-1">' +
+                        '<div class="flex items-center justify-between">' +
+                            '<span class="text-xs font-bold text-purple-300">ຜັງດາວເຫີນຍຸກ ' + currentPeriod + '</span>' +
+                            '<span class="' + chart.chartColor + ' font-bold text-xs">' + chart.chartType + '</span>' +
+                        '</div>' +
+                        '<p class="text-[11px] text-slate-300 leading-relaxed">' + chart.chartDesc + '</p>' +
+                    '</div>' +
+
+                    '<div class="grid grid-cols-2 gap-2">' +
+                        '<div class="bg-emerald-950/40 border border-emerald-500/50 p-2.5 rounded-xl flex flex-col gap-1">' +
+                            '<span class="text-emerald-400 font-bold text-[10px] flex items-center gap-1">' +
+                                ICONS.water + ' <span>ວັງໂຊກລາບສູງສຸດ</span>' +
+                            '</span>' +
+                            '<div class="text-white font-bold text-sm">' + (bestWealthPalObj ? bestWealthPalObj.dir : '-') + '</div>' +
+                            '<span class="text-[10px] text-emerald-300 font-mono">ດາວນ້ຳ ' + currentPeriod + ' ສະຖິດ</span>' +
+                            '<p class="text-[10px] text-slate-300 leading-tight">ຕັ້ງປະຕູໃຫຍ່, ຫ້ອງຮັບແຂກ, ຕູ້ປາ, ນ້ຳພຸເຄື່ອນໄຫວ (动水)</p>' +
+                        '</div>' +
+
+                        '<div class="bg-blue-950/40 border border-blue-500/50 p-2.5 rounded-xl flex flex-col gap-1">' +
+                            '<span class="text-blue-400 font-bold text-[10px] flex items-center gap-1">' +
+                                ICONS.mountain + ' <span>ວັງສຸຂະພາບ & ບາຣະມີ</span>' +
+                            '</span>' +
+                            '<div class="text-white font-bold text-sm">' + (bestHealthPalObj ? bestHealthPalObj.dir : '-') + '</div>' +
+                            '<span class="text-[10px] text-blue-300 font-mono">ດາວພູ ' + currentPeriod + ' ສະຖິດ</span>' +
+                            '<p class="text-[10px] text-slate-300 leading-tight">ຕັ້ງຫ້ອງນອນໃຫຍ່, ຫົວຕຽງ, ໂຕະເຮັດວຽກ, ວາງຫີນໜັກ (靠山)</p>' +
+                        '</div>' +
+                    '</div>' +
+
+                    '<div class="flex flex-col gap-1.5">' +
+                        (fiveYellowPalObj ?
+                        '<div class="bg-rose-950/40 border border-rose-500/50 p-2.5 rounded-xl flex flex-col gap-0.5">' +
+                            '<div class="flex items-center justify-between text-xs">' +
+                                '<span class="text-rose-400 font-bold flex items-center gap-1">' +
+                                    ICONS.alert + ' <span>ວັງ 5 ຫ້າເຫຼືອງ (五黄大煞)</span>' +
+                                '</span>' +
+                                '<span class="text-rose-300 font-bold font-mono">' + fiveYellowPalObj.dir + '</span>' +
+                            '</div>' +
+                            '<p class="text-[10px] text-slate-300 leading-relaxed">' +
+                                'ຫ້າມເຈາະທຸບ, ຫ້າມຈູດໄຟ, ຫ້າມຕັ້ງນ້ຳເຄື່ອນໄຫວ. ຕ້ອງແກ້ດ້ວຍນ້ຳອັນຢິນ (安忍水) ແລະ ຫຼຽນ 6 ຈັກກະພັດ.' +
+                            '</p>' +
+                        '</div>' : '') +
+
+                        (illnessPalObj ?
+                        '<div class="bg-amber-950/40 border border-amber-500/50 p-2.5 rounded-xl flex flex-col gap-0.5">' +
+                            '<div class="flex items-center justify-between text-xs">' +
+                                '<span class="text-amber-400 font-bold flex items-center gap-1">' +
+                                    ICONS.alert + ' <span>ວັງ 2 ພະຍາດ (二黑病符)</span>' +
+                                '</span>' +
+                                '<span class="text-amber-300 font-bold font-mono">' + illnessPalObj.dir + '</span>' +
+                            '</div>' +
+                            '<p class="text-[10px] text-slate-300 leading-relaxed">' +
+                                'ລະວັງສຸຂະພາບ, ຫ້າມຕັ້ງຕຽງຄົນປ່ວຍ, ວາງນ້ຳເຕົ້າທອງເຫຼືອງ (铜葫芦) ຫຼື ຫຼຽນ 6 ຈັກກະພັດ.' +
+                            '</p>' +
+                        '</div>' : '') +
+                    '</div>';
+            } else if (activePredictionTab === 'tab_bazhai') {
+                tabContent =
+                    '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1.5">' +
+                        '<span class="text-xs font-bold text-amber-400 flex items-center gap-1">' +
+                            ICONS.star + ' <span>ຂໍ້ມູນດວງຊະຕາເຈົ້າຂອງບ້ານ (ມິ່ງກວ້າ)</span>' +
+                        '</span>' +
+                        (currentGuaData ?
+                        '<div class="grid grid-cols-2 gap-1.5 text-xs text-slate-300">' +
+                            '<div>ກວ້າປະຈຳໂຕ: <span class="text-amber-300 font-bold">' + currentGuaData.name + '</span></div>' +
+                            '<div>ກຸ່ມ: <span class="text-slate-200 font-bold">' + currentGuaData.group + '</span></div>' +
+                            '<div>ຄ່າທາດ: <span class="text-cyan-300 font-bold">' + currentGuaData.element + '</span></div>' +
+                            '<div>ສັນຍະລັກ: <span class="text-amber-400 font-bold font-mono">' + currentGuaData.trigram + '</span></div>' +
+                        '</div>' :
+                        '<p class="text-[11px] text-slate-400">ກະລຸນາເລືອກປີເກີດ ແລະ ເພດ ໃນເມນູຕັ້ງຄ່າ ເພື່ອຄຳນວນມິ່ງກວ້າສະເພາະບຸກຄົນ.</p>') +
+                    '</div>' +
+
+                    '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1.5">' +
+                        '<div class="flex items-center justify-between text-xs">' +
+                            '<span class="text-slate-300 font-bold">ທິດທີ່ກຳລັງສ່ອງ: ' + chart.faceInfo.pal.dir + '</span>' +
+                            '<span class="' + bazhaiColor + '">' + (bazhaiTag || 'ປານກາງ') + '</span>' +
+                        '</div>' +
+                        (bazhaiDesc ? '<p class="text-[11px] text-slate-300 leading-relaxed">' + bazhaiDesc + '</p>' : '') +
+                    '</div>' +
+
+                    (currentGuaData ?
+                    '<div class="grid grid-cols-2 gap-1.5 text-[10px]">' +
+                        '<div class="bg-emerald-950/30 border border-emerald-500/30 p-2 rounded-xl flex flex-col gap-1">' +
+                            '<span class="text-emerald-400 font-bold flex items-center gap-1">' + ICONS.check + ' 4 ທິດມຸງຄຸນ:</span>' +
+                            currentGuaData.auspicious.map(a => '<div class="text-slate-300">' + a.name + ': <span class="text-emerald-300 font-bold">' + a.dir + '</span></div>').join('') +
+                        '</div>' +
+                        '<div class="bg-rose-950/30 border border-rose-500/30 p-2 rounded-xl flex flex-col gap-1">' +
+                            '<span class="text-rose-400 font-bold flex items-center gap-1">' + ICONS.alert + ' 4 ທິດອັບປະມຸງຄຸນ:</span>' +
+                            currentGuaData.inauspicious.map(b => '<div class="text-slate-300">' + b.name + ': <span class="text-rose-300 font-bold">' + b.dir + '</span></div>').join('') +
+                        '</div>' +
+                    '</div>' : '');
+            } else if (activePredictionTab === 'tab_remedies') {
+                tabContent =
+                    '<div class="flex flex-col gap-2">' +
+                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-cyan-500/40 flex flex-col gap-1">' +
+                            '<span class="text-cyan-300 font-bold text-xs flex items-center gap-1">' +
+                                ICONS.shield + ' <span>ສູດນ້ຳອັນຢິນ (安忍水 - An Ren Shui) ດັບດາວ 2 & 5</span>' +
+                            '</span>' +
+                            '<p class="text-[11px] text-slate-300 leading-relaxed">' +
+                                '<b>ວິທີເຮັດ:</b> ໃຊ້ໂຖແກ້ວໃສ່ເກືອເມັດໃຫຍ່ 3/4 ຂອງໂຖ, ວາງຫຼຽນ 6 ຈັກກະພັດ (六帝钱) ເປັນວົງມົນເທິງເກືອ, ວາງຫຼຽນເງິນແທ້ 1 ຫຼຽນໄວ້ກາງ, ຖອກນ້ຳສະອາດໃຫ້ຖ້ວມເກືອ ຫ້າມປິດຝາ. ເກືອຈະຕົກຜລຶກດູດພະລັງງານພະຍາດແລະອຸບັດຕິເຫດ.' +
+                            '</p>' +
+                        '</div>' +
+
+                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-amber-500/40 flex flex-col gap-1">' +
+                            '<span class="text-amber-300 font-bold text-xs flex items-center gap-1">' +
+                                ICONS.shield + ' <span>ຫຼຽນ 6 ຈັກກະພັດລາຊະວົງຊິງ (六帝钱)</span>' +
+                            '</span>' +
+                            '<p class="text-[11px] text-slate-300 leading-relaxed">' +
+                                'ຫຼຽນທອງ 6 ລາຊະການ (ຊຸ່ນຈື, ຄັງຊີ, ຍົງເຈິ້ງ, ສຽນຫຼົງ, ເຈຍສິ້ງ, ເຕົ້າກວາງ) ມີພະລັງທາດທອງບໍລິສຸດ ໃຊ້ແຂວນແກ້ຈຸດທີ່ມີດາວ 5 ຫ້າເຫຼືອງ ແລະ ດາວ 2 ພະຍາດ.' +
+                            '</p>' +
+                        '</div>' +
+
+                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-emerald-500/40 flex flex-col gap-1">' +
+                            '<span class="text-emerald-300 font-bold text-xs flex items-center gap-1">' +
+                                ICONS.water + ' <span>ນ້ຳເຄື່ອນໄຫວ (动水) ກະຕຸ້ນໂຊກລາບຍຸກ 9</span>' +
+                            '</span>' +
+                            '<p class="text-[11px] text-slate-300 leading-relaxed">' +
+                                'ຕັ້ງນ້ຳພຸ, ນ້ຳລົ້ນ, ຫຼື ຕູ້ປາ ສະເພາະຈຸດທີ່ມີ <b>ດາວນ້ຳ 9</b> ເທົ່ານັ້ນ. ຫ້າມຕັ້ງໃນຈຸດທີ່ມີດາວພູ 9 ຫຼື ດາວ 5 ເດັດຂາດ ເພາະຈະເຮັດໃຫ້ເສຍຊັບສິນ.' +
+                            '</p>' +
+                        '</div>' +
+
+                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-blue-500/40 flex flex-col gap-1">' +
+                            '<span class="text-blue-300 font-bold text-xs flex items-center gap-1">' +
+                                ICONS.mountain + ' <span>ພູເຂົາຫີນ (靠山) ເສີມບາຣະມີ & ສຸຂະພາບ</span>' +
+                            '</span>' +
+                            '<p class="text-[11px] text-slate-300 leading-relaxed">' +
+                                'ວາງກ້ອນຫີນທຳມະຊາດຮູບຊົງສວຍງາມ ຫຼື ວັດຖຸໜັກແໜ້ນ ໄວ້ຈຸດທີ່ມີ <b>ດາວພູ 9</b> ເພື່ອສົ່ງເສີມອາຍຸຍືນ, ສຸຂະພາບແຂງແຮງ ແລະ ຄວາມສາມັກຄີໃນຄອບຄົວ.' +
+                            '</p>' +
+                        '</div>' +
+                    '</div>';
+            }
+
+            const html = tabsBar + tabContent;
             const mobContent = document.getElementById('mobilePredictionContent');
             const pcContent = document.getElementById('desktopPredictionContent');
             if (mobContent) mobContent.innerHTML = html;
@@ -1776,7 +1995,7 @@
             const sitInfo = findMountainInfo(bottomCompassDeg);
 
             const topText = cameraActive
-                ? `📷 ກ້ອງຫັນ: ${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name} ${faceInfo.mtn.lao})`
+                ? `ກ້ອງຫັນ: ${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name} ${faceInfo.mtn.lao})`
                 : `ໜ້າບ້ານ: ${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name} ${faceInfo.mtn.lao})`;
             const sittingText = `ຫຼັງພິງ: ${bottomCompassDeg.toFixed(1)}° ${sitInfo.pal.dir} (${sitInfo.mtn.name} ${sitInfo.mtn.lao})`;
 
@@ -1835,7 +2054,7 @@
                 panX = prevPipPanX || 0;
                 panY = prevPipPanY || 0;
                 if (mobCornerText) mobCornerText.textContent = 'ມຸມ';
-                if (pcCornerBtn) pcCornerBtn.textContent = '📌 ມຸມ';
+                if (pcCornerBtn) pcCornerBtn.innerHTML = ICONS.corner + ' ມຸມ';
             }
             updateZoom();
         }
@@ -1860,7 +2079,7 @@
             const mobCornerText = document.getElementById('mobileCornerText');
             const pcCornerBtn = document.getElementById('cornerPipBtn');
             if (mobCornerText) mobCornerText.textContent = 'ມຸມ';
-            if (pcCornerBtn) pcCornerBtn.textContent = '📌 ມຸມ';
+            if (pcCornerBtn) pcCornerBtn.innerHTML = ICONS.corner + ' ມຸມ';
             updateZoom();
         }
 
@@ -1876,7 +2095,7 @@
             const needleCheckbox = document.getElementById('toggleNeedle');
             const mobileModeIcon = document.getElementById('mobileModeIcon');
             if (mobileModeIcon) {
-                mobileModeIcon.textContent = transparent ? '🧭' : '📐';
+                mobileModeIcon.innerHTML = transparent ? ICONS.compass : '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M20 12v8H4v-8"/><path d="M6 12v4"/><path d="M10 12v2"/><path d="M14 12v4"/><path d="M18 12v2"/></svg>';
             }
 
             if (transparent) {
@@ -1932,19 +2151,19 @@
             if (mode === 'pan') {
                 if (dragModePanBtn) dragModePanBtn.className = "py-1.5 px-2 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow";
                 viewport.style.cursor = 'move';
-                if (mobileDragIcon) mobileDragIcon.textContent = '✋';
+                if (mobileDragIcon) mobileDragIcon.innerHTML = ICONS.pan;
                 if (mobileDragText) mobileDragText.textContent = 'ຍັບ';
             } else if (mode === 'floorplan') {
                 if (dragModePlanBtn) dragModePlanBtn.className = "col-span-2 py-1.5 px-2 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow border border-amber-400";
                 viewport.classList.add('drag-floorplan');
                 viewport.style.cursor = 'move';
-                if (mobileDragIcon) mobileDragIcon.textContent = '🏠';
+                if (mobileDragIcon) mobileDragIcon.innerHTML = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>';
                 if (mobileDragText) mobileDragText.textContent = 'ແປນ';
             } else {
                 dragMode = 'compass';
                 if (dragModeCompassBtn) dragModeCompassBtn.className = "py-1.5 px-2 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow";
                 viewport.style.cursor = 'grab';
-                if (mobileDragIcon) mobileDragIcon.textContent = '🔄';
+                if (mobileDragIcon) mobileDragIcon.innerHTML = ICONS.rotate;
                 if (mobileDragText) mobileDragText.textContent = 'ໝຸນ';
             }
         }
@@ -2388,17 +2607,17 @@
             const mobileTxt = document.getElementById('mobileLiveCompassText');
             if (state === 'active') {
                 toggleLiveCompassBtn.className = "w-full py-2 px-2.5 text-xs font-bold rounded-lg transition bg-emerald-600 text-white flex items-center justify-center gap-1.5 shadow mt-0.5 animate-pulse";
-                toggleLiveCompassBtn.innerHTML = `<span>🟢</span> ກຳລັງເຊື່ອມຕໍ່ເຂັມທິດຈິງໃນມືຖື`;
+                toggleLiveCompassBtn.innerHTML = `<span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping mr-1.5"></span> ກຳລັງເຊື່ອມຕໍ່ເຂັມທິດຈິງໃນມືຖື`;
                 if (mobileBtn) mobileBtn.className = "bg-emerald-600 text-white px-2.5 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 transition";
                 if (mobileTxt) mobileTxt.textContent = "ເຊື່ອມຕໍ່ແລ້ວ";
             } else if (state === 'connecting') {
                 toggleLiveCompassBtn.className = "w-full py-2 px-2.5 text-xs font-bold rounded-lg transition bg-amber-600 text-white flex items-center justify-center gap-1.5 shadow mt-0.5 animate-pulse";
-                toggleLiveCompassBtn.innerHTML = `<span>🟢</span> ກຳລັງຈັບຄູ່ເຂັມທິດຈິງ...`;
+                toggleLiveCompassBtn.innerHTML = `<span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping mr-1.5"></span> ກຳລັງຈັບຄູ່ເຂັມທິດຈິງ...`;
                 if (mobileBtn) mobileBtn.className = "bg-amber-600 text-white px-2.5 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 transition animate-pulse";
                 if (mobileTxt) mobileTxt.textContent = "ກຳລັງຈັບຄູ່...";
             } else {
                 toggleLiveCompassBtn.className = "w-full py-2 px-2.5 text-xs font-bold rounded-lg transition border border-slate-700 bg-slate-950 hover:bg-slate-800 text-amber-300 hover:text-amber-200 flex items-center justify-center gap-1.5 shadow mt-0.5";
-                toggleLiveCompassBtn.innerHTML = `<span>🧭</span> ເຊື່ອມຕໍ່ເຂັມທິດຈິງໃນມືຖື`;
+                toggleLiveCompassBtn.innerHTML = `${ICONS.compass} ເຊື່ອມຕໍ່ເຂັມທິດຈິງໃນມືຖື`;
                 if (mobileBtn) mobileBtn.className = "bg-slate-900/90 hover:bg-slate-800 text-amber-300 border border-slate-700/80 px-2.5 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 backdrop-blur-md transition";
                 if (mobileTxt) mobileTxt.textContent = "ເຂັມທິດຈິງ";
             }
@@ -2439,7 +2658,7 @@
                 } else if ('ondeviceorientation' in window) {
                     startLiveCompass(false);
                 } else {
-                    alert('ຄອມພິວເຕີໂນ໊ດບຸກ (Laptop / PC) ທົ່ວໄປຈະບໍ່ມີຊິບເຊັນເຊີເຂັມທິດແມ່ເຫຼັກ (Magnetometer) ຢູ່ໃນເຄື່ອງຄືກັບສະມາດໂຟນ.\n\n💡 ໃນຄອມພິວເຕີ ທ່ານສາມາດ:\n• ຄລິກລາກເມົາສ໌ເທິງໜ້າຈານເພື່ອໝຸນໄດ້ຕາມໃຈ\n• ໃຊ້ແຖບເລື່ອນ ຫຼື ປຸ່ມໝຸນດ່ວນ (0°, 90°, 180°, 270°)\n\n📱 ຫາກຕ້ອງການໃຫ້ໝຸນຕາມທິດຈິງອັດຕະໂນມັດ ໃຫ້ເປີດເວັບນີ້ໃນມືຖື ຫຼື ແທັບເລັດ');
+                    alert('ຄອມພິວເຕີໂນ໊ດບຸກ (Laptop / PC) ທົ່ວໄປຈະບໍ່ມີຊິບເຊັນເຊີເຂັມທິດແມ່ເຫຼັກ (Magnetometer) ຢູ່ໃນເຄື່ອງຄືກັບສະມາດໂຟນ.\n\nໃນຄອມພິວເຕີ ທ່ານສາມາດ:\n• ຄລິກລາກເມົາສ໌ເທິງໜ້າຈານເພື່ອໝຸນໄດ້ຕາມໃຈ\n• ໃຊ້ແຖບເລື່ອນ ຫຼື ປຸ່ມໝຸນດ່ວນ (0°, 90°, 180°, 270°)\n\nຫາກຕ້ອງການໃຫ້ໝຸນຕາມທິດຈິງອັດຕະໂນມັດ ໃຫ້ເປີດເວັບນີ້ໃນມືຖື ຫຼື ແທັບເລັດ');
                 }
             });
 
@@ -2646,7 +2865,7 @@
 
             // Reset UI state
             if (btnLabel) btnLabel.textContent = 'ເປີດກ້ອງສ່ອງຈິງ (AR Camera)';
-            if (btnIcon) btnIcon.textContent = '📷';
+            if (btnIcon) btnIcon.innerHTML = ICONS.camera;
             if (mobileBtn) {
                 mobileBtn.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-400');
                 mobileBtn.classList.add('bg-slate-900/90', 'text-emerald-400');
@@ -2691,7 +2910,7 @@
             sensorTimeout = setTimeout(() => {
                 if (!sensorDataReceived && liveCompassActive) {
                     stopLiveCompass();
-                    alert('ຄອມພິວເຕີໂນ໊ດບຸກ (Laptop / PC) ທົ່ວໄປຈະບໍ່ມີຊິບເຊັນເຊີເຂັມທິດແມ່ເຫຼັກ (Magnetometer) ຢູ່ໃນເຄື່ອງຄືກັບສະມາດໂຟນ.\n\n💡 ໃນຄອມພິວເຕີ ທ່ານສາມາດ:\n• ຄລິກລາກເມົາສ໌ເທິງໜ້າຈານເພື່ອໝຸນໄດ້ຕາມໃຈ\n• ໃຊ້ແຖບເລື່ອນ ຫຼື ປຸ່ມໝຸນດ່ວນ (0°, 90°, 180°, 270°)\n\n📱 ຫາກຕ້ອງການໃຫ້ໝຸນຕາມທິດຈິງອັດຕະໂນມັດ ໃຫ້ເປີດເວັບນີ້ໃນມືຖື ຫຼື ແທັບເລັດ');
+                    alert('ຄອມພິວເຕີໂນ໊ດບຸກ (Laptop / PC) ທົ່ວໄປຈະບໍ່ມີຊິບເຊັນເຊີເຂັມທິດແມ່ເຫຼັກ (Magnetometer) ຢູ່ໃນເຄື່ອງຄືກັບສະມາດໂຟນ.\n\nໃນຄອມພິວເຕີ ທ່ານສາມາດ:\n• ຄລິກລາກເມົາສ໌ເທິງໜ້າຈານເພື່ອໝຸນໄດ້ຕາມໃຈ\n• ໃຊ້ແຖບເລື່ອນ ຫຼື ປຸ່ມໝຸນດ່ວນ (0°, 90°, 180°, 270°)\n\nຫາກຕ້ອງການໃຫ້ໝຸນຕາມທິດຈິງອັດຕະໂນມັດ ໃຫ້ເປີດເວັບນີ້ໃນມືຖື ຫຼື ແທັບເລັດ');
                 }
             }, 1800);
 
