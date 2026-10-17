@@ -1927,7 +1927,7 @@
         let fengShuiMode = 'yang'; // 'yang' (default) or 'yin'
         let activeYangTab = 'tab_room'; // 'tab_room', 'tab_forecast', 'tab_annual', 'tab_stars'
         let activeYinTab = 'tab_fenjin'; // 'tab_fenjin', 'tab_yinforecast', 'tab_lineage', 'tab_water'
-        let selectedRoomType = 'door'; // 'door', 'window', 'bed', 'kitchen', 'desk', 'toilet', 'water', 'stairs'
+        let selectedRoomType = 'door'; // 'door', 'window', 'bed', 'kitchen', 'desk', 'toilet', 'fish', 'fountain', 'stairs'
         let selectedAnnualYear = 2026;
         let selectedForecastMonth = 1; // 1 to 12
 
@@ -2154,12 +2154,13 @@
                         { key: 'kitchen', icon: '🍳', name: 'ຫ້ອງຄົວ/ເຕົາ' },
                         { key: 'desk', icon: '💼', name: 'ໂຕະເຮັດວຽກ' },
                         { key: 'toilet', icon: '🚽', name: 'ຫ້ອງນ້ຳ' },
-                        { key: 'water', icon: '🐟', name: 'ຕູ້ປາ/ນ້ຳພຸ' },
+                        { key: 'fish', icon: '🐟', name: 'ຕູ້ປາ (ໃນບ້ານ)' },
+                        { key: 'fountain', icon: '⛲', name: 'ບໍ່ນ້ຳ/ນ້ຳພຸ' },
                         { key: 'stairs', icon: '🪜', name: 'ບັນໄດ' }
                     ];
 
                     const roomPills =
-                        '<div class="grid grid-cols-4 gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 mb-2">' +
+                        '<div class="grid grid-cols-3 gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 mb-2">' +
                             rooms.map(r =>
                                 '<button type="button" onclick="setSelectedRoom(\'' + r.key + '\')" class="py-1 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 ' +
                                     (selectedRoomType === r.key
@@ -2323,28 +2324,53 @@
                             verdictAnalysis = 'ບໍ່ມີຜົນກະທົບຮຸນແຮງຕໍ່ດາວຫຼັກ.';
                             verdictAction = 'ປິດປະຕູຫ້ອງນ້ຳສະເໝີ.';
                         }
-                    } else if (selectedRoomType === 'water') {
+                    } else if (selectedRoomType === 'fish' || selectedRoomType === 'water') {
+                        // 🐟 ຕູ້ປາ (Fish Aquarium - ພາຍໃນບ້ານ Yang House Interior)
                         if (curW === currentPeriod) {
-                            verdictTag = '🌟 ມະຫາກະຕຸ້ນຊັບຍຸກ 9 (动水催财)';
+                            verdictTag = '🌟 ມະຫາກະຕຸ້ນຊັບຍຸກ 9 (ຕູ້ປານຳໂຊກ)';
                             verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
                             verdictScore = 'ຄະແນນ: 100/100 (ຖືກຕ້ອງສູງສຸດ!)';
-                            verdictTitle = 'ນ້ຳພຸ/ຕູ້ປາ ກະຕຸ້ນດາວນ້ຳ ' + curW;
-                            verdictAnalysis = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາດາວເຫີນຂັ້ນສູງ! ນ້ຳເຄື່ອນໄຫວໃນທິດດາວນ້ຳ 9 ຈະດຶງດູດຊັບສິນ, ເງິນຄຳ ແລະ ໂຊກລາບໃຫ້ຫຼັ່ງໄຫຼເຂົ້າມາຕະຫຼອດເວລາ.';
-                            verdictAction = 'ເປີດປັ໊ມນ້ຳໃຫ້ນ້ຳໄຫຼວຽນສະອາດ, ຫ້າມໃຫ້ນ້ຳເນົ່າເສຍ.';
+                            verdictTitle = 'ຕູ້ປາກະຕຸ້ນດາວນ້ຳ ' + curW + ' ເອີ້ນຊັບ';
+                            verdictAnalysis = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາດາວເຫີນ! ຕູ້ປາພາຍໃນບ້ານມີປາລອຍວຽນ ເປັນພະລັງ "ດົງສຸ່ຍ (动水)" ທີ່ອ່ອນໂຍນ ດຶງດູດໂຊກລາບແລະເງິນຄຳເຂົ້າເຮືອນ.';
+                            verdictAction = 'ລ້ຽງປາ 9 ໂຕ (ປາທອງ/ແດງ 8 ໂຕ, ປາດຳ 1 ໂຕກັນໄພ). ຄວາມສູງຕູ້ປາຫ້າມເກີນລະດັບເອິກ/ຫົວໃຈ (灭顶水) ແລະ ຫ້າມຕັ້ງຕິດພື້ນດິນ (割脚水). ຫ້າມວາງຫຼັງໂຊຟາ ຫຼື ກົງກັບເຕົາໄຟ.';
                         } else if (curM === currentPeriod) {
                             verdictTag = '❌ ອັນຕະລາຍ! ນ້ຳຖ້ວມພູ (水浸山星)';
                             verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
                             verdictScore = 'ຄະແນນ: 15/100';
-                            verdictTitle = 'ນ້ຳໄປທຳລາຍດາວພູ 9 (ສຸຂະພາບ)';
-                            verdictAnalysis = 'ຫ້າມຕັ້ງນ້ຳທິດນີ້ເດັດຂາດ! ຈະທຳລາຍດາວພູ 9 ເຮັດໃຫ້ຄົນໃນບ້ານເຈັບປ່ວຍ ແລະ ຜິດຖຽງກັນ.';
-                            verdictAction = 'ຍ້າຍຕູ້ປາ/ນ້ຳພຸ ໄປໄວ້ທິດທີ່ມີດາວນ້ຳ 9 ແທນທັນທີ!';
+                            verdictTitle = 'ຕູ້ປາທຳລາຍດາວພູ ' + curM + ' (ສຸຂະພາບ/ບາຣະມີ)';
+                            verdictAnalysis = 'ຫ້າມຕັ້ງຕູ້ປາທິດນີ້ເດັດຂາດ! ນ້ຳຈະໄປທຳລາຍດາວພູ 9 ເຮັດໃຫ້ຄົນໃນບ້ານເຈັບປ່ວຍ, ຂາດຄົນອຸປະຖຳ ແລະ ເສຍຄວາມສາມັກຄີ.';
+                            verdictAction = 'ຍ້າຍຕູ້ປາໄປໄວ້ທິດທີ່ມີດາວນ້ຳ 9 ແທນທັນທີ!';
                         } else {
                             verdictTag = '⚠️ ປານກາງ (Neutral)';
                             verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
                             verdictScore = 'ຄະແນນ: 60/100';
-                            verdictTitle = 'ຕູ້ປາ/ນ້ຳພຸ';
-                            verdictAnalysis = 'ນ້ຳເຄື່ອນໄຫວໃນທິດນີ້ຄວນລະວັງບໍ່ໃຫ້ລົບກວນດາວພູ.';
-                            verdictAction = 'ຮັກສານ້ຳໃຫ້ສະອາດ.';
+                            verdictTitle = 'ຕູ້ປາພາຍໃນບ້ານ';
+                            verdictAnalysis = 'ຕູ້ປາໃນທິດນີ້ບໍ່ໄດ້ກະຕຸ້ນດາວໂຊກໃຫຍ່ ຄວນລະວັງບໍ່ໃຫ້ລົບກວນດາວພູ.';
+                            verdictAction = 'ຮັກສານ້ຳໃຫ້ໃສສະອາດ ແລະ ອົກຊີເຈນໄຫຼວຽນສະເໝີ.';
+                        }
+                    } else if (selectedRoomType === 'fountain') {
+                        // ⛲ ບໍ່ນ້ຳ/ນ້ຳພຸ/ສະນ້ຳ (Outdoor Pond & Fountain - ພາຍນອກບ້ານ Exterior Water)
+                        if (curW === currentPeriod) {
+                            verdictTag = '🌊 ມະຫາວາຣີຮັບຊັບຍຸກ 9 (ບໍ່ນ້ຳ/ນ້ຳພຸໃຫຍ່)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 100/100 (ຖືກຕ້ອງສູງສຸດ!)';
+                            verdictTitle = 'ບໍ່ນ້ຳ/ນ້ຳພຸ ກັກເກັບພະລັງຊີ່ດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ສຸດຍອດຮວງຈູ້ຍພາຍນອກ! ບໍ່ນ້ຳໜ້າບ້ານ (ໝິງຖາງ 明堂) ປຽບເໝືອນອ່າງເກັບຊັບໃຫຍ່, ນ້ຳພຸພົ່ນນ້ຳເຄື່ອນໄຫວດຶງດູດມະຫາເສດຖີແລະໂອກາດທຸລະກິດໃຫຍ່.';
+                            verdictAction = 'ຮູບຊົງບໍ່ນ້ຳຄວນໂຄ້ງໂອບລ້ອມເຂົ້າຫາຕົວບ້ານ (玉带环腰 - ສາຍແອວຫຍົກ), ສາຍນ້ຳພຸຕ້ອງພົ່ນໄຫຼເຂົ້າຫາຕົວບ້ານສະເໝີ. ຫ້າມເຮັດຮູບໂຄ້ງຫຼັງທະນູ (反弓水) ພຸ່ງອອກ ຫຼື ແຈແຫຼມແທງໃສ່ຕົວບ້ານ.';
+                        } else if (curM === currentPeriod) {
+                            verdictTag = '❌ ອັນຕະລາຍຮ້າຍແຮງ! ດຶງນ້ຳຂຶ້ນພູ (拔水入山)';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 10/100';
+                            verdictTitle = 'ບໍ່ນ້ຳພາຍນອກຈົມດາວພູ ' + curM;
+                            verdictAnalysis = 'ອັນຕະລາຍຫຼາຍ! ບໍ່ນ້ຳຫຼືສະນ້ຳຂະໜາດໃຫຍ່ໄປຢູ່ທິດດາວພູ 9 ຈະທຳລາຍພະລັງບາຣະມີ, ຊື່ສຽງ, ແລະ ເຮັດໃຫ້ເກີດໂລກໄພໄຂ້ເຈັບຮ້າຍແຮງແກ່ຄົນໃນຄອບຄົວ.';
+                            verdictAction = 'ຖົມບໍ່ນ້ຳ ຫຼື ປ່ຽນເປັນສວນຫີນ/ພູເຂົາຈຳລອງເພື່ອເສີມດາວພູ 9 ແທນ.';
+                        } else {
+                            verdictTag = '⚠️ ປານກາງ (Exterior Water)';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 65/100';
+                            verdictTitle = 'ບໍ່ນ້ຳ/ນ້ຳພຸ ພາຍນອກ';
+                            verdictAnalysis = 'ບໍ່ນ້ຳພາຍນອກມີປະລິມານນ້ຳຫຼາຍ ຄວນກວດສອບທິດປະຕູເສີມ (城门诀 - ປະຕູວັງ) ເພື່ອຮັບໂຊກສູງສຸດ.';
+                            verdictAction = 'ຮັກສາໃຫ້ນ້ຳໄຫຼວຽນ, ຫ້າມໃຫ້ນ້ຳນິ້ງສະງັກຫຼືມີກິ່ນເໝັນ.';
                         }
                     } else if (selectedRoomType === 'stairs') {
                         verdictTag = '🪜 ບັນໄດ (ຈຸດເຄື່ອນໄຫວ)';
