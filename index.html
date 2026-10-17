@@ -2266,7 +2266,9 @@
                         { key: 'kitchen_room', icon: '🍲', name: 'ຫ້ອງຄົວ (ພື້ນທີ່)' },
                         { key: 'stove', icon: '🔥', name: 'ເຕົາແກັສ/ເຕົາໄຟ' },
                         { key: 'desk', icon: '💼', name: 'ໂຕະເຮັດວຽກ' },
-                        { key: 'toilet_bowl', icon: '🚽', name: 'ຫ້ອງນ້ຳ/ຊັກໂຄກ' },
+                        { key: 'toilet_indoor', icon: '🚽', name: 'ຫ້ອງນ້ຳ (ໃນບ້ານ)' },
+                        { key: 'toilet_outdoor', icon: '🛖', name: 'ຫ້ອງນ້ຳ (ນອກບ້ານ)' },
+                        { key: 'toilet_bowl', icon: '🚽', name: 'ຈຸດຊັກໂຄກ' },
                         { key: 'stairs', icon: '🪜', name: 'ບັນໄດ/ຂັ້ນໄດ' },
                         { key: 'living_room', icon: '🛋️', name: 'ຫ້ອງຮັບແຂກ/ໂຖງ' },
                         { key: 'dining', icon: '🍽️', name: 'ໂຕະກິນເຂົ້າ' },
@@ -2552,30 +2554,66 @@
                         }
                     }
 
-                    // 11. ຫ້ອງນ້ຳ / ຊັກໂຄກ (Toilet Bowl)
-                    else if (selectedRoomType === 'toilet_bowl' || selectedRoomType === 'toilet') {
+                    // 11. ຫ້ອງນ້ຳພາຍໃນບ້ານ (Indoor Toilet & Bath)
+                    else if (selectedRoomType === 'toilet_indoor' || selectedRoomType === 'toilet') {
                         if (curW === currentPeriod) {
-                            verdictTag = '❌ ຫ້ອງນ້ຳກົດທັບດາວໂຊກ (Wealth Drain)';
+                            verdictTag = '❌ ຫ້ອງນ້ຳໃນບ້ານກົດທັບດາວໂຊກ (Wealth Drain)';
                             verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
-                            verdictScore = 'ຄະແນນ: 20/100';
-                            verdictTitle = 'ຫ້ອງນ້ຳທັບດາວນ້ຳ ' + curW + ' ມະຫາໂຊກ';
-                            verdictAnalysis = 'ເສຍດາຍຫຼາຍ! ນ້ຳເສຍຈາກຫ້ອງນ້ຳຈະພັດພາໂຊກລາບເງິນຄຳອອກຈາກເຮືອນ, ຫາເງິນໄດ້ແຕ່ເກັບບໍ່ຢູ່, ເງິນຮົ່ວໄຫຼຕະຫຼອດ.';
-                            verdictAction = 'ວິທີແກ້: ປິດປະຕູຫ້ອງນ້ຳ ແລະ ຝາຊັກໂຄກສະເໝີ, ວາງຕົ້ນໄມ້ຟອກອາກາດສີຂຽວ, ວາງເກືອເມັດຖ້ວຍໃຫຍ່.';
+                            verdictScore = 'ຄະແນນ: 20/100 (ເງິນຮົ່ວໄຫຼສູງ!)';
+                            verdictTitle = 'ຫ້ອງນ້ຳໃນບ້ານທັບດາວນ້ຳ ' + curW + ' ມະຫາໂຊກ';
+                            verdictAnalysis = 'ອັນຕະລາຍຕໍ່ການເງິນ! ນ້ຳເສຍຈາກຫ້ອງນ້ຳໃນບ້ານຈະພັດພາໂຊກລາບເງິນຄຳອອກຈາກເຮືອນ, ຫາເງິນໄດ້ແຕ່ເກັບບໍ່ຢູ່, ມີລາຍຈ່າຍຮົ່ວໄຫຼຕະຫຼອດ.';
+                            verdictAction = 'ວິທີແກ້: ປິດປະຕູຫ້ອງນ້ຳ ແລະ ຝາຊັກໂຄກສະເໝີ, ວາງຕົ້ນໄມ້ຟອກອາກາດສີຂຽວ, ວາງເກືອເມັດຖ້ວຍໃຫຍ່. ຫ້າມໃຫ້ຫ້ອງນ້ຳຢູ່ໃຈກາງບ້ານ (中宫水煞)!';
                         } else if (curW === 5 || curW === 2) {
-                            verdictTag = '🌟 ມຸງຄຸນ (ເອົາພະລັງຮ້າຍໄປຖິ້ມ)';
+                            verdictTag = '🌟 ມຸງຄຸນ! ເອົາພະລັງຮ້າຍໄປຖິ້ມ (以煞化煞)';
                             verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
-                            verdictScore = 'ຄະແນນ: 92/100 (ກົດທັບດາວຮ້າຍ)';
+                            verdictScore = 'ຄະແນນ: 94/100 (ກົດທັບດາວຮ້າຍສຳເລັດ)';
                             verdictTitle = 'ສິ່ງສົກກະປົກກົດທັບດາວ 5/ດາວ 2';
-                            verdictAnalysis = 'ຖືກຫຼັກວິຊາ "以煞化煞" (ໃຊ້ພະລັງກົດພະລັງ)! ຫ້ອງນ້ຳຕັ້ງທັບດາວຮ້າຍ ຖືວ່າເປັນການຖິ້ມພະລັງງານເສຍອອກໄປ.';
-                            verdictAction = 'ຮັກສາຄວາມສະອາດ ແລະ ລະບາຍອາກາດໃຫ້ດີ.';
+                            verdictAnalysis = 'ຖືກຫຼັກວິຊາຊັ້ນສູງ "以煞化煞" (ໃຊ້ພະລັງກົດພະລັງ)! ຫ້ອງນ້ຳໃນບ້ານຕັ້ງທັບດາວຮ້າຍ ຖືວ່າເປັນການຖິ້ມພະລັງງານເສຍອອກໄປຈາກບ້ານ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ, ລະບາຍອາກາດໃຫ້ດີ, ປິດປະຕູຫ້ອງນ້ຳສະເໝີ.';
                         } else {
-                            verdictTag = '⚠️ ປານກາງ (Neutral)';
+                            verdictTag = '⚠️ ຫ້ອງນ້ຳໃນບ້ານປົກກະຕິ (Neutral)';
                             verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
                             verdictScore = 'ຄະແນນ: 65/100';
-                            verdictTitle = 'ຫ້ອງນ້ຳປົກກະຕິ';
+                            verdictTitle = 'ຫ້ອງນ້ຳພາຍໃນທົ່ວໄປ';
                             verdictAnalysis = 'ບໍ່ມີຜົນກະທົບຮຸນແຮງຕໍ່ດາວຫຼັກ.';
-                            verdictAction = 'ປິດປະຕູຫ້ອງນ້ຳສະເໝີ.';
+                            verdictAction = 'ປິດປະຕູຫ້ອງນ້ຳສະເໝີ, ຮັກສາພື້ນໃຫ້ແຫ້ງ.';
                         }
+                    }
+
+                    // 12. ຫ້ອງນ້ຳພາຍນອກບ້ານ (Outdoor Toilet / Outbuilding)
+                    else if (selectedRoomType === 'toilet_outdoor') {
+                        if (curW === currentPeriod) {
+                            verdictTag = '⚠️ ຫ້ອງນ້ຳນອກບ້ານຄວນລະວັງ';
+                            verdictColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                            verdictScore = 'ຄະແນນ: 55/100';
+                            verdictTitle = 'ຫ້ອງນ້ຳນອກບ້ານກົງທິດດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ຫ້ອງນ້ຳນອກບ້ານຕັ້ງຢູ່ທິດໂຊກລາບພາຍນອກ ຄວນລະວັງບໍ່ໃຫ້ມີກິ່ນເໝັນ ຫຼື ນ້ຳຂັງລົບກວນກະແສຊີ່.';
+                            verdictAction = 'ເຮັດບ່ອນບຳບັດນ້ຳເສຍໃຫ້ມິດຊິດ, ປູກຕົ້ນໄມ້ບັງສາຍຕາ, ຮັກສາຄວາມສະອາດ.';
+                        } else if (curW === 5 || curW === 2) {
+                            verdictTag = '🌟 ມຸງຄຸນສູງສຸດ! ຂັບໄລ່ພະລັງຮ້າຍອອກນອກບ້ານ (出煞)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 98/100 (ຖືກຕ້ອງຕາມຕຳລາບູຮານ)';
+                            verdictTitle = 'ຫ້ອງນ້ຳນອກບ້ານຂັບໄລ່ດາວ 5/ດາວ 2';
+                            verdictAnalysis = 'ສຸດຍອດຮວງຈູ້ຍຕຳລາບູຮານ! ການຕັ້ງຫ້ອງນ້ຳໄວ້ນອກຕົວບ້ານໃນທິດດາວຮ້າຍ ຖືວ່າເປັນການຂັບໄລ່ສິ່ງອັບປະມຸງຄຸນອອກໄປພົ້ນຕົວບ້ານ ຄົນໃນບ້ານຈະບໍ່ເຈັບປ່ວຍເລີຍ.';
+                            verdictAction = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາແລ້ວ! ຮັກສາຄວາມສະອາດຕາມປົກກະຕິ.';
+                        } else {
+                            verdictTag = '✨ ຫ້ອງນ້ຳນອກບ້ານປອດໄພ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 80/100';
+                            verdictTitle = 'ຫ້ອງນ້ຳນອກບ້ານປົກກະຕິ';
+                            verdictAnalysis = 'ບໍ່ມີຜົນກະທົບຕໍ່ພະລັງຊີ່ໃນຕົວບ້ານ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ.';
+                        }
+                    }
+
+                    // 13. ຈຸດຊັກໂຄກ / ໂຖສ້ວມ (Toilet Bowl & Drain Point)
+                    else if (selectedRoomType === 'toilet_bowl') {
+                        verdictTag = '🚽 ຈຸດຊັກໂຄກ (ຈຸດດູດພະລັງນ້ຳລົງ)';
+                        verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                        verdictScore = 'ຄະແນນ: 70/100';
+                        verdictTitle = 'ມຸມຫັນຂອງຊັກໂຄກ';
+                        verdictAnalysis = 'ຊັກໂຄກເປັນຈຸດດູດນ້ຳເສຍລົງດິນ ມີມຸມແລະທິດຫັນສະເພາະ.';
+                        verdictAction = 'ຂໍ້ຫ້າມເດັດຂາດ: ຫ້າມຫັນໜ້າຊັກໂຄກໄປທາງດຽວກັບໜ້າບ້ານ, ຫ້າມຕັ້ງຊັກໂຄກຕົງກົງກັບປະຕູຫ້ອງນ້ຳ (ເປີດປະຕູເຫັນຊັກໂຄກ), ແລະ ຫຼັງຊັກໂຄກຫ້າມຕິດກັບຫົວຕຽງນອນ ຫຼື ຫິ້ງພຣະ.';
                     }
 
                     // 12. ຕູ້ປາພາຍໃນບ້ານ (Indoor Aquarium)
