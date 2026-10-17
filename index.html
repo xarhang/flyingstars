@@ -1806,7 +1806,49 @@
                 if (wStars[id] === 2 || mStars[id] === 2) illnessPal = id;
             }
 
+            // ====================================================
+            // ADVANCED MASTER FORMATIONS (合十, 城门诀, 反吟伏吟)
+            // ====================================================
+            // 1. He Shi (合十 - Combination of Ten)
+            let isWaterHeShi = true;
+            let isMountainHeShi = true;
+            let isCrossHeShi = true;
+            for (let i = 1; i <= 9; i++) {
+                if (base[i] + wStars[i] !== 10) isWaterHeShi = false;
+                if (base[i] + mStars[i] !== 10) isMountainHeShi = false;
+                if (mStars[i] + wStars[i] !== 10) isCrossHeShi = false;
+            }
+            let heShiType = null;
+            if (isWaterHeShi) heShiType = '向星合十 (ດາວນ້ຳຮ່ວມສິບ - ມະຫາຊັບ 20 ປີ)';
+            else if (isMountainHeShi) heShiType = '山星合十 (ດາວພູຮ່ວມສິບ - ສຸຂະພາບ & ຕະກຸນໝັ້ນຄົງ 20 ປີ)';
+            else if (isCrossHeShi) heShiType = '山向合十 (ດາວພູ-ດາວນ້ຳຮ່ວມສິບ - ປ່ຽນຮ້າຍກາຍເປັນດີ)';
+
+            // 2. Fan Yin / Fu Yin (反吟 / 伏吟)
+            let isFuYin = (wStars[5] === 5 && wStars[1] === 1 && wStars[2] === 2 && wStars[3] === 3);
+            let isFanYin = (wStars[5] === 5 && wStars[1] === 9 && wStars[9] === 1);
+
+            // 3. Castle Gate (城门诀 - Cheng Men Jue)
+            // Ring order of 8 palaces: N(1) -> NE(8) -> E(3) -> SE(4) -> S(9) -> SW(2) -> W(7) -> NW(6)
+            const palCircle = [1, 8, 3, 4, 9, 2, 7, 6];
+            const curIdx = palCircle.indexOf(facePal);
+            let castleGate = null;
+            if (curIdx !== -1) {
+                const leftPalId = palCircle[(curIdx - 1 + 8) % 8];
+                const rightPalId = palCircle[(curIdx + 1) % 8];
+                // Check if adjacent palace holds timely water star (Period star or Period+1)
+                const shengQiStar = (period % 9) + 1;
+                if (wStars[leftPalId] === period || wStars[leftPalId] === shengQiStar) {
+                    castleGate = { palId: leftPalId, palName: XUAN_KONG_PALACES[leftPalId].dir, star: wStars[leftPalId], type: '正城门 (ປະຕູເສີມໂຊກຫຼັກ)' };
+                } else if (wStars[rightPalId] === period || wStars[rightPalId] === shengQiStar) {
+                    castleGate = { palId: rightPalId, palName: XUAN_KONG_PALACES[rightPalId].dir, star: wStars[rightPalId], type: '副城门 (ປະຕູເສີມໂຊກຮອງ)' };
+                }
+            }
+
             return {
+                heShiType,
+                isFuYin,
+                isFanYin,
+                castleGate,
                 period,
                 faceInfo,
                 sitInfo,
@@ -2552,6 +2594,15 @@
                                 '<span>ຫຼັງພິງ: ' + ((faceDeg + 180) % 360).toFixed(1) + '° ' + chart.sitInfo.pal.dir + '</span>' +
                                 '<span class="text-[10px] font-mono font-bold ' + kw.badgeClass + ' px-1.5 py-0.5 rounded">' + kw.badgeText + '</span>' +
                             '</div>' +
+                        '</div>' +
+
+                        '<div class="bg-slate-950 p-2 rounded-xl border border-slate-800 flex flex-col gap-1 mt-2">' +
+                            '<div class="flex items-center justify-between text-xs">' +
+                                '<span class="font-bold ' + chart.chartColor + '">' + chart.chartType + '</span>' +
+                            '</div>' +
+                            (chart.heShiType ? '<div class="text-[10px] text-emerald-300 font-bold bg-emerald-950/60 p-1 rounded border border-emerald-500/40">🌟 ' + chart.heShiType + '</div>' : '') +
+                            (chart.castleGate ? '<div class="text-[10px] text-cyan-300 font-bold bg-cyan-950/60 p-1 rounded border border-cyan-500/40">🏰 ປະຕູເສີມໂຊກ (城门诀): ' + chart.castleGate.palName + ' · ' + chart.castleGate.type + '</div>' : '') +
+                            (chart.isFuYin ? '<div class="text-[10px] text-rose-300 font-bold bg-rose-950/60 p-1 rounded border border-rose-500/40">⚠️ ຜັງຕົກຮ່ອງເດີມ (伏吟): ຄວນຮັກສາຄວາມສະຫງົບ</div>' : '') +
                         '</div>' +
 
                         '<div class="bg-purple-950/40 border border-purple-500/40 p-2.5 rounded-xl flex flex-col gap-1 mt-2">' +
