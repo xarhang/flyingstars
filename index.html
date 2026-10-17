@@ -1879,10 +1879,11 @@
         }
 
         let fengShuiMode = 'yang'; // 'yang' (default) or 'yin'
-        let activeYangTab = 'tab_room'; // 'tab_room', 'tab_annual', 'tab_people', 'tab_stars'
-        let activeYinTab = 'tab_fenjin'; // 'tab_fenjin', 'tab_lineage', 'tab_water', 'tab_tombstars'
+        let activeYangTab = 'tab_room'; // 'tab_room', 'tab_forecast', 'tab_annual', 'tab_stars'
+        let activeYinTab = 'tab_fenjin'; // 'tab_fenjin', 'tab_yinforecast', 'tab_lineage', 'tab_water'
         let selectedRoomType = 'door'; // 'door', 'window', 'bed', 'kitchen', 'desk', 'toilet', 'water', 'stairs'
         let selectedAnnualYear = 2026;
+        let selectedForecastMonth = 1; // 1 to 12
 
         function setFengShuiMode(mode) {
             fengShuiMode = mode;
@@ -1919,6 +1920,13 @@
             updateLivePrediction(topCompassDeg, true);
         }
 
+        function setSelectedForecastMonth(m) {
+            selectedForecastMonth = parseInt(m, 10);
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            updateLivePrediction(topCompassDeg, true);
+        }
+
         function setPredictionTab(tabName) {
             if (tabName === 'tab_spots' || tabName === 'tab_remedies' || tabName === 'tab_bazhai') {
                 activeYangTab = 'tab_stars';
@@ -1929,6 +1937,37 @@
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
             updateLivePrediction(topCompassDeg, true);
         }
+
+        // Helper: Calculate authentic San Yuan Xuan Kong Monthly Flying Star Center
+        function getMonthlyCenterStar(year, monthIdx) {
+            const branchIdx = (year - 4) % 12;
+            let startStar = 8; // 子午卯酉
+            if ([0, 3, 6, 9].includes(branchIdx)) {
+                startStar = 8;
+            } else if ([1, 4, 7, 10].includes(branchIdx)) {
+                startStar = 5;
+            } else {
+                startStar = 2;
+            }
+            let star = ((startStar - (monthIdx - 1)) % 9 + 9) % 9;
+            if (star === 0) star = 9;
+            return star;
+        }
+
+        const SOLAR_MONTHS_INFO = [
+            { m: 1, name: 'ເດືອນ 1 (ກຸມພາ)', branch: '寅 (ເສືອ)', dates: '4 ກ.ພ - 5 ມີ.ນາ', term: 'ລີ້ຊຸນ (立春)', clash: 'ປີລິງ (申)' },
+            { m: 2, name: 'ເດືອນ 2 (ມີນາ)', branch: '卯 (ກະຕ່າຍ)', dates: '6 ມີ.ນາ - 4 ເມ.ສາ', term: 'ກິ່ງຕິກ (惊蛰)', clash: 'ປີໄກ່ (酉)' },
+            { m: 3, name: 'ເດືອນ 3 (ເມສາ)', branch: '辰 (ມັງກອນ)', dates: '5 ເມ.ສາ - 5 ພ.ພ', term: 'ເຊັງເມ້ງ (清明)', clash: 'ປີໝາ (戌)' },
+            { m: 4, name: 'ເດືອນ 4 (ພຶດສະພາ)', branch: '巳 (ງູ)', dates: '6 ພ.ພ - 5 ມິ.ຖ', term: 'ລີ້ຮ່າ (立夏)', clash: 'ປີໝູ (亥)' },
+            { m: 5, name: 'ເດືອນ 5 (ມິຖຸນາ)', branch: '午 (ມ້າ)', dates: '6 ມິ.ຖ - 6 ກ.ລ', term: 'ມັງຈົ່ງ (芒种)', clash: 'ປີໜູ (子)' },
+            { m: 6, name: 'ເດືອນ 6 (ກໍລະກົດ)', branch: '未 (ແພະ)', dates: '7 ກ.ລ - 6 ສ.ຫ', term: 'ສ່ຽວຊູ່ (小暑)', clash: 'ປີງົວ (丑)' },
+            { m: 7, name: 'ເດືອນ 7 (ສິງຫາ)', branch: '申 (ລິງ)', dates: '7 ສ.ຫ - 6 ກັນ.ຍາ', term: 'ລີ້ຊິວ (立秋)', clash: 'ປີເສືອ (寅)' },
+            { m: 8, name: 'ເດືອນ 8 (ກັນຍາ)', branch: '酉 (ໄກ່)', dates: '7 ກັນ.ຍາ - 7 ຕຸ.ລາ', term: 'ແປ໊ກໂລ້ວ (白露)', clash: 'ປິກະຕ່າຍ (卯)' },
+            { m: 9, name: 'ເດືອນ 9 (ຕຸລາ)', branch: '戌 (ໝາ)', dates: '8 ຕຸ.ລາ - 6 ພະ.ຈິກ', term: 'ຮັ່ນໂລ້ວ (寒露)', clash: 'ປີມັງກອນ (辰)' },
+            { m: 10, name: 'ເດືອນ 10 (ພະຈິກ)', branch: '亥 (ໝູ)', dates: '7 ພະ.ຈິກ - 6 ທັນ.ວາ', term: 'ລີ້ຕົງ (立冬)', clash: 'ປີງູ (巳)' },
+            { m: 11, name: 'ເດືອນ 11 (ທັນວາ)', branch: '子 (ໜູ)', dates: '7 ທັນ.ວາ - 5 ມັງ.ກອນ', term: 'ໄຕ່ເສວ (大雪)', clash: 'ປີມ້າ (午)' },
+            { m: 12, name: 'ເດືອນ 12 (ມັງກອນ)', branch: '丑 (ງົວ)', dates: '6 ມັງ.ກອນ - 3 ກຸມ.ພາ', term: 'ສ່ຽວຮັ່ນ (小寒)', clash: 'ປີແພະ (未)' }
+        ];
 
         let lastCachedStarKey = '';
         let lastCachedKwText = '';
@@ -2052,10 +2091,10 @@
             if (fengShuiMode === 'yang') {
                 const yangTabsBar =
                     '<div class="grid grid-cols-4 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 text-[10px] font-bold select-none mb-2">' +
-                        '<button type="button" onclick="setYangTab(\'tab_room\')" class="py-1 px-1 rounded-lg text-center transition ' + (activeYangTab === 'tab_room' ? 'bg-emerald-900/90 text-emerald-200 border border-emerald-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">🚪 ກວດສອບຫ້ອງ</button>' +
-                        '<button type="button" onclick="setYangTab(\'tab_annual\')" class="py-1 px-1 rounded-lg text-center transition ' + (activeYangTab === 'tab_annual' ? 'bg-emerald-900/90 text-emerald-200 border border-emerald-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">⭐ ດາວຈອນປີ</button>' +
-                        '<button type="button" onclick="setYangTab(\'tab_people\')" class="py-1 px-1 rounded-lg text-center transition ' + (activeYangTab === 'tab_people' ? 'bg-emerald-900/90 text-emerald-200 border border-emerald-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">👥 ບຸກຄົນ/ນັກສັດ</button>' +
-                        '<button type="button" onclick="setYangTab(\'tab_stars\')" class="py-1 px-1 rounded-lg text-center transition ' + (activeYangTab === 'tab_stars' ? 'bg-emerald-900/90 text-emerald-200 border border-emerald-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">🔮 81 ຄູ່ດາວ</button>' +
+                        '<button type="button" onclick="setYangTab(\'tab_room\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYangTab === 'tab_room' ? 'bg-emerald-900/90 text-emerald-200 border border-emerald-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">🚪 ກວດຫ້ອງ</button>' +
+                        '<button type="button" onclick="setYangTab(\'tab_forecast\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYangTab === 'tab_forecast' ? 'bg-amber-500 text-slate-950 font-black shadow-md border border-amber-300' : 'text-amber-400 hover:text-amber-200') + '">📅 ປະຕິທິນເກີດເຫດ</button>' +
+                        '<button type="button" onclick="setYangTab(\'tab_annual\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYangTab === 'tab_annual' ? 'bg-emerald-900/90 text-emerald-200 border border-emerald-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">⭐ ດາວປີ</button>' +
+                        '<button type="button" onclick="setYangTab(\'tab_stars\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYangTab === 'tab_stars' ? 'bg-emerald-900/90 text-emerald-200 border border-emerald-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">🔮 81ດາວ/ຄົນ</button>' +
                     '</div>';
 
                 let tabBody = '';
@@ -2288,7 +2327,119 @@
                         '</div>';
                 }
 
-                // TAB 2: ANNUAL FLYING STARS & AFFLICTIONS (2026/2025/2024)
+                // TAB 2: EVENT FORECAST ENGINE & TIMELINE CALENDAR
+                else if (activeYangTab === 'tab_forecast') {
+                    const annualCenterStars = {
+                        2024: 3, 2025: 2, 2026: 1, 2027: 9
+                    };
+                    const annCenter = annualCenterStars[selectedAnnualYear] || 1;
+                    const annChart = flyLoShu(annCenter, 1);
+                    const aStar = annChart[curPal];
+
+                    // Build 12-Month Selector Bar with status indicator dots
+                    const monthPills =
+                        '<div class="grid grid-cols-6 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 mb-2">' +
+                            SOLAR_MONTHS_INFO.map(item => {
+                                const mCenter = getMonthlyCenterStar(selectedAnnualYear, item.m);
+                                const mChart = flyLoShu(mCenter, 1);
+                                const mStar = mChart[curPal];
+
+                                let dotColor = 'bg-slate-500';
+                                if (mStar === 5 || (aStar === 5 && (mStar === 9 || mStar === 2)) || (curW === 5 && (mStar === 5 || mStar === 9 || mStar === 2))) {
+                                    dotColor = 'bg-rose-500 shadow-sm animate-pulse';
+                                } else if ((curW === currentPeriod && (mStar === 9 || mStar === 1 || mStar === 8 || mStar === 6)) || mStar === 9 || mStar === 8 || mStar === 1) {
+                                    dotColor = 'bg-emerald-400 shadow-sm';
+                                }
+
+                                return '<button type="button" onclick="setSelectedForecastMonth(' + item.m + ')" class="py-1 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex items-center justify-center gap-1 ' +
+                                    (selectedForecastMonth === item.m
+                                        ? 'bg-amber-500 text-slate-950 font-black shadow-md'
+                                        : 'text-slate-300 hover:bg-slate-900') + '">' +
+                                    '<span class="w-1.5 h-1.5 rounded-full ' + dotColor + '"></span>' +
+                                    '<span>ມ.' + item.m + '</span>' +
+                                '</button>';
+                            }).join('') +
+                        '</div>';
+
+                    // Evaluate selected month
+                    const selMon = SOLAR_MONTHS_INFO[selectedForecastMonth - 1] || SOLAR_MONTHS_INFO[0];
+                    const mCenter = getMonthlyCenterStar(selectedAnnualYear, selMon.m);
+                    const mChart = flyLoShu(mCenter, 1);
+                    const mStar = mChart[curPal];
+
+                    let isDanger = false;
+                    let isFortune = false;
+                    let forecastTitle = '';
+                    let forecastDesc = '';
+                    let forecastAction = '';
+                    let bannerColor = '';
+                    let bannerTag = '';
+
+                    if (mStar === 5 || (aStar === 5 && (mStar === 9 || mStar === 2)) || (curW === 5 && (mStar === 5 || mStar === 9 || mStar === 2))) {
+                        isDanger = true;
+                        bannerColor = 'border-rose-500 bg-rose-950/60 text-rose-300';
+                        bannerTag = '🔴 ເດືອນອັນຕະລາຍສູງສຸດ (Critical Danger)';
+                        forecastTitle = 'ດາວ 5 ຫ້າເຫຼືອງ / ດາວ 2 ພະຍາດ ຈຸດຊະນວນ!';
+                        forecastDesc = 'ໃນເດືອນນີ້ ດາວພິດ/ພະຍາດ (ດາວ ' + mStar + ') ໝູນມາທັບທິດນີ້! ເປັນຊ່ວງເວລາທີ່ເກີດເຫດຮ້າຍແຮງໄດ້ງ່າຍທີ່ສຸດ: ລະວັງການເສຍເງິນກ້ອນໃຫຍ່, ລົງທຶນຜິດພາດ, ຖືກສໍ້ໂກງ, ຫຼື ອຸບັດຕິເຫດເລືອດຕົກຍາງອອກ. ຄົນໃນບ້ານເຈັບປ່ວຍກະທັນຫັນ.';
+                        forecastAction = 'ຫ້າມເຈາະທຸບ, ຫ້າມຕອກຕະປູ, ຫ້າມຈູດໄຟ, ຫ້າມເດີນທາງໄກໃນວັນຊົງ. ແຂວນກະດິ່ງລົມທອງເຫຼືອງ ຫຼື ວາງນ້ຳອັນຢິນໄວ້ດັກພະລັງຮ້າຍ.';
+                    } else if ((curW === currentPeriod && (mStar === 9 || mStar === 1 || mStar === 8 || mStar === 6)) || mStar === 9 || mStar === 8 || mStar === 1) {
+                        isFortune = true;
+                        bannerColor = 'border-emerald-500 bg-emerald-950/60 text-emerald-300';
+                        bannerTag = '🟢 ເດືອນມະຫາໂຊກຮັບຊັບ (Golden Wealth)';
+                        forecastTitle = 'ດາວໂຊກລາບ ' + mStar + ' ມາບັນຈົບ!';
+                        forecastDesc = 'ເດືອນນີ້ເປັນເດືອນທອງຄຳສູງສຸດແຫ່ງປີ! ດາວນ້ຳປະຈຳຍຸກໄດ້ຮັບພະລັງເສີມຈາກດາວຈອນເດືອນ ' + mStar + ' ເຮັດໃຫ້ເກີດກະແສເງິນຄຳຫຼັ່ງໄຫຼ, ປິດການຂາຍໃຫຍ່, ໄດ້ເລື່ອນຂັ້ນເລື່ອນຕຳແໜ່ງ, ຫລື ໄດ້ລາບລອຍ. ເປັນເດືອນທອງຄຳສຳລັບການລົງທຶນ ແລະ ເປີດກິດຈະການ!';
+                        forecastAction = 'ເປີດຮ້ານ, ເປີດໂຕສິນຄ້າໃໝ່, ເຊັນສັນຍາ, ລົງທຶນ, ເປີດນ້ຳພຸ/ຕູ້ປາໃຫ້ໄຫຼວຽນສະອາດ.';
+                    } else {
+                        bannerColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                        bannerTag = '🟡 ເດືອນປົກກະຕິ (Steady Month)';
+                        forecastTitle = 'ດາວຈອນເດືອນ ' + mStar + ' (ດາວປີ ' + aStar + ')';
+                        forecastDesc = 'ພະລັງງານສະໝ່ຳສະເໝີ ບໍ່ມີການປະທະຮຸນແຮງ. ການເງິນແລະສຸຂະພາບດຳເນີນໄປຕາມປົກກະຕິ.';
+                        forecastAction = 'ດຳເນີນທຸລະກິດຕາມປົກກະຕິ, ຮັກສາຄວາມສະອາດ.';
+                    }
+
+                    tabBody =
+                        '<div class="flex items-center justify-between text-xs mb-1 px-1">' +
+                            '<span class="text-amber-400 font-bold">ເລືອກເດືອນໃນປີ ' + selectedAnnualYear + ':</span>' +
+                            '<span class="text-[10px] text-slate-400">🟢ໂຊກ · 🔴ລະວັງ · 🟡ປົກກະຕິ</span>' +
+                        '</div>' +
+                        monthPills +
+
+                        '<div class="p-3 rounded-xl border ' + bannerColor + ' flex flex-col gap-2 shadow-sm">' +
+                            '<div class="flex items-center justify-between">' +
+                                '<span class="font-bold text-xs">' + bannerTag + '</span>' +
+                                '<span class="text-[10px] font-mono font-bold bg-black/40 px-2 py-0.5 rounded">' + selMon.dates + '</span>' +
+                            '</div>' +
+
+                            '<div class="text-white font-bold text-sm">' + selMon.name + ' · ' + selMon.term + '</div>' +
+
+                            '<div class="text-[10px] text-slate-300 font-mono bg-black/30 p-1.5 rounded-lg flex items-center justify-between">' +
+                                '<span>ດາວເດືອນ: <b>' + mStar + '</b> | ດາວປີ: <b>' + aStar + '</b></span>' +
+                                '<span>ດາວນ້ຳ: <b>' + curW + '</b> | ດາວພູ: <b>' + curM + '</b></span>' +
+                            '</div>' +
+
+                            '<div class="text-amber-300 font-bold text-xs">' + forecastTitle + '</div>' +
+                            '<p class="text-[11px] leading-relaxed">' + forecastDesc + '</p>' +
+
+                            '<div class="bg-rose-950/40 p-2 rounded-lg text-[10px] text-rose-200 leading-relaxed border border-rose-500/30">' +
+                                '⚠️ <b>ນັກສັດທີ່ຊົງໃນເດືອນນີ້:</b> ຄົນເກີດ <b>' + selMon.clash + '</b> ໃນບ້ານ! ຈະໄດ້ຮັບຜົນກະທົບໄວແລະແຮງກວ່າໝູ່ ຕ້ອງລະວັງຕົວເປັນພິເສດ.' +
+                            '</div>' +
+
+                            '<div class="grid grid-cols-2 gap-1.5 text-[10px]">' +
+                                '<div class="bg-emerald-950/40 border border-emerald-500/40 p-1.5 rounded-lg text-emerald-200">' +
+                                    '<b>🟢 ວັນມະຫາໂຊກ:</b> ວັນທີ 8, 17, 26' +
+                                '</div>' +
+                                '<div class="bg-rose-950/40 border border-rose-500/40 p-1.5 rounded-lg text-rose-200">' +
+                                    '<b>🔴 ວັນຕ້ອງຫ້າມ:</b> ວັນທີ 5, 14, 23' +
+                                '</div>' +
+                            '</div>' +
+
+                            '<div class="bg-black/50 p-2 rounded-lg text-[10px] text-amber-200 leading-relaxed border border-amber-500/30">' +
+                                '<b>💡 ຄຳແນະນຳສະເພາະເດືອນນີ້:</b> ' + forecastAction +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // TAB 3: ANNUAL FLYING STARS & AFFLICTIONS (2026/2025/2024)
                 else if (activeYangTab === 'tab_annual') {
                     const annualCenterStars = {
                         2024: { center: 3, name: 'ປີມັງກອນ 2024 (甲辰)', taiSuiDir: 'ຕາເວັນອອກສ່ຽງໃຕ້ (辰)', sanShaDir: 'ໃຕ້', fiveYellowDir: 'ຕາເວັນຕົກ (兑)' },
@@ -2315,7 +2466,6 @@
                     let isTaiSui = false;
                     let isSanSha = false;
                     let isAnnualFiveYellow = (annualStarInCurPal === 5);
-                    let isAnnualTwoBlack = (annualStarInCurPal === 2);
 
                     if (selectedAnnualYear === 2026) {
                         if (chart.faceInfo.pal.baguaCode === 'S') isTaiSui = true;
@@ -2358,19 +2508,18 @@
                         '</div>' : '');
                 }
 
-                // TAB 3: PEOPLE & 12 ZODIACS
-                else if (activeYangTab === 'tab_people') {
+                // TAB 4: 81 COMBOS, PEOPLE & REMEDIES
+                else if (activeYangTab === 'tab_stars') {
                     const trigramFamily = {
-                        1: { role: 'ລູກຊາຍກາງ (中男)', organ: 'ໝາກໄຂ່ຫຼັງ, ຫູ, ລະບົບເລືອດ' },
-                        2: { role: 'ແມ່ / ຜູ້ຍິງອາວຸໂສ (母亲)', organ: 'ກະເພາະ, ມົດລູກ, ທ້ອງ' },
-                        3: { role: 'ລູກຊາຍກົກ (长男)', organ: 'ຕັບ, ເສັ້ນເອັນ, ຕີນ/ຂາ' },
-                        4: { role: 'ລູກສາວກົກ (长女)', organ: 'ຕົ້ນຂາ, ລະບົບຫາຍໃຈ, ຜິວໜັງ' },
-                        6: { role: 'ພໍ່ / ຜູ້ນຳຄອບຄົວ (父亲)', organ: 'ຫົວ, ປອດ, ກະດູກ, ຄວາມດັນ' },
-                        7: { role: 'ລູກສາວຫຼ້າ (少女)', organ: 'ປາກ, ແຂ້ວ, ຄໍ, ປອດ' },
-                        8: { role: 'ລູກຊາຍຫຼ້າ (少男)', organ: 'ມື, ດັງ, ຫຼັງ, ກະດູກສັນຫຼັງ' },
-                        9: { role: 'ລູກສາວກາງ (中女)', organ: 'ຕາ, ຫົວໃຈ, ເສັ້ນເລືອດ' }
+                        1: { role: 'ລູກຊາຍກາງ (中男)', organ: 'ໝາກໄຂ່ຫຼັງ, ຫູ' },
+                        2: { role: 'ແມ່ / ຜູ້ຍິງອາວຸໂສ (母亲)', organ: 'ກະເພາະ, ມົດລູກ' },
+                        3: { role: 'ລູກຊາຍກົກ (长男)', organ: 'ຕັບ, ເສັ້ນເອັນ, ຂາ' },
+                        4: { role: 'ລູກສາວກົກ (长女)', organ: 'ຕົ້ນຂາ, ຜິວໜັງ' },
+                        6: { role: 'ພໍ່ / ຜູ້ນຳຄອບຄົວ (父亲)', organ: 'ຫົວ, ປອດ, ກະດູກ' },
+                        7: { role: 'ລູກສາວຫຼ້າ (少女)', organ: 'ປາກ, ແຂ້ວ, ຄໍ' },
+                        8: { role: 'ລູກຊາຍຫຼ້າ (少男)', organ: 'ມື, ດັງ, ຫຼັງ' },
+                        9: { role: 'ລູກສາວກາງ (中女)', organ: 'ຕາ, ຫົວໃຈ' }
                     };
-
                     const famInfo = trigramFamily[curPal] || { role: 'ສະມາຊິກທົ່ວໄປ', organ: 'ທົ່ວໄປ' };
                     const mtnObj = chart.faceInfo.mtn;
 
@@ -2381,33 +2530,6 @@
                         zodiacText = 'ທິດນີ້ເປັນເຂົາ ' + mtnObj.name + ' (' + mtnObj.lao + ') ປະຈຳວັງ ' + chart.faceInfo.pal.dir + '.';
                     }
 
-                    tabBody =
-                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1.5">' +
-                            '<div class="flex items-center justify-between text-xs">' +
-                                '<span class="text-amber-400 font-bold">ບຸກຄົນທີ່ໄດ້ຮັບຜົນກະທົບ:</span>' +
-                                '<span class="text-emerald-400 font-bold">' + famInfo.role + '</span>' +
-                            '</div>' +
-                            '<p class="text-[11px] text-slate-300 leading-relaxed">' +
-                                'ຫາກທິດນີ້ມີດາວດີ (ດາວ 9, 1) ຄົນທີ່ເປັນ <b>' + famInfo.role + '</b> ຈະຈະເລີນຮຸ່ງເຮືອງທີ່ສຸດ. ແຕ່ຫາກມີດາວຮ້າຍ (5, 2) ຕ້ອງລະວັງສຸຂະພາບ: <b>' + famInfo.organ + '</b>.' +
-                            '</p>' +
-                        '</div>' +
-
-                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1.5 mt-2">' +
-                            '<span class="text-xs font-bold text-amber-400">12 ນັກສັດປະຈຳທິດນີ້:</span>' +
-                            '<p class="text-[11px] text-slate-300 leading-relaxed">' + zodiacText + '</p>' +
-                        '</div>' +
-
-                        (currentGuaData ?
-                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1 mt-2 text-xs">' +
-                            '<div class="flex justify-between">' +
-                                '<span class="text-slate-400">ມິ່ງກວ້າເຈົ້າຂອງບ້ານ:</span>' +
-                                '<span class="text-amber-300 font-bold">' + currentGuaData.name + ' (' + currentGuaData.group + ')</span>' +
-                            '</div>' +
-                        '</div>' : '');
-                }
-
-                // TAB 4: 81 COMBOS & STRATEGY SPOTS
-                else if (activeYangTab === 'tab_stars') {
                     const luckBadge = comboInfo.luck === 'auspicious'
                         ? '<span class="bg-emerald-950/80 text-emerald-300 border border-emerald-500/50 px-2 py-0.5 rounded text-[10px] font-bold">' + comboInfo.type + ' (ມຸງຄຸນ)</span>'
                         : (comboInfo.luck === 'inauspicious'
@@ -2438,10 +2560,10 @@
 
                         '<div class="flex flex-col gap-1.5 mt-2">' +
                             '<div class="bg-slate-950 p-2 rounded-xl border border-slate-800 text-[11px] text-slate-300">' +
-                                '<b class="text-blue-300">ສຸຂະພາບ:</b> ' + comboInfo.health +
+                                '<b class="text-blue-300">ສຸຂະພາບ & ຄົນ:</b> ' + famInfo.role + ' (' + famInfo.organ + '). ' + comboInfo.health +
                             '</div>' +
                             '<div class="bg-slate-950 p-2 rounded-xl border border-slate-800 text-[11px] text-slate-300">' +
-                                '<b class="text-emerald-300">ການເງິນ & ອາຊີບ:</b> ' + comboInfo.wealth +
+                                '<b class="text-emerald-300">ການເງິນ & 12 ນັກສັດ:</b> ' + zodiacText + ' ' + comboInfo.wealth +
                             '</div>' +
                             '<div class="bg-slate-950 p-2 rounded-xl border border-amber-500/30 text-[11px] text-amber-200">' +
                                 '<b class="text-amber-300">ວິທີແກ້:</b> ' + comboInfo.remedy +
@@ -2458,10 +2580,10 @@
             else {
                 const yinTabsBar =
                     '<div class="grid grid-cols-4 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 text-[10px] font-bold select-none mb-2">' +
-                        '<button type="button" onclick="setYinTab(\'tab_fenjin\')" class="py-1 px-1 rounded-lg text-center transition ' + (activeYinTab === 'tab_fenjin' ? 'bg-purple-900/90 text-purple-200 border border-purple-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">🪦 ປ້າຍຫີນ/ພັນຈິນ</button>' +
-                        '<button type="button" onclick="setYinTab(\'tab_lineage\')" class="py-1 px-1 rounded-lg text-center transition ' + (activeYinTab === 'tab_lineage' ? 'bg-purple-900/90 text-purple-200 border border-purple-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">👨‍👦 ຜົນຕໍ່ລູກຫຼານ</button>' +
-                        '<button type="button" onclick="setYinTab(\'tab_water\')" class="py-1 px-1 rounded-lg text-center transition ' + (activeYinTab === 'tab_water' ? 'bg-purple-900/90 text-purple-200 border border-purple-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">🌊 ສາຍນ້ຳ & ພູ</button>' +
-                        '<button type="button" onclick="setYinTab(\'tab_tombstars\')" class="py-1 px-1 rounded-lg text-center transition ' + (activeYinTab === 'tab_tombstars' ? 'bg-purple-900/90 text-purple-200 border border-purple-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">🔮 ດາວເຫີນສຸສານ</button>' +
+                        '<button type="button" onclick="setYinTab(\'tab_fenjin\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYinTab === 'tab_fenjin' ? 'bg-purple-900/90 text-purple-200 border border-purple-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">🪦 ປ້າຍຫີນ</button>' +
+                        '<button type="button" onclick="setYinTab(\'tab_yinforecast\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYinTab === 'tab_yinforecast' ? 'bg-amber-500 text-slate-950 font-black shadow-md border border-amber-300' : 'text-amber-400 hover:text-amber-200') + '">📅 ເວລາເກີດເຫດ</button>' +
+                        '<button type="button" onclick="setYinTab(\'tab_lineage\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYinTab === 'tab_lineage' ? 'bg-purple-900/90 text-purple-200 border border-purple-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">👨‍👦 ຜົນຕໍ່ລູກຫຼານ</button>' +
+                        '<button type="button" onclick="setYinTab(\'tab_water\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYinTab === 'tab_water' ? 'bg-purple-900/90 text-purple-200 border border-purple-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">🌊 ສາຍນ້ຳ & ພູ</button>' +
                     '</div>';
 
                 let tabBody = '';
@@ -2536,7 +2658,47 @@
                         '</div>';
                 }
 
-                // YIN TAB 2: LINEAGE IMPACTS (房份)
+                // YIN TAB 2: TOMB EVENT FORECAST TIMELINE (应期)
+                else if (activeYinTab === 'tab_yinforecast') {
+                    const selMon = SOLAR_MONTHS_INFO[selectedForecastMonth - 1] || SOLAR_MONTHS_INFO[0];
+                    const mCenter = getMonthlyCenterStar(selectedAnnualYear, selMon.m);
+                    const mChart = flyLoShu(mCenter, 1);
+                    const mStar = mChart[curPal];
+
+                    const monthPills =
+                        '<div class="grid grid-cols-6 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 mb-2">' +
+                            SOLAR_MONTHS_INFO.map(item =>
+                                '<button type="button" onclick="setSelectedForecastMonth(' + item.m + ')" class="py-1 rounded-lg text-center text-[10px] font-bold transition ' +
+                                    (selectedForecastMonth === item.m ? 'bg-purple-600 text-white font-black shadow-md' : 'text-slate-400 hover:text-slate-200') + '">' +
+                                    'ມ.' + item.m +
+                                '</button>'
+                            ).join('') +
+                        '</div>';
+
+                    tabBody =
+                        '<div class="flex items-center justify-between text-xs mb-1 px-1">' +
+                            '<span class="text-purple-300 font-bold">ເວລາເກີດເຫດສຸສານ (ປີ ' + selectedAnnualYear + '):</span>' +
+                        '</div>' +
+                        monthPills +
+
+                        '<div class="bg-slate-950 p-3 rounded-xl border border-purple-500/40 flex flex-col gap-2">' +
+                            '<div class="flex items-center justify-between">' +
+                                '<span class="text-xs font-bold text-purple-200">' + selMon.name + ' · ' + selMon.term + '</span>' +
+                                '<span class="text-[10px] text-amber-300 font-mono bg-black/40 px-2 py-0.5 rounded">' + selMon.dates + '</span>' +
+                            '</div>' +
+                            '<div class="text-[11px] text-slate-300 leading-relaxed">' +
+                                'ດາວຈອນເດືອນ <b>' + mStar + '</b> ໝູນມາຕົກໜ້າປ້າຍສຸສານ (ດາວນ້ຳ ' + curW + '). ' +
+                                (mStar === 5 || mStar === 2
+                                    ? '⚠️ <b>ເດືອນຕ້ອງລະວັງ:</b> ດາວພິດ/ພະຍາດມາທັບປ້າຍຫີນ ລູກຫຼານອາດຈະເກີດເລື່ອງຕິດຂັດ ຫຼື ເຈັບປ່ວຍ.'
+                                    : '🌟 <b>ເດືອນມຸງຄຸນ:</b> ພະລັງງານສຸສານສົ່ງເສີມລູກຫຼານໃຫ້ໄດ້ຮັບໂຊກລາບ ແລະ ຄວາມຮຸ່ງເຮືອງ.') +
+                            '</div>' +
+                            '<div class="bg-black/40 p-2 rounded-lg text-[10px] text-purple-200 leading-relaxed border border-purple-500/30">' +
+                                '⚠️ <b>ນັກສັດທີ່ຊົງໃນເດືອນນີ້:</b> ລູກຫຼານທີ່ເກີດ <b>' + selMon.clash + '</b> ຕ້ອງລະວັງສຸຂະພາບເປັນພິເສດໃນເດືອນນີ້.' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // YIN TAB 3: LINEAGE IMPACTS (房份)
                 else if (activeYinTab === 'tab_lineage') {
                     tabBody =
                         '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1.5">' +
@@ -2566,7 +2728,7 @@
                         '</div>';
                 }
 
-                // YIN TAB 3: WATER EXIT & MOUNTAIN (水法与来龙)
+                // YIN TAB 4: WATER EXIT & MOUNTAIN (水法与来龙)
                 else if (activeYinTab === 'tab_water') {
                     tabBody =
                         '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1.5">' +
@@ -2586,23 +2748,6 @@
                             '</div>' +
                             '<p class="text-[11px] text-slate-300 leading-relaxed">' +
                                 'ສາຍນ້ຳທາງໜ້າຄື "ຊັບສິນເງິນຄຳ" (旺财). ນ້ຳຄວນໄຫຼອ້ອມໂອບສຸສານຄືສາຍຮັດແອວ (水抱弯环), ຫ້າມນ້ຳພຸ່ງຊື່ແທງໃສ່ປ້າຍຫີນ (水冲割脚) ເພາະລູກຫຼານຈະເສຍຊັບ.' +
-                            '</p>' +
-                        '</div>';
-                }
-
-                // YIN TAB 4: TOMB FLYING STARS IN PERIOD 9
-                else if (activeYinTab === 'tab_tombstars') {
-                    tabBody =
-                        '<div class="bg-purple-950/40 border border-purple-500/40 p-2.5 rounded-xl flex flex-col gap-1.5">' +
-                            '<div class="flex items-center justify-between">' +
-                                '<span class="text-purple-200 font-bold text-xs">ດາວເຫີນສຸສານຍຸກ ' + currentPeriod + '</span>' +
-                                '<span class="text-amber-300 font-mono font-bold">山' + curM + ' 向' + curW + '</span>' +
-                            '</div>' +
-                            '<p class="text-[11px] text-slate-200 leading-relaxed">' +
-                                (curW === currentPeriod ? '🌟 ໜ້າສຸສານໄດ້ຮັບດາວນ້ຳ 9 ມະຫາໂຊກ! ສົ່ງເສີມລູກຫຼານໃຫ້ຮັ່ງມີ, ທຸລະກິດການຄ້າຈະເລີນກ້າວໜ້າ.' : 'ໜ້າສຸສານໄດ້ຮັບດາວນ້ຳ ' + curW + '. ' + comboInfo.wealth) +
-                            '</p>' +
-                            '<p class="text-[11px] text-slate-300 leading-relaxed pt-1 border-t border-purple-500/30">' +
-                                (curM === currentPeriod ? '🌟 ຫຼັງພິງໄດ້ຮັບດາວພູ 9 ບາຣະມີ! ລູກຫຼານສຸຂະພາບແຂງແຮງ, ຕະກຸນໝັ້ນຄົງອາຍຸຍືນ.' : 'ຫຼັງພິງໄດ້ຮັບດາວພູ ' + curM + '. ' + comboInfo.health) +
                             '</p>' +
                         '</div>';
                 }
