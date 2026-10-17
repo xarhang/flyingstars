@@ -797,6 +797,17 @@
             { code: 'N1',  start: 337.5, end: 352.5, color: '#2563eb', type: 'table',  headers: ['ຊວດ','ເຖາະ','ມະເມີຍ','ລະກາ'] }
         ];
 
+        const DIR_NAMES_LAO = {
+            'N': 'ທິດເໜືອ',
+            'NE': 'ອອກສ່ຽງເໜືອ',
+            'E': 'ຕາເວັນອອກ',
+            'SE': 'ອອກສ່ຽງໃຕ້',
+            'S': 'ທິດໃຕ້',
+            'SW': 'ຕົກສ່ຽງໃຕ້',
+            'W': 'ຕາເວັນຕົກ',
+            'NW': 'ຕົກສ່ຽງເໜືອ'
+        };
+
         const BAGUA_8 = [
             {
                 name: 'ບ້ານຫຼີ', dir: 'S', start: 157.5, end: 202.5,
@@ -1077,7 +1088,18 @@
                     if (guaNum === 5) guaNum = 8;
                 }
             }
-            return { solarYear, yearInfo, guaNum, guaData: GUA_DATA[guaNum] };
+            const rawGua = GUA_DATA[guaNum];
+            const auspicious = [];
+            const inauspicious = [];
+            if (rawGua && rawGua.dirs) {
+                for (const [code, info] of Object.entries(rawGua.dirs)) {
+                    const item = { dir: DIR_NAMES_LAO[code] || code, code, name: info.name, star: info.star, desc: info.desc };
+                    if (info.type === 'good') auspicious.push(item);
+                    else inauspicious.push(item);
+                }
+            }
+            const guaData = { ...rawGua, auspicious, inauspicious };
+            return { solarYear, yearInfo, guaNum, guaData };
         }
 
         function buildOuterBasePlate(styleMode = 'lacquer') {
@@ -1121,15 +1143,15 @@
             });
 
             const cardinals = [
-                { x: 600, y: -18, label: 'ຈຸດເລັງອ່ານອົງສາໜ້າບ້ານ (ດ້ານໜ້າ)', rot: 0 },
-                { x: 600, y: 1218, label: 'ຈຸດເລັງອ່ານອົງສາຫຼັງບ້ານ (ດ້ານຫຼັງ)', rot: 0 },
-                { x: -18, y: 600, label: 'ດ້ານຊ້າຍມື', rot: -90 },
-                { x: 1218, y: 600, label: 'ດ້ານຂວາມື', rot: 90 }
+                { id: 'plateFaceBadge',  x: 600, y: -20,  label: 'ໜ້າບ້ານ: 180.0° ທິດໃຕ້ (午-ອູ່)', rot: 0,   bg: isLacquer ? '#7f1d1d' : '#1e293b', text: '#fde047' },
+                { id: 'plateSitBadge',   x: 600, y: 1220, label: 'ຫຼັງພິງ: 0.0° ທິດເໜືອ (子-ຈື)',   rot: 0,   bg: isLacquer ? '#1e3a8a' : '#0f172a', text: '#93c5fd' },
+                { id: 'plateLeftBadge',  x: -20, y: 600,  label: 'ຊ້າຍມື: 90.0° ຕາເວັນອອກ (卯)',   rot: -90, bg: isLacquer ? '#14532d' : '#064e3b', text: '#86efac' },
+                { id: 'plateRightBadge', x: 1220, y: 600, label: 'ຂວາມື: 270.0° ຕາເວັນຕົກ (酉)',   rot: 90,  bg: isLacquer ? '#334155' : '#1e293b', text: '#cbd5e1' }
             ];
             cardinals.forEach(cd => {
                 parts.push(`<g transform="translate(${cd.x}, ${cd.y}) rotate(${cd.rot})">
-                    <rect x="-110" y="-12" width="220" height="24" rx="12" fill="${isLacquer ? '#2a0404' : '#0f172a'}" stroke="${borderStroke}" stroke-width="1.5"/>
-                    <text x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="10.5" font-weight="800" fill="#facc15">${cd.label}</text>
+                    <rect x="-125" y="-13" width="250" height="26" rx="13" fill="${cd.bg}" stroke="${borderStroke}" stroke-width="1.5"/>
+                    <text id="${cd.id}" x="0" y="1" text-anchor="middle" dominant-baseline="central" font-size="10.5" font-weight="900" fill="${cd.text}">${cd.label}</text>
                 </g>`);
             });
 
@@ -1158,47 +1180,32 @@
             const needleGroup = document.getElementById('innerCompassNeedleGroup');
             const parts = [];
 
-            const poolBg = isTransparentMode ? 'rgba(255, 255, 255, 0.05)' : 'url(#heavenPoolGrad)';
-            const poolFillOp = isTransparentMode ? '0.15' : '0.94';
-            const poolStroke = isTransparentMode ? '#dc2626' : 'url(#brassRimGrad)';
-            const poolStrokeW = isTransparentMode ? '2' : '5';
-
-            parts.push(`<circle cx="${CX}" cy="${CY}" r="112" fill="${poolBg}" fill-opacity="${poolFillOp}" stroke="${poolStroke}" stroke-width="${poolStrokeW}"/>`);
-            parts.push(`<circle cx="${CX}" cy="${CY}" r="108" fill="none" stroke="#991b1b" stroke-width="1.2"/>`);
-
-            for (let deg = 0; deg < 360; deg += 15) {
-                const isCard = deg % 90 === 0;
-                const isInter = deg % 45 === 0;
-                const rIn = isCard ? 88 : (isInter ? 92 : 97);
-                const rOut = 105;
-                const p1 = polarToCartesian(CX, CY, rIn, deg);
-                const p2 = polarToCartesian(CX, CY, rOut, deg);
-                parts.push(`<line x1="${p1.x.toFixed(2)}" y1="${p1.y.toFixed(2)}" x2="${p2.x.toFixed(2)}" y2="${p2.y.toFixed(2)}" stroke="${isCard ? '#dc2626' : '#334155'}" stroke-width="${isCard ? 2 : 1}"/>`);
-            }
-
-            // Note: 8 Dynamic Directions are placed on compassDisk so they rotate seamlessly with the dial.
-
-            parts.push(`<line x1="${CX}" y1="${CY - 104}" x2="${CX}" y2="${CY + 104}" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3 2"/>`);
-            parts.push(`<line x1="${CX - 104}" y1="${CY}" x2="${CX + 104}" y2="${CY}" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3 2"/>`);
-            parts.push(`<circle cx="${CX - 5}" cy="${CY - 94}" r="2.5" fill="#dc2626"/>`);
-            parts.push(`<circle cx="${CX + 5}" cy="${CY - 94}" r="2.5" fill="#dc2626"/>`);
-
+            // Dynamic Magnetic Needle floating over Heaven Pool
             const needleCheckbox = document.getElementById('toggleNeedle');
             const showNeedle = needleCheckbox ? needleCheckbox.checked : !isTransparentMode;
-            parts.push(`<g id="magneticNeedle" transform="rotate(0, ${CX}, ${CY})" style="display: ${showNeedle ? 'block' : 'none'};">
-                <g opacity="0.25" transform="translate(2, 3)">
-                    <polygon points="${CX},${CY - 92} ${CX - 7},${CY} ${CX + 7},${CY}" fill="#000000"/>
-                    <polygon points="${CX},${CY + 92} ${CX - 7},${CY} ${CX + 7},${CY}" fill="#000000"/>
+            parts.push(`<g id="magneticNeedle" transform="rotate(${currentNeedleBaseAngle.toFixed(2)}, ${CX}, ${CY})" style="display: ${showNeedle ? 'block' : 'none'}; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));">
+                <g opacity="0.3" transform="translate(2, 3)">
+                    <polygon points="${CX},${CY - 92} ${CX - 8},${CY} ${CX + 8},${CY}" fill="#000000"/>
+                    <polygon points="${CX},${CY + 92} ${CX - 8},${CY} ${CX + 8},${CY}" fill="#000000"/>
                 </g>
-                <polygon points="${CX},${CY - 92} ${CX - 7.5},${CY} ${CX},${CY - 6}" fill="#ef4444"/>
-                <polygon points="${CX},${CY - 92} ${CX + 7.5},${CY} ${CX},${CY - 6}" fill="#b91c1c"/>
-                <circle cx="${CX}" cy="${CY - 56}" r="5.5" fill="#ffffff" stroke="#b91c1c" stroke-width="2.2"/>
-                <polygon points="${CX},${CY + 92} ${CX - 7.5},${CY} ${CX},${CY + 6}" fill="#1e3a8a"/>
-                <polygon points="${CX},${CY + 92} ${CX + 7.5},${CY} ${CX},${CY + 6}" fill="#172554"/>
-                <circle cx="${CX}" cy="${CY}" r="11" fill="url(#brassRimGrad)" stroke="#713f12" stroke-width="1.5"/>
-                <circle cx="${CX}" cy="${CY}" r="4" fill="#dc2626"/>
+                <!-- North Pointer (Pointing North towards True North 0° with bright red body & bold 'N' jewel) -->
+                <polygon points="${CX},${CY - 92} ${CX - 8},${CY} ${CX},${CY - 6}" fill="#ef4444"/>
+                <polygon points="${CX},${CY - 92} ${CX + 8},${CY} ${CX},${CY - 6}" fill="#b91c1c"/>
+                <circle cx="${CX}" cy="${CY - 54}" r="7" fill="#ffffff" stroke="#b91c1c" stroke-width="2.2"/>
+                <text x="${CX}" y="${CY - 53}" text-anchor="middle" dominant-baseline="central" font-size="8" font-weight="900" fill="#b91c1c">N</text>
+
+                <!-- South Pointer (Blue / Dark with bold 'S' jewel) -->
+                <polygon points="${CX},${CY + 92} ${CX - 8},${CY} ${CX},${CY + 6}" fill="#2563eb"/>
+                <polygon points="${CX},${CY + 92} ${CX + 8},${CY} ${CX},${CY + 6}" fill="#1d4ed8"/>
+                <circle cx="${CX}" cy="${CY + 54}" r="7" fill="#ffffff" stroke="#1d4ed8" stroke-width="2.2"/>
+                <text x="${CX}" y="${CY + 55}" text-anchor="middle" dominant-baseline="central" font-size="8" font-weight="900" fill="#1d4ed8">S</text>
+
+                <!-- Center Brass Jewel Cap -->
+                <circle cx="${CX}" cy="${CY}" r="12" fill="url(#brassRimGrad)" stroke="#713f12" stroke-width="1.8"/>
+                <circle cx="${CX}" cy="${CY}" r="4.5" fill="#dc2626"/>
             </g>`);
 
+            // Red thread crosshair (Fixed viewport guide across the Luopan)
             const crosshairCheckbox = document.getElementById('toggleCrosshair');
             const showCrosshair = crosshairCheckbox ? crosshairCheckbox.checked : true;
             parts.push(`<g id="luopanRedThread" pointer-events="none" style="display: ${showCrosshair ? 'block' : 'none'};">
@@ -1467,32 +1474,65 @@
                 parts.push(createRadialText(128, mid, label, { fontSize: 8.8, fontWeight: '800', fill: '#ffffff' }));
             });
 
-            const centerFill = isTransparentMode ? 'none' : '#f8fafc';
-            parts.push(`<circle cx="${CX}" cy="${CY}" r="112" fill="${centerFill}" stroke="#dc2626" stroke-width="2.5"/>`);
-            // 8 Rotating Directions on the dial (Rotate dynamically with the compass!)
-            const rotatingDirs = [
-                { deg: 180, label: 'ໃຕ້', color: '#dc2626', size: 14, weight: '900' },
-                { deg: 0,   label: 'ເໜືອ', color: '#1d4ed8', size: 14, weight: '900' },
-                { deg: 90,  label: 'ອອກ', color: '#15803d', size: 13, weight: '800' },
-                { deg: 270, label: 'ຕົກ', color: '#475569', size: 13, weight: '800' },
-                { deg: 135, label: 'ອອກສ່ຽງໃຕ້', color: '#166534', size: 8, weight: '700' },
-                { deg: 225, label: 'ຕົກສ່ຽງໃຕ້', color: '#854d0e', size: 8, weight: '700' },
-                { deg: 45,  label: 'ອອກສ່ຽງເໜືອ', color: '#1e40af', size: 8, weight: '700' },
-                { deg: 315, label: 'ຕົກສ່ຽງເໜືອ', color: '#7c2d12', size: 8, weight: '700' }
+            // Central Heaven Pool (天池) - Fully opaque base with brass rim
+            const poolFill = isTransparentMode ? 'rgba(255, 255, 255, 0.85)' : 'url(#heavenPoolGrad)';
+            parts.push(`<circle cx="${CX}" cy="${CY}" r="112" fill="${poolFill}" stroke="url(#brassRimGrad)" stroke-width="4.5"/>`);
+            parts.push(`<circle cx="${CX}" cy="${CY}" r="108" fill="none" stroke="#991b1b" stroke-width="1.2"/>`);
+
+            // 360-degree ticks inside Heaven Pool
+            for (let deg = 0; deg < 360; deg += 15) {
+                const isCard = deg % 90 === 0;
+                const isInter = deg % 45 === 0;
+                const rIn = isCard ? 86 : (isInter ? 92 : 97);
+                const rOut = 105;
+                const p1 = polarToCartesian(CX, CY, rIn, deg);
+                const p2 = polarToCartesian(CX, CY, rOut, deg);
+                parts.push(`<line x1="${p1.x.toFixed(2)}" y1="${p1.y.toFixed(2)}" x2="${p2.x.toFixed(2)}" y2="${p2.y.toFixed(2)}" stroke="${isCard ? '#dc2626' : '#64748b'}" stroke-width="${isCard ? 2 : 1}"/>`);
+            }
+
+            // Authentic Sub-Sea Red Meridian Line (海底红线) - Connects North (子 0°) and South (午 180°) on the rotating dial
+            parts.push(`<line x1="${CX}" y1="${CY - 104}" x2="${CX}" y2="${CY + 104}" stroke="#dc2626" stroke-width="2" stroke-dasharray="4 2.5"/>`);
+            // The two traditional North alignment dots at the North (子 0° / CY+95) position
+            parts.push(`<circle cx="${CX - 5.5}" cy="${CY + 95}" r="3.2" fill="#dc2626" stroke="#ffffff" stroke-width="0.8"/>`);
+            parts.push(`<circle cx="${CX + 5.5}" cy="${CY + 95}" r="3.2" fill="#dc2626" stroke="#ffffff" stroke-width="0.8"/>`);
+
+            // 4 BOLD, HIGH-CONTRAST CARDINAL DIRECTION BADGES ON THE ROTATING DIAL
+            const cardinalBadges = [
+                { deg: 0,   label: 'ທິດເໜືອ', code: '0° N',   color: '#ffffff', bg: '#1d4ed8', border: '#60a5fa', r: 68, rot: 0 },
+                { deg: 180, label: 'ທິດໃຕ້',   code: '180° S', color: '#ffffff', bg: '#b91c1c', border: '#f87171', r: 68, rot: 0 },
+                { deg: 90,  label: 'ຕາເວັນອອກ', code: '90° E',  color: '#ffffff', bg: '#15803d', border: '#4ade80', r: 68, rot: -90 },
+                { deg: 270, label: 'ຕາເວັນຕົກ', code: '270° W', color: '#ffffff', bg: '#1e293b', border: '#94a3b8', r: 68, rot: 90 }
             ];
-            rotatingDirs.forEach(d => {
-                const isMajor = d.deg % 90 === 0;
-                const rPos = isMajor ? 75 : 82;
-                parts.push(createRadialText(rPos, d.deg, d.label, {
-                    fontSize: d.size,
-                    fontWeight: d.weight,
-                    fill: d.color
+            cardinalBadges.forEach(cb => {
+                const pos = polarToCartesian(CX, CY, cb.r, cb.deg);
+                parts.push(`<g transform="translate(${pos.x.toFixed(2)}, ${pos.y.toFixed(2)}) rotate(${cb.rot})">
+                    <rect x="-26" y="-14" width="52" height="28" rx="8" fill="${cb.bg}" stroke="${cb.border}" stroke-width="1.5" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.4))"/>
+                    <text x="0" y="-3" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="900" fill="${cb.color}">${cb.label}</text>
+                    <text x="0" y="7" text-anchor="middle" dominant-baseline="central" font-size="7.5" font-weight="800" fill="${cb.color}" opacity="0.95">${cb.code}</text>
+                </g>`);
+            });
+
+            // 4 Intercardinal Directions in the Heaven Pool
+            const intercardinals = [
+                { deg: 45,  label: 'ອອກ-ເໜືອ', fill: '#1e40af' },
+                { deg: 135, label: 'ອອກ-ໃຕ້',  fill: '#166534' },
+                { deg: 225, label: 'ຕົກ-ໃຕ້',  fill: '#854d0e' },
+                { deg: 315, label: 'ຕົກ-ເໜືອ', fill: '#7c2d12' }
+            ];
+            intercardinals.forEach(ic => {
+                parts.push(createRadialText(90, ic.deg, ic.label, {
+                    fontSize: 7.5,
+                    fontWeight: '900',
+                    fill: ic.fill,
+                    flipBottom: true
                 }));
             });
+
+            // Pivot Center Cross & Circles
             parts.push(`<circle cx="${CX}" cy="${CY}" r="22" fill="none" stroke="#dc2626" stroke-width="1.5"/>`);
             parts.push(`<circle cx="${CX}" cy="${CY}" r="6" fill="none" stroke="#dc2626" stroke-width="1.5"/>`);
-            parts.push(`<line x1="${CX - 32}" y1="${CY}" x2="${CX + 32}" y2="${CY}" stroke="#dc2626" stroke-width="1.2"/>`);
-            parts.push(`<line x1="${CX}" y1="${CY - 32}" x2="${CX}" y2="${CY + 32}" stroke="#dc2626" stroke-width="1.2"/>`);
+            parts.push(`<line x1="${CX - 28}" y1="${CY}" x2="${CX + 28}" y2="${CY}" stroke="#dc2626" stroke-width="1.2"/>`);
+            parts.push(`<line x1="${CX}" y1="${CY - 28}" x2="${CX}" y2="${CY + 28}" stroke="#dc2626" stroke-width="1.2"/>`);
             if (!isTransparentMode) {
                 parts.push(`<circle cx="${CX}" cy="${CY}" r="588" fill="url(#discSheen)" pointer-events="none"/>`);
             }
@@ -1542,6 +1582,7 @@
         let lastRotationForPhysics = 0;
         let enableNeedlePhysics = true;
         let liveCompassActive = false;
+        let currentNeedleBaseAngle = 180;
 
         function triggerNeedlePhysics(deltaRot) {
             if (!enableNeedlePhysics) return;
@@ -1561,7 +1602,8 @@
 
             const magneticNeedle = document.getElementById('magneticNeedle');
             if (magneticNeedle) {
-                magneticNeedle.setAttribute('transform', `rotate(${needleSway.toFixed(2)}, ${CX}, ${CY})`);
+                const totalAngle = (currentNeedleBaseAngle + needleSway).toFixed(2);
+                magneticNeedle.setAttribute('transform', `rotate(${totalAngle}, ${CX}, ${CY})`);
             }
 
             if (Math.abs(needleSway) > 0.04 || Math.abs(needleVelocity) > 0.04) {
@@ -1569,7 +1611,7 @@
             } else {
                 needleSway = 0;
                 needleVelocity = 0;
-                if (magneticNeedle) magneticNeedle.setAttribute('transform', `rotate(0, ${CX}, ${CY})`);
+                if (magneticNeedle) magneticNeedle.setAttribute('transform', `rotate(${currentNeedleBaseAngle.toFixed(2)}, ${CX}, ${CY})`);
                 needleAnimFrame = null;
             }
         }
@@ -1850,10 +1892,10 @@
             let bazhaiTag = '';
             let bazhaiColor = 'text-slate-300';
             let bazhaiDesc = '';
-            if (currentGuaData) {
+            if (currentGuaData && Array.isArray(currentGuaData.auspicious) && Array.isArray(currentGuaData.inauspicious)) {
                 const dirCode = chart.faceInfo.pal.baguaCode;
-                const goodItem = currentGuaData.auspicious.find(a => a.dir === dirCode);
-                const badItem = currentGuaData.inauspicious.find(b => b.dir === dirCode);
+                const goodItem = currentGuaData.auspicious.find(a => a.code === dirCode || a.dir === dirCode);
+                const badItem = currentGuaData.inauspicious.find(b => b.code === dirCode || b.dir === dirCode);
                 if (goodItem) {
                     bazhaiTag = goodItem.name + ' (' + goodItem.desc + ')';
                     bazhaiColor = 'text-emerald-400 font-bold';
@@ -2080,9 +2122,13 @@
 
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
             const bottomCompassDeg = (topCompassDeg + 180) % 360;
+            const leftCompassDeg = (topCompassDeg - 90 + 360) % 360;
+            const rightCompassDeg = (topCompassDeg + 90) % 360;
 
             const faceInfo = findMountainInfo(topCompassDeg);
             const sitInfo = findMountainInfo(bottomCompassDeg);
+            const leftInfo = findMountainInfo(leftCompassDeg);
+            const rightInfo = findMountainInfo(rightCompassDeg);
 
             const topText = cameraActive
                 ? `<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-1"></span> ກ້ອງຫັນ: ${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name} ${faceInfo.mtn.lao})`
@@ -2103,6 +2149,32 @@
             const mobileSittingBadge = document.getElementById('mobileSittingBadge');
             if (mobileSittingBadge) {
                 mobileSittingBadge.textContent = `ພິງ: ${bottomCompassDeg.toFixed(1)}° ${sitInfo.pal.dir} (${sitInfo.mtn.name}-${sitInfo.mtn.lao})`;
+            }
+
+            // Real-time Update for the 4 Red Thread Readout Badges on the Outer Base Plate
+            const plateFaceBadge = document.getElementById('plateFaceBadge');
+            if (plateFaceBadge) {
+                plateFaceBadge.textContent = `ໜ້າບ້ານ: ${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})`;
+            }
+            const plateSitBadge = document.getElementById('plateSitBadge');
+            if (plateSitBadge) {
+                plateSitBadge.textContent = `ຫຼັງພິງ: ${bottomCompassDeg.toFixed(1)}° ${sitInfo.pal.dir} (${sitInfo.mtn.name}-${sitInfo.mtn.lao})`;
+            }
+            const plateLeftBadge = document.getElementById('plateLeftBadge');
+            if (plateLeftBadge) {
+                plateLeftBadge.textContent = `ຊ້າຍມື: ${leftCompassDeg.toFixed(1)}° ${leftInfo.pal.dir} (${leftInfo.mtn.name}-${leftInfo.mtn.lao})`;
+            }
+            const plateRightBadge = document.getElementById('plateRightBadge');
+            if (plateRightBadge) {
+                plateRightBadge.textContent = `ຂວາມື: ${rightCompassDeg.toFixed(1)}° ${rightInfo.pal.dir} (${rightInfo.mtn.name}-${rightInfo.mtn.lao})`;
+            }
+
+            // Real Magnetic Needle points to True North (0° / 子)
+            // Screen orientation: North direction from center is (360 - topCompassDeg)
+            currentNeedleBaseAngle = ((360 - topCompassDeg) % 360 + 360) % 360;
+            const magneticNeedle = document.getElementById('magneticNeedle');
+            if (magneticNeedle && !needleAnimFrame) {
+                magneticNeedle.setAttribute('transform', `rotate(${currentNeedleBaseAngle.toFixed(2)}, ${CX}, ${CY})`);
             }
 
             // Real-time Flying Stars & BaZhai Live Prediction Update
