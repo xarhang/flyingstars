@@ -480,7 +480,7 @@
             <!-- Row 2: Sitting + Actions (Reset, Drag Mode, Transparent, Corner PIP) -->
             <div class="flex items-center justify-between gap-1 text-[10px] pt-0.5 border-t border-slate-800/80">
                 <span id="mobileSittingBadge" class="text-slate-400 font-mono truncate">
-                    ພິງ 0° ເໜືອ (子)
+                    ຫຼັງພິງ: 0.0° ເໜືອ (子)
                 </span>
 
                 <div class="flex items-center gap-1 shrink-0">
@@ -2223,7 +2223,7 @@
             }
             const mobileSittingBadge = document.getElementById('mobileSittingBadge');
             if (mobileSittingBadge) {
-                mobileSittingBadge.textContent = `ພິງ: ${bottomCompassDeg.toFixed(1)}° ${sitInfo.pal.dir} (${sitInfo.mtn.name}-${sitInfo.mtn.lao})`;
+                mobileSittingBadge.textContent = `ຫຼັງພິງ: ${bottomCompassDeg.toFixed(1)}° ${sitInfo.pal.dir} (${sitInfo.mtn.name}-${sitInfo.mtn.lao})`;
             }
 
             // Real-time Update for the 4 Red Thread Readout Badges on the Outer Base Plate
@@ -2912,41 +2912,36 @@
             syncLiveCompassUI('inactive');
         }
 
-        function setupLiveCompass() {
-            if (!toggleLiveCompassBtn) return;
-            toggleLiveCompassBtn.addEventListener('click', async () => {
-                if (liveCompassActive) {
-                    stopLiveCompass();
-                    return;
-                }
+        async function toggleLiveCompass() {
+            if (liveCompassActive) {
+                stopLiveCompass();
+                return;
+            }
 
-                // Check iOS 13+ permission
-                if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-                    try {
-                        const perm = await DeviceOrientationEvent.requestPermission();
-                        if (perm === 'granted') {
-                            startLiveCompass(false);
-                        } else {
-                            alert('ກະລຸນາອະນຸຍາດການເຂົ້າເຖິງເຊັນເຊີເພື່ອໃຊ້ງານເຂັມທິດຈິງ');
-                        }
-                    } catch(err) {
-                        console.warn(err);
-                        alert('ອຸປະກອນ ຫຼື ບຣາວເຊີນີ້ບໍ່ອະນຸຍາດການໃຊ້ເຊັນເຊີເຂັມທິດ');
+            // Check iOS 13+ permission
+            if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+                try {
+                    const perm = await DeviceOrientationEvent.requestPermission();
+                    if (perm === 'granted') {
+                        startLiveCompass();
+                        return;
+                    } else {
+                        console.warn('DeviceOrientation permission status:', perm);
                     }
-                } else if ('ondeviceorientationabsolute' in window) {
-                    startLiveCompass(true);
-                } else if ('ondeviceorientation' in window) {
-                    startLiveCompass(false);
-                } else {
-                    alert('ຄອມພິວເຕີໂນ໊ດບຸກ (Laptop / PC) ທົ່ວໄປຈະບໍ່ມີຊິບເຊັນເຊີເຂັມທິດແມ່ເຫຼັກ (Magnetometer) ຢູ່ໃນເຄື່ອງຄືກັບສະມາດໂຟນ.\n\nໃນຄອມພິວເຕີ ທ່ານສາມາດ:\n• ຄລິກລາກເມົາສ໌ເທິງໜ້າຈານເພື່ອໝຸນໄດ້ຕາມໃຈ\n• ໃຊ້ແຖບເລື່ອນ ຫຼື ປຸ່ມໝຸນດ່ວນ (0°, 90°, 180°, 270°)\n\nຫາກຕ້ອງການໃຫ້ໝຸນຕາມທິດຈິງອັດຕະໂນມັດ ໃຫ້ເປີດເວັບນີ້ໃນມືຖື ຫຼື ແທັບເລັດ');
+                } catch(err) {
+                    console.warn('requestPermission error:', err);
                 }
-            });
+            }
+            startLiveCompass();
+        }
 
+        function setupLiveCompass() {
+            if (toggleLiveCompassBtn) {
+                toggleLiveCompassBtn.addEventListener('click', toggleLiveCompass);
+            }
             const mobileLiveBtn = document.getElementById('mobileLiveCompassBtn');
             if (mobileLiveBtn) {
-                mobileLiveBtn.addEventListener('click', () => {
-                    toggleLiveCompassBtn.click();
-                });
+                mobileLiveBtn.addEventListener('click', toggleLiveCompass);
             }
 
             const mobileToggleMode = document.getElementById('mobileToggleModeBtn');
@@ -3169,32 +3164,34 @@
             }
         }
 
-        function startLiveCompass(absolute = false) {
+        function startLiveCompass() {
             liveCompassActive = true;
             sensorDataReceived = false;
             compassCalibrationOffset = 0;
             syncLiveCompassUI('connecting');
             requestWakeLock();
 
+            // Listen to BOTH deviceorientationabsolute and deviceorientation for full Android and iOS coverage
+            window.addEventListener('deviceorientationabsolute', onDeviceOrientation, true);
+            window.addEventListener('deviceorientation', onDeviceOrientation, true);
+
             if (sensorTimeout) clearTimeout(sensorTimeout);
-            // ກວດສອບພາຍໃນ 3.5 ວິນາທີ ຫາກບໍ່ມີສັນຍານເຊັນເຊີ ໃຫ້ແຈ້ງເຕືອນສະເພາະ desktop
+            // On desktop only, inform user if no magnetometer. On mobile, keep listening without stopping!
             sensorTimeout = setTimeout(() => {
                 if (!sensorDataReceived && liveCompassActive) {
-                    stopLiveCompass();
                     const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
                     if (!isTouch) {
+                        stopLiveCompass();
                         alert('ຄອມພິວເຕີໂນ໊ດບຸກ (Laptop / PC) ທົ່ວໄປຈະບໍ່ມີຊິບເຊັນເຊີເຂັມທິດແມ່ເຫຼັກ (Magnetometer) ຢູ່ໃນເຄື່ອງຄືກັບສະມາດໂຟນ.\n\nໃນຄອມພິວເຕີ ທ່ານສາມາດ:\n• ຄລິກລາກເມົາສ໌ເທິງໜ້າຈານເພື່ອໝຸນໄດ້ຕາມໃຈ\n• ໃຊ້ແຖບເລື່ອນ ຫຼື ປຸ່ມໝຸນດ່ວນ (0°, 90°, 180°, 270°)\n\nຫາກຕ້ອງການໃຫ້ໝຸນຕາມທິດຈິງອັດຕະໂນມັດ ໃຫ້ເປີດເວັບນີ້ໃນມືຖື ຫຼື ແທັບເລັດ');
                     } else {
-                        console.warn('Live compass sensor not responding on this mobile browser');
+                        console.warn('Waiting for orientation sensor data...');
+                        const mobileTxt = document.getElementById('mobileLiveCompassText');
+                        if (mobileTxt && !sensorDataReceived) {
+                            mobileTxt.textContent = "ລໍຖ້າເຊັນເຊີ...";
+                        }
                     }
                 }
             }, 3500);
-
-            if (absolute) {
-                window.addEventListener('deviceorientationabsolute', onDeviceOrientation, true);
-            } else {
-                window.addEventListener('deviceorientation', onDeviceOrientation, true);
-            }
         }
 
         function onDeviceOrientation(e) {
