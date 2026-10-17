@@ -121,15 +121,15 @@
 <body class="bg-slate-950 text-slate-100 h-screen w-screen flex flex-col md:flex-row overflow-hidden relative">
 
     <!-- MOBILE BACKDROP OVERLAY -->
-    <div id="drawerBackdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-30 hidden transition-opacity md:hidden"></div>
+    <div id="drawerBackdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 hidden transition-opacity md:hidden"></div>
 
     <!-- SIDEBAR CONTROLS / MOBILE BOTTOM SHEET DRAWER -->
-    <aside id="controlsSidebar" class="fixed inset-x-0 bottom-0 z-40 max-h-[85vh] rounded-t-3xl transform transition-transform duration-300 translate-y-full md:translate-y-0 md:static md:w-[360px] md:max-h-full md:rounded-none md:border-b-0 md:border-r border-t md:border-t-0 border-slate-800 bg-slate-900/95 backdrop-blur-md p-4 flex flex-col gap-3 shrink-0 overflow-y-auto shadow-2xl">
+    <aside id="controlsSidebar" class="fixed inset-x-0 bottom-0 z-50 max-h-[85vh] rounded-t-3xl transform transition-transform duration-300 translate-y-full md:translate-y-0 md:static md:w-[360px] md:max-h-full md:rounded-none md:border-b-0 md:border-r border-t md:border-t-0 border-slate-800 bg-slate-900/95 backdrop-blur-md p-4 flex flex-col gap-3 shrink-0 overflow-y-auto shadow-2xl">
         
         <!-- Mobile Drawer Drag Handle & Close Button -->
         <div class="flex items-center justify-between md:hidden pb-1 -mt-1 relative">
             <div class="w-12 h-1.5 bg-slate-700 rounded-full mx-auto my-1"></div>
-            <button id="closeDrawerBtn" class="absolute top-0 right-0 text-slate-400 hover:text-white bg-slate-800 rounded-lg p-1 text-sm font-bold w-7 h-7 flex items-center justify-center transition" title="ປິດເມນູ"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+            <button id="closeDrawerBtn" type="button" class="absolute top-0 right-0 text-slate-400 hover:text-white bg-slate-800 active:scale-95 rounded-lg p-1 text-sm font-bold w-9 h-9 flex items-center justify-center transition shadow" title="ປິດເມນູ"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         </div>
 
         <!-- HEADER -->
@@ -548,8 +548,8 @@
             </button>
             <!-- 2. AR Camera -->
             <button id="mobileCameraBtn" type="button" class="flex flex-col items-center justify-center gap-1 py-1.5 px-1 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-95 text-slate-300 border border-slate-800 transition shadow-sm" title="ເປີດກ້ອງສ່ອງຈິງ AR">
-                <svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                <span class="text-[10px] font-bold tracking-tight">ກ້ອງ AR</span>
+                <span id="mobileCameraIcon"><svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
+                <span id="mobileCameraText" class="text-[10px] font-bold tracking-tight">ກ້ອງ AR</span>
             </button>
             <!-- 3. Master Prediction Sheet -->
             <button id="mobilePredictionFab" type="button" class="flex flex-col items-center justify-center gap-1 py-1.5 px-1 rounded-xl bg-purple-950/70 hover:bg-purple-900 active:scale-95 text-purple-200 border border-purple-500/40 transition shadow-sm" title="ເບິ່ງບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ">
@@ -567,10 +567,10 @@
     <!-- VIEWPORT MAIN AREA -->
     <main id="viewport" class="relative flex-1 h-full bg-stone-200 flex items-center justify-center overflow-hidden compass-container">
         <!-- Live AR Camera Video Stream Background -->
-        <video id="arVideo" playsinline autoplay muted class="absolute inset-0 w-full h-full object-cover hidden pointer-events-none z-0"></video>
+        <video id="arVideo" playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" disablepictureinpicture autoplay muted class="absolute inset-0 w-full h-full object-cover hidden pointer-events-none z-0"></video>
 
         <!-- Floating Live AR Badge Indicator -->
-        <div id="arCameraBadge" class="absolute top-4 left-1/2 -translate-x-1/2 z-20 hidden items-center gap-2 bg-slate-950/90 border border-emerald-500/70 text-emerald-300 text-xs px-3.5 py-1.5 rounded-full shadow-2xl backdrop-blur-md font-semibold select-none">
+        <div id="arCameraBadge" class="absolute top-24 md:top-4 left-1/2 -translate-x-1/2 z-20 hidden items-center gap-2 bg-slate-950/90 border border-emerald-500/70 text-emerald-300 text-xs px-3.5 py-1.5 rounded-full shadow-2xl backdrop-blur-md font-semibold select-none">
             <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
             <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> <span>ກຳລັງສ່ອງກ້ອງຈິງ (AR Camera)</span></span>
             <button id="closeArBtn" type="button" class="ml-1 text-slate-400 hover:text-white font-bold p-1 rounded-md hover:bg-slate-800" title="ປິດກ້ອງ AR"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
@@ -2509,6 +2509,9 @@
                 if (frameDelta > 180) frameDelta -= 360;
                 if (frameDelta < -180) frameDelta += 360;
                 lastDragAngle = currentAngle;
+                if (liveCompassActive) {
+                    compassCalibrationOffset = (compassCalibrationOffset + frameDelta) % 360;
+                }
                 currentRotation += frameDelta;
                 updateCompassTransform(frameDelta);
             }
@@ -2550,24 +2553,33 @@
         });
 
         rotSlider.addEventListener('input', (e) => {
+            if (liveCompassActive) stopLiveCompass();
             currentRotation = parseFloat(e.target.value);
+            compassCalibrationOffset = 0;
             updateCompassTransform();
         });
 
         document.getElementById('resetRotBtn').addEventListener('click', () => {
+            if (liveCompassActive) stopLiveCompass();
             currentRotation = 0;
+            compassCalibrationOffset = 0;
             updateCompassTransform();
         });
 
         document.querySelectorAll('.quick-rot').forEach(btn => {
             btn.addEventListener('click', () => {
+                if (liveCompassActive) stopLiveCompass();
                 currentRotation = parseFloat(btn.getAttribute('data-rot'));
+                compassCalibrationOffset = 0;
                 updateCompassTransform();
             });
         });
 
         // Precision Micro-Stepper Functions (-1°, -0.2°, +0.2°, +1°)
         function stepCompass(deltaDeg) {
+            if (liveCompassActive) {
+                compassCalibrationOffset = (compassCalibrationOffset + deltaDeg) % 360;
+            }
             currentRotation = ((currentRotation + deltaDeg) % 360 + 360) % 360;
             updateCompassTransform(deltaDeg);
         }
@@ -2845,6 +2857,7 @@
         let lastLiveHeading = null;
         let sensorTimeout = null;
         let sensorDataReceived = false;
+        let compassCalibrationOffset = 0;
 
         // Screen Wake Lock API for Mobile (keeps screen awake during live compass)
         let wakeLock = null;
@@ -3027,13 +3040,9 @@
             const mobileBtn = document.getElementById('mobileCameraBtn');
 
             try {
-                // Request environment/rear camera on mobile
+                // Request rear environment camera with optimal mobile compatibility
                 const constraints = {
-                    video: {
-                        facingMode: { ideal: 'environment' },
-                        width: { ideal: 1920 },
-                        height: { ideal: 1080 }
-                    },
+                    video: { facingMode: { ideal: 'environment' } },
                     audio: false
                 };
 
@@ -3049,31 +3058,19 @@
                 }
                 if (bgGrid) bgGrid.classList.add('hidden');
 
-                // Auto-connect Live Compass Sensor so it follows phone movement automatically
-                if (!liveCompassActive) {
-                    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-                        try {
-                            const perm = await DeviceOrientationEvent.requestPermission();
-                            if (perm === 'granted') {
-                                startLiveCompass(false);
-                            }
-                        } catch(err) {
-                            console.warn('Auto sensor permission in camera:', err);
-                        }
-                    } else if ('ondeviceorientationabsolute' in window) {
-                        startLiveCompass(true);
-                    } else if ('ondeviceorientation' in window) {
-                        startLiveCompass(false);
-                    }
-                }
-
-                // Update UI state
+                // Update Desktop UI state
                 if (btnLabel) btnLabel.textContent = 'ປິດກ້ອງ AR (Stop)';
                 if (btnIcon) btnIcon.innerHTML = '<svg class="w-4 h-4 inline-block text-rose-400" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>';
+                
+                // Update Mobile Master Dock UI state
+                const mobileCameraText = document.getElementById('mobileCameraText');
+                const mobileCameraIcon = document.getElementById('mobileCameraIcon');
                 if (mobileBtn) {
-                    mobileBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-400');
-                    mobileBtn.classList.remove('bg-slate-900/90', 'text-slate-300');
+                    mobileBtn.classList.add('bg-rose-950/80', 'text-rose-200', 'border-rose-500/80');
+                    mobileBtn.classList.remove('bg-slate-900/90', 'text-slate-300', 'border-slate-800');
                 }
+                if (mobileCameraText) mobileCameraText.textContent = 'ປິດກ້ອງ';
+                if (mobileCameraIcon) mobileCameraIcon.innerHTML = '<svg class="w-5 h-5 text-rose-400" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>';
 
                 // Adjust opacity for AR transparency
                 const compWrapper = document.getElementById('compassWrapper');
@@ -3091,10 +3088,12 @@
                     }
                 }
 
-                // In Camera AR mode, hide the square outer base plate completely so only the circular compass dial is shown over the camera!
-                previousBaseStyle = baseSelect ? baseSelect.value : 'lacquer';
-                if (baseSelect) baseSelect.value = 'hidden';
-                buildOuterBasePlate('hidden');
+                // In Camera AR mode, hide outer square base plate so circular dial is transparent over camera
+                if (baseSelect) {
+                    previousBaseStyle = baseSelect.value;
+                    baseSelect.value = 'hidden';
+                    buildOuterBasePlate('hidden');
+                }
 
             } catch (err) {
                 console.error('Camera AR Error:', err);
@@ -3116,6 +3115,8 @@
             const btnLabel = document.getElementById('cameraBtnLabel');
             const btnIcon = document.getElementById('cameraBtnIcon');
             const mobileBtn = document.getElementById('mobileCameraBtn');
+            const mobileCameraText = document.getElementById('mobileCameraText');
+            const mobileCameraIcon = document.getElementById('mobileCameraIcon');
 
             if (videoEl) {
                 videoEl.pause();
@@ -3128,13 +3129,17 @@
             }
             if (bgGrid) bgGrid.classList.remove('hidden');
 
-            // Reset UI state
+            // Reset Desktop UI state
             if (btnLabel) btnLabel.textContent = 'ເປີດກ້ອງສ່ອງຈິງ (AR Camera)';
             if (btnIcon) btnIcon.innerHTML = ICONS.camera;
+            
+            // Reset Mobile Master Dock UI state
             if (mobileBtn) {
-                mobileBtn.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-400');
-                mobileBtn.classList.add('bg-slate-900/90', 'text-slate-300');
+                mobileBtn.classList.remove('bg-rose-950/80', 'text-rose-200', 'border-rose-500/80');
+                mobileBtn.classList.add('bg-slate-900/90', 'text-slate-300', 'border-slate-800');
             }
+            if (mobileCameraText) mobileCameraText.textContent = 'ກ້ອງ AR';
+            if (mobileCameraIcon) mobileCameraIcon.innerHTML = '<svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>';
 
             // Restore previous opacity and base style
             if (previousCompassOpacity !== null) {
@@ -3167,17 +3172,23 @@
         function startLiveCompass(absolute = false) {
             liveCompassActive = true;
             sensorDataReceived = false;
+            compassCalibrationOffset = 0;
             syncLiveCompassUI('connecting');
             requestWakeLock();
 
             if (sensorTimeout) clearTimeout(sensorTimeout);
-            // ກວດສອບພາຍໃນ 1.8 ວິນາທີ ຫາກບໍ່ມີສັນຍານເຊັນເຊີ (ເຊັ່ນໃນຄອມໂນ໊ດບຸກທີ່ບໍ່ມີຊິບແມ່ເຫຼັກ) ໃຫ້ແຈ້ງເຕືອນຜູ້ໃຊ້
+            // ກວດສອບພາຍໃນ 3.5 ວິນາທີ ຫາກບໍ່ມີສັນຍານເຊັນເຊີ ໃຫ້ແຈ້ງເຕືອນສະເພາະ desktop
             sensorTimeout = setTimeout(() => {
                 if (!sensorDataReceived && liveCompassActive) {
                     stopLiveCompass();
-                    alert('ຄອມພິວເຕີໂນ໊ດບຸກ (Laptop / PC) ທົ່ວໄປຈະບໍ່ມີຊິບເຊັນເຊີເຂັມທິດແມ່ເຫຼັກ (Magnetometer) ຢູ່ໃນເຄື່ອງຄືກັບສະມາດໂຟນ.\n\nໃນຄອມພິວເຕີ ທ່ານສາມາດ:\n• ຄລິກລາກເມົາສ໌ເທິງໜ້າຈານເພື່ອໝຸນໄດ້ຕາມໃຈ\n• ໃຊ້ແຖບເລື່ອນ ຫຼື ປຸ່ມໝຸນດ່ວນ (0°, 90°, 180°, 270°)\n\nຫາກຕ້ອງການໃຫ້ໝຸນຕາມທິດຈິງອັດຕະໂນມັດ ໃຫ້ເປີດເວັບນີ້ໃນມືຖື ຫຼື ແທັບເລັດ');
+                    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+                    if (!isTouch) {
+                        alert('ຄອມພິວເຕີໂນ໊ດບຸກ (Laptop / PC) ທົ່ວໄປຈະບໍ່ມີຊິບເຊັນເຊີເຂັມທິດແມ່ເຫຼັກ (Magnetometer) ຢູ່ໃນເຄື່ອງຄືກັບສະມາດໂຟນ.\n\nໃນຄອມພິວເຕີ ທ່ານສາມາດ:\n• ຄລິກລາກເມົາສ໌ເທິງໜ້າຈານເພື່ອໝຸນໄດ້ຕາມໃຈ\n• ໃຊ້ແຖບເລື່ອນ ຫຼື ປຸ່ມໝຸນດ່ວນ (0°, 90°, 180°, 270°)\n\nຫາກຕ້ອງການໃຫ້ໝຸນຕາມທິດຈິງອັດຕະໂນມັດ ໃຫ້ເປີດເວັບນີ້ໃນມືຖື ຫຼື ແທັບເລັດ');
+                    } else {
+                        console.warn('Live compass sensor not responding on this mobile browser');
+                    }
                 }
-            }, 1800);
+            }, 3500);
 
             if (absolute) {
                 window.addEventListener('deviceorientationabsolute', onDeviceOrientation, true);
@@ -3199,7 +3210,8 @@
                 if (sensorTimeout) clearTimeout(sensorTimeout);
                 syncLiveCompassUI('active');
                 // In Feng Shui Luopan, South is 180° Top
-                const targetRot = (180 - heading + 360) % 360;
+                const rawTargetRot = (180 - heading + 360) % 360;
+                const targetRot = ((rawTargetRot + compassCalibrationOffset) % 360 + 360) % 360;
                 let delta = 0;
                 if (lastLiveHeading !== null) {
                     delta = heading - lastLiveHeading;
