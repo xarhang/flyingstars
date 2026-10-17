@@ -1957,6 +1957,7 @@
         let activeYangTab = 'tab_room'; // 'tab_room', 'tab_forecast', 'tab_annual', 'tab_stars', 'tab_bazhai'
         let activeYinTab = 'tab_fenjin'; // 'tab_fenjin', 'tab_yinforecast', 'tab_lineage', 'tab_water'
         let selectedRoomType = 'main_door';
+        let selectedRoomCategory = 'all';
         let selectedAnnualYear = 2026;
         let selectedForecastMonth = 1; // 1 to 12
         let userBirthYear = 1990;
@@ -2060,6 +2061,13 @@
 
         function setSelectedRoom(roomKey) {
             selectedRoomType = roomKey;
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            updateLivePrediction(topCompassDeg, true);
+        }
+
+        function setSelectedRoomCategory(catKey) {
+            selectedRoomCategory = catKey;
             const normRot = ((currentRotation % 360) + 360) % 360;
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
             updateLivePrediction(topCompassDeg, true);
@@ -2252,37 +2260,98 @@
 
                 let tabBody = '';
 
-                // TAB 1: ROOM & FEATURE INSPECTOR (15+ SPECIFIC FEATURES)
+                // TAB 1: MASTER GRANULAR ROOM & FEATURE INSPECTOR (43 SPECIFIC ARCHITECTURAL & FENG SHUI FEATURES)
                 if (activeYangTab === 'tab_room') {
-                    const rooms = [
-                        { key: 'main_door', icon: '🚪', name: 'ປະຕູໃຫຍ່ໜ້າບ້ານ' },
-                        { key: 'back_door', icon: '🚪', name: 'ປະຕູຫຼັງບ້ານ' },
-                        { key: 'side_door', icon: '🚪', name: 'ປະຕູຂ້າງ/ປະຕູຮົ້ວ' },
-                        { key: 'kitchen_door', icon: '🚪', name: 'ປະຕູຄົວ' },
-                        { key: 'toilet_door', icon: '🚪', name: 'ປະຕູຫ້ອງນ້ຳ' },
-                        { key: 'bed_head', icon: '🛏️', name: 'ຕຽງ/ຫົວຕຽງນອນ' },
-                        { key: 'bedroom', icon: '🏠', name: 'ຫ້ອງນອນໃຫຍ່' },
-                        { key: 'window', icon: '🪟', name: 'ປ່ອງຢ້ຽມ' },
-                        { key: 'kitchen_room', icon: '🍲', name: 'ຫ້ອງຄົວ (ພື້ນທີ່)' },
-                        { key: 'stove', icon: '🔥', name: 'ເຕົາແກັສ/ເຕົາໄຟ' },
-                        { key: 'desk', icon: '💼', name: 'ໂຕະເຮັດວຽກ' },
-                        { key: 'toilet_indoor', icon: '🚽', name: 'ຫ້ອງນ້ຳ (ໃນບ້ານ)' },
-                        { key: 'toilet_outdoor', icon: '🛖', name: 'ຫ້ອງນ້ຳ (ນອກບ້ານ)' },
-                        { key: 'toilet_bowl', icon: '🚽', name: 'ຈຸດຊັກໂຄກ' },
-                        { key: 'stairs', icon: '🪜', name: 'ບັນໄດ/ຂັ້ນໄດ' },
-                        { key: 'living_room', icon: '🛋️', name: 'ຫ້ອງຮັບແຂກ/ໂຖງ' },
-                        { key: 'dining', icon: '🍽️', name: 'ໂຕະກິນເຂົ້າ' },
-                        { key: 'altar', icon: '🏮', name: 'ຫິ້ງພຣະ/ສິ່ງສັກສິດ' },
-                        { key: 'balcony', icon: '🪴', name: 'ລະບຽງ/ດາດຟ້າ' },
-                        { key: 'storage', icon: '📦', name: 'ຫ້ອງເກັບເຄື່ອງ' },
-                        { key: 'garage', icon: '🚗', name: 'ໂຮງຈອດລົດ' },
-                        { key: 'fish', icon: '🐟', name: 'ຕູ້ປາ (ໃນບ້ານ)' },
-                        { key: 'fountain', icon: '⛲', name: 'ບໍ່ນ້ຳ/ນ້ຳພຸ (ນອກ)' }
+                    const categories = [
+                        { key: 'all', name: 'ທັງໝົດ (43)' },
+                        { key: 'door_win', name: '🚪 ປະຕູ/ປ່ອງຢ້ຽມ (11)' },
+                        { key: 'kitchen', name: '🍲 ຄົວ/ອາຫານ (5)' },
+                        { key: 'bed', name: '🛏️ ຫ້ອງນອນ (4)' },
+                        { key: 'toilet', name: '🚽 ຫ້ອງນ້ຳ/ສຸຂາ (6)' },
+                        { key: 'living_work', name: '🛋️ ຮັບແຂກ/ເຮັດວຽກ (5)' },
+                        { key: 'structure', name: '🪜 ໂຄງສ້າງ/ທາງຍ່າງ (4)' },
+                        { key: 'water_ext', name: '⛲ ນ້ຳ/ສວນ/ພາຍນອກ (8)' }
                     ];
 
+                    const allRooms = [
+                        // 🚪 Doors & Openings (11)
+                        { key: 'main_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູໃຫຍ່ໜ້າບ້ານ' },
+                        { key: 'gate', cat: 'door_win', icon: '⛩️', name: 'ປະຕູຮົ້ວນອກບ້ານ' },
+                        { key: 'side_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຂ້າງບ້ານ' },
+                        { key: 'back_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຫຼັງບ້ານ' },
+                        { key: 'bedroom_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຫ້ອງນອນ' },
+                        { key: 'kitchen_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຄົວ' },
+                        { key: 'toilet_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຫ້ອງນ້ຳ' },
+                        { key: 'balcony_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູລະບຽງ/ເລື່ອນ' },
+                        { key: 'window', cat: 'door_win', icon: '🪟', name: 'ປ່ອງຢ້ຽມໃຫຍ່' },
+                        { key: 'bedroom_window', cat: 'door_win', icon: '🪟', name: 'ປ່ອງຢ້ຽມຫ້ອງນອນ' },
+                        { key: 'skylight', cat: 'door_win', icon: '☀️', name: 'ຊ່ອງແສງ/ຊ່ອງລົມ' },
+
+                        // 🍲 Kitchen & Dining (5)
+                        { key: 'kitchen_room', cat: 'kitchen', icon: '🍲', name: 'ຫ້ອງຄົວ (ພື້ນທີ່)' },
+                        { key: 'stove', cat: 'kitchen', icon: '🔥', name: 'ເຕົາແກັສ/ເຕົາໄຟ' },
+                        { key: 'sink', cat: 'kitchen', icon: '🚰', name: 'ອ່າງລ້າງຈານ/ກ໊ອກ' },
+                        { key: 'refrigerator', cat: 'kitchen', icon: '🧊', name: 'ຕູ້ເຢັນ (ຄັງສະບຽງ)' },
+                        { key: 'dining', cat: 'kitchen', icon: '🍽️', name: 'ໂຕະກິນເຂົ້າ' },
+
+                        // 🛏️ Bedrooms & Resting (4)
+                        { key: 'bedroom', cat: 'bed', icon: '🏠', name: 'ຫ້ອງນອນໃຫຍ່' },
+                        { key: 'guest_bedroom', cat: 'bed', icon: '🛏️', name: 'ຫ້ອງນອນລູກ/ແຂກ' },
+                        { key: 'bed_head', cat: 'bed', icon: '🛌', name: 'ຕຽງ/ຫົວຕຽງນອນ' },
+                        { key: 'wardrobe_mirror', cat: 'bed', icon: '🪞', name: 'ຕູ້ເສື້ອຜ້າ/ກະຈົກ' },
+
+                        // 🚽 Bath & Sanitation (6)
+                        { key: 'toilet_indoor', cat: 'toilet', icon: '🚽', name: 'ຫ້ອງນ້ຳ (ໃນບ້ານ)' },
+                        { key: 'toilet_outdoor', cat: 'toilet', icon: '🛖', name: 'ຫ້ອງນ້ຳ (ນອກບ້ານ)' },
+                        { key: 'toilet_bowl', cat: 'toilet', icon: '🚽', name: 'ຈຸດຊັກໂຄກ' },
+                        { key: 'shower_bath', cat: 'toilet', icon: '🚿', name: 'ໂຊນອາບນ້ຳ/ອ່າງ' },
+                        { key: 'laundry', cat: 'toilet', icon: '🧺', name: 'ໂຊນຊັກຜ້າ' },
+                        { key: 'septic_drain', cat: 'toilet', icon: '🕳️', name: 'ຖັງເກິ/ທໍ່ນ້ຳເສຍ' },
+
+                        // 🛋️ Living, Work & Wealth (5)
+                        { key: 'living_room', cat: 'living_work', icon: '🛋️', name: 'ຫ້ອງຮັບແຂກ/ໂຖງ' },
+                        { key: 'sofa', cat: 'living_work', icon: '🛋️', name: 'ໂຊຟາຫຼັກ/ປະທານ' },
+                        { key: 'desk', cat: 'living_work', icon: '💼', name: 'ໂຕະເຮັດວຽກ/ຮຽນ' },
+                        { key: 'altar', cat: 'living_work', icon: '🏮', name: 'ຫິ້ງພຣະ/ສິ່ງສັກສິດ' },
+                        { key: 'safe_vault', cat: 'living_work', icon: '🔐', name: 'ຕູ້ເຊບ/ບ່ອນເກັບຊັບ' },
+
+                        // 🪜 Structure & Circulation (4)
+                        { key: 'stairs', cat: 'structure', icon: '🪜', name: 'ບັນໄດ/ຂັ້ນໄດ' },
+                        { key: 'center_palace', cat: 'structure', icon: '☯️', name: 'ໃຈກາງບ້ານ (ຕາກາງ)' },
+                        { key: 'corridor', cat: 'structure', icon: '🚶', name: 'ທາງຍ່າງຍາວ/ໂຖງ' },
+                        { key: 'pillar_beam', cat: 'structure', icon: '🏛️', name: 'ເສົາລອຍ/ຄານກົດທັບ' },
+
+                        // ⛲ Water, Yard & External (8)
+                        { key: 'fish', cat: 'water_ext', icon: '🐟', name: 'ຕູ້ປາ (ໃນບ້ານ)' },
+                        { key: 'fountain', cat: 'water_ext', icon: '⛲', name: 'ບໍ່ນ້ຳ/ນ້ຳພຸ (ນອກ)' },
+                        { key: 'pool', cat: 'water_ext', icon: '🏊', name: 'ສະລອຍນ້ຳ/ໜອງນ້ຳ' },
+                        { key: 'front_yard', cat: 'water_ext', icon: '🌿', name: 'ເດີ່ນໜ້າບ້ານ (ໝິງຖັງ)' },
+                        { key: 'back_yard', cat: 'water_ext', icon: '🌳', name: 'ສວນຫຼັງບ້ານ (ພູຫຼັງ)' },
+                        { key: 'balcony', cat: 'water_ext', icon: '🪴', name: 'ລະບຽງ/ດາດຟ້າ' },
+                        { key: 'garage', cat: 'water_ext', icon: '🚗', name: 'ໂຮງຈອດລົດ' },
+                        { key: 'storage', cat: 'water_ext', icon: '📦', name: 'ຫ້ອງເກັບເຄື່ອງ/ສາງ' }
+                    ];
+
+                    const activeRooms = selectedRoomCategory === 'all'
+                        ? allRooms
+                        : allRooms.filter(r => r.cat === selectedRoomCategory);
+
+                    const catBar =
+                        '<div class="flex items-center gap-1 overflow-x-auto pb-1 mb-1.5 scrollbar-thin select-none">' +
+                            categories.map(c =>
+                                '<button type="button" onclick="setSelectedRoomCategory(\'' + c.key + '\')" class="px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
+                                    (selectedRoomCategory === c.key
+                                        ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
+                                        : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800') + '">' +
+                                    c.name +
+                                '</button>'
+                            ).join('') +
+                        '</div>';
+
                     const roomPills =
+                        catBar +
                         '<div class="grid grid-cols-3 gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 mb-2 max-h-48 overflow-y-auto">' +
-                            rooms.map(r =>
+                            activeRooms.map(r =>
                                 '<button type="button" onclick="setSelectedRoom(\'' + r.key + '\')" class="py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 ' +
                                     (selectedRoomType === r.key
                                         ? 'bg-amber-500 text-slate-950 shadow-md font-black ring-1 ring-amber-300'
@@ -2340,7 +2409,73 @@
                         }
                     }
 
-                    // 2. ປະຕູຫຼັງບ້ານ (Back Door)
+                    // 2. ປະຕູຮົ້ວນອກບ້ານ (Exterior Yard Gate)
+                    else if (selectedRoomType === 'gate') {
+                        if (chart.castleGate && chart.castleGate.palId === curPal) {
+                            verdictTag = '🏰 ມະຫາມຸງຄຸນ! ປະຕູຮົ້ວວັງເສີມຊັບ (城门诀)';
+                            verdictColor = 'border-cyan-500/80 bg-cyan-950/40 text-cyan-300';
+                            verdictScore = 'ຄະແນນ: 100/100 (ສຸດຍອດເຄັດລັບຊັວນຄົງ)';
+                            verdictTitle = 'ປະຕູຮົ້ວນອກ ກົງຕຳແໜ່ງເສີນເໝີນ ' + chart.castleGate.type;
+                            verdictAnalysis = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາຊັ້ນສູງ "ເສີນເໝີນເຈວ່ (城门诀)"! ປະຕູຮົ້ວນອກໃນທິດນີ້ ຈະດັກພະລັງໂຊກລາບອັນມະຫາສານຈາກຖະໜົນໃຫຍ່ເຂົ້າສູ່ເດີ່ນບ້ານ.';
+                            verdictAction = 'ເປີດໃຊ້ງານປະຕູຮົ້ວນີ້ເປັນຫຼັກ, ຕິດໂຄມໄຟຫົວເສົາສະຫວ່າງສະເໝີ.';
+                        } else if (curW === currentPeriod) {
+                            verdictTag = '🌟 ປະຕູຮົ້ວຮັບມະຫາໂຊກຍຸກ 9 (旺气栅门)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 96/100';
+                            verdictTitle = 'ປະຕູຮົ້ວເປີດຮັບດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ປາກທາງເຂົ້າພະລັງຊີ່ຈາກພາຍນອກສູ່ຕົວບ້ານກົງກັບດາວໂຊກໃຫຍ່ ນຳພາໂອກາດການເງິນ ແລະ ແຂກຜູ້ມີກຽດເຂົ້າມາ.';
+                            verdictAction = 'ຮັກສາທາງເຂົ້າຮົ້ວໃຫ້ຮາບພຽງສະອາດ, ບໍ່ໃຫ້ມີຕົ້ນໄມ້ບັງປາກທາງ.';
+                        } else if (curW === 5) {
+                            verdictTag = '❌ ປະຕູຮົ້ວດາວ 5 ຫ້າເຫຼືອງ';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 15/100';
+                            verdictTitle = 'ປະຕູຮົ້ວດຶງໄພພິບັດຈາກພາຍນອກ';
+                            verdictAnalysis = 'ການເປີດປະຕູຮົ້ວທິດນີ້ຈະດຶງອຸປະສັກ, ຄະດີຄວາມ ແລະ ລາຍຈ່າຍໜັກເຂົ້າມາ.';
+                            verdictAction = 'ແຂວນກະດິ່ງລົມທອງເຫຼືອງ 6 ທໍ່ ທີ່ເສົາປະຕູຮົ້ວ, ຫຼື ໃຊ້ປະຕູຮົ້ວດ້ານອື່ນ.';
+                        } else {
+                            verdictTag = '✨ ປະຕູຮົ້ວນອກປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 75/100';
+                            verdictTitle = 'ປະຕູຮົ້ວທົ່ວໄປ';
+                            verdictAnalysis = 'ການເຂົ້າ-ອອກສະດວກສະບາຍ ບໍ່ມີຜົນປະທະຮຸນແຮງ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ ແລະ ທາສີປະຕູຮົ້ວໃຫ້ສົດໃສ.';
+                        }
+                    }
+
+                    // 3. ປະຕູຂ້າງບ້ານ (Side Door)
+                    else if (selectedRoomType === 'side_door') {
+                        if (chart.castleGate && chart.castleGate.palId === curPal) {
+                            verdictTag = '🏰 ມະຫາມຸງຄຸນ! ປະຕູຂ້າງເສີມຊັບ (城门诀)';
+                            verdictColor = 'border-cyan-500/80 bg-cyan-950/40 text-cyan-300';
+                            verdictScore = 'ຄະແນນ: 100/100 (ສຸດຍອດເຄັດລັບຊັວນຄົງ)';
+                            verdictTitle = 'ປະຕູຂ້າງ ກົງຕຳແໜ່ງເສີນເໝີນ ' + chart.castleGate.type;
+                            verdictAnalysis = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາຊັ້ນສູງ "ເສີນເໝີນເຈວ່ (城门诀)"! ປະຕູຂ້າງໃນທິດນີ້ ຈະດຶງດູດພະລັງຊັບອັນມະຫາສານເຂົ້າສູ່ຕົວບ້ານ.';
+                            verdictAction = 'ເປີດໃຊ້ງານປະຕູນີ້ເປັນປະຈຳ, ຕັ້ງໂຄມໄຟສະຫວ່າງ, ວາງກະຖາງຕົ້ນໄມ້ສວຍງາມ.';
+                        } else if (curW === currentPeriod || curW === 1) {
+                            verdictTag = '🌟 ປະຕູຂ້າງຮັບຊັບ (Secondary Wealth Gate)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 92/100';
+                            verdictTitle = 'ປະຕູຂ້າງຮັບດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ເປັນຊ່ອງທາງຮັບໂຊກລາບສຳຮອງທີ່ດີເລີດ, ເໝາະແກ່ການເຂົ້າ-ອອກປະຈຳວັນ.';
+                            verdictAction = 'ເປີດໃຊ້ງານໄດ້ດີ, ຮັກສາທາງຍ່າງຂ້າງບ້ານໃຫ້ສະອາດ.';
+                        } else if (curW === 5) {
+                            verdictTag = '❌ ປະຕູຂ້າງດາວ 5 ຫ້າເຫຼືອງ';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 20/100';
+                            verdictTitle = 'ປະຕູຂ້າງຮັບພະລັງແຕກຫັກ';
+                            verdictAnalysis = 'ປະຕູຂ້າງທິດນີ້ຈະນຳພາອຸບັດຕິເຫດ ແລະ ການຜິດຖຽງກັນເຂົ້າມາ.';
+                            verdictAction = 'ແຂວນກະດິ່ງລົມທອງເຫຼືອງ 6 ທໍ່ ຫຼື ຫຼຸດການເປີດ-ປິດ.';
+                        } else {
+                            verdictTag = '⚠️ ປານກາງ (Side Door)';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 70/100';
+                            verdictTitle = 'ປະຕູຂ້າງທົ່ວໄປ';
+                            verdictAnalysis = 'ການເຂົ້າ-ອອກສະດວກສະບາຍ ບໍ່ມີຜົນປະທະຮຸນແຮງ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ.';
+                        }
+                    }
+
+                    // 4. ປະຕູຫຼັງບ້ານ (Back Door)
                     else if (selectedRoomType === 'back_door') {
                         if (curM === currentPeriod) {
                             verdictTag = '❌ ຮົ່ວໄຫຼພະລັງພູ (Leakage)';
@@ -2366,43 +2501,43 @@
                         }
                     }
 
-                    // 3. ປະຕູຂ້າງ / ປະຕູຮົ້ວ (Side Gate / Yard Gate)
-                    else if (selectedRoomType === 'side_door') {
-                        if (chart.castleGate && chart.castleGate.palId === curPal) {
-                            verdictTag = '🏰 ມະຫາມຸງຄຸນ! ປະຕູວັງເສີມຊັບ (城门诀)';
-                            verdictColor = 'border-cyan-500/80 bg-cyan-950/40 text-cyan-300';
-                            verdictScore = 'ຄະແනນ: 100/100 (ສຸດຍອດເຄັດລັບຊັວນຄົງ)';
-                            verdictTitle = 'ປະຕູຮົ້ວ/ປະຕູຂ້າງ ກົງຕຳແໜ່ງເສີນເໝີນ ' + chart.castleGate.type;
-                            verdictAnalysis = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາຊັ້ນສູງ "ເສີນເໝີນເຈວ່ (城门诀)"! ປະຕູຮົ້ວຫຼືປະຕູຂ້າງໃນທິດນີ້ ຈະດຶງດູດພະລັງຊັບອັນມະຫາສານເຂົ້າສູ່ຕົວບ້ານ ຄືກັບມີປະຕູຂຸມຊັບທີສອງ.';
-                            verdictAction = 'ເປີດໃຊ້ງານປະຕູນີ້ເປັນປະຈຳ, ຕັ້ງໂຄມໄຟສະຫວ່າງ, ວາງກະຖາງຕົ້ນໄມ້ສວຍງາມ.';
-                        } else if (curW === 5) {
-                            verdictTag = '❌ ປະຕູຮົ້ວດາວ 5 ຫ້າເຫຼືອງ';
+                    // 5. ປະຕູຫ້ອງນອນ (Bedroom Door)
+                    else if (selectedRoomType === 'bedroom_door') {
+                        if (curW === currentPeriod || curW === 1) {
+                            verdictTag = '🌟 ປະຕູຫ້ອງນອນຮັບຊີ່ບໍລິສຸດ (吉气入房)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 94/100';
+                            verdictTitle = 'ປະຕູຫ້ອງນອນຮັບດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ການເປີດ-ປິດປະຕູຫ້ອງນອນດຶງດູດພະລັງງານສົດຊື່ນເຂົ້າມາສູ່ຫ້ອງນອນ ເຮັດໃຫ້ນອນຫຼັບສະບາຍ, ຈິດໃຈແຈ່ມໃສ.';
+                            verdictAction = 'ຂໍ້ຫ້າມເດັດຂາດ: ຫ້າມເປີດປະຕູແລ້ວປະທະຫົວຕຽງໂດຍກົງ (门冲床 - ປະຕູແທງຕຽງ ເຮັດໃຫ້ປວດຫົວ, ຝັນຮ້າຍ). ຫາກກົງກັນໃຫ້ຕິດຜ້າມ່ານ ຫຼື ຍ້າຍຕຽງ.';
+                        } else if (curW === 5 || curW === 2) {
+                            verdictTag = '❌ ປະຕູຫ້ອງນອນດາວພະຍາດ/ອຸປະສັກ';
                             verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
-                            verdictScore = 'ຄະແນນ: 20/100';
-                            verdictTitle = 'ປະຕູຮົ້ວຮັບພະລັງແຕກຫັກ';
-                            verdictAnalysis = 'ປະຕູຮົ້ວທິດນີ້ຈະນຳພາຄະດີຄວາມ, ອຸບັດຕິເຫດ ແລະ ການຜິດຖຽງກັນເຂົ້າມາ.';
-                            verdictAction = 'ແຂວນກະດິ່ງລົມທອງເຫຼືອງ 6 ທໍ່ ຫຼື ປ່ຽນໄປໃຊ້ປະຕູຮົ້ວອີກຂ້າງ.';
+                            verdictScore = 'ຄະແນນ: 25/100';
+                            verdictTitle = 'ປະຕູຫ້ອງນອນດຶງດາວ 5/ດາວ 2 ເຂົ້າຫ້ອງ';
+                            verdictAnalysis = 'ພະລັງງານພະຍາດຫຼືອຸປະສັກຈະໄຫຼເຂົ້າສູ່ຫ້ອງນອນ ເຮັດໃຫ້ຜູ້ຢູ່ໃນຫ້ອງເຈັບປ່ວຍງ່າຍ.';
+                            verdictAction = 'ແຂວນນ້ຳເຕົ້າທອງເຫຼືອງ ຫຼື ຫຼຽນ 6 ຈັກກະພັດໄວ້ທີ່ລູກບິດປະຕູຫ້ອງນອນ.';
                         } else {
-                            verdictTag = '⚠️ ປານກາງ (Secondary Gate)';
+                            verdictTag = '✨ ປະຕູຫ້ອງນອນປົກກະຕິ';
                             verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
-                            verdictScore = 'ຄະແນນ: 70/100';
-                            verdictTitle = 'ປະຕູຮົ້ວ/ປະຕູຂ້າງ';
-                            verdictAnalysis = 'ການເຂົ້າ-ອອກສະດວກສະບາຍ ບໍ່ມີຜົນປະທະຮຸນແຮງ.';
-                            verdictAction = 'ຮັກສາບໍລິເວນຮົ້ວໃຫ້ສະອາດ.';
+                            verdictScore = 'ຄະແນນ: 75/100';
+                            verdictTitle = 'ປະຕູຫ້ອງນອນທົ່ວໄປ';
+                            verdictAnalysis = 'ບໍ່ມີດາວພິດຮ້າຍແຮງ.';
+                            verdictAction = 'ຫ້າມໃຫ້ປະຕູຫ້ອງນອນຕົງກັບປະຕູໃຫຍ່ ຫຼື ປະຕູຫ້ອງນ້ຳ.';
                         }
                     }
 
-                    // 4. ປະຕູຫ້ອງຄົວ (Kitchen Door)
+                    // 6. ປະຕູຫ້ອງຄົວ (Kitchen Door)
                     else if (selectedRoomType === 'kitchen_door') {
-                        verdictTag = '🍳 ປະຕູຄົວ (ແຍກພະລັງໄຟ)';
+                        verdictTag = '🍳 ປະຕູຄົວ (ແຍກພະລັງໄຟ & ຄວັນ)';
                         verdictColor = 'border-amber-500/80 bg-amber-950/40 text-amber-300';
                         verdictScore = 'ຄະແນນ: 75/100';
                         verdictTitle = 'ປະຕູຫ້ອງຄົວ';
                         verdictAnalysis = 'ປະຕູຄົວມີໜ້າທີ່ກັກເກັບຄວັນແລະກິ່ນ ບໍ່ໃຫ້ລົບກວນພະລັງຊີ່ໃນຫ້ອງໂຖງ.';
-                        verdictAction = 'ຫ້າມໃຫ້ປະຕູຄົວຕົງກົງກັບປະຕູໃຫຍ່ໜ້າບ້ານ (開門見灶, 錢財多耗 - ເປີດປະຕູເຫັນເຕົາ ເສຍຊັບ) ແລະ ຫ້າມກົງກັບປະຕູຫ້ອງນອນ ຫຼື ປະຕູຫ້ອງນ້ຳ.';
+                        verdictAction = 'ຫ້າມໃຫ້ປະຕູຄົວຕົງກົງກັບປະຕູໃຫຍ່ໜ້າບ້ານ (開門見灶, 錢財多耗 - ເປີດປະຕູເຫັນເຕົາ ເສຍຊັບ) ແລະ ຫ້າມກົງກັບປະຕູຫ້ອງນອນ ຫຼື ປະຕູຫ້ອງນ້ຳ (水火不相容).';
                     }
 
-                    // 5. ປະຕູຫ້ອງນ້ຳ (Toilet Door)
+                    // 7. ປະຕູຫ້ອງນ້ຳ (Toilet Door)
                     else if (selectedRoomType === 'toilet_door') {
                         verdictTag = '🚽 ປະຕູຫ້ອງນ້ຳ (ຈຸດດັກພະລັງເສຍ)';
                         verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
@@ -2412,62 +2547,36 @@
                         verdictAction = 'ຕ້ອງປິດປະຕູຫ້ອງນ້ຳໄວ້ສະເໝີ! ຫ້າມເດັດຂາດບໍ່ໃຫ້ປະຕູຫ້ອງນ້ຳຕົງກັບ: ປະຕູໃຫຍ່, ຫົວຕຽງນອນ, ຫຼື ເຕົາໄຟ. ຫາກກົງກັນ ໃຫ້ຕິດຜ້າມ່ານຍາວເກີນເຄິ່ງປະຕູ.';
                     }
 
-                    // 6. ຕຽງນອນ / ຫົວຕຽງ (Bed & Bed Headboard)
-                    else if (selectedRoomType === 'bed_head' || selectedRoomType === 'bed') {
-                        if (curM === currentPeriod) {
-                            verdictTag = '🌟 ຫົວຕຽງບາຣະມີສູງສຸດ (旺丁位)';
-                            verdictColor = 'border-blue-500/80 bg-blue-950/40 text-blue-300';
-                            verdictScore = 'ຄະແນນ: 98/100 (ຕຳແໜ່ງສຸຂະພາບ & ບາຣະມີ)';
-                            verdictTitle = 'ຫົວຕຽງດາວພູ ' + curM + ' ປະຈຳຍຸກ';
-                            verdictAnalysis = 'ຕຳແໜ່ງທີ່ດີທີ່ສຸດສຳລັບການນອນ! ດາວພູ 9 ສົ່ງເສີມສຸຂະພາບແຂງແຮງ, ຈິດໃຈສະຫງົບ, ອາຍຸຍືນ, ຄອບຄົວອົບອຸ່ນ ແລະ ສົ່ງເສີມການມີລູກຫຼານສືບຕະກຸນ.';
-                            verdictAction = 'ຫົວຕຽງຕັ້ງຊິດຝາຕຶບແໜ້ນ, ວາງຫີນພູເຂົາທຳມະຊາດ (靠山) ຫຼື ວັດຖຸສີແດງ/ມ່ວງ ເພື່ອເພີ່ມພະລັງ.';
-                        } else if (curM === 5 || curM === 2) {
-                            verdictTag = '❌ ຫົວຕຽງດາວພະຍາດ/ອຸບັດຕິເຫດ (煞位)';
+                    // 8. ປະຕູລະບຽງ / ປະຕູເລື່ອນ (Balcony Sliding Door)
+                    else if (selectedRoomType === 'balcony_door') {
+                        if (curW === currentPeriod || curW === 1) {
+                            verdictTag = '🌟 ປະຕູລະບຽງຮັບແສງຊັບຍຸກ 9 (次气口大吉)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 96/100';
+                            verdictTitle = 'ປະຕູເລື່ອນລະບຽງຮັບດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ປະຕູກະຈົກໃຫຍ່ທີ່ເຊື່ອມລະບຽງເປັນປາກທາງຮັບຊີ່ສຳຄັນທີ່ສຸດໃນຕຶກສູງຫຼືຄອນໂດ! ດຶງດູດແສງສະຫວ່າງ ແລະ ໂຊກລາບມະຫາສານ.';
+                            verdictAction = 'ເປີດຮັບລົມເປັນປະຈຳ, ຮັກສາກະຈົກໃຫ້ໃສສະອາດ, ປູກຕົ້ນໄມ້ໃບຂຽວມົນທີ່ລະບຽງ.';
+                        } else if (curW === 5) {
+                            verdictTag = '❌ ປະຕູລະບຽງຮັບດາວ 5 ຫ້າເຫຼືອງ';
                             verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
-                            verdictScore = 'ຄະແນນ: 15/100 (ຕ້ອງຍ້າຍ ຫຼື ແກ້ດ່ວນ!)';
-                            verdictTitle = 'ຕຳແໜ່ງດາວ 5 ຫ້າເຫຼືອງ / ດາວ 2 ພະຍາດ';
-                            verdictAnalysis = 'ອັນຕະລາຍຕໍ່ສຸຂະພາບ! ນອນແລ້ວຈະເຈັບປ່ວຍຊຳເຮື້ອ, ນອນບໍ່ຫຼັບ, ຝັນຮ້າຍ, ຜ່າຕັດ ຫຼື ເກີດບັນຫາສາຍຕາ/ກະເພາະ.';
-                            verdictAction = 'ວິທີແກ້: ຫາກຍ້າຍຕຽງໄດ້ຄວນຍ້າຍທັນທີ. ຖ້າຍ້າຍບໍ່ໄດ້ ໃຫ້ວາງນ້ຳເຕົ້າທອງເຫຼືອງແທ້ 1 ຄູ່ຂ້າງຫົວຕຽງ ແລະ ຫຼຽນ 6 ຈັກກະພັດໃຕ້ໝອນ. ຫົວຕຽງຫ້າມຕິດຝາຫ້ອງນ້ຳ!';
+                            verdictScore = 'ຄະແນນ: 20/100';
+                            verdictTitle = 'ປະຕູລະບຽງເປີດຮັບພະລັງແຕກຫັກ';
+                            verdictAnalysis = 'ລະບຽງເປີດຮັບລົມທີ່ປຸກດາວ 5 ໃຫ້ຕື່ນ ເຮັດໃຫ້ມີເລື່ອງເສຍເງິນຄຳ ແລະ ອຸປະສັກ.';
+                            verdictAction = 'ແຂວນກະດິ່ງລົມທອງເຫຼືອງ ຫຼື ຫຼຽນ 6 ຈັກກະພັດ, ຕິດຜ້າມ່ານບັງແດດ.';
                         } else {
-                            verdictTag = '⚠️ ປານກາງ (Neutral)';
+                            verdictTag = '✨ ປະຕູລະບຽງປົກກະຕິ';
                             verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
-                            verdictScore = 'ຄະແນນ: 65/100';
-                            verdictTitle = 'ຫົວຕຽງດາວພູ ' + curM;
-                            verdictAnalysis = 'ສຸຂະພາບທົ່ວໄປ: ' + comboInfo.health;
-                            verdictAction = 'ຫ້າມຕັ້ງຕຽງຕົງກັບປະຕູຫ້ອງນ້ຳ, ຫ້າມມີຂື່ຄານທັບຫົວຕຽງ, ຫ້າມມີກະຈົກເງົາສ່ອງໃສ່ຕຽງ.';
+                            verdictScore = 'ຄະແນນ: 75/100';
+                            verdictTitle = 'ປະຕູລະບຽງທົ່ວໄປ';
+                            verdictAnalysis = 'ການຖ່າຍເທອາກາດດີ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ.';
                         }
                     }
 
-                    // 7. ຫ້ອງນອນໃຫຍ່ (Master Bedroom Space)
-                    else if (selectedRoomType === 'bedroom') {
-                        if (curM === currentPeriod || curM === 1 || curM === 8) {
-                            verdictTag = '👑 ຫ້ອງນອນເສີມຊີວິດ & ຕະກຸນ (吉房)';
-                            verdictColor = 'border-indigo-500/80 bg-indigo-950/40 text-indigo-300';
-                            verdictScore = 'ຄະແນන: 95/100';
-                            verdictTitle = 'ຫ້ອງນອນໃນວັງດາວພູມຸງຄຸນ ' + curM;
-                            verdictAnalysis = 'ຫ້ອງນອນຕັ້ງຢູ່ໃນວັງພະລັງງານສະຫງົບເຢັນ ເໝາະແກ່ການພັກຜ່ອນຟື້ນຟູພະລັງງານ, ຊີວິດຄູ່ຮາບລື່ນ, ເຈລະຈາວຽກງານສຳເລັດ.';
-                            verdictAction = 'ໃຊ້ແສງໄຟສີອົບອຸ່ນ (Warm white), ຕົກແຕ່ງດ້ວຍໂທນສີທີ່ກົມກຽວກັບທາດດາວພູ.';
-                        } else if (curM === 5 || curM === 2) {
-                            verdictTag = '❌ ຫ້ອງນອນຕົກວັງພະຍາດ';
-                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
-                            verdictScore = 'ຄະແນນ: 30/100';
-                            verdictTitle = 'ຫ້ອງນອນວັງດາວ 5/ດາວ 2';
-                            verdictAnalysis = 'ຄົນທີ່ນອນຫ້ອງນີ້ມັກຈະອິດເມື່ອຍ, ຂາດພະລັງງານ, ຫຼື ເຈັບປ່ວຍງ່າຍ.';
-                            verdictAction = 'ວາງນ້ຳເຕົ້າທອງເຫຼືອງແທ້, ເປີດປ່ອງຢ້ຽມລະບາຍອາກາດໃຫ້ໂປ່ງແຈ້ງ, ຫ້າມໃຊ້ຜ້າປູທີ່ນອນສີແດງ.';
-                        } else {
-                            verdictTag = '✨ ຫ້ອງນອນປົກກະຕິ';
-                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
-                            verdictScore = 'ຄະແນນ: 70/100';
-                            verdictTitle = 'ຫ້ອງນອນທົ່ວໄປ';
-                            verdictAnalysis = 'ພະລັງງານສະໝ່ຳສະເໝີ.';
-                            verdictAction = 'ຮັກສາຄວາມສະອາດ, ຫ້າມສະສົມເຄື່ອງເກົ່າໃຕ້ຕຽງ.';
-                        }
-                    }
-
-                    // 8. ປ່ອງຢ້ຽມ (Window)
+                    // 9. ປ່ອງຢ້ຽມຫ້ອງຮັບແຂກ / ປ່ອງຢ້ຽມໃຫຍ່ (Main Window)
                     else if (selectedRoomType === 'window') {
                         if (curW === currentPeriod || curW === 1) {
-                            verdictTag = '🌟 ປ່ອງຢ້ຽມຮັບຊັບ (Auspicious)';
+                            verdictTag = '🌟 ປ່ອງຢ້ຽມຮັບຊັບ (Auspicious Window)';
                             verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
                             verdictScore = 'ຄະແນນ: 95/100';
                             verdictTitle = 'ປ່ອງຢ້ຽມຮັບກະແສລົມໂຊກລາບ';
@@ -2490,7 +2599,52 @@
                         }
                     }
 
-                    // 9. ຫ້ອງຄົວ (Kitchen Room Space)
+                    // 10. ປ່ອງຢ້ຽມຫ້ອງນອນ (Bedroom Window)
+                    else if (selectedRoomType === 'bedroom_window') {
+                        if (curM === currentPeriod || curM === 1) {
+                            verdictTag = '🌟 ປ່ອງຢ້ຽມຫ້ອງນອນຮັບລົມສະອາດ (吉窗)';
+                            verdictColor = 'border-teal-500/80 bg-teal-950/40 text-teal-300';
+                            verdictScore = 'ຄະແນນ: 90/100';
+                            verdictTitle = 'ປ່ອງຢ້ຽມຫ້ອງນອນທິດດາວພູມຸງຄຸນ';
+                            verdictAnalysis = 'ອາກາດຖ່າຍເທດີ ນຳພາພະລັງງານສົດຊື່ນຊ່ວຍໃຫ້ສຸຂະພາບແຂງແຮງ.';
+                            verdictAction = 'ຂໍ້ຫ້າມເດັດຂາດ: ຫົວຕຽງຫ້າມຕັ້ງຕິດປ່ອງຢ້ຽມ (床头靠窗 无依无靠)! ຕ້ອງມີຜ້າມ່ານທຶບປິດຕອນນອນເພື່ອຮັກສາພະລັງບາຣະມີ.';
+                        } else if (curW === 5 || curW === 2) {
+                            verdictTag = '❌ ປ່ອງຢ້ຽມຫ້ອງນອນດາວພະຍາດ';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 25/100';
+                            verdictTitle = 'ປ່ອງຢ້ຽມຫ້ອງນອນກົງດາວ 5/2';
+                            verdictAnalysis = 'ລົມພັດເອົາພະລັງງານພະຍາດເຂົ້າມາສູ່ຄົນນອນ.';
+                            verdictAction = 'ປິດປ່ອງຢ້ຽມຕອນກາງຄືນ, ຕິດຜ້າມ່ານສອງຊັ້ນ, ວາງນ້ຳເຕົ້າທອງເຫຼືອງທີ່ຂອບປ່ອງຢ້ຽມ.';
+                        } else {
+                            verdictTag = '✨ ປ່ອງຢ້ຽມຫ້ອງນອນປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 70/100';
+                            verdictTitle = 'ປ່ອງຢ້ຽມຫ້ອງນອນທົ່ວໄປ';
+                            verdictAnalysis = 'ລະບາຍອາກາດໄດ້ດີ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ.';
+                        }
+                    }
+
+                    // 11. ຊ່ອງແສງຫຼັງຄາ / ຊ່ອງລົມ (Roof Skylight & Vent)
+                    else if (selectedRoomType === 'skylight') {
+                        if (chart.faceInfo.palId === 5) {
+                            verdictTag = '❌ ອັນຕະລາຍ! ເຈາະແສງຕາກາງບ້ານ (中宫开天窗)';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 30/100';
+                            verdictTitle = 'ຊ່ອງແສງເຈາະໃຈກາງບ້ານ (阳盛阴衰)';
+                            verdictAnalysis = 'ຂໍ້ຫ້າມໃຫຍ່! ການເຈາະຊ່ອງແສງໃຫຍ່ໃຈກາງບ້ານ ຈະເຮັດໃຫ້ພະລັງຢາງຮ້ອນເກີນໄປ ເຮັດໃຫ້ເງິນຄຳຮົ່ວໄຫຼ ແລະ ຄົນໃນບ້ານໃຈຮ້ອນວຸ້ນວາຍ.';
+                            verdictAction = 'ຕິດຟິມກັນແດດ ຫຼື ຜ້າມ່ານບັງແສງບໍ່ໃຫ້ແດດສ່ອງລົງໃຈກາງບ້ານໂດຍກົງ.';
+                        } else {
+                            verdictTag = '☀️ ຊ່ອງແສງລະບາຍອາກາດ (Ventilation)';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 75/100';
+                            verdictTitle = 'ຊ່ອງແສງຫຼັງຄາທົ່ວໄປ';
+                            verdictAnalysis = 'ຊ່ວຍເພີ່ມຄວາມສະຫວ່າງທຳມະຊາດ.';
+                            verdictAction = 'ກວດສອບບໍ່ໃຫ້ນ້ຳຝົນຮົ່ວຊຶມ (ນ້ຳຮົ່ວເທົ່າກັບຊັບຮົ່ວ).';
+                        }
+                    }
+
+                    // 12. ຫ້ອງຄົວ (Kitchen Room Space)
                     else if (selectedRoomType === 'kitchen_room' || selectedRoomType === 'kitchen') {
                         if (curM === 2 || curW === 2 || curM === 5 || curW === 5) {
                             verdictTag = '❌ ຫ້ອງຄົວຕົກວັງດິນພິດ (Caution)';
@@ -2509,7 +2663,7 @@
                         }
                     }
 
-                    // 10. ເຕົາແກັສ / ເຕົາໄຟ (Cooking Stove & Burner Point)
+                    // 13. ເຕົາແກັສ / ເຕົາໄຟ (Cooking Stove & Burner Point)
                     else if (selectedRoomType === 'stove' || selectedRoomType === 'kitchen_stove') {
                         if (curM === 2 || curW === 2 || curM === 5 || curW === 5) {
                             verdictTag = '❌ ໄຟເຜົາດິນພິດ (Disastrous)';
@@ -2535,26 +2689,159 @@
                         }
                     }
 
-                    // 10. ໂຕະເຮັດວຽກ (Work Desk)
-                    else if (selectedRoomType === 'desk') {
-                        if ((curM === 1 && curW === 4) || (curM === 4 && curW === 1) || curW === 9 || curM === 6) {
-                            verdictTag = '🌟 ຕຳແໜ່ງບຸນຊິມ & ລາບຍົດ (文昌位)';
-                            verdictColor = 'border-purple-500/80 bg-purple-950/40 text-purple-300';
-                            verdictScore = 'ຄະແນນ: 96/100';
-                            verdictTitle = 'ມະຫາປັນຍາ & ຕຳແໜ່ງກ້າວໜ້າ';
-                            verdictAnalysis = 'ສົ່ງເສີມສະຕິປັນຍາ, ການສອບເສັງ, ຄວາມຄິດສ້າງສັນ, ການເລື່ອນຂັ້ນເລື່ອນຕຳແໜ່ງ, ແລະ ຄວາມສຳເລັດໃນໜ້າທີ່ການງານ.';
-                            verdictAction = 'ຕັ້ງໂຕະເຮັດວຽກຫັນໜ້າໄປທິດນີ້, ວາງປາກກາບຸນຊິມ (文昌笔) ຫຼື ຫໍບຸນຊິມ 4 ຊັ້ນ.';
+                    // 14. ອ່າງລ້າງຈານ / ກ໊ອກນ້ຳຄົວ (Kitchen Sink & Water Tap)
+                    else if (selectedRoomType === 'sink') {
+                        if (curW === currentPeriod) {
+                            verdictTag = '⚠️ ອ່າງລ້າງຈານໃນທິດດາວໂຊກ (ລະວັງນ້ຳຖິ້ມດູດຊັບ)';
+                            verdictColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                            verdictScore = 'ຄະແນນ: 60/100';
+                            verdictTitle = 'ອ່າງລ້າງຈານກົງດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ນ້ຳໄຫຼຖິ້ມຈາກອ່າງລ້າງຈານອາດດູດຊັບອອກໄປ.';
+                            verdictAction = 'ຮັກສາທໍ່ບໍ່ໃຫ້ອຸດຕັນ. ຂໍ້ຫ້າມໃຫຍ່: ອ່າງລ້າງຈານຕ້ອງຢູ່ຫ່າງຈາກເຕົາໄຟຢ່າງໜ້ອຍ 60 ຊັງຕີແມັດ (水火相克 - ນ້ຳກັບໄຟຂົ່ມກັນ ເຮັດໃຫ້ຜົວເມຍຜິດຖຽງກັນ).';
+                        } else if (curW === 5 || curW === 2) {
+                            verdictTag = '🌟 ມຸງຄຸນ! ນ້ຳລ້າງຈານຊ່ວຍດູດພະລັງເສຍ';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 90/100';
+                            verdictTitle = 'ອ່າງນ້ຳຄົວດູດດາວຮ້າຍ 5/2';
+                            verdictAnalysis = 'ນ້ຳໄຫຼລົງທໍ່ຊ່ວຍລະບາຍພະລັງງານເສຍອອກໄປ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ, ຫ້າມໃຫ້ນ້ຳຮົ່ວຊຶມໃຕ້ອ່າງ.';
                         } else {
-                            verdictTag = '⚠️ ປານກາງ (Neutral)';
+                            verdictTag = '✨ ອ່າງລ້າງຈານປົກກະຕິ';
                             verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
-                            verdictScore = 'ຄະແນນ: 70/100';
-                            verdictTitle = 'ໂຕະເຮັດວຽກທົ່ວໄປ';
-                            verdictAnalysis = 'ວຽກງານສະໝ່ຳສະເໝີ: ' + comboInfo.wealth;
-                            verdictAction = 'ຫຼັງພິງຝາຕຶບ ຫ້າມນັ່ງຫັນຫຼັງໃຫ້ປະຕູ ຫຼື ປ່ອງຢ້ຽມ.';
+                            verdictScore = 'ຄະແນນ: 75/100';
+                            verdictTitle = 'ອ່າງລ້າງຈານທົ່ວໄປ';
+                            verdictAnalysis = 'ການໃຊ້ນ້ຳສະດວກສະບາຍ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ, ຫ້າມໃຫ້ກ໊ອກນ້ຳຫັນໜ້າໄປທາງເຕົາໄຟ.';
                         }
                     }
 
-                    // 11. ຫ້ອງນ້ຳພາຍໃນບ້ານ (Indoor Toilet & Bath)
+                    // 15. ຕູ້ເຢັນ / ຄັງສະບຽງ (Refrigerator - Cold Treasury)
+                    else if (selectedRoomType === 'refrigerator') {
+                        if (curM === currentPeriod || curW === currentPeriod || curM === 8) {
+                            verdictTag = '🧊 ຕູ້ເຢັນສະສົມສະບຽງອຸດົມສົມບູນ (暗财库)';
+                            verdictColor = 'border-teal-500/80 bg-teal-950/40 text-teal-300';
+                            verdictScore = 'ຄະແນນ: 92/100';
+                            verdictTitle = 'ຕູ້ເຢັນຕຳແໜ່ງຄັງສະບຽງມຸງຄຸນ';
+                            verdictAnalysis = 'ຕູ້ເຢັນປຽບເໝືອນຄັງເກັບສະບຽງອາຫານ (ທາດໂລຫະ/ນ້ຳເຢັນ). ເມື່ອຕັ້ງໃນວັງມຸງຄຸນ ຈະສົ່ງຜົນໃຫ້ຄອບຄົວມີຢູ່ມີກິນ ບໍ່ອຶດຢາກ.';
+                            verdictAction = 'ຮັກສາຕູ້ເຢັນໃຫ້ມີອາຫານສົດສະເໝີ (ຫ້າມປະໃຫ້ຕູ້ເຢັນວ່າງເປົ່າ). ຂໍ້ຫ້າມ: ປະຕູຕູ້ເຢັນຫ້າມເປີດປະທະເຕົາໄຟໂດຍກົງ!';
+                        } else {
+                            verdictTag = '✨ ຕູ້ເຢັນປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 80/100';
+                            verdictTitle = 'ຕູ້ເຢັນທົ່ວໄປ';
+                            verdictAnalysis = 'ການເກັບຮັກສາອາຫານປອດໄພ.';
+                            verdictAction = 'ໝັ່ນອະນາໄມສິ່ງໝົດອາຍຸອອກສະເໝີ.';
+                        }
+                    }
+
+                    // 16. ໂຕະກິນເຂົ້າ (Dining Table)
+                    else if (selectedRoomType === 'dining') {
+                        if (curM === currentPeriod || curM === 1 || curM === 8) {
+                            verdictTag = '🌟 ໂຕະອາຫານອຸດົມສົມບູນ (天禄位)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 95/100';
+                            verdictTitle = 'ໂຕະກິນເຂົ້າດາວພູມຸງຄຸນ ' + curM;
+                            verdictAnalysis = 'ໂຕະອາຫານສະຖິດໃນວັງດາວພູທີ່ສະຫງົບ ສົ່ງເສີມຄວາມອົບອຸ່ນໃນຄອບຄົວ, ກິນແລ້ວສຸຂະພາບແຂງແຮງ, ຕະກຸນສາມັກຄີກົມກຽວ.';
+                            verdictAction = 'ໃຊ້ໂຕະກິນເຂົ້າຊົງມົນ ຫຼື ສີ່ຫຼ່ຽມມົນ, ຕິດກະຈົກເງົາສ່ອງໃສ່ໂຕະອາຫານເພື່ອເພີ່ມພູນຄວາມອຸດົມສົມບູນ (ຫ້າມຕັ້ງກົງກັບປະຕູຫ້ອງນ້ຳ).';
+                        } else {
+                            verdictTag = '✨ ໂຕະກິນເຂົ້າປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 75/100';
+                            verdictTitle = 'ໂຕະອາຫານທົ່ວໄປ';
+                            verdictAnalysis = 'ສຸຂະພາບການກິນປົກກະຕິ.';
+                            verdictAction = 'ຫ້າມຕັ້ງໂຕະອາຫານໃຕ້ຂື່ຄານ ຫຼື ຕົງກັບປະຕູໃຫຍ່.';
+                        }
+                    }
+
+                    // 17. ຫ້ອງນອນໃຫຍ່ (Master Bedroom Space)
+                    else if (selectedRoomType === 'bedroom') {
+                        if (curM === currentPeriod || curM === 1 || curM === 8) {
+                            verdictTag = '👑 ຫ້ອງນອນເສີມຊີວິດ & ຕະກຸນ (吉房)';
+                            verdictColor = 'border-indigo-500/80 bg-indigo-950/40 text-indigo-300';
+                            verdictScore = 'ຄະແນນ: 95/100';
+                            verdictTitle = 'ຫ້ອງນອນໃນວັງດາວພູມຸງຄຸນ ' + curM;
+                            verdictAnalysis = 'ຫ້ອງນອນຕັ້ງຢູ່ໃນວັງພະລັງງານສະຫງົບເຢັນ ເໝາະແກ່ການພັກຜ່ອນຟື້ນຟູພະລັງງານ, ຊີວິດຄູ່ຮາບລື່ນ, ເຈລະຈາວຽກງານສຳເລັດ.';
+                            verdictAction = 'ໃຊ້ແສງໄຟສີອົບອຸ່ນ (Warm white), ຕົກແຕ່ງດ້ວຍໂທນສີທີ່ກົມກຽວກັບທາດດາວພູ.';
+                        } else if (curM === 5 || curM === 2) {
+                            verdictTag = '❌ ຫ້ອງນອນຕົກວັງພະຍາດ';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 30/100';
+                            verdictTitle = 'ຫ້ອງນອນວັງດາວ 5/ດາວ 2';
+                            verdictAnalysis = 'ຄົນທີ່ນອນຫ້ອງນີ້ມັກຈະອິດເມື່ອຍ, ຂາດພະລັງງານ, ຫຼື ເຈັບປ່ວຍງ່າຍ.';
+                            verdictAction = 'ວາງນ້ຳເຕົ້າທອງເຫຼືອງແທ້, ເປີດປ່ອງຢ້ຽມລະບາຍອາກາດໃຫ້ໂປ່ງແຈ້ງ, ຫ້າມໃຊ້ຜ້າປູທີ່ນອນສີແດງ.';
+                        } else {
+                            verdictTag = '✨ ຫ້ອງນອນປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 70/100';
+                            verdictTitle = 'ຫ້ອງນອນທົ່ວໄປ';
+                            verdictAnalysis = 'ພະລັງງານສະໝ່ຳສະເໝີ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ, ຫ້າມສະສົມເຄື່ອງເກົ່າໃຕ້ຕຽງ.';
+                        }
+                    }
+
+                    // 18. ຫ້ອງນອນລູກ / ຫ້ອງນອນແຂກ (Guest / Children Bedroom)
+                    else if (selectedRoomType === 'guest_bedroom') {
+                        if ((curM === 1 && curW === 4) || (curM === 4 && curW === 1)) {
+                            verdictTag = '🌟 ຫ້ອງນອນບຸນຊິມປັນຍາເລີດ (文昌贵人)';
+                            verdictColor = 'border-purple-500/80 bg-purple-950/40 text-purple-300';
+                            verdictScore = 'ຄະແນນ: 98/100';
+                            verdictTitle = 'ຫ້ອງນອນລູກກົງດາວ 1-4 ປັນຍາ';
+                            verdictAnalysis = 'ສຸດຍອດຫ້ອງນອນສຳລັບລູກຫຼານ! ສົ່ງເສີມການຮຽນເກັ່ງ, ສອບເສັງຕິດອັນດັບຕົ້ນ, ສະຕິປັນຍາສະຫຼາດຫຼັກແຫຼມ.';
+                            verdictAction = 'ຈັດວາງໂຕະຮຽນໜັງສືໃນຫ້ອງນີ້, ວາງໄຜ່ກວນອິມ 4 ຕົ້ນ.';
+                        } else if (curM === 5 || curM === 2) {
+                            verdictTag = '❌ ຫ້ອງນອນລູກຕົກດາວພະຍາດ';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 35/100';
+                            verdictTitle = 'ລະວັງສຸຂະພາບເດັກນ້ອຍ';
+                            verdictAnalysis = 'ເດັກນ້ອຍມັກເປັນຫວັດ ພູມແພ້ ຫຼື ຂີ້ດື້ຜິດປົກກະຕິ.';
+                            verdictAction = 'ແຂວນນ້ຳເຕົ້າທອງເຫຼືອງແທ້, ປ່ຽນຜ້າປູທີ່ນອນເປັນສີຂາວ/ຄຣີມ.';
+                        } else {
+                            verdictTag = '✨ ຫ້ອງນອນລູກ/ແຂກປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 75/100';
+                            verdictTitle = 'ຫ້ອງນອນຮອງທົ່ວໄປ';
+                            verdictAnalysis = 'ສະພາບແວດລ້ອມສະຫງົບ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ.';
+                        }
+                    }
+
+                    // 19. ຕຽງນອນ / ຫົວຕຽງ (Bed & Bed Headboard)
+                    else if (selectedRoomType === 'bed_head' || selectedRoomType === 'bed') {
+                        if (curM === currentPeriod) {
+                            verdictTag = '🌟 ຫົວຕຽງບາຣະມີສູງສຸດ (旺丁位)';
+                            verdictColor = 'border-blue-500/80 bg-blue-950/40 text-blue-300';
+                            verdictScore = 'ຄະແນນ: 98/100 (ຕຳແໜ່ງສຸຂະພາບ & ບາຣະມີ)';
+                            verdictTitle = 'ຫົວຕຽງດາວພູ ' + curM + ' ປະຈຳຍຸກ';
+                            verdictAnalysis = 'ຕຳແໜ່ງທີ່ດີທີ່ສຸດສຳລັບການນອນ! ດາວພູ 9 ສົ່ງເສີມສຸຂະພາບແຂງແຮງ, ຈິດໃຈສະຫງົບ, ອາຍຸຍືນ, ຄອບຄົວອົບອຸ່ນ ແລະ ສົ່ງເສີມການມີລູກຫຼານສືບຕະກຸນ.';
+                            verdictAction = 'ຫົວຕຽງຕັ້ງຊິດຝາຕຶບແໜ້ນ, ວາງຫີນພູເຂົາທຳມະຊາດ (靠山) ຫຼື ວັດຖຸສີແດງ/ມ່ວງ ເພື່ອເພີ່ມພະລັງ.';
+                        } else if (curM === 5 || curM === 2) {
+                            verdictTag = '❌ ຫົວຕຽງດາວພະຍາດ/ອຸບັດຕິເຫດ (煞位)';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 15/100 (ຕ້ອງຍ້າຍ ຫຼື ແກ້ດ່ວນ!)';
+                            verdictTitle = 'ຕຳແໜ່ງດາວ 5 ຫ້າເຫຼືອງ / ດາວ 2 ພະຍາດ';
+                            verdictAnalysis = 'ອັນຕະລາຍຕໍ່ສຸຂະພາບ! ນອນແລ້ວຈະເຈັບປ່ວຍຊຳເຮື້ອ, ນອນບໍ່ຫຼັບ, ຝັນຮ້າຍ, ຜ່າຕັດ ຫຼື ເກີດບັນຫາສາຍຕາ/ກະເພາະ.';
+                            verdictAction = 'ວິທີແກ້: ຫາກຍ້າຍຕຽງໄດ້ຄວນຍ້າຍທັນທີ. ຖ້າຍ້າຍບໍ່ໄດ້ ໃຫ້ວາງນ້ຳເຕົ້າທອງເຫຼືອງແທ້ 1 ຄູ່ຂ້າງຫົວຕຽງ ແລະ ຫຼຽນ 6 ຈັກກະພັດໃຕ້ໝອນ. ຫົວຕຽງຫ້າມຕິດຝາຫ້ອງນ້ຳ!';
+                        } else {
+                            verdictTag = '⚠️ ປານກາງ (Neutral)';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 65/100';
+                            verdictTitle = 'ຫົວຕຽງດາວພູ ' + curM;
+                            verdictAnalysis = 'ສຸຂະພາບທົ່ວໄປ: ' + comboInfo.health;
+                            verdictAction = 'ຫ້າມຕັ້ງຕຽງຕົງກັບປະຕູຫ້ອງນ້ຳ, ຫ້າມມີຂື່ຄານທັບຫົວຕຽງ, ຫ້າມມີກະຈົກເງົາສ່ອງໃສ່ຕຽງ.';
+                        }
+                    }
+
+                    // 20. ຕູ້ເສື້ອຜ້າ & ກະຈົກສ່ອງ (Wardrobe & Mirror)
+                    else if (selectedRoomType === 'wardrobe_mirror') {
+                        verdictTag = '🪞 ຕູ້ເສື້ອຜ້າ & ກະຈົກເງົາ (Mirror & Wardrobe)';
+                        verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                        verdictScore = 'ຄະແນນ: 70/100';
+                        verdictTitle = 'ຕຳແໜ່ງກະຈົກເງົາໃນຫ້ອງ';
+                        verdictAnalysis = 'ກະຈົກເງົາມີພະລັງສະທ້ອນຊີ່ທີ່ຮຸນແຮງ.';
+                        verdictAction = 'ຂໍ້ຫ້າມເດັດຂາດ: ຫ້າມຕິດກະຈົກເງົາສ່ອງໃສ່ຕຽງນອນ (镜子照床)! ຈະເຮັດໃຫ້ຈິດໃຈຫຼອນ, ຝັນຮ້າຍ, ຜົວເມຍຜິດຖຽງກັນ ຫຼື ມືທີສາມເຂົ້າມາແຊກ. ຄວນເຊື່ອງກະຈົກໄວ້ດ້ານໃນບານຕູ້ເສື້ອຜ້າ.';
+                    }
+
+                    // 21. ຫ້ອງນ້ຳພາຍໃນບ້ານ (Indoor Toilet & Bath)
                     else if (selectedRoomType === 'toilet_indoor' || selectedRoomType === 'toilet') {
                         if (curW === currentPeriod) {
                             verdictTag = '❌ ຫ້ອງນ້ຳໃນບ້ານກົດທັບດາວໂຊກ (Wealth Drain)';
@@ -2580,7 +2867,7 @@
                         }
                     }
 
-                    // 12. ຫ້ອງນ້ຳພາຍນອກບ້ານ (Outdoor Toilet / Outbuilding)
+                    // 22. ຫ້ອງນ້ຳພາຍນອກບ້ານ (Outdoor Toilet / Outbuilding)
                     else if (selectedRoomType === 'toilet_outdoor') {
                         if (curW === currentPeriod) {
                             verdictTag = '⚠️ ຫ້ອງນ້ຳນອກບ້ານຄວນລະວັງ';
@@ -2606,7 +2893,7 @@
                         }
                     }
 
-                    // 13. ຈຸດຊັກໂຄກ / ໂຖສ້ວມ (Toilet Bowl & Drain Point)
+                    // 23. ຈຸດຊັກໂຄກ / ໂຖສ້ວມ (Toilet Bowl & Drain Point)
                     else if (selectedRoomType === 'toilet_bowl') {
                         verdictTag = '🚽 ຈຸດຊັກໂຄກ (ຈຸດດູດພະລັງນ້ຳລົງ)';
                         verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
@@ -2616,85 +2903,71 @@
                         verdictAction = 'ຂໍ້ຫ້າມເດັດຂາດ: ຫ້າມຫັນໜ້າຊັກໂຄກໄປທາງດຽວກັບໜ້າບ້ານ, ຫ້າມຕັ້ງຊັກໂຄກຕົງກົງກັບປະຕູຫ້ອງນ້ຳ (ເປີດປະຕູເຫັນຊັກໂຄກ), ແລະ ຫຼັງຊັກໂຄກຫ້າມຕິດກັບຫົວຕຽງນອນ ຫຼື ຫິ້ງພຣະ.';
                     }
 
-                    // 12. ຕູ້ປາພາຍໃນບ້ານ (Indoor Aquarium)
-                    else if (selectedRoomType === 'fish' || selectedRoomType === 'water') {
-                        if (curW === currentPeriod) {
-                            verdictTag = '🌟 ມະຫາກະຕຸ້ນຊັບຍຸກ 9 (ຕູ້ປານຳໂຊກ)';
+                    // 24. ໂຊນອາບນ້ຳ / ອ່າງອາບນ້ຳ (Shower & Bathtub)
+                    else if (selectedRoomType === 'shower_bath') {
+                        if (curW === 5 || curW === 2) {
+                            verdictTag = '🌟 ອາບນ້ຳລະບາຍພະລັງຮ້າຍ 5/2 (以水化煞)';
                             verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
-                            verdictScore = 'ຄະແນນ: 100/100 (ຖືກຕ້ອງສູງສຸດ!)';
-                            verdictTitle = 'ຕູ້ປາກະຕຸ້ນດາວນ້ຳ ' + curW + ' ເອີ້ນຊັບ';
-                            verdictAnalysis = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາດາວເຫີນ! ຕູ້ປາພາຍໃນບ້ານມີປາລອຍວຽນ ເປັນພະລັງ "ດົງສຸ່ຍ (动水)" ທີ່ອ່ອນໂຍນ ດຶງດູດໂຊກລາບແລະເງິນຄຳເຂົ້າເຮືອນ.';
-                            verdictAction = 'ລ້ຽງປາ 9 ໂຕ (ປາທອງ/ແດງ 8 ໂຕ, ປາດຳ 1 ໂຕກັນໄພ). ຄວາມສູງຕູ້ປາຫ້າມເກີນລະດັບເອິກ/ຫົວໃຈ (灭顶水) ແລະ ຫ້າມຕັ້ງຕິດພື້ນດິນ (割脚水). ຫ້າມວາງຫຼັງໂຊຟາ ຫຼື ກົງກັບເຕົາໄຟ.';
-                        } else if (curM === currentPeriod) {
-                            verdictTag = '❌ ອັນຕະລາຍ! ນ້ຳຖ້ວມພູ (水浸山星)';
-                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
-                            verdictScore = 'ຄະແນນ: 15/100';
-                            verdictTitle = 'ຕູ້ປາທຳລາຍດາວພູ ' + curM + ' (ສຸຂະພາບ/ບາຣະມີ)';
-                            verdictAnalysis = 'ຫ້າມຕັ້ງຕູ້ປາທິດນີ້ເດັດຂາດ! ນ້ຳຈະໄປທຳລາຍດາວພູ 9 ເຮັດໃຫ້ຄົນໃນບ້ານເຈັບປ່ວຍ, ຂາດຄົນອຸປະຖຳ ແລະ ເສຍຄວາມສາມັກຄີ.';
-                            verdictAction = 'ຍ້າຍຕູ້ປາໄປໄວ້ທິດທີ່ມີດາວນ້ຳ 9 ແທນທັນທີ!';
+                            verdictScore = 'ຄະແນນ: 90/100';
+                            verdictTitle = 'ໂຊນອາບນ້ຳທິດດາວພະຍາດ';
+                            verdictAnalysis = 'ສາຍນ້ຳອາບຊ່ວຍຊະລ້າງຄວາມອິດເມື່ອຍ ແລະ ລະບາຍພະລັງງານເສຍອອກໄປ.';
+                            verdictAction = 'ແຍກສ່ວນປຽກ-ສ່ວນແຫ້ງ (Dry & Wet Separation) ໃຫ້ຊັດເຈນ ເພື່ອບໍ່ໃຫ້ຄວາມຊຸ່ມແຜ່ກະຈາຍ.';
                         } else {
-                            verdictTag = '⚠️ ປານກາງ (Neutral)';
+                            verdictTag = '🚿 ໂຊນອາບນ້ຳປົກກະຕິ';
                             verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
-                            verdictScore = 'ຄະແນນ: 60/100';
-                            verdictTitle = 'ຕູ້ປາພາຍໃນບ້ານ';
-                            verdictAnalysis = 'ຕູ້ປາໃນທິດນີ້ບໍ່ໄດ້ກະຕຸ້ນດາວໂຊກໃຫຍ່ ຄວນລະວັງບໍ່ໃຫ້ລົບກວນດາວພູ.';
-                            verdictAction = 'ຮັກສານ້ຳໃຫ້ໃສສະອາດ ແລະ ອົກຊີເຈນໄຫຼວຽນສະເໝີ.';
+                            verdictScore = 'ຄະແນນ: 75/100';
+                            verdictTitle = 'ໂຊນອາບນ້ຳທົ່ວໄປ';
+                            verdictAnalysis = 'ການລະບາຍນ້ຳສະດວກ.';
+                            verdictAction = 'ຮັກສາທໍ່ລະບາຍນ້ຳບໍ່ໃຫ້ມີກິ່ນຕີກັບ.';
                         }
                     }
 
-                    // 13. ບໍ່ນ້ຳ/ນ້ຳພຸ/ສະນ້ຳ ພາຍນອກບ້ານ (Outdoor Pond & Fountain)
-                    else if (selectedRoomType === 'fountain') {
-                        if (curW === currentPeriod) {
-                            verdictTag = '🌊 ມະຫາວາຣີຮັບຊັບຍຸກ 9 (ບໍ່ນ້ຳ/ນ້ຳພຸໃຫຍ່)';
+                    // 25. ໂຊນຊັກຜ້າ / ເຄື່ອງຊັກຜ້າ (Laundry Area)
+                    else if (selectedRoomType === 'laundry') {
+                        if (curW === 5 || curW === 2) {
+                            verdictTag = '🌟 ຊັກລ້າງສິ່ງສົກກະປົກອອກຈາກດາວຮ້າຍ';
                             verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
-                            verdictScore = 'ຄະແນນ: 100/100 (ຖືກຕ້ອງສູງສຸດ!)';
-                            verdictTitle = 'ບໍ່ນ້ຳ/ນ້ຳພຸ ກັກເກັບພະລັງຊີ່ດາວນ້ຳ ' + curW;
-                            verdictAnalysis = 'ສຸດຍອດຮວງຈູ້ຍພາຍນອກ! ບໍ່ນ້ຳໜ້າບ້ານ (ໝິງຖາງ 明堂) ປຽບເໝືອນອ່າງເກັບຊັບໃຫຍ່, ນ້ຳພຸພົ່ນນ້ຳເຄື່ອນໄຫວດຶງດູດມະຫາເສດຖີແລະໂອກາດທຸລະກິດໃຫຍ່.';
-                            verdictAction = 'ຮູບຊົງບໍ່ນ້ຳຄວນໂຄ້ງໂອບລ້ອມເຂົ້າຫາຕົວບ້ານ (玉带环腰 - ສາຍແອວຫຍົກ), ສາຍນ້ຳພຸຕ້ອງພົ່ນໄຫຼເຂົ້າຫາຕົວບ້ານສະເໝີ. ຫ້າມເຮັດຮູບໂຄ້ງຫຼັງທະນູ (反弓水) ພຸ່ງອອກ ຫຼື ແຈແຫຼມແທງໃສ່ຕົວບ້ານ.';
-                        } else if (curM === currentPeriod) {
-                            verdictTag = '❌ ອັນຕະລາຍຮ້າຍແຮງ! ດຶງນ້ຳຂຶ້ນພູ (拔水入山)';
-                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
-                            verdictScore = 'ຄະແນນ: 10/100';
-                            verdictTitle = 'ບໍ່ນ້ຳພາຍນອກຈົມດາວພູ ' + curM;
-                            verdictAnalysis = 'ອັນຕະລາຍຫຼາຍ! ບໍ່ນ້ຳຫຼືສະນ້ຳຂະໜາດໃຫຍ່ໄປຢູ່ທິດດາວພູ 9 ຈະທຳລາຍພະລັງບາຣະມີ, ຊື່ສຽງ, ແລະ ເຮັດໃຫ້ເກີດໂລກໄພໄຂ້ເຈັບຮ້າຍແຮງແກ່ຄົນໃນຄອບຄົວ.';
-                            verdictAction = 'ຖົມບໍ່ນ້ຳ ຫຼື ປ່ຽນເປັນສວນຫີນ/ພູເຂົາຈຳລອງເພື່ອເສີມດາວພູ 9 ແທນ.';
+                            verdictScore = 'ຄະແນນ: 88/100';
+                            verdictTitle = 'ຈຸດຊັກຜ້າທິດດາວ 5/ດາວ 2';
+                            verdictAnalysis = 'ນ້ຳຊັກຜ້າເປັນນ້ຳໄຫຼຖິ້ມ ຊ່ວຍລະບາຍສິ່ງສົກກະປົກອອກຈາກວັງດາວພິດ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ, ປ້ອງກັນບໍ່ໃຫ້ນ້ຳຂັງ.';
                         } else {
-                            verdictTag = '⚠️ ປານກາງ (Exterior Water)';
+                            verdictTag = '🧺 ໂຊນຊັກຜ້າປົກກະຕິ';
                             verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
-                            verdictScore = 'ຄະແນນ: 65/100';
-                            verdictTitle = 'ບໍ່ນ້ຳ/ນ້ຳພຸ ພາຍນອກ';
-                            verdictAnalysis = 'ບໍ່ນ້ຳພາຍນອກມີປະລິມານນ້ຳຫຼາຍ ຄວນກວດສອບທິດປະຕູເສີມ (城门诀 - ປະຕູວັງ) ເພື່ອຮັບໂຊກສູງສຸດ.';
-                            verdictAction = 'ຮັກສາໃຫ້ນ້ຳໄຫຼວຽນ, ຫ້າມໃຫ້ນ້ຳນິ້ງສະງັກຫຼືມີກິ່ນເໝັນ.';
+                            verdictScore = 'ຄະແນນ: 75/100';
+                            verdictTitle = 'ໂຊນຊັກຜ້າທົ່ວໄປ';
+                            verdictAnalysis = 'ການຊັກລ້າງສະດວກ.';
+                            verdictAction = 'ຮັກສາພື້ນໃຫ້ແຫ້ງສະເໝີ.';
                         }
                     }
 
-                    // 13. ບັນໄດ / ຂັ້ນໄດ (Staircase & Steps)
-                    else if (selectedRoomType === 'stairs') {
-                        if (curW === currentPeriod || curW === 1) {
-                            verdictTag = '🌟 ບັນໄດດຶງຊັບຂຶ້ນສູ່ຊັ້ນເທິງ (Auspicious)';
-                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
-                            verdictScore = 'ຄະແນນ: 96/100';
-                            verdictTitle = 'ບັນໄດກະຕຸ້ນດາວນ້ຳ ' + curW + ' ນຳຊັບຂຶ້ນເຮືອນ';
-                            verdictAnalysis = 'ຖືກຫຼັກວິຊາດາວເຫີນ! ການຍ່າງຂຶ້ນ-ລົງບັນໄດເປັນພະລັງ "ດົງສຸ່ຍ (动气)". ເມື່ອຢູ່ທິດດາວນ້ຳ ' + curW + ' ຈະປັ່ນພະລັງໂຊກລາບໃຫ້ກະຈາຍຂຶ້ນທຸກໆຊັ້ນຂອງຕົວບ້ານ.';
-                            verdictAction = 'ເປີດໄຟບໍລິເວນບັນໄດໃຫ້ສະຫວ່າງສະເໝີ. ຫ້າມໃຫ້ປາຍຂັ້ນໄດພຸ່ງຕົງກົງກັບປະຕູໃຫຍ່ (ຊວນຖາງຊ່າ 穿堂煞 - ເງິນໄຫຼລົງຖະໜົນ) ແລະ ຫ້າມຕັ້ງບັນໄດຢູ່ໃຈກາງບ້ານ (ຕຸ່ຍຊິນຊ່າ 坠心煞).';
+                    // 26. ຖັງເກິ / ທໍ່ລະບາຍນ້ຳເສຍ (Septic Tank & Drain)
+                    else if (selectedRoomType === 'septic_drain') {
+                        if (chart.faceInfo.palId === 5) {
+                            verdictTag = '❌ ອັນຕະລາຍສູງສຸດ! ຖັງເກິໃຈກາງບ້ານ (中宫污秽)';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 5/100 (ຂໍ້ຫ້າມຮ້າຍແຮງທີ່ສຸດ!)';
+                            verdictTitle = 'ສິ່ງສົກກະປົກຝັງຢູ່ໃຈກາງຫົວໃຈເຮືອນ';
+                            verdictAnalysis = 'ຮ້າຍແຮງທີ່ສຸດ! ຖັງເກິຫຼືທໍ່ນ້ຳເສຍຢູ່ໃຈກາງບ້ານ (中宫) ຈະແຜ່ພະລັງພະຍາດໃສ່ທຸກຄົນໃນບ້ານ ເຮັດໃຫ້ເປັນມະເຮັງ ຫຼື ຕະກຸນຊຸດໂຊມ.';
+                            verdictAction = 'ວິທີແກ້: ຕ້ອງຍ້າຍຖັງເກິອອກໄປໄວ້ນອກຕົວບ້ານດ່ວນທີ່ສຸດ!';
                         } else if (curW === 5 || curW === 2) {
-                            verdictTag = '❌ ອັນຕະລາຍ! ບັນໄດປັ່ນພະລັງພະຍາດ/ໄພພິບັດ';
-                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
-                            verdictScore = 'ຄະແນນ: 15/100';
-                            verdictTitle = 'ບັນໄດກົງດາວ 5 ຫ້າເຫຼືອງ / ດາວ 2 ພະຍາດ';
-                            verdictAnalysis = 'ອັນຕະລາຍຫຼາຍ! ການຍ່າງຂຶ້ນ-ລົງທຸກມື້ຈະປຸກດາວ 5 ແລະ ດາວ 2 ໃຫ້ຕື່ນຕະຫຼອດເວລາ ເຮັດໃຫ້ຄົນໃນບ້ານເຈັບຂາ, ເສັ້ນເອັນ, ຜ່າຕັດ, ຫຼື ລົ້ມລະລາຍ.';
-                            verdictAction = 'ວິທີແກ້: ແຂວນກະດິ່ງລົມທອງເຫຼືອງ 6 ທໍ່ ຫຼື ຫຼຽນ 6 ຈັກກະພັດໄວ້ໃຕ້ຄານບັນໄດ, ວາງນ້ຳອັນຢິນ (安忍水) ໄວ້ຂ້າງຕີນບັນໄດດ່ວນ!';
+                            verdictTag = '🌟 ຕຳແໜ່ງຖັງເກິຖືກຕ້ອງ (ດູດພະລັງເສຍລົງດິນ)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 95/100';
+                            verdictTitle = 'ຖັງເກິທັບດາວຮ້າຍ 5/2';
+                            verdictAnalysis = 'ຖືກຫຼັກວິຊາ! ຖັງເກິຢູ່ທິດດາວຮ້າຍຊ່ວຍດັກຈັບສິ່ງອັບປະມຸງຄຸນໄວ້ໃຕ້ດິນ.';
+                            verdictAction = 'ປິດຝາຖັງເກິໃຫ້ມິດຊິດ, ຫ້າມໃຫ້ມີກິ່ນຮົ່ວ.';
                         } else {
-                            verdictTag = '⚠️ ບັນໄດປົກກະຕິ (Neutral)';
+                            verdictTag = '✨ ຖັງເກິປົກກະຕິ';
                             verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
                             verdictScore = 'ຄະແນນ: 70/100';
-                            verdictTitle = 'ບັນໄດນຳພະລັງງານທົ່ວໄປ';
-                            verdictAnalysis = 'ການຂຶ້ນ-ລົງສະໝ່ຳສະເໝີ ບໍ່ມີດາວພິດຮ້າຍແຮງ.';
-                            verdictAction = 'ຫ້າມວາງສິ່ງຂອງເກົ່າຮົກເຮື້ອໃຕ້ຮົ່ມບັນໄດ, ຫ້າມເຮັດຂັ້ນບັນໄດໂປ່ງເຫັນຊ່ອງຫວ່າງ.';
+                            verdictTitle = 'ຖັງເກິທົ່ວໄປ';
+                            verdictAnalysis = 'ຕຳແໜ່ງປອດໄພ.';
+                            verdictAction = 'ດູດສິ່ງປະຕິກູນຕາມໄລຍະເວລາ.';
                         }
                     }
 
-                    // 14. ຫ້ອງຮັບແຂກ / ໂຖງກາງ (Living Room & Main Hall)
+                    // 27. ຫ້ອງຮັບແຂກ / ໂຖງກາງ (Living Room & Main Hall)
                     else if (selectedRoomType === 'living_room') {
                         if (curW === currentPeriod || curW === 1) {
                             verdictTag = '🌟 ມະຫາໂຖງເສີມບາຣະມີ & ຊັບສິນ (明堂吉)';
@@ -2720,26 +2993,52 @@
                         }
                     }
 
-                    // 15. ໂຕະກິນເຂົ້າ (Dining Table)
-                    else if (selectedRoomType === 'dining') {
+                    // 28. ໂຊຟາຫຼັກ / ທີ່ນັ່ງປະທານ (Main Sofa Position)
+                    else if (selectedRoomType === 'sofa') {
                         if (curM === currentPeriod || curM === 1 || curM === 8) {
-                            verdictTag = '🌟 ໂຕະອາຫານອຸດົມສົມບູນ (天禄位)';
-                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
-                            verdictScore = 'ຄະແນນ: 95/100';
-                            verdictTitle = 'ໂຕະກິນເຂົ້າດາວພູມຸງຄຸນ ' + curM;
-                            verdictAnalysis = 'ໂຕະອາຫານສະຖິດໃນວັງດາວພູທີ່ສະຫງົບ ສົ່ງເສີມຄວາມອົບອຸ່ນໃນຄອບຄົວ, ກິນແລ້ວສຸຂະພາບແຂງແຮງ, ຕະກຸນສາມັກຄີກົມກຽວ.';
-                            verdictAction = 'ໃຊ້ໂຕະກິນເຂົ້າຊົງມົນ ຫຼື ສີ່ຫຼ່ຽມມົນ, ຕິດກະຈົກເງົາສ່ອງໃສ່ໂຕະອາຫານເພື່ອເພີ່ມພູນຄວາມອຸດົມສົມບູນ (ຫ້າມຕັ້ງກົງກັບປະຕູຫ້ອງນ້ຳ).';
+                            verdictTag = '👑 ທີ່ນັ່ງປະທານບາຣະມີສູງສຸດ (靠山位)';
+                            verdictColor = 'border-indigo-500/80 bg-indigo-950/40 text-indigo-300';
+                            verdictScore = 'ຄະແນນ: 98/100';
+                            verdictTitle = 'ໂຊຟາຫຼັກສະຖິດວັງດາວພູມຸງຄຸນ ' + curM;
+                            verdictAnalysis = 'ເຈົ້າຂອງບ້ານນັ່ງແລ້ວມີອຳນາດ, ຈິດໃຈໝັ້ນຄົງ, ບໍລິວານໃຫ້ຄວາມເຄົາລົບ, ເຈລະຈາທຸລະກິດໄດ້ປຽບ.';
+                            verdictAction = 'ຫຼັງໂຊຟາຕ້ອງພິງຝາຕຶບແໜ້ນ (主沙发靠实墙). ຂໍ້ຫ້າມ: ຫ້າມໂຊຟາຫຼັງລອຍ, ຫ້າມພິງປ່ອງຢ້ຽມ, ຫ້າມພິງຝາຫ້ອງນ້ຳ, ຫ້າມມີກະຈົກເງົາສ່ອງຫຼັງ.';
+                        } else if (curM === 5 || curM === 2) {
+                            verdictTag = '❌ ທີ່ນັ່ງປະທານຕົກດາວຮ້າຍ 5/2';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 30/100';
+                            verdictTitle = 'ນັ່ງແລ້ວເກີດຄວາມຕຶງຄຽດ';
+                            verdictAnalysis = 'ນັ່ງແລ້ວປວດຫຼັງ, ປວດບ່າໄຫຼ່, ມີເລື່ອງກັງວົນໃຈຕະຫຼອດ.';
+                            verdictAction = 'ຍ້າຍຕຳແໜ່ງໂຊຟາ, ວາງໝອນອິງສີເຫຼືອງ/ຄຣີມ, ວາງນ້ຳເຕົ້າທອງເຫຼືອງ.';
                         } else {
-                            verdictTag = '✨ ໂຕະກິນເຂົ້າປົກກະຕິ';
+                            verdictTag = '✨ ທີ່ນັ່ງໂຊຟາປົກກະຕິ';
                             verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
                             verdictScore = 'ຄະແນນ: 75/100';
-                            verdictTitle = 'ໂຕະອາຫານທົ່ວໄປ';
-                            verdictAnalysis = 'ສຸຂະພາບການກິນປົກກະຕິ.';
-                            verdictAction = 'ຫ້າມຕັ້ງໂຕະອາຫານໃຕ້ຂື່ຄານ ຫຼື ຕົງກັບປະຕູໃຫຍ່.';
+                            verdictTitle = 'ໂຊຟາທົ່ວໄປ';
+                            verdictAnalysis = 'ຄວາມສະດວກສະບາຍດີ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ.';
                         }
                     }
 
-                    // 16. ຫິ້ງພຣະ / ຫ້ອງພຣະ (Altar & Sacred Space)
+                    // 29. ໂຕະເຮັດວຽກ (Work Desk)
+                    else if (selectedRoomType === 'desk') {
+                        if ((curM === 1 && curW === 4) || (curM === 4 && curW === 1) || curW === 9 || curM === 6) {
+                            verdictTag = '🌟 ຕຳແໜ່ງບຸນຊິມ & ລາບຍົດ (文昌位)';
+                            verdictColor = 'border-purple-500/80 bg-purple-950/40 text-purple-300';
+                            verdictScore = 'ຄະແນນ: 96/100';
+                            verdictTitle = 'ມະຫາປັນຍາ & ຕຳແໜ່ງກ້າວໜ້າ';
+                            verdictAnalysis = 'ສົ່ງເສີມສະຕິປັນຍາ, ການສອບເສັງ, ຄວາມຄິດສ້າງສັນ, ການເລື່ອນຂັ້ນເລື່ອນຕຳແໜ່ງ, ແລະ ຄວາມສຳເລັດໃນໜ້າທີ່ການງານ.';
+                            verdictAction = 'ຕັ້ງໂຕະເຮັດວຽກຫັນໜ້າໄປທິດນີ້, ວາງປາກກາບຸນຊິມ (文昌笔) ຫຼື ຫໍບຸນຊິມ 4 ຊັ້ນ. ຫຼັງພິງຝາຕຶບ.';
+                        } else {
+                            verdictTag = '⚠️ ປານກາງ (Neutral)';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 70/100';
+                            verdictTitle = 'ໂຕະເຮັດວຽກທົ່ວໄປ';
+                            verdictAnalysis = 'ວຽກງານສະໝ່ຳສະເໝີ: ' + comboInfo.wealth;
+                            verdictAction = 'ຫຼັງພິງຝາຕຶບ ຫ້າມນັ່ງຫັນຫຼັງໃຫ້ປະຕູ ຫຼື ປ່ອງຢ້ຽມ.';
+                        }
+                    }
+
+                    // 30. ຫິ້ງພຣະ / ຫ້ອງພຣະ (Altar & Sacred Space)
                     else if (selectedRoomType === 'altar') {
                         if (curM === currentPeriod || curM === 1 || curM === 8 || curM === 6) {
                             verdictTag = '🏮 ຫິ້ງພຣະມຸງຄຸນສູງສຸດ (神位大吉)';
@@ -2758,7 +3057,212 @@
                         }
                     }
 
-                    // 17. ລະບຽງ / ດາດຟ້າ (Balcony & Terrace)
+                    // 31. ຕູ້ເຊບ / ບ່ອນເກັບຊັບ (Wealth Safe & Vault)
+                    else if (selectedRoomType === 'safe_vault') {
+                        if (curW === currentPeriod || curM === currentPeriod || curW === 8 || curM === 8) {
+                            verdictTag = '💰 ຕູ້ເຊບຂຸມຊັບມະຫາເສດຖີ (财库大吉)';
+                            verdictColor = 'border-amber-500/80 bg-amber-950/40 text-amber-300';
+                            verdictScore = 'ຄະແນນ: 100/100';
+                            verdictTitle = 'ຕູ້ເຊບສະຖິດໃນວັງມະຫາຂຸມຊັບ';
+                            verdictAnalysis = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາ "ຊາງຟົງຈຸ້ຍຊີ່ (藏风聚气)"! ຕູ້ເຊບຕັ້ງຢູ່ໃນວັງດາວໂຊກທີ່ມິດຊິດ ເງິນຄຳຈະງອກເງີຍ, ເກັບເງິນຢູ່, ລາບລອຍເຂົ້າມາຕໍ່ເນື່ອງ.';
+                            verdictAction = 'ເຊື່ອງຕູ້ເຊບໃຫ້ມິດຊິດ ຫ້າມເປີດປະຕູແລ້ວແນມເຫັນຕູ້ເຊບທັນທີ, ວາງຫຼຽນ 5 ຈັກກະພັດ ຫຼື ແທ່ງຄຳໃນຕູ້ເຊບ.';
+                        } else if (curW === 5) {
+                            verdictTag = '❌ ຕູ້ເຊບຕົກດາວ 5 (ລະວັງຊັບຮົ່ວໄຫຼ/ຖືກປົ້ນ)';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 20/100';
+                            verdictTitle = 'ຕູ້ເຊບມີພະລັງສູນເສຍ';
+                            verdictAnalysis = 'ອັນຕະລາຍ! ຕັ້ງຕູ້ເຊບທິດດາວ 5 ຈະເຮັດໃຫ້ມີເລື່ອງເສຍເງິນກະທັນຫັນ ຫຼື ຖືກຫຼອກລວງ.';
+                            verdictAction = 'ຍ້າຍຕູ້ເຊບໄປມຸມອື່ນທັນທີ!';
+                        } else {
+                            verdictTag = '✨ ຕູ້ເຊບປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 75/100';
+                            verdictTitle = 'ຕູ້ເຊບທົ່ວໄປ';
+                            verdictAnalysis = 'ຄວາມປອດໄພດີ.';
+                            verdictAction = 'ປິດລັອກໃຫ້ແໜ້ນໜາສະເໝີ.';
+                        }
+                    }
+
+                    // 32. ບັນໄດ / ຂັ້ນໄດ (Staircase & Steps)
+                    else if (selectedRoomType === 'stairs') {
+                        if (curW === currentPeriod || curW === 1) {
+                            verdictTag = '🌟 ບັນໄດດຶງຊັບຂຶ້ນສູ່ຊັ້ນເທິງ (Auspicious)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 96/100';
+                            verdictTitle = 'ບັນໄດກະຕຸ້ນດາວນ້ຳ ' + curW + ' ນຳຊັບຂຶ້ນເຮືອນ';
+                            verdictAnalysis = 'ຖືກຫຼັກວິຊາດາວເຫີນ! ການຍ່າງຂຶ້ນ-ລົງບັນໄດເປັນພະລັງ "ດົງສຸ່ຍ (动气)". ເມື່ອຢູ່ທິດດາວນ້ຳ ' + curW + ' ຈະປັ່ນພະລັງໂຊກລາບໃຫ້ກະຈາຍຂຶ້ນທຸກໆຊັ້ນຂອງຕົວບ້ານ.';
+                            verdictAction = 'ເປີດໄຟບໍລິເວນບັນໄດໃຫ້ສະຫວ່າງສະເໝີ. ຫ້າມໃຫ້ປາຍຂັ້ນໄດພຸ່ງຕົງກົງກັບປະຕູໃຫຍ່ (ຊວນຖາງຊ່າ 穿堂煞 - ເງິນໄຫຼລົງຖະໜົນ) ແລະ ຫ້າມຕັ້ງບັນໄດຢູ່ໃຈກາງບ້ານ (ຕຸ່ຍຊິນຊ່າ 坠心煞).';
+                        } else if (curW === 5 || curW === 2) {
+                            verdictTag = '❌ ອັນຕະລາຍ! ບັນໄດປັ່ນພະລັງພະຍາດ/ໄພພິບັດ';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 15/100';
+                            verdictTitle = 'ບັນໄດກົງດາວ 5 ຫ້າເຫຼືອງ / ດາວ 2 ພະຍາດ';
+                            verdictAnalysis = 'ອັນຕະລາຍຫຼາຍ! ການຍ່າງຂຶ້ນ-ລົງທຸກມື້ຈະປຸກດາວ 5 ແລະ ດາວ 2 ໃຫ້ຕື່ນຕະຫຼອດເວລາ ເຮັດໃຫ້ຄົນໃນບ້ານເຈັບຂາ, ເສັ້ນເອັນ, ຜ່າຕັດ, ຫຼື ລົ້ມລະລາຍ.';
+                            verdictAction = 'ວິທີແກ້: ແຂວນກະດິ່ງລົມທອງເຫຼືອງ 6 ທໍ່ ຫຼື ຫຼຽນ 6 ຈັກກະພັດໄວ້ໃຕ້ຄານບັນໄດ, ວາງນ້ຳອັນຢິນ (安忍水) ໄວ້ຂ້າງຕີນບັນໄດດ່ວນ!';
+                        } else {
+                            verdictTag = '⚠️ ບັນໄດປົກກະຕິ (Neutral)';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 70/100';
+                            verdictTitle = 'ບັນໄດນຳພະລັງງານທົ່ວໄປ';
+                            verdictAnalysis = 'ການຂຶ້ນ-ລົງສະໝ່ຳສະເໝີ ບໍ່ມີດາວພິດຮ້າຍແຮງ.';
+                            verdictAction = 'ຫ້າມວາງສິ່ງຂອງເກົ່າຮົກເຮື້ອໃຕ້ຮົ່ມບັນໄດ, ຫ້າມເຮັດຂັ້ນບັນໄດໂປ່ງເຫັນຊ່ອງຫວ່າງ.';
+                        }
+                    }
+
+                    // 33. ໃຈກາງບ້ານ / ຕາກາງໄທ່ຈີ໋ (Tai Ji Center Palace)
+                    else if (selectedRoomType === 'center_palace') {
+                        verdictTag = '☯️ ໃຈກາງບ້ານ (ຕາກາງໄທ່ຈີ໋ - 中宫)';
+                        verdictColor = 'border-amber-500/80 bg-amber-950/40 text-amber-300';
+                        verdictScore = 'ຄະແນນ: 90/100';
+                        verdictTitle = 'ຫົວໃຈແຫ່ງພະລັງງານທັງໝົດຂອງຕົວບ້ານ';
+                        verdictAnalysis = 'ຕາກາງບ້ານປຽບເໝືອນຫົວໃຈຂອງມະນຸດ! ຕ້ອງການຄວາມສະຫງົບ, ໂປ່ງແຈ້ງ, ແລະ ສະອາດບໍລິສຸດ.';
+                        verdictAction = 'ຂໍ້ຫ້າມຮ້າຍແຮງທີ່ສຸດ 4 ປະການໃນຕາກາງ: 1. ຫ້າມມີຫ້ອງນ້ຳ (中宫水煞), 2. ຫ້າມມີເຕົາໄຟ (火烧中堂), 3. ຫ້າມມີບັນໄດ (中宫切心), 4. ຫ້າມມີຖັງເກິ. ຄວນເຮັດເປັນໂຖງໂລ່ງແຈ້ງ.';
+                    }
+
+                    // 34. ທາງຍ່າງຍາວ / ໂຖງທາງຍ່າງ (Long Corridor & Hallway)
+                    else if (selectedRoomType === 'corridor') {
+                        verdictTag = '🚶 ທາງຍ່າງຍາວ (Corridor Flow)';
+                        verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                        verdictScore = 'ຄະແນນ: 70/100';
+                        verdictTitle = 'ກະແສພະລັງງານໃນທາງຍ່າງ';
+                        verdictAnalysis = 'ທາງຍ່າງຍາວຊື່ຈະເລັ່ງຄວາມໄວຂອງກະແສຊີ່ໃຫ້ກາຍເປັນ "ຊວ່ານຊິນຊ່າ (穿心煞 - ລູກສອນແທງຫົວໃຈ)".';
+                        verdictAction = 'ຕິດດອກໄຟສີອົບອຸ່ນສະຫວ່າງຕະຫຼອດທາງ, ຕິດຮູບພາບສິລະປະທີ່ຝາ, ວາງພົມປູພື້ນທີ່ມີລວດລາຍໂຄ້ງມົນ ເພື່ອຊະລໍກະແສຊີ່.';
+                    }
+
+                    // 35. ເສົາລອຍ / ຄານກົດທັບ (Pillars & Overhead Beams)
+                    else if (selectedRoomType === 'pillar_beam') {
+                        verdictTag = '🏛️ ເສົາລອຍ & ຄານກົດທັບ (Overhead Beam)';
+                        verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        verdictScore = 'ຄະແນນ: 30/100 (ຂໍ້ຄວນລະວັງສູງ!)';
+                        verdictTitle = 'ພະລັງກົດທັບຈາກໂຄງສ້າງ (横梁压顶)';
+                        verdictAnalysis = 'ຄານໃຫຍ່ເທິງເພດານປ່ອຍແຮງກົດອາກາດລົງສູ່ດ້ານລຸ່ມ.';
+                        verdictAction = 'ຂໍ້ຫ້າມເດັດຂາດ: ຫ້າມຄານກົດທັບຫົວຕຽງ, ໂຕະເຮັດວຽກ, ໂຊຟາຫຼັກ, ຫຼື ເຕົາໄຟ! ເຮັດໃຫ້ເຈັບຫົວ, ເຄັ່ງຕຶງ ແລະ ວຽກງານຖືກກົດຂີ່. ວິທີແກ້: ເຮັດເພດານຝ້າປິດບັງຄານ ຫຼື ແຂວນຂຸ່ຍໄມ້ໄຜ່ 1 ຄູ່.';
+                    }
+
+                    // 36. ຕູ້ປາພາຍໃນບ້ານ (Indoor Aquarium)
+                    else if (selectedRoomType === 'fish' || selectedRoomType === 'water') {
+                        if (curW === currentPeriod) {
+                            verdictTag = '🌟 ມະຫາກະຕຸ້ນຊັບຍຸກ 9 (ຕູ້ປານຳໂຊກ)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 100/100 (ຖືກຕ້ອງສູງສຸດ!)';
+                            verdictTitle = 'ຕູ້ປາກະຕຸ້ນດາວນ້ຳ ' + curW + ' ເອີ້ນຊັບ';
+                            verdictAnalysis = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາດາວເຫີນ! ຕູ້ປາພາຍໃນບ້ານມີປາລອຍວຽນ ເປັນພະລັງ "ດົງສຸ່ຍ (动水)" ທີ່ອ່ອນໂຍນ ດຶງດູດໂຊກລາບແລະເງິນຄຳເຂົ້າເຮືອນ.';
+                            verdictAction = 'ລ້ຽງປາ 9 ໂຕ (ປາທອງ/ແດງ 8 ໂຕ, ປາດຳ 1 ໂຕກັນໄພ). ຄວາມສູງຕູ້ປາຫ້າມເກີນລະດັບເອິກ/ຫົວໃຈ (灭顶水) ແລະ ຫ້າມຕັ້ງຕິດພື້ນດິນ (割脚水). ຫ້າມວາງຫຼັງໂຊຟາ ຫຼື ກົງກັບເຕົາໄຟ.';
+                        } else if (curM === currentPeriod) {
+                            verdictTag = '❌ ອັນຕະລາຍ! ນ້ຳຖ້ວມພູ (水浸山星)';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 15/100';
+                            verdictTitle = 'ຕູ້ປາທຳລາຍດາວພູ ' + curM + ' (ສຸຂະພາບ/ບາຣະມີ)';
+                            verdictAnalysis = 'ຫ້າມຕັ້ງຕູ້ປາທິດນີ້ເດັດຂາດ! ນ້ຳຈະໄປທຳລາຍດາວພູ 9 ເຮັດໃຫ້ຄົນໃນບ້ານເຈັບປ່ວຍ, ຂາດຄົນອຸປະຖຳ ແລະ ເສຍຄວາມສາມັກຄີ.';
+                            verdictAction = 'ຍ້າຍຕູ້ປາໄປໄວ້ທິດທີ່ມີດາວນ້ຳ 9 ແທນທັນທີ!';
+                        } else {
+                            verdictTag = '⚠️ ປານກາງ (Neutral)';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 60/100';
+                            verdictTitle = 'ຕູ້ປາພາຍໃນບ້ານ';
+                            verdictAnalysis = 'ຕູ້ປາໃນທິດນີ້ບໍ່ໄດ້ກະຕຸ້ນດາວໂຊກໃຫຍ່ ຄວນລະວັງບໍ່ໃຫ້ລົບກວນດາວພູ.';
+                            verdictAction = 'ຮັກສານ້ຳໃຫ້ໃສສະອາດ ແລະ ອົກຊີເຈນໄຫຼວຽນສະເໝີ.';
+                        }
+                    }
+
+                    // 37. ບໍ່ນ້ຳ/ນ້ຳພຸ ພາຍນອກບ້ານ (Outdoor Pond & Fountain)
+                    else if (selectedRoomType === 'fountain') {
+                        if (curW === currentPeriod) {
+                            verdictTag = '🌊 ມະຫາວາຣີຮັບຊັບຍຸກ 9 (ບໍ່ນ້ຳ/ນ້ຳພຸໃຫຍ່)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 100/100 (ຖືກຕ້ອງສູງສຸດ!)';
+                            verdictTitle = 'ບໍ່ນ້ຳ/ນ້ຳພຸ ກັກເກັບພະລັງຊີ່ດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ສຸດຍອດຮວງຈູ້ຍພາຍນອກ! ບໍ່ນ້ຳໜ້າບ້ານ (ໝິງຖາງ 明堂) ປຽບເໝືອນອ່າງເກັບຊັບໃຫຍ່, ນ້ຳພຸພົ່ນນ້ຳເຄື່ອນໄຫວດຶງດູດມະຫາເສດຖີແລະໂອກາດທຸລະກິດໃຫຍ່.';
+                            verdictAction = 'ຮູບຊົງບໍ່ນ້ຳຄວນໂຄ້ງໂອບລ້ອມເຂົ້າຫາຕົວບ້ານ (玉带环腰 - ສາຍແອວຫຍົກ), ສາຍນ້ຳພຸຕ້ອງພົ່ນໄຫຼເຂົ້າຫາຕົວບ້ານສະເໝີ. ຫ້າມເຮັດຮູບໂຄ້ງຫຼັງທະນູ (反弓水) ພຸ່ງອອກ ຫຼື ແຈແຫຼມແທງໃສ່ຕົວບ້ານ.';
+                        } else if (curM === currentPeriod) {
+                            verdictTag = '❌ ອັນຕະລາຍຮ້າຍແຮງ! ດຶງນ້ຳຂຶ້ນພູ (拔水入山)';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 10/100';
+                            verdictTitle = 'ບໍ່ນ້ຳພາຍນອກຈົມດາວພູ ' + curM;
+                            verdictAnalysis = 'ອັນຕະລາຍຫຼາຍ! ບໍ່ນ້ຳຫຼືສະນ້ຳຂະໜາດໃຫຍ່ໄປຢູ່ທິດດາວພູ 9 ຈະທຳລາຍພະລັງບາຣະມີ, ຊື່ສຽງ, ແລະ ເຮັດໃຫ້ເກີດໂລກໄພໄຂ້ເຈັບຮ້າຍແຮງແກ່ຄົນໃນຄອບຄົວ.';
+                            verdictAction = 'ຖົມບໍ່ນ້ຳ ຫຼື ປ່ຽນເປັນສວນຫີນ/ພູເຂົາຈຳລອງເພື່ອເສີມດາວພູ 9 ແທນ.';
+                        } else {
+                            verdictTag = '⚠️ ປານກາງ (Exterior Water)';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 65/100';
+                            verdictTitle = 'ບໍ່ນ້ຳ/ນ້ຳພຸ ພາຍນອກ';
+                            verdictAnalysis = 'ບໍ່ນ້ຳພາຍນອກມີປະລິມານນ້ຳຫຼາຍ ຄວນກວດສອບທິດປະຕູເສີມ (城门诀 - ປະຕູວັງ) ເພື່ອຮັບໂຊກສູງສຸດ.';
+                            verdictAction = 'ຮັກສາໃຫ້ນ້ຳໄຫຼວຽນ, ຫ້າມໃຫ້ນ້ຳນິ້ງສະງັກຫຼືມີກິ່ນເໝັນ.';
+                        }
+                    }
+
+                    // 38. ສະລອຍນ້ຳ / ໜອງນ້ຳໃຫຍ່ (Swimming Pool & Large Pond)
+                    else if (selectedRoomType === 'pool') {
+                        if (curW === currentPeriod) {
+                            verdictTag = '🏊 ມະຫາສະນ້ຳໂຊກລາບໃຫຍ່ຍຸກ 9 (巨量水聚财)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 98/100';
+                            verdictTitle = 'ສະລອຍນ້ຳຮັບດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ປະລິມານນ້ຳມະຫາສານໃນສະລອຍນ້ຳຈະກັກເກັບພະລັງຊີ່ດາວນ້ຳ 9 ໄດ້ຢ່າງສົມບູນແບບ ເຮັດໃຫ້ທຸລະກິດເຕີບໂຕໄວ.';
+                            verdictAction = 'ຮັກສານ້ຳໃນສະໃຫ້ໃສສະອາດສະເໝີ, ປ້ອງກັນບໍ່ໃຫ້ນ້ຳຂຸ່ນ.';
+                        } else if (curM === currentPeriod) {
+                            verdictTag = '❌ ອັນຕະລາຍຮ້າຍແຮງ! ສະນ້ຳຈົມດາວພູ 9';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 10/100';
+                            verdictTitle = 'ສະລອຍນ້ຳທຳລາຍບາຣະມີ ແລະ ສຸຂະພາບ';
+                            verdictAnalysis = 'ສະນ້ຳຂະໜາດໃຫຍ່ຢູ່ທິດດາວພູຈະກົດທັບດວງຊະຕາຄົນໃນບ້ານຢ່າງຮຸນແຮງ.';
+                            verdictAction = 'ປູກແນວຕົ້ນໄມ້ໃຫຍ່ກັ້ນລະຫວ່າງຕົວບ້ານກັບສະລອຍນ້ຳ, ວາງກ້ອນຫີນໃຫຍ່ 8 ກ້ອນ.';
+                        } else {
+                            verdictTag = '✨ ສະລອຍນ້ຳປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 70/100';
+                            verdictTitle = 'ສະລອຍນ້ຳທົ່ວໄປ';
+                            verdictAnalysis = 'ສະພາບແວດລ້ອມຮົ່ມເຢັນ.';
+                            verdictAction = 'ຮັກສາລະບົບກອງນ້ຳໃຫ້ເຮັດວຽກດີ.';
+                        }
+                    }
+
+                    // 39. ເດີ່ນໜ້າບ້ານ / ໝິງຖັງ (Front Yard & Bright Hall)
+                    else if (selectedRoomType === 'front_yard') {
+                        if (curW === currentPeriod || curW === 1) {
+                            verdictTag = '🌟 ໝິງຖັງກວ້າງໃຫຍ່ຮັບຊັບຍຸກ 9 (明堂聚气)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 98/100';
+                            verdictTitle = 'ເດີ່ນໜ້າບ້ານຮັບດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ຖືກຫຼັກວິຊາ "ໝິງຖັງຮົງວ້ານໝ່າ (明堂容万马 富贵传天下)"! ເດີ່ນໜ້າບ້ານທີ່ກວ້າງຂວາງແລະສະອາດ ຈະສະສົມພະລັງໂຊກລາບໄວ້ຢ່າງເຕັມປ່ຽມ.';
+                            verdictAction = 'ຮັກສາເດີ່ນໜ້າບ້ານໃຫ້ຮາບພຽງສະອາດ, ຫ້າມມີຕົ້ນໄມ້ໃຫຍ່ຕັ້ງຂວາງຕົງກາງໜ້າປະຕູ (顶心煞).';
+                        } else if (curW === 5) {
+                            verdictTag = '❌ ເດີ່ນໜ້າບ້ານມີດາວ 5 ຫ້າເຫຼືອງ';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 25/100';
+                            verdictTitle = 'ເດີ່ນໜ້າບ້ານມີພະລັງອຸປະສັກ';
+                            verdictAnalysis = 'ຫ້າມຂຸດດິນ ຫຼື ຕອກເສົາເຂັມໃນເດີ່ນໜ້າບ້ານທິດນີ້ ເພາະຈະກະຕຸ້ນດາວ 5 ໃຫ້ເກີດໂທດ.';
+                            verdictAction = 'ຮັກສາຄວາມສະຫງົບ, ຫ້າມເຄື່ອນໄຫວລົບກວນໜ້າດິນ.';
+                        } else {
+                            verdictTag = '✨ ເດີ່ນໜ້າບ້ານປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 80/100';
+                            verdictTitle = 'ເດີ່ນໜ້າບ້ານທົ່ວໄປ';
+                            verdictAnalysis = 'ອາກາດຖ່າຍເທດີ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ.';
+                        }
+                    }
+
+                    // 40. ສວນຫຼັງບ້ານ / ພູຫຼັງ (Back Yard & Rear Support)
+                    else if (selectedRoomType === 'back_yard') {
+                        if (curM === currentPeriod || curM === 1 || curM === 8) {
+                            verdictTag = '🌟 ສວນຫຼັງບ້ານເສີມບາຣະມີ (玄武靠山)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 98/100';
+                            verdictTitle = 'ຫຼັງບ້ານກົງດາວພູມຸງຄຸນ ' + curM;
+                            verdictAnalysis = 'ຫຼັງບ້ານປຽບເໝືອນຫຼັງພິງ (ສວຽນອູ່ 玄武). ການມີສວນຫຼັງບ້ານທີ່ໜັກແໜ້ນ ຈະຊ່ວຍໃຫ້ຊີວິດມີຄົນຄ້ຳຊູ, ຕະກຸນໝັ້ນຄົງ.';
+                            verdictAction = 'ປູກຕົ້ນໄມ້ໃຫຍ່ໃບດົກໜາ ຫຼື ຈັດສວນຫີນພູເຂົາຈຳລອງ ຫ້າມຂຸດບໍ່ນ້ຳເລິກຫຼັງບ້ານ.';
+                        } else {
+                            verdictTag = '✨ ສວນຫຼັງບ້ານປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 80/100';
+                            verdictTitle = 'ສວນຫຼັງບ້ານທົ່ວໄປ';
+                            verdictAnalysis = 'ພື້ນທີ່ສະຫງົບ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ ແລະ ຕັດແຕ່ງກິ່ງໄມ້ໃຫ້ຮຽບຮ້ອຍ.';
+                        }
+                    }
+
+                    // 41. ລະບຽງ / ດາດຟ້າ (Balcony & Terrace)
                     else if (selectedRoomType === 'balcony') {
                         if (curW === currentPeriod || curW === 1) {
                             verdictTag = '🌟 ລະບຽງຮັບແສງຊັບ (Auspicious Balcony)';
@@ -2777,7 +3281,33 @@
                         }
                     }
 
-                    // 18. ຫ້ອງເກັບເຄື່ອງ (Storage Room)
+                    // 42. ໂຮງຈອດລົດ (Garage & Carport)
+                    else if (selectedRoomType === 'garage') {
+                        if (curW === currentPeriod || curW === 1) {
+                            verdictTag = '🚗 ໂຮງລົດເຄື່ອນໄຫວກະຕຸ້ນຊັບ (动气催财)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 92/100';
+                            verdictTitle = 'ລົດເຂົ້າ-ອອກ ກະຕຸ້ນດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ການຂັບລົດເຂົ້າ-ອອກເປັນພະລັງງານເຄື່ອນໄຫວທີ່ແຂງແຮງ ເມື່ອກົງດາວນ້ຳ 9 ຈະຊ່ວຍດຶງດູດເງິນຄຳ ແລະ ການເດີນທາງຮັບຊັບ.';
+                            verdictAction = 'ຮັກສາໂຮງລົດໃຫ້ສະອາດ, ພື້ນບໍ່ໃຫ້ມີຮອຍນ້ຳມັນເຄື່ອງຮົ່ວໄຫຼ, ເປີດໄຟສະຫວ່າງ.';
+                        } else if (curW === 5) {
+                            verdictTag = '❌ ໂຮງລົດປັ່ນດາວ 5 ຫ້າເຫຼືອງ';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 25/100';
+                            verdictTitle = 'ລະວັງອຸບັດຕິເຫດລົດຍົນ';
+                            verdictAnalysis = 'ການເຄື່ອນໄຫວຂອງລົດຈະປຸກດາວ 5 ໃຫ້ຕື່ນ ເຮັດໃຫ້ລົດເພເລື້ອຍໆ ຫຼື ເກີດອຸບັດຕິເຫດເສຍເງິນຄ່າສ້ອມ.';
+                            verdictAction = 'ແຂວນຫຼຽນ 6 ຈັກກະພັດໄວ້ໜ້າໂຮງລົດ, ຂັບລົດເຂົ້າ-ອອກດ້ວຍຄວາມລະມັດລະວັງ.';
+                        } else {
+                            verdictTag = '✨ ໂຮງຈອດລົດປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 70/100';
+                            verdictTitle = 'ໂຮງລົດທົ່ວໄປ';
+                            verdictAnalysis = 'ການຈອດລົດສະດວກສະບາຍ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ.';
+                        }
+                    }
+
+                    // 43. ຫ້ອງເກັບເຄື່ອງ (Storage Room)
                     else if (selectedRoomType === 'storage') {
                         if (curW === 5 || curW === 2 || curM === 5 || curM === 2) {
                             verdictTag = '🌟 ມຸງຄຸນ! ກັກຂັງດາວຮ້າຍ (化煞为用)';
@@ -2803,30 +3333,14 @@
                         }
                     }
 
-                    // 19. ໂຮງຈອດລົດ (Garage & Carport)
-                    else if (selectedRoomType === 'garage') {
-                        if (curW === currentPeriod || curW === 1) {
-                            verdictTag = '🚗 ໂຮງລົດເຄື່ອນໄຫວກະຕຸ້ນຊັບ (动气催财)';
-                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
-                            verdictScore = 'ຄະແນນ: 92/100';
-                            verdictTitle = 'ລົດເຂົ້າ-ອອກ ກະຕຸ້ນດາວນ້ຳ ' + curW;
-                            verdictAnalysis = 'ການຂັບລົດເຂົ້າ-ອອກເປັນພະລັງງານເຄື່ອນໄຫວທີ່ແຂງແຮງ ເມື່ອກົງດາວນ້ຳ 9 ຈະຊ່ວຍດຶງດູດເງິນຄຳ ແລະ ການເດີນທາງຮັບຊັບ.';
-                            verdictAction = 'ຮັກສາໂຮງລົດໃຫ້ສະອາດ, ພື້ນບໍ່ໃຫ້ມີຮອຍນ້ຳມັນເຄື່ອງຮົ່ວໄຫຼ, ເປີດໄຟສະຫວ່າງ.';
-                        } else if (curW === 5) {
-                            verdictTag = '❌ ໂຮງລົດປັ່ນດາວ 5 ຫ້າເຫຼືອງ';
-                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
-                            verdictScore = 'ຄະແນນ: 25/100';
-                            verdictTitle = 'ລະວັງອຸບັດຕິເຫດລົດຍົນ';
-                            verdictAnalysis = 'ການເຄື່ອນໄຫວຂອງລົດຈະປຸກດາວ 5 ໃຫ້ຕື່ນ ເຮັດໃຫ້ລົດເພເລື້ອຍໆ ຫຼື ເກີດອຸບັດຕິເຫດເສຍເງິນຄ່າສ້ອມ.';
-                            verdictAction = 'ແຂວນຫຼຽນ 6 ຈັກກະພັດໄວ້ໜ້າໂຮງລົດ, ຂັບລົດເຂົ້າ-ອອກດ້ວຍຄວາມລະມັດລະວັງ.';
-                        } else {
-                            verdictTag = '✨ ໂຮງຈອດລົດປົກກະຕິ';
-                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
-                            verdictScore = 'ຄະແນນ: 70/100';
-                            verdictTitle = 'ໂຮງລົດທົ່ວໄປ';
-                            verdictAnalysis = 'ການຈອດລົດສະດວກສະບາຍ.';
-                            verdictAction = 'ຮັກສາຄວາມສະອາດ.';
-                        }
+                    // Fallback
+                    else {
+                        verdictTag = '✨ ພື້ນທີ່ທົ່ວໄປ (General Space)';
+                        verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                        verdictScore = 'ຄະແນນ: 70/100';
+                        verdictTitle = 'ການປະສານພະລັງງານທົ່ວໄປ';
+                        verdictAnalysis = 'ພະລັງງານ: ' + comboInfo.title + '. ' + comboInfo.wealth;
+                        verdictAction = comboInfo.remedy;
                     }
 
                     tabBody =
