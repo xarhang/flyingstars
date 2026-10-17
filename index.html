@@ -2267,10 +2267,15 @@
                         { key: 'stove', icon: '🔥', name: 'ເຕົາແກັສ/ເຕົາໄຟ' },
                         { key: 'desk', icon: '💼', name: 'ໂຕະເຮັດວຽກ' },
                         { key: 'toilet_bowl', icon: '🚽', name: 'ຫ້ອງນ້ຳ/ຊັກໂຄກ' },
+                        { key: 'stairs', icon: '🪜', name: 'ບັນໄດ/ຂັ້ນໄດ' },
+                        { key: 'living_room', icon: '🛋️', name: 'ຫ້ອງຮັບແຂກ/ໂຖງ' },
+                        { key: 'dining', icon: '🍽️', name: 'ໂຕະກິນເຂົ້າ' },
+                        { key: 'altar', icon: '🏮', name: 'ຫິ້ງພຣະ/ສິ່ງສັກສິດ' },
+                        { key: 'balcony', icon: '🪴', name: 'ລະບຽງ/ດາດຟ້າ' },
+                        { key: 'storage', icon: '📦', name: 'ຫ້ອງເກັບເຄື່ອງ' },
+                        { key: 'garage', icon: '🚗', name: 'ໂຮງຈອດລົດ' },
                         { key: 'fish', icon: '🐟', name: 'ຕູ້ປາ (ໃນບ້ານ)' },
-                        { key: 'fountain', icon: '⛲', name: 'ບໍ່ນ້ຳ/ນ້ຳພຸ (ນອກ)' },
-                        { key: 'stairs', icon: '🪜', name: 'ບັນໄດ' },
-                        { key: 'altar', icon: '🏮', name: 'ຫິ້ງພຣະ/ສິ່ງສັກສິດ' }
+                        { key: 'fountain', icon: '⛲', name: 'ບໍ່ນ້ຳ/ນ້ຳພຸ (ນອກ)' }
                     ];
 
                     const roomPills =
@@ -2625,32 +2630,164 @@
                         }
                     }
 
-                    // 14. ບັນໄດ (Stairs)
+                    // 13. ບັນໄດ / ຂັ້ນໄດ (Staircase & Steps)
                     else if (selectedRoomType === 'stairs') {
-                        verdictTag = '🪜 ບັນໄດ (ຈຸດເຄື່ອນໄຫວ)';
-                        verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
-                        verdictScore = 'ຄະແນນ: 70/100';
-                        verdictTitle = 'ບັນໄດນຳພະລັງຊີ່ຂຶ້ນ-ລົງ';
-                        verdictAnalysis = 'ບັນໄດເປັນຈຸດເຄື່ອນໄຫວດຶງດາວນ້ຳ ' + curW + ' ຂຶ້ນສູ່ຊັ້ນເທິງ.';
-                        verdictAction = 'ຫ້າມໃຫ້ຂັ້ນບັນໄດຕົງກົງກັບປະຕູໃຫຍ່ໜ້າບ້ານ (ຊວນຖາງຊ່າ) ແລະ ຫ້າມຕັ້ງບັນໄດຢູ່ໃຈກາງບ້ານ (ຕຸ່ຍຊິນຊ່າ).';
+                        if (curW === currentPeriod || curW === 1) {
+                            verdictTag = '🌟 ບັນໄດດຶງຊັບຂຶ້ນສູ່ຊັ້ນເທິງ (Auspicious)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 96/100';
+                            verdictTitle = 'ບັນໄດກະຕຸ້ນດາວນ້ຳ ' + curW + ' ນຳຊັບຂຶ້ນເຮືອນ';
+                            verdictAnalysis = 'ຖືກຫຼັກວິຊາດາວເຫີນ! ການຍ່າງຂຶ້ນ-ລົງບັນໄດເປັນພະລັງ "ດົງສຸ່ຍ (动气)". ເມື່ອຢູ່ທິດດາວນ້ຳ ' + curW + ' ຈະປັ່ນພະລັງໂຊກລາບໃຫ້ກະຈາຍຂຶ້ນທຸກໆຊັ້ນຂອງຕົວບ້ານ.';
+                            verdictAction = 'ເປີດໄຟບໍລິເວນບັນໄດໃຫ້ສະຫວ່າງສະເໝີ. ຫ້າມໃຫ້ປາຍຂັ້ນໄດພຸ່ງຕົງກົງກັບປະຕູໃຫຍ່ (ຊວນຖາງຊ່າ 穿堂煞 - ເງິນໄຫຼລົງຖະໜົນ) ແລະ ຫ້າມຕັ້ງບັນໄດຢູ່ໃຈກາງບ້ານ (ຕຸ່ຍຊິນຊ່າ 坠心煞).';
+                        } else if (curW === 5 || curW === 2) {
+                            verdictTag = '❌ ອັນຕະລາຍ! ບັນໄດປັ່ນພະລັງພະຍາດ/ໄພພິບັດ';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 15/100';
+                            verdictTitle = 'ບັນໄດກົງດາວ 5 ຫ້າເຫຼືອງ / ດາວ 2 ພະຍາດ';
+                            verdictAnalysis = 'ອັນຕະລາຍຫຼາຍ! ການຍ່າງຂຶ້ນ-ລົງທຸກມື້ຈະປຸກດາວ 5 ແລະ ດາວ 2 ໃຫ້ຕື່ນຕະຫຼອດເວລາ ເຮັດໃຫ້ຄົນໃນບ້ານເຈັບຂາ, ເສັ້ນເອັນ, ຜ່າຕັດ, ຫຼື ລົ້ມລະລາຍ.';
+                            verdictAction = 'ວິທີແກ້: ແຂວນກະດິ່ງລົມທອງເຫຼືອງ 6 ທໍ່ ຫຼື ຫຼຽນ 6 ຈັກກະພັດໄວ້ໃຕ້ຄານບັນໄດ, ວາງນ້ຳອັນຢິນ (安忍水) ໄວ້ຂ້າງຕີນບັນໄດດ່ວນ!';
+                        } else {
+                            verdictTag = '⚠️ ບັນໄດປົກກະຕິ (Neutral)';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 70/100';
+                            verdictTitle = 'ບັນໄດນຳພະລັງງານທົ່ວໄປ';
+                            verdictAnalysis = 'ການຂຶ້ນ-ລົງສະໝ່ຳສະເໝີ ບໍ່ມີດາວພິດຮ້າຍແຮງ.';
+                            verdictAction = 'ຫ້າມວາງສິ່ງຂອງເກົ່າຮົກເຮື້ອໃຕ້ຮົ່ມບັນໄດ, ຫ້າມເຮັດຂັ້ນບັນໄດໂປ່ງເຫັນຊ່ອງຫວ່າງ.';
+                        }
                     }
 
-                    // 15. ຫິ້ງພຣະ / ຫ້ອງພຣະ (Altar)
+                    // 14. ຫ້ອງຮັບແຂກ / ໂຖງກາງ (Living Room & Main Hall)
+                    else if (selectedRoomType === 'living_room') {
+                        if (curW === currentPeriod || curW === 1) {
+                            verdictTag = '🌟 ມະຫາໂຖງເສີມບາຣະມີ & ຊັບສິນ (明堂吉)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 98/100';
+                            verdictTitle = 'ຫ້ອງຮັບແຂກເປີດຮັບດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ສຸດຍອດຮວງຈູ້ຍຫ້ອງຮັບແຂກ! ໂຖງກວ້າງໃຫຍ່ (ໝິງຖາງພາຍໃນ) ທີ່ຮັບດາວໂຊກ ຈະດຶງດູດແຂກຜູ້ໃຫຍ່, ໂອກາດທຸລະກິດໃຫຍ່ ແລະ ຄວາມຮັ່ງມີມາສູ່ຕະກຸນ.';
+                            verdictAction = 'ຕັ້ງໂຊຟາໃຫ້ນັ່ງຫັນໜ້າໄປທິດໂຊກ, ຫຼັງໂຊຟາຕ້ອງພິງຝາຕຶບແໜ້ນ (ຫ້າມຕັ້ງໂຊຟາກາງຫ້ອງລອຍໆຂາດຫຼັກຍຶດ).';
+                        } else if (curW === 5) {
+                            verdictTag = '❌ ຫ້ອງຮັບແຂກຕົກດາວ 5 ຫ້າເຫຼືອງ';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 25/100';
+                            verdictTitle = 'ຫ້ອງຮັບແຂກມີພະລັງແຕກແຍກ';
+                            verdictAnalysis = 'ຄົນໃນບ້ານມັກຜິດຖຽງກັນ, ແຂກມານັ່ງແລ້ວນຳເລື່ອງເດືອດຮ້ອນມາໃຫ້, ຂາດຄວາມສະຫງົບສຸກ.';
+                            verdictAction = 'ວາງໂຖທອງເຫຼືອງ ຫຼື ຫຼຽນ 6 ຈັກກະພັດ, ຫ້າມໃຊ້ໂຄມໄຟຄຣິສຕັລສີແດງເດັດຂາດ.';
+                        } else {
+                            verdictTag = '✨ ຫ້ອງຮັບແຂກປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 75/100';
+                            verdictTitle = 'ຫ້ອງຮັບແຂກທົ່ວໄປ';
+                            verdictAnalysis = 'ພະລັງງານປົກກະຕິ: ' + comboInfo.wealth;
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ ແລະ ແສງສະຫວ່າງໃຫ້ພຽງພໍ.';
+                        }
+                    }
+
+                    // 15. ໂຕະກິນເຂົ້າ (Dining Table)
+                    else if (selectedRoomType === 'dining') {
+                        if (curM === currentPeriod || curM === 1 || curM === 8) {
+                            verdictTag = '🌟 ໂຕະອາຫານອຸດົມສົມບູນ (天禄位)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 95/100';
+                            verdictTitle = 'ໂຕະກິນເຂົ້າດາວພູມຸງຄຸນ ' + curM;
+                            verdictAnalysis = 'ໂຕະອາຫານສະຖິດໃນວັງດາວພູທີ່ສະຫງົບ ສົ່ງເສີມຄວາມອົບອຸ່ນໃນຄອບຄົວ, ກິນແລ້ວສຸຂະພາບແຂງແຮງ, ຕະກຸນສາມັກຄີກົມກຽວ.';
+                            verdictAction = 'ໃຊ້ໂຕະກິນເຂົ້າຊົງມົນ ຫຼື ສີ່ຫຼ່ຽມມົນ, ຕິດກະຈົກເງົາສ່ອງໃສ່ໂຕະອາຫານເພື່ອເພີ່ມພູນຄວາມອຸດົມສົມບູນ (ຫ້າມຕັ້ງກົງກັບປະຕູຫ້ອງນ້ຳ).';
+                        } else {
+                            verdictTag = '✨ ໂຕະກິນເຂົ້າປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 75/100';
+                            verdictTitle = 'ໂຕະອາຫານທົ່ວໄປ';
+                            verdictAnalysis = 'ສຸຂະພາບການກິນປົກກະຕິ.';
+                            verdictAction = 'ຫ້າມຕັ້ງໂຕະອາຫານໃຕ້ຂື່ຄານ ຫຼື ຕົງກັບປະຕູໃຫຍ່.';
+                        }
+                    }
+
+                    // 16. ຫິ້ງພຣະ / ຫ້ອງພຣະ (Altar & Sacred Space)
                     else if (selectedRoomType === 'altar') {
                         if (curM === currentPeriod || curM === 1 || curM === 8 || curM === 6) {
-                            verdictTag = '🏮 ຫິ້ງພຣະມຸງຄຸນສູງສຸດ (神位吉)';
+                            verdictTag = '🏮 ຫິ້ງພຣະມຸງຄຸນສູງສຸດ (神位大吉)';
                             verdictColor = 'border-amber-500/80 bg-amber-950/40 text-amber-300';
-                            verdictScore = 'ຄະແນນ: 99/100';
+                            verdictScore = 'ຄະແນນ: 100/100';
                             verdictTitle = 'ຫິ້ງພຣະສະຖິດໃນວັງດາວພູມຸງຄຸນ ' + curM;
-                            verdictAnalysis = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາຮວງຈູ້ຍ! ຫິ້ງພຣະຕ້ອງການພະລັງສະຫງົບແລະບາຣະມີຂອງດາວພູ. ຈະນຳພາຄວາມຮົ່ມເຢັນເປັນສຸກ, ບາຣະມີຄຸ້ມຄອງຕະກຸນ.';
-                            verdictAction = 'ຫຼັງພິງຝາຕຶບແໜ້ນ, ຫ້າມຕິດຝາຫ້ອງນ້ຳ, ຫ້າມຕັ້ງໃຕ້ຂື່ຄານ, ຫ້າມຕັ້ງເໜືອເຕົາໄຟ.';
+                            verdictAnalysis = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາຮວງຈູ້ຍຊັ້ນສູງ! ຫິ້ງພຣະຕ້ອງການພະລັງສະຫງົບແລະບາຣະມີຂອງດາວພູ. ຈະນຳພາຄວາມຮົ່ມເຢັນເປັນສຸກ, ບາຣະມີຄຸ້ມຄອງຕະກຸນ.';
+                            verdictAction = 'ຫຼັງພິງຝາຕຶບແໜ້ນ, ຫ້າມຕິດຝາຫ້ອງນ້ຳ, ຫ້າມຕັ້ງໃຕ້ຂື່ຄານ, ຫ້າມຕັ້ງເໜືອເຕົາໄຟ, ປ່ຽນນ້ຳຖວາຍທຸກເຊົ້າ.';
                         } else {
                             verdictTag = '⚠️ ຫິ້ງພຣະຄວນລະວັງ';
                             verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
                             verdictScore = 'ຄະແນນ: 60/100';
                             verdictTitle = 'ຫິ້ງພຣະທິດດາວພູ ' + curM;
-                            verdictAnalysis = 'ຄວນກວດສອບບໍ່ໃຫ້ຫຼັງຫິ້ງພຣະຕິດກັບຫ້ອງນ້ຳ ຫຼື ບັນໄດ.';
-                            verdictAction = 'ຮັກສາຄວາມສະອາດ, ປ່ຽນນ້ຳຖວາຍທຸກເຊົ້າ.';
+                            verdictAnalysis = 'ຄວນກວດສອບບໍ່ໃຫ້ຫຼັງຫິ້ງພຣະຕິດກັບຫ້ອງນ້ຳ, ບັນໄດ ຫຼື ຈຸດເຄື່ອນໄຫວສຽງດັງ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດສະເໝີ.';
+                        }
+                    }
+
+                    // 17. ລະບຽງ / ດາດຟ້າ (Balcony & Terrace)
+                    else if (selectedRoomType === 'balcony') {
+                        if (curW === currentPeriod || curW === 1) {
+                            verdictTag = '🌟 ລະບຽງຮັບແສງຊັບ (Auspicious Balcony)';
+                            verdictColor = 'border-teal-500/80 bg-teal-950/40 text-teal-300';
+                            verdictScore = 'ຄະແນນ: 94/100';
+                            verdictTitle = 'ລະບຽງຮັບລົມດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ລະບຽງເປີດກວ້າງຮັບລົມແລະແສງຕາເວັນທີ່ນຳພາພະລັງຊີວິດເຂົ້າມາ.';
+                            verdictAction = 'ປູກຕົ້ນໄມ້ມຸງຄຸນໃບຂຽວມົນ, ຮັກສາບໍ່ໃຫ້ມີສິ່ງຂອງເກົ່າຮົກເຮື້ອ.';
+                        } else {
+                            verdictTag = '✨ ລະບຽງປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 70/100';
+                            verdictTitle = 'ລະບຽງທົ່ວໄປ';
+                            verdictAnalysis = 'ລະບາຍອາກາດໄດ້ດີ.';
+                            verdictAction = 'ກວດສອບມຸມແຫຼມພາຍນອກ (ຊ່າຊີ່ 煞气) ທີ່ອາດສ່ອງໃສ່ລະບຽງ.';
+                        }
+                    }
+
+                    // 18. ຫ້ອງເກັບເຄື່ອງ (Storage Room)
+                    else if (selectedRoomType === 'storage') {
+                        if (curW === 5 || curW === 2 || curM === 5 || curM === 2) {
+                            verdictTag = '🌟 ມຸງຄຸນ! ກັກຂັງດາວຮ້າຍ (化煞为用)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 96/100 (ຖືກຫຼັກວິຊາຂັ້ນສູງ)';
+                            verdictTitle = 'ຫ້ອງເກັບເຄື່ອງກົດທັບດາວ 5/ດາວ 2';
+                            verdictAnalysis = 'ສຸດຍອດການຈັດສັນພື້ນທີ່! ຫ້ອງເກັບເຄື່ອງເປັນຈຸດມິດຊິດແລະບໍ່ມີຄົນຢູ່ ໃຊ້ກົດທັບດາວພິດ 5 ຫ້າເຫຼືອງ ຫຼື ດາວພະຍາດ 2 ເຮັດໃຫ້ພະລັງຮ້າຍບໍ່ສາມາດສຳແດງລິດໄດ້.';
+                            verdictAction = 'ປິດປະຕູຫ້ອງເກັບເຄື່ອງໄວ້ສະເໝີ, ຈັດເຄື່ອງຂອງໃຫ້ເປັນລະບຽບ.';
+                        } else if (curW === currentPeriod) {
+                            verdictTag = '❌ ເສຍດາຍ! ຂັງດາວໂຊກລາບ';
+                            verdictColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                            verdictScore = 'ຄະແນນ: 40/100';
+                            verdictTitle = 'ຫ້ອງເກັບເຄື່ອງທັບດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ດາວໂຊກໃຫຍ່ຖືກຂັງຢູ່ໃນຫ້ອງມືດ ເຮັດໃຫ້ໂຊກລາບດ້ານການເງິນຕິດຂັດ.';
+                            verdictAction = 'ຫາກຍ້າຍໄດ້ຄວນຍ້າຍ, ຫຼື ຕິດດອກໄຟສະຫວ່າງ ແລະ ເປີດໃຊ້ງານເລື້ອຍໆ.';
+                        } else {
+                            verdictTag = '✨ ຫ້ອງເກັບເຄື່ອງປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 70/100';
+                            verdictTitle = 'ຫ້ອງເກັບເຄື່ອງທົ່ວໄປ';
+                            verdictAnalysis = 'ບໍ່ມີຜົນກະທົບຕໍ່ດາວຫຼັກ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ, ປ້ອງກັນປວກແມງໄມ້.';
+                        }
+                    }
+
+                    // 19. ໂຮງຈອດລົດ (Garage & Carport)
+                    else if (selectedRoomType === 'garage') {
+                        if (curW === currentPeriod || curW === 1) {
+                            verdictTag = '🚗 ໂຮງລົດເຄື່ອນໄຫວກະຕຸ້ນຊັບ (动气催财)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 92/100';
+                            verdictTitle = 'ລົດເຂົ້າ-ອອກ ກະຕຸ້ນດາວນ້ຳ ' + curW;
+                            verdictAnalysis = 'ການຂັບລົດເຂົ້າ-ອອກເປັນພະລັງງານເຄື່ອນໄຫວທີ່ແຂງແຮງ ເມື່ອກົງດາວນ້ຳ 9 ຈະຊ່ວຍດຶງດູດເງິນຄຳ ແລະ ການເດີນທາງຮັບຊັບ.';
+                            verdictAction = 'ຮັກສາໂຮງລົດໃຫ້ສະອາດ, ພື້ນບໍ່ໃຫ້ມີຮອຍນ້ຳມັນເຄື່ອງຮົ່ວໄຫຼ, ເປີດໄຟສະຫວ່າງ.';
+                        } else if (curW === 5) {
+                            verdictTag = '❌ ໂຮງລົດປັ່ນດາວ 5 ຫ້າເຫຼືອງ';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 25/100';
+                            verdictTitle = 'ລະວັງອຸບັດຕິເຫດລົດຍົນ';
+                            verdictAnalysis = 'ການເຄື່ອນໄຫວຂອງລົດຈະປຸກດາວ 5 ໃຫ້ຕື່ນ ເຮັດໃຫ້ລົດເພເລື້ອຍໆ ຫຼື ເກີດອຸບັດຕິເຫດເສຍເງິນຄ່າສ້ອມ.';
+                            verdictAction = 'ແຂວນຫຼຽນ 6 ຈັກກະພັດໄວ້ໜ້າໂຮງລົດ, ຂັບລົດເຂົ້າ-ອອກດ້ວຍຄວາມລະມັດລະວັງ.';
+                        } else {
+                            verdictTag = '✨ ໂຮງຈອດລົດປົກກະຕິ';
+                            verdictColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            verdictScore = 'ຄະແນນ: 70/100';
+                            verdictTitle = 'ໂຮງລົດທົ່ວໄປ';
+                            verdictAnalysis = 'ການຈອດລົດສະດວກສະບາຍ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ.';
                         }
                     }
 
