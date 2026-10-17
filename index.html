@@ -23,7 +23,14 @@
         @font-face {
             font-family: 'Phetsarath OT';
             src: url('asset/fonts/Phetsarath-OT.ttf') format('truetype');
-            font-weight: 400 700;
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Phetsarath OT';
+            src: url('asset/fonts/Phetsarath-OT.ttf') format('truetype');
+            font-weight: 700;
             font-style: normal;
             font-display: swap;
         }
@@ -72,14 +79,19 @@
 
         *, *::before, *::after, html, body, button, input, select, textarea, text {
             font-family: 'Phetsarath OT', 'Noto Sans Lao Looped', 'Noto Serif Lao', 'Saysettha OT', 'Noto Sans Lao', sans-serif !important;
-            letter-spacing: 0.01em;
+            letter-spacing: normal !important;
+            word-spacing: normal !important;
         }
         .font-mono {
             font-family: 'Phetsarath OT', 'Noto Sans Lao Looped', monospace !important;
             font-variant-numeric: tabular-nums;
+            letter-spacing: normal !important;
         }
-        svg text {
+        svg text, text {
             font-family: 'Phetsarath OT', 'Noto Sans Lao Looped', 'Noto Serif Lao', 'Saysettha OT', 'Noto Sans Lao', sans-serif !important;
+            letter-spacing: 0 !important;
+            word-spacing: normal !important;
+            font-feature-settings: "liga" 1, "ccmp" 1;
         }
 
         body {
@@ -573,6 +585,9 @@
                     <style>
                         text {
                             font-family: 'Phetsarath OT', 'Noto Sans Lao Looped', 'Noto Serif Lao', 'Saysettha OT', 'Noto Sans Lao', sans-serif !important;
+                            letter-spacing: 0 !important;
+                            word-spacing: normal !important;
+                            font-feature-settings: "liga" 1, "ccmp" 1;
                         }
                     </style>
                     <radialGradient id="discSheen" cx="35%" cy="30%" r="70%">
@@ -1429,11 +1444,11 @@
                 const luckColor = isGood ? '#15803d' : '#b91c1c';
 
                 parts.push(`<path d="${createSectorPath(166, 198, dStart, dEnd)}" fill="${luckBg}" stroke="#0f172a" stroke-width="0.65"/>`);
-                parts.push(createRadialText(182, dMid, luckText, { fontSize: 8, fontWeight: '800', fill: luckColor }));
+                parts.push(createRadialText(182, dMid, luckText, { fontSize: 10, fontWeight: '900', fill: luckColor, flipBottom: true }));
 
                 const numBg = isTransparentMode ? 'rgba(254, 240, 138, 0.4)' : '#fef08a';
                 parts.push(`<path d="${createSectorPath(144, 166, dStart, dEnd)}" fill="${numBg}" stroke="#0f172a" stroke-width="0.65"/>`);
-                parts.push(createRadialText(155, dMid, String(k + 1), { fontSize: 8.2, fontWeight: '800', fill: '#0f172a' }));
+                parts.push(createRadialText(155, dMid, String(k + 1), { fontSize: 8.5, fontWeight: '800', fill: '#0f172a', flipBottom: true }));
             }
 
             // Master Radial Lines (Stops cleanly at outer edge of Fenjin ring r=198)
