@@ -2263,7 +2263,8 @@
                         { key: 'bed_head', icon: '🛏️', name: 'ຕຽງ/ຫົວຕຽງນອນ' },
                         { key: 'bedroom', icon: '🏠', name: 'ຫ້ອງນອນໃຫຍ່' },
                         { key: 'window', icon: '🪟', name: 'ປ່ອງຢ້ຽມ' },
-                        { key: 'kitchen_stove', icon: '🍳', name: 'ເຕົາໄຟ/ຫ້ອງຄົວ' },
+                        { key: 'kitchen_room', icon: '🍲', name: 'ຫ້ອງຄົວ (ພື້ນທີ່)' },
+                        { key: 'stove', icon: '🔥', name: 'ເຕົາແກັສ/ເຕົາໄຟ' },
                         { key: 'desk', icon: '💼', name: 'ໂຕະເຮັດວຽກ' },
                         { key: 'toilet_bowl', icon: '🚽', name: 'ຫ້ອງນ້ຳ/ຊັກໂຄກ' },
                         { key: 'fish', icon: '🐟', name: 'ຕູ້ປາ (ໃນບ້ານ)' },
@@ -2482,29 +2483,48 @@
                         }
                     }
 
-                    // 9. ເຕົາໄຟ / ຫ້ອງຄົວ (Kitchen Stove)
-                    else if (selectedRoomType === 'kitchen_stove' || selectedRoomType === 'kitchen') {
+                    // 9. ຫ້ອງຄົວ (Kitchen Room Space)
+                    else if (selectedRoomType === 'kitchen_room' || selectedRoomType === 'kitchen') {
+                        if (curM === 2 || curW === 2 || curM === 5 || curW === 5) {
+                            verdictTag = '❌ ຫ້ອງຄົວຕົກວັງດິນພິດ (Caution)';
+                            verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            verdictScore = 'ຄະແນນ: 35/100';
+                            verdictTitle = 'ຫ້ອງຄົວໃນວັງດາວ 5/ດາວ 2';
+                            verdictAnalysis = 'ຫ້ອງຄົວເປັນພື້ນທີ່ທີ່ມີຄວາມຮ້ອນແລະຄວັນ ຫາກຕັ້ງຢູ່ໃນວັງດາວພະຍາດ 2 ຫຼື ດາວ 5 ຈະກະຕຸ້ນພະລັງລົບຕໍ່ສຸຂະພາບລະບົບຍ່ອຍອາຫານ.';
+                            verdictAction = 'ໃຊ້ໂທນສີຄຣີມ/ສີເຫຼືອງອ່ອນ, ເປີດພັດລົມດູດຄວັນໃຫ້ອາກາດຖ່າຍເທດີຕະຫຼອດເວລາ.';
+                        } else {
+                            verdictTag = '🌟 ຫ້ອງຄົວມຸງຄຸນ (Auspicious)';
+                            verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            verdictScore = 'ຄະແນນ: 88/100';
+                            verdictTitle = 'ຫ້ອງຄົວຕຳແໜ່ງປອດໄພ';
+                            verdictAnalysis = 'ຫ້ອງຄົວຕັ້ງຢູ່ໃນວັງທີ່ສະອາດ ບໍ່ມີດາວພິດລົບກວນ ນຳພາຄວາມອຸດົມສົມບູນມາສູ່ຄອບຄົວ.';
+                            verdictAction = 'ຮັກສາຄວາມສະອາດ, ຈັດເກັບຈານຊາມໃຫ້ເປັນລະບຽບ, ຫ້າມໃຫ້ມີກິ່ນອັບ.';
+                        }
+                    }
+
+                    // 10. ເຕົາແກັສ / ເຕົາໄຟ (Cooking Stove & Burner Point)
+                    else if (selectedRoomType === 'stove' || selectedRoomType === 'kitchen_stove') {
                         if (curM === 2 || curW === 2 || curM === 5 || curW === 5) {
                             verdictTag = '❌ ໄຟເຜົາດິນພິດ (Disastrous)';
                             verdictColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
-                            verdictScore = 'ຄະແນນ: 10/100';
-                            verdictTitle = 'ໄຟເຜົາດິນພະຍາດ (火炎土焦)';
-                            verdictAnalysis = 'ອັນຕະລາຍ! ໄຟຈາກເຕົາຈະໄປຈູດກະຕຸ້ນດາວ 2 ແລະ ດາວ 5 ໃຫ້ຮ້າຍແຮງຂຶ້ນ ເຮັດໃຫ້ຄົນໃນບ້ານເປັນໂລກຮ້ອນໃນ, ເລືອດຕົກຍາງອອກ, ແລະ ເສຍເງິນຄ່າປິ່ນປົວ.';
-                            verdictAction = 'ວິທີແກ້: ທາສີຫ້ອງຄົວເປັນສີຄຣີມ/ສີເຫຼືອງອ່ອນ (ທາດດິນດີ) ເພື່ອດັບໄຟ, ວາງນ້ຳອັນຢິນ, ຫ້າມໃຊ້ສີແດງໃນຄົວເດັດຂາດ.';
+                            verdictScore = 'ຄະແນນ: 10/100 (ອັນຕະລາຍສູງສຸດ!)';
+                            verdictTitle = 'ຫົວເຕົາໄຟເຜົາດິນພະຍາດ (火炎土焦)';
+                            verdictAnalysis = 'ອັນຕະລາຍຫຼາຍ! ແປວໄຟໂດຍກົງຈາກເຕົາຈະໄປຈູດກະຕຸ້ນດາວ 2 ແລະ ດາວ 5 ໃຫ້ຮ້າຍແຮງຂຶ້ນ ເຮັດໃຫ້ຄົນໃນບ້ານເປັນໂລກຮ້ອນໃນ, ເລືອດຕົກຍາງອອກ, ຜ່າຕັດ ແລະ ເສຍເງິນຄ່າປິ່ນປົວ.';
+                            verdictAction = 'ວິທີແກ້: ຍ້າຍມຸມຕັ້ງເຕົາໄຟໄປຈຸດອື່ນໃນຄົວ! ຖ້າຍ້າຍບໍ່ໄດ້ ໃຫ້ວາງເຄື່ອງເຄືອບດິນເຜົາສີເຫຼືອງໃຫຍ່ຂ້າງເຕົາ, ວາງນ້ຳອັນຢິນ, ຫ້າມໃຊ້ສີແດງໃກ້ເຕົາເດັດຂາດ.';
                         } else if (curM === 6 || curW === 6) {
                             verdictTag = '❌ ໄຟເຜົາປະຕູສະຫວັນ (火烧天门)';
                             verdictColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
                             verdictScore = 'ຄະແນນ: 25/100';
-                            verdictTitle = 'ໄຟເຜົາທອງໃຫຍ່ (ພໍ່/ຜູ້ນຳ)';
-                            verdictAnalysis = 'ເຕົາໄຟທິດ 6 (ທາດທອງ/ພໍ່) ຈະເຜົາຜານບາຣະມີ ແລະ ສຸຂະພາບຂອງພໍ່ ຫຼື ຜູ້ນຳຄອບຄົວ ເຮັດໃຫ້ເປັນໂລກຫົວໃຈ, ເຈັບຫົວໄມເກຣນ.';
-                            verdictAction = 'ວິທີແກ້: ວາງເຄື່ອງເຄືອບດິນເຜົາສີເຫຼືອງໃຫຍ່ໃກ້ເຕົາໄຟ ເພື່ອຖ່າຍເທໄຟໄປລ້ຽງທອງ.';
+                            verdictTitle = 'ຫົວເຕົາເຜົາທອງໃຫຍ່ (ພໍ່/ຜູ້ນຳ)';
+                            verdictAnalysis = 'ເຕົາໄຟຕັ້ງຢູ່ໃນທິດ 6 (ທາດທອງ/ພໍ່) ຈະເຜົາຜານບາຣະມີ ແລະ ສຸຂະພາບຂອງພໍ່ ຫຼື ຜູ້ນຳຄອບຄົວ ເຮັດໃຫ້ເຈັບຫົວໄມເກຣນ, ຄວາມດັນສູງ.';
+                            verdictAction = 'ວິທີແກ້: ວາງເຄື່ອງເຄືອບດິນເຜົາ ຫຼື ແຜ່ນຫີນສີເຫຼືອງຮອງກ້ອງເຕົາ ເພື່ອຖ່າຍເທໄຟໄປລ້ຽງທອງ.';
                         } else {
-                            verdictTag = '🌟 ເໝາະສົມ (Auspicious)';
+                            verdictTag = '🌟 ຕຳແໜ່ງເຕົາໄຟມຸງຄຸນ (Auspicious Stove)';
                             verdictColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
-                            verdictScore = 'ຄະແນນ: 88/100';
-                            verdictTitle = 'ຕຳແໜ່ງເຕົາໄຟປອດໄພ';
-                            verdictAnalysis = 'ຕຳແໜ່ງເຕົາໄຟບໍ່ປະທະດາວຮ້າຍ ສົ່ງເສີມຄວາມອຸດົມສົມບູນ.';
-                            verdictAction = 'ຫ້າມຕັ້ງເຕົາໄຟກົງກັບກ໊ອກນ້ຳ ຫຼື ຕູ້ເຢັນ (ນ້ຳປະທະໄຟ), ຫ້າມຕັ້ງເຕົາກົງກັບປະຕູຄົວ.';
+                            verdictScore = 'ຄະແນນ: 95/100';
+                            verdictTitle = 'ຫົວເຕົາໄຟຕຳແໜ່ງເສີມຊັບ (食禄位)';
+                            verdictAnalysis = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາ "ນັ່ງຮ້າຍຫັນດີ (坐凶向吉)"! ຕຳແໜ່ງເຕົາໄຟເຜົາຜານພະລັງລົບ ແລະ ຫັນໜ້າເຕົາໄປຮັບຊັບ.';
+                            verdictAction = 'ຫ້າມຕັ້ງເຕົາໄຟກົງກັບກ໊ອກນ້ຳ (水火冲 - ນ້ຳປະທະໄຟ), ຫ້າມຕັ້ງກົງກັບຕູ້ເຢັນ, ຫ້າມຕັ້ງກົງກັບປະຕູຄົວ, ແລະ ຫຼັງເຕົາຕ້ອງພິງຝາຕຶບ.';
                         }
                     }
 
