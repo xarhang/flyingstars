@@ -7,6 +7,16 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>ຈານເຂັມທິດຮວງຈຸ້ຍ 24 ຂຸນເຂົາ (ດາວເຫີນ 9 ຍຸກ)</title>
+    <script>
+        // Suppress benign Tailwind CDN development warning in console
+        (function() {
+            const _warn = console.warn;
+            console.warn = function(...args) {
+                if (typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com should not be used in production')) return;
+                _warn.apply(console, args);
+            };
+        })();
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -21,18 +31,18 @@
         };
     </script>
     <script src="asset/js/qrcode.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao+Looped:wght@400;500;600;700&family=Noto+Serif+Lao:wght@400;600;700&family=Noto+Sans+Lao:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao+Looped:wght@400;500;600;700&family=Noto+Serif+Lao:wght@400;600;700&family=Noto+Sans+Lao:wght@400;500;600;700&family=Phetsarath:wght@400;700&display=swap" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'Phetsarath OT';
-            src: url('asset/fonts/Phetsarath-OT.ttf') format('truetype');
+            src: local('Phetsarath OT'), local('Phetsarath'), url('asset/fonts/Phetsarath-OT.ttf') format('truetype');
             font-weight: 400;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Phetsarath OT';
-            src: url('asset/fonts/Phetsarath-OT.ttf') format('truetype');
+            src: local('Phetsarath OT Bold'), local('Phetsarath-Bold'), url('asset/fonts/Phetsarath-Bold.ttf') format('truetype');
             font-weight: 700;
             font-style: normal;
             font-display: swap;
