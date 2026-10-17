@@ -1958,6 +1958,8 @@
         let activeYinTab = 'tab_fenjin'; // 'tab_fenjin', 'tab_yinforecast', 'tab_lineage', 'tab_water'
         let selectedRoomType = 'main_door';
         let selectedRoomCategory = 'all';
+        let selectedLuantouType = 'road_t_junction';
+        let selectedLuantouCategory = 'all';
         let selectedAnnualYear = 2026;
         let selectedForecastMonth = 1; // 1 to 12
         let userBirthYear = 1990;
@@ -2068,6 +2070,20 @@
 
         function setSelectedRoomCategory(catKey) {
             selectedRoomCategory = catKey;
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            updateLivePrediction(topCompassDeg, true);
+        }
+
+        function setSelectedLuantou(key) {
+            selectedLuantouType = key;
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            updateLivePrediction(topCompassDeg, true);
+        }
+
+        function setSelectedLuantouCategory(catKey) {
+            selectedLuantouCategory = catKey;
             const normRot = ((currentRotation % 360) + 360) % 360;
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
             updateLivePrediction(topCompassDeg, true);
@@ -2250,12 +2266,13 @@
             // ==========================================
             if (fengShuiMode === 'yang') {
                 const yangTabsBar =
-                    '<div class="grid grid-cols-5 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 text-[10px] font-bold select-none mb-2">' +
-                        '<button type="button" onclick="setYangTab(\'tab_room\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYangTab === 'tab_room' ? 'bg-emerald-900/90 text-emerald-200 border border-emerald-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">🚪 ກວດຫ້ອງ</button>' +
+                    '<div class="grid grid-cols-3 sm:grid-cols-6 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 text-[9px] font-bold select-none mb-2">' +
+                        '<button type="button" onclick="setYangTab(\'tab_room\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYangTab === 'tab_room' ? 'bg-emerald-900/90 text-emerald-200 border border-emerald-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">🚪 ໃນບ້ານ (43)</button>' +
+                        '<button type="button" onclick="setYangTab(\'tab_luantou\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYangTab === 'tab_luantou' ? 'bg-amber-500 text-slate-950 font-black shadow-md border border-amber-300' : 'text-amber-400 hover:text-amber-200') + '">🏞️ ນອກບ້ານ (36)</button>' +
                         '<button type="button" onclick="setYangTab(\'tab_bazhai\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYangTab === 'tab_bazhai' ? 'bg-amber-500 text-slate-950 font-black shadow-md border border-amber-300' : 'text-amber-400 hover:text-amber-200') + '">👤 ດວງກົວະ</button>' +
-                        '<button type="button" onclick="setYangTab(\'tab_forecast\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYangTab === 'tab_forecast' ? 'bg-amber-500 text-slate-950 font-black shadow-md border border-amber-300' : 'text-amber-400 hover:text-amber-200') + '">📅 ປະຕິທິນເກີດເຫດ</button>' +
+                        '<button type="button" onclick="setYangTab(\'tab_forecast\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYangTab === 'tab_forecast' ? 'bg-amber-500 text-slate-950 font-black shadow-md border border-amber-300' : 'text-amber-400 hover:text-amber-200') + '">📅 ປະຕິທິນ</button>' +
                         '<button type="button" onclick="setYangTab(\'tab_annual\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYangTab === 'tab_annual' ? 'bg-emerald-900/90 text-emerald-200 border border-emerald-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">⭐ ດາວປີ</button>' +
-                        '<button type="button" onclick="setYangTab(\'tab_stars\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYangTab === 'tab_stars' ? 'bg-emerald-900/90 text-emerald-200 border border-emerald-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">🔮 81ດາວ/ຄົນ</button>' +
+                        '<button type="button" onclick="setYangTab(\'tab_stars\')" class="py-1 px-0.5 rounded-lg text-center transition ' + (activeYangTab === 'tab_stars' ? 'bg-emerald-900/90 text-emerald-200 border border-emerald-500/50 shadow-sm' : 'text-slate-400 hover:text-slate-200') + '">🔮 81ດາວ</button>' +
                     '</div>';
 
                 let tabBody = '';
@@ -3357,6 +3374,529 @@
                             '<p class="text-[11px] text-slate-200 leading-relaxed pt-1 border-t border-slate-800/80">' + verdictAnalysis + '</p>' +
                             '<div class="bg-black/40 p-2 rounded-lg text-[10px] text-amber-200 leading-relaxed border border-amber-500/30">' +
                                 '<b>💡 ວິທີຈັດວາງ/ແກ້ໄຂ:</b> ' + verdictAction +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // TAB 1.5: LUAN TOU EXTERNAL LANDSCAPE & SHA QI INSPECTOR (36 SPECIFIC EXTERNAL FEATURES)
+                else if (activeYangTab === 'tab_luantou') {
+                    const luantouCategories = [
+                        { key: 'all', name: 'ທັງໝົດ (36)' },
+                        { key: 'flora', name: '🌳 ຕົ້ນໄມ້ & ສວນ (4)' },
+                        { key: 'electric', name: '⚡ ເສົາໄຟ & ແມ່ເຫຼັກ (3)' },
+                        { key: 'fence_gate', name: '🧱 ຮົ້ວ & ປະຕູຮົ້ວ (5)' },
+                        { key: 'neighbor', name: '🏘️ ເຮືອນຂ້າງບ້ານ (6)' },
+                        { key: 'road', name: '🛣️ ຖະໜົນຫົນທາງ (6)' },
+                        { key: 'water', name: '🌊 ແມ່ນ້ຳ & ບວກຕົມ (5)' },
+                        { key: 'special', name: '🏛️ ສິ່ງປຸກສ້າງພິເສດ (7)' }
+                    ];
+
+                    const allLuantou = [
+                        // 🌳 Trees & Flora (4)
+                        { key: 'tree_front', cat: 'flora', icon: '🌳', name: 'ຕົ້ນໄມ້ຂວາງໜ້າປະຕູ' },
+                        { key: 'tree_dry', cat: 'flora', icon: '🥀', name: 'ຕົ້ນໄມ້ແຫ້ງຕາຍ' },
+                        { key: 'tree_vines', cat: 'flora', icon: '🌿', name: 'ເຄືອໄມ້ເລືອປົກຄຸມ' },
+                        { key: 'tree_green', cat: 'flora', icon: '🌲', name: 'ແນວໄມ້ຂຽວປົກປ້ອງ' },
+
+                        // ⚡ Electricity & Magnetic (3)
+                        { key: 'pole_electric', cat: 'electric', icon: '🗼', name: 'ເສົາໄຟຟ້າຂວາງປະຕູ' },
+                        { key: 'pylon_highvolt', cat: 'electric', icon: '⚡', name: 'ເສົາໄຟແຮງສູງ/ໝໍ້ແປງ' },
+                        { key: 'cell_tower', cat: 'electric', icon: '📡', name: 'ເສົາສັນຍານມືຖື/ລໍ້ຟ້າ' },
+
+                        // 🧱 Fences & Gates (5)
+                        { key: 'fence_too_high', cat: 'fence_gate', icon: '🧱', name: 'ຮົ້ວສູງເກີນຕົວບ້ານ' },
+                        { key: 'fence_too_close', cat: 'fence_gate', icon: '🧱', name: 'ຮົ້ວຕິດຊິດຕົວບ້ານ' },
+                        { key: 'fence_broken', cat: 'fence_gate', icon: '🏚️', name: 'ຮົ້ວພັງ/ມີຊ່ອງໂຫວ່' },
+                        { key: 'gate_front', cat: 'fence_gate', icon: '⛩️', name: 'ປະຕູຮົ້ວໃຫຍ່ນອກ' },
+                        { key: 'gate_clash', cat: 'fence_gate', icon: '⛩️', name: 'ປະຕູຮົ້ວກົງປະຕູໃຫຍ່' },
+
+                        // 🏘️ Neighbors & Buildings (6)
+                        { key: 'house_roof_ridge', cat: 'neighbor', icon: '🏠', name: 'ສັນຫຼັງຄາເຮືອນຂ້າງແທງ' },
+                        { key: 'house_sharp_corner', cat: 'neighbor', icon: '📐', name: 'ແຈຕຶກແຫຼມເຮືອນຂ້າງ' },
+                        { key: 'house_oppressive', cat: 'neighbor', icon: '🏢', name: 'ຕຶກຂ້າງສູງຂົ່ມຕົວບ້ານ' },
+                        { key: 'house_abandoned', cat: 'neighbor', icon: '🏚️', name: 'ເຮືອນຮ້າງຂ້າງບ້ານ' },
+                        { key: 'house_peeking', cat: 'neighbor', icon: '🏙️', name: 'ຕຶກສູງຫຼັງໂຜ່ຂຶ້ນມາ' },
+                        { key: 'house_tian_zhan', cat: 'neighbor', icon: '🗡️', name: 'ຊ່ອງຫວ່າງສອງຕຶກຕັດ' },
+
+                        // 🛣️ Roads & Streets (6)
+                        { key: 'road_t_junction', cat: 'road', icon: '🏹', name: 'ທາງສາມແພ່ງແທງ' },
+                        { key: 'road_curved_bow', cat: 'road', icon: '🌙', name: 'ຖະໜົນໂຄ້ງຄົມກ່ຽວ' },
+                        { key: 'road_jade_belt', cat: 'road', icon: '🟢', name: 'ຖະໜົນໂຄ້ງໂອບບ້ານ' },
+                        { key: 'road_flyover', cat: 'road', icon: '🌉', name: 'ທາງດ່ວນ/ຂົວລອຍຕັດ' },
+                        { key: 'road_dead_end', cat: 'road', icon: '⛔', name: 'ທາງຕັນ/ຫຼັງສຸດທ້າຍ' },
+                        { key: 'road_sloping', cat: 'road', icon: '📉', name: 'ຖະໜົນລາດຊັນເທລົງ' },
+
+                        // 🌊 Rivers & Water (5)
+                        { key: 'river_jade_belt', cat: 'water', icon: '🌊', name: 'ແມ່ນ້ຳໂຄ້ງໂອບຮັບຊັບ' },
+                        { key: 'river_reverse_bow', cat: 'water', icon: '🌊', name: 'ແມ່ນ້ຳໂຄ້ງຫຼັງທະນູແທງ' },
+                        { key: 'river_rushing', cat: 'water', icon: '🌊', name: 'ສາຍນ້ຳໄຫຼຊ່ຽວກຣາດ' },
+                        { key: 'mud_puddle', cat: 'water', icon: '🕳️', name: 'ບວກຕົມ/ໜອງນ້ຳເນົ່າ' },
+                        { key: 'drain_ditch', cat: 'water', icon: '🚱', name: 'ຮ່ອງນ້ຳເສຍເປີດໂລ່ງ' },
+
+                        // 🏛️ Special Structures (7)
+                        { key: 'temple_cemetery', cat: 'special', icon: '🛕', name: 'ໃກ້ວັດ/ປ່າຊ້າ/ໂຮງໝໍ' },
+                        { key: 'gas_station', cat: 'special', icon: '⛽', name: 'ໃກ້ປ້ຳນ້ຳມັນ/ສະຖານີໄຟ' },
+                        { key: 'construction_dig', cat: 'special', icon: '🚜', name: 'ໃກ້ບ່ອນກໍ່ສ້າງ/ຂຸດດິນ' },
+                        { key: 'chimney_factory', cat: 'special', icon: '🏭', name: 'ປ່ອງຄວັນໂຮງງານ' },
+                        { key: 'mountain_solid', cat: 'special', icon: '⛰️', name: 'ພູເຂົາທຳມະຊາດຫຼັງບ້ານ' },
+                        { key: 'mountain_craggy', cat: 'special', icon: '⛰️', name: 'ພູຫີນແຕກ/ດິນເຈື່ອນ' },
+                        { key: 'bridge_overpass', cat: 'special', icon: '🌉', name: 'ຂົວຂ້າມທາງ/ຄອງນ້ຳ' }
+                    ];
+
+                    const activeLuantou = selectedLuantouCategory === 'all'
+                        ? allLuantou
+                        : allLuantou.filter(r => r.cat === selectedLuantouCategory);
+
+                    const luantouCatBar =
+                        '<div class="flex items-center gap-1 overflow-x-auto pb-1 mb-1.5 scrollbar-thin select-none">' +
+                            luantouCategories.map(c =>
+                                '<button type="button" onclick="setSelectedLuantouCategory(\'' + c.key + '\')" class="px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
+                                    (selectedLuantouCategory === c.key
+                                        ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
+                                        : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800') + '">' +
+                                    c.name +
+                                '</button>'
+                            ).join('') +
+                        '</div>';
+
+                    const luantouPills =
+                        luantouCatBar +
+                        '<div class="grid grid-cols-3 gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 mb-2 max-h-48 overflow-y-auto">' +
+                            activeLuantou.map(r =>
+                                '<button type="button" onclick="setSelectedLuantou(\'' + r.key + '\')" class="py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 ' +
+                                    (selectedLuantouType === r.key
+                                        ? 'bg-amber-500 text-slate-950 shadow-md font-black ring-1 ring-amber-300'
+                                        : 'text-slate-300 hover:bg-slate-900') + '">' +
+                                    '<span class="text-xs">' + r.icon + '</span><span class="truncate max-w-full">' + r.name + '</span>' +
+                                '</button>'
+                            ).join('') +
+                        '</div>';
+
+                    let lTag = '';
+                    let lColor = '';
+                    let lScore = '';
+                    let lTitle = '';
+                    let lAnalysis = '';
+                    let lAction = '';
+
+                    // 1. ຕົ້ນໄມ້ຂວາງໜ້າປະຕູ (Ding Xin Sha)
+                    if (selectedLuantouType === 'tree_front') {
+                        lTag = '❌ ຕົ້ນໄມ້ໃຫຍ່ຂວາງໜ້າບ້ານ (顶心煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 25/100 (ຂັດຂວາງກະແສຊີ່)';
+                        lTitle = 'ຕົ້ນໄມ້ໃຫຍ່ຕັ້ງກົງກາງໜ້າປະຕູໃຫຍ່';
+                        lAnalysis = 'ຕົ້ນໄມ້ໃຫຍ່ຫຼືເສົາໄຟທີ່ຕັ້ງກົງກາງສາຍຕາໜ້າປະຕູໃຫຍ່ ເອີ້ນວ່າ "ຕິ່ງຊິນຊ່າ (顶心煞)". ຈະຂັດຂວາງໂຊກລາບບໍ່ໃຫ້ໄຫຼເຂົ້າເຮືອນ, ເຮັດໃຫ້ເຈົ້າຂອງບ້ານເຈັບໜ້າເອິກ, ສາຍຕາສັ້ນ/ຕໍ້ກະຈົກ, ແລະ ອາລົມແປປ່ວນ.';
+                        lAction = 'ວິທີແກ້: ຕັດແຕ່ງກິ່ງໄມ້ໃຫ້ໂປ່ງແຈ້ງ, ແຂວນກະຈົກນູນແປດຫຼ່ຽມ (八卦凸镜) ຫຼື ຕິດແຜ່ນຢັນ 6 ຈັກກະພັດເໜືອປະຕູ, ຫຼື ຜູກຜ້າແພແດງຮອບລຳຕົ້ນໄມ້.';
+                    }
+
+                    // 2. ຕົ້ນໄມ້ແຫ້ງຕາຍ (Withered Tree)
+                    else if (selectedLuantouType === 'tree_dry') {
+                        lTag = '❌ ຕົ້ນໄມ້ຢືນແຫ້ງຕາຍ (枯木煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 15/100 (ພະລັງຢິນເສື່ອມຊຸດ)';
+                        lTitle = 'ຕົ້ນໄມ້ຕາຍຢືນຕົ້ນໃກ້ຕົວບ້ານ';
+                        lAnalysis = 'ຕົ້ນໄມ້ທີ່ແຫ້ງຕາຍຈະແຜ່ພະລັງງານຢິນແຫ່ງຄວາມເສື່ອມຊຸດ (衰败之气), ສົ່ງຜົນໃຫ້ຜູ້ເຖົ້າໃນບ້ານສຸຂະພາບຊຸດໂຊມໄວ, ຊີວິດຂາດຊີວິດຊີວາ, ແລະ ການເງິນແຫ້ງແລ້ງ.';
+                        lAction = 'ວິທີແກ້: ຕ້ອງຕັດໂຄ່ນ ແລະ ຂຸດຮາກຖິ້ມທັນທີ! ແລ້ວປູກຕົ້ນໄມ້ມຸງຄຸນໃໝ່ທີ່ຂຽວສົດຊື່ນແທນ.';
+                    }
+
+                    // 3. ເຄືອໄມ້ເລືອປົກຄຸມ (Strangling Vines)
+                    else if (selectedLuantouType === 'tree_vines') {
+                        lTag = '❌ ເຄືອໄມ້ເລືອປົກຄຸມກຳແພງ (藤萝煞)';
+                        lColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                        lScore = 'ຄະແນນ: 35/100';
+                        lTitle = 'ເຄືອໄມ້ເລືອປົກຄຸມຝາບ້ານເກີນໄປ';
+                        lAnalysis = 'ເຄືອໄມ້ທີ່ເກາະປົກຄຸມຝາບ້ານໜາແໜ້ນ ເອີ້ນວ່າ "ເຖິງຫຼົວຊ່າ (藤萝煞)". ຈະດູດພະລັງງານຢາງອອກໄປ, ເຮັດໃຫ້ບ້ານຊຸ່ມເຢັນເກີນຂອບເຂດ, ເກີດຄະດີຄວາມ, ເລື່ອງຜູກມັດທາງກົດໝາຍ ແລະ ຝັນຮ້າຍ.';
+                        lAction = 'ວິທີແກ້: ຕັດຕັດເຄືອໄມ້ທີ່ເລືອບັງປ່ອງຢ້ຽມ ແລະ ປະຕູອອກ, ໃຫ້ແສງແດດສ່ອງຝາບ້ານໄດ້ຢ່າງພຽງພໍ.';
+                    }
+
+                    // 4. ແນວໄມ້ຂຽວປົກປ້ອງ (Lush Green Trees)
+                    else if (selectedLuantouType === 'tree_green') {
+                        lTag = '🌲 ແນວຕົ້ນໄມ້ມຸງຄຸນ (吉木生旺)';
+                        lColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                        lScore = 'ຄະແນນ: 96/100 (ປົກປ້ອງບາຣະມີ)';
+                        lTitle = 'ຕົ້ນໄມ້ໃບດົກຂຽວອ້ອມຮອບບ້ານ';
+                        lAnalysis = 'ຕົ້ນໄມ້ສີຂຽວສົດຊື່ນທີ່ມີໃບມົນໃຫຍ່ ເຮັດໜ້າທີ່ເປັນກຳແພງກັ່ນກອງລົມພາຍຸ, ດັກຈັບຝຸ່ນ, ແລະ ເສີມພະລັງງານຊີວິດ (生气) ໃຫ້ແກ່ຄອບຄົວ.';
+                        lAction = 'ປູກຕົ້ນໄມ້ສູງດ້ານຫຼັງບ້ານ (靠山) ແລະ ດ້ານຊ້າຍ (ມັງກອນຂຽວ), ຮັກສາໃຫ້ຂຽວງົດງາມສະເໝີ.';
+                    }
+
+                    // 5. ເສົາໄຟຟ້າຂວາງປະຕູ (Electric Pole Sha)
+                    else if (selectedLuantouType === 'pole_electric') {
+                        lTag = '❌ ເສົາໄຟຟ້າຂວາງໜ້າບ້ານ (电杆煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = curW === 5 ? 'ຄະແນນ: 10/100 (ອັນຕະລາຍສູງ)' : 'ຄະແນນ: 30/100';
+                        lTitle = 'ເສົາໄຟຟ້າຕັ້ງກົງກັບປະຕູ ຫຼື ປ່ອງຢ້ຽມ';
+                        lAnalysis = 'ເສົາໄຟຟ້າປຽບດັ່ງດາບຫຼືຫອກທີ່ຕັ້ງແທງສາຍຕາ ເອີ້ນວ່າ "ຊົ່ວຊິນຊ່າ". ສົ່ງຜົນໃຫ້ເກີດອາການເຈັບຫົວໄມເກຣນ, ເລືອດຕົກຍາງອອກ, ແລະ ຖືກຄົນອື່ນກັ່ນແກ້ງ.';
+                        lAction = 'ວິທີແກ້: ຕິດກະຈົກນູນແປດຫຼ່ຽມ (凸面八卦镜) ສ່ອງໄປຫາເສົາ, ຫຼື ວາງສິງໂຕຫີນ 1 ຄູ່ແນມໄປຫາເສົາ, ຕິດຜ້າມ່ານທຶບປິດບັງ.';
+                    }
+
+                    // 6. ເສົາໄຟແຮງສູງ / ໝໍ້ແປງໄຟຟ້າ (High-Voltage Pylon Sha)
+                    else if (selectedLuantouType === 'pylon_highvolt') {
+                        lTag = '❌ ເສົາໄຟແຮງສູງ / ໝໍ້ແປງໄຟ (火形煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 15/100 (ຄື້ນແມ່ເຫຼັກລົບກວນ)';
+                        lTitle = 'ໝໍ້ແປງໄຟຟ້າ ຫຼື ເສົາໄຟແຮງສູງໃກ້ບ້ານ';
+                        lAnalysis = 'ເປັນພະລັງງານໄຟທີ່ຮ້ອນແຮງ (火煞) ແລະ ມີສະໜາມແມ່ເຫຼັກໄຟຟ້າລົບກວນຄື້ນສະໝອງ. ເຮັດໃຫ້ນອນບໍ່ຫຼັບ, ຄວາມດັນເລືອດສູງ, ຫົວໃຈເຕັ້ນຜິດຈັງຫວະ, ແລະ ເກີດອັກຄີໄພງ່າຍ.';
+                        lAction = 'ວິທີແກ້: ວາງເຄື່ອງເຄືອບດິນເຜົາສີເຫຼືອງໃຫຍ່ (ໂອ່ງ/ອ່າງດິນເຜົາ) ເພື່ອຖ່າຍເທພະລັງໄຟລົງດິນ, ວາງນ້ຳເຕົ້າທອງເຫຼືອງແທ້, ຕິດຟິມກັນຄື້ນຄວາມຮ້ອນ.';
+                    }
+
+                    // 7. ເສົາສັນຍານມືຖື / ສາຍລໍ້ຟ້າ (Antenna Transmitter Sha)
+                    else if (selectedLuantouType === 'cell_tower') {
+                        lTag = '❌ ເສົາສັນຍານມືຖື/ລໍ້ຟ້າ (刺面煞)';
+                        lColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                        lScore = 'ຄະແນນ: 35/100';
+                        lTitle = 'ເສົາສັນຍານສູງແຫຼມສ່ອງໃສ່ບ້ານ';
+                        lAnalysis = 'ເສົາສັນຍານທີ່ມີປາຍແຫຼມຫຼາຍທິດທາງ ເອີ້ນວ່າ "ຊື້ໝ່ຽນຊ່າ (刺面煞)". ເຮັດໃຫ້ຄົນໃນບ້ານອາລົມຮ້ອນ, ຜິດຖຽງກັນເລື້ອຍໆ, ແລະ ສາຍຕາອ່ອນແຮງ.';
+                        lAction = 'ວິທີແກ້: ຕິດກະຈົກແປດຫຼ່ຽມນູນ ຫຼື ວາງເຕົ່າຫົວມັງກອນ (龙龟) ຫັນໜ້າໄປທາງເສົາສັນຍານ.';
+                    }
+
+                    // 8. ຮົ້ວສູງເກີນຕົວບ້ານ (Prison Wall Sha)
+                    else if (selectedLuantouType === 'fence_too_high') {
+                        lTag = '❌ ຮົ້ວສູງເກີນຕົວບ້ານ (高墙困月)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 40/100 (ກັກຂັງພະລັງງານ)';
+                        lTitle = 'ກຳແພງຮົ້ວສູງເກີນເພດານຊັ້ນ 1';
+                        lAnalysis = 'ຮົ້ວທີ່ສູງເກີນໄປປຽບເໝືອນຄຸກທີ່ກັກຂັງຕົວບ້ານ ເອີ້ນວ່າ "ເກົາສຽງຄຸນເຢ້ (高墙困月)". ເຮັດໃຫ້ທຸລະກິດຂາດວິໄສທັດ, ຄົນໃນບ້ານເກັບກົດ, ແລະ ໂຊກລາບເຂົ້າມາບໍ່ໄດ້.';
+                        lAction = 'ວິທີແກ້: ຕັດຫຼຸດລະດັບກຳແພງລົງໃຫ້ພໍດີລະດັບສາຍຕາ, ຫຼື ເຮັດຊ່ອງໂປ່ງ/ຮົ້ວເຫຼັກດັດ ເພື່ອໃຫ້ລົມແລະແສງຖ່າຍເທ.';
+                    }
+
+                    // 9. ຮົ້ວຕິດຊິດຕົວບ້ານ (Oppressive Wall Sha)
+                    else if (selectedLuantouType === 'fence_too_close') {
+                        lTag = '❌ ຮົ້ວຕິດຊິດຕົວບ້ານເກີນໄປ (压迫煞)';
+                        lColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                        lScore = 'ຄະແນນ: 45/100';
+                        lTitle = 'ໄລຍະຫ່າງລະຫວ່າງຝາບ້ານກັບຮົ້ວແຄບເກີນໄປ (< 1 ແມັດ)';
+                        lAnalysis = 'ເຮັດໃຫ້ອາກາດຂ້າງບ້ານອັບທຶບ, ພະລັງຊີ່ໄຫຼວຽນບໍ່ສະດວກ, ຄົນໃນບ້ານຮູ້ສຶກອຶດອັດ ແລະ ອິດເມື່ອຍ.';
+                        lAction = 'ວິທີແກ້: ທາສີກຳແພງຮົ້ວດ້ວຍສີຂາວ ຫຼື ສີຄຣີມສະຫວ່າງ, ຕິດດອກໄຟກຳແພງສ່ອງຂຶ້ນ, ຫ້າມວາງສິ່ງຂອງເກົ່າຮົກເຮື້ອ.';
+                    }
+
+                    // 10. ຮົ້ວພັງ/ມີຊ່ອງໂຫວ່ (Broken Wall Sha)
+                    else if (selectedLuantouType === 'fence_broken') {
+                        lTag = '❌ ຮົ້ວບ້ານພັງ/ມີຊ່ອງໂຫວ່ (破损煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 30/100 (ເງິນຮົ່ວໄຫຼ & ໂຈນໄພ)';
+                        lTitle = 'ກຳແພງຮົ້ວແຕກຫັກ ຫຼື ມີຮູໂຫວ່';
+                        lAnalysis = 'ກຳແພງຮົ້ວປຽບເໝືອນຂອບອ່າງເກັບຊັບ. ຖ້າຮົ້ວພັງຫຼືມີຊ່ອງໂຫວ່ ຈະເຮັດໃຫ້ເງິນຄຳຮົ່ວໄຫຼ, ເກັບເງິນບໍ່ຢູ່, ແລະ ສ່ຽງຕໍ່ການຖືກລັກຊັບ.';
+                        lAction = 'ວິທີແກ້: ສ້ອມແປງກຳແພງຮົ້ວໃຫ້ແໜ້ນໜາທັນທີ, ທາສີໃໝ່ໃຫ້ຮຽບຮ້ອຍ.';
+                    }
+
+                    // 11. ປະຕູຮົ້ວໃຫຍ່ນອກ (Exterior Perimeter Gate)
+                    else if (selectedLuantouType === 'gate_front') {
+                        if (chart.castleGate && chart.castleGate.palId === curPal) {
+                            lTag = '🏰 ມະຫາມຸງຄຸນ! ປະຕູຮົ້ວວັງເສີມຊັບ (城门诀)';
+                            lColor = 'border-cyan-500/80 bg-cyan-950/40 text-cyan-300';
+                            lScore = 'ຄະແນນ: 100/100';
+                            lTitle = 'ປະຕູຮົ້ວຕົກຕຳແໜ່ງເສີນເໝີນ ' + chart.castleGate.type;
+                            lAnalysis = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາຊັ້ນສູງ "ເສີນເໝີນເຈວ່"! ປະຕູຮົ້ວດັກຮັບພະລັງຊັບມະຫາສານຈາກຖະໜົນເຂົ້າສູ່ບ້ານ.';
+                            lAction = 'ເປີດໃຊ້ປະຕູນີ້ເປັນປະຈຳ, ຕິດໂຄມໄຟສະຫວ່າງ.';
+                        } else if (curW === currentPeriod) {
+                            lTag = '🌟 ປະຕູຮົ້ວຮັບມະຫາໂຊກຍຸກ 9 (旺气门)';
+                            lColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                            lScore = 'ຄະແນນ: 96/100';
+                            lTitle = 'ປະຕູຮົ້ວເປີດຮັບດາວນ້ຳ ' + curW;
+                            lAnalysis = 'ປາກທາງເຂົ້າພະລັງຊີ່ກົງກັບດາວໂຊກໃຫຍ່ ດຶງດູດຄວາມຈະເລີນຮຸ່ງເຮືອງ.';
+                            lAction = 'ຮັກສາທາງເຂົ້າຮົ້ວໃຫ້ຮາບພຽງສະອາດ.';
+                        } else {
+                            lTag = '✨ ປະຕູຮົ້ວພາຍນອກປົກກະຕິ';
+                            lColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                            lScore = 'ຄະແນນ: 75/100';
+                            lTitle = 'ປະຕູຮົ້ວທົ່ວໄປ';
+                            lAnalysis = 'ການເຂົ້າ-ອອກສະດວກສະບາຍ.';
+                            lAction = 'ຮັກສາຄວາມສະອາດ ແລະ ທາສີໃຫ້ສົດໃສ.';
+                        }
+                    }
+
+                    // 12. ປະຕູຮົ້ວກົງປະຕູໃຫຍ່ (Direct Gate Rush)
+                    else if (selectedLuantouType === 'gate_clash') {
+                        lTag = '⚠️ ປະຕູຮົ້ວກົງປະຕູໃຫຍ່ (门对门直冲)';
+                        lColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                        lScore = 'ຄະແນນ: 50/100';
+                        lTitle = 'ປະຕູຮົ້ວນອກຕົງກົງກັບປະຕູໃຫຍ່ໜ້າບ້ານ';
+                        lAnalysis = 'ກະແສລົມຈາກຖະໜົນຈະພຸ່ງຊື່ເຂົ້າສູ່ປະຕູໃຫຍ່ໂດຍກົງ ບໍ່ມີການຊະລໍພະລັງງານ ເຮັດໃຫ້ເກັບຊັບໄດ້ຍາກ.';
+                        lAction = 'ວິທີແກ້: ເຮັດທາງຍ່າງໂຄ້ງ, ວາງອ່າງນ້ຳພຸ/ສວນຫີນກັ້ນກາງ, ຫຼື ຕັ້ງສາກບັງຕາ (影壁) ລະຫວ່າງສອງປະຕູ.';
+                    }
+
+                    // 13. ສັນຫຼັງຄາເຮືອນຂ້າງແທງ (Roof Ridge Sha)
+                    else if (selectedLuantouType === 'house_roof_ridge') {
+                        lTag = '❌ ສັນຫຼັງຄາແຫຼມແທງໃສ່ບ້ານ (屋脊煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 20/100';
+                        lTitle = 'ສັນຫຼັງຄາສາມຫຼ່ຽມຂອງເຮືອນຂ້າງບ້ານພຸ່ງໃສ່';
+                        lAnalysis = 'ສັນຫຼັງຄາແຫຼມປຽບເໝືອນຄົມມີດທີ່ຕັດຜ່ານ ເອີ້ນວ່າ "ອູຈີ໋ຊ່າ (屋脊煞)". ເຮັດໃຫ້ເກີດອາການເຈັບໜ້າເອິກ, ຫົວໃຈ, ແລະ ມີເລື່ອງຂັດແຍ້ງກັບເພື່ອນບ້ານ.';
+                        lAction = 'ວິທີແກ້: ຕິດກະຈົກນູນແປດຫຼ່ຽມ (凸面八卦镜) ສ່ອງກັບໄປ, ຫຼື ວາງສິງໂຕຫີນ 1 ຄູ່ແນມໄປຫາສັນຫຼັງຄານັ້ນ.';
+                    }
+
+                    // 14. ແຈຕຶກແຫຼມເຮືອນຂ້າງ (Sharp Corner Sha)
+                    else if (selectedLuantouType === 'house_sharp_corner') {
+                        lTag = '❌ ແຈຕຶກແຫຼມແທງ (尖角煞 / 飞刃煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 20/100';
+                        lTitle = 'ມຸມ 90 ອົງສາຂອງຕຶກຂ້າງຄຽງພຸ່ງໃສ່ບ້ານ';
+                        lAnalysis = 'ລົມທີ່ປະທະມຸມຕຶກຈະແຍກອອກເປັນຄົມລົມທີ່ຄົມກຣິບ ພຸ່ງໃສ່ປ່ອງຢ້ຽມຫຼືປະຕູບ້ານ ເຮັດໃຫ້ເກີດອຸບັດຕິເຫດ, ເລືອດຕົກຍາງອອກ, ແລະ ຜ່າຕັດ.';
+                        lAction = 'ວິທີແກ້: ປູກແນວຕົ້ນໄມ້ໃບດົກໜາບັງມຸມແຫຼມ, ຕິດກະຈົກນູນແປດຫຼ່ຽມ, ຫຼື ວາງຫີນໄທຊານ (泰山石敢当).';
+                    }
+
+                    // 15. ຕຶກຂ້າງສູງຂົ່ມຕົວບ້ານ (Oppressive Building Sha)
+                    else if (selectedLuantouType === 'house_oppressive') {
+                        lTag = '❌ ຕຶກຂ້າງສູງຂົ່ມຕົວບ້ານ (奴欺主)';
+                        lColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                        lScore = 'ຄະແນນ: 40/100';
+                        lTitle = 'ຕຶກຂ້າງຄຽງສູງໃຫຍ່ຂົ່ມບ້ານທີ່ຕໍ່າກວ່າ';
+                        lAnalysis = 'ເຮັດໃຫ້ບ້ານຂາດແສງສະຫວ່າງ, ພະລັງງານຢາງຖືກກົດຂີ່, ຜູ້ຢູ່ອາໄສຖືກເຈົ້ານາຍຫຼືບໍລິວານກົດດັນ, ການງານບໍ່ກ້າວໜ້າ.';
+                        lAction = 'ວິທີແກ້: ເພີ່ມໄຟສະຫວ່າງເທິງຫຼັງຄາ, ເສີມພະລັງຫຼັງພິງ (靠山), ວາງຮູບປັ້ນນົກອິນຊີ ຫຼື ມັງກອນທອງ.';
+                    }
+
+                    // 16. ເຮືອນຮ້າງຂ້າງບ້ານ (Abandoned House Sha)
+                    else if (selectedLuantouType === 'house_abandoned') {
+                        lTag = '❌ ເຮືອນຮ້າງຂ້າງບ້ານ (阴气煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 25/100';
+                        lTitle = 'ເຮືອນຊຸດໂຊມ ຫຼື ເຮືອນຮ້າງຕິດຂ້າງບ້ານ';
+                        lAnalysis = 'ເປັນແຫຼ່ງສະສົມພະລັງງານຢິນທີ່ເຢັນຊາ, ເຊື້ອໂຣກ ແລະ ແມງໄມ້. ເຮັດໃຫ້ຄົນໃນບ້ານຊຶມເສົ້າ, ຝັນຮ້າຍ, ແລະ ໂຊກລາບຖົດຖອຍ.';
+                        lAction = 'ວິທີແກ້: ຕິດໄຟສະປອດໄລ້ສ່ອງສະຫວ່າງໃສ່ກຳແພງດ້ານນັ້ນ, ວາງສິງໂຕຫີນ ຫຼື ແຂວນດາບໄມ້ທໍ້ (桃木剑).';
+                    }
+
+                    // 17. ຕຶກສູງຫຼັງໂຜ່ຂຶ້ນມາ (Peeking Sha)
+                    else if (selectedLuantouType === 'house_peeking') {
+                        lTag = '❌ ຕຶກສູງຫຼັງໂຜ່ຂຶ້ນມາ (探头煞)';
+                        lColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                        lScore = 'ຄະແນນ: 35/100';
+                        lTitle = 'ມີຕຶກສູງດ້ານຫຼັງໂຜ່ຫົວຂຶ້ນມາເໜືອຫຼັງຄາເຮືອນໜ້າ';
+                        lAnalysis = 'ປຽບເໝືອນຄົນລັກສ່ອງເບິ່ງ ເອີ້ນວ່າ "ທ້ານໂຖວຊ່າ (探头煞)". ສົ່ງຜົນໃຫ້ເກີດການລັກຊັບ, ບໍລິວານບໍ່ຊື່ສັດ, ຫຼື ຖືກຫຼອກລວງ.';
+                        lAction = 'ວິທີແກ້: ຕິດກະຈົກນູນແປດຫຼ່ຽມ ຫຼື ວາງຫີນໄທຊານ (泰山石敢当) ຫັນໜ້າໄປທາງຕຶກນັ້ນ.';
+                    }
+
+                    // 18. ຊ່ອງຫວ່າງສອງຕຶກຕັດ (Tian Zhan Sha)
+                    else if (selectedLuantouType === 'house_tian_zhan') {
+                        lTag = '❌ ດາບຟ້າຜ່າຕັດຜ່ານ (天斩煞 - ອັນຕະລາຍສູງສຸດ)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 10/100 (ອັນຕະລາຍອຸບັດຕິເຫດ/ຜ່າຕັດ)';
+                        lTitle = 'ຊ່ອງຫວ່າງແຄບລະຫວ່າງສອງຕຶກສູງພຸ່ງລົມໃສ່ບ້ານ';
+                        lAnalysis = 'ລົມທີ່ພັດຜ່ານຊ່ອງຫວ່າງແຄບຂອງ 2 ຕຶກສູງຈະມີແຮງດັນຄືກັບດາບຟ້າຜ່າແຍກຕົວບ້ານອອກເປັນ 2 ສ່ວນ! ສ່ຽງຕໍ່ການຜ່າຕັດໃຫຍ່, ອຸບັດຕິເຫດຮ້າຍແຮງ ແລະ ລົ້ມລະລາຍ.';
+                        lAction = 'ວິທີແກ້: ວາງຫີນໄທຊານໃຫຍ່ (泰山石敢当), ວາງສັດເທບຜີຊິວທອງເຫຼືອງ 1 ຄູ່ (铜貔貅) ແນມໄປຫາຊ່ອງຫວ່າງນັ້ນ, ປູກຕົ້ນໄມ້ໃຫຍ່ກັ້ນ.';
+                    }
+
+                    // 19. ທາງສາມແພ່ງແທງ (T-Junction Road Rush)
+                    else if (selectedLuantouType === 'road_t_junction') {
+                        if (curW === 5 || curW === 2) {
+                            lTag = '❌ ມະຫາອັນຕະລາຍ! ທາງສາມແພ່ງແທງດາວ 5/ດາວ 2';
+                            lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            lScore = 'ຄະແນນ: 5/100 (ອັນຕະລາຍສູງສຸດ!)';
+                            lTitle = 'ຖະໜົນພຸ່ງຊື່ແທງໃສ່ຕົວບ້ານ (路冲煞 / 枪煞)';
+                            lAnalysis = 'ຮ້າຍແຮງທີ່ສຸດ! ກະແສລົດແລ່ນພຸ່ງໃສ່ບ້ານປຸກດາວ 5 ຫ້າເຫຼືອງໃຫ້ຕື່ນຕະຫຼອດເວລາ ເຮັດໃຫ້ເກີດອຸບັດຕິເຫດລົດຕຳ, ເສຍຊີວິດກະທັນຫັນ, ຫຼື ຕະກຸນລົ້ມລະລາຍ.';
+                            lAction = 'ວິທີແກ້ດ່ວນ: ຕັ້ງຫີນໄທຊານ (泰山石敢当), ວາງສິງໂຕຫີນໃຫຍ່ 1 ຄູ່, ເຮັດກຳແພງຮົ້ວປູນໜາ, ປູກຕົ້ນໄມ້ໃຫຍ່ກັ້ນ!';
+                        } else {
+                            lTag = '❌ ທາງສາມແພ່ງແທງ (路冲煞)';
+                            lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            lScore = 'ຄະແນນ: 20/100';
+                            lTitle = 'ຖະໜົນແລ່ນຊື່ແທງໜ້າບ້ານ';
+                            lAnalysis = 'ກະແສລົມແລະລົດຍົນພຸ່ງຊື່ເຂົ້າຫາບ້ານ ເຮັດໃຫ້ພະລັງຊີ່ແຕກກະຈາຍ, ເກັບເງິນບໍ່ຢູ່, ຄົນໃນບ້ານໃຈຮ້ອນ.';
+                            lAction = 'ວິທີແກ້: ຕັ້ງກຳແພງບັງຕາ, ວາງຫີນໄທຊານ, ປູກແນວຕົ້ນໄມ້ກັ່ນກອງລົມ.';
+                        }
+                    }
+
+                    // 20. ຖະໜົນໂຄ້ງຄົມກ່ຽວ (Reverse Bow Road)
+                    else if (selectedLuantouType === 'road_curved_bow') {
+                        lTag = '❌ ຖະໜົນໂຄ້ງຄົມກ່ຽວແທງ (反弓煞 / 镰刀煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 20/100';
+                        lTitle = 'ບ້ານຕັ້ງຢູ່ດ້ານນອກຂອງທາງໂຄ້ງ (ຄົມກ່ຽວຕັດ)';
+                        lAnalysis = 'ແຮງຫວ່ຽງຂອງລົດທີ່ແລ່ນຜ່ານທາງໂຄ້ງຈະປ່ອຍພະລັງພິຄາດໃສ່ບ້ານ ເອີ້ນວ່າ "ຫຼຽນຕາວຊ່າ (镰刀煞)". ເຮັດໃຫ້ເສຍເງິນຄຳ, ຖືກຄົນທໍລະຍົດ, ແລະ ເກີດບາດແຜ.';
+                        lAction = 'ວິທີແກ້: ຕິດກະຈົກນູນແປດຫຼ່ຽມ, ປູກຕົ້ນໄມ້ເປັນແນວໂຄ້ງກັ້ນ, ວາງສິງໂຕຫີນ.';
+                    }
+
+                    // 21. ຖະໜົນໂຄ້ງໂອບບ້ານ (Jade Belt Road)
+                    else if (selectedLuantouType === 'road_jade_belt') {
+                        lTag = '🌟 ມະຫາມຸງຄຸນ! ຖະໜົນສາຍແອວຫຍົກ (玉带环腰)';
+                        lColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                        lScore = 'ຄະແນນ: 98/100 (ກັກເກັບມະຫາຊັບ)';
+                        lTitle = 'ຖະໜົນໂຄ້ງໂອບລ້ອມຕົວບ້ານຢ່າງອ່ອນໂຍນ';
+                        lAnalysis = 'ສຸດຍອດຮວງຈູ້ຍຖະໜົນ! ບ້ານຕັ້ງຢູ່ດ້ານໃນຂອງທາງໂຄ້ງ ປຽບເໝືອນສາຍແອວຫຍົກໂອບອຸ້ມຕົວບ້ານ ກັກເກັບກະແສຊີ່ ແລະ ເງິນຄຳໄວ້ຢ່າງສົມບູນ.';
+                        lAction = 'ເປີດປະຕູຮັບກະແສຊີ່ໄດ້ເຕັມທີ່, ຮັກສາໜ້າບ້ານໃຫ້ສະອາດສວຍງາມ.';
+                    }
+
+                    // 22. ທາງດ່ວນ/ຂົວລອຍຕັດ (Elevated Flyover Sha)
+                    else if (selectedLuantouType === 'road_flyover') {
+                        lTag = '❌ ທາງດ່ວນ/ຂົວລອຍຕັດຜ່ານ (高架桥煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 25/100';
+                        lTitle = 'ຂົວລອຍຫຼືທາງດ່ວນຕັດຜ່ານລະດັບສາຍຕາ';
+                        lAnalysis = 'ສຽງດັງ, ຄວັນພິດ, ແລະ ແຮງລົມຈາກຂົວລອຍຈະຕັດພະລັງງານບ້ານ. ຊັ້ນລຸ່ມຂາດແສງ, ຊັ້ນເທິງຖືກຄົມຂົວຕັດ.';
+                        lAction = 'ວິທີແກ້: ຕິດປ່ອງຢ້ຽມກັນສຽງສອງຊັ້ນ, ປູກຕົ້ນໄມ້ທີ່ລະບຽງ, ຕິດກະຈົກນູນແປດຫຼ່ຽມ.';
+                    }
+
+                    // 23. ທາງຕັນ/ຫຼັງສຸດທ້າຍ (Dead End Alley Sha)
+                    else if (selectedLuantouType === 'road_dead_end') {
+                        lTag = '❌ ທາງຕັນ/ບ້ານຫຼັງສຸດທ້າຍ (绝路煞)';
+                        lColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                        lScore = 'ຄະແນນ: 35/100';
+                        lTitle = 'ບ້ານຕັ້ງຢູ່ຈຸດສິ້ນສຸດຂອງຮ່ອມຕັນ';
+                        lAnalysis = 'ພະລັງຊີ່ໄຫຼເຂົ້າມາແລ້ວຕິດຂັງ ບໍ່ມີທາງລະບາຍ (死气 - ຊີ່ຕາຍ). ເຮັດໃຫ້ທຸລະກິດການຄ້າຕັນ, ບໍ່ມີທາງອອກ, ຄົນໃນບ້ານຂາດໂອກາດໃໝ່ໆ.';
+                        lAction = 'ວິທີແກ້: ຕິດດອກໄຟສະຫວ່າງໜ້າບ້ານ, ແຂວນກະດິ່ງລົມທອງເຫຼືອງເພື່ອປັ່ນອາກາດໃຫ້ເຄື່ອນໄຫວ, ວາງນ້ຳພຸ.';
+                    }
+
+                    // 24. ຖະໜົນລາດຊັນເທລົງ (Sloping Road Sha)
+                    else if (selectedLuantouType === 'road_sloping') {
+                        lTag = '❌ ຖະໜົນລາດຊັນເທລົງ (卷帘水煞)';
+                        lColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                        lScore = 'ຄະແນນ: 40/100';
+                        lTitle = 'ໜ້າບ້ານຕິດກັບຖະໜົນທີ່ລາດຊັນເທລົງ';
+                        lAnalysis = 'ເງິນຄຳທີ່ເຂົ້າມາຈະໄຫຼເທລົງໄປຕາມຄວາມຊັນ ເອີ້ນວ່າ "ຈ້ວນຫຼຽນສຸ່ຍ (卷帘水)". ຫາເງິນໄດ້ແຕ່ເກັບບໍ່ຢູ່, ມີລາຍຈ່າຍໄຫຼອອກຕະຫຼອດ.';
+                        lAction = 'ວິທີແກ້: ເຮັດຂັ້ນໄດຍົກລະດັບໜ້າປະຕູ, ວາງສິງໂຕຫີນ 1 ຄູ່ແນມລົງໄປທາງລາດຊັນ.';
+                    }
+
+                    // 25. ແມ່ນ້ຳໂຄ້ງໂອບຮັບຊັບ (Jade Belt River)
+                    else if (selectedLuantouType === 'river_jade_belt') {
+                        lTag = '🌊 ມະຫາວາຣີສາຍແອວຫຍົກ (九曲玉带水)';
+                        lColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                        lScore = 'ຄະແນນ: 100/100 (ສຸດຍອດຮວງຈູ້ຍສາຍນ້ຳ)';
+                        lTitle = 'ແມ່ນ້ຳໄຫຼຄົດລ້ຽວໂອບອ້ອມຕົວບ້ານ';
+                        lAnalysis = 'ສຸດຍອດແຫ່ງຮວງຈູ້ຍສາຍນ້ຳ! "九曲入明堂 当朝宰相家" (ສາຍນ້ຳຄົດລ້ຽວເຂົ້າສູ່ໝິງຖັງ ເປັນຕະກຸນມະຫາເສດຖີ/ເສນາບໍດີ). ນ້ຳໄຫຼຊ້າໂອບບ້ານນຳພາຄວາມຮັ່ງມີມະຫາສານ.';
+                        lAction = 'ເປີດຮັບກະແສລົມແລະວິວແມ່ນ້ຳ, ຕັ້ງຫ້ອງຮັບແຂກຫຼືລະບຽງຫັນໄປຫາສາຍນ້ຳ.';
+                    }
+
+                    // 26. ແມ່ນ້ຳໂຄ້ງຫຼັງທະນູແທງ (Reverse Bow River)
+                    else if (selectedLuantouType === 'river_reverse_bow') {
+                        lTag = '❌ ແມ່ນ້ຳຄົມທະນູແທງ (反弓水)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 15/100';
+                        lTitle = 'ບ້ານຕັ້ງຢູ່ດ້ານນອກຂອງສ່ວນໂຄ້ງແມ່ນ້ຳ';
+                        lAnalysis = 'ກະແສນ້ຳກັດເຊາະ ແລະ ພະລັງແຮງຫວ່ຽງຂອງນ້ຳຈະພັດພາຄວາມໝັ້ນຄົງອອກໄປ ເຮັດໃຫ້ສູນເສຍຊັບສິນ, ຄອບຄົວແຕກແຍກ, ແລະ ເກີດອຸທົກກະໄພ.';
+                        lAction = 'ວິທີແກ້: ສ້າງກຳແພງກັ້ນດິນແໜ້ນໜາ, ວາງຫີນໄທຊານໃຫຍ່, ປູກແນວຕົ້ນໄມ້ກັ້ນສາຍນ້ຳ.';
+                    }
+
+                    // 27. ສາຍນ້ຳໄຫຼຊ່ຽວກຣາດ (Rushing Roaring River Sha)
+                    else if (selectedLuantouType === 'river_rushing') {
+                        lTag = '❌ ສາຍນ້ຳໄຫຼຊ່ຽວສຽງດັງ (割脚水)';
+                        lColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                        lScore = 'ຄະແນນ: 35/100';
+                        lTitle = 'ສາຍນ້ຳໄຫຼແຮງແລະສຽງດັງຕິດຖານບ້ານ';
+                        lAnalysis = 'ສຽງດັງຂອງນ້ຳໄຫຼຊ່ຽວເປັນ "ເຊິງຊ່າ (声煞)" ທຳລາຍຄວາມສະຫງົບ, ເຮັດໃຫ້ຈິດໃຈວຸ້ນວາຍ, ແລະ ເງິນຄຳໄຫຼອອກໄວ.';
+                        lAction = 'ວິທີແກ້: ເຮັດກຳແພງກັນສຽງ, ປູກຕົ້ນໄມ້ໃຫຍ່ກັ່ນກອງສຽງ.';
+                    }
+
+                    // 28. ບວກຕົມ/ໜອງນ້ຳເນົ່າ (Stagnant Mud Puddle Sha)
+                    else if (selectedLuantouType === 'mud_puddle') {
+                        lTag = '❌ ບວກຕົມ/ໜອງນ້ຳເນົ່າຂັງ (污泥浊水)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 15/100 (ພະລັງງານສົກກະປົກ)';
+                        lTitle = 'ບວກຕົມ, ໜອງນ້ຳຂັງ ຫຼື ຂີ້ຕົມໃກ້ຕົວບ້ານ';
+                        lAnalysis = 'ນ້ຳເນົ່າຂັງແລະຂີ້ຕົມປ່ອຍພະລັງງານເສຍ (秽气) ແລະ ກິ່ນເໝັນ. ເຮັດໃຫ້ເປັນພະຍາດຜິວໜັງ, ລະບົບສືບພັນ, ປອດ, ແລະ ເສື່ອມເສຍຊື່ສຽງ.';
+                        lAction = 'ວິທີແກ້: ຖົມບວກຕົມດ່ວນ! ເທຫີນ/ປູນປິດທັບ, ສີດຢາຂ້າເຊື້ອ, ປູກຕົ້ນໄມ້ດູດກິ່ນ.';
+                    }
+
+                    // 29. ຮ່ອງນ້ຳເສຍເປີດໂລ່ງ (Open Sewage Ditch Sha)
+                    else if (selectedLuantouType === 'drain_ditch') {
+                        lTag = '❌ ຮ່ອງລະບາຍນ້ຳເສຍເປີດໂລ່ງ (明沟臭水)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 20/100';
+                        lTitle = 'ຮ່ອງນ້ຳເສຍເປີດຝາໄຫຼຜ່ານໜ້າບ້ານ';
+                        lAnalysis = 'ນ້ຳເສຍໄຫຼຜ່ານໜ້າບ້ານທຳລາຍໝິງຖັງ (明堂) ເຮັດໃຫ້ໂຊກລາບກາຍເປັນສິ່ງສົກກະປົກ, ມີເລື່ອງອັບອາຍ ແລະ ເຈັບປ່ວຍ.';
+                        lAction = 'ວິທີແກ້: ເຮັດຝາປູນປິດຮ່ອງນ້ຳໃຫ້ມິດຊິດທັນທີ! ປູກຕົ້ນໄມ້ຟອກອາກາດເຊັ່ນ ຕະໄຄ້ຫອມ/ຕົ້ນວ່ານ.';
+                    }
+
+                    // 30. ໃກ້ວັດ/ປ່າຊ້າ/ໂຮງໝໍ (Yin Temple Cemetery Sha)
+                    else if (selectedLuantouType === 'temple_cemetery') {
+                        lTag = '❌ ໃກ້ວັດ/ປ່າຊ້າ/ໂຮງໝໍ (阴煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 25/100 (ພະລັງຢິນໜັກແໜ້ນ)';
+                        lTitle = 'ບ້ານຕັ້ງຢູ່ຕິດກັບວັດ, ປ່າຊ້າ, ຫຼື ໂຮງໝໍ';
+                        lAnalysis = 'ສະຖານທີ່ເຫຼົ່ານີ້ມີພະລັງງານຢິນ (阴气) ແລະ ຄວາມໂສກເສົ້າສູງ. ເຮັດໃຫ້ຄົນໃນບ້ານອ່ອນແອ, ນອນຝັນຮ້າຍ, ໂດດດ່ຽວ, ແລະ ຂາດພະລັງຢາງ.';
+                        lAction = 'ວິທີແກ້: ທາສີຮົ້ວແລະປະຕູດ້ວຍສີອົບອຸ່ນ (ແດງ/ສົ້ມ/ເຫຼືອງ), ຕິດໄຟສະຫວ່າງ, ວາງສິງໂຕຫີນ 1 ຄູ່ໜ້າປະຕູ.';
+                    }
+
+                    // 31. ໃກ້ປ້ຳນ້ຳມັນ/ສະຖານີໄຟ (Solitary Yang Sha)
+                    else if (selectedLuantouType === 'gas_station') {
+                        lTag = '❌ ໃກ້ປ້ຳນ້ຳມັນ/ສະຖານີໄຟຟ້າ (孤阳煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 25/100 (ໄຟຮ້ອນເກີນໄປ)';
+                        lTitle = 'ບ້ານຢູ່ໃກ້ປ້ຳນ້ຳມັນ ຫຼື ໝໍ້ແປງໄຟໃຫຍ່';
+                        lAnalysis = 'ພະລັງງານໄຟແຮງກ້າ (孤阳煞) ເຮັດໃຫ້ຄົນໃນບ້ານໃຈຮ້ອນວຸ້ນວາຍ, ຄວາມດັນສູງ, ແລະ ມີຄວາມສ່ຽງຕໍ່ອັກຄີໄພ.';
+                        lAction = 'ວິທີແກ້: ຕັ້ງອ່າງນ້ຳຫຼືນ້ຳພຸໃຫຍ່ເພື່ອດັບໄຟ, ໃຊ້ສີໂທນເຢັນ (ຂຽວ/ຟ້າ), ຕິດຟິມກັນຄວາມຮ້ອນ.';
+                    }
+
+                    // 32. ໃກ້ບ່ອນກໍ່ສ້າງ/ຂຸດດິນ (Construction Digging Sha)
+                    else if (selectedLuantouType === 'construction_dig') {
+                        if (chart.faceInfo.palId === 5) {
+                            lTag = '❌ ອັນຕະລາຍສູງສຸດ! ຂຸດດິນປຸກດາວ 5 (五黄动土)';
+                            lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                            lScore = 'ຄະແນນ: 5/100 (ຫ້າມເດັດຂາດ!)';
+                            lTitle = 'ການຂຸດດິນ/ຕອກເສົາເຂັມໃນທິດດາວ 5 ຫ້າເຫຼືອງ';
+                            lAnalysis = 'ອັນຕະລາຍຮ້າຍແຮງທີ່ສຸດ! ການຂຸດດິນໃນທິດດາວ 5 ຈະປຸກເທບແຫ່ງໄພພິບັດໃຫ້ເກີດເລື່ອງຮ້າຍແຮງທັນທີ.';
+                            lAction = 'ວິທີແກ້: ແຂວນກະດິ່ງລົມທອງເຫຼືອງ 6 ທໍ່ 1 ຄູ່, ວາງນ້ຳອັນຢິນ (安忍水), ປິດປະຕູ-ປ່ອງຢ້ຽມດ້ານນັ້ນ.';
+                        } else {
+                            lTag = '⚠️ ມີການກໍ່ສ້າງ/ຂຸດດິນ (动土煞)';
+                            lColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                            lScore = 'ຄະແນນ: 40/100';
+                            lTitle = 'ແຮງສັ່ນສະເທືອນ ແລະ ຂີ້ຝຸ່ນຈາກການກໍ່ສ້າງ';
+                            lAnalysis = 'ສຽງດັງແລະແຮງສັ່ນລົບກວນກະແສຊີ່.';
+                            lAction = 'ແຂວນກະດິ່ງລົມທອງເຫຼືອງ, ປິດປ່ອງຢ້ຽມປ້ອງກັນຝຸ່ນ.';
+                        }
+                    }
+
+                    // 33. ປ່ອງຄວັນໂຮງງານ (Factory Chimney Sha)
+                    else if (selectedLuantouType === 'chimney_factory') {
+                        lTag = '❌ ປ່ອງຄວັນໂຮງງານພົ່ນຄວັນ (冲天煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 25/100';
+                        lTitle = 'ປ່ອງຄວັນສູງພົ່ນຄວັນດຳໃສ່ບ້ານ';
+                        lAnalysis = 'ປຽບເໝືອນທູບໄຫວ້ສົບ (冲天香煞). ສົ່ງຜົນຕໍ່ລະບົບຫາຍໃຈ, ປອດ, ແລະ ເຮັດໃຫ້ການເງິນຕິດຂັດ.';
+                        lAction = 'ວິທີແກ້: ຕິດກະຈົກນູນແປດຫຼ່ຽມ, ປູກຕົ້ນສົນ/ຕົ້ນໄມ້ສູງໃບດົກກັ້ນ, ຕິດເຄື່ອງຟອກອາກາດ.';
+                    }
+
+                    // 34. ພູເຂົາທຳມະຊາດຫຼັງບ້ານ (Solid Rear Mountain)
+                    else if (selectedLuantouType === 'mountain_solid') {
+                        lTag = '⛰️ ພູເຂົາບາຣະມີມຸງຄຸນ (玄武靠山大吉)';
+                        lColor = 'border-emerald-500/80 bg-emerald-950/40 text-emerald-300';
+                        lScore = 'ຄະແນນ: 100/100 (ບາຣະມີ & ສຸຂະພາບ)';
+                        lTitle = 'ພູເຂົາທຳມະຊາດຂຽວສົດຊື່ນຕັ້ງຢູ່ຫຼັງບ້ານ';
+                        lAnalysis = 'ສຸດຍອດຫຼັກວິຊາ "ສວຽນອູ່ເຂົາຊານ (玄武靠山)"! ພູເຂົາທີ່ໜັກແໜ້ນຢູ່ຫຼັງບ້ານໃຫ້ບາຣະມີ, ຄວາມໝັ້ນຄົງ, ອາຍຸຍືນ, ແລະ ຜູ້ໃຫຍ່ອຸປະຖຳຄ້ຳຊູ.';
+                        lAction = 'ຖືກຕ້ອງຕາມຫຼັກວິຊາສູງສຸດແລ້ວ! ຮັກສາຄວາມສະອາດ.';
+                    }
+
+                    // 35. ພູຫີນແຕກ/ດິນເຈື່ອນ (Craggy Broken Mountain Sha)
+                    else if (selectedLuantouType === 'mountain_craggy') {
+                        lTag = '❌ ພູຫີນແຫຼມແຕກຫັກ (廉贞煞)';
+                        lColor = 'border-rose-500/80 bg-rose-950/50 text-rose-300';
+                        lScore = 'ຄະແນນ: 20/100';
+                        lTitle = 'ພູເຂົາຫີນແຫຼມຄົມ, ດິນເຈື່ອນ ຫຼື ບໍ່ມີຕົ້ນໄມ້';
+                        lAnalysis = 'ພູເຂົາແຕກຫັກປຽບດັ່ງຫຼັງພິງທີ່ເຕັມໄປດ້ວຍໜາມ ເອີ້ນວ່າ "ຫຼຽນເຈິນຊ່າ (廉贞煞)". ເຮັດໃຫ້ຖືກແທງຂ້າງຫຼັງ, ບໍລິວານທໍລະຍົດ, ແລະ ປວດກະດູກສັນຫຼັງ.';
+                        lAction = 'ວິທີແກ້: ຕິດຜ້າມ່ານທຶບປິດບັງບໍ່ໃຫ້ເຫັນພູຫີນ, ວາງເຕົ່າຫົວມັງກອນ (龙龟) ຫັນຫຼັງຮັບພະລັງ.';
+                    }
+
+                    // 36. ຂົວຂ້າມທາງ/ຄອງນ້ຳ (Bridge Overpass Sha)
+                    else if (selectedLuantouType === 'bridge_overpass') {
+                        lTag = '⚠️ ຂົວຂ້າມທາງ/ຄອງນ້ຳຕັດຜ່ານ (横桥煞)';
+                        lColor = 'border-amber-500/80 bg-amber-950/50 text-amber-300';
+                        lScore = 'ຄະແນນ: 45/100';
+                        lTitle = 'ຂົວຂ້າມຕັ້ງຂວາງໜ້າບ້ານ';
+                        lAnalysis = 'ຂົວຂວາງໜ້າບ້ານຈະບັງແສງສະຫວ່າງ ແລະ ແຮງສັ່ນສະເທືອນຂອງລົດຈະລົບກວນກະແສຊີ່.';
+                        lAction = 'ວິທີແກ້: ປູກແນວຕົ້ນໄມ້ບັງ, ຕິດກະຈົກແປດຫຼ່ຽມ, ເພີ່ມໄຟສະຫວ່າງ.';
+                    }
+
+                    // Fallback
+                    else {
+                        lTag = '✨ ສິ່ງແວດລ້ອມທົ່ວໄປ (General Environment)';
+                        lColor = 'border-slate-700 bg-slate-950 text-slate-300';
+                        lScore = 'ຄະແນນ: 70/100';
+                        lTitle = 'ພູມສັນຖານພາຍນອກ';
+                        lAnalysis = 'ພະລັງງານ: ' + comboInfo.title + '. ' + comboInfo.wealth;
+                        lAction = comboInfo.remedy;
+                    }
+
+                    tabBody =
+                        luantouPills +
+                        '<div class="p-3 rounded-xl border ' + lColor + ' flex flex-col gap-1.5 shadow-sm">' +
+                            '<div class="flex items-center justify-between">' +
+                                '<span class="font-bold text-xs">' + lTag + '</span>' +
+                                '<span class="text-[10px] font-mono font-bold opacity-80">' + lScore + '</span>' +
+                            '</div>' +
+                            '<div class="text-white font-bold text-sm leading-tight">' + lTitle + '</div>' +
+                            '<div class="text-[10px] text-slate-400 font-mono">' +
+                                'ທິດທີ່ສ່ອງ: ' + chart.faceInfo.pal.dir + ' ' + faceDeg.toFixed(1) + '° · ດາວນ້ຳ ' + curW + ' | ດາວພູ ' + curM +
+                            '</div>' +
+                            '<p class="text-[11px] text-slate-200 leading-relaxed pt-1 border-t border-slate-800/80">' + lAnalysis + '</p>' +
+                            '<div class="bg-black/40 p-2 rounded-lg text-[10px] text-amber-200 leading-relaxed border border-amber-500/30">' +
+                                '<b>💡 ວິທີຈັດວາງ/ແກ້ໄຂ:</b> ' + lAction +
                             '</div>' +
                         '</div>';
                 }
