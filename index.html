@@ -570,9 +570,13 @@
         <video id="arVideo" playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" disablepictureinpicture autoplay muted class="absolute inset-0 w-full h-full object-cover hidden pointer-events-none z-0"></video>
 
         <!-- Floating Live AR Badge Indicator -->
-        <div id="arCameraBadge" class="absolute top-24 md:top-4 left-1/2 -translate-x-1/2 z-20 hidden items-center gap-2 bg-slate-950/90 border border-emerald-500/70 text-emerald-300 text-xs px-3.5 py-1.5 rounded-full shadow-2xl backdrop-blur-md font-semibold select-none">
+        <div id="arCameraBadge" class="absolute top-24 md:top-4 left-1/2 -translate-x-1/2 z-20 hidden items-center gap-2 bg-slate-950/95 border border-emerald-500/70 text-emerald-300 text-xs px-3 py-1.5 rounded-full shadow-2xl backdrop-blur-md font-semibold select-none">
             <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> <span>ກຳລັງສ່ອງກ້ອງຈິງ (AR Camera)</span></span>
+            <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                <span class="text-[11px]">ກ້ອງຫັນ:</span>
+                <span id="arCameraDegBadge" class="font-mono font-black text-amber-300 bg-emerald-950/90 border border-emerald-500/60 px-2 py-0.5 rounded-full text-[11px]">180.0° ທິດໃຕ້</span>
+            </span>
             <button id="closeArBtn" type="button" class="ml-1 text-slate-400 hover:text-white font-bold p-1 rounded-md hover:bg-slate-800" title="ປິດກ້ອງ AR"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         </div>
 
@@ -2239,6 +2243,10 @@
             if (mobileSittingBadge) {
                 mobileSittingBadge.textContent = `ຫຼັງພິງ: ${bottomCompassDeg.toFixed(1)}° ${sitInfo.pal.dir} (${sitInfo.mtn.name}-${sitInfo.mtn.lao})`;
             }
+            const arCameraDegBadge = document.getElementById('arCameraDegBadge');
+            if (arCameraDegBadge) {
+                arCameraDegBadge.textContent = `${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})`;
+            }
 
             // Real-time Update for the 4 Red Thread Readout Badges on the Outer Base Plate
             const plateFaceBadge = document.getElementById('plateFaceBadge');
@@ -3045,6 +3053,7 @@
         // AR CAMERA LIVE OVERLAY SYSTEM
         // ==========================================
         let cameraActive = false;
+        let cameraAutoStartedCompass = false;
         let cameraStream = null;
         let previousCompassOpacity = null;
         let previousBaseStyle = null;
@@ -3118,6 +3127,18 @@
                     buildOuterBasePlate('hidden');
                 }
 
+                // Auto-connect compass sensor for real-time tracking in Camera AR mode
+                if (!liveCompassActive) {
+                    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+                        try {
+                            await DeviceOrientationEvent.requestPermission();
+                        } catch(e) {}
+                    }
+                    cameraAutoStartedCompass = true;
+                    startLiveCompass();
+                }
+                updateCompassTransform();
+
             } catch (err) {
                 console.error('Camera AR Error:', err);
                 cameraActive = false;
@@ -3182,6 +3203,13 @@
                 }
                 previousBaseStyle = null;
             }
+
+            // If compass was auto-started specifically for AR Camera, shut it down smoothly
+            if (cameraAutoStartedCompass && liveCompassActive) {
+                stopLiveCompass();
+                cameraAutoStartedCompass = false;
+            }
+            updateCompassTransform();
         }
 
         function toggleCameraAR() {
@@ -3249,7 +3277,7 @@
 
         function updateOrientationFrame() {
             orientationRafId = null;
-            if (pendingOrientationHeading === null || !liveCompassActive) return;
+            if (pendingOrientationHeading === null || (!liveCompassActive && !cameraActive)) return;
 
             const heading = pendingOrientationHeading;
             const rawTargetRot = (180 - heading + 360) % 360;
@@ -3265,8 +3293,8 @@
 
             let rotDiff = Math.abs(currentRotation - targetRot);
             if (rotDiff > 180) rotDiff = 360 - rotDiff;
-            // Only update DOM if change is at least 0.15 deg to prevent CPU starvation and keep touches responsive
-            if (rotDiff > 0.15) {
+            // Only update DOM if change is at least 0.05 deg to prevent CPU starvation while keeping tracking ultra responsive
+            if (rotDiff > 0.05) {
                 currentRotation = targetRot;
                 updateCompassTransform(-delta);
             }
