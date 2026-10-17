@@ -1882,7 +1882,11 @@
             updateLivePrediction(topCompassDeg);
         }
 
-        function updateLivePrediction(faceDeg) {
+        let lastCachedStarKey = '';
+        let lastCachedKwText = '';
+        let lastCachedSpotHtml = '';
+
+        function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
             const chart = calculateFlyingStarsChart(currentPeriod, faceDeg);
             const curPal = chart.faceInfo.palId;
             const curM = chart.mStars[curPal];
@@ -1899,36 +1903,31 @@
             };
             const kw = checkKongWang(faceDeg);
 
-            // 1. Update Top AR & HUD Badges
-            const hudM = document.getElementById('hudMountainStar');
-            const hudP = document.getElementById('hudPeriodStar');
-            const hudW = document.getElementById('hudWaterStar');
-            const hudBadge = document.getElementById('hudBestSpotBadge');
-            const hudBadgeText = document.getElementById('hudBestSpotText');
+            // 1. Update Top AR & HUD Badges with cache guards
             const mobileKongWangBadge = document.getElementById('mobileKongWangBadge');
-
-            const mobHudM = document.getElementById('mobileHudMountainStar');
-            const mobHudP = document.getElementById('mobileHudPeriodStar');
-            const mobHudW = document.getElementById('mobileHudWaterStar');
-            const mobHudBadge = document.getElementById('mobileHudBestSpotBadge');
-            const mobHudBadgeText = document.getElementById('mobileHudBestSpotText');
-
-            if (mobileKongWangBadge) {
+            if (mobileKongWangBadge && kw.badgeText !== lastCachedKwText) {
+                lastCachedKwText = kw.badgeText;
                 mobileKongWangBadge.textContent = kw.badgeText;
                 mobileKongWangBadge.className = 'text-[9px] px-1.5 py-0.5 rounded-full font-mono font-bold border ' + kw.badgeClass;
             }
 
-            const mStarContent = ICONS.mountain + ' <span>ພູ: ' + curM + '</span>';
-            const pStarContent = ICONS.period + ' <span>ຍຸກ: ' + curP + '</span>';
-            const wStarContent = ICONS.water + ' <span>ນ້ຳ: ' + curW + '</span>';
+            const starKey = curM + '-' + curP + '-' + curW;
+            if (starKey !== lastCachedStarKey) {
+                lastCachedStarKey = starKey;
+                const mobHudM = document.getElementById('mobileHudMountainStar');
+                const mobHudP = document.getElementById('mobileHudPeriodStar');
+                const mobHudW = document.getElementById('mobileHudWaterStar');
+                const hudM = document.getElementById('hudMountainStar');
+                const hudP = document.getElementById('hudPeriodStar');
+                const hudW = document.getElementById('hudWaterStar');
 
-            if (hudM) hudM.innerHTML = mStarContent;
-            if (hudP) hudP.innerHTML = pStarContent;
-            if (hudW) hudW.innerHTML = wStarContent;
-
-            if (mobHudM) mobHudM.innerHTML = '🏔️' + curM;
-            if (mobHudP) mobHudP.innerHTML = '⭐️' + curP;
-            if (mobHudW) mobHudW.innerHTML = '💧' + curW;
+                if (mobHudM) mobHudM.innerHTML = '🏔️' + curM;
+                if (mobHudP) mobHudP.innerHTML = '⭐️' + curP;
+                if (mobHudW) mobHudW.innerHTML = '💧' + curW;
+                if (hudM) hudM.innerHTML = ICONS.mountain + ' <span>ພູ: ' + curM + '</span>';
+                if (hudP) hudP.innerHTML = ICONS.period + ' <span>ຍຸກ: ' + curP + '</span>';
+                if (hudW) hudW.innerHTML = ICONS.water + ' <span>ນ້ຳ: ' + curW + '</span>';
+            }
 
             let spotBadgeClass = '';
             let spotBadgeHtml = '';
@@ -1946,21 +1945,36 @@
                 spotBadgeHtml = ICONS.alert + ' <span>【ຈຸດດາວ 2 ພະຍາດ】 ລະວັງສຸຂະພາບ</span>';
             }
 
-            if (hudBadge && hudBadgeText) {
-                if (spotBadgeHtml) {
-                    hudBadge.className = spotBadgeClass;
-                    hudBadgeText.innerHTML = spotBadgeHtml;
-                } else {
-                    hudBadge.className = "hidden";
+            if (spotBadgeHtml !== lastCachedSpotHtml) {
+                lastCachedSpotHtml = spotBadgeHtml;
+                const hudBadge = document.getElementById('hudBestSpotBadge');
+                const hudBadgeText = document.getElementById('hudBestSpotText');
+                const mobHudBadge = document.getElementById('mobileHudBestSpotBadge');
+                const mobHudBadgeText = document.getElementById('mobileHudBestSpotText');
+                if (hudBadge && hudBadgeText) {
+                    if (spotBadgeHtml) {
+                        hudBadge.className = spotBadgeClass;
+                        hudBadgeText.innerHTML = spotBadgeHtml;
+                    } else {
+                        hudBadge.className = "hidden";
+                    }
+                }
+                if (mobHudBadge && mobHudBadgeText) {
+                    if (spotBadgeHtml) {
+                        mobHudBadge.className = spotBadgeClass;
+                        mobHudBadgeText.innerHTML = spotBadgeHtml;
+                    } else {
+                        mobHudBadge.className = "hidden";
+                    }
                 }
             }
-            if (mobHudBadge && mobHudBadgeText) {
-                if (spotBadgeHtml) {
-                    mobHudBadge.className = spotBadgeClass;
-                    mobHudBadgeText.innerHTML = spotBadgeHtml;
-                } else {
-                    mobHudBadge.className = "hidden";
-                }
+
+            // Performance Gate: Skip heavy drawer HTML rendering if drawer is closed on mobile
+            const predDrawer = document.getElementById('predictionDrawer');
+            const isDrawerOpen = predDrawer && !predDrawer.classList.contains('translate-y-full');
+            const isDesktop = window.innerWidth >= 768;
+            if (!forceDrawerUpdate && !isDrawerOpen && !isDesktop) {
+                return;
             }
 
             // 2. Determine BaZhai match
@@ -2255,16 +2269,18 @@
             // Real-time Flying Stars & BaZhai Live Prediction Update
             updateLivePrediction(topCompassDeg);
 
-            // Real Magnetic Needle with fluid physics
-            if (deltaAngle !== null && Math.abs(deltaAngle) > 0.05) {
-                triggerNeedlePhysics(deltaAngle);
-            } else {
-                let diff = normRot - lastRotationForPhysics;
-                if (diff > 180) diff -= 360;
-                if (diff < -180) diff += 360;
-                lastRotationForPhysics = normRot;
-                if (Math.abs(diff) > 0.1 && Math.abs(diff) < 90) {
-                    triggerNeedlePhysics(diff);
+            // Real Magnetic Needle with fluid physics (manual drag mode only)
+            if (!liveCompassActive) {
+                if (deltaAngle !== null && Math.abs(deltaAngle) > 0.05) {
+                    triggerNeedlePhysics(deltaAngle);
+                } else {
+                    let diff = normRot - lastRotationForPhysics;
+                    if (diff > 180) diff -= 360;
+                    if (diff < -180) diff += 360;
+                    lastRotationForPhysics = normRot;
+                    if (Math.abs(diff) > 0.1 && Math.abs(diff) < 90) {
+                        triggerNeedlePhysics(diff);
+                    }
                 }
             }
         }
@@ -2876,7 +2892,11 @@
             }
         }
 
+        let currentLiveCompassUIState = null;
         function syncLiveCompassUI(state) {
+            if (currentLiveCompassUIState === state) return;
+            currentLiveCompassUIState = state;
+
             const mobileBtn = document.getElementById('mobileLiveCompassBtn');
             const mobileTxt = document.getElementById('mobileLiveCompassText');
             if (state === 'active') {
@@ -2905,6 +2925,11 @@
 
         function stopLiveCompass() {
             liveCompassActive = false;
+            pendingOrientationHeading = null;
+            if (orientationRafId) {
+                cancelAnimationFrame(orientationRafId);
+                orientationRafId = null;
+            }
             if (sensorTimeout) clearTimeout(sensorTimeout);
             window.removeEventListener('deviceorientation', onDeviceOrientation, true);
             window.removeEventListener('deviceorientationabsolute', onDeviceOrientation, true);
@@ -2983,6 +3008,9 @@
                     predDrawer.classList.add('translate-y-0');
                 }
                 if (predBackdrop) predBackdrop.classList.remove('hidden');
+                const normRot = ((currentRotation % 360) + 360) % 360;
+                const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+                updateLivePrediction(topCompassDeg, true);
             }
             function closePredictionDrawer() {
                 if (predDrawer) {
@@ -3164,10 +3192,14 @@
             }
         }
 
+        let pendingOrientationHeading = null;
+        let orientationRafId = null;
+
         function startLiveCompass() {
             liveCompassActive = true;
             sensorDataReceived = false;
             compassCalibrationOffset = 0;
+            pendingOrientationHeading = null;
             syncLiveCompassUI('connecting');
             requestWakeLock();
 
@@ -3196,26 +3228,45 @@
 
         function onDeviceOrientation(e) {
             let heading = null;
-            if (e.webkitCompassHeading !== undefined && e.webkitCompassHeading !== null) {
+            if (typeof e.webkitCompassHeading === 'number' && !isNaN(e.webkitCompassHeading) && e.webkitCompassHeading !== null) {
                 heading = e.webkitCompassHeading;
-            } else if (e.alpha !== null && e.alpha !== undefined) {
+            } else if (typeof e.alpha === 'number' && !isNaN(e.alpha) && e.alpha !== null) {
                 heading = (360 - e.alpha) % 360;
             }
 
             if (heading !== null && !isNaN(heading)) {
-                sensorDataReceived = true;
-                if (sensorTimeout) clearTimeout(sensorTimeout);
-                syncLiveCompassUI('active');
-                // In Feng Shui Luopan, South is 180° Top
-                const rawTargetRot = (180 - heading + 360) % 360;
-                const targetRot = ((rawTargetRot + compassCalibrationOffset) % 360 + 360) % 360;
-                let delta = 0;
-                if (lastLiveHeading !== null) {
-                    delta = heading - lastLiveHeading;
-                    if (delta > 180) delta -= 360;
-                    if (delta < -180) delta += 360;
+                if (!sensorDataReceived) {
+                    sensorDataReceived = true;
+                    if (sensorTimeout) clearTimeout(sensorTimeout);
+                    syncLiveCompassUI('active');
                 }
-                lastLiveHeading = heading;
+                pendingOrientationHeading = heading;
+                if (!orientationRafId) {
+                    orientationRafId = requestAnimationFrame(updateOrientationFrame);
+                }
+            }
+        }
+
+        function updateOrientationFrame() {
+            orientationRafId = null;
+            if (pendingOrientationHeading === null || !liveCompassActive) return;
+
+            const heading = pendingOrientationHeading;
+            const rawTargetRot = (180 - heading + 360) % 360;
+            const targetRot = ((rawTargetRot + compassCalibrationOffset) % 360 + 360) % 360;
+
+            let delta = 0;
+            if (lastLiveHeading !== null) {
+                delta = heading - lastLiveHeading;
+                if (delta > 180) delta -= 360;
+                if (delta < -180) delta += 360;
+            }
+            lastLiveHeading = heading;
+
+            let rotDiff = Math.abs(currentRotation - targetRot);
+            if (rotDiff > 180) rotDiff = 360 - rotDiff;
+            // Only update DOM if change is at least 0.15 deg to prevent CPU starvation and keep touches responsive
+            if (rotDiff > 0.15) {
                 currentRotation = targetRot;
                 updateCompassTransform(-delta);
             }
