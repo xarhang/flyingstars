@@ -1444,11 +1444,11 @@
                 const luckColor = isGood ? '#15803d' : '#b91c1c';
 
                 parts.push(`<path d="${createSectorPath(166, 198, dStart, dEnd)}" fill="${luckBg}" stroke="#0f172a" stroke-width="0.65"/>`);
-                parts.push(createRadialText(182, dMid, luckText, { fontSize: 10, fontWeight: '900', fill: luckColor, flipBottom: true }));
+                parts.push(createRadialText(182, dMid, luckText, { fontSize: 10, fontWeight: '900', fill: luckColor }));
 
                 const numBg = isTransparentMode ? 'rgba(254, 240, 138, 0.4)' : '#fef08a';
                 parts.push(`<path d="${createSectorPath(144, 166, dStart, dEnd)}" fill="${numBg}" stroke="#0f172a" stroke-width="0.65"/>`);
-                parts.push(createRadialText(155, dMid, String(k + 1), { fontSize: 8.5, fontWeight: '800', fill: '#0f172a', flipBottom: true }));
+                parts.push(createRadialText(155, dMid, String(k + 1), { fontSize: 8.5, fontWeight: '800', fill: '#0f172a' }));
             }
 
             // Master Radial Lines (Stops cleanly at outer edge of Fenjin ring r=198)
@@ -1538,8 +1538,7 @@
                 parts.push(createRadialText(90, ic.deg, ic.label, {
                     fontSize: 7.5,
                     fontWeight: '900',
-                    fill: ic.fill,
-                    flipBottom: true
+                    fill: ic.fill
                 }));
             });
 
