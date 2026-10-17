@@ -452,83 +452,114 @@
         </button>
     </aside>
 
-    <!-- MOBILE TOP BAR / HUD -->
-    <div class="fixed top-2 inset-x-2 z-30 flex items-center justify-between gap-1.5 pointer-events-none md:hidden">
-        <!-- Degree & Facing badge on mobile with Kong Wang status -->
-        <div class="pointer-events-auto border border-slate-700/80 px-2 py-1 rounded-xl shadow-2xl flex flex-col gap-0.5 flex-1 min-w-0 mr-1" style="background: rgba(15, 23, 42, 0.95);">
-            <div class="flex items-center gap-1 flex-nowrap">
-                <span id="mobileDegreeBadge" class="text-amber-400 font-mono font-bold text-[11px] leading-tight truncate">
-                    ໜ້າ 180° ໃຕ້ (午)
-                </span>
-                <span id="mobileKongWangBadge" class="text-[9px] px-1 py-0.2 rounded font-mono font-bold bg-emerald-950/90 text-emerald-300 border border-emerald-500/50 shrink-0">
-                    正针 (ກົງ)
-                </span>
-            </div>
-            <span id="mobileSittingBadge" class="text-[10px] text-slate-400 font-mono leading-tight truncate">
-                ພິງ 0° ເໜືອ (子)
-            </span>
-        </div>
+    <!-- UNIFIED MOBILE TOP GLASS ISLAND -->
+    <div class="fixed top-2.5 inset-x-2.5 z-30 pointer-events-none md:hidden flex justify-center">
+        <div class="pointer-events-auto w-full max-w-md bg-slate-950/90 backdrop-blur-xl border border-slate-700/70 rounded-2xl shadow-2xl p-2 flex flex-col gap-1.5 transition-all">
+            <!-- Row 1: Facing & Kong Wang + Flying Stars Mini-Pill -->
+            <div class="flex items-center justify-between gap-1.5">
+                <!-- Facing Degree Badge -->
+                <div class="flex items-center gap-1.5 min-w-0">
+                    <span id="mobileDegreeBadge" class="text-amber-400 font-mono font-black text-xs sm:text-sm tracking-tight truncate">
+                        ໜ້າ 180° ໃຕ້ (午)
+                    </span>
+                    <span id="mobileKongWangBadge" class="text-[9px] px-1.5 py-0.5 rounded-full font-mono font-bold bg-emerald-950/90 text-emerald-300 border border-emerald-500/50 shrink-0">
+                        正针 (ກົງ)
+                    </span>
+                </div>
 
-        <!-- Quick Action Buttons on Mobile Header -->
-        <div class="pointer-events-auto flex items-center gap-1 shrink-0">
-            <!-- Corner PIP toggle -->
-            <button id="mobileCornerPipBtn" type="button" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-800 text-amber-300 border border-slate-700/80 shadow-xl backdrop-blur-md transition" title="ຍັບໄວ້ມຸມຈໍ (Mini-Map)" style="background: rgba(15, 23, 42, 0.95);">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="13" y="13" width="6" height="6" rx="1"/></svg>
-                <span id="mobileCornerText" class="hidden">ມຸມ</span>
-            </button>
-            <!-- Mode Toggle between Rotate & Pan on Mobile -->
-            <button id="mobileDragToggleBtn" type="button" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-800 text-amber-300 border border-slate-700/80 shadow-xl backdrop-blur-md transition" title="ສະຫຼັບໂໝດໝຸນ / ຍັບ" style="background: rgba(15, 23, 42, 0.95);">
-                <span id="mobileDragIcon">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                <!-- Stars Mini-Pill -->
+                <div class="flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/60 px-2 py-0.5 rounded-full shrink-0 text-[10px] font-mono font-bold">
+                    <span class="text-blue-400 flex items-center gap-0.5" id="mobileHudMountainStar" title="ດາວພູເຂົາ">🏔️9</span>
+                    <span class="text-slate-600">|</span>
+                    <span class="text-amber-400 flex items-center gap-0.5" id="mobileHudPeriodStar" title="ດາວຍຸກ">⭐️9</span>
+                    <span class="text-slate-600">|</span>
+                    <span class="text-emerald-400 flex items-center gap-0.5" id="mobileHudWaterStar" title="ດາວນ້ຳ">💧9</span>
+                </div>
+            </div>
+
+            <!-- Row 2: Sitting + Actions (Reset, Drag Mode, Transparent, Corner PIP) -->
+            <div class="flex items-center justify-between gap-1 text-[10px] pt-0.5 border-t border-slate-800/80">
+                <span id="mobileSittingBadge" class="text-slate-400 font-mono truncate">
+                    ພິງ 0° ເໜືອ (子)
                 </span>
-                <span id="mobileDragText" class="hidden">ໝຸນ</span>
-            </button>
-            <!-- Reset View Center Button -->
-            <button id="mobileResetViewBtn" type="button" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-800 text-slate-300 border border-slate-700/80 shadow-xl backdrop-blur-md transition" title="ຈັດມຸມມອງກາງ (100%)" style="background: rgba(15, 23, 42, 0.95);">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-            </button>
-            <!-- Toggle Transparent Mode Button -->
-            <button id="mobileToggleModeBtn" type="button" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-800 text-slate-200 border border-slate-700/80 shadow-xl backdrop-blur-md transition" title="ສະຫຼັບໂໝດແຜ່ນໃສ/ມາດຕະຖານ" style="background: rgba(15, 23, 42, 0.95);">
-                <span id="mobileModeIcon">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M20 12v8H4v-8"/><path d="M6 12v4"/><path d="M10 12v2"/><path d="M14 12v4"/><path d="M18 12v2"/></svg>
-                </span>
-            </button>
+
+                <div class="flex items-center gap-1 shrink-0">
+                    <!-- Reset View Center Button -->
+                    <button id="mobileResetViewBtn" type="button" class="px-1.5 py-0.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 active:scale-95 text-slate-300 border border-slate-700/60 text-[10px] font-bold flex items-center gap-1 transition" title="ຈັດມຸມມອງກາງ (100%)">
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                        <span>ກາງ</span>
+                    </button>
+                    <!-- Mode Toggle between Rotate & Pan on Mobile -->
+                    <button id="mobileDragToggleBtn" type="button" class="px-1.5 py-0.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 active:scale-95 text-amber-300 border border-slate-700/60 text-[10px] font-bold flex items-center gap-1 transition" title="ສະຫຼັບໂໝດໝຸນ / ຍັບ">
+                        <span id="mobileDragIcon">
+                            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                        </span>
+                        <span id="mobileDragText">ໝຸນ</span>
+                    </button>
+                    <!-- Toggle Transparent Mode Button -->
+                    <button id="mobileToggleModeBtn" type="button" class="w-6 h-6 rounded-lg bg-slate-800/90 hover:bg-slate-700 active:scale-95 text-slate-300 border border-slate-700/60 flex items-center justify-center transition" title="ສະຫຼັບໂໝດແຜ່ນໃສ/ມາດຕະຖານ">
+                        <span id="mobileModeIcon">
+                            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M20 12v8H4v-8"/><path d="M6 12v4"/><path d="M10 12v2"/><path d="M14 12v4"/><path d="M18 12v2"/></svg>
+                        </span>
+                    </button>
+                    <!-- Corner PIP toggle -->
+                    <button id="mobileCornerPipBtn" type="button" class="w-6 h-6 rounded-lg bg-slate-800/90 hover:bg-slate-700 active:scale-95 text-amber-300 border border-slate-700/60 flex items-center justify-center transition" title="ຍັບໄວ້ມຸມຈໍ (Mini-Map)">
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="13" y="13" width="6" height="6" rx="1"/></svg>
+                        <span id="mobileCornerText" class="hidden">ມຸມ</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Best Spot Glow Badge (Target Locked) -->
+            <div id="mobileHudBestSpotBadge" class="hidden items-center justify-center gap-1.5 bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 px-2.5 py-0.5 rounded-full text-[9px] font-black shadow-md animate-pulse">
+                <span id="mobileHudBestSpotText">ວັງໂຊກລາບສູງສຸດ</span>
+            </div>
         </div>
     </div>
 
-    <!-- MOBILE FLOATING CARDINAL ROTATIONS (SLIM FLOATING PILL) -->
-    <div class="fixed bottom-[5.25rem] inset-x-0 z-20 flex justify-center pointer-events-none md:hidden">
-        <div class="pointer-events-auto flex items-center gap-1 bg-slate-950/85 backdrop-blur-md border border-slate-800 px-2 py-1 rounded-full shadow-2xl text-[10px]">
-            <span class="text-slate-400 font-mono text-[9px] px-1">ທິດຫຼັກ:</span>
-            <button data-rot="0" class="quick-rot px-2.5 py-0.5 rounded-full bg-slate-800/90 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold border border-slate-700/60 transition">ໃຕ້ 180°</button>
-            <button data-rot="90" class="quick-rot px-2.5 py-0.5 rounded-full bg-slate-800/90 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold border border-slate-700/60 transition">ຕົກ 270°</button>
-            <button data-rot="180" class="quick-rot px-2.5 py-0.5 rounded-full bg-slate-800/90 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold border border-slate-700/60 transition">ເໜືອ 0°</button>
-            <button data-rot="270" class="quick-rot px-2.5 py-0.5 rounded-full bg-slate-800/90 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold border border-slate-700/60 transition">ອອກ 90°</button>
+    <!-- MOBILE FLOATING MICRO-STEPPER & CARDINALS -->
+    <div class="fixed bottom-[4.85rem] inset-x-2 z-20 flex justify-center pointer-events-none md:hidden">
+        <div class="pointer-events-auto flex items-center gap-1 bg-slate-950/90 backdrop-blur-xl border border-slate-800/90 px-2 py-1 rounded-2xl shadow-2xl text-[10px]">
+            <!-- Fine Step Left -->
+            <button id="stepMinus1Btn" type="button" class="w-7 h-7 rounded-lg bg-slate-900 hover:bg-slate-800 active:scale-90 text-amber-300 font-mono font-bold border border-slate-700/60 flex items-center justify-center transition shadow-sm" title="ປັບຫຼຸດ 1 ອົງສາ">-1°</button>
+            <button id="stepMinusPoint2Btn" type="button" class="w-7 h-7 rounded-lg bg-slate-900 hover:bg-slate-800 active:scale-90 text-amber-400 font-mono text-[9px] font-bold border border-slate-700/60 flex items-center justify-center transition shadow-sm" title="ປັບຫຼຸດ 0.2 ອົງສາ">-0.2°</button>
+
+            <!-- Cardinal Presets -->
+            <div class="flex items-center gap-1 px-1 border-x border-slate-800/80">
+                <button data-rot="0" class="quick-rot px-2 py-1 rounded-lg bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold border border-slate-700/60 transition active:scale-95 text-[10px]">ໃຕ້ 180°</button>
+                <button data-rot="90" class="quick-rot px-2 py-1 rounded-lg bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold border border-slate-700/60 transition active:scale-95 text-[10px]">ຕົກ 270°</button>
+                <button data-rot="180" class="quick-rot px-2 py-1 rounded-lg bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold border border-slate-700/60 transition active:scale-95 text-[10px]">ເໜືອ 0°</button>
+                <button data-rot="270" class="quick-rot px-2 py-1 rounded-lg bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-slate-200 font-bold border border-slate-700/60 transition active:scale-95 text-[10px]">ອອກ 90°</button>
+            </div>
+
+            <!-- Fine Step Right -->
+            <button id="stepPlusPoint2Btn" type="button" class="w-7 h-7 rounded-lg bg-slate-900 hover:bg-slate-800 active:scale-90 text-amber-400 font-mono text-[9px] font-bold border border-slate-700/60 flex items-center justify-center transition shadow-sm" title="ປັບເພີ່ມ 0.2 ອົງສາ">+0.2°</button>
+            <button id="stepPlus1Btn" type="button" class="w-7 h-7 rounded-lg bg-slate-900 hover:bg-slate-800 active:scale-90 text-amber-300 font-mono font-bold border border-slate-700/60 flex items-center justify-center transition shadow-sm" title="ປັບເພີ່ມ 1 ອົງສາ">+1°</button>
         </div>
     </div>
 
     <!-- MOBILE MAIN DOCK (4 MASTER ACTION BUTTONS) -->
-    <div class="fixed bottom-3 inset-x-3 z-30 flex items-center justify-between gap-2 pointer-events-none md:hidden">
-        <div class="pointer-events-auto w-full bg-slate-950/95 backdrop-blur-md border border-slate-800 p-1.5 rounded-2xl shadow-2xl grid grid-cols-4 gap-1.5">
-            <!-- 1. AR Camera -->
-            <button id="mobileCameraBtn" type="button" class="flex flex-col items-center justify-center gap-0.5 py-1.5 px-1 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-emerald-500/40 transition shadow-sm" title="ເປີດກ້ອງສ່ອງຈິງ AR">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-                <span class="text-[10px] font-bold text-slate-200">ກ້ອງ AR</span>
+    <div class="fixed bottom-2.5 inset-x-2.5 z-30 flex items-center justify-between gap-2 pointer-events-none md:hidden">
+        <div class="pointer-events-auto w-full max-w-md mx-auto bg-slate-950/95 backdrop-blur-2xl border border-slate-800/90 p-1.5 rounded-2xl shadow-2xl grid grid-cols-4 gap-1.5">
+            <!-- 1. Live Compass Sensor -->
+            <button id="mobileLiveCompassBtn" type="button" class="flex flex-col items-center justify-center gap-1 py-1.5 px-1 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-95 text-slate-300 border border-slate-800 transition shadow-sm" title="ເຊື່ອມຕໍ່ເຂັມທິດຈິງ">
+                <svg class="w-5 h-5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                <span id="mobileLiveCompassText" class="text-[10px] font-bold tracking-tight">ເຂັມທິດຈິງ</span>
             </button>
-            <!-- 2. Live Compass Sensor -->
-            <button id="mobileLiveCompassBtn" type="button" class="flex flex-col items-center justify-center gap-0.5 py-1.5 px-1 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 border border-slate-700/60 transition shadow-sm" title="ເຊື່ອມຕໍ່ເຂັມທິດຈິງ">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-                <span class="text-[10px] font-bold text-slate-200">ເຂັມທິດຈິງ</span>
+            <!-- 2. AR Camera -->
+            <button id="mobileCameraBtn" type="button" class="flex flex-col items-center justify-center gap-1 py-1.5 px-1 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-95 text-slate-300 border border-slate-800 transition shadow-sm" title="ເປີດກ້ອງສ່ອງຈິງ AR">
+                <svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                <span class="text-[10px] font-bold tracking-tight">ກ້ອງ AR</span>
             </button>
             <!-- 3. Master Prediction Sheet -->
-            <button id="mobilePredictionFab" type="button" class="flex flex-col items-center justify-center gap-0.5 py-1.5 px-1 rounded-xl bg-purple-950/80 hover:bg-purple-900 text-purple-300 border border-purple-500/50 transition shadow-sm" title="ເບິ່ງບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                <span class="text-[10px] font-bold text-purple-200">ບົດທຳນາຍ</span>
+            <button id="mobilePredictionFab" type="button" class="flex flex-col items-center justify-center gap-1 py-1.5 px-1 rounded-xl bg-purple-950/70 hover:bg-purple-900 active:scale-95 text-purple-200 border border-purple-500/40 transition shadow-sm" title="ເບິ່ງບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ">
+                <svg class="w-5 h-5 text-purple-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span class="text-[10px] font-bold tracking-tight">ບົດທຳນາຍ</span>
             </button>
             <!-- 4. Settings & Kua Menu -->
-            <button id="mobileOpenMenuFab" type="button" class="flex flex-col items-center justify-center gap-0.5 py-1.5 px-1 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 transition shadow-sm" title="ເປີດເມນູຕັ້ງຄ່າ ແລະ ມິ່ງກວ້າ">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                <span class="text-[10px] font-black text-slate-950">ຕັ້ງຄ່າ</span>
+            <button id="mobileOpenMenuFab" type="button" class="flex flex-col items-center justify-center gap-1 py-1.5 px-1 rounded-xl bg-amber-500/90 hover:bg-amber-400 active:scale-95 text-slate-950 font-black border border-amber-400 transition shadow-sm" title="ເປີດເມນູຕັ້ງຄ່າ ແລະ ມິ່ງກວ້າ">
+                <svg class="w-5 h-5 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                <span class="text-[10px] font-black tracking-tight">ຕັ້ງຄ່າ</span>
             </button>
         </div>
     </div>
@@ -545,8 +576,8 @@
             <button id="closeArBtn" type="button" class="ml-1 text-slate-400 hover:text-white font-bold p-1 rounded-md hover:bg-slate-800" title="ປິດກ້ອງ AR"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         </div>
 
-        <!-- Live AR Flying Stars HUD: Shows Aimed Stars Without Needing VR -->
-        <div id="arStarHud" class="absolute top-[4.75rem] md:top-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 select-none pointer-events-none transition-all">
+        <!-- Live AR Flying Stars HUD: Shows Aimed Stars Without Needing VR (Desktop Viewport) -->
+        <div id="arStarHud" class="absolute top-4 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-1 select-none pointer-events-none transition-all">
             <div class="flex items-center gap-2 bg-slate-950/90 backdrop-blur-md border border-amber-500/40 px-3 py-1 rounded-2xl shadow-2xl pointer-events-auto">
                 <div class="flex items-center gap-2 text-[11px] font-bold text-slate-200">
                     <span class="text-blue-400 font-mono font-bold flex items-center gap-1" id="hudMountainStar" title="ດາວພູເຂົາ (ສຸຂະພາບ/ຄົນ)">ພູ: 9</span>
@@ -727,6 +758,7 @@
         let startDragX = 0;
         let startDragY = 0;
         let startDragAngle = 0;
+        let lastDragAngle = 0;
         let startRotation = 0;
         let planPosX = 0;
         let planPosY = 0;
@@ -1875,30 +1907,59 @@
             const hudBadgeText = document.getElementById('hudBestSpotText');
             const mobileKongWangBadge = document.getElementById('mobileKongWangBadge');
 
+            const mobHudM = document.getElementById('mobileHudMountainStar');
+            const mobHudP = document.getElementById('mobileHudPeriodStar');
+            const mobHudW = document.getElementById('mobileHudWaterStar');
+            const mobHudBadge = document.getElementById('mobileHudBestSpotBadge');
+            const mobHudBadgeText = document.getElementById('mobileHudBestSpotText');
+
             if (mobileKongWangBadge) {
                 mobileKongWangBadge.textContent = kw.badgeText;
-                mobileKongWangBadge.className = 'text-[9px] px-1.5 py-0.5 rounded-md font-mono font-bold border ' + kw.badgeClass;
+                mobileKongWangBadge.className = 'text-[9px] px-1.5 py-0.5 rounded-full font-mono font-bold border ' + kw.badgeClass;
             }
 
-            if (hudM) hudM.innerHTML = ICONS.mountain + ' <span>ພູ: ' + curM + '</span>';
-            if (hudP) hudP.innerHTML = ICONS.period + ' <span>ຍຸກ: ' + curP + '</span>';
-            if (hudW) hudW.innerHTML = ICONS.water + ' <span>ນ້ຳ: ' + curW + '</span>';
+            const mStarContent = ICONS.mountain + ' <span>ພູ: ' + curM + '</span>';
+            const pStarContent = ICONS.period + ' <span>ຍຸກ: ' + curP + '</span>';
+            const wStarContent = ICONS.water + ' <span>ນ້ຳ: ' + curW + '</span>';
+
+            if (hudM) hudM.innerHTML = mStarContent;
+            if (hudP) hudP.innerHTML = pStarContent;
+            if (hudW) hudW.innerHTML = wStarContent;
+
+            if (mobHudM) mobHudM.innerHTML = '🏔️' + curM;
+            if (mobHudP) mobHudP.innerHTML = '⭐️' + curP;
+            if (mobHudW) mobHudW.innerHTML = '💧' + curW;
+
+            let spotBadgeClass = '';
+            let spotBadgeHtml = '';
+            if (curPal === chart.bestWealthPal) {
+                spotBadgeClass = "flex items-center justify-center gap-1.5 bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 px-2.5 py-0.5 rounded-full text-[9px] font-black shadow-md animate-pulse pointer-events-auto border border-white/60";
+                spotBadgeHtml = ICONS.water + ' <span>【ວັງໂຊກລາບສູງສຸດຍຸກ ' + currentPeriod + '! ດາວນ້ຳ ' + curW + '】</span>';
+            } else if (curPal === chart.bestHealthPal) {
+                spotBadgeClass = "flex items-center justify-center gap-1.5 bg-gradient-to-r from-blue-600 to-teal-400 text-white px-2.5 py-0.5 rounded-full text-[9px] font-black shadow-md animate-pulse pointer-events-auto border border-white/60";
+                spotBadgeHtml = ICONS.mountain + ' <span>【ວັງສຸຂະພາບ & ບາຣະມີສູງສຸດ! ດາວພູ ' + curM + '】</span>';
+            } else if (curPal === chart.fiveYellowPal) {
+                spotBadgeClass = "flex items-center justify-center gap-1.5 bg-rose-600 text-white px-2.5 py-0.5 rounded-full text-[9px] font-black shadow-md pointer-events-auto border border-rose-300";
+                spotBadgeHtml = ICONS.alert + ' <span>【ຈຸດຕ້ອງຫ້າມ: ດາວ 5 ຫ້າເຫຼືອງ】 ຫ້າມເຈາະທຸບ</span>';
+            } else if (curPal === chart.illnessPal) {
+                spotBadgeClass = "flex items-center justify-center gap-1.5 bg-amber-600 text-white px-2.5 py-0.5 rounded-full text-[9px] font-black shadow-md pointer-events-auto border border-amber-300";
+                spotBadgeHtml = ICONS.alert + ' <span>【ຈຸດດາວ 2 ພະຍາດ】 ລະວັງສຸຂະພາບ</span>';
+            }
 
             if (hudBadge && hudBadgeText) {
-                if (curPal === chart.bestWealthPal) {
-                    hudBadge.className = "flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 px-3.5 py-1 rounded-full text-[10px] font-black shadow-2xl animate-bounce pointer-events-auto border border-white/60";
-                    hudBadgeText.innerHTML = ICONS.water + ' <span>【ວັງໂຊກລາບສູງສຸດຍຸກ ' + currentPeriod + '! ດາວນ້ຳ ' + curW + '】</span>';
-                } else if (curPal === chart.bestHealthPal) {
-                    hudBadge.className = "flex items-center gap-1.5 bg-gradient-to-r from-blue-600 to-teal-400 text-white px-3.5 py-1 rounded-full text-[10px] font-black shadow-2xl animate-bounce pointer-events-auto border border-white/60";
-                    hudBadgeText.innerHTML = ICONS.mountain + ' <span>【ວັງສຸຂະພາບ & ບາຣະມີສູງສຸດ! ດາວພູ ' + curM + '】</span>';
-                } else if (curPal === chart.fiveYellowPal) {
-                    hudBadge.className = "flex items-center gap-1.5 bg-rose-600 text-white px-3.5 py-1 rounded-full text-[10px] font-black shadow-2xl pointer-events-auto border border-rose-300";
-                    hudBadgeText.innerHTML = ICONS.alert + ' <span>【ຈຸດຕ້ອງຫ້າມ: ດາວ 5 ຫ້າເຫຼືອງ】 ຫ້າມເຈາະທຸບ</span>';
-                } else if (curPal === chart.illnessPal) {
-                    hudBadge.className = "flex items-center gap-1.5 bg-amber-600 text-white px-3.5 py-1 rounded-full text-[10px] font-black shadow-2xl pointer-events-auto border border-amber-300";
-                    hudBadgeText.innerHTML = ICONS.alert + ' <span>【ຈຸດດາວ 2 ພະຍາດ】 ລະວັງສຸຂະພາບ</span>';
+                if (spotBadgeHtml) {
+                    hudBadge.className = spotBadgeClass;
+                    hudBadgeText.innerHTML = spotBadgeHtml;
                 } else {
                     hudBadge.className = "hidden";
+                }
+            }
+            if (mobHudBadge && mobHudBadgeText) {
+                if (spotBadgeHtml) {
+                    mobHudBadge.className = spotBadgeClass;
+                    mobHudBadgeText.innerHTML = spotBadgeHtml;
+                } else {
+                    mobHudBadge.className = "hidden";
                 }
             }
 
@@ -2406,6 +2467,7 @@
             startPanX = panX;
             startPanY = panY;
             startDragAngle = getAngleFromCenter(e.clientX, e.clientY);
+            lastDragAngle = startDragAngle;
             startRotation = currentRotation;
             startPlanPosX = planPosX;
             startPlanPosY = planPosY;
@@ -2442,10 +2504,13 @@
                 updateFloorplanTransform();
             } else {
                 const currentAngle = getAngleFromCenter(e.clientX, e.clientY);
-                const delta = currentAngle - startDragAngle;
-                const prevRot = currentRotation;
-                currentRotation = startRotation + delta;
-                updateCompassTransform(currentRotation - prevRot);
+                let frameDelta = currentAngle - lastDragAngle;
+                // Handle crossing the -180/180 boundary smoothly without 360 degree jerk
+                if (frameDelta > 180) frameDelta -= 360;
+                if (frameDelta < -180) frameDelta += 360;
+                lastDragAngle = currentAngle;
+                currentRotation += frameDelta;
+                updateCompassTransform(frameDelta);
             }
         });
 
@@ -2500,6 +2565,24 @@
                 updateCompassTransform();
             });
         });
+
+        // Precision Micro-Stepper Functions (-1°, -0.2°, +0.2°, +1°)
+        function stepCompass(deltaDeg) {
+            currentRotation = ((currentRotation + deltaDeg) % 360 + 360) % 360;
+            updateCompassTransform(deltaDeg);
+        }
+
+        const stepMinus1Btn = document.getElementById('stepMinus1Btn');
+        if (stepMinus1Btn) stepMinus1Btn.addEventListener('click', () => stepCompass(-1));
+
+        const stepMinusPoint2Btn = document.getElementById('stepMinusPoint2Btn');
+        if (stepMinusPoint2Btn) stepMinusPoint2Btn.addEventListener('click', () => stepCompass(-0.2));
+
+        const stepPlusPoint2Btn = document.getElementById('stepPlusPoint2Btn');
+        if (stepPlusPoint2Btn) stepPlusPoint2Btn.addEventListener('click', () => stepCompass(0.2));
+
+        const stepPlus1Btn = document.getElementById('stepPlus1Btn');
+        if (stepPlus1Btn) stepPlus1Btn.addEventListener('click', () => stepCompass(1));
 
         zoomSlider.addEventListener('input', (e) => {
             const newZoom = parseInt(e.target.value, 10);
@@ -2786,17 +2869,23 @@
             if (state === 'active') {
                 toggleLiveCompassBtn.className = "w-full py-2 px-2.5 text-xs font-bold rounded-lg transition bg-emerald-600 text-white flex items-center justify-center gap-1.5 shadow mt-0.5 animate-pulse";
                 toggleLiveCompassBtn.innerHTML = `<span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping mr-1.5"></span> ກຳລັງເຊື່ອມຕໍ່ເຂັມທິດຈິງໃນມືຖື`;
-                if (mobileBtn) mobileBtn.className = "bg-emerald-600 text-white px-2.5 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 transition";
+                if (mobileBtn) {
+                    mobileBtn.className = "flex flex-col items-center justify-center gap-1 py-1.5 px-1 rounded-xl bg-emerald-600 text-white border border-emerald-400 transition shadow-lg animate-pulse";
+                }
                 if (mobileTxt) mobileTxt.textContent = "ເຊື່ອມຕໍ່ແລ້ວ";
             } else if (state === 'connecting') {
                 toggleLiveCompassBtn.className = "w-full py-2 px-2.5 text-xs font-bold rounded-lg transition bg-amber-600 text-white flex items-center justify-center gap-1.5 shadow mt-0.5 animate-pulse";
                 toggleLiveCompassBtn.innerHTML = `<span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping mr-1.5"></span> ກຳລັງຈັບຄູ່ເຂັມທິດຈິງ...`;
-                if (mobileBtn) mobileBtn.className = "bg-amber-600 text-white px-2.5 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 transition animate-pulse";
+                if (mobileBtn) {
+                    mobileBtn.className = "flex flex-col items-center justify-center gap-1 py-1.5 px-1 rounded-xl bg-amber-600 text-white border border-amber-400 transition shadow-lg animate-pulse";
+                }
                 if (mobileTxt) mobileTxt.textContent = "ກຳລັງຈັບຄູ່...";
             } else {
                 toggleLiveCompassBtn.className = "w-full py-2 px-2.5 text-xs font-bold rounded-lg transition border border-slate-700 bg-slate-950 hover:bg-slate-800 text-amber-300 hover:text-amber-200 flex items-center justify-center gap-1.5 shadow mt-0.5";
                 toggleLiveCompassBtn.innerHTML = `${ICONS.compass} ເຊື່ອມຕໍ່ເຂັມທິດຈິງໃນມືຖື`;
-                if (mobileBtn) mobileBtn.className = "bg-slate-900/90 hover:bg-slate-800 text-amber-300 border border-slate-700/80 px-2.5 py-1.5 rounded-xl text-xs font-bold shadow-xl flex items-center gap-1 backdrop-blur-md transition";
+                if (mobileBtn) {
+                    mobileBtn.className = "flex flex-col items-center justify-center gap-1 py-1.5 px-1 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-95 text-slate-300 border border-slate-800 transition shadow-sm";
+                }
                 if (mobileTxt) mobileTxt.textContent = "ເຂັມທິດຈິງ";
             }
         }
@@ -2983,7 +3072,7 @@
                 if (btnIcon) btnIcon.innerHTML = '<svg class="w-4 h-4 inline-block text-rose-400" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>';
                 if (mobileBtn) {
                     mobileBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-400');
-                    mobileBtn.classList.remove('bg-slate-900/90', 'text-emerald-400');
+                    mobileBtn.classList.remove('bg-slate-900/90', 'text-slate-300');
                 }
 
                 // Adjust opacity for AR transparency
@@ -3044,7 +3133,7 @@
             if (btnIcon) btnIcon.innerHTML = ICONS.camera;
             if (mobileBtn) {
                 mobileBtn.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-400');
-                mobileBtn.classList.add('bg-slate-900/90', 'text-emerald-400');
+                mobileBtn.classList.add('bg-slate-900/90', 'text-slate-300');
             }
 
             // Restore previous opacity and base style
