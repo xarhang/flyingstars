@@ -2040,6 +2040,305 @@
             return { guaNumber: gua, ...(guaData[gua] || guaData[1]) };
         }
 
+        // =========================================================================
+        // FIVE ELEMENTS & ANNUAL STAR SYNERGY ENGINE (ລະບົບວິເຄາະ 5 ທາດ & ດາວປະຈຳປີ)
+        // =========================================================================
+        const FIVE_ELEMENTS = {
+            wood: { key: 'wood', name: 'ທາດໄມ້', symbol: '🌲', cn: '木', color: 'text-emerald-400', bg: 'bg-emerald-950/60 border-emerald-500/40' },
+            fire: { key: 'fire', name: 'ທາດໄຟ', symbol: '🔥', cn: '火', color: 'text-rose-400', bg: 'bg-rose-950/60 border-rose-500/40' },
+            earth: { key: 'earth', name: 'ທາດດິນ', symbol: '🌍', cn: '土', color: 'text-amber-400', bg: 'bg-amber-950/60 border-amber-500/40' },
+            metal: { key: 'metal', name: 'ທາດທອງ', symbol: '⚔️', cn: '金', color: 'text-slate-200', bg: 'bg-slate-800/60 border-slate-400/40' },
+            water: { key: 'water', name: 'ທາດນ້ຳ', symbol: '💧', cn: '水', color: 'text-cyan-400', bg: 'bg-cyan-950/60 border-cyan-500/40' },
+            qi: { key: 'qi', name: 'ທາດລົມ/ຊີ່', symbol: '💨', cn: '气', color: 'text-teal-300', bg: 'bg-teal-950/60 border-teal-500/40' }
+        };
+
+        const ANNUAL_CENTER_STARS = {
+            2024: { center: 3, name: 'ປີມັງກອນ 2024 (甲辰)', taiSuiDir: 'ຕາເວັນອອກສ່ຽງໃຕ້ (辰)', sanShaDir: 'ໃຕ້', fiveYellowDir: 'ຕາເວັນຕົກ (兑)' },
+            2025: { center: 2, name: 'ປີງູ 2025 (乙巳)', taiSuiDir: 'ຕາເວັນອອກສ່ຽງໃຕ້ (巳)', sanShaDir: 'ອອກ', fiveYellowDir: 'ຕາເວັນອອກສ່ຽງເໜືອ (艮)' },
+            2026: { center: 1, name: 'ປີມ້າ 2026 (丙午) · ປັດຈຸບັນ', taiSuiDir: 'ທິດໃຕ້ (午)', sanShaDir: 'ເໜືອ (亥子丑)', fiveYellowDir: 'ທິດໃຕ້ (离)' },
+            2027: { center: 9, name: 'ປີແພະ 2027 (丁未)', taiSuiDir: 'ຕາເວັນຕົກສ່ຽງໃຕ້ (未)', sanShaDir: 'ຕົກ', fiveYellowDir: 'ທິດເໜືອ (坎)' }
+        };
+
+        function getStarElement(starNum) {
+            const s = parseInt(starNum, 10);
+            switch (s) {
+                case 1: return { elem: 'water', name: 'ທາດນ້ຳ', symbol: '💧', starName: '1 ຂາວ', full: '1 ຂາວ (ທາດນ້ຳ 💧)' };
+                case 2: return { elem: 'earth', name: 'ທາດດິນ (ພະຍາດ)', symbol: '🌍', starName: '2 ດຳ', full: '2 ດຳ (ທາດດິນ 🌍)' };
+                case 3: return { elem: 'wood', name: 'ທາດໄມ້ (ຜິດຖຽງ)', symbol: '🌲', starName: '3 ຂຽວ', full: '3 ຂຽວ (ທາດໄມ້ 🌲)' };
+                case 4: return { elem: 'wood', name: 'ທາດໄມ້ (ປັນຍາ)', symbol: '🌿', starName: '4 ຂຽວອ່ອນ', full: '4 ຂຽວ (ທາດໄມ້ 🌿)' };
+                case 5: return { elem: 'earth', name: 'ທາດດິນ (5ເຫຼືອງຮ້າຍ)', symbol: '⚠️', starName: '5 ເຫຼືອງ', full: '5 ເຫຼືອງ (ທາດດິນຮ້າຍ ⚠️)' };
+                case 6: return { elem: 'metal', name: 'ທາດທອງ (ອຳນາດ)', symbol: '⚔️', starName: '6 ຂາວ', full: '6 ຂາວ (ທາດທອງ ⚔️)' };
+                case 7: return { elem: 'metal', name: 'ທາດທອງ (ສູນເສຍ)', symbol: '🗡️', starName: '7 ແດງ', full: '7 ແດງ (ທາດທອງ 🗡️)' };
+                case 8: return { elem: 'earth', name: 'ທາດດິນ (ໂຊກຮອງ)', symbol: '⛰️', starName: '8 ຂາວ', full: '8 ຂາວ (ທາດດິນ ⛰️)' };
+                case 9: return { elem: 'fire', name: 'ທາດໄຟ (ໂຊກຍຸກ9)', symbol: '🔥', starName: '9 ມ່ວງ', full: '9 ມ່ວງ (ທາດໄຟ 🔥)' };
+                default: return { elem: 'earth', name: 'ທາດດິນ', symbol: '🌍', starName: 'ດິນ', full: 'ດິນ 🌍' };
+            }
+        }
+
+        function getFeatureElement(featKey, isOutdoor) {
+            if (isOutdoor) {
+                const fireKeys = ['electric_pole', 'pylon_tower', 'transformer', 'neighbor_roof_ridge', 'chimney_factory', 'temple_cemetery'];
+                const waterKeys = ['river_embrace', 'river_reverse_bow', 'river_straight_flush', 'mud_puddle_swamp', 'open_drain_sewer'];
+                const woodKeys = ['tree_big', 'tree_dry', 'tree_vines', 'tree_row'];
+                const metalKeys = ['fence_iron', 'neighbor_corner', 'neighbor_window_mirror', 'road_reverse_bow', 'road_viaduct_flyover', 'bridge_piercing', 'police_prison', 'tian_zhan_sha'];
+                const earthKeys = ['fence_brick', 'fence_too_high', 'neighbor_taller', 'neighbor_abandoned', 'neighbor_wall_close', 'road_cul_de_sac', 'construction_site'];
+                
+                if (fireKeys.includes(featKey)) return { elem: 'fire', name: 'ທາດໄຟ', symbol: '🔥', ...FIVE_ELEMENTS.fire };
+                if (waterKeys.includes(featKey)) return { elem: 'water', name: 'ທາດນ້ຳ', symbol: '💧', ...FIVE_ELEMENTS.water };
+                if (woodKeys.includes(featKey)) return { elem: 'wood', name: 'ທາດໄມ້', symbol: '🌲', ...FIVE_ELEMENTS.wood };
+                if (metalKeys.includes(featKey)) return { elem: 'metal', name: 'ທາດທອງ', symbol: '⚔️', ...FIVE_ELEMENTS.metal };
+                if (earthKeys.includes(featKey)) return { elem: 'earth', name: 'ທາດດິນ', symbol: '🌍', ...FIVE_ELEMENTS.earth };
+                return { elem: 'qi', name: 'ທາດລົມ/ຊີ່', symbol: '💨', ...FIVE_ELEMENTS.qi };
+            } else {
+                const fireKeys = ['stove', 'skylight', 'altar'];
+                const waterKeys = ['sink', 'fish', 'fountain', 'pool', 'shower_bath', 'laundry', 'toilet_bowl', 'toilet_indoor', 'toilet_outdoor', 'septic_drain'];
+                const woodKeys = ['dining', 'desk', 'stairs', 'back_yard'];
+                const metalKeys = ['refrigerator', 'safe_vault', 'garage', 'wardrobe_mirror'];
+                const earthKeys = ['bedroom', 'guest_bedroom', 'bed_head', 'living_room', 'sofa', 'storage', 'pillar_beam', 'center_palace', 'front_yard'];
+                
+                if (fireKeys.includes(featKey)) return { elem: 'fire', name: 'ທາດໄຟ', symbol: '🔥', ...FIVE_ELEMENTS.fire };
+                if (waterKeys.includes(featKey)) return { elem: 'water', name: 'ທາດນ້ຳ', symbol: '💧', ...FIVE_ELEMENTS.water };
+                if (woodKeys.includes(featKey)) return { elem: 'wood', name: 'ທາດໄມ້', symbol: '🌲', ...FIVE_ELEMENTS.wood };
+                if (metalKeys.includes(featKey)) return { elem: 'metal', name: 'ທາດທອງ', symbol: '⚔️', ...FIVE_ELEMENTS.metal };
+                if (earthKeys.includes(featKey)) return { elem: 'earth', name: 'ທາດດິນ', symbol: '🌍', ...FIVE_ELEMENTS.earth };
+                return { elem: 'qi', name: 'ທາດລົມ/ຊີ່', symbol: '💨', ...FIVE_ELEMENTS.qi };
+            }
+        }
+
+        function analyzeFiveElementsSynergy(featKey, isOutdoor, curW, curM, curPal, year) {
+            const yr = year || selectedAnnualYear || 2026;
+            const yrData = ANNUAL_CENTER_STARS[yr] || ANNUAL_CENTER_STARS[2026];
+            const annualChart = flyLoShu(yrData.center, 1);
+            const aStar = annualChart[curPal];
+
+            const featElemObj = getFeatureElement(featKey, isOutdoor);
+            const fElem = featElemObj.elem;
+            const starW = getStarElement(curW);
+            const starM = getStarElement(curM);
+            const starA = getStarElement(aStar);
+
+            let status = '✨ ພະລັງງານປົກກະຕິ';
+            let badgeClass = 'bg-slate-800 text-slate-300 border border-slate-700';
+            let relationDesc = '';
+            let remedyAdvice = '';
+
+            // SPECIAL CRITICAL CASES: ANNUAL 5 YELLOW (五黄) & 2 BLACK (二黑)
+            if (aStar === 5) {
+                if (fElem === 'fire') {
+                    status = '🚨 ໄຟເກີດດິນ 5 ເຫຼືອງ (ຮ້າຍແຮງສູງສຸດ!)';
+                    badgeClass = 'bg-rose-950 text-rose-300 border border-rose-500 animate-pulse';
+                    relationDesc = `ໃນປີ ${yr}, ທິດນີ້ກົງກັບ <b>ດາວ 5 ເຫຼືອງ (五黄大煞)</b> ທາດດິນພິດ! ທາດໄຟຂອງຈຸດນີ້ຈະໄປ <b>"ເກີດ/ເພີ່ມກຳລັງ" (火生土)</b> ໃຫ້ດາວ 5 ເຫຼືອງຮ້າຍແຮງຂຶ້ນສູງສຸດ. ລະວັງອຸບັດຕິເຫດ, ຜ່າຕັດດ່ວນ, ເສຍຊັບ ຫຼື ທຸລະກິດພັງທະລາຍ.`;
+                    remedyAdvice = `<b>ວິທີແກ້ໄຂດ່ວນ:</b> ຫ້າມຈູດໄຟແຮງ, ຫ້າມເປີດໄຟສີແດງ. ໃຫ້ແຂວນຫຼຽນ 6 ຈັກກະພັດ (ທາດທອງ ⚔️) ຫຼື ວາງໂຖນ້ຳອັນຢິນ (安忍水) ເພື່ອດູດຖ່າຍພະລັງດິນຮ້າຍອອກ.`;
+                } else if (fElem === 'water') {
+                    status = '⚠️ ນ້ຳປັ່ນປ່ວນດາວ 5 (ລະວັງເສຍຊັບ)';
+                    badgeClass = 'bg-amber-950 text-amber-300 border border-amber-500';
+                    relationDesc = `ດາວ 5 ເຫຼືອງ (ທາດດິນ) ພິຄາດທາດນ້ຳ (土克水), ພ້ອມທັງການເຄື່ອນໄຫວຂອງນ້ຳຈະໄປປຸກດາວ 5 ໃຫ້ຕື່ນໃນປີ ${yr}, ເຮັດໃຫ້ເງິນຄຳຮົ່ວໄຫຼ.`;
+                    remedyAdvice = `<b>ວິທີແກ້ໄຂ:</b> ຫຼຸດຄວາມແຮງຂອງນ້ຳ, ວາງລະຄັງລົມໂລຫະ 6 ທໍ່ ຫຼື ຫຼຽນທອງເຫຼືອງເພື່ອລະບາຍດິນ.`;
+                } else if (fElem === 'metal') {
+                    status = '🛡️ ທອງດູດຖ່າຍດາວ 5 (ສຸດຍອດການແກ້ໄຂ!)';
+                    badgeClass = 'bg-emerald-950 text-emerald-300 border border-emerald-500';
+                    relationDesc = `ທາດທອງຂອງຈຸດນີ້ຊ່ວຍ <b>"ດູດຖ່າຍພະລັງດິນຮ້າຍ 5 ເຫຼືອງ" (土生金 泄煞)</b> ໃຫ້ອ່ອນກຳລັງລົງໂດຍທຳມະຊາດໃນປີ ${yr}. ປ່ຽນຮ້າຍໃຫ້ກາຍເປັນເບົາ.`;
+                    remedyAdvice = `<b>ຄຳແນະນຳ:</b> ຮັກສາຄວາມສະອາດ ແລະ ເພີ່ມສຽງກັງວານຂອງໂລຫະເພື່ອເພີ່ມພະລັງປ້ອງກັນ.`;
+                } else if (fElem === 'wood') {
+                    status = '⚠️ ໄມ້ຂົ່ມດິນ 5 (ລະວັງແຮງສະທ້ອນ)';
+                    badgeClass = 'bg-amber-950 text-amber-300 border border-amber-500';
+                    relationDesc = `ໄມ້ພິຄາດດິນ (木克土), ແຕ່ດາວ 5 ເປັນດິນແຂງມະຫາວິບັດ, ການຕັດໄມ້ ຫຼື ຂຸດດິນໃນປີ ${yr} ຈະເກີດແຮງກະທົບຮ້າຍແຮງ.`;
+                    remedyAdvice = `<b>ວິທີແກ້ໄຂ:</b> ຫ້າມຂຸດດິນ ຫ້າມຕັດແຕ່ງກິ່ງໄມ້ໃຫຍ່ໃນທິດນີ້ໃນປີ ${yr}.`;
+                } else {
+                    status = '⚠️ ດິນທັບດິນ 5 (ພະລັງຮ້າຍໜາແໜ້ນ)';
+                    badgeClass = 'bg-yellow-950 text-yellow-300 border border-yellow-500';
+                    relationDesc = `ທາດດິນຊ້ອນດາວ 5 ເຫຼືອງ ເຮັດໃຫ້ພະລັງໜັກອຶ້ງ.`;
+                    remedyAdvice = `<b>ວິທີແກ້ໄຂ:</b> ແຂວນລະຄັງລົມໂລຫະ ຫຼື ຫຼຽນ 6 ຈັກກະພັດ ເພື່ອຖ່າຍເທ.`;
+                }
+            } else if (aStar === 2) {
+                if (fElem === 'fire') {
+                    status = '🔴 ໄຟເກີດດາວ 2 ພະຍາດ (ໂລກາຊຳເຮື້ອ!)';
+                    badgeClass = 'bg-rose-950 text-rose-300 border border-rose-500';
+                    relationDesc = `ທາດໄຟຈະໄປເກີດ <b>ດາວ 2 ດຳ (二黑病符)</b> ທາດດິນພະຍາດໃນປີ ${yr}, ເຮັດໃຫ້ຄົນໃນບ້ານເຈັບປ່ວຍງ່າຍ, ລະບົບກະເພາະແລະລຳໄສ້ອັກເສບ.`;
+                    remedyAdvice = `<b>ວິທີແກ້ໄຂ:</b> ແຂວນນ້ຳເຕົ້າທອງເຫຼືອງ (铜葫芦) ຫຼື ຫຼຽນ 6 ຈັກກະພັດ ເພື່ອດູດພະຍາດ.`;
+                } else if (fElem === 'metal') {
+                    status = '🛡️ ທອງຖ່າຍເທດາວພະຍາດ (ປອດໄພ)';
+                    badgeClass = 'bg-emerald-950 text-emerald-300 border border-emerald-500';
+                    relationDesc = `ທາດທອງຊ່ວຍຖ່າຍເທດິນດາວ 2 (土生金) ເຮັດໃຫ້ພະຍາດເບົາບາງລົງໃນປີ ${yr}.`;
+                    remedyAdvice = `<b>ຄຳແນະນຳ:</b> ຮັກສາຄວາມສະອາດ ແລະ ອາກາດຖ່າຍເທ.`;
+                } else {
+                    status = '⚠️ ລະວັງດາວ 2 ດຳປະຈຳປີ';
+                    badgeClass = 'bg-amber-950 text-amber-300 border border-amber-500';
+                    relationDesc = `ດາວ 2 ດຳຈອນມາທັບໃນປີ ${yr}. ລະວັງສຸຂະພາບແມ່ຍິງ ແລະ ຜູ້ສູງອາຍຸ.`;
+                    remedyAdvice = `<b>ວິທີແກ້ໄຂ:</b> ວາງນ້ຳເຕົ້າທອງເຫຼືອງເພື່ອດູດພະຍາດ.`;
+                }
+            } else if (aStar === 9) {
+                if (fElem === 'wood') {
+                    status = '🌟 ໄມ້ເກີດໄຟ 9 (ມະຫາໂຊກຍຸກ 9!)';
+                    badgeClass = 'bg-emerald-900 text-emerald-200 border border-emerald-400 font-black';
+                    relationDesc = `<b>ໄມ້ເກີດໄຟ (木生火)!</b> ທາດໄມ້ເປັນເຊື້ອໄຟຢ່າງດີທີ່ຈະຈູດດາວ 9 ມ່ວງ (ດາວໂຊກໃຫຍ່ຍຸກ 9) ໃນປີ ${yr} ໃຫ້ສະຫວ່າງຮຸ່ງເຮືອງສູງສຸດ! ເສີມຊື່ສຽງ, ເງິນຄຳ ແລະ ຄວາມຮັກ.`;
+                    remedyAdvice = `<b>ວິທີເສີມ:</b> ວາງຕົ້ນໄມ້ໃບຂຽວສວຍງາມ, ເປີດໄຟສະຫວ່າງ, ຮັກສາຄວາມສະອາດເພື່ອຮັບຊັບ.`;
+                } else if (fElem === 'fire') {
+                    status = '🔥 ໄຟເສີມໄຟ 9 (ຮຸ່ງເຮືອງທະວີຄູນ)';
+                    badgeClass = 'bg-purple-900 text-purple-200 border border-purple-400 font-bold';
+                    relationDesc = `ທາດໄຟເສີມກຳລັງໃຫ້ດາວ 9 ມ່ວງ ໃຫ້ມີອິດທິພົນແຮງກ້າ ເສີມຄວາມຮຸ່ງເຮືອງໃນປີ ${yr}.`;
+                    remedyAdvice = `<b>ວິທີເສີມ:</b> ຮັກສາຄວາມສະອາດ ແລະ ເປີດໄຟສະຫວ່າງສະເໝີ.`;
+                } else if (fElem === 'water') {
+                    status = '❌ ນ້ຳພິຄາດໄຟ 9 (ດັບໂຊກລາບ)';
+                    badgeClass = 'bg-rose-950 text-rose-300 border border-rose-500';
+                    relationDesc = `ທາດນ້ຳໄປດັບພະລັງດາວ 9 ມ່ວງ (水克火), ເຮັດໃຫ້ໂຊກລາບ ແລະ ຄວາມຮຸ່ງເຮືອງໃນປີ ${yr} ອ່ອນລົງ.`;
+                    remedyAdvice = `<b>ວິທີແກ້ໄຂ:</b> ວາງຕົ້ນໄມ້ຂຽວ (ທາດໄມ້ 🌲) ຂັ້ນກາງ ເພື່ອໃຫ້ "ນ້ຳເກີດໄມ້, ໄມ້ເກີດໄຟ" ແປງພະລັງໃຫ້ກາຍເປັນມຸງຄຸນ.`;
+                } else {
+                    status = '✨ ດາວ 9 ມ່ວງມຸງຄຸນຍຸກ 9';
+                    badgeClass = 'bg-purple-950 text-purple-300 border border-purple-500';
+                    relationDesc = `ດາວ 9 ມ່ວງເປັນດາວປະທານຍຸກ 9 ຈອນມາທັບໃນປີ ${yr}. ນຳພາຄວາມສຳເລັດ ແລະ ງານມຸງຄຸນ.`;
+                    remedyAdvice = `<b>ວິທີເສີມ:</b> ເປີດໄຟສະຫວ່າງ ແລະ ຮັກສາຄວາມສະອາດ.`;
+                }
+            } else if (aStar === 1) {
+                if (fElem === 'metal') {
+                    status = '🌟 ທອງເກີດນ້ຳ 1 (ປັນຍາ & ຊັບສິນ)';
+                    badgeClass = 'bg-cyan-900 text-cyan-200 border border-cyan-400 font-black';
+                    relationDesc = `<b>ທອງເກີດນ້ຳ (金生水)!</b> ທາດທອງເກີດດາວ 1 ຂາວ ນຳພາໂຊກລາບສາຍນ້ຳ, ສະຕິປັນຍາ, ການສຶກສາ ແລະ ມິດຕະພາບທີ່ດີໃນປີ ${yr}.`;
+                    remedyAdvice = `<b>ວິທີເສີມ:</b> ຕັ້ງໂຕະເຮັດວຽກ, ວາງວັດຖຸໂລຫະເຫຼື້ອມໃສ.`;
+                } else if (fElem === 'earth') {
+                    status = '⚠️ ດິນພິຄາດນ້ຳ 1 (ຕິດຂັດ)';
+                    badgeClass = 'bg-amber-950 text-amber-300 border border-amber-500';
+                    relationDesc = `ທາດດິນຂົ່ມນ້ຳ 1 (土克水), ອາດເຮັດໃຫ້ການເງິນ ຫຼື ສະຕິປັນຍາຕິດຂັດໃນປີ ${yr}.`;
+                    remedyAdvice = `<b>ວິທີແກ້ໄຂ:</b> ວາງວັດຖຸໂລຫະ (ທາດທອງ) ເພື່ອໃຫ້ "ດິນເກີດທອງ, ທອງເກີດນ້ຳ".`;
+                } else {
+                    status = '✨ ດາວ 1 ຂາວວາລີປັນຍາ';
+                    badgeClass = 'bg-cyan-950 text-cyan-300 border border-cyan-500';
+                    relationDesc = `ດາວ 1 ຂາວທາດນ້ຳ ນຳພາໂຊກລາບແລະສະຕິປັນຍາໃນປີ ${yr}.`;
+                    remedyAdvice = `<b>ວິທີເສີມ:</b> ຮັກສາຄວາມສະອາດ.`;
+                }
+            } else if (aStar === 6 || aStar === 7) {
+                if (fElem === 'earth') {
+                    status = '🌟 ດິນເກີດທອງ (ອຳນາດ & ບາຣະມີ)';
+                    badgeClass = 'bg-slate-800 text-emerald-300 border border-emerald-500 font-bold';
+                    relationDesc = `<b>ດິນເກີດທອງ (土生金)!</b> ທາດດິນເສີມພະລັງໃຫ້ດາວທອງ ເສີມອຳນາດ, ການເລື່ອນຂັ້ນເລື່ອນຕຳແໜ່ງໃນປີ ${yr}.`;
+                    remedyAdvice = `<b>ວິທີເສີມ:</b> ວາງເຄື່ອງເຄືອບດິນເຜົາ ຫຼື ຫີນມຸງຄຸນ.`;
+                } else if (fElem === 'fire') {
+                    status = '⚠️ ໄຟພິຄາດທອງ (ລະວັງຜິດຖຽງ)';
+                    badgeClass = 'bg-rose-950 text-rose-300 border border-rose-500';
+                    relationDesc = `ທາດໄຟລົນທອງ (火克金), ລະວັງການຜິດຖຽງ, ຄວາມເຄັ່ງຕຶງ ຫຼື ບັນຫາລະບົບຫາຍໃຈ.`;
+                    remedyAdvice = `<b>ວິທີແກ້ໄຂ:</b> ວາງເຄື່ອງປັ້ນດິນເຜົາ (ທາດດິນ) ເພື່ອເຊື່ອມ "ໄຟເກີດດິນ, ດິນເກີດທອງ".`;
+                } else {
+                    status = '✨ ດາວທອງຈອນມາທັບ';
+                    badgeClass = 'bg-slate-800 text-slate-300 border border-slate-600';
+                    relationDesc = `ດາວທອງຈອນມາຕົກໃນທິດນີ້ໃນປີ ${yr}.`;
+                    remedyAdvice = `<b>ຄຳແນະນຳ:</b> ຈັດວາງໃຫ້ເປັນລະບຽບຮຽບຮ້ອຍ.`;
+                }
+            } else if (aStar === 8) {
+                if (fElem === 'fire') {
+                    status = '🌟 ໄຟເກີດດິນ 8 (ເສີມຊັບອະສັງຫາ)';
+                    badgeClass = 'bg-amber-900 text-amber-200 border border-amber-400 font-bold';
+                    relationDesc = `<b>ໄຟເກີດດິນ (火生土)!</b> ເສີມດາວ 8 ຂາວ ໃຫ້ໂຊກລາບດ້ານທີ່ດິນ ແລະ ຄວາມໝັ້ນຄົງເພີ່ມຂຶ້ນ.`;
+                    remedyAdvice = `<b>ວິທີເສີມ:</b> ເປີດໄຟສະຫວ່າງອົບອຸ່ນ.`;
+                } else if (fElem === 'wood') {
+                    status = '⚠️ ໄມ້ພິຄາດດິນ 8';
+                    badgeClass = 'bg-amber-950 text-amber-300 border border-amber-500';
+                    relationDesc = `ໄມ້ພິຄາດດິນ (木克土), ອາດເຮັດໃຫ້ການເງິນຊັກຊ້າ.`;
+                    remedyAdvice = `<b>ວິທີແກ້ໄຂ:</b> ວາງໂຄມໄຟສີແດງ (ທາດໄຟ) ເພື່ອເຊື່ອມທາດ.`;
+                } else {
+                    status = '✨ ດາວ 8 ຂາວມຸງຄຸນ';
+                    badgeClass = 'bg-amber-950 text-amber-300 border border-amber-500';
+                    relationDesc = `ດາວ 8 ຂາວທາດດິນ ນຳພາຄວາມໝັ້ນຄົງໃນປີ ${yr}.`;
+                    remedyAdvice = `<b>ຄຳແນະນຳ:</b> ຮັກສາຄວາມສະອາດ.`;
+                }
+            } else if (aStar === 3 || aStar === 4) {
+                if (fElem === 'water') {
+                    status = '🌟 ນ້ຳເກີດໄມ້ (ປັນຍາ & ຄວາມຈະເລີນ)';
+                    badgeClass = 'bg-emerald-900 text-emerald-200 border border-emerald-400 font-bold';
+                    relationDesc = `<b>ນ້ຳເກີດໄມ້ (水生木)!</b> ເສີມສະຕິປັນຍາ ແລະ ຄວາມຈະເລີນເຕີບໂຕໃນປີ ${yr}.`;
+                    remedyAdvice = `<b>ວິທີເສີມ:</b> ວາງນ້ຳສະອາດ, ໄຜ່ກວນອິມ.`;
+                } else if (fElem === 'metal') {
+                    status = '⚠️ ທອງຕັດໄມ້ (ລະວັງຜິດຖຽງ)';
+                    badgeClass = 'bg-rose-950 text-rose-300 border border-rose-500';
+                    relationDesc = `ທອງຕັດໄມ້ (金克木), ອາດເກີດການຂັດແຍ້ງ ຫຼື ເຈັບແຂນຂາ.`;
+                    remedyAdvice = `<b>ວິທີແກ້ໄຂ:</b> ວາງໂຖນ້ຳນິ້ງສະອາດ (ທາດນ້ຳ) ເພື່ອເຊື່ອມທາດ.`;
+                } else {
+                    status = '✨ ດາວໄມ້ຈອນມາທັບ';
+                    badgeClass = 'bg-emerald-950 text-emerald-300 border border-emerald-500';
+                    relationDesc = `ດາວທາດໄມ້ຈອນມາຕົກໃນທິດນີ້ໃນປີ ${yr}.`;
+                    remedyAdvice = `<b>ຄຳແນະນຳ:</b> ຈັດວາງໃຫ້ເປັນລະບຽບ.`;
+                }
+            }
+
+            let natalSynergy = '';
+            if (curW === 9 && fElem === 'wood') {
+                natalSynergy = ' · 🌟 ເສີມດາວນ້ຳ 9 ຍຸກປັດຈຸບັນ!';
+            } else if (curW === 9 && fElem === 'water') {
+                natalSynergy = ' · ⚠️ ລະວັງນ້ຳດັບໄຟດາວນ້ຳ 9.';
+            } else if (curW === 5 && fElem === 'fire') {
+                natalSynergy = ' · 🚨 ເຕົາໄຟ/ທາດໄຟກົງດາວນ້ຳ 5 ຫ້າມເດັດຂາດ!';
+            } else if (curW === 1 && fElem === 'metal') {
+                natalSynergy = ' · ✨ ທອງເກີດດາວນ້ຳ 1 ໂຊກລາບ.';
+            }
+
+            return {
+                featElem: featElemObj,
+                starW,
+                starM,
+                starA,
+                aStar,
+                year: yr,
+                status: status + natalSynergy,
+                badgeClass,
+                relationDesc,
+                remedyAdvice
+            };
+        }
+
+        function renderFiveElementsSynergyCard(featKey, isOutdoor, curW, curM, curPal, year) {
+            const syn = analyzeFiveElementsSynergy(featKey, isOutdoor, curW, curM, curPal, year);
+            const yrButtons = [2024, 2025, 2026, 2027].map(y =>
+                '<button type="button" onclick="setSelectedAnnualYear(' + y + ')" class="px-2 py-0.5 rounded text-[9px] font-bold transition ' +
+                    (syn.year === y ? 'bg-amber-400 text-slate-950 font-black shadow-sm' : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800') + '">' +
+                    y + (y === 2026 ? '★' : '') +
+                '</button>'
+            ).join('');
+
+            return (
+                '<div class="bg-slate-900/90 p-2.5 rounded-xl border border-indigo-500/40 flex flex-col gap-1.5 mt-2 shadow-inner">' +
+                    '<div class="flex items-center justify-between text-xs">' +
+                        '<span class="text-indigo-300 font-bold flex items-center gap-1">' +
+                            '<span>☯️</span> ວິເຄາະ 5 ທາດ & ດາວປີ ' + syn.year + ':' +
+                        '</span>' +
+                        '<div class="flex items-center gap-1">' +
+                            yrButtons +
+                        '</div>' +
+                    '</div>' +
+
+                    '<div class="flex items-center justify-between text-[10px] pt-0.5">' +
+                        '<span class="text-slate-400 font-mono">ສະຖານະ 5 ທາດ:</span>' +
+                        '<span class="px-2 py-0.5 rounded font-mono font-bold ' + syn.badgeClass + '">' +
+                            syn.status +
+                        '</span>' +
+                    '</div>' +
+
+                    '<div class="grid grid-cols-3 gap-1.5 text-[10px] text-center font-mono font-bold pt-1">' +
+                        '<div class="p-1 rounded bg-slate-950 border border-slate-700/80">' +
+                            '<span class="text-slate-400 block text-[9px]">ທາດຂອງສິ່ງນີ້</span>' +
+                            '<span class="' + syn.featElem.color + '">' + syn.featElem.symbol + ' ' + syn.featElem.name + '</span>' +
+                        '</div>' +
+                        '<div class="p-1 rounded bg-slate-950 border border-slate-700/80">' +
+                            '<span class="text-slate-400 block text-[9px]">ດາວນ້ຳ / ດາວພູ</span>' +
+                            '<span class="text-cyan-300">' + curW + syn.starW.symbol + ' / ' + curM + syn.starM.symbol + '</span>' +
+                        '</div>' +
+                        '<div class="p-1 rounded bg-slate-950 border border-slate-700/80">' +
+                            '<span class="text-slate-400 block text-[9px]">ດາວປີ ' + syn.year + ' (' + (ANNUAL_CENTER_STARS[syn.year] ? ANNUAL_CENTER_STARS[syn.year].name.split(' ')[0] : '') + ')</span>' +
+                            '<span class="' + (syn.starA.elem === 'fire' ? 'text-purple-300' : (syn.starA.elem === 'water' ? 'text-cyan-300' : (syn.starA.elem === 'wood' ? 'text-emerald-300' : (syn.aStar === 5 ? 'text-yellow-400' : 'text-amber-300')))) + '">' +
+                                '★ ' + syn.starA.full +
+                            '</span>' +
+                        '</div>' +
+                    '</div>' +
+
+                    '<p class="text-[11px] text-slate-200 leading-relaxed pt-1 border-t border-slate-800/80">' +
+                        syn.relationDesc +
+                    '</p>' +
+
+                    '<div class="bg-black/50 p-2 rounded-lg text-[10px] text-amber-200 leading-relaxed border border-amber-500/30">' +
+                        syn.remedyAdvice +
+                    '</div>' +
+                '</div>'
+            );
+        }
+
         function setFengShuiMode(mode) {
             fengShuiMode = mode;
             const normRot = ((currentRotation % 360) + 360) % 360;
@@ -3375,6 +3674,7 @@
                             '<div class="bg-black/40 p-2 rounded-lg text-[10px] text-amber-200 leading-relaxed border border-amber-500/30">' +
                                 '<b>💡 ວິທີຈັດວາງ/ແກ້ໄຂ:</b> ' + verdictAction +
                             '</div>' +
+                            renderFiveElementsSynergyCard(selectedRoomType, false, curW, curM, curPal, selectedAnnualYear) +
                         '</div>';
                 }
 
@@ -3898,6 +4198,7 @@
                             '<div class="bg-black/40 p-2 rounded-lg text-[10px] text-amber-200 leading-relaxed border border-amber-500/30">' +
                                 '<b>💡 ວິທີຈັດວາງ/ແກ້ໄຂ:</b> ' + lAction +
                             '</div>' +
+                            renderFiveElementsSynergyCard(selectedLuantouType, true, curW, curM, curPal, selectedAnnualYear) +
                         '</div>';
                 }
 
@@ -4129,14 +4430,7 @@
 
                 // TAB 3: ANNUAL FLYING STARS & AFFLICTIONS (2026/2025/2024)
                 else if (activeYangTab === 'tab_annual') {
-                    const annualCenterStars = {
-                        2024: { center: 3, name: 'ປີມັງກອນ 2024 (甲辰)', taiSuiDir: 'ຕາເວັນອອກສ່ຽງໃຕ້ (辰)', sanShaDir: 'ໃຕ້', fiveYellowDir: 'ຕາເວັນຕົກ (兑)' },
-                        2025: { center: 2, name: 'ປີງູ 2025 (乙巳)', taiSuiDir: 'ຕາເວັນອອກສ່ຽງໃຕ້ (巳)', sanShaDir: 'ອອກ', fiveYellowDir: 'ຕາເວັນອອກສ່ຽງເໜືອ (艮)' },
-                        2026: { center: 1, name: 'ປີມ້າ 2026 (丙午) · ປັດຈຸບັນ', taiSuiDir: 'ທິດໃຕ້ (午)', sanShaDir: 'ເໜືອ (亥子丑)', fiveYellowDir: 'ຕາເວັນອອກສ່ຽງໃຕ້ (巽)' },
-                        2027: { center: 9, name: 'ປີແພະ 2027 (丁未)', taiSuiDir: 'ຕາເວັນຕົກສ່ຽງໃຕ້ (未)', sanShaDir: 'ຕົກ', fiveYellowDir: 'ທິດເໜືອ (坎)' }
-                    };
-
-                    const yrData = annualCenterStars[selectedAnnualYear] || annualCenterStars[2026];
+                    const yrData = ANNUAL_CENTER_STARS[selectedAnnualYear] || ANNUAL_CENTER_STARS[2026];
                     const annualBase = flyLoShu(yrData.center, 1);
                     const annualStarInCurPal = annualBase[curPal];
 
