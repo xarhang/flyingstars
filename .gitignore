@@ -6,6 +6,8 @@
 !/.gitattributes
 !/README.md
 !/index.html
+!/favicon.ico
+!/favicon.png
 
 # Whitelist asset/js/qrcode.min.js and asset/fonts/
 !/asset/
