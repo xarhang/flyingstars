@@ -3070,6 +3070,228 @@
             return plate;
         }
 
+        
+        // =========================================================================
+        // MASTER SYSTEM 2.11: 28 LUNAR MANSIIONS & CELESTIAL ANIMAL STARS (二十八宿分金度数 & 禽星五行)
+        // =========================================================================
+        const TWENTY_EIGHT_MANSIONS = [
+            // Eastern Azure Dragon (东方青龙)
+            { idx: 0, char: '角', pinyin: 'Jiǎo', lao: 'ແກ (ແຂ້/ໄມ້)', span: 12.0, element: 'Wood', beast: '蛟 (ແຂ້)', quad: '青龙 (East)', isGood: true, goodDegs: [3, 7, 10], fatalDegs: [0, 6, 12] },
+            { idx: 1, char: '亢', pinyin: 'Kàng', lao: 'ຄັ່ງ (ມັງກອນ/ຄຳ)', span: 9.0, element: 'Metal', beast: '龙 (ມັງກອນ)', quad: '青龙 (East)', isGood: false, goodDegs: [4, 8], fatalDegs: [0, 3, 9] },
+            { idx: 2, char: '氐', pinyin: 'Dǐ', lao: 'ຕີ (ແບ້/ດິນ)', span: 16.0, element: 'Earth', beast: '貉 (ໝາແຣກຄູນ)', quad: '青龙 (East)', isGood: false, goodDegs: [5, 11, 14], fatalDegs: [0, 8, 16] },
+            { idx: 3, char: '房', pinyin: 'Fáng', lao: 'ຝາງ (ກະຕ່າຍ/ຕາເວັນ)', span: 5.5, element: 'Sun', beast: '兔 (ກະຕ່າຍ)', quad: '青龙 (East)', isGood: true, goodDegs: [1, 3, 5], fatalDegs: [0, 5.5] },
+            { idx: 4, char: '心', pinyin: 'Xīn', lao: 'ຊິນ (ໝາຈິ້ງຈອກ/ເດືອນ)', span: 5.0, element: 'Moon', beast: '狐 (ໝາຈິ້ງຈອກ)', quad: '青龙 (East)', isGood: false, goodDegs: [2], fatalDegs: [0, 5] },
+            { idx: 5, char: '尾', pinyin: 'Wěi', lao: 'ເຫວີ່ຍ (ເສືອ/ໄຟ)', span: 18.0, element: 'Fire', beast: '虎 (ເສືອ)', quad: '青龙 (East)', isGood: true, goodDegs: [4, 9, 13, 17], fatalDegs: [0, 7, 18] },
+            { idx: 6, char: '箕', pinyin: 'Jī', lao: 'ຈີ (ເສືອດາວ/ນ້ຳ)', span: 10.5, element: 'Water', beast: '豹 (ເສືອດາວ)', quad: '青龙 (East)', isGood: true, goodDegs: [3, 7], fatalDegs: [0, 5, 10.5] },
+
+            // Northern Black Tortoise (北方玄武)
+            { idx: 7, char: '斗', pinyin: 'Dǒu', lao: 'ໂຕ້ (ຕົວລິ່ນ/ໄມ້)', span: 26.0, element: 'Wood', beast: '獬 (ຕົວລິ່ນ)', quad: '玄武 (North)', isGood: true, goodDegs: [5, 11, 19, 23], fatalDegs: [0, 13, 26] },
+            { idx: 8, char: '牛', pinyin: 'Niú', lao: 'ນິວ (ງົວ/ຄຳ)', span: 8.0, element: 'Metal', beast: '牛 (ງົວ)', quad: '玄武 (North)', isGood: false, goodDegs: [3, 6], fatalDegs: [0, 4, 8] },
+            { idx: 9, char: '女', pinyin: 'Nǚ', lao: 'ໜີ່ (ເຈຍ/ດິນ)', span: 12.0, element: 'Earth', beast: '蝠 (ເຈຍ)', quad: '玄武 (North)', isGood: false, goodDegs: [4, 9], fatalDegs: [0, 6, 12] },
+            { idx: 10, char: '虚', pinyin: 'Xū', lao: 'ຊວີ (ໜູ/ຕາເວັນ)', span: 10.0, element: 'Sun', beast: '鼠 (ໜູ)', quad: '玄武 (North)', isGood: false, goodDegs: [3, 7], fatalDegs: [0, 5, 10] },
+            { idx: 11, char: '危', pinyin: 'Wēi', lao: 'ເຫວີຍ (ກືນ/ເດືອນ)', span: 17.0, element: 'Moon', beast: '燕 (ນົກແອ່ນ)', quad: '玄武 (North)', isGood: false, goodDegs: [4, 9, 14], fatalDegs: [0, 8, 17] },
+            { idx: 12, char: '室', pinyin: 'Shì', lao: 'ຊື່ (ໝູ/ໄຟ)', span: 16.0, element: 'Fire', beast: '猪 (ໝູ)', quad: '玄武 (North)', isGood: true, goodDegs: [3, 8, 12, 15], fatalDegs: [0, 7, 16] },
+            { idx: 13, char: '壁', pinyin: 'Bì', lao: 'ປີ້ (ກວາງ/ນ້ຳ)', span: 9.0, element: 'Water', beast: '犭 (ໝາກວາງ)', quad: '玄武 (North)', isGood: true, goodDegs: [2, 6, 8], fatalDegs: [0, 4.5, 9] },
+
+            // Western White Tiger (西方白虎)
+            { idx: 14, char: '奎', pinyin: 'Kuí', lao: 'ຂຸຍ (ໝາປ່າ/ໄມ້)', span: 16.0, element: 'Wood', beast: '狼 (ໝາປ່າ)', quad: '白虎 (West)', isGood: false, goodDegs: [4, 9, 13], fatalDegs: [0, 8, 16] },
+            { idx: 15, char: '娄', pinyin: 'Lóu', lao: 'ໂຫຼວ (ໝາ/ຄຳ)', span: 12.0, element: 'Metal', beast: '狗 (ໝາ)', quad: '白虎 (West)', isGood: true, goodDegs: [3, 7, 10], fatalDegs: [0, 6, 12] },
+            { idx: 16, char: '胃', pinyin: 'Wèi', lao: 'ເວີ່ຍ (ໄກ່ຟ້າ/ດິນ)', span: 14.0, element: 'Earth', beast: '雉 (ໄກ່ຟ້າ)', quad: '白虎 (West)', isGood: true, goodDegs: [4, 8, 12], fatalDegs: [0, 7, 14] },
+            { idx: 17, char: '昴', pinyin: 'Mǎo', lao: 'ມາວ (ໄກ່/ຕາເວັນ)', span: 11.0, element: 'Sun', beast: '鸡 (ໄກ່)', quad: '白虎 (West)', isGood: false, goodDegs: [3, 7], fatalDegs: [0, 5.5, 11] },
+            { idx: 18, char: '毕', pinyin: 'Bì', lao: 'ປີ້ (ອີກາ/ເດືອນ)', span: 16.0, element: 'Moon', beast: '乌 (ອີກາ)', quad: '白虎 (West)', isGood: true, goodDegs: [4, 9, 13], fatalDegs: [0, 8, 16] },
+            { idx: 19, char: '觜', pinyin: 'Zī', lao: 'ຈຸ້ຍ (ລີງ/ໄຟ)', span: 1.0, element: 'Fire', beast: '猴 (ລີງ)', quad: '白虎 (West)', isGood: false, goodDegs: [0.5], fatalDegs: [0, 1] },
+            { idx: 20, char: '参', pinyin: 'Shēn', lao: 'ເຊີນ (ຊະນີ/ນ້ຳ)', span: 10.0, element: 'Water', beast: '猿 (ຊະນີ)', quad: '白虎 (West)', isGood: true, goodDegs: [3, 7], fatalDegs: [0, 5, 10] },
+
+            // Southern Vermilion Bird (南方朱雀)
+            { idx: 21, char: '井', pinyin: 'Jǐng', lao: 'ຈິ້ງ (ນາກ/ໄມ້)', span: 33.0, element: 'Wood', beast: '犴 (ໝານາກ)', quad: '朱雀 (South)', isGood: true, goodDegs: [6, 14, 22, 28], fatalDegs: [0, 16, 33] },
+            { idx: 22, char: '鬼', pinyin: 'Guǐ', lao: 'ກຸຍ (ແກະ/ຄຳ)', span: 2.5, element: 'Metal', beast: '羊 (ແກະ)', quad: '朱雀 (South)', isGood: false, goodDegs: [1.2], fatalDegs: [0, 2.5] },
+            { idx: 23, char: '柳', pinyin: 'Liǔ', lao: 'ຫຼິວ (ກວາງ/ດິນ)', span: 13.5, element: 'Earth', beast: '獐 (ກວາງ)', quad: '朱雀 (South)', isGood: false, goodDegs: [4, 9], fatalDegs: [0, 6.5, 13.5] },
+            { idx: 24, char: '星', pinyin: 'Xīng', lao: 'ຊິງ (ມ້າ/ຕາເວັນ)', span: 7.0, element: 'Sun', beast: '马 (ມ້າ)', quad: '朱雀 (South)', isGood: false, goodDegs: [2, 5], fatalDegs: [0, 3.5, 7] },
+            { idx: 25, char: '张', pinyin: 'Zhāng', lao: 'ຈາງ (ກວາງດາວ/ເດືອນ)', span: 18.0, element: 'Moon', beast: '鹿 (ກວາງດາວ)', quad: '朱雀 (South)', isGood: true, goodDegs: [4, 9, 14, 17], fatalDegs: [0, 9, 18] },
+            { idx: 26, char: '翼', pinyin: 'Yì', lao: 'ອີ້ (ງູ/ໄຟ)', span: 19.0, element: 'Fire', beast: '蛇 (ງູ)', quad: '朱雀 (South)', isGood: false, goodDegs: [5, 11, 16], fatalDegs: [0, 9.5, 19] },
+            { idx: 27, char: '轸', pinyin: 'Zhěn', lao: 'ເຈິ່ນ (ແມ່ທ້ອງ/ນ້ຳ)', span: 18.5, element: 'Water', beast: '蚓 (ແມ່ທ້ອງ)', quad: '朱雀 (South)', isGood: true, goodDegs: [4, 9, 14], fatalDegs: [0, 9, 18.5] }
+        ];
+
+        function calculate28Mansions(deg) {
+            const normDeg = ((parseFloat(deg) % 360) + 360) % 360;
+            let acc = 0;
+            for (let i = 0; i < TWENTY_EIGHT_MANSIONS.length; i++) {
+                const m = TWENTY_EIGHT_MANSIONS[i];
+                if (normDeg >= acc && normDeg < acc + m.span) {
+                    const degInMansion = normDeg - acc;
+                    const isGoodLine = m.goodDegs.some(g => Math.abs(degInMansion - g) <= 0.8);
+                    const isFatalLine = m.fatalDegs.some(f => Math.abs(degInMansion - f) <= 0.5);
+
+                    return {
+                        mansion: m.char,
+                        pinyin: m.pinyin,
+                        lao: m.lao,
+                        element: m.element,
+                        beast: m.beast,
+                        quad: m.quad,
+                        isAuspiciousStar: m.isGood,
+                        degInMansion: degInMansion.toFixed(1),
+                        span: m.span,
+                        isGoodLine,
+                        isFatalLine,
+                        verdict: isGoodLine
+                            ? '🌟 ຕົກອົງສາມຸງຄຸນລະດັບເພັດ (珠宝吉度)'
+                            : (isFatalLine ? '❌ ຕົກອົງສາຜິດພາດ/ສັບສົນ (差错空亡线)' : '✨ ອົງສາປົກກະຕິ (平度)'),
+                        badgeClass: isGoodLine
+                            ? 'bg-emerald-950 border-emerald-500 text-emerald-300'
+                            : (isFatalLine ? 'bg-rose-950 border-rose-500 text-rose-300' : 'bg-slate-900 border-slate-700 text-slate-300'),
+                        advice: isGoodLine
+                            ? 'ອົງສາໜ້າບ້ານກົງກັບດາວ ' + m.char + ' ລະດັບເພັດພອຍ! ຊ່ວຍດຶງດູດພະລັງດວງດາວສະຫວັນ ມັ່ງມີເງິນຄຳ ແລະ ສຸຂະພາບອາຍຸໝັ້ນຂວັນຍືນ.'
+                            : (isFatalLine
+                                ? '⚠️ ລະວັງ: ອົງສານີ້ຕົກເສັ້ນຮອຍຕໍ່/ດັບສູນຂອງກຸ່ມດາວ ' + m.char + '! ຄວນປັບຈູນບ່ຽງ 1-2 ອົງສາ ເຂົ້າສູ່ຈຸດເພັດພອຍ.'
+                                : 'ດຳເນີນຊີວິດປົກກະຕິ, ຮັກສາທິດນີ້ໃຫ້ສະອາດ ແລະ ໂລ່ງແຈ້ງ.')
+                    };
+                }
+                acc += m.span;
+            }
+            return calculate28Mansions(0);
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.12: 360° WATER INFLOW & OUTFLOW DYNAMIC SIMULATOR (消砂纳水 / 水口大局)
+        // =========================================================================
+        let simInflowDeg = 45;   // Default NE (Inflow)
+        let simOutflowDeg = 202.5; // Default SW (Outflow)
+
+        function setSimulatorWater(type, degVal) {
+            const val = parseFloat(degVal) || 0;
+            if (type === 'inflow') simInflowDeg = val;
+            else if (type === 'outflow') simOutflowDeg = val;
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            updateLivePrediction(topCompassDeg, true);
+        }
+
+        function calculateWaterSimulator(sitMtnDeg, inflowDeg, outflowDeg) {
+            const SAN_HE_FRAMES = [
+                { name: '局金 (ທາດຄຳ)', elem: 'Metal', sheng: '巳', wang: '酉', mu: '丑', jue: '寅' },
+                { name: '局木 (ທາດໄມ້)', elem: 'Wood', sheng: '亥', wang: '卯', mu: '未', jue: '申' },
+                { name: '局水 (ທາດນ້ຳ)', elem: 'Water', sheng: '申', wang: '子', mu: '辰', jue: '巳' },
+                { name: '局火 (ທາດໄຟ)', elem: 'Fire', sheng: '寅', wang: '午', mu: '戌', jue: '亥' }
+            ];
+
+            const inMtn = findMountainInfo(inflowDeg).mtn;
+            const outMtn = findMountainInfo(outflowDeg).mtn;
+            const sitMtn = findMountainInfo(sitMtnDeg).mtn;
+
+            // Determine Frame based on Outflow Mountain (Water Mouth decides the Frame in San He)
+            let frame = SAN_HE_FRAMES[2]; // default water
+            if (['辰', '巽', '巳'].includes(outMtn.name)) frame = SAN_HE_FRAMES[2]; // Water frame
+            else if (['戌', '乾', '亥'].includes(outMtn.name)) frame = SAN_HE_FRAMES[3]; // Fire frame
+            else if (['丑', '艮', '寅'].includes(outMtn.name)) frame = SAN_HE_FRAMES[0]; // Metal frame
+            else if (['未', '坤', '申'].includes(outMtn.name)) frame = SAN_HE_FRAMES[1]; // Wood frame
+
+            // Check if Inflow hits Sheng or Wang
+            const isInflowSheng = inMtn.name.includes(frame.sheng);
+            const isInflowWang = inMtn.name.includes(frame.wang);
+            const isOutflowMu = outMtn.name.includes(frame.mu);
+            const isOutflowJue = outMtn.name.includes(frame.jue);
+
+            let verdict = '✨ ຮູບດວງນ້ຳປົກກະຕິ (平局)';
+            let statusClass = 'border-slate-700 bg-slate-900 text-slate-300';
+            let advice = 'ສາຍນ້ຳໄຫຼເຂົ້າ-ອອກ ຢູ່ໃນເກນປານກາງ, ຄວນເສີມນ້ຳພຸວົນໃນທິດມຸງຄຸນ.';
+
+            if ((isInflowSheng || isInflowWang) && isOutflowMu) {
+                verdict = '👑 ມະຫາເສດຖີ ຊັບສົມບັດເຕັມສາງ (生旺互汇, 归库消纳)!';
+                statusClass = 'border-emerald-500 bg-emerald-950/80 text-emerald-300';
+                advice = '🌟 ຮູບດວງນ້ຳຂັ້ນເທບ! ນ້ຳໄຫຼມາຈາກທິດຈະເລີນ (' + inMtn.name + ') ແລະ ໄຫຼອອກທາງວັງສາງເກັບຊັບ (' + outMtn.name + '). ເຮັດທຸລະກິດຮັ່ງມີ, ລູກຫຼານສືບຕະກຸນຍືນຍາວ.';
+            } else if (outMtn.name.includes(frame.wang)) {
+                verdict = '❌ ມະຫາວິບັດ: ນ້ຳໄຫຼເສຍທິດຈະເລີນ (旺去冲生)!';
+                statusClass = 'border-rose-500 bg-rose-950/80 text-rose-300';
+                advice = '⚠️ ອັນຕະລາຍຮ້າຍແຮງ: ທິດນ້ຳໄຫຼອອກຕົກທິດວັງຈະເລີນ (' + outMtn.name + ') ເຮັດໃຫ້ເງິນຄຳຮົ່ວໄຫຼ, ທຸລະກິດລົ້ມລະລາຍ! ຕ້ອງປ່ຽນທິດທໍ່ລະບາຍນ້ຳດ່ວນ.';
+            } else if (outMtn.name.includes(frame.sheng)) {
+                verdict = '❌ ຕັດອາຍຸໄຂ: ໄຫຼຕັດວັງກຳເນີດ (冲破长生)!';
+                statusClass = 'border-rose-500 bg-rose-950/80 text-rose-300';
+                advice = '⚠️ ລະວັງສຸຂະພາບ: ສາຍນ້ຳເສຍຕັດຜ່ານທິດກຳເນີດ, ຄົນໃນບ້ານເຈັບປ່ວຍງ່າຍ. ຄວນປູກຕົ້ນໄມ້ບັງ ແລະ ບ່ຽງທາງນ້ຳ.';
+            }
+
+            return {
+                frame: frame.name,
+                elem: frame.elem,
+                inflowMtn: inMtn.name + ' (' + inMtn.lao + ') ' + inflowDeg.toFixed(1) + '°',
+                outflowMtn: outMtn.name + ' (' + outMtn.lao + ') ' + outflowDeg.toFixed(1) + '°',
+                sitMtn: sitMtn.name + ' (' + sitMtn.lao + ')',
+                verdict,
+                statusClass,
+                advice
+            };
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.13: ZI WEI DOU SHU REAL ESTATE & WEALTH PALACE (紫微斗数 田宅宫与房产布局)
+        // =========================================================================
+        const ZIWEI_PROPERTY_STARS = {
+            '紫微': { role: 'ຈັກກະພັດ (帝星)', property: 'ຄະລຶຫາດໃຫຍ່, ເຮືອນຫຼູຫຼາ, ອະສັງຫາລິມະຊັບລາຄາສູງ', advice: 'ເຮືອນຄວນມີເພດານສູງໂປ່ງ, ປະຕູໃຫຍ່ສະຫງ່າງາມ, ຕົບແຕ່ງສີຄຳ-ມ່ວງ.' },
+            '天机': { role: 'ເສນາທິການ (智星)', property: 'ເຮືອນທີ່ປັບປ່ຽນໄດ້, ຄອນໂດໃຈກາງເມືອງ, ເຮືອນໃກ້ທາງຄົມມະນາຄົມ', advice: 'ເໝາະກັບ Smart Home, ເຟີນີເຈີມຸມມົນ, ຫ້ອງເຮັດວຽກທີ່ທັນສະໄໝ.' },
+            '太阳': { role: 'ຕາເວັນ (阳贵)', property: 'ເຮືອນໜ້າກວ້າງ, ແສງສະຫວ່າງເຕັມປ່ຽມ, ທີ່ດິນເນີນສູງ', advice: 'ເປີດຮັບແສງທຳມະຊາດ, ຫ້າມເຮືອນມືດມົນ, ຕົບແຕ່ງໂທນສີອົບອຸ່ນ.' },
+            '武曲': { role: 'ດາວການເງິນ (财星)', property: 'ເຮືອນທີ່ດິນໝັ້ນຄົງ, ຕຶກອາຄານພານິດ, ເຮືອນເກັບຊັບ', advice: '🌟 ດີເລີດສຳລັບຕັ້ງຕູ້ເຊບ, ວາງທອງຄຳ, ຕົບແຕ່ງໂລຫະ ແລະ ຫີນອ່ອນ.' },
+            '天同': { role: 'ເທບໂຊກລາບ (福星)', property: 'ເຮືອນສວນ, ບ້ານພັກຜ່ອນ, ເຮືອນໃກ້ແຫຼ່ງນ້ຳທຳມະຊາດ', advice: 'ຈັດສວນຕົ້ນໄມ້, ໜອງປາຄຣາບ, ອ່າງນ້ຳລົ້ນ ເພື່ອສ້າງຄວາມສະບາຍໃຈ.' },
+            '廉贞': { role: 'ໄຟບໍລິສຸດ (次桃花)', property: 'ເຮືອນທີ່ມີເອກະລັກ, ທີ່ດິນຮູບຊົງແປກຕາ, ຄອນໂດສູງ', advice: 'ລະວັງເລື່ອງໄຟຟ້າ, ຄວນຕິດຕັ້ງໄຟແສງສີງາມຕາ, ຕົບແຕ່ງງານສິລະປະ.' },
+            '天府': { role: 'ຄັງຫຼວງ (库星)', property: 'ມະຫາຄະຫະບໍດີ, ເຮືອນສຳນັກງານໃຫຍ່, ທີ່ດິນມໍລະດົກ', advice: '🌟 ດີເລີດສຳລັບເກັບອອມຊັບສິນ, ຫ້ອງເກັບເຄື່ອງເປັນລະບຽບ, ຕູ້ໂຊມຸງຄຸນ.' },
+            '太阴': { role: 'ດວງຈັນ/ອະສັງຫາ (田宅主)', property: '👑 ເຈົ້າແຫ່ງອະສັງຫາລິມະຊັບ, ທີ່ດິນແຄມນ້ຳ, ບ້ານຈັດສັນຫຼູຫຼາ', advice: '🌟 ດາວອະສັງຫາອັນດັບ 1! ເຮືອນຄວນສະອາດ, ຕັ້ງອ່າງບົວ ຫຼື ນ້ຳພຸສີເງິນ.' },
+            '贪狼': { role: 'ດາວສະເໜ່/ໂຊກໃຫຍ່ (吉凶双性)', property: 'ເຮືອນບັນເທີງ, ໂຮງແຮມ, ເຮືອນທີ່ມີງານສັງສັນ', advice: 'ປູກດອກໄມ້ທີ່ມີກິ່ນຫອມ, ຕົບແຕ່ງແສງໂຣແມນຕິກ, ລະວັງສິ່ງລົບກວນ.' },
+            '巨门': { role: 'ປະຕູໃຫຍ່ (暗星/ปาก)', property: 'ເຮືອນຕິດຖະໜົນໃຫຍ່, ຮ້ານຄ້າ, ສະຖານທີ່ຕິດຕໍ່ສື່ສານ', advice: 'ລະວັງເລື່ອງປາກສຽງ, ປະຕູໜ້າບ້ານຄວນໂລ່ງແຈ້ງ, ຕັ້ງກະດິ່ງລົມທອງເຫຼືອງ.' },
+            '天相': { role: 'ຕຣາປະທັບ (印星)', property: 'ເຮືອນທີ່ເປັນລະບຽບຮຽບຮ້ອຍ, ເຮືອນລັດຖະການ, ຕຶກຫ້ອງການ', advice: 'ຈັດວາງໂຕະເຮັດວຽກໃຫ້ສະຫງ່າ, ຕັ້ງຮູບພາບມຸງຄຸນ ແລະ ໃບຢັ້ງຢືນ.' },
+            '天梁': { role: 'ຜູ້ເຖົ້າອຸປະຖຳ (荫星)', property: 'ເຮືອນໄມ້ໂບຮານ, ເຮືອນມໍລະດົກຕົກທອດ, ເຮືອນໃກ້ວັດ', advice: 'ຕົບແຕ່ງດ້ວຍໄມ້ສັກ, ຕັ້ງຫ້ອງພຣະໃຫຍ່ສັກສິດ, ຮັກສາຄວາມສະຫງົບ.' },
+            '七杀': { role: 'ແມ່ທັບ (将星)', property: 'ເຮືອນດ່ຽວສູງ, ທີ່ດິນເປີດກວ້າງ, ເຮືອນຕັ້ງໂດດດ່ຽວ', advice: 'ສ້າງຮົ້ວອ້ອມຮອບໃຫ້ແຂງແຮງ, ປູກຕົ້ນໄມ້ໃຫຍ່ເປັນກຳແພງກັນລົມ.' },
+            '破军': { role: 'ນັກບຸກເບີກ (耗星)', property: 'ເຮືອນທີ່ຕ້ອງຣີໂນເວດ, ເຮືອນເກົ່ານຳມາແຕ່ງໃໝ່, ທີ່ດິນບຸກເບີກ', advice: 'ມັກມີການຕໍ່ເຕີມ, ຄວນສ້ອມແປງທັນທີເມື່ອຊຳລຸດ, ປັບປຸງໃຫ້ທັນສະໄໝ.' }
+        };
+
+        function calculateZiWeiHouse(birthYear, birthMonth = 1, birthDay = 1, birthHour = 12) {
+            const y = parseInt(birthYear, 10) || 1990;
+            const m = parseInt(birthMonth, 10) || 1;
+            const d = parseInt(birthDay, 10) || 1;
+            const h = parseInt(birthHour, 10) || 12;
+
+            // Compute Stem of Year
+            const stemIdx = (y - 4) % 10;
+            const stem = BAZI_STEMS[(stemIdx + 10) % 10];
+
+            // 10 Heavenly Stems Si Hua (四化: 禄, 权, 科, 忌)
+            const SI_HUA_MAP = {
+                '甲': { lu: '廉贞', quan: '破军', ke: '武曲', ji: '太阳' },
+                '乙': { lu: '天机', quan: '天梁', ke: '紫微', ji: '太阴' },
+                '丙': { lu: '天同', quan: '天机', ke: '文昌', ji: '廉贞' },
+                '丁': { lu: '太阴', quan: '天同', ke: '天机', ji: '巨门' },
+                '戊': { lu: '贪狼', quan: '太阴', ke: '右弼', ji: '天机' },
+                '己': { lu: '武曲', quan: '贪狼', ke: '天梁', ji: '文曲' },
+                '庚': { lu: '太阳', quan: '武曲', ke: '太阴', ji: '天同' },
+                '辛': { lu: '巨门', quan: '太阳', ke: '文曲', ji: '文昌' },
+                '壬': { lu: '天梁', quan: '紫微', ke: '左辅', ji: '武曲' },
+                '癸': { lu: '破军', quan: '巨门', ke: '太阴', ji: '贪狼' }
+            };
+            const siHua = SI_HUA_MAP[stem.char] || SI_HUA_MAP['甲'];
+
+            // Tian Zhai Palace main star based on (Month + Hour)
+            const starKeys = Object.keys(ZIWEI_PROPERTY_STARS);
+            const mainStarKey = starKeys[(m + Math.floor(h / 2)) % starKeys.length];
+            const starData = ZIWEI_PROPERTY_STARS[mainStarKey];
+
+            return {
+                stem: stem.char + ' (' + stem.lao + ')',
+                mainStar: mainStarKey,
+                starRole: starData.role,
+                propertyType: starData.property,
+                fengShuiAdvice: starData.advice,
+                huaLu: siHua.lu + ' 化禄 (ໂຊກເງິນຄຳຫຼັ່ງໄຫຼ)',
+                huaQuan: siHua.quan + ' 化权 (ອຳນາດ & ບາຣະມີ)',
+                huaKe: siHua.ke + ' 化科 (ຊື່ສຽງ & ປັນຍາ)',
+                huaJi: siHua.ji + ' 化忌 (ຈຸດອຸປະສັກທີ່ຕ້ອງລະວັງ)'
+            };
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.14: OFFICIAL A4 MASTER FENG SHUI AUDIT DOSSIER & CERTIFICATE
+        // =========================================================================
+        function printMasterAuditDossier() {
+            window.print();
+        }
+
         // MASTER SYSTEM 3: DAILY & HOURLY FLYING STARS (日家 & 时家飞星 & 择日吉时)
         // =========================================================================
         let selectedDayOffset = 0; // 0 = Today, 1 = Tomorrow, etc.
@@ -3905,15 +4127,18 @@
                     { key: 'tab_dayhour', icon: '⏱️', name: 'ວັນ/ຍາມ' },
                     { key: 'tab_luban', icon: '📐', name: 'ໄມ້ບັນທັດ' },
                     { key: 'tab_waterdragon', icon: '🌊', name: 'ສາຍນ້ຳ' },
+                    { key: 'tab_watersim', icon: '🌀', name: 'ຈຳລອງນ້ຳ' },
                     { key: 'tab_longmen', icon: '💧', name: 'ນ້ຳ8ວັງ' },
                     { key: 'tab_dagua', icon: '☯️', name: '64ຂວຍ' },
                     { key: 'tab_bazi', icon: '🔮', name: 'ປາຈື4ແຖວ' },
+                    { key: 'tab_ziwei', icon: '👑', name: 'ຈືເຫວີຍ' },
                     { key: 'tab_bazhai', icon: '👤', name: 'ດວງກົວະ' },
                     { key: 'tab_qimen', icon: '⚡', name: 'ຄິມຶນ' },
+                    { key: 'tab_28stars', icon: '🌌', name: '28ດາວ' },
                     { key: 'tab_forecast', icon: '📅', name: 'ປະຕິທິນ' },
                     { key: 'tab_monthmatrix', icon: '🗓️', name: '12ເດືອນ' },
                     { key: 'tab_annual', icon: '⭐', name: 'ດາວປີ' },
-                    { key: 'tab_stars', icon: '🌌', name: '81ດາວ' }
+                    { key: 'tab_stars', icon: '✨', name: '81ດາວ' }
                 ];
 
                 const yangTabsBar =
@@ -3928,6 +4153,9 @@
                         ).join('') +
                         '<button type="button" onclick="openAuditReportModal()" class="py-1 px-0.5 rounded-lg text-center transition truncate bg-gradient-to-r from-amber-600 to-yellow-500 text-slate-950 font-black shadow-md border border-yellow-300 hover:brightness-110">' +
                             '📄 ໃບລາຍງານ' +
+                        '</button>' +
+                        '<button type="button" onclick="openMasterDossierModal()" class="py-1 px-0.5 rounded-lg text-center transition truncate bg-gradient-to-r from-red-700 via-amber-600 to-yellow-500 text-white font-black shadow-md border border-yellow-300 hover:brightness-110">' +
+                            '🖨️ ໃບຢັ້ງຢືນ' +
                         '</button>' +
                     '</div>';
 
@@ -6477,6 +6705,188 @@
                         '</div>';
                 }
 
+                // TAB: 28 LUNAR MANSIONS & CELESTIAL ANIMAL STARS (二十八宿分金度数 & 禽星五行)
+                else if (activeYangTab === 'tab_28stars') {
+                    const mansionData = calculate28Mansions(faceDeg);
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-indigo-950 via-slate-950 to-purple-950 p-3 rounded-xl border border-indigo-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-indigo-300 font-black flex items-center gap-1.5">🌌 28 ກຸ່ມດາວສະຫວັນ & ສັດເທບ (二十八宿分金度数)</span>' +
+                                    '<span class="bg-indigo-500/20 text-indigo-200 px-2 py-0.5 rounded text-[10px] font-bold border border-indigo-400/30">' + mansionData.quad + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ວົງແຫວນຊັ້ນນອກສຸດຂອງຈານເຂັມທິດຫຼົວຜານ ທີ່ເຊື່ອມໂຍງພະລັງງານຈາກດາວ 28 ນັກສັດສະຫວັນ ແລະ ທາດ 5 ສັດເທບ ລົງສູ່ອົງສາໜ້າບ້ານ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="p-3 rounded-xl border ' + mansionData.badgeClass + ' flex flex-col gap-1.5 shadow-sm">' +
+                                '<div class="flex items-center justify-between">' +
+                                    '<span class="font-bold text-xs">ກຸ່ມດາວ: ' + mansionData.mansion + '宿 (' + mansionData.pinyin + ' - ' + mansionData.lao + ')</span>' +
+                                    '<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-black/40">' + mansionData.verdict + '</span>' +
+                                '</div>' +
+                                '<div class="flex items-center justify-between text-[11px] text-white">' +
+                                    '<span>ອົງສາໜ້າບ້ານ: ' + faceDeg.toFixed(1) + '°</span>' +
+                                    '<span>ໄລຍະໃນກຸ່ມດາວ: ' + mansionData.degInMansion + '° / ' + mansionData.span + '°</span>' +
+                                    '<span>ທາດ: ' + mansionData.element + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-200 leading-relaxed pt-1 border-t border-white/10">' +
+                                    mansionData.advice +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="grid grid-cols-4 gap-1 text-[9px] text-center">' +
+                                '<div class="bg-slate-950 p-2 rounded-xl border border-blue-500/30">' +
+                                    '<span class="text-blue-300 font-bold block">ມັງກອນຂຽວ (E)</span>' +
+                                    '<span class="text-slate-400">角亢氐房心尾箕</span>' +
+                                '</div>' +
+                                '<div class="bg-slate-950 p-2 rounded-xl border border-slate-700">' +
+                                    '<span class="text-slate-200 font-bold block">ເຕົ່າດຳ (N)</span>' +
+                                    '<span class="text-slate-400">斗牛女虚危室壁</span>' +
+                                '</div>' +
+                                '<div class="bg-slate-950 p-2 rounded-xl border border-amber-500/30">' +
+                                    '<span class="text-amber-300 font-bold block">ເສືອຂາວ (W)</span>' +
+                                    '<span class="text-slate-400">奎娄胃昴毕觜参</span>' +
+                                '</div>' +
+                                '<div class="bg-slate-950 p-2 rounded-xl border border-rose-500/30">' +
+                                    '<span class="text-rose-300 font-bold block">ຫົງໄຟ (S)</span>' +
+                                    '<span class="text-slate-400">井鬼柳星张翼轸</span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // TAB: 360° WATER INFLOW & OUTFLOW DYNAMIC SIMULATOR (消砂纳水 / 水口大局)
+                else if (activeYangTab === 'tab_watersim') {
+                    const sim = calculateWaterSimulator(chart.sitInfo.deg, simInflowDeg, simOutflowDeg);
+
+                    const inflowPresets = [
+                        { label: 'ອີສານ (45°)', deg: 45 },
+                        { label: 'ອາຄະເນ (135°)', deg: 135 },
+                        { label: 'ຫໍລະດີ (225°)', deg: 225 },
+                        { label: 'ພາຍັບ (315°)', deg: 315 },
+                        { label: 'ເໜືອ (0°)', deg: 0 },
+                        { label: 'ໃຕ້ (180°)', deg: 180 }
+                    ];
+
+                    const outflowPresets = [
+                        { label: '辰 ມັງກອນ (120°)', deg: 120 },
+                        { label: '戌 ໝາ (300°)', deg: 300 },
+                        { label: '丑 ງົວ (30°)', deg: 30 },
+                        { label: '未 ແບ້ (210°)', deg: 210 },
+                        { label: '巳 ງູ (150°)', deg: 150 },
+                        { label: '申 ລີງ (240°)', deg: 240 }
+                    ];
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-teal-950 via-slate-950 to-cyan-950 p-3 rounded-xl border border-teal-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-teal-300 font-black flex items-center gap-1.5">🌀 ຈຳລອງສາຍນ້ຳໄຫຼເຂົ້າ-ອອກ 360° (消砂纳水大局)</span>' +
+                                    '<span class="bg-teal-500/20 text-teal-200 px-2 py-0.5 rounded text-[10px] font-bold border border-teal-400/30">' + sim.frame + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ປັບປ່ຽນອົງສານ້ຳໄຫຼມາ (来水) ແລະ ນ້ຳໄຫຼອອກ (去水/水口) ເພື່ອວິເຄາະວ່າຕົກວັງເກີດ, ວັງຈະເລີນ, ຫຼື ວັງສາງເກັບຊັບ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">' +
+                                '<div class="bg-slate-950 p-2.5 rounded-xl border border-cyan-500/40 flex flex-col gap-1.5">' +
+                                    '<div class="flex items-center justify-between text-xs">' +
+                                        '<span class="text-cyan-300 font-bold">💧 ທິດນ້ຳໄຫຼມາ (来水):</span>' +
+                                        '<span class="text-white font-mono font-bold">' + simInflowDeg.toFixed(1) + '°</span>' +
+                                    '</div>' +
+                                    '<input type="range" min="0" max="359" step="1" value="' + simInflowDeg + '" oninput="setSimulatorWater(\'inflow\', this.value)" class="w-full accent-cyan-400 cursor-pointer" />' +
+                                    '<div class="flex flex-wrap gap-1 mt-1">' +
+                                        inflowPresets.map(p =>
+                                            '<button type="button" onclick="setSimulatorWater(\'inflow\', ' + p.deg + ')" class="px-1.5 py-0.5 rounded text-[9px] bg-slate-900 border border-slate-700 text-slate-300 hover:text-white">' + p.label + '</button>'
+                                        ).join('') +
+                                    '</div>' +
+                                '</div>' +
+
+                                '<div class="bg-slate-950 p-2.5 rounded-xl border border-amber-500/40 flex flex-col gap-1.5">' +
+                                    '<div class="flex items-center justify-between text-xs">' +
+                                        '<span class="text-amber-300 font-bold">🚰 ທິດນ້ຳໄຫຼອອກ (去水/水口):</span>' +
+                                        '<span class="text-white font-mono font-bold">' + simOutflowDeg.toFixed(1) + '°</span>' +
+                                    '</div>' +
+                                    '<input type="range" min="0" max="359" step="1" value="' + simOutflowDeg + '" oninput="setSimulatorWater(\'outflow\', this.value)" class="w-full accent-amber-400 cursor-pointer" />' +
+                                    '<div class="flex flex-wrap gap-1 mt-1">' +
+                                        outflowPresets.map(p =>
+                                            '<button type="button" onclick="setSimulatorWater(\'outflow\', ' + p.deg + ')" class="px-1.5 py-0.5 rounded text-[9px] bg-slate-900 border border-slate-700 text-slate-300 hover:text-white">' + p.label + '</button>'
+                                        ).join('') +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+
+                            '<div class="p-3 rounded-xl border ' + sim.statusClass + ' flex flex-col gap-1.5 shadow-sm">' +
+                                '<div class="text-xs font-bold leading-snug">' + sim.verdict + '</div>' +
+                                '<div class="flex items-center justify-between text-[10px] text-white/90 pt-1 border-t border-white/10">' +
+                                    '<span>来水: ' + sim.inflowMtn + '</span>' +
+                                    '<span>去水: ' + sim.outflowMtn + '</span>' +
+                                    '<span>坐山: ' + sim.sitMtn + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] leading-relaxed pt-1 text-slate-200">' + sim.advice + '</p>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // TAB: ZI WEI DOU SHU REAL ESTATE & WEALTH PALACE (紫微斗数 田宅宫与房产布局)
+                else if (activeYangTab === 'tab_ziwei') {
+                    const zw = calculateZiWeiHouse(selectedBaziYear, selectedBaziMonth, selectedBaziDay, selectedBaziHour);
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-amber-950 via-slate-950 to-yellow-950 p-3 rounded-xl border border-yellow-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-yellow-300 font-black flex items-center gap-1.5">👑 ຈືເຫວີຍໂຕ້ຊູ່ ວັງອະສັງຫາລິມະຊັບ (紫微斗数田宅宫)</span>' +
+                                    '<span class="bg-yellow-500/20 text-yellow-200 px-2 py-0.5 rounded text-[10px] font-bold border border-yellow-400/30">' + zw.mainStar + ' · ' + zw.starRole + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ໂຫຣາສາດຈີນຊັ້ນສູງສຸດ ວິເຄາະວັງອະສັງຫາລິມະຊັບ (田宅宫) ແລະ ດາວ 4 ການແປງຮູບ (四化) ເພື່ອເລືອກຮູບແບບເຮືອນ ແລະ ທິດທີ່ດິນທີ່ເຮັດໃຫ້ເປັນເສດຖີ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex flex-col gap-1.5">' +
+                                '<div class="flex items-center justify-between text-xs pb-1 border-b border-slate-800">' +
+                                    '<span class="text-slate-400">ດາວຫຼັກວັງອະສັງຫາ:</span>' +
+                                    '<span class="text-amber-300 font-black text-sm">' + zw.mainStar + '星 (' + zw.starRole + ')</span>' +
+                                '</div>' +
+                                '<div class="text-[11px] text-slate-300 leading-relaxed">' +
+                                    '<b class="text-white">ລັກສະນະເຮືອນ & ທີ່ດິນທີ່ເສີມດວງ:</b> ' + zw.propertyType +
+                                '</div>' +
+                                '<div class="text-[11px] text-amber-200 leading-relaxed bg-amber-950/30 p-2 rounded border border-amber-500/20 mt-1">' +
+                                    '<b class="text-amber-300">ຄຳແນະນຳການຈັດເຮືອນ:</b> ' + zw.fengShuiAdvice +
+                                '</div>' +
+                            '</div>' +
+
+                            '<div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-center text-[10px]">' +
+                                '<div class="bg-slate-950 p-2 rounded-xl border border-emerald-500/40">' +
+                                    '<span class="text-emerald-400 font-bold block">化禄 (ເງິນຄຳ)</span>' +
+                                    '<span class="text-white font-bold">' + zw.huaLu.split(' ')[0] + '</span>' +
+                                    '<span class="text-[9px] text-slate-400 block truncate">' + zw.huaLu.split(' ')[1] + '</span>' +
+                                '</div>' +
+                                '<div class="bg-slate-950 p-2 rounded-xl border border-blue-500/40">' +
+                                    '<span class="text-blue-400 font-bold block">化权 (ອຳນາດ)</span>' +
+                                    '<span class="text-white font-bold">' + zw.huaQuan.split(' ')[0] + '</span>' +
+                                    '<span class="text-[9px] text-slate-400 block truncate">' + zw.huaQuan.split(' ')[1] + '</span>' +
+                                '</div>' +
+                                '<div class="bg-slate-950 p-2 rounded-xl border border-purple-500/40">' +
+                                    '<span class="text-purple-400 font-bold block">化科 (ຊື່ສຽງ)</span>' +
+                                    '<span class="text-white font-bold">' + zw.huaKe.split(' ')[0] + '</span>' +
+                                    '<span class="text-[9px] text-slate-400 block truncate">' + zw.huaKe.split(' ')[1] + '</span>' +
+                                '</div>' +
+                                '<div class="bg-slate-950 p-2 rounded-xl border border-rose-500/40">' +
+                                    '<span class="text-rose-400 font-bold block">化忌 (ອຸປະສັກ)</span>' +
+                                    '<span class="text-white font-bold">' + zw.huaJi.split(' ')[0] + '</span>' +
+                                    '<span class="text-[9px] text-slate-400 block truncate">' + zw.huaJi.split(' ')[1] + '</span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+
+
 
 
                 bodyHtml = yangTabsBar + tabBody;
@@ -8287,7 +8697,81 @@
             updateZoom();
             initQrCode();
         };
-    </script>
+    
+        function openMasterDossierModal() {
+            const modal = document.getElementById('masterDossierModal');
+            if (!modal) return;
+
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            const chart = calculateFlyingStarsChart(currentPeriod, topCompassDeg);
+
+            // Populate metadata
+            const fText = document.getElementById('dosFacingText');
+            if (fText) fText.textContent = topCompassDeg.toFixed(1) + '° (' + chart.faceInfo.mtn.name + '山 ' + chart.faceInfo.mtn.lao + ')';
+
+            const sText = document.getElementById('dosSittingText');
+            if (sText) sText.textContent = ((topCompassDeg + 180) % 360).toFixed(1) + '° (' + chart.sitInfo.mtn.name + '山 ' + chart.sitInfo.mtn.lao + ')';
+
+            const cType = document.getElementById('dosChartType');
+            if (cType) cType.textContent = chart.chartType;
+
+            const cgText = document.getElementById('dosCastleGateText');
+            if (cgText) {
+                const cg = calculateCastleGate(chart, currentPeriod);
+                const qx = calculateSevenStarRobbery(chart, currentPeriod);
+                cgText.innerHTML = '• <b>城门诀:</b> ' + cg.activeGateText + '<br>• <b>七星打劫:</b> ' + qx.title + ' (' + qx.palacesText + ')';
+            }
+
+            const dgText = document.getElementById('dosDragonGateText');
+            if (dgText) {
+                const dg = calculateDragonGateWater(chart.sitInfo.palId);
+                const m28 = calculate28Mansions(topCompassDeg);
+                dgText.innerHTML = '• <b>先后天水:</b> ສຽນທຽນ ' + dg.xianTian.pal + ' · ເຮົາທຽນ ' + dg.houTian.pal + '<br>• <b>28 ດາວ:</b> ' + m28.mansion + '宿 (' + m28.lao + ') · ' + m28.verdict;
+            }
+
+            const dtText = document.getElementById('dosDateText');
+            if (dtText) {
+                const now = new Date();
+                dtText.textContent = now.toLocaleDateString('lo-LA') + ' ' + now.toLocaleTimeString('lo-LA', { hour: '2-digit', minute: '2-digit' });
+            }
+
+            // Populate 9 Palaces grid
+            const gridEl = document.getElementById('dosNinePalaceGrid');
+            if (gridEl) {
+                const PAL_ORDER = [4, 9, 2, 3, 5, 7, 8, 1, 6];
+                gridEl.innerHTML = PAL_ORDER.map(pid => {
+                    const palMeta = XUAN_KONG_PALACES[pid] || { name: 'ກາງວັງ', dir: 'ໃຈກາງ' };
+                    const mS = chart.mStars[pid];
+                    const wS = chart.wStars[pid];
+                    const bS = chart.base[pid];
+                    const isFacing = (chart.faceInfo.palId === pid);
+                    const isSitting = (chart.sitInfo.palId === pid);
+                    const tag = isFacing ? ' <span class="text-amber-400 font-bold">(向)</span>' : (isSitting ? ' <span class="text-blue-400 font-bold">(坐)</span>' : '');
+
+                    const bgCls = (wS === 9) ? 'bg-emerald-950/70 border-emerald-500/60' :
+                                  ((wS === 5 || mS === 5) ? 'bg-rose-950/70 border-rose-500/60' : 'bg-slate-900 border-slate-800');
+
+                    return '<div class="p-2 rounded-lg border ' + bgCls + ' text-[10px]">' +
+                        '<div class="text-slate-400 font-bold">' + palMeta.name + ' ' + palMeta.dir + tag + '</div>' +
+                        '<div class="flex items-center justify-center gap-2 font-mono font-black text-sm my-0.5">' +
+                            '<span class="text-blue-300">山' + mS + '</span>' +
+                            '<span class="text-amber-300">向' + wS + '</span>' +
+                        '</div>' +
+                        '<div class="text-slate-500 text-[9px]">ພື້ນ ' + bS + '</div>' +
+                    '</div>';
+                }).join('');
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeMasterDossierModal() {
+            const modal = document.getElementById('masterDossierModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+</script>
 
     <!-- MASTER FENG SHUI AUDIT REPORT MODAL -->
     <div id="auditReportModal" class="hidden fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
@@ -8335,5 +8819,101 @@
             </div>
         </div>
     </div>
+
+    <!-- OFFICIAL MASTER FENG SHUI AUDIT DOSSIER & CERTIFICATE MODAL -->
+    <div id="masterDossierModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4">
+        <div class="bg-slate-950 border-2 border-yellow-500/60 rounded-2xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
+            <!-- Modal Header -->
+            <div class="p-3 bg-gradient-to-r from-yellow-950 via-slate-950 to-amber-950 border-b border-yellow-500/30 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">🖨️</span>
+                    <div>
+                        <h2 class="text-sm font-black text-yellow-300">ໃບຢັ້ງຢືນການກວດກາຮວງຈຸ້ຍມາດຕະຖານສາກົນ (A4 Printable Dossier)</h2>
+                        <p class="text-[10px] text-slate-400">INTERNATIONAL FENG SHUI MASTER AUDIT DOSSIER</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="printMasterAuditDossier()" class="px-3 py-1 bg-gradient-to-r from-yellow-500 to-amber-600 text-slate-950 font-black text-xs rounded-lg shadow-md hover:brightness-110 flex items-center gap-1.5">
+                        <span>🖨️</span> <span>ພິມ / Print PDF</span>
+                    </button>
+                    <button type="button" onclick="closeMasterDossierModal()" class="w-7 h-7 flex items-center justify-center rounded-lg bg-slate-900 border border-slate-700 text-slate-300 hover:text-white">✕</button>
+                </div>
+            </div>
+
+            <!-- Modal Content (Printable A4 Certificate Body) -->
+            <div id="dossierPrintArea" class="p-4 sm:p-6 overflow-y-auto space-y-4 text-slate-200 text-xs bg-slate-950">
+                <!-- Inner Certificate Frame -->
+                <div class="border-4 border-double border-yellow-600/50 p-4 sm:p-6 rounded-xl bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 relative">
+                    <!-- Traditional Corner Ornaments -->
+                    <div class="text-center pb-4 border-b border-yellow-500/30">
+                        <div class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 tracking-wider">
+                            ໃບຢັ້ງຢືນຜົນການກວດກາຮວງຈຸ້ຍ & ດາວເຫີນຍຸກ 9
+                        </div>
+                        <div class="text-[11px] font-bold text-yellow-500 tracking-widest mt-1">
+                            OFFICIAL SAN YUAN XUAN KONG FLYING STARS MASTER DOSSIER
+                        </div>
+                    </div>
+
+                    <!-- Client & Orientation Meta -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 my-4 p-3 bg-black/40 rounded-xl border border-yellow-500/20 text-[11px]">
+                        <div><span class="text-slate-400 block text-[9px]">ຍຸກດາວເຫີນ:</span> <b class="text-yellow-300">ຍຸກ 9 (2024-2043)</b></div>
+                        <div><span class="text-slate-400 block text-[9px]">ທິດໜ້າບ້ານ (Facing):</span> <b id="dosFacingText" class="text-amber-300">180° ທິດໃຕ້ (午山)</b></div>
+                        <div><span class="text-slate-400 block text-[9px]">ທິດຫຼັງບ້ານ (Sitting):</span> <b id="dosSittingText" class="text-blue-300">0° ທິດເໜືອ (子山)</b></div>
+                        <div><span class="text-slate-400 block text-[9px]">ຮູບດວງດາວ (Formation):</span> <b id="dosChartType" class="text-emerald-300">双星到向 (ຄູ່ດາວລົງໜ້າ)</b></div>
+                    </div>
+
+                    <!-- 9-Palace Matrix Visual Table -->
+                    <div class="my-4">
+                        <div class="font-bold text-yellow-300 text-xs mb-1.5 flex items-center gap-1.5">
+                            <span>🏯</span> <span>ຜັງດາວເຫີນ 9 ວັງ (Xuan Kong 9-Palace Chart Matrix):</span>
+                        </div>
+                        <div id="dosNinePalaceGrid" class="grid grid-cols-3 gap-1.5 text-center"></div>
+                    </div>
+
+                    <!-- Advanced Master Findings Summary -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 my-4 text-[11px]">
+                        <div class="bg-black/40 p-3 rounded-xl border border-slate-800">
+                            <span class="text-yellow-400 font-bold block mb-1">🏰 ປະຕູເສີມຊັບ & 7 ດາວປຸ້ນຊັບ:</span>
+                            <div id="dosCastleGateText" class="text-slate-300 text-[10px]">ກວດສອບປະຕູເສີມຊັບແທ້ ແລະ ປຸ້ນດາວ...</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-xl border border-slate-800">
+                            <span class="text-cyan-400 font-bold block mb-1">🌊 ສາຍນ້ຳ 8 ວັງ & ສັດເທບ 28 ດາວ:</span>
+                            <div id="dosDragonGateText" class="text-slate-300 text-[10px]">ສູດສາຍນ້ຳ 8 ວັງ ແລະ ອົງສາດາວ...</div>
+                        </div>
+                    </div>
+
+                    <!-- Prescribed Remedies Checklist -->
+                    <div class="my-4 bg-black/40 p-3 rounded-xl border border-yellow-500/30">
+                        <div class="font-bold text-amber-300 text-xs mb-1.5">💡 ໃບສັ່ງຢາຮວງຊຸ້ຍ & ຂໍ້ແນະນຳການປັບປຸງ (Prescribed Master Remedies):</div>
+                        <div class="space-y-1 text-[11px] text-slate-300">
+                            <div>• <b>ຈຸດດາວ 5 ເຫຼືອງ (五黄大煞):</b> ຫ້າມເຈາະ, ທຸບ, ຕອກ, ຕໍ່ເຕີມ; ໃຫ້ແຂວນກະດິ່ງລົມໂລຫະ 6 ທໍ່ ຫຼື ວາງນ້ຳອັນຢິນ.</div>
+                            <div>• <b>ຈຸດດາວ 2 ພະຍາດ (二黑病符):</b> ວາງນ້ຳເຕົ້າທອງເຫຼືອງ ຫຼື ຫຼຽນ 6 ຈັກກະພັດ ເພື່ອດູດຊັບພະຍາດ.</div>
+                            <div>• <b>ຈຸດດາວ 9 ໂຊກລາບຍຸກ (当旺财星):</b> ຕັ້ງນ້ຳພຸວົນ, ຕູ້ປາ, ຫຼື ປະຕູເປີດຮັບພະລັງງານແຫ່ງຄວາມຮັ່ງມີ.</div>
+                            <div>• <b>ຫ້ອງນອນ & ໂຕະເຮັດວຽກ:</b> ຈັດວາງໃຫ້ສອດຄ່ອງກັບທາດໃຫ້ຄຸນ (用神) ຂອງເຈົ້າຂອງບ້ານ.</div>
+                        </div>
+                    </div>
+
+                    <!-- Official Master Stamp & Signature -->
+                    <div class="flex items-center justify-between pt-4 mt-6 border-t border-yellow-500/30 text-[10px]">
+                        <div class="flex items-center gap-2">
+                            <div class="w-12 h-12 rounded-full border-2 border-red-600 bg-red-950/60 flex items-center justify-center text-red-400 font-black text-center text-[9px] leading-tight">
+                                堪舆<br>太极印
+                            </div>
+                            <div>
+                                <div class="font-bold text-white">ສະຖາບັນຄົ້ນຄວ້າຮວງຈຸ້ຍດາວເຫີນສາກົນ</div>
+                                <div class="text-slate-400 text-[9px]">International Xuan Kong Flying Stars Research Institute</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-slate-400">ວັນທີອອກໃບຢັ້ງຢືນ:</div>
+                            <div id="dosDateText" class="font-mono font-bold text-yellow-300"></div>
+                            <div class="text-[9px] text-emerald-400 font-bold mt-0.5">✓ ຜ່ານການກວດກາຕາມມາດຕະຖານສາກົນ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
