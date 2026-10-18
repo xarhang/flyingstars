@@ -170,10 +170,16 @@
                 </div>
             </div>
 
-            <!-- BUTTON: OPEN IN MOBILE (QR CODE) -->
-            <button id="openQrModalBtn" type="button" class="w-full mt-2.5 py-1.5 px-2.5 bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition shadow-sm">
-                <svg class="w-4 h-4 inline-block text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> ເປີດໃນມືຖື (ສະແກນ QR Code)
-            </button>
+            <!-- BUTTONS: OPEN IN MOBILE & 3-LANG GLOSSARY -->
+            <div class="grid grid-cols-2 gap-1.5 mt-2.5">
+                <button id="openQrModalBtn" type="button" class="py-1.5 px-2 bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 rounded-xl text-xs font-bold flex items-center justify-center gap-1 transition shadow-sm truncate" title="ເປີດໃນມືຖືດ້ວຍ QR Code">
+                    <svg class="w-3.5 h-3.5 inline-block text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    <span>ເປີດໃນມືຖື</span>
+                </button>
+                <button id="openGlossaryModalBtn" type="button" class="py-1.5 px-2 bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-300 border border-indigo-500/30 rounded-xl text-xs font-bold flex items-center justify-center gap-1 transition shadow-sm truncate" title="ວັດຈະນານຸກົມຮວງຈຸ້ຍ 3 ພາສາ (Lao-Chinese-English)">
+                    <span>📖 ວັດຈະນານຸກົມ</span>
+                </button>
+            </div>
 
             <!-- MODE SWITCHER TABS -->
             <div class="grid grid-cols-2 gap-1.5 mt-3 bg-slate-950 p-1 rounded-xl border border-slate-800">
@@ -222,6 +228,24 @@
                     <button data-rot="90" class="quick-rot bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] py-1 rounded-lg font-semibold transition border border-slate-700/60">ທິດຕາເວັນຕົກ (270°)</button>
                     <button data-rot="180" class="quick-rot bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] py-1 rounded-lg font-semibold transition border border-slate-700/60">ທິດເໜືອ (0°)</button>
                     <button data-rot="270" class="quick-rot bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] py-1 rounded-lg font-semibold transition border border-slate-700/60">ທິດຕາເວັນອອກ (90°)</button>
+                </div>
+            </div>
+
+            <!-- MAGNETIC DECLINATION & TRUE NORTH (18 ແຂວງໃນລາວ) -->
+            <div class="pt-2 border-t border-slate-800/80 flex flex-col gap-1.5">
+                <div class="flex items-center justify-between text-xs font-semibold">
+                    <span class="text-slate-200 flex items-center gap-1.5">
+                        🧭 ທິດເໜືອແທ້ (True North)
+                    </span>
+                    <label class="flex items-center gap-1.5 cursor-pointer text-[11px] text-amber-300">
+                        <input type="checkbox" id="trueNorthToggle" class="accent-amber-500 rounded cursor-pointer" onchange="toggleTrueNorth(this.checked)">
+                        <span id="trueNorthStatusText">ເໜືອແມ່ເຫຼັກ</span>
+                    </label>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <select id="provinceSelect" class="flex-1 bg-slate-950 border border-slate-700 text-slate-200 text-[11px] rounded-lg px-2 py-1 outline-none" onchange="handleProvinceChange(this.value)">
+                    </select>
+                    <span id="declinationBadge" class="text-[10px] font-mono font-bold text-cyan-300 bg-cyan-950/80 border border-cyan-800/60 px-2 py-1 rounded shrink-0">-0.55°</span>
                 </div>
             </div>
 
@@ -459,6 +483,18 @@
                 <button id="resetPlanPosBtn" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] py-1 rounded font-semibold transition border border-slate-700">
                     ↺ ຈັດແປນບ້ານຢູ່ກາງສູນກາງ
                 </button>
+
+                <!-- FLOORPLAN OVERLAYS (9-PALACE GRID & 24-MOUNTAIN PIE) -->
+                <div class="grid grid-cols-2 gap-1.5 pt-1 border-t border-slate-800/80">
+                    <label class="flex items-center gap-1.5 text-[10px] text-slate-300 cursor-pointer bg-slate-950 p-1.5 rounded-lg border border-slate-800 hover:border-slate-700 select-none">
+                        <input type="checkbox" id="togglePlanGrid" class="accent-red-500 rounded cursor-pointer" onchange="toggleFloorplanOverlay('grid', this.checked)">
+                        <span>⊞ ຕາຕະລາງ 9 ວັງ</span>
+                    </label>
+                    <label class="flex items-center gap-1.5 text-[10px] text-slate-300 cursor-pointer bg-slate-950 p-1.5 rounded-lg border border-slate-800 hover:border-slate-700 select-none">
+                        <input type="checkbox" id="togglePlanPie" class="accent-amber-500 rounded cursor-pointer" onchange="toggleFloorplanOverlay('pie', this.checked)">
+                        <span>☸ 24 ທິດດາວເຄາະ</span>
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -620,7 +656,15 @@
 
         <!-- Interactive User Floor Plan Image Layer -->
         <div id="floorplanWrapper" class="absolute pointer-events-none select-none flex items-center justify-center transition-none" style="transform: translate(0px, 0px);">
-            <img id="floorplanImg" src="" alt="Floor Plan" class="hidden max-w-[1200px] max-h-[1200px] object-contain shadow-2xl border-2 border-slate-400 bg-white" />
+            <div id="floorplanContainer" class="relative inline-block">
+                <img id="floorplanImg" src="" alt="Floor Plan" class="hidden max-w-[1200px] max-h-[1200px] object-contain shadow-2xl border-2 border-slate-400 bg-white" />
+                <!-- 9-Palace Grid Overlay -->
+                <div id="floorplanGridOverlay" class="absolute inset-0 pointer-events-none hidden grid grid-cols-3 grid-rows-3 border-2 border-red-500/90 divide-x-2 divide-y-2 divide-red-500/80 bg-red-500/5 z-10">
+                </div>
+                <!-- 24-Mountain Radial Pie Overlay -->
+                <svg id="floorplanPieOverlay" class="absolute inset-0 pointer-events-none hidden w-full h-full z-10" viewBox="0 0 1000 1000">
+                </svg>
+            </div>
         </div>
 
         <!-- Fixed Center Red Crosshair Guide (Viewport level) -->
@@ -2421,6 +2465,81 @@
             };
         }
 
+        function calculateCastleGate(chart, period) {
+            const curPal = chart.faceInfo.palId;
+            const ADJACENT_PALACES = {
+                1: { pos: 8, sec: 6 }, // Kan -> Gen & Qian
+                2: { pos: 7, sec: 9 }, // Kun -> Dui & Li
+                3: { pos: 1, sec: 4 }, // Zhen -> Kan & Xun
+                4: { pos: 9, sec: 3 }, // Xun -> Li & Zhen
+                6: { pos: 7, sec: 1 }, // Qian -> Dui & Kan
+                7: { pos: 2, sec: 6 }, // Dui -> Kun & Qian
+                8: { pos: 3, sec: 1 }, // Gen -> Zhen & Kan
+                9: { pos: 4, sec: 2 }  // Li -> Xun & Kun
+            };
+            const adj = ADJACENT_PALACES[curPal] || { pos: 8, sec: 6 };
+            const posPal = XUAN_KONG_PALACES[adj.pos];
+            const secPal = XUAN_KONG_PALACES[adj.sec];
+            const posWaterStar = chart.wStars[adj.pos];
+            const secWaterStar = chart.wStars[adj.sec];
+
+            const isPosGood = (posWaterStar === period || posWaterStar === (period % 9 + 1) || posWaterStar === 1);
+            const isSecGood = (secWaterStar === period || secWaterStar === (period % 9 + 1) || secWaterStar === 1);
+
+            return {
+                posPalName: posPal ? posPal.dir : 'ທິດຂ້າງ',
+                secPalName: secPal ? secPal.dir : 'ທິດຂ້າງ',
+                posStar: posWaterStar,
+                secStar: secWaterStar,
+                isPosGood,
+                isSecGood,
+                hasActiveGate: isPosGood || isSecGood,
+                activeGateText: isPosGood
+                    ? '🌟 ເປີດປະຕູເສີມຊັບແທ້ (正城门) ຢູ່ ' + posPal.dir + ' (ດາວນ້ຳ ' + posWaterStar + ')'
+                    : (isSecGood ? '✨ ເປີດປະຕູເສີມຊັບສຳຮອງ (副城门) ຢູ່ ' + secPal.dir + ' (ດາວນ້ຳ ' + secWaterStar + ')' : 'ບໍ່ມີປະຕູເສີມຊັບທີ່ຕົກດາວມຸງຄຸນໃນຍຸກນີ້')
+            };
+        }
+
+        function calculateSevenStarRobbery(chart, period) {
+            const curPal = chart.faceInfo.palId;
+            const isFacingDouble = (chart.wStars[curPal] === period);
+            if (!isFacingDouble) {
+                return {
+                    isRobbery: false,
+                    title: 'ບໍ່ຕິດສູດປຸ້ນດາວ',
+                    desc: 'ເງື່ອນໄຂທຳອິດຕ້ອງເປັນຮູບດວງດາວນ້ຳລົງໜ້າບ້ານ (双星到向 / 旺向).',
+                    palacesText: 'ຕ້ອງການດາວນ້ຳປະຈຳຍຸກ ' + period + ' ຕົກໜ້າບ້ານ'
+                };
+            }
+
+            const p1 = [chart.base[1], chart.mStars[1], chart.wStars[1]].sort().join('');
+            const p3 = [chart.base[3], chart.mStars[3], chart.wStars[3]].sort().join('');
+            const p7 = [chart.base[7], chart.mStars[7], chart.wStars[7]].sort().join('');
+            const is147 = (p1 === '147' && p3 === '147' && p7 === '147');
+
+            const p6 = [chart.base[6], chart.mStars[6], chart.wStars[6]].sort().join('');
+            const p8 = [chart.base[8], chart.mStars[8], chart.wStars[8]].sort().join('');
+            const is258 = (p6 === '258' && p1 === '258' && p8 === '258');
+            const is369 = (p6 === '369' && p1 === '369' && p8 === '369');
+
+            if (is147 || is258 || is369) {
+                return {
+                    isRobbery: true,
+                    title: '💎 北斗七星打劫 (7-Star Robbery Active!)',
+                    trio: is147 ? '1-4-7 ພໍ່ແມ່ສາມຂວຍ' : (is258 ? '2-5-8 ສາມຂວຍ' : '3-6-9 ສາມຂວຍ'),
+                    palacesText: is147 ? 'ວັງ 坎(1) - 震(3) - 兑(7) ເຊື່ອມຕໍ່ພະລັງ' : 'ວັງ 乾(6) - 坎(1) - 艮(8) ເຊື່ອມຕໍ່ພະລັງ',
+                    desc: 'ສຸດຍອດສູດລັບດາວເຫີນ! ບ້ານນີ້ສາມາດ "ປຸ້ນພະລັງຊີ່ 3 ຍຸກ" ເຮັດໃຫ້ຄວາມຮັ່ງມີ ແລະ ໂຊກລາບຄົງຢູ່ຕະຫຼອດໄປ 180 ປີ ໂດຍບໍ່ມີວັນເສື່ອມໂຊມ.'
+                };
+            }
+
+            return {
+                isRobbery: false,
+                title: 'ບໍ່ເຂົ້າເກນປຸ້ນດາວ 7 ດາວ',
+                palacesText: 'ວັງ 1-3-7 ຫຼື 6-1-8 ຍັງບໍ່ຄົບຊຸດສາມຂວຍ',
+                desc: 'ວັງ 1-3-7 ຫຼື 6-1-8 ຍັງບໍ່ຄົບຊຸດສາມຂວຍ 147/258/369.'
+            };
+        }
+
         // =========================================================================
         // MASTER SYSTEM 2: SPECIAL FLYING STAR FORMATIONS (玄空四大格局 & 特殊局)
         // =========================================================================
@@ -2502,6 +2621,8 @@
             }
 
             const isImprisoned = (chart.wStars[5] === period);
+            const castleGate = calculateCastleGate(chart, period);
+            const sevenStarRobbery = calculateSevenStarRobbery(chart, period);
 
             return {
                 formationType,
@@ -2513,11 +2634,98 @@
                 isHeShi,
                 isFuMu,
                 isImprisoned,
+                castleGate,
+                sevenStarRobbery,
                 wFace,
                 mFace,
                 wSit,
                 mSit
             };
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.5: DONG GONG DATE SELECTION & 12 DAY OFFICERS (董公择日)
+        // =========================================================================
+        const DONG_GONG_OFFICERS = [
+            { char: '建', lao: 'ຈ້ຽນ (建 - ສ້າງຕັ້ງ)', isGood: true, badge: 'border-emerald-500 bg-emerald-950/60 text-emerald-300', stars: '⭐⭐⭐⭐', desc: 'ມື້ເລີ່ມຕົ້ນສິ່ງໃໝ່: ເໝາະສຳລັບເດີນທາງ, ເຂົ້າຮັບຕຳແໜ່ງ, ເປີດກິດຈະການ. ຫ້າມຂຸດດິນ (动土) ໃກ້ຫຼັງພິງ.' },
+            { char: '除', lao: 'ສູ (除 - ກຳຈັດ/ຂັບໄລ່)', isGood: true, badge: 'border-teal-500 bg-teal-950/60 text-teal-300', stars: '⭐⭐⭐⭐⭐', desc: 'ມື້ກຳຈັດສິ່ງອັບປະມຸງຄຸນ: ດີເລີດສຳລັບປັດກວາດເຮືອນ, ປິ່ນປົວພະຍາດ, ທັບມ້າງສິ່ງເກົ່າ, ແກ້ຮວງຈຸ້ຍ.' },
+            { char: '满', lao: 'ມານ (满 - ເຕັມປ່ຽມ)', isGood: true, badge: 'border-cyan-500 bg-cyan-950/60 text-cyan-300', stars: '⭐⭐⭐⭐', desc: 'ມື້ຄວາມອຸດົມສົມບູນ: ດີສຳລັບຈັດງານລ້ຽງ, ເປີດຮ້ານ, ເກັບເງິນເຂົ້າຄັງ. ຫ້າມຂຸດດິນລົງເສົາ.' },
+            { char: '平', lao: 'ຜິງ (平 - ສະເໝີພາບ)', isGood: false, badge: 'border-slate-700 bg-slate-950 text-slate-300', stars: '⭐⭐⭐', desc: 'ມື້ພະລັງງານສະເໝີຕົວ: ດີສຳລັບປັບດິນໃຫ້ພຽງ, ສ້ອມແປງທາງ. ງານມຸງຄຸນໃຫຍ່ຖືວ່າປານກາງ.' },
+            { char: '定', lao: 'ຕິ້ງ (定 - ໝັ້ນຄົງ/ຕົກລົງ)', isGood: true, badge: 'border-emerald-500 bg-emerald-950/60 text-emerald-300', stars: '⭐⭐⭐⭐⭐', desc: 'ມື້ແຫ່ງຄວາມໝັ້ນຄົງຖາວອນ: ດີເລີດສຳລັບວາງສີລາລຶກ (动土), ເຊັນສັນຍາ, ໝັ້ນໝາຍ, ຕັ້ງເຕົາໄຟ (安灶).' },
+            { char: '执', lao: 'ຈື (执 - ຍຶດຖື/ປະຕິບັດ)', isGood: true, badge: 'border-amber-500 bg-amber-950/60 text-amber-300', stars: '⭐⭐⭐⭐', desc: 'ມື້ປະຕິບັດຕາມຫຼັກການ: ດີສຳລັບປູກຕົ້ນໄມ້, ກໍ່ສ້າງ, ເລີ່ມງານ. ຫ້າມເດີນທາງໄກ ຫຼື ຍ້າຍບ້ານ.' },
+            { char: '破', lao: 'ໂຜ້ (破 - ແຕກຫັກ/ທຳລາຍ)', isGood: false, badge: 'border-rose-500 bg-rose-950/60 text-rose-300', stars: '⭐', desc: '❌ ມື້ແຕກຫັກ (日破): ວັນອັບປະມຸງຄຸນຮ້າຍແຮງ! ຫ້າມວາງສີລາລຶກ, ຫ້າມຂຶ້ນເຮືອນໃໝ່, ຫ້າມແຕ່ງດອງ.' },
+            { char: '危', lao: 'ເວີຍ (危 - ອັນຕະລາຍ/ລະວັງ)', isGood: false, badge: 'border-amber-700 bg-amber-950 text-amber-300', stars: '⭐⭐', desc: 'ມື້ສູງຊັນຕ້ອງລະວັງ: ດີສຳລັບຍົກເສົາເອກຂຶ້ນຂື່ຫຼັງຄາ, ແຕ່ຫ້າມຂີ່ເຮືອ ຫຼື ປີນຂຶ້ນທີ່ສູງ.' },
+            { char: '成', lao: 'ເສີງ (成 - ສຳເລັດຜົນ)', isGood: true, badge: 'border-emerald-500 bg-emerald-950/60 text-emerald-300', stars: '⭐⭐⭐⭐⭐ (ມຸງຄຸນສູງສຸດ)', desc: '🌟 ມື້ແຫ່ງຄວາມສຳເລັດສົມຫວັງ (大吉!): ດີເລີດທຸກຢ່າງ! ຂຶ້ນເຮືອນໃໝ່ (进宅), ເປີດຮ້ານ, ແຕ່ງດອງ, ຝັງສົບ.' },
+            { char: '收', lao: 'ໂຊວ (收 - ເກັບກ່ຽວ)', isGood: true, badge: 'border-blue-500 bg-blue-950/60 text-blue-300', stars: '⭐⭐⭐⭐', desc: 'ມື້ຮັບຊັບເກັບກ່ຽວ: ດີສຳລັບເກັບເງິນ, ທວງໜີ້, ຝາກເງິນ, ເຂົ້າຮຽນ. ຫ້າມຝັງສົບ ຫຼື ເລີ່ມຮັກສາພະຍາດ.' },
+            { char: '开', lao: 'ຄາຍ (开 - ເປີດເຜີຍ/ເລີ່ມຕົ້ນ)', isGood: true, badge: 'border-emerald-500 bg-emerald-950/60 text-emerald-300', stars: '⭐⭐⭐⭐⭐', desc: '🌟 ມື້ເປີດປະຕູຮັບໂຊກ: ດີເລີດສຳລັບຕັ້ງປະຕູໃຫຍ່ (安门), ຂຶ້ນເຮືອນໃໝ່, ເປີດບໍລິສັດ, ເປີດງານມຸງຄຸນ.' },
+            { char: '闭', lao: 'ປີ້ (闭 - ປິດ/ສະຫງົບ)', isGood: false, badge: 'border-slate-700 bg-slate-950 text-slate-300', stars: '⭐⭐', desc: 'ມື້ປິດປະຕູສະຫງົບ: ດີສຳລັບຝັງສົບ (安葬), ສ້າງກຳແພງ, ປິດຮອຍຮົ່ວ. ຫ້າມເປີດຮ້ານ ຫຼື ປິ່ນປົວຕາ.' }
+        ];
+
+        function calculateDongGong(dateObj) {
+            const epoch = new Date(2026, 0, 1).getTime();
+            const curTime = dateObj.getTime();
+            const diffDays = Math.round((curTime - epoch) / 86400000);
+            const dayBranchIdx = (0 + diffDays % 12 + 12) % 12;
+
+            const m = dateObj.getMonth();
+            const mBranchIdx = (m + 1) % 12;
+            const officerIdx = (dayBranchIdx - mBranchIdx + 12) % 12;
+            const officer = DONG_GONG_OFFICERS[officerIdx];
+
+            const BRANCH_CLASH = {
+                0: 'ມ້າ (午)', 1: 'ແບ້ (未)', 2: 'ລີງ (申)', 3: 'ໄກ່ (酉)',
+                4: 'ໝາ (戌)', 5: 'ໝູ (亥)', 6: 'ໜູ (子)', 7: 'ງົວ (丑)',
+                8: 'ເສືອ (寅)', 9: 'ກະຕ່າຍ (卯)', 10: 'ມັງກອນ (辰)', 11: 'ງູ (巳)'
+            };
+            const clashZodiac = BRANCH_CLASH[dayBranchIdx];
+
+            return {
+                officer,
+                clashZodiac,
+                dongTu: (officerIdx === 4 || officerIdx === 8) ? '🌟 ດີເລີດ' : (officerIdx === 6 ? '❌ ຫ້າມເດັດຂາດ' : 'ປານກາງ'),
+                jinZhai: (officerIdx === 8 || officerIdx === 10) ? '🌟 ມຸງຄຸນສູງສຸດ' : (officerIdx === 6 ? '❌ ຫ້າມເດັດຂາດ' : 'ທຳມະດາ'),
+                anMen: (officerIdx === 10 || officerIdx === 8 || officerIdx === 4) ? '🌟 ມຸງຄຸນ' : (officerIdx === 6 ? '❌ ຫ້າມ' : 'ປານກາງ'),
+                anZang: (officerIdx === 8 || officerIdx === 11) ? '🌟 ມຸງຄຸນ' : (officerIdx === 6 || officerIdx === 0 ? '❌ ຫ້າມ' : 'ປານກາງ')
+            };
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.6: MAGNETIC DECLINATION (18 ແຂວງໃນລາວ & ທິດເໜືອແທ້)
+        // =========================================================================
+        let useTrueNorth = false;
+        let selectedProvinceDeclination = -0.55;
+
+        const LAO_PROVINCES = [
+            { name: 'ນະຄອນຫຼວງວຽງຈັນ (Vientiane)', dec: -0.55 },
+            { name: 'ຫຼວງພະບາງ (Luang Prabang)', dec: -0.42 },
+            { name: 'ຈຳປາສັກ / ປາກເຊ (Champasak)', dec: -0.72 },
+            { name: 'ສະຫວັນນະເຂດ (Savannakhet)', dec: -0.65 },
+            { name: 'ຄຳມ່ວນ / ທ່າແຂກ (Khammouane)', dec: -0.58 },
+            { name: 'ຊຽງຂວາງ / ໂພນສະຫວັນ (Xieng Khouang)', dec: -0.45 },
+            { name: 'ໄຊຍະບູລີ (Xayaboury)', dec: -0.40 },
+            { name: 'ບໍ່ແກ້ວ / ຫ້ວຍຊາຍ (Bokeo)', dec: -0.35 },
+            { name: 'ຫຼວງນ້ຳທາ (Luang Namtha)', dec: -0.32 },
+            { name: 'ຜົ້ງສາລີ (Phongsaly)', dec: -0.28 },
+            { name: 'ອຸດົມໄຊ (Oudomxay)', dec: -0.38 },
+            { name: 'ບໍລິຄຳໄຊ / ປາກຊັນ (Bolikhamxay)', dec: -0.56 },
+            { name: 'ສາລະວັນ (Salavan)', dec: -0.68 },
+            { name: 'ເຊກອງ (Sekong)', dec: -0.75 },
+            { name: 'ອັດຕະປື (Attapeu)', dec: -0.78 },
+            { name: 'ໄຊສົມບູນ (Xaysomboun)', dec: -0.50 },
+            { name: 'ຫົວພັນ / ຊຳເໜືອ (Huaphanh)', dec: -0.40 },
+            { name: 'ແຂວງວຽງຈັນ / ໂພນໂຮງ', dec: -0.52 },
+            { name: 'ບາງກອກ (Bangkok)', dec: -0.60 },
+            { name: 'ຊຽງໃໝ່ (Chiang Mai)', dec: -0.38 }
+        ];
+
+        function setProvinceDeclination(decVal) {
+            selectedProvinceDeclination = parseFloat(decVal) || -0.55;
+            updateCompassTransform();
+        }
+
+        function toggleTrueNorth(enabled) {
+            useTrueNorth = !!enabled;
+            updateCompassTransform();
         }
 
         // =========================================================================
@@ -3230,8 +3438,11 @@
         let lastCachedKwText = '';
         let lastCachedSpotHtml = '';
 
+        let latestFlyingChart = null;
+
         function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
             const chart = calculateFlyingStarsChart(currentPeriod, faceDeg);
+            latestFlyingChart = chart;
             const curPal = chart.faceInfo.palId;
             const curM = chart.mStars[curPal];
             const curP = chart.base[curPal];
@@ -5006,6 +5217,8 @@
                 // TAB 1.6: 4 MAJOR & SPECIAL FLYING STAR FORMATIONS (玄空四大格局 & 特殊局)
                 else if (activeYangTab === 'tab_formations') {
                     const fRes = analyzeSpecialFormations(chart, currentPeriod);
+                    const cg = calculateCastleGate(chart, currentPeriod);
+                    const ssr = calculateSevenStarRobbery(chart, currentPeriod);
                     tabBody =
                         '<div class="flex flex-col gap-2">' +
                             '<div class="p-3 rounded-xl border ' + fRes.formationBadge + ' flex flex-col gap-1.5 shadow-sm">' +
@@ -5021,6 +5234,28 @@
                                 '</p>' +
                                 '<div class="bg-black/40 p-2 rounded-lg text-[10px] text-amber-200 leading-relaxed border border-amber-500/30">' +
                                     fRes.formationRemedy +
+                                '</div>' +
+                            '</div>' +
+
+                            '<!-- CASTLE GATE & 7-STAR ROBBERY CARDS -->' +
+                            '<div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[10px]">' +
+                                '<div class="p-2.5 rounded-xl bg-slate-950 border ' + (cg.directGate && cg.directGate.isTimely ? 'border-emerald-500 bg-emerald-950/20 text-emerald-200' : 'border-slate-800 text-slate-300') + ' flex flex-col gap-1">' +
+                                    '<div class="flex items-center justify-between">' +
+                                        '<span class="font-bold text-xs text-amber-400">🏯 城门诀 (Castle Gate)</span>' +
+                                        '<span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-black/50 border border-slate-700">' + (cg.directGate && cg.directGate.isTimely ? '🌟 ເປີດປະຕູຮັບຊັບ' : 'ປົກກະຕິ') + '</span>' +
+                                    '</div>' +
+                                    '<div><b>正城门 (ຫຼັກ):</b> ' + (cg.directGate ? cg.directGate.palName + ' (ດາວ ' + cg.directGate.gateStar + ' ' + cg.directGate.rating + ')' : 'ບໍ່ມີ') + '</div>' +
+                                    '<div><b>副城门 (ຮອງ):</b> ' + (cg.secondaryGate ? cg.secondaryGate.palName + ' (ດາວ ' + cg.secondaryGate.gateStar + ' ' + cg.secondaryGate.rating + ')' : 'ບໍ່ມີ') + '</div>' +
+                                    '<div class="text-[9px] text-slate-400 border-t border-slate-800/80 pt-1 mt-0.5 leading-relaxed">' + cg.activeGateText + '</div>' +
+                                '</div>' +
+                                '<div class="p-2.5 rounded-xl bg-slate-950 border ' + (ssr.isRobbery ? 'border-purple-500 bg-purple-950/20 text-purple-200' : 'border-slate-800 text-slate-300') + ' flex flex-col gap-1">' +
+                                    '<div class="flex items-center justify-between">' +
+                                        '<span class="font-bold text-xs text-purple-300">⚔️ 七星打劫 (7-Star Robbery)</span>' +
+                                        '<span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-black/50 border border-slate-700">' + (ssr.isRobbery ? '🌟 ປຸ້ນດາວ 3 ຍຸກ' : 'ບໍ່ເຂົ້າເກນ') + '</span>' +
+                                    '</div>' +
+                                    '<div class="font-semibold text-slate-200">' + ssr.title + '</div>' +
+                                    '<div class="text-[9px] text-slate-400 leading-relaxed">' + ssr.desc + '</div>' +
+                                    '<div class="text-[9px] font-mono text-purple-300 border-t border-slate-800/80 pt-1 mt-0.5">' + ssr.palacesText + '</div>' +
                                 '</div>' +
                             '</div>' +
 
@@ -5084,6 +5319,8 @@
                         );
                     }).join('');
 
+                    const dg = calculateDongGong(today);
+
                     tabBody =
                         '<div class="flex flex-col gap-2">' +
                             '<div class="flex items-center justify-between text-xs">' +
@@ -5091,6 +5328,27 @@
                                 '<span class="text-slate-400 text-[10px] font-mono">' + today.toLocaleDateString() + '</span>' +
                             '</div>' +
                             '<div class="grid grid-cols-5 gap-1 mb-1">' + dayPills + '</div>' +
+
+                            '<!-- DONG GONG 12 DUTY OFFICERS & DAY CLASH (董公择日 & 12 建除) -->' +
+                            '<div class="p-3 rounded-xl border ' + dg.officer.badge + ' flex flex-col gap-1.5 shadow-sm">' +
+                                '<div class="flex items-center justify-between">' +
+                                    '<span class="font-bold text-xs">📜 董公择日: ' + dg.officer.lao + '</span>' +
+                                    '<span class="text-[10px] font-mono font-bold">' + dg.officer.stars + '</span>' +
+                                '</div>' +
+                                '<div class="flex items-center justify-between text-[10px]">' +
+                                    '<span class="text-rose-300 font-bold">⚠️ ປີຊົງປະຈຳວັນ (日破): ' + dg.clashZodiac + '</span>' +
+                                    '<span class="text-slate-400 font-mono">12 建除神煞</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-200 leading-relaxed border-t border-slate-800/80 pt-1">' +
+                                    dg.officer.desc +
+                                '</p>' +
+                                '<div class="grid grid-cols-2 sm:grid-cols-4 gap-1 text-[9px] pt-1 border-t border-slate-800/80">' +
+                                    '<div class="bg-black/40 p-1.5 rounded text-center"><b>ວາງສີລາລຶກ:</b><br>' + dg.dongTu + '</div>' +
+                                    '<div class="bg-black/40 p-1.5 rounded text-center"><b>ຂຶ້ນເຮືອນໃໝ່:</b><br>' + dg.jinZhai + '</div>' +
+                                    '<div class="bg-black/40 p-1.5 rounded text-center"><b>ຕັ້ງປະຕູໃຫຍ່:</b><br>' + dg.anMen + '</div>' +
+                                    '<div class="bg-black/40 p-1.5 rounded text-center"><b>ຝັງສົບ/ສຸສານ:</b><br>' + dg.anZang + '</div>' +
+                                '</div>' +
+                            '</div>' +
 
                             '<div class="flex items-center justify-between text-xs mt-1">' +
                                 '<span class="text-cyan-400 font-bold">ເລືອກຍາມ (12 ຍາມ):</span>' +
@@ -5910,18 +6168,23 @@
             rotSlider.value = normRot.toFixed(1);
 
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
-            const bottomCompassDeg = (topCompassDeg + 180) % 360;
-            const leftCompassDeg = (topCompassDeg - 90 + 360) % 360;
-            const rightCompassDeg = (topCompassDeg + 90) % 360;
+            let effectiveFacingDeg = topCompassDeg;
+            if (useTrueNorth) {
+                effectiveFacingDeg = ((topCompassDeg + selectedProvinceDeclination) % 360 + 360) % 360;
+            }
+            const bottomCompassDeg = (effectiveFacingDeg + 180) % 360;
+            const leftCompassDeg = (effectiveFacingDeg - 90 + 360) % 360;
+            const rightCompassDeg = (effectiveFacingDeg + 90) % 360;
 
-            const faceInfo = findMountainInfo(topCompassDeg);
+            const faceInfo = findMountainInfo(effectiveFacingDeg);
             const sitInfo = findMountainInfo(bottomCompassDeg);
             const leftInfo = findMountainInfo(leftCompassDeg);
             const rightInfo = findMountainInfo(rightCompassDeg);
 
+            const tnBadge = useTrueNorth ? ` <span class="text-[9px] text-cyan-300 font-mono">(TN ${selectedProvinceDeclination > 0 ? '+' : ''}${selectedProvinceDeclination.toFixed(2)}°)</span>` : '';
             const topText = cameraActive
-                ? `<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-1"></span> ກ້ອງຫັນ: ${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name} ${faceInfo.mtn.lao})`
-                : `ໜ້າບ້ານ: ${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name} ${faceInfo.mtn.lao})`;
+                ? `<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-1"></span> ກ້ອງຫັນ: ${effectiveFacingDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name} ${faceInfo.mtn.lao})${tnBadge}`
+                : `ໜ້າບ້ານ: ${effectiveFacingDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name} ${faceInfo.mtn.lao})${tnBadge}`;
             const sittingText = `ຫຼັງພິງ: ${bottomCompassDeg.toFixed(1)}° ${sitInfo.pal.dir} (${sitInfo.mtn.name} ${sitInfo.mtn.lao})`;
 
             degreeBadge.innerHTML = topText;
@@ -5932,8 +6195,8 @@
             const mobileDegreeBadge = document.getElementById('mobileDegreeBadge');
             if (mobileDegreeBadge) {
                 mobileDegreeBadge.innerHTML = cameraActive
-                    ? `<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-0.5"></span> ຫັນ: ${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})`
-                    : `ໜ້າ: ${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})`;
+                    ? `<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-0.5"></span> ຫັນ: ${effectiveFacingDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})${tnBadge}`
+                    : `ໜ້າ: ${effectiveFacingDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})${tnBadge}`;
             }
             const mobileSittingBadge = document.getElementById('mobileSittingBadge');
             if (mobileSittingBadge) {
@@ -5941,13 +6204,13 @@
             }
             const arCameraDegBadge = document.getElementById('arCameraDegBadge');
             if (arCameraDegBadge) {
-                arCameraDegBadge.textContent = `${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})`;
+                arCameraDegBadge.textContent = `${effectiveFacingDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})`;
             }
 
             // Real-time Update for the 4 Red Thread Readout Badges on the Outer Base Plate
             const plateFaceBadge = document.getElementById('plateFaceBadge');
             if (plateFaceBadge) {
-                plateFaceBadge.textContent = `ໜ້າບ້ານ: ${topCompassDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})`;
+                plateFaceBadge.textContent = `ໜ້າບ້ານ: ${effectiveFacingDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})`;
             }
             const plateSitBadge = document.getElementById('plateSitBadge');
             if (plateSitBadge) {
@@ -5971,7 +6234,10 @@
             }
 
             // Real-time Flying Stars & BaZhai Live Prediction Update
-            updateLivePrediction(topCompassDeg);
+            updateLivePrediction(effectiveFacingDeg);
+            if (latestFlyingChart) {
+                renderFloorplanOverlays(latestFlyingChart);
+            }
 
             // Real Magnetic Needle with fluid physics (manual drag mode only)
             if (!liveCompassActive) {
@@ -6047,6 +6313,95 @@
             floorplanWrapper.style.transform = `translate(${panX + planPosX * zoomFactor}px, ${panY + planPosY * zoomFactor}px) scale(${zoomFactor * (planScale / 100)})`;
             planScaleVal.textContent = `${planScale}%`;
             planScaleSlider.value = planScale;
+        }
+
+        let showFloorplanGrid = false;
+        let showFloorplanPie = false;
+
+        function toggleFloorplanOverlay(type, checked) {
+            if (type === 'grid') showFloorplanGrid = checked;
+            if (type === 'pie') showFloorplanPie = checked;
+            if (latestFlyingChart) renderFloorplanOverlays(latestFlyingChart);
+        }
+
+        function renderFloorplanOverlays(chart) {
+            const gridEl = document.getElementById('floorplanGridOverlay');
+            const pieEl = document.getElementById('floorplanPieOverlay');
+            if (!gridEl || !pieEl || !chart) return;
+
+            // 1. Grid Overlay (3x3 matching 9 Palaces: SE, S, SW / E, Center, W / NE, N, NW)
+            if (showFloorplanGrid) {
+                gridEl.classList.remove('hidden');
+                const palaceOrder = [
+                    { id: 4, name: 'SE ອາຄະເນ (巽)' },
+                    { id: 9, name: 'S ໃຕ້ (離)' },
+                    { id: 2, name: 'SW ຫໍລະດີ (坤)' },
+                    { id: 3, name: 'E ອອກ (震)' },
+                    { id: 5, name: 'Center ກາງ (中)' },
+                    { id: 7, name: 'W ຕົກ (兌)' },
+                    { id: 8, name: 'NE ອີສານ (艮)' },
+                    { id: 1, name: 'N ເໜືອ (坎)' },
+                    { id: 6, name: 'NW ພາຍັບ (乾)' }
+                ];
+                gridEl.innerHTML = palaceOrder.map(p => {
+                    const m = chart.mStars[p.id];
+                    const b = chart.base[p.id];
+                    const w = chart.wStars[p.id];
+                    const isFacing = p.id === chart.faceInfo.palId;
+                    const isSitting = p.id === chart.sitInfo.palId;
+                    return `
+                        <div class="flex flex-col items-center justify-center p-1 sm:p-2 text-center select-none ${isFacing ? 'bg-amber-500/20' : (isSitting ? 'bg-indigo-500/20' : 'bg-slate-900/40')}">
+                            <span class="text-[9px] sm:text-[11px] font-bold text-slate-900 bg-white/80 px-1 rounded shadow-sm">${p.name}</span>
+                            <div class="flex items-center gap-1.5 font-mono text-xs sm:text-base font-black mt-1">
+                                <span class="text-blue-700 bg-white/90 px-1 rounded" title="ດາວພູ">${m}</span>
+                                <span class="text-slate-800 text-[10px] sm:text-xs">(${b})</span>
+                                <span class="text-emerald-700 bg-white/90 px-1 rounded" title="ດາວນ້ຳ">${w}</span>
+                            </div>
+                            <span class="text-[8px] font-bold ${isFacing ? 'text-amber-800' : (isSitting ? 'text-indigo-800' : 'text-slate-600')}">
+                                ${isFacing ? '★ ໜ້າບ້ານ' : (isSitting ? '▲ ຫຼັງພິງ' : '')}
+                            </span>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                gridEl.classList.add('hidden');
+            }
+
+            // 2. 24-Mountain Pie Overlay
+            if (showFloorplanPie) {
+                pieEl.classList.remove('hidden');
+                const parts = [];
+                const cX = 500;
+                const cY = 500;
+                const radius = 490;
+                parts.push(`<circle cx="${cX}" cy="${cY}" r="${radius}" fill="none" stroke="#dc2626" stroke-width="2.5" opacity="0.85"/>`);
+                MOUNTAINS_24.forEach(m => {
+                    const p = polarToCartesian(cX, cY, radius, m.start);
+                    parts.push(`<line x1="${cX}" y1="${cY}" x2="${p.x.toFixed(1)}" y2="${p.y.toFixed(1)}" stroke="#dc2626" stroke-width="1.2" opacity="0.75"/>`);
+                    const midD = (m.start + (m.end < m.start ? m.end + 360 : m.end)) / 2;
+                    const mInfo = findMountainInfo(midD);
+                    const mName = (mInfo && mInfo.mtn) ? mInfo.mtn.name : m.code;
+                    const textP = polarToCartesian(cX, cY, radius - 28, midD);
+                    parts.push(`<text x="${textP.x.toFixed(1)}" y="${textP.y.toFixed(1)}" font-size="16" font-weight="900" fill="#dc2626" text-anchor="middle" dominant-baseline="central">${mName}</text>`);
+                });
+                pieEl.innerHTML = parts.join('');
+            } else {
+                pieEl.classList.add('hidden');
+            }
+        }
+
+        function initProvinceSelect() {
+            const sel = document.getElementById('provinceSelect');
+            if (!sel) return;
+            sel.innerHTML = LAO_PROVINCES.map((p, idx) =>
+                `<option value="${p.dec}" ${idx === 0 ? 'selected' : ''}>${p.name}</option>`
+            ).join('');
+        }
+
+        function handleProvinceChange(val) {
+            setProvinceDeclination(val);
+            const badge = document.getElementById('declinationBadge');
+            if (badge) badge.textContent = (parseFloat(val) > 0 ? '+' : '') + parseFloat(val).toFixed(2) + '°';
         }
 
         function setDisplayMode(transparent) {
@@ -7093,20 +7448,8 @@
         async function initQrCode() {
             let serverUrl = window.location.href;
             if (window.location.protocol === 'file:') {
-                // ເມື່ອເປີດໄຟລ໌ໂດຍກົງ (file:///) ບໍ່ຕ້ອງ fetch /api/ip ເພື່ອປ້ອງກັນ CORS Error
                 serverUrl = 'http://localhost:3030';
-            } else if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                try {
-                    const res = await fetch('/api/ip');
-                    if (res.ok) {
-                        const data = await res.json();
-                        if (data.url) serverUrl = data.url;
-                    }
-                } catch(e) {
-                    serverUrl = window.location.origin;
-                }
             } else {
-                // ເມື່ອຮັນເທິງ GitHub Pages ຫຼື Hosting ຈິງ ໃຊ້ Link ໜ້າເວັບໂດຍກົງ
                 serverUrl = window.location.href;
             }
             if (mobileServerUrlText) mobileServerUrlText.textContent = serverUrl;
@@ -7152,6 +7495,162 @@
             });
         }
 
+        // ==========================================
+        // MASTER SYSTEM 5: SEARCHABLE 3-LANGUAGE FENG SHUI GLOSSARY (ວັດຈະນານຸກົມຮວງຈຸ້ຍ 3 ພາສາ)
+        // ==========================================
+        const FENG_SHUI_GLOSSARY = [
+            { lao: 'ດາວເຫີນສຽນຄົງ', hanzi: '玄空飞星', pinyin: 'Xuán Kōng Fēi Xīng', en: 'Xuan Kong Flying Stars', cat: '飞星 (Flying Stars)', desc: 'ລະບົບຮວງຈຸ້ຍຄຳນວນການເຄື່ອນທີ່ຂອງພະລັງງານ 9 ດາວຕາມການເວລາ 9 ຍຸກ (ຍຸກລະ 20 ປີ) ບວກກັບອົງສາໜ້າບ້ານ 24 ຂຸນເຂົາ.' },
+            { lao: 'ໄຊຍະພູມພາຍນອກ (ລວນໂຖວ)', hanzi: '峦头', pinyin: 'Luán Tóu', en: 'Form / Landform School', cat: '形势 (Landforms)', desc: 'ຮູບຮ່າງພູເຂົາ, ສາຍນ້ຳ, ຖະໜົນ, ຕຶກອາຄານ ແລະ ສິ່ງແວດລ້ອມທາງກາຍະພາບທີ່ສົ່ງຜົນຕໍ່ກະແສຊີ່ (Qi).' },
+            { lao: 'ຫຼີ່ຊີ່ (ທິດທາງເຂັມທິດ)', hanzi: '理气', pinyin: 'Lǐ Qì', en: 'Compass Qi Formula School', cat: '飞星 (Flying Stars)', desc: 'ການຄຳນວນພະລັງງານທີ່ເບິ່ງບໍ່ເຫັນດ້ວຍເຂັມທິດຫຼົວຜານ (24 ຂຸນເຂົາ, 64 ຂວຍ, ດວງດາວ).' },
+            { lao: 'ເຄັດວິຊາປະຕູເສິນເໝິນ', hanzi: '城门诀', pinyin: 'Chéng Mén Jué', en: 'Castle Gate Formula', cat: '飞星 (Flying Stars)', desc: 'ວິຊາລັບຊັ້ນສູງສຳລັບເປີດປະຕູເສີມ ຫຼື ຕັ້ງນ້ຳຮັບຊັບໃນວັງຂ້າງຄຽງ (正城门 / 副城门) ທີ່ມີດາວນ້ຳປະຈຳຍຸກ.' },
+            { lao: 'ເຈັດດາວປຸ້ນຊັບ (ປຸ້ນດາວ 3 ຍຸກ)', hanzi: '七星打劫', pinyin: 'Qī Xīng Dǎ Jié', en: 'Seven Star Robbery', cat: '飞星 (Flying Stars)', desc: 'ຮູບດວງພິເສດທີ່ປຸ້ນພະລັງໂຊກລາບຈາກອະນາຄົດ 3 ຍຸກ (1-4-7, 2-5-8, 3-6-9) ເຮັດໃຫ້ເຮືອນຮຸ່ງເຮືອງບໍ່ຕົກຕ່ຳ.' },
+            { lao: 'ພໍ່ແມ່ສາມວັງ', hanzi: '父母三般卦', pinyin: 'Fù Mǔ Sān Bān Guà', en: 'Parent Trios (147, 258, 369)', cat: '飞星 (Flying Stars)', desc: 'ຮູບດວງທີ່ທັງ 9 ວັງມີດາວພູ, ດາວຍຸກ, ດາວນ້ຳປະກອບເປັນຊຸດ 1-4-7, 2-5-8, ຫຼື 3-6-9 ສົ່ງຜົນໃຫ້ຮຸ່ງເຮືອງ 180 ປີ.' },
+            { lao: 'ລຽນຈູສາມວັງ', hanzi: '连珠三般卦', pinyin: 'Lián Zhū Sān Bān Guà', en: 'Continuous Sequence Trios', cat: '飞星 (Flying Stars)', desc: 'ຮູບດວງທີ່ 3 ດາວໃນແຕ່ລະວັງຮຽງລຳດັບກັນ (ເຊັ່ນ 1-2-3, 2-3-4, 7-8-9) ເປັນນິມິດໝາຍແຫ່ງຄວາມກ້າວໜ້າ.' },
+            { lao: 'ເຮີສື (ຄູ່ຮ່ວມສິບ)', hanzi: '合十局', pinyin: 'Hé Shí Jú', en: 'Combination of Ten', cat: '飞星 (Flying Stars)', desc: 'ດາວພູ ຫຼື ດາວນ້ຳ ບວກກັບດາວຍຸກເທົ່າກັບ 10 ໃນທຸກໆວັງ ຊ່ວຍສະຫຼາຍພະລັງຮ້າຍ ແລະ ນຳພາຄວາມກົມກຽວ.' },
+            { lao: 'ດາວໂຊກຕິດຄຸກ', hanzi: '令星入囚', pinyin: 'Lìng Xīng Rù Qiú', en: 'Imprisoned Star', cat: '飞星 (Flying Stars)', desc: 'ດາວປະຈຳຍຸກປັດຈຸບັນຕົກຢູ່ກາງວັງ (中宫) ເຮັດໃຫ້ໂຊກລາບຕິດຂັດ ຄືກັບຖືກຂັງຄຸກ ຕ້ອງເຈາະຊ່ອງແສງແກ້.' },
+            { lao: 'ດາວພູຮອດພູ ດາວນ້ຳຮອດນ້ຳ', hanzi: '到山到向', pinyin: 'Dào Shān Dào Xiàng', en: 'Wang Shan Wang Xiang', cat: '飞星 (Flying Stars)', desc: 'ຮູບດວງມຸງຄຸນສູງສຸດ: ດາວພູປະຈຳຍຸກຢູ່ຫຼັງພິງ (ຄົນສຸຂະພາບດີ), ດາວນ້ຳປະຈຳຍຸກຢູ່ໜ້າບ້ານ (ເງິນຄຳຫຼັ່ງໄຫຼ).' },
+            { lao: 'ຂຶ້ນພູລົງນ້ຳ (ຮູບດວງປີ້ນກັບ)', hanzi: '上山下水', pinyin: 'Shàng Shān Xià Shuǐ', en: 'Up Mountain Down Water (Reversal)', cat: '飞星 (Flying Stars)', desc: 'ຮູບດວງອັບປະມຸງຄຸນ: ດາວພູຢູ່ໜ້າບ້ານ, ດາວນ້ຳຢູ່ຫຼັງພິງ ສົ່ງຜົນໃຫ້ເສຍຊັບ ແລະ ສຸຂະພາບຊຸດໂຊມ.' },
+            { lao: 'ສອງດາວຮອດໜ້າບ້ານ', hanzi: '双星到向', pinyin: 'Shuāng Xīng Dào Xiàng', en: 'Double Stars at Facing', cat: '飞星 (Flying Stars)', desc: 'ທັງດາວພູ ແລະ ດາວນ້ຳປະຈຳຍຸກມາລວມກັນຢູ່ໜ້າບ້ານ: ດີດ້ານການເງິນສູງ ແຕ່ຕ້ອງມີພູເຂົາຢູ່ໄກໆ.' },
+            { lao: 'ສອງດາວຮອດຫຼັງພິງ', hanzi: '双星到山', pinyin: 'Shuāng Xīng Dào Shān', en: 'Double Stars at Sitting', cat: '飞星 (Flying Stars)', desc: 'ທັງດາວພູ ແລະ ດາວນ້ຳປະຈຳຍຸກມາລວມກັນຢູ່ຫຼັງພິງ: ດີດ້ານສຸຂະພາບ ແລະ ຊື່ສຽງ ແຕ່ການເງິນປານກາງ.' },
+            { lao: 'ຟານອິ໋ນ (ດາວປີ້ນກັບ 5)', hanzi: '反吟', pinyin: 'Fǎn Yín', en: 'Reverse Flying Star Clash', cat: '飞星 (Flying Stars)', desc: 'ດາວ 5 ບິນໄປຕົກໜ້າບ້ານ ຫຼື ຫຼັງພິງ ແລ້ວໝູນຖອຍຫຼັງ ເປັນການປະທະຮ້າຍແຮງ.' },
+            { lao: 'ຝູອິ໋ນ (ດາວຊ້ຳວັງເດີມ)', hanzi: '伏吟', pinyin: 'Fú Yín', en: 'Repetition Star Clash', cat: '飞星 (Flying Stars)', desc: 'ດາວພູ ຫຼື ດາວນ້ຳມີເລກດຽວກັບດາວຍຸກເດີມຂອງວັງນັ້ນ ສົ່ງຜົນໃຫ້ເກີດຄວາມອິດເມື່ອຍ ແລະ ຕິດຂັດ.' },
+            { lao: 'ດາວທົດແທນ (ທີ່ກວ້າ)', hanzi: '替卦', pinyin: 'Tì Guà', en: 'Replacement Stars (Ai Xing)', cat: '飞星 (Flying Stars)', desc: 'ໃຊ້ຄຳນວນເມື່ອອົງສາໜ້າບ້ານບ່ຽງໄປໃກ້ເສັ້ນແບ່ງ (兼线) ເກີນ 3 ອົງສາ ຕ້ອງປ່ຽນດາວບິນຕາມຕາຕະລາງແທນ.' },
+            { lao: 'ຂ້າມສາຍຂວຍ (ຊູກວ້າ)', hanzi: '出卦', pinyin: 'Chū Guà', en: 'Out of Gua Line', cat: '形势 (Landforms)', desc: 'ເສັ້ນອົງສາທີ່ຢູ່ລະຫວ່າງສອງກວ້າໃຫຍ່ (ເຊັ່ນ ລະຫວ່າງທິດເໜືອ ກັບ ທິດອີສານ) ເຮັດໃຫ້ເກີດຄວາມສັບສົນທາງຈິດ.' },
+            { lao: 'ສາຍຫວ່າງເປົ່າ (ຄົງຫວາງ)', hanzi: '空亡', pinyin: 'Kōng Wáng', en: 'Death & Emptiness Void Line', cat: '形势 (Landforms)', desc: 'ເສັ້ນແບ່ງເຂດອັນຕະລາຍລະຫວ່າງສອງຂຸນເຂົາ (大空亡 / 小空亡) ຫ້າມຕັ້ງທິດບ້ານ ຫຼື ທິດປ້າຍສຸສານເດັດຂາດ.' },
+            { lao: 'ອົງສາຄວບ (ຈຽນຊ້ຽນ)', hanzi: '兼线', pinyin: 'Jiān Xiàn', en: 'Combined Compass Line', cat: '飞星 (Flying Stars)', desc: 'ອົງສາທີ່ບ່ຽງອອກຈາກກາງຂຸນເຂົາ 3-4.5 ອົງສາ ເຊິ່ງຕ້ອງໃຊ້ວິຊາດາວທົດແທນ.' },
+            { lao: 'ອົງສາກົງກາງ (ເຈິ້ງຊ້ຽນ)', hanzi: '正线', pinyin: 'Zhèng Xiàn', en: 'Pure Central Compass Line', cat: '飞星 (Flying Stars)', desc: 'ອົງສາທີ່ຢູ່ກົງກາງ 9 ອົງສາຂອງຂຸນເຂົາ ເປັນສາຍພະລັງງານທີ່ບໍລິສຸດ ແລະ ໝັ້ນຄົງທີ່ສຸດ.' },
+            { lao: 'ດົງກົງເລືອກມື້', hanzi: '董公择日', pinyin: 'Dǒng Gōng Zé Rì', en: 'Dong Gong Date Selection', cat: '择日 (Date Selection)', desc: 'ຄຳພີເລືອກມື້ຍາມມຸງຄຸນຊັ້ນສູງຂອງທ່ານອາຈານດົງກົງ ປະສົມປະສານ 12 ເຈົ້າໜ້າທີ່ ແລະ ດາວລຶກ.' },
+            { lao: '12 ເຈົ້າໜ້າທີ່ປະຈຳວັນ', hanzi: '建除十二神', pinyin: 'Jiàn Chú Shí Èr Shén', en: 'Twelve Day Duty Officers', cat: '择日 (Date Selection)', desc: '12 ພະລັງງານໝູນວຽນປະຈຳວັນ: 建, 除, 满, 平, 定, 执, 破, 危, 成, 收, 开, 闭.' },
+            { lao: 'ມື້ແຕກຫັກ (ມື້ຊົງ)', hanzi: '日破', pinyin: 'Rì Pò', en: 'Day Clash Zodiac', cat: '择日 (Date Selection)', desc: 'ວັນທີ່ນັກສັດປະຈຳວັນປະທະກັບນັກສັດປະຈຳປີ ຫຼື ນັກສັດເຈົ້າຂອງບ້ານ ຫ້າມເຮັດການມຸງຄຸນ.' },
+            { lao: 'ທຽນອີ (ໝໍສະຫວັນ)', hanzi: '天医', pinyin: 'Tiān Yī', en: 'Heavenly Doctor', cat: '八宅 (Eight Mansions)', desc: 'ທິດມຸງຄຸນອັນດັບ 2 ໃນວິຊາແປດທິດ: ສົ່ງເສີມສຸຂະພາບ, ຫາຍພະຍາດ, ມີຄົນຊ່ວຍເຫຼືອອຸປະຖຳ.' },
+            { lao: 'ເຊິງຊີ່ (ພະລັງຊີວິດຮຸ່ງເຮືອງ)', hanzi: '生气', pinyin: 'Shēng Qì', en: 'Life Generating Qi', cat: '八宅 (Eight Mansions)', desc: 'ທິດມຸງຄຸນອັນດັບ 1: ນຳພາຄວາມຮັ່ງມີ, ຄວາມກ້າວໜ້າ, ຊື່ສຽງ, ເໝາະສຳລັບຕັ້ງຫ້ອງເຮັດວຽກ.' },
+            { lao: 'ອຽນນຽນ (ອາຍຸຍືນຍາວ)', hanzi: '延年', pinyin: 'Yán Nián', en: 'Longevity & Harmony', cat: '八宅 (Eight Mansions)', desc: 'ທິດມຸງຄຸນອັນດັບ 3: ສົ່ງເສີມຄວາມຮັກ, ຄວາມສາມັກຄີໃນຄອບຄົວ, ສາຍສຳພັນອັນດີ.' },
+            { lao: 'ຝູເວີ້ຍ (ຄວາມສະຫງົບ)', hanzi: '伏位', pinyin: 'Fú Wèi', en: 'Stability & Calmness', cat: '八宅 (Eight Mansions)', desc: 'ທິດມຸງຄຸນອັນດັບ 4: ສົ່ງເສີມຄວາມສະຫງົບທາງຈິດໃຈ, ການຮຽນຮູ້, ເໝາະສຳລັບຫ້ອງນອນ ຫຼື ຫ້ອງພຣະ.' },
+            { lao: 'ຈວຽມິ້ງ (ດັບສູນ)', hanzi: '绝命', pinyin: 'Jué Mìng', en: 'Total Loss (Worst)', cat: '八宅 (Eight Mansions)', desc: 'ທິດອັບປະມຸງຄຸນຮ້າຍແຮງທີ່ສຸດ: ເສຍຊັບ, ອຸບັດເຫດ, ໂລກໄພໄຂ້ເຈັບ ຫ້າມຕັ້ງປະຕູ ຫຼື ຫ້ອງນອນ.' },
+            { lao: 'ອູ່ກຸຍ (ຫ້າຜີ)', hanzi: '五鬼', pinyin: 'Wǔ Guǐ', en: 'Five Ghosts', cat: '八宅 (Eight Mansions)', desc: 'ທິດອັບປະມຸງຄຸນອັນດັບ 2: ເກີດການຜິດຖຽງ, ໄຟໄໝ້, ຖືກໂຈນລັກ, ຖືກຫຼອກລວງ.' },
+            { lao: 'ຮົ່ວຮ້າຍ (ໄພພິບັດ)', hanzi: '祸害', pinyin: 'Huò Hài', en: 'Mishaps & Obstacles', cat: '八宅 (Eight Mansions)', desc: 'ທິດອັບປະມຸງຄຸນອັນດັບ 4: ຕິດຂັດເລັກໆນ້ອຍໆ, ຜິດຖຽງໃນຄອບຄົວ, ຄະດີຄວາມ.' },
+            { lao: 'ລິ່ວຊ່າ (ຫົກພິດ)', hanzi: '六煞', pinyin: 'Liù Shà', en: 'Six Killings', cat: '八宅 (Eight Mansions)', desc: 'ທິດອັບປະມຸງຄຸນອັນດັບ 3: ເລື່ອງຊູ້ສາວ, ເສຍຊື່ສຽງ, ເລື່ອງອັບອາຍ, ພະຍາດລະບົບສືບພັນ.' },
+            { lao: 'ໄມ້ບັນທັດຫຼູປານ', hanzi: '鲁班尺', pinyin: 'Lǔ Bān Chǐ', en: 'Lu Ban Ruler (Yang House)', cat: '择日 (Date Selection)', desc: 'ໄມ້ບັນທັດຮວງຈຸ້ຍວັດຂະໜາດປະຕູ, ປ່ອງຢ້ຽມ, ໂຕະ, ຕຽງ (ຮອບວຽນ 42.9cm ມີ 8 ຊ່ອງ ແດງ/ດຳ).' },
+            { lao: 'ໄມ້ບັນທັດຕິ່ງຫຼານ', hanzi: '丁兰尺', pinyin: 'Dīng Lán Chǐ', en: 'Ding Lan Ruler (Yin House)', cat: '阴宅 (Yin House)', desc: 'ໄມ້ບັນທັດວັດຂະໜາດປ້າຍຫີນສຸສານ, ໂລງສົບ, ແທ່ນບູຊາ (ຮອບວຽນ 38.8cm ມີ 10 ຊ່ອງ).' },
+            { lao: 'ສາຍນ້ຳສາຍແອວຫຍົກ', hanzi: '玉带揽腰', pinyin: 'Yù Dài Lǎn Yāo', en: 'Jade Belt Embracing Water', cat: '形势 (Landforms)', desc: 'ສາຍນ້ຳ ຫຼື ຖະໜົນໂຄ້ງໂອບອ້ອມຕົວເຮືອນ ຄືກັບສາຍແອວຫຍົກ ເປັນໄຊຍະພູມເສດຖີນຳພາຄວາມຮັ່ງມີ.' },
+            { lao: 'ນ້ຳຄັນທະນູປີ້ນ', hanzi: '反弓水', pinyin: 'Fǎn Gōng Shuǐ', en: 'Reverse Bow Water Sha', cat: '形势 (Landforms)', desc: 'ສາຍນ້ຳ ຫຼື ຖະໜົນໂຄ້ງຫັນສັນຫຼັງໃສ່ເຮືອນ ຄືກັບລູກທະນູຍິງໃສ່ ນຳພາອຸບັດເຫດ ແລະ ເສຍຊັບ.' },
+            { lao: 'ລົມແທງກາງເຮືອນ', hanzi: '穿堂煞', pinyin: 'Chuān Táng Shà', en: 'Piercing Hall Sha', cat: '形势 (Landforms)', desc: 'ປະຕູໜ້າບ້ານກົງກັບປະຕູຫຼັງບ້ານ ຫຼື ປ່ອງຢ້ຽມໃຫຍ່ ເຮັດໃຫ້ກະແສລົມພັດຜ່ານຢ່າງໄວວາ ເງິນຄຳຢູ່ບໍ່ຕິດ.' },
+            { lao: 'ດາບສະຫວັນຜ່າ', hanzi: '天斩煞', pinyin: 'Tiān Zhǎn Shà', en: 'Heavenly Blade Sha', cat: '形势 (Landforms)', desc: 'ຊ່ອງຫວ່າງແຄບໆລະຫວ່າງສອງຕຶກສູງທີ່ກົງກັບຕົວເຮືອນ ຄືກັບດາບຜ່າລົງມາ ເກີດລົມພິດຮ້າຍແຮງ.' },
+            { lao: 'ຫຼົວຜານ (ຈານເຂັມທິດ)', hanzi: '罗盘', pinyin: 'Luó Pán', en: 'Feng Shui Compass', cat: '飞星 (Flying Stars)', desc: 'ເຄື່ອງມືຫຼັກຂອງຊິນແສຮວງຈຸ້ຍ ປະກອບດ້ວຍຈານໝູນກົມ, ສະໜາມແມ່ເຫຼັກ, 24 ຂຸນເຂົາ, 64 ຂວຍ.' },
+            { lao: '24 ຂຸນເຂົາ', hanzi: '二十四山', pinyin: 'Èr Shí Sì Shān', en: 'Twenty-Four Mountains', cat: '飞星 (Flying Stars)', desc: 'ການແບ່ງ 360 ອົງສາອອກເປັນ 24 ຊ່ອງລະ 15 ອົງສາ ປະກອບດ້ວຍ 8 ກິ່ງສະຫວັນ, 12 ສາຂາດິນ, 4 ຂວຍ.' },
+            { lao: 'ເຟິນຈິນ 120 ຊ່ອງ', hanzi: '分金', pinyin: 'Fēn Jīn', en: 'Gold Dividing 120 Lines', cat: '阴宅 (Yin House)', desc: 'ການແບ່ງລະອຽດຂັ້ນສູງຊ່ອງລະ 3 ອົງສາ ເລືອກເສັ້ນມຸງຄຸນ (丙, 庚, 丁, 辛) ເພື່ອຕັ້ງປ້າຍຫີນສຸສານ.' },
+            { lao: 'ຊຽນມິ້ງ (ດວງຊະຕາຜູ້ລ່ວງລັບ)', hanzi: '仙命', pinyin: 'Xiān Mìng', en: 'Deceased Natal Pillar', cat: '阴宅 (Yin House)', desc: 'ປີເກີດຂອງຜູ້ຕາຍ ໃຊ້ກວດສອບວ່າຖືກໂສລກ ຫຼື ປະທະກັບທິດຫຼັງພິງຂອງສຸສານຫຼືບໍ່.' },
+            { lao: 'ສີ່ສັດເທບ', hanzi: '四灵', pinyin: 'Sì Líng', en: 'Four Celestial Animals', cat: '形势 (Landforms)', desc: 'ມັງກອນຂຽວ (ຊ້າຍ), ເສືອຂາວ (ຂວາ), ຫົງແດງ (ໜ້າ), ເຕົ່າດຳ (ຫຼັງ) ຫຼັກໄຊຍະພູມພື້ນຖານ.' },
+            { lao: 'ນ້ຳພຸເຫຼືອງ (ຫ່ວງສວຽນຊ່າ)', hanzi: '黄泉煞', pinyin: 'Huáng Quán Shà', en: 'Yellow Springs Sha', cat: '阴宅 (Yin House)', desc: 'ທິດປ່ອຍນ້ຳເສຍ ຫຼື ນ້ຳໄຫຼອອກທີ່ຕ້ອງຫ້າມໃນເຮືອນຢິນ ຖ້າຜິດຕຳແໜ່ງຈະສູນເສຍລູກຫຼານ.' },
+            { lao: 'ວິຊາສາຍນ້ຳສາມປະສານ', hanzi: '三合水法', pinyin: 'Sān Hé Shuǐ Fǎ', en: 'San He Water Method', cat: '阴宅 (Yin House)', desc: 'ວິຊານ້ຳ 12 ພະລັງຊີວິດ (ສາງເຊິງ 12 ວົງຈອນ) ສຳລັບກວດສອບທິດນ້ຳເຂົ້າ ແລະ ນ້ຳອອກຂອງສຸສານ.' },
+            { lao: 'ເກົ້າດາວດາວເຫີນ', hanzi: '九星', pinyin: 'Jiǔ Xīng', en: 'Nine Flying Stars', cat: '飞星 (Flying Stars)', desc: 'ດາວ 1 ທຳມະດາ, ດາວ 2 ດຳ, ດາວ 3 ຂຽວ, ດາວ 4 ຂຽວ, ດາວ 5 ເຫຼືອງ, ດາວ 6 ຂາວ, ດາວ 7 ແດງ, ດາວ 8 ຂາວ, ດາວ 9 ສີມ່ວງ.' },
+            { lao: 'ມຸມບ່ຽງແມ່ເຫຼັກ', hanzi: '磁偏角', pinyin: 'Cí Piān Jiǎo', en: 'Magnetic Declination', cat: '飞星 (Flying Stars)', desc: 'ຄວາມແຕກຕ່າງລະຫວ່າງທິດເໜືອແມ່ເຫຼັກ ກັບ ທິດເໜືອແທ້ທາງພູມສາດ (ໃນລາວປະມານ -0.3° ຫາ -0.8°).' },
+            { lao: 'ທິດເໜືອແທ້', hanzi: '真北', pinyin: 'Zhēn Běi', en: 'True Geographic North', cat: '飞星 (Flying Stars)', desc: 'ທິດເໜືອຕາມແກນໝູນຂອງໜ່ວຍໂລກ ເປັນທິດອ້າງອີງສຳລັບການວັດແທກຮວງຈຸ້ຍລະດັບມືອາຊີບ.' },
+            { lao: 'ໄທ້ສຸຍ (ເທບແຫ່ງປີ)', hanzi: '太岁', pinyin: 'Tài Suì', en: 'Grand Duke Jupiter', cat: '择日 (Date Selection)', desc: 'ທິດຕຳແໜ່ງດາວພະຫັດປະຈຳປີ ຫ້າມເຄາະ, ຂຸດດິນ, ວາງສີລາລຶກ ຫຼື ຕໍ່ເຕີມໃນທິດນີ້ເດັດຂາດ.' },
+            { lao: 'ສຸຍໂຜ້ (ທິດກົງຂ້າມໄທ້ສຸຍ)', hanzi: '岁破', pinyin: 'Suì Pò', en: 'Year Breaker', cat: '择日 (Date Selection)', desc: 'ທິດກົງກັນຂ້າມ 180 ອົງສາກັບໄທ້ສຸຍ ເປັນທິດອັນຕະລາຍຮອງລົງມາ ຫ້າມກະທົບກະເທືອນ.' },
+            { lao: 'ສາມສານພິດ (ສາມຂ້າ)', hanzi: '三煞', pinyin: 'Sān Shà', en: 'Three Killings', cat: '择日 (Date Selection)', desc: 'ທິດອັບປະມຸງຄຸນ 3 ທິດປະຈຳປີ (劫煞, 灾煞, 岁煞) ຫ້າມນັ່ງພິງ ຫຼື ກໍ່ສ້າງ.' },
+            { lao: 'ຄຳພີມັງກອນນ້ຳ', hanzi: '水龙经', pinyin: 'Shuǐ Lóng Jīng', en: 'Water Dragon Classic', cat: '形势 (Landforms)', desc: 'ຄຳພີບູຮານວ່າດ້ວຍການຈັດວາງສາຍນ້ຳພາຍນອກ ແລະ ໜອງນ້ຳເພື່ອດຶງດູດຄວາມຮັ່ງມີ.' },
+            { lao: 'ສຽນຄົງຕ້າກວ້າ 64 ຂວຍ', hanzi: '玄空大卦', pinyin: 'Xuán Kōng Dà Guà', en: 'Xuan Kong 64 Hexagrams', cat: '飞星 (Flying Stars)', desc: 'ວິຊາຂວຍອີ້ຈິງ 64 ຂວຍເທິງຈານຫຼົວຜານ ໃຊ້ຈັບຄູ່ພະລັງກວ້າຍຸນ (卦运) ແລະ ພະລັງກວ້າຊີ່ (卦气).' }
+        ];
+
+        let selectedGlossaryCategory = 'all';
+
+        function openGlossaryModal() {
+            const modal = document.getElementById('glossaryModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                renderGlossaryFilters();
+                renderGlossaryCards(FENG_SHUI_GLOSSARY);
+            }
+        }
+
+        function closeGlossaryModal() {
+            const modal = document.getElementById('glossaryModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function renderGlossaryFilters() {
+            const filterEl = document.getElementById('glossaryCategoryFilters');
+            if (!filterEl) return;
+            const cats = ['all', '飞星 (Flying Stars)', '形势 (Landforms)', '择日 (Date Selection)', '八宅 (Eight Mansions)', '阴宅 (Yin House)'];
+            const labels = {
+                'all': 'ທັງໝົດ',
+                '飞星 (Flying Stars)': 'ດາວເຫີນ',
+                '形势 (Landforms)': 'ໄຊຍະພູມ',
+                '择日 (Date Selection)': 'ເລືອກວັນຍາມ',
+                '八宅 (Eight Mansions)': 'ແປດທິດ',
+                '阴宅 (Yin House)': 'ເຮືອນຢິນ'
+            };
+            filterEl.innerHTML = cats.map(c => `
+                <button type="button" onclick="setGlossaryCategory('${c}')" class="px-2.5 py-1 rounded-lg font-bold transition whitespace-nowrap ${selectedGlossaryCategory === c ? 'bg-indigo-600 text-white' : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'}">
+                    ${labels[c] || c}
+                </button>
+            `).join('');
+        }
+
+        function setGlossaryCategory(cat) {
+            selectedGlossaryCategory = cat;
+            renderGlossaryFilters();
+            const input = document.getElementById('glossarySearchInput');
+            handleGlossarySearch(input ? input.value : '');
+        }
+
+        function handleGlossarySearch(q) {
+            const query = (q || '').trim().toLowerCase();
+            let filtered = FENG_SHUI_GLOSSARY;
+            if (selectedGlossaryCategory !== 'all') {
+                filtered = filtered.filter(item => item.cat === selectedGlossaryCategory);
+            }
+            if (query) {
+                filtered = filtered.filter(item =>
+                    item.lao.toLowerCase().includes(query) ||
+                    item.hanzi.toLowerCase().includes(query) ||
+                    item.pinyin.toLowerCase().includes(query) ||
+                    item.en.toLowerCase().includes(query) ||
+                    item.desc.toLowerCase().includes(query)
+                );
+            }
+            renderGlossaryCards(filtered);
+        }
+
+        function renderGlossaryCards(list) {
+            const container = document.getElementById('glossaryCardsContainer');
+            const countBadge = document.getElementById('glossaryCountBadge');
+            if (countBadge) countBadge.textContent = `ສະແດງ ${list.length} ຄຳສັບ`;
+            if (!container) return;
+
+            if (list.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-slate-500 text-xs">
+                        🔍 ບໍ່ພົບຄຳສັບທີ່ຄົ້ນຫາ — ກະລຸນາລອງຄົ້ນຫາດ້ວຍຄຳສັບອື່ນ
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = list.map(item => `
+                <div class="bg-slate-900/90 border border-slate-800/90 hover:border-indigo-500/50 rounded-xl p-3 flex flex-col gap-1.5 transition">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-bold text-amber-300">${item.lao}</span>
+                        <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-indigo-950/80 border border-indigo-500/40 text-indigo-300">${item.cat.split(' ')[0]}</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs font-mono">
+                        <span class="text-white font-bold">${item.hanzi}</span>
+                        <span class="text-slate-400 text-[11px]">(${item.pinyin})</span>
+                    </div>
+                    <div class="text-[11px] text-cyan-300 font-medium">${item.en}</div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed border-t border-slate-800/70 pt-1 mt-0.5">
+                        ${item.desc}
+                    </p>
+                </div>
+            `).join('');
+        }
+
+        const openGlossaryModalBtn = document.getElementById('openGlossaryModalBtn');
+        if (openGlossaryModalBtn) {
+            openGlossaryModalBtn.addEventListener('click', openGlossaryModal);
+        }
+
         window.onload = function () {
             populateBirthYears();
             updateGuaDisplay();
@@ -7159,6 +7658,7 @@
             buildOuterBasePlate('lacquer');
             buildCompassSVG();
             buildInnerCompassNeedle();
+            initProvinceSelect();
             updateCompassTransform();
             updateZoom();
             initQrCode();
@@ -7170,6 +7670,44 @@
         <div class="relative w-full max-w-2xl bg-slate-950 border border-amber-500/50 rounded-2xl p-4 sm:p-6 shadow-2xl text-slate-100 max-h-[92vh] overflow-y-auto">
             <div id="auditReportContent">
                 <!-- Injected via openAuditReportModal() -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MASTER FENG SHUI 3-LANGUAGE GLOSSARY MODAL (ວັດຈະນານຸກົມຮວງຈຸ້ຍ 3 ພາສາ) -->
+    <div id="glossaryModal" class="hidden fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+        <div class="relative w-full max-w-4xl bg-slate-950 border border-indigo-500/50 rounded-2xl p-4 sm:p-6 shadow-2xl text-slate-100 max-h-[92vh] flex flex-col">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                <div class="flex items-center gap-2.5">
+                    <span class="text-2xl">📖</span>
+                    <div>
+                        <h2 class="text-base sm:text-lg font-bold text-indigo-300">
+                            ວັດຈະນານຸກົມຮວງຈຸ້ຍ 3 ພາສາ (Feng Shui Master Glossary)
+                        </h2>
+                        <p class="text-xs text-slate-400">ຄຳສັບວິຊາການຮວງຈຸ້ຍຊັ້ນສູງ: ລາວ (Lao) · ຈີນ (中文/Pinyin) · ອັງກິດ (English)</p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeGlossaryModal()" class="text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-lg w-8 h-8 flex items-center justify-center font-bold text-sm">✕</button>
+            </div>
+
+            <!-- Search & Filters -->
+            <div class="py-3 flex flex-col sm:flex-row gap-2 border-b border-slate-800/80">
+                <div class="relative flex-1">
+                    <input id="glossarySearchInput" type="text" placeholder="ຄົ້ນຫາຄຳສັບ (ລາວ, 中文, Pinyin, English)..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500" oninput="handleGlossarySearch(this.value)">
+                </div>
+                <div class="flex items-center gap-1 overflow-x-auto text-[11px]" id="glossaryCategoryFilters">
+                </div>
+            </div>
+
+            <!-- Glossary Content Cards Grid -->
+            <div id="glossaryCardsContainer" class="flex-1 overflow-y-auto py-3 grid grid-cols-1 md:grid-cols-2 gap-2.5">
+            </div>
+
+            <!-- Footer summary -->
+            <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
+                <span id="glossaryCountBadge">ສະແດງ 52 ຄຳສັບ</span>
+                <span class="text-indigo-400 font-mono">玄空风水 · 峦头理气 · 董公择日</span>
             </div>
         </div>
     </div>
