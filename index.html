@@ -2011,7 +2011,9 @@
         }
 
         let fengShuiMode = 'yang'; // 'yang' (default) or 'yin'
-        let activeYangTab = 'tab_room'; // 'tab_room', 'tab_forecast', 'tab_annual', 'tab_stars', 'tab_bazhai'
+        let activeYangTab = 'tab_room';
+        let activeYangCategory = 'cat_flying_stars';
+        let yangSearchTerm = ''; // 'tab_room', 'tab_forecast', 'tab_annual', 'tab_stars', 'tab_bazhai'
         let activeYinTab = 'tab_fenjin'; // 'tab_fenjin', 'tab_yinforecast', 'tab_lineage', 'tab_water'
         let selectedRoomType = 'main_door';
         let selectedRoomCategory = 'all';
@@ -6254,12 +6256,156 @@ function calculateQiZhengSiYu(year, month, day, hour) {
             updateLivePrediction(topCompassDeg, true);
         }
 
+        
+        const YANG_CATEGORIES = [
+            {
+                id: 'cat_flying_stars',
+                name: 'ດາວເຫີນ & ພະລັງຍຸກ',
+                school: 'ສຳນັກດາວເຫີນສຽນຄົງ (Xuan Kong Flying Stars)',
+                canon: 'ຄຳພີເສິ່ນຊື່ສຽນຄົງ, ຈື່ປາຍຈວຽກ, ຕຳລານະວະດາລາ',
+                desc: 'ວິເຄາະພະລັງ 9 ຍຸກ, ວັງວາດດາວ 81 ຄູ່, ດາວປີ/ເດືອນ, ອາຍຸບ້ານ ແລະ ຈິ້ງສິ່ນ-ຫຼິງຖາງ',
+                icon: '🌌',
+                badge: '12 ວິຊາ',
+                tabKeys: [
+                    'tab_room', 'tab_luantou', 'tab_formations', 'tab_tigua',
+                    'tab_annual', 'tab_monthmatrix', 'tab_stars', 'tab_forecast',
+                    'tab_diyun', 'tab_zhengshen', 'tab_sanban_gua', 'tab_period8_to_9'
+                ]
+            },
+            {
+                id: 'cat_water_land',
+                name: 'ສາຍນ້ຳ & ມັງກອນດິນ',
+                school: 'ສຳນັກສາຍນ້ຳ ແລະ ມັງກອນດິນ (Water Dragon & Landform)',
+                canon: 'ຕຳລາມັງກອນນ້ຳ, ສານເຫີສຸ່ຍຝາ 12 ໄລຍະ, ຫຼົງເໝິນປາຈວີ໋, ທຽນຢວນອູ່ເກີ',
+                desc: 'ວິເຄາະທິດທາງນ້ຳໄຫຼ, ວັງນ້ຳມະຫາເສດຖີ, ປາກນ້ຳເສຍ 24 ຂຸນເຂົາ ແລະ ຮູບສັນຖານ 9 ຈອມພູ',
+                icon: '🌊',
+                badge: '9 ວິຊາ',
+                tabKeys: [
+                    'tab_waterdragon', 'tab_watersim', 'tab_longmen', 'tab_pingyang',
+                    'tab_huangquan', 'tab_sanhe_water', 'tab_xiantian_water', 'tab_24_shuikou',
+                    'tab_9star_shapes'
+                ]
+            },
+            {
+                id: 'cat_compass_mountains',
+                name: 'ເຂັມທິດ & 24 ຂຸນເຂົາ',
+                school: 'ສຳນັກຫຼົວຜານຊັ້ນເລິກ (Deep Concentric Luopan Rings)',
+                canon: 'ຫຼົວຜານ 49 ຊັ້ນ, ຊຸ່ຍກວ່ານຈິງ, ຕຳລາຍາງກົງ, ຄຳພີເຊຍຈື໋',
+                desc: 'ເຈາະເລິກ 72 ມັງກອນ, 60 ມັງກອນດິນ, 120 ມຸມທອງ, ກາກະບາດຟ້າ ແລະ ເຄັດເລື່ອນຍົດ',
+                icon: '🧭',
+                badge: '7 ວິຊາ',
+                tabKeys: [
+                    'tab_72dragons', 'tab_toudi', 'tab_fenjin', 'tab_cuiguan',
+                    'tab_tianxin_cross', 'tab_xiezi', 'tab_shibuxiang'
+                ]
+            },
+            {
+                id: 'cat_internal_cures',
+                name: 'ພາຍໃນບ້ານ & ແກ້ອາຖັນ',
+                school: 'ສຳນັກພາຍໃນ ແລະ ວິຊາແກ້ອາຖັນ (Internal Micro-Feng Shui & Cures)',
+                canon: 'ຄຳພີຫຼູປານ, ຢາງໄຈ່ຊານຢວນ, ຄຳພີເຕົາສາດລ້າງອາຖັນ, 100 ຊາພິຄາດ',
+                desc: 'ຕຳແໜ່ງເຕົາໄຟ, ປະຕູຮັບຊັບ, ໄມ້ບັນທັດຫຼູປານ, ແກ້ອາຖັນມຸມແຫຼມ/ຄານ, ໄທ້ສວຍ ແລະ ພິທີລ້າງບ້ານ',
+                icon: '🏡',
+                badge: '9 ວິຊາ',
+                tabKeys: [
+                    'tab_tianyuan_internal', 'tab_anmen_water', 'tab_luban', 'tab_luban_cures',
+                    'tab_decor', 'tab_wind', 'tab_shashu', 'tab_annual_affliction',
+                    'tab_daoist_purify'
+                ]
+            },
+            {
+                id: 'cat_date_astrometry',
+                name: 'ເລືອກມື້ & ດາລາສາດ',
+                school: 'ສຳນັກເລືອກມື້ສັນລຶກ ແລະ ດາລາສາດ (Imperial Date Selection & Astrometry)',
+                canon: 'ທຽນຢວນອູ່ຖູ, 24 ປັກລະດູການ, ຫ່ວງຈີ໋ຈິງຊື່ສາວຢົງ, ຕຳລາດາລາສາດຈີນ',
+                desc: 'ຍາມມຸງຄຸນ, ຕາເວັນແທ້, 24 ລະດູການຕາເວັນຮອດຂຸນເຂົາ, ດາວສະຫວັນຜ່ານ ແລະ ວົງຈອນ 129,600 ປີ',
+                icon: '☀️',
+                badge: '6 ວິຊາ',
+                tabKeys: [
+                    'tab_dayhour', 'tab_solar', 'tab_wutu', 'tab_solar_24terms',
+                    'tab_celestial_transit', 'tab_huangji'
+                ]
+            },
+            {
+                id: 'cat_astrology_destiny',
+                name: 'ໂຫລາສາດ & ດວງຊາຕາ',
+                school: 'ສຳນັກໂຫລາສາດ ແລະ ດວງຊາຕາລາຊະສຳນັກ (Imperial Astrology & Destiny Systems)',
+                canon: 'ປາຈື 4 ແຖວ, ຈືເຫວີຍໂຕ່ວຊູ່, ຊີເຈີ້ງຊືວູ, ຢວນທຽນກັງ, ປາໄຈ່, ກຸ່ຍກູ່ຈື',
+                desc: 'ດວງເກີດ 8 ຕົວອັກສອນ, ດາວ 12 ວັງ, ຊັ່ງກະດູກຊາຕາ, 28 ສັດດາວຢຽນສິນ, ດວງກົວະປາໄຈ່ 8 ດາວລອຍ',
+                icon: '📿',
+                badge: '9 ວິຊາ',
+                tabKeys: [
+                    'tab_bazi', 'tab_ziwei', 'tab_qizheng', 'tab_qizheng_12palaces',
+                    'tab_chenggu', 'tab_yanqin', 'tab_guiguzi', 'tab_bazhai',
+                    'tab_you_nian'
+                ]
+            },
+            {
+                id: 'cat_divination_three',
+                name: 'ພະຍາກອນ 3 ຍອດວິຊາ',
+                school: 'ສຳນັກພະຍາກອນສູງສຸດ (The Three Sacred Imperial Styles & Divination)',
+                canon: 'ສານຊື້ (ຄິມຶນຕຸນຢາ, ໄທ່ອີເສິນຊູ່, ຕ້າລິ່ວເຢິນ), ດອກເໝີຍ, 64 ຫຼິວຢາວ, ເລກເຫຼັກ',
+                desc: 'ຄິມຶນ 8 ປະຕູ, ໄທ່ອີມະຫາພາກ, ລິ່ວເຢິນລາຍວັນ, ສຽວລິ່ວເຢິນນິ້ວມື, ດອກເໝີຍ, ຫຼຽນຫຼິວຢາວ, ຂົງເບັ້ງ 384',
+                icon: '⚡',
+                badge: '9 ວິຊາ',
+                tabKeys: [
+                    'tab_qimen', 'tab_taiyi', 'tab_liuren', 'tab_xiaoliuren',
+                    'tab_meihua', 'tab_liuyao', 'tab_tieban', 'tab_zhuge',
+                    'tab_jinsuo'
+                ]
+            },
+            {
+                id: 'cat_iching_tcm_physiognomy',
+                name: 'ອີ້ຈິງ, ແພດສາດ, ໂຫງວເຮ້ງ',
+                school: 'ສຳນັກອີ້ຈິງ, ແພດສາດບູຮານ ແລະ ໂຫງວເຮ້ງ (I Ching, TCM & Physiognomy)',
+                canon: 'ສຽນຄົງຕ້າກວ້າ 64 ຂວຍ, ຮວງຕີ້ເນີ່ຍຈິງ 5 ທາດ 6 ພະລັງ, ຈືອູ່ຫຼິວຈູ້, ໂຫງວເຮ້ງມາຍຊັ້ນ 100 ປີ',
+                desc: '64 ຂວຍອີ້ຈິງ, ເລືອກວັນຕ້າກວ້າ, ຂວຍສົມລົດ, 5 ທາດ 6 ພະລັງສຸຂະພາບ, ໂມງລົມປານ 12 ຍາມ, ໂຫງວເຮ້ງ & ລາຍມື',
+                icon: '🌿',
+                badge: '9 ວິຊາ',
+                tabKeys: [
+                    'tab_dagua', 'tab_daguan_date', 'tab_dagua_couple', 'tab_wuyun',
+                    'tab_ziwu_clock', 'tab_mianxiang', 'tab_baisui_face', 'tab_shouxiang',
+                    'tab_28stars'
+                ]
+            }
+        ];
+
+
         function setYangTab(tabName) {
             activeYangTab = tabName;
+            if (activeYangCategory !== 'all') {
+                const curCat = YANG_CATEGORIES.find(c => c.id === activeYangCategory);
+                if (!curCat || !curCat.tabKeys.includes(tabName)) {
+                    const matchCat = YANG_CATEGORIES.find(c => c.tabKeys.includes(tabName));
+                    if (matchCat) activeYangCategory = matchCat.id;
+                }
+            }
             const normRot = ((currentRotation % 360) + 360) % 360;
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
             updateLivePrediction(topCompassDeg, true);
         }
+
+        function setYangCategory(catId) {
+            activeYangCategory = catId;
+            yangSearchTerm = '';
+            if (catId !== 'all') {
+                const cat = YANG_CATEGORIES.find(c => c.id === catId);
+                if (cat && !cat.tabKeys.includes(activeYangTab)) {
+                    activeYangTab = cat.tabKeys[0];
+                }
+            }
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            updateLivePrediction(topCompassDeg, true);
+        }
+
+        function setYangSearch(term) {
+            yangSearchTerm = (term || '').trim().toLowerCase();
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            updateLivePrediction(topCompassDeg, true);
+        }
+
 
         function setYinTab(tabName) {
             activeYinTab = tabName;
@@ -6476,94 +6622,232 @@ function calculateQiZhengSiYu(year, month, day, hour) {
             // ==========================================
             if (fengShuiMode === 'yang') {
                 const yangTabs = [
-                    { key: 'tab_room', icon: '🚪', name: 'ໃນບ້ານ(43)' },
-                    { key: 'tab_luantou', icon: '🏞️', name: 'ນອກບ້ານ(36)' },
-                    { key: 'tab_formations', icon: '🏯', name: '4ຮູບດວງ' },
-                    { key: 'tab_tigua', icon: '🔮', name: 'ດາວແທນ' },
-                    { key: 'tab_dayhour', icon: '⏱️', name: 'ວັນ/ຍາມ' },
-                    { key: 'tab_solar', icon: '☀️', name: 'ແສງແດດ' },
-                    { key: 'tab_wind', icon: '💨', name: 'ລົມ&ສຽງ' },
-                    { key: 'tab_decor', icon: '🎨', name: 'ສີ&ວັດສະດຸ' },
-                    { key: 'tab_luban', icon: '📐', name: 'ໄມ້ບັນທັດ' },
-                    { key: 'tab_waterdragon', icon: '🌊', name: 'ສາຍນ້ຳ' },
-                    { key: 'tab_watersim', icon: '🌀', name: 'ຈຳລອງນ້ຳ' },
-                    { key: 'tab_longmen', icon: '💧', name: 'ນ້ຳ8ວັງ' },
-                    { key: 'tab_dagua', icon: '☯️', name: '64ຂວຍ' },
-                    { key: 'tab_bazi', icon: '📿', name: 'ປາຈື4ແຖວ' },
-                    { key: 'tab_ziwei', icon: '👑', name: 'ຈືເຫວີຍ' },
-                    { key: 'tab_meihua', icon: '🌸', name: 'ດອກເໝີຍ' },
-                    { key: 'tab_liuren', icon: '🔮', name: 'ລິ່ວເຢິນ' },
-                    { key: 'tab_liuyao', icon: '🪙', name: '64ຫຼິວຢາວ' },
-                    { key: 'tab_tieban', icon: '📜', name: 'ເລກເຫຼັກ' },
-                    { key: 'tab_taiyi', icon: '🌌', name: 'ໄທ່ອີ' },
-                    { key: 'tab_daguan_date', icon: '⚡', name: 'ເລືອກວັນ64' },
-                    { key: 'tab_shashu', icon: '🛡️', name: '100ຊາ' },
-                    { key: 'tab_annual_affliction', icon: '📿', name: 'ໄທ້ສວຍ' },
-                    { key: 'tab_qizheng', icon: '🪐', name: '7ດາວ4ເງົາ' },
-                    { key: 'tab_jinsuo', icon: '🗝️', name: 'ກິ່ນສົວ' },
-                    { key: 'tab_diyun', icon: '⏳', name: 'ອາຍຸບ້ານ' },
-                    { key: 'tab_zhuge', icon: '📜', name: 'ຂົງເບັ້ງ' },
-                    { key: 'tab_chenggu', icon: '⚖️', name: 'ຊັ່ງກະດູກ' },
-                    { key: 'tab_mianxiang', icon: '👤', name: 'ໂຫງວເຮ້ງ' },
-                    { key: 'tab_xiaoliuren', icon: '✋', name: 'ສຽວລິ່ວ' },
-                    { key: 'tab_wuyun', icon: '🌿', name: 'ການແພດ' },
-                    { key: 'tab_72dragons', icon: '🐉', name: '72ມັງກອນ' },
-                    { key: 'tab_wutu', icon: '☀️', name: 'ຕາເວັນແທ້' },
-                    { key: 'tab_shibuxiang', icon: '🚫', name: '10ຂໍ້ຫ້າມ' },
-                    { key: 'tab_pingyang', icon: '🌾', name: 'ມັງກອນທົ່ງ' },
-                    { key: 'tab_huangquan', icon: '🌊', name: 'ນ້ຳຮວງສຽນ' },
-                    { key: 'tab_zhengshen', icon: '🏛️', name: 'ສອງຝັ່ງຍຸກ9' },
-                    { key: 'tab_toudi', icon: '🧭', name: '60ມັງກອນດິນ' },
-                    { key: 'tab_fenjin', icon: '🪙', name: '120ມຸມທອງ' },
-                    { key: 'tab_cuiguan', icon: '👑', name: 'ເລື່ອນຍົດ' },
-                    { key: 'tab_yanqin', icon: '🦅', name: '28ສັດດາວ' },
-                    { key: 'tab_you_nian', icon: '🔮', name: '8ດາວລອຍ' },
-                    { key: 'tab_celestial_transit', icon: '☀️', name: 'ຕາເວັນຈັນສ່ອງ' },
-                    { key: 'tab_sanhe_water', icon: '🌊', name: 'ນ້ຳ3ສຳນັກ' },
-                    { key: 'tab_xiezi', icon: '💎', name: 'ເຊຍຈື໋ລັບ' },
-                    { key: 'tab_xiantian_water', icon: '☯️', name: 'ນ້ຳກ່ອນຟ້າ' },
-                    { key: 'tab_tianyuan_internal', icon: '🔥', name: 'ເຕົາ&ຂັ້ນໄດ' },
-                    { key: 'tab_luban_cures', icon: '🛡️', name: 'ຫຼູປານແກ້ອາຖັນ' },
-                    { key: 'tab_tianxin_cross', icon: '🎯', name: 'ກາກະບາດຟ້າ' },
-                    { key: 'tab_sanban_gua', icon: '👑', name: '180ປີບໍ່ເສື່ອມ' },
-                    { key: 'tab_anmen_water', icon: '🚪', name: 'ປະຕູຮັບຊັບ' },
-                    { key: 'tab_qizheng_12palaces', icon: '🪐', name: '12ວັງດາວ' },
-                    { key: 'tab_solar_24terms', icon: '☀️', name: 'ຕາເວັນ24ລະດູ' },
-                    { key: 'tab_huangji', icon: '🌌', name: 'ວົງຈອນ129600' },
-                    { key: 'tab_ziwu_clock', icon: '🕰️', name: 'ໂມງຊີວະພາບ' },
-                    { key: 'tab_shouxiang', icon: '✋', name: 'ລາຍມື8ວັງ' },
-                    { key: 'tab_baisui_face', icon: '👤', name: 'ອາຍຸ100ປີໜ້າ' },
-                    { key: 'tab_guiguzi', icon: '📜', name: 'ກຸ່ຍກູ່ຈື' },
-                    { key: 'tab_dagua_couple', icon: '☯️', name: 'ຂວຍສົມລົດ' },
-                    { key: 'tab_9star_shapes', icon: '⛰️', name: '9ຈອມພູ' },
-                    { key: 'tab_24_shuikou', icon: '💧', name: 'ນ້ຳ24ຂຸນເຂົາ' },
-                    { key: 'tab_period8_to_9', icon: '🔄', name: 'ປ່ຽນສູ່ຍຸກ9' },
-                    { key: 'tab_daoist_purify', icon: '🕯️', name: 'ພິທີລ້າງອາຖັນ' },
-                    { key: 'tab_bazhai', icon: '👤', name: 'ດວງກົວະ' },
-                    { key: 'tab_qimen', icon: '⚡', name: 'ຄິມຶນ' },
-                    { key: 'tab_28stars', icon: '🌌', name: '28ດາວ' },
-                    { key: 'tab_forecast', icon: '📅', name: 'ປະຕິທິນ' },
-                    { key: 'tab_monthmatrix', icon: '🗓️', name: '12ເດືອນ' },
-                    { key: 'tab_annual', icon: '⭐', name: 'ດາວປີ' },
-                    { key: 'tab_stars', icon: '✨', name: '81ດາວ' }
+                    // Cat 1: ດາວເຫີນ & ພະລັງຍຸກ (12 ວິຊາ)
+                    { key: 'tab_room', icon: '🚪', name: 'ໃນບ້ານ 43 ຫ້ອງ', canon: 'ຄຳພີເສິ່ນຊື່', desc: '9 ວັງ & 43 ຈຸດສຳຄັນ', catId: 'cat_flying_stars' },
+                    { key: 'tab_luantou', icon: '🏞️', name: 'ຫຼວນໂຖວພາຍນອກ', canon: 'ຕຳລາຮູບດິນ', desc: '36 ສິ່ງແວດລ້ອມພາຍນອກ', catId: 'cat_flying_stars' },
+                    { key: 'tab_formations', icon: '🏯', name: '4 ຮູບດວງດາວເຫີນ', canon: 'ນະວະດາລາ', desc: 'ວັງນ້ຳ-ວັງພູ 4 ຮູບແບບ', catId: 'cat_flying_stars' },
+                    { key: 'tab_tigua', icon: '🔮', name: 'ດາວແທນ (替卦)', canon: 'ຕຳລາດາວແທນ', desc: 'ທົດແທນອົງສາອ່ຽງເກີນ 3°', catId: 'cat_flying_stars' },
+                    { key: 'tab_annual', icon: '⭐', name: 'ດາວປີ 2026', canon: 'ດາວຈອນນະວະດາລາ', desc: '9 ດາວປະຈຳປີ & ທິດໂຊກ', catId: 'cat_flying_stars' },
+                    { key: 'tab_monthmatrix', icon: '🗓️', name: 'ດາວເດືອນ 12 ເດືອນ', canon: 'ດາວຈອນລາຍເດືອນ', desc: 'ຕາຕະລາງດາວ 12 ເດືອນ', catId: 'cat_flying_stars' },
+                    { key: 'tab_stars', icon: '✨', name: '81 ຄູ່ດາວເຫີນ', canon: 'ຄຳພີຈື່ປາຍຈວຽກ', desc: 'ຄວາມໝາຍ 81 ຄູ່ດາວພູ-ນ້ຳ', catId: 'cat_flying_stars' },
+                    { key: 'tab_forecast', icon: '📅', name: 'ປະຕິທິນດາວເຫີນ', canon: 'ປະຕິທິນຮວງຈຸ້ຍ', desc: 'ດາວຈອນລາຍວັນ & ຍາມໂຊກ', catId: 'cat_flying_stars' },
+                    { key: 'tab_diyun', icon: '⏳', name: 'ອາຍຸບ້ານ (ຕີ້ຍຸ່ນ)', canon: 'ອາຍຸບ້ານສຽນຄົງ', desc: 'ວົງຈອນພະລັງ 20-160 ປີ', catId: 'cat_flying_stars' },
+                    { key: 'tab_zhengshen', icon: '🏛️', name: 'ສອງຝັ່ງຍຸກ 9', canon: 'ຈິ້ງສິ່ນ-ຫຼິງຖາງ', desc: 'ກົດວັງນ້ຳ-ພູ ຍຸກ 9 ໃຕ້/ເໜືອ', catId: 'cat_flying_stars' },
+                    { key: 'tab_sanban_gua', icon: '👑', name: 'ຊານປານກວ້າ', canon: 'ດາວໄຕຣລັກ 180 ປີ', desc: 'ຄູ່ດາວພໍ່ແມ່ ບໍ່ເສື່ອມຖອຍ', catId: 'cat_flying_stars' },
+                    { key: 'tab_period8_to_9', icon: '🔄', name: 'ປ່ຽນຜ່ານຍຸກ 8 ສູ່ 9', canon: 'ຄຳພີປັບປ່ຽນຍຸກ', desc: 'ປ່ຽນດວງບ້ານສູ່ຍຸກ 9 ສົມບູນ', catId: 'cat_flying_stars' },
+
+                    // Cat 2: ສາຍນ້ຳ & ມັງກອນດິນ (9 ວິຊາ)
+                    { key: 'tab_waterdragon', icon: '🌊', name: 'ມັງກອນນ້ຳ', canon: 'ຕຳລາມັງກອນນ້ຳ', desc: 'ສາຍນ້ຳໂຄ້ງຮັບຊັບ & ວັງນ້ຳ', catId: 'cat_water_land' },
+                    { key: 'tab_watersim', icon: '🌀', name: 'ຈຳລອງສາຍນ້ຳ', canon: 'Simulator ນ້ຳໄຫຼ', desc: 'ທົດລອງສາຍນ້ຳໄຫຼຮອບບ້ານ', catId: 'cat_water_land' },
+                    { key: 'tab_longmen', icon: '💧', name: 'ຫຼົງເໝິນປາຈວີ໋', canon: '8 ວັງນ້ຳມັງກອນ', desc: 'ສຽນທຽນ & ໂຮ່ວທຽນສຸ່ຍ', catId: 'cat_water_land' },
+                    { key: 'tab_pingyang', icon: '🌾', name: 'ມັງກອນທົ່ງຮາບ', canon: 'ພຽງຢາງຫຼົງ', desc: 'ສູງ 1 ນິ້ວເປັນພູ ຕ່ຳ 1 ນິ້ວເປັນນ້ຳ', catId: 'cat_water_land' },
+                    { key: 'tab_huangquan', icon: '🌊', name: 'ນ້ຳຮວງສຽນ', canon: '8 ສາຍນ້ຳມະຕະ', desc: 'ກວດທິດນ້ຳໄຫຼຕ້ອງຫ້າມ', catId: 'cat_water_land' },
+                    { key: 'tab_sanhe_water', icon: '🌊', name: 'ນ້ຳ 3 ສຳນັກ (ສານເຫີ)', canon: 'ສານເຫີ 12 ໄລຍະ', desc: 'ກຳເນີດ, ຈະເລີນ, ສຸສານ 4 ທາດ', catId: 'cat_water_land' },
+                    { key: 'tab_xiantian_water', icon: '☯️', name: 'ນ້ຳກ່ອນຟ້າ-ຫຼັງຟ້າ', canon: 'ສຽນທຽນ-ໂຮ່ວທຽນ', desc: 'ເຊື່ອມໂຍງພະລັງຟ້າ-ດິນຮັບຊັບ', catId: 'cat_water_land' },
+                    { key: 'tab_24_shuikou', icon: '💧', name: 'ປາກນ້ຳ 24 ຂຸນເຂົາ', canon: 'ຊຸ່ຍໂຂວ 24 ເຂົາ', desc: 'ທິດປາກນ້ຳໄຫຼ & ລະບາຍນ້ຳເສຍ', catId: 'cat_water_land' },
+                    { key: 'tab_9star_shapes', icon: '⛰️', name: '9 ຈອມພູຮູບດາວ', canon: 'ຊານເຟິງ 9 ທາດ', desc: 'ວິເຄາະຮູບຮ່າງພູເຂົາ 9 ດາວ', catId: 'cat_water_land' },
+
+                    // Cat 3: ເຂັມທິດ & 24 ຂຸນເຂົາ (7 ວິຊາ)
+                    { key: 'tab_72dragons', icon: '🐉', name: '72 ມັງກອນຜ່ານດິນ', canon: 'ຢາງກົງຫຼົວຜານ', desc: 'ເສັ້ນລົມປານມັງກອນຊ່ອງລະ 5°', catId: 'cat_compass_mountains' },
+                    { key: 'tab_toudi', icon: '🧭', name: '60 ມັງກອນເຈາະດິນ', canon: 'ໂທ່ວຕີ້ 60 ມັງກອນ', desc: 'ມັງກອນເຈາະຮາກຖານ 60 ກະປົກ', catId: 'cat_compass_mountains' },
+                    { key: 'tab_fenjin', icon: '🪙', name: '120 ມຸມທອງ (ພັນຈິນ)', canon: 'ຫຼົວຜານຊັ້ນພັນຈິນ', desc: 'ມຸມເພັດພອຍ 3° & ເສັ້ນດັບສູນ', catId: 'cat_compass_mountains' },
+                    { key: 'tab_cuiguan', icon: '👑', name: 'ຊຸ່ຍກວ່ານຈິງ (ເລື່ອນຍົດ)', canon: 'ຕຳລາໄລ່ປູ້ອີ', desc: 'ຕຳແໜ່ງຂຸນເຂົາເລັ່ງຍົດຂຸນນາງ', catId: 'cat_compass_mountains' },
+                    { key: 'tab_tianxin_cross', icon: '🎯', name: 'ກາກະບາດຟ້າ', canon: 'ທຽນຊິນສືຈື້', desc: 'ເສັ້ນຕັດສາກ 90° ສູນກາງຫຼົວຜານ', catId: 'cat_compass_mountains' },
+                    { key: 'tab_xiezi', icon: '💎', name: 'ເຊຍຈື໋ລັບ (ຄ່າຍກົນ)', canon: 'ຄຳພີເຊຍຈື໋ຟາ', desc: 'ສູດລັບຄ່າຍກົນມັງກອນດຶງດູດຊັບ', catId: 'cat_compass_mountains' },
+                    { key: 'tab_shibuxiang', icon: '🚫', name: '10 ພູຕ້ອງຫ້າມ', canon: 'ຄຳພີຊືປູ້ຊຽງ', desc: '10 ລັກສະນະພູເຂົາອັບມຸງຄຸນ', catId: 'cat_compass_mountains' },
+
+                    // Cat 4: ພາຍໃນບ້ານ & ແກ້ອາຖັນ (9 ວິຊາ)
+                    { key: 'tab_tianyuan_internal', icon: '🔥', name: 'ເຕົາໄຟ & ຂັ້ນໄດ', canon: 'ທຽນຢວນອູ່ເກີ', desc: 'ເຕົາໄຟ, ຂັ້ນໄດ, ຫ້ອງນ້ຳ ພາຍໃນ', catId: 'cat_internal_cures' },
+                    { key: 'tab_anmen_water', icon: '🚪', name: 'ປະຕູຮັບຊັບ (ອ່ານເໝິນ)', canon: 'ຄຳພີອ່ານເໝິນສຸ່ຍ', desc: 'ວາງປະຕູຮັບກະແສນ້ຳ-ລົມດູດຊັບ', catId: 'cat_internal_cures' },
+                    { key: 'tab_luban', icon: '📐', name: 'ໄມ້ບັນທັດຫຼູປານ', canon: 'ຄຳພີຫຼູປານຈິງ', desc: 'ຂະໜາດປະຕູ/ເຟີນີເຈີ 8 ຊ່ອງໂຊກ', catId: 'cat_internal_cures' },
+                    { key: 'tab_luban_cures', icon: '🛡️', name: 'ຫຼູປານແກ້ອາຖັນ', canon: 'ແກ້ອາຖັນຫຼູປານ', desc: 'ແກ້ເສົາ, ຄານ, ປະຕູຊົນ, ມຸມແຫຼມ', catId: 'cat_internal_cures' },
+                    { key: 'tab_decor', icon: '🎨', name: 'ສີ & ວັດສະດຸ 5 ທາດ', canon: '5 ທາດປະຍຸກ', desc: 'ເລືອກໂທນສີ, ຜ້າມ່ານ, ວັດສະດຸ', catId: 'cat_internal_cures' },
+                    { key: 'tab_wind', icon: '💨', name: 'ລົມ & ສຽງຮວງຈຸ້ຍ', canon: 'ສາດສຽງ ແລະ ລົມ', desc: 'ທິດລົມລະບາຍ & ມົນລະພິດສຽງ', catId: 'cat_internal_cures' },
+                    { key: 'tab_shashu', icon: '🛡️', name: '100 ຊາພິຄາດ', canon: '100 ຊາພິຄາດ', desc: 'ກວດຫາຮູບຊາ & ວິທີແກ້ໄຂ', catId: 'cat_internal_cures' },
+                    { key: 'tab_annual_affliction', icon: '📿', name: 'ໄທ້ສວຍ & 3 ຊາ', canon: 'ຕຳລາດາວຮ້າຍປີ', desc: 'ຕຳແໜ່ງໄທ້ສວຍ, ຊຸ່ຍພໍ່, 3 ຊາ, 5 ເຫຼືອງ', catId: 'cat_internal_cures' },
+                    { key: 'tab_daoist_purify', icon: '🕯️', name: 'ພິທີລ້າງອາຖັນ', canon: 'ເຕົາສາດລ້າງບ້ານ', desc: 'ຂັ້ນຕອນລ້າງພະລັງລົບ & ເປີດໂຊກ', catId: 'cat_internal_cures' },
+
+                    // Cat 5: ເລືອກມື້ & ດາລາສາດ (6 ວິຊາ)
+                    { key: 'tab_dayhour', icon: '⏱️', name: 'ວັນ & ຍາມມຸງຄຸນ', canon: 'ເລືອກຍາມຈີນ', desc: 'ຍາມມຸງຄຸນ 12 ຍາມ & ກຸ່ຍຢິນ', catId: 'cat_date_astrometry' },
+                    { key: 'tab_solar', icon: '☀️', name: 'ແສງແດດ & ມຸມແສງ', canon: 'ສຸລິຍະວິຖີ', desc: 'ທິດທາງແສງແດດຕາມລະດູການ', catId: 'cat_date_astrometry' },
+                    { key: 'tab_wutu', icon: '☀️', name: 'ຕາເວັນແທ້ (ອູ່ຖູ)', canon: 'ທຽນຢວນອູ່ຖູ', desc: 'ເວລາຕາເວັນທ່ຽງແທ້ຈິງ (True Solar)', catId: 'cat_date_astrometry' },
+                    { key: 'tab_solar_24terms', icon: '☀️', name: 'ຕາເວັນ 24 ລະດູການ', canon: '24 ປັກລະດູການ', desc: 'ຕາເວັນມາຮອດຂຸນເຂົາ 24 ເຂົາ', catId: 'cat_date_astrometry' },
+                    { key: 'tab_celestial_transit', icon: '☀️', name: 'ຕາເວັນ-ຈັນສ່ອງເຂົາ', canon: 'ດວງດາວສະຫວັນ', desc: 'ຕາເວັນ & ຈັນ ໂຄຈອນສ່ອງຂຸນເຂົາ', catId: 'cat_date_astrometry' },
+                    { key: 'tab_huangji', icon: '🌌', name: 'ຫ່ວງຈີ໋ຈິງຊື່', canon: 'ສາວຢົງ 129,600 ປີ', desc: 'ວົງຈອນມະຫາຈັກກະວານ ຢວນ-ຮຸ່ຍ-ຢຸ່ນ-ຊື່', catId: 'cat_date_astrometry' },
+
+                    // Cat 6: ໂຫລາສາດ & ດວງຊາຕາ (9 ວິຊາ)
+                    { key: 'tab_bazi', icon: '📿', name: 'ປາຈື 4 ແຖວ', canon: 'ປາຈື 8 ຕົວອັກສອນ', desc: 'ວິເຄາະ 4 ເສົາ, ດິດຖີ, ທາດຍົງສິ່ນ', catId: 'cat_astrology_destiny' },
+                    { key: 'tab_ziwei', icon: '👑', name: 'ຈືເຫວີຍໂຕ່ວຊູ່', canon: '12 ວັງຈັກກະພັດ', desc: 'ວັງຊັບ, ວັງອະສັງຫາ, ດາວຈັກກະພັດ', catId: 'cat_astrology_destiny' },
+                    { key: 'tab_qizheng', icon: '🪐', name: '7 ດາວ 4 ເງົາ', canon: 'ຊີເຈີ້ງຊືວູ', desc: '7 ດາວເຄາະ & 4 ຈຸດຕັດຄາດສະຫວັນ', catId: 'cat_astrology_destiny' },
+                    { key: 'tab_qizheng_12palaces', icon: '🪐', name: '12 ວັງດາວຊີເຈີ້ງ', canon: '12 ວັງຊີເຈີ້ງ', desc: 'ດວງດາວໃນ 12 ລາສີດວງຊາຕາ', catId: 'cat_astrology_destiny' },
+                    { key: 'tab_chenggu', icon: '⚖️', name: 'ຊັ່ງກະດູກຢວນທຽນກັງ', canon: 'ຊັ່ງກະດູກຊາຕາ', desc: 'ນ້ຳໜັກຊາຕາ (ຕຳລຶງ) & ບົດກອນ', catId: 'cat_astrology_destiny' },
+                    { key: 'tab_yanqin', icon: '🦅', name: '28 ສັດດາວຢຽນສິນ', canon: 'ຢຽນສິນ 28 ດາວ', desc: 'ສັດດາວຄຸ້ມຄອງຊາຕາ & ເຮືອນ', catId: 'cat_astrology_destiny' },
+                    { key: 'tab_guiguzi', icon: '📜', name: 'ກຸ່ຍກູ່ຈືສອງອັກສອນ', canon: 'ກຸ່ຍກູ່ຈືປໍຣະມາຈານ', desc: 'ລະຫັດຊາຕາ 2 ຕົວອັກສອນບູຮານ', catId: 'cat_astrology_destiny' },
+                    { key: 'tab_bazhai', icon: '👤', name: 'ດວງກົວະປາໄຈ່', canon: 'ປາໄຈ່ໝິງຈິ້ງ', desc: 'ລະຫັດກົວະ, ກຸ່ມຕາເວັນອອກ/ຕົກ', catId: 'cat_astrology_destiny' },
+                    { key: 'tab_you_nian', icon: '🔮', name: '8 ດາວລອຍປາໄຈ່', canon: 'ອີ້ວກົ່ວຢິວໜຽນ', desc: 'ການກະຈາຍ 8 ດາວລອຍປະຈຳເຮືອນ', catId: 'cat_astrology_destiny' },
+
+                    // Cat 7: ພະຍາກອນ 3 ຍອດວິຊາ (9 ວິຊາ)
+                    { key: 'tab_qimen', icon: '⚡', name: 'ຄິມຶນຕຸນຢາ', canon: 'ຍຸດທະສາດຄິມຶນ', desc: '8 ປະຕູ, 9 ດາວ, 8 ເທບ & ທິດທາງ', catId: 'cat_divination_three' },
+                    { key: 'tab_taiyi', icon: '🌌', name: 'ໄທ່ອີເສິນຊູ່', canon: 'ໄທ່ອີມະຫາພາກ', desc: 'ວົງຈອນໃຫຍ່, ເສດຖະກິດ, ອາກາດ', catId: 'cat_divination_three' },
+                    { key: 'tab_liuren', icon: '🔮', name: 'ຕ້າລິ່ວເຢິນ', canon: 'ຕ້າລິ່ວເຢິນ', desc: 'ພະຍາກອນສະຖານະການ & ເຫດການ', catId: 'cat_divination_three' },
+                    { key: 'tab_xiaoliuren', icon: '✋', name: 'ສຽວລິ່ວເຢິນ', canon: 'ສຽວລິ່ວເຢິນນິ້ວມື', desc: 'ພະຍາກອນດ່ວນ 6 ຍາມດ້ວຍນິ້ວມື', catId: 'cat_divination_three' },
+                    { key: 'tab_meihua', icon: '🌸', name: 'ດອກເໝີຍອີ້ຊູ່', canon: 'ສາວຄັງເຈີດອກເໝີຍ', desc: 'ພະຍາກອນພາບ, ສຽງ, ເວລາ 64 ຂວຍ', catId: 'cat_divination_three' },
+                    { key: 'tab_liuyao', icon: '🪙', name: '64 ຫຼິວຢາວ', canon: 'ຫຼິວຢາວອີ້ຈິງ', desc: 'ຫຼຽນທອງ 6 ເສັ້ນ, 6 ຍາດ, 6 ສັດເທບ', catId: 'cat_divination_three' },
+                    { key: 'tab_tieban', icon: '📜', name: 'ເລກເຫຼັກທຽບປານ', canon: 'ເລກເຫຼັກເສິນຊູ່', desc: 'ລັອກຕົວເລກລາຍບົດກອນຊີວິດ', catId: 'cat_divination_three' },
+                    { key: 'tab_zhuge', icon: '📜', name: 'ຂົງເບັ້ງ 384 ຂວຍ', canon: 'ເສັຍມຊີຈູກັດຫຼຽງ', desc: '384 ຄຳກອນທຳນາຍດວງຊາຕາ', catId: 'cat_divination_three' },
+                    { key: 'tab_jinsuo', icon: '🗝️', name: 'ກິ່ນສົວອວີ້ສື', canon: 'ກະແຈທອງ 24 ວັງ', desc: 'ກວດວັງຊາພິຄາດ & ວັງມຸງຄຸນ 24 ທິດ', catId: 'cat_divination_three' },
+
+                    // Cat 8: ອີ້ຈິງ & ແພດສາດ (9 ວິຊາ)
+                    { key: 'tab_dagua', icon: '☯️', name: 'ອີ້ຈິງ 64 ຂວຍ', canon: 'ສຽນຄົງຕ້າກວ້າ', desc: 'ຂວຍປະຈຳອົງສາ, ທາດ & ໝວດເລກ', catId: 'cat_iching_tcm_physiognomy' },
+                    { key: 'tab_daguan_date', icon: '⚡', name: 'ເລືອກວັນ 64 ຂວຍ', canon: 'ເລືອກວັນຕ້າກວ້າ', desc: 'ວັນມຸງຄຸນ 64 ຂວຍສົມພົງອົງສາ', catId: 'cat_iching_tcm_physiognomy' },
+                    { key: 'tab_dagua_couple', icon: '☯️', name: 'ຂວຍສົມລົດ (ຕ້າກວ້າ)', canon: 'ສົມພົງຂວຍອີ້ຈິງ', desc: 'ຄວາມສົມພົງຂວຍຄູ່ຄອງ/ຫຸ້ນສ່ວນ', catId: 'cat_iching_tcm_physiognomy' },
+                    { key: 'tab_wuyun', icon: '🌿', name: '5 ທາດ 6 ພະລັງ', canon: 'ຮວງຕີ້ເນີ່ຍຈິງ', desc: 'ອາກາດປີ & ສຸຂະພາບອະໄວຍະວະ', catId: 'cat_iching_tcm_physiognomy' },
+                    { key: 'tab_ziwu_clock', icon: '🕰️', name: 'ໂມງຊີວະພາບຈືອູ່', canon: 'ຈືອູ່ຫຼິວຈູ້', desc: 'ເສັ້ນລົມປານ 12 ອະໄວຍະວະ 12 ຍາມ', catId: 'cat_iching_tcm_physiognomy' },
+                    { key: 'tab_mianxiang', icon: '👤', name: 'ໂຫງວເຮ້ງໃບໜ້າ', canon: 'ໂຫງວເຮ້ງມາຍຊັ້ນ', desc: '12 ວັງໃບໜ້າ & 5 ເນີນພູ', catId: 'cat_iching_tcm_physiognomy' },
+                    { key: 'tab_baisui_face', icon: '👤', name: 'ແຜນທີ່ອາຍຸ 100 ປີ', canon: 'ປ່າຍຊຸ່ຍຫຼິວໜຽນ', desc: 'ຈຸດໂຊກລາບໃບໜ້າ 1-100 ປີ', catId: 'cat_iching_tcm_physiognomy' },
+                    { key: 'tab_shouxiang', icon: '✋', name: 'ລາຍມື 8 ວັງ', canon: 'ຫັດຖະສາດຈີນ', desc: '8 ເນີນພູຝາມື & ເສັ້ນລາຍມື', catId: 'cat_iching_tcm_physiognomy' },
+                    { key: 'tab_28stars', icon: '🌌', name: '28 ດາວນັກສັດ', canon: '28 ກຸ່ມດາວສະຫວັນ', desc: 'ດາວປະຈຳ 4 ສັດເທບສະຫວັນ', catId: 'cat_iching_tcm_physiognomy' }
                 ];
 
+                // Determine active category & filtered tabs
+                let currentCatObj = YANG_CATEGORIES.find(c => c.id === activeYangCategory);
+                if (!currentCatObj && activeYangCategory !== 'all') {
+                    activeYangCategory = 'cat_flying_stars';
+                    currentCatObj = YANG_CATEGORIES[0];
+                }
+
+                // Filter tabs based on search or active category
+                let visibleTabs = yangTabs;
+                if (yangSearchTerm) {
+                    visibleTabs = yangTabs.filter(t =>
+                        t.name.toLowerCase().includes(yangSearchTerm) ||
+                        t.canon.toLowerCase().includes(yangSearchTerm) ||
+                        t.desc.toLowerCase().includes(yangSearchTerm)
+                    );
+                } else if (activeYangCategory !== 'all') {
+                    visibleTabs = yangTabs.filter(t => t.catId === activeYangCategory);
+                }
+
+                // Render Category Selector Buttons
+                const categoryPillsHtml =
+                    '<div class="flex items-center gap-1.5 overflow-x-auto pb-1.5 scrollbar-thin">' +
+                        YANG_CATEGORIES.map(cat => {
+                            const isCatActive = (activeYangCategory === cat.id && !yangSearchTerm);
+                            return '<button type="button" onclick="setYangCategory(\'' + cat.id + '\')" class="whitespace-nowrap px-2.5 py-1.5 rounded-xl font-bold text-xs transition flex items-center gap-1.5 shadow-sm ' +
+                                (isCatActive
+                                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black border border-amber-300 ring-2 ring-amber-400/40 shadow-amber-500/20'
+                                    : 'bg-slate-900/90 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700') + '">' +
+                                '<span>' + cat.icon + '</span>' +
+                                '<span>' + cat.name + '</span>' +
+                                '<span class="text-[10px] px-1.5 py-0.2 rounded-full font-mono ' +
+                                    (isCatActive ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-400') + '">' +
+                                    cat.tabKeys.length +
+                                '</span>' +
+                            '</button>';
+                        }).join('') +
+                        '<button type="button" onclick="setYangCategory(\'all\')" class="whitespace-nowrap px-2.5 py-1.5 rounded-xl font-bold text-xs transition flex items-center gap-1.5 shadow-sm ' +
+                            (activeYangCategory === 'all' && !yangSearchTerm
+                                ? 'bg-gradient-to-r from-teal-500 to-emerald-600 text-slate-950 font-black border border-teal-300 ring-2 ring-teal-400/40'
+                                : 'bg-slate-900/90 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700') + '">' +
+                            '<span>🌐</span>' +
+                            '<span>ທັງໝົດ</span>' +
+                            '<span class="text-[10px] px-1.5 py-0.2 rounded-full font-mono ' +
+                                (activeYangCategory === 'all' && !yangSearchTerm ? 'bg-slate-950 text-teal-300' : 'bg-slate-800 text-slate-400') + '">70</span>' +
+                        '</button>' +
+                    '</div>';
+
+                // School Banner / Canon Explanation Card
+                let schoolBannerHtml = '';
+                if (yangSearchTerm) {
+                    schoolBannerHtml =
+                        '<div class="bg-slate-900/90 p-2.5 rounded-xl border border-amber-500/40 flex items-center justify-between text-xs">' +
+                            '<div class="text-amber-300 font-bold flex items-center gap-1.5">' +
+                                '<span>🔍</span> <span>ຜົນການຄົ້ນຫາ: "' + yangSearchTerm + '" (ພົບ ' + visibleTabs.length + ' ວິຊາ)</span>' +
+                            '</div>' +
+                            '<button type="button" onclick="setYangSearch(\'\')" class="text-xs text-rose-400 hover:text-rose-300 font-bold px-2 py-0.5 rounded bg-rose-950/60 border border-rose-800">ລຶບຄຳຄົ້ນ ✕</button>' +
+                        '</div>';
+                } else if (currentCatObj) {
+                    schoolBannerHtml =
+                        '<div class="bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-amber-950/30 p-2.5 rounded-xl border border-amber-500/30 flex flex-col gap-1 shadow-inner">' +
+                            '<div class="flex flex-wrap items-center justify-between gap-1">' +
+                                '<div class="flex items-center gap-1.5">' +
+                                    '<span class="text-base">' + currentCatObj.icon + '</span>' +
+                                    '<span class="font-black text-amber-300 text-xs tracking-wide">' + currentCatObj.school + '</span>' +
+                                '</div>' +
+                                '<span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-200 border border-amber-500/40 font-bold">' + currentCatObj.badge + '</span>' +
+                            '</div>' +
+                            '<div class="text-[11px] text-slate-300 flex items-baseline gap-1.5">' +
+                                '<span class="text-amber-400 font-bold shrink-0">📜 ຕຳລາຕົ້ນສະບັບ:</span>' +
+                                '<span class="text-slate-300 font-medium">' + currentCatObj.canon + '</span>' +
+                            '</div>' +
+                            '<div class="text-[10px] text-slate-400 flex items-baseline gap-1.5">' +
+                                '<span class="text-teal-400 font-bold shrink-0">💡 ໜ້າທີ່ & ຫຼັກການ:</span>' +
+                                '<span>' + currentCatObj.desc + '</span>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // Render Tabs Grid for Selected School
+                const tabButtonsHtml =
+                    '<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5">' +
+                        visibleTabs.map(t => {
+                            const isTabActive = (activeYangTab === t.key);
+                            return '<button type="button" onclick="setYangTab(\'' + t.key + '\')" class="p-2 rounded-xl text-left transition flex flex-col gap-0.5 shadow-sm active:scale-98 ' +
+                                (isTabActive
+                                    ? 'bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black shadow-md border border-amber-300 ring-2 ring-amber-400/50'
+                                    : 'bg-slate-900/90 hover:bg-slate-800/90 text-slate-200 border border-slate-800 hover:border-slate-700') + '">' +
+                                '<div class="flex items-center justify-between gap-1">' +
+                                    '<span class="text-xs font-bold truncate flex items-center gap-1.5">' +
+                                        '<span>' + t.icon + '</span>' +
+                                        '<span>' + t.name + '</span>' +
+                                    '</span>' +
+                                    '<span class="text-[9px] px-1 py-0.2 rounded font-mono shrink-0 ' +
+                                        (isTabActive ? 'bg-slate-950/80 text-amber-300' : 'bg-slate-800 text-slate-400') + '">' +
+                                        t.canon +
+                                    '</span>' +
+                                '</div>' +
+                                '<div class="text-[10px] truncate ' + (isTabActive ? 'text-slate-900 font-medium' : 'text-slate-400') + '">' +
+                                    t.desc +
+                                '</div>' +
+                            '</button>';
+                        }).join('') +
+                    '</div>';
+
                 const yangTabsBar =
-                    '<div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 text-[9px] font-bold select-none mb-2">' +
-                        yangTabs.map(t =>
-                            '<button type="button" onclick="setYangTab(\'' + t.key + '\')" class="py-1 px-0.5 rounded-lg text-center transition truncate ' +
-                                (activeYangTab === t.key
-                                    ? 'bg-amber-500 text-slate-950 font-black shadow-md border border-amber-300'
-                                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900') + '">' +
-                                t.icon + ' ' + t.name +
-                            '</button>'
-                        ).join('') +
-                        '<button type="button" onclick="openAuditReportModal()" class="py-1 px-0.5 rounded-lg text-center transition truncate bg-gradient-to-r from-amber-600 to-yellow-500 text-slate-950 font-black shadow-md border border-yellow-300 hover:brightness-110">' +
-                            '📄 ໃບລາຍງານ' +
-                        '</button>' +
-                        '<button type="button" onclick="openMasterDossierModal()" class="py-1 px-0.5 rounded-lg text-center transition truncate bg-gradient-to-r from-red-700 via-amber-600 to-yellow-500 text-white font-black shadow-md border border-yellow-300 hover:brightness-110">' +
-                            '🖨️ ໃບຢັ້ງຢືນ' +
-                        '</button>' +
+                    '<div class="flex flex-col gap-2 p-2 bg-slate-950 rounded-2xl border border-slate-800/90 select-none mb-3 shadow-xl">' +
+                        // Header row with master actions
+                        '<div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-2">' +
+                            '<div class="flex items-center gap-2">' +
+                                '<span class="text-amber-400 text-base">📚</span>' +
+                                '<div>' +
+                                    '<div class="text-xs font-black text-amber-300">ລະບົບ 70 ມະຫາວິຊາຮວງຈຸ້ຍ & ໂຫລາສາດ</div>' +
+                                    '<div class="text-[10px] text-slate-400">ຈັດໝວດໝູ່ຕາມ 8 ສຳນັກບູຮານລາຊະສຳນັກ • ເລືອກສຳນັກເພື່ອເບິ່ງວິຊາ</div>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="flex items-center gap-1.5">' +
+                                '<button type="button" onclick="openAuditReportModal()" class="py-1 px-2.5 rounded-lg text-center transition flex items-center gap-1 bg-gradient-to-r from-amber-600 to-yellow-500 text-slate-950 font-black text-[10px] shadow-md border border-yellow-300 hover:brightness-110 active:scale-95">' +
+                                    '<span>📄</span> <span>ໃບລາຍງານ</span>' +
+                                '</button>' +
+                                '<button type="button" onclick="openMasterDossierModal()" class="py-1 px-2.5 rounded-lg text-center transition flex items-center gap-1 bg-gradient-to-r from-red-700 via-amber-600 to-yellow-500 text-white font-black text-[10px] shadow-md border border-yellow-300 hover:brightness-110 active:scale-95">' +
+                                    '<span>🖨️</span> <span>ໃບຢັ້ງຢືນ</span>' +
+                                '</button>' +
+                            '</div>' +
+                        '</div>' +
+
+                        // Category Pills Bar
+                        categoryPillsHtml +
+
+                        // Search Input
+                        '<div class="relative">' +
+                            '<input type="text" value="' + (yangSearchTerm || '') + '" oninput="setYangSearch(this.value)" placeholder="🔍 ຄົ້ນຫາວິຊາ, ຕຳລາ, ສູດຄຳນວນ (ເຊັ່ນ: ມັງກອນ, ນ້ຳ, ດາວ, ປາຈື, ຫຼູປານ)..." class="w-full bg-slate-900/90 border border-slate-800 hover:border-slate-700 focus:border-amber-500 rounded-xl px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none transition">' +
+                            (yangSearchTerm ? '<button type="button" onclick="setYangSearch(\'\')" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs">✕</button>' : '') +
+                        '</div>' +
+
+                        // School Banner
+                        schoolBannerHtml +
+
+                        // Tab buttons
+                        tabButtonsHtml +
                     '</div>';
 
                 let tabBody = '';
@@ -10829,29 +11113,53 @@ function calculateQiZhengSiYu(year, month, day, hour) {
             // ==========================================
             else {
                 const yinTabs = [
-                    { key: 'tab_fenjin', icon: '🪦', name: '120ພັນຈິນ' },
-                    { key: 'tab_xianming', icon: '👤', name: 'ສຽນມິ່ງ' },
-                    { key: 'tab_fourbeasts', icon: '🐉', name: '4ສັດເທບ' },
-                    { key: 'tab_huangquan', icon: '⚡', name: '8ຮວງສຽນ' },
-                    { key: 'tab_sanhewater', icon: '🌊', name: 'ສາຍນ້ຳ4ທາດ' },
-                    { key: 'tab_lineage', icon: '👨‍👦', name: 'ລູກຫຼານ' },
-                    { key: 'tab_yinforecast', icon: '📅', name: 'ປະຕິທິນ' },
-                    { key: 'tab_dagua_yin', icon: '☯️', name: '64ຂວຍ' }
+                    { key: 'tab_fenjin', icon: '🪦', name: '120 ພັນຈິນ', canon: 'ຫຼົວຜານ 120 ພັນຈິນ', desc: 'ມຸມເພັດພອຍ 3° ປ້າຍຫີນ' },
+                    { key: 'tab_xianming', icon: '👤', name: 'ສຽນມິ່ງ 60 ກະປົກ', canon: 'ຄຳພີສຽນມິ່ງ', desc: 'ສົມພົງປີເກີດຜູ້ວາຍຊົນ' },
+                    { key: 'tab_fourbeasts', icon: '🐉', name: '4 ສັດເທບສຸສານ', canon: 'ຕຳລາຮູບດິນສຸສານ', desc: 'ມັງກອນ, ເສືອ, ຫົງ, ເຕົ່າ' },
+                    { key: 'tab_huangquan', icon: '⚡', name: '8 ຮວງສຽນ', canon: 'ສານເຫີສຸ່ຍຝາ', desc: 'ທິດນ້ຳໄຫຼຕ້ອງຫ້າມຮວງສຽນ' },
+                    { key: 'tab_sanhewater', icon: '🌊', name: 'ສາຍນ້ຳ 4 ທາດ', canon: 'ສານເຫີ 12 ໄລຍະ', desc: 'ວົງຈອນນ້ຳ 4 ທາດສົ່ງຜົນລູກຫຼານ' },
+                    { key: 'tab_lineage', icon: '👨‍👦', name: 'ລູກຫຼານ 3 ສາຍ', canon: 'ຕຳລາລູກຫຼານ', desc: 'ຜົນກະທົບຕໍ່ລູກຄົນທີ 1, 2, 3' },
+                    { key: 'tab_yinforecast', icon: '📅', name: 'ປະຕິທິນຢິນ', canon: 'ເລືອກມື້ສຸສານ', desc: 'ມື້ຝັງ & ຕັ້ງປ້າຍຫີນມຸງຄຸນ' },
+                    { key: 'tab_dagua_yin', icon: '☯️', name: '64 ຂວຍສຸສານ', canon: 'ສຽນຄົງຕ້າກວ້າ', desc: 'ຂວຍ 64 ພະລັງງານສຸສານ' }
                 ];
 
                 const yinTabsBar =
-                    '<div class="grid grid-cols-4 sm:grid-cols-5 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 text-[9px] font-bold select-none mb-2">' +
-                        yinTabs.map(t =>
-                            '<button type="button" onclick="setYinTab(\'' + t.key + '\')" class="py-1 px-0.5 rounded-lg text-center transition truncate ' +
-                                (activeYinTab === t.key
-                                    ? 'bg-purple-600 text-white font-black shadow-md border border-purple-400'
-                                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900') + '">' +
-                                t.icon + ' ' + t.name +
-                            '</button>'
-                        ).join('') +
-                        '<button type="button" onclick="openAuditReportModal()" class="py-1 px-0.5 rounded-lg text-center transition truncate bg-gradient-to-r from-purple-700 to-indigo-600 text-white font-black shadow-md border border-purple-300 hover:brightness-110">' +
-                            '📄 ໃບລາຍງານ' +
-                        '</button>' +
+                    '<div class="flex flex-col gap-2 p-2 bg-slate-950 rounded-2xl border border-purple-900/60 select-none mb-3 shadow-xl">' +
+                        '<div class="flex flex-wrap items-center justify-between gap-2 border-b border-purple-900/50 pb-2">' +
+                            '<div class="flex items-center gap-2">' +
+                                '<span class="text-purple-400 text-base">🪦</span>' +
+                                '<div>' +
+                                    '<div class="text-xs font-black text-purple-300">ສຳນັກຮວງຈຸ້ຍສຸສານລາຊະສຳນັກ (Imperial Yin House Feng Shui)</div>' +
+                                    '<div class="text-[10px] text-slate-400">📜 ຄຳພີຝັງສົບກົວຜູ (Zang Shu), ຫຼົວຜານ 120 ພັນຈິນ, ສານເຫີສຸ່ຍຝາ</div>' +
+                                '</div>' +
+                            '</div>' +
+                            '<button type="button" onclick="openAuditReportModal()" class="py-1 px-2.5 rounded-lg text-center transition flex items-center gap-1 bg-gradient-to-r from-purple-700 to-indigo-600 text-white font-black text-[10px] shadow-md border border-purple-300 hover:brightness-110 active:scale-95">' +
+                                '<span>📄</span> <span>ໃບລາຍງານສຸສານ</span>' +
+                            '</button>' +
+                        '</div>' +
+                        '<div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5">' +
+                            yinTabs.map(t => {
+                                const isTabActive = (activeYinTab === t.key);
+                                return '<button type="button" onclick="setYinTab(\'' + t.key + '\')" class="p-2 rounded-xl text-left transition flex flex-col gap-0.5 shadow-sm active:scale-98 ' +
+                                    (isTabActive
+                                        ? 'bg-purple-600 text-white font-black shadow-md border border-purple-300 ring-2 ring-purple-400/50'
+                                        : 'bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700') + '">' +
+                                    '<div class="flex items-center justify-between gap-1">' +
+                                        '<span class="text-xs font-bold truncate flex items-center gap-1.5">' +
+                                            '<span>' + t.icon + '</span>' +
+                                            '<span>' + t.name + '</span>' +
+                                        '</span>' +
+                                        '<span class="text-[9px] px-1 py-0.2 rounded font-mono shrink-0 ' +
+                                            (isTabActive ? 'bg-slate-950 text-purple-300' : 'bg-slate-800 text-slate-400') + '">' +
+                                            t.canon +
+                                        '</span>' +
+                                    '</div>' +
+                                    '<div class="text-[10px] truncate ' + (isTabActive ? 'text-purple-100 font-medium' : 'text-slate-400') + '">' +
+                                        t.desc +
+                                    '</div>' +
+                                '</button>';
+                            }).join('') +
+                        '</div>' +
                     '</div>';
 
                 let tabBody = '';
