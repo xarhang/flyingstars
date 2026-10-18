@@ -2729,6 +2729,347 @@
         }
 
         // =========================================================================
+        
+        // =========================================================================
+        // MASTER SYSTEM 2.7: SAN YUAN DRAGON GATE EIGHT FORMATIONS WATER METHOD (乾坤国宝 / 先后天水法)
+        // =========================================================================
+        const DRAGON_GATE_DATA = {
+            1: { // Kan (North)
+                gua: '坎 (Kan - ທິດເໜືອ)',
+                xianTian: { pal: '兑 (West - ຕົກ)', desc: 'ສຸຂະພາບແຂງແຮງ, ລູກຫຼານສະຫຼາດ, ສືບຕະກຸນດີເລີດ, ຊື່ສຽງດີ' },
+                houTian: { pal: '坤 (SW - ຫໍລະດີ)', desc: 'ເງິນຄຳຫຼັ່ງໄຫຼ, ທຸລະກິດຮຸ່ງເຮືອງ, ໂຊກລາບມະຫາສານ' },
+                tianJie: { pal: '巽 (SE - ອາຄະເນ)', desc: '⚠️ ນ້ຳໄພພິບັດ: ຫ້າມມີສາຍນ້ຳເສຍ ຫຼື ທາງສາມແພ່ງ, ລະວັງອຸບັດເຫດ' },
+                diXing: { pal: '坤 (SW - ຫໍລະດີ)', desc: '⚠️ ນ້ຳໂທດທັນ: ລະວັງການຜິດຖຽງ, ຄະດີຄວາມ, ຜິດສັນຍາ' },
+                anJie: { pal: '离 (South - ໃຕ້)', desc: '⚠️ ນ້ຳສິ່ງກີດຂວາງ: ໜ້າບ້ານບໍ່ຄວນມີນ້ຳພຸພຸ່ງແຮງເກີນໄປ' },
+                binKe: { pal: '乾 (NW) / 离 (S)', desc: 'ນ້ຳແຂກ & ນ້ຳເຈົ້າບ້ານ: ສົ່ງເສີມລູກເຂີຍ-ລູກໄພ້ ແລະ ຄົນມາຢ້ຽມຢາມ' },
+                fuXing: { pal: '艮 (NE) / 震 (E)', desc: '🌟 ນ້ຳຜູ້ຊ່ວຍອຸປະຖຳ: ດີເລີດສຳລັບຂຸດໜອງປາ ຫຼື ຕັ້ງນ້ຳພຸເສີມ' }
+            },
+            2: { // Kun (South-West)
+                gua: '坤 (Kun - ທິດຕາເວັນຕົກສ່ຽງໃຕ້)',
+                xianTian: { pal: '坎 (North - ເໜືອ)', desc: 'ສຸຂະພາບຄົນໃນບ້ານດີ, ແມ່ຍິງມີອຳນາດ, ລູກຫຼານສາມັກຄີ' },
+                houTian: { pal: '巽 (SE - ອາຄະເນ)', desc: 'ຊັບສິນເພີ່ມພູນ, ລາຍຮັບໝັ້ນຄົງ, ຄ້າຂາຍໄດ້ກຳໄລດີ' },
+                tianJie: { pal: '艮 (NE - ອີສານ)', desc: '⚠️ ນ້ຳໄພພິບັດ: ລະວັງພະຍາດກະເພາະອາຫານ ແລະ ກະດູກ' },
+                diXing: { pal: '坎 (North - ເໜືອ)', desc: '⚠️ ນ້ຳໂທດທັນ: ລະວັງຖືກຫຼອກລວງທາງການເງິນ' },
+                anJie: { pal: '艮 (NE - ອີສານ)', desc: '⚠️ ນ້ຳສິ່ງກີດຂວາງ: ຫຼີກລ່ຽງສາຍນ້ຳຕັດຜ່ານທາງໜ້າ' },
+                binKe: { pal: '震 (E) / 离 (S)', desc: 'ນ້ຳແຂກ: ດີຕໍ່ແຂກບ້ານ ແລະ ເພື່ອນຮ່ວມງານ' },
+                fuXing: { pal: '兑 (West - ຕົກ)', desc: '🌟 ນ້ຳຜູ້ຊ່ວຍ: ຕັ້ງອ່າງນ້ຳລົ້ນຊ່ວຍດຶງດູດຄວາມສະຫງົບ' }
+            },
+            3: { // Zhen (East)
+                gua: '震 (Zhen - ທິດຕາເວັນອອກ)',
+                xianTian: { pal: '艮 (NE - ອີສານ)', desc: 'ລູກຊາຍກົກຮຸ່ງເຮືອງ, ສຸຂະພາບແຂງແຮງ, ຄວາມຄິດສ້າງສັນ' },
+                houTian: { pal: '离 (South - ໃຕ້)', desc: 'ຊື່ສຽງໂດ່ງດັງ, ທຸລະກິດເຕີບໃຫຍ່, ໂຊກລາບຈາກແດນໄກ' },
+                tianJie: { pal: '乾 (NW - ພາຍັບ)', desc: '⚠️ ນ້ຳໄພພິບັດ: ລະວັງຜູ້ນຳຄອບຄົວເຈັບປ່ວຍ ຫຼື ເສຍຊັບ' },
+                diXing: { pal: '巽 (SE - ອາຄະເນ)', desc: '⚠️ ນ້ຳໂທດທັນ: ລະວັງການຂັດແຍ່ງລະຫວ່າງພີ່ນ້ອງ' },
+                anJie: { pal: '兑 (West - ຕົກ)', desc: '⚠️ ນ້ຳສິ່ງກີດຂວາງ: ຫ້າມມີເສົາໄຟຟ້າ ຫຼື ມຸມແຫຼມແທງໃສ່' },
+                binKe: { pal: '坎 (N) / 坤 (SW)', desc: 'ນ້ຳແຂກ: ໄດ້ຮັບຄວາມຊ່ວຍເຫຼືອຈາກຜູ້ໃຫຍ່' },
+                fuXing: { pal: '兑 (West - ຕົກ)', desc: '🌟 ນ້ຳຜູ້ຊ່ວຍ: ນ້ຳໄຫຼຄ່ອຍໆຊ່ວຍເສີມສະຕິປັນຍາ' }
+            },
+            4: { // Xun (South-East)
+                gua: '巽 (Xun - ທິດຕາເວັນອອກສ່ຽງໃຕ້)',
+                xianTian: { pal: '坤 (SW - ຫໍລະດີ)', desc: 'ແມ່ບ້ານມີບາຣະມີ, ລູກສາວຮຽນເກັ່ງ, ຄອບຄົວອົບອຸ່ນ' },
+                houTian: { pal: '兑 (West - ຕົກ)', desc: 'ລາຍຮັບຈາກການເຈລະຈາ, ການຄ້າ, ສື່ສານ, ໂຊກລາບຄ່ອງແຄ້ວ' },
+                tianJie: { pal: '坎 (North - ເໜືອ)', desc: '⚠️ ນ້ຳໄພພິບັດ: ລະວັງເລື່ອງຊູ້ສາວ ຫຼື ສູນເສຍຊັບ' },
+                diXing: { pal: '乾 (NW - ພາຍັບ)', desc: '⚠️ ນ້ຳໂທດທັນ: ລະວັງບັນຫາສຸຂະພາບປອດ ແລະ ຫົວ' },
+                anJie: { pal: '乾 (NW - ພາຍັບ)', desc: '⚠️ ນ້ຳສິ່ງກີດຂວາງ: ບໍ່ຄວນມີສິ່ງກໍ່ສ້າງປິດບັງໜ້າບ້ານ' },
+                binKe: { pal: '艮 (NE) / 震 (E)', desc: 'ນ້ຳແຂກ: ເພື່ອນຝູງໃຫ້ການສະໜັບສະໜູນ' },
+                fuXing: { pal: '离 (South - ໃຕ້)', desc: '🌟 ນ້ຳຜູ້ຊ່ວຍ: ເໝາະສຳລັບຕັ້ງນ້ຳພຸສີຂຽວມໍລະກົດ' }
+            },
+            6: { // Qian (North-West)
+                gua: '乾 (Qian - ທິດຕາເວັນຕົກສ່ຽງເໜືອ)',
+                xianTian: { pal: '离 (South - ໃຕ້)', desc: 'ຜູ້ນຳມີອຳນາດ, ຍົດຖາບັນດາສັກ, ສຸຂະພາບຫົວໃຈແລະສາຍຕາດີ' },
+                houTian: { pal: '艮 (NE - ອີສານ)', desc: 'ຊັບສິນອະສັງຫາລິມະຊັບເພີ່ມຂຶ້ນ, ເງິນເກັບໝັ້ນຄົງຖາວອນ' },
+                tianJie: { pal: '震 (East - ອອກ)', desc: '⚠️ ນ້ຳໄພພິບັດ: ລະວັງການຕັດສິນໃຈຜິດພາດທາງທຸລະກິດ' },
+                diXing: { pal: '兑 (West - ຕົກ)', desc: '⚠️ ນ້ຳໂທດທັນ: ລະວັງປາກສຽງ ແລະ ການຖືກທໍລະຍົດ' },
+                anJie: { pal: '巽 (SE - ອາຄະເນ)', desc: '⚠️ ນ້ຳສິ່ງກີດຂວາງ: ຄວນປູກຕົ້ນໄມ້ບັງທາງລົມແຮງ' },
+                binKe: { pal: '坎 (N) / 坤 (SW)', desc: 'ນ້ຳແຂກ: ໄດ້ຮັບການອຸປະຖຳຈາກຜູ້ມີອິດທິພົນ' },
+                fuXing: { pal: '巽 (SE - ອາຄະເນ)', desc: '🌟 ນ້ຳຜູ້ຊ່ວຍ: ຕັ້ງອ່າງນ້ຳວົນເບື້ອງອາຄະເນເສີມຊັບ' }
+            },
+            7: { // Dui (West)
+                gua: '兑 (Dui - ທິດຕາເວັນຕົກ)',
+                xianTian: { pal: '巽 (SE - ອາຄະເນ)', desc: 'ລູກສາວຫຼ້າໜ້າຮັກ, ມີສະເໜ່, ຊື່ສຽງດີ, ຄວາມສະຫງົບ' },
+                houTian: { pal: '坎 (North - ເໜືອ)', desc: 'ເງິນຄຳໝຸນວຽນໄວ, ການລົງທຶນໄດ້ຜົນຕອບແທນສູງ' },
+                tianJie: { pal: '艮 (NE - ອີສານ)', desc: '⚠️ ນ້ຳໄພພິບັດ: ລະວັງກະດູກ ແລະ ຂໍ້ຕໍ່ອັກເສບ' },
+                diXing: { pal: '离 (South - ໃຕ້)', desc: '⚠️ ນ້ຳໂທດທັນ: ລະວັງເລື່ອງໄຟໄໝ້ ຫຼື ເສຍຊື່ສຽງ' },
+                anJie: { pal: '震 (East - ອອກ)', desc: '⚠️ ນ້ຳສິ່ງກີດຂວາງ: ບໍ່ຄວນມີຕົ້ນໄມ້ຕາຍຢືນຕົ້ນທາງໜ້າ' },
+                binKe: { pal: '乾 (NW) / 坤 (SW)', desc: 'ນ້ຳແຂກ: ໄດ້ຮັບຄວາມນັບຖືຈາກສັງຄົມ' },
+                fuXing: { pal: '艮 (NE - ອີສານ)', desc: '🌟 ນ້ຳຜູ້ຊ່ວຍ: ເໝາະສຳລັບຕັ້ງນ້ຳຕົກຈຳລອງ' }
+            },
+            8: { // Gen (North-East)
+                gua: '艮 (Gen - ທິດຕາເວັນອອກສ່ຽງເໜືອ)',
+                xianTian: { pal: '乾 (NW - ພາຍັບ)', desc: 'ສຸຂະພາບແຂງແຮງ, ຈິດໃຈສະຫງົບ, ລູກຊາຍຫຼ້າກະຕັນຍູ' },
+                houTian: { pal: '震 (East - ອອກ)', desc: 'ຄວາມກ້າວໜ້າໃນໜ້າທີ່ການງານ, ຂະຫຍາຍກິດຈະການ' },
+                tianJie: { pal: '离 (South - ໃຕ້)', desc: '⚠️ ນ້ຳໄພພິບັດ: ລະວັງພະຍາດຄວາມດັນ ແລະ ຕາ' },
+                diXing: { pal: '坎 (North - ເໜືອ)', desc: '⚠️ ນ້ຳໂທດທັນ: ລະວັງເລື່ອງສັນຍາ ແລະ ມໍລະດົກ' },
+                anJie: { pal: '坤 (SW - ຫໍລະດີ)', desc: '⚠️ ນ້ຳສິ່ງກີດຂວາງ: ໜ້າບ້ານຄວນໂລ່ງແຈ້ງບໍ່ມີກອງຂີ້ເຫຍື້ອ' },
+                binKe: { pal: '兑 (W) / 巽 (SE)', desc: 'ນ້ຳແຂກ: ມີລູກຄ້າມາອຸດໜູນຢ່າງຕໍ່ເນື່ອງ' },
+                fuXing: { pal: '坎 (North - ເໜືອ)', desc: '🌟 ນ້ຳຜູ້ຊ່ວຍ: ນ້ຳສະອາດເບື້ອງເໜືອເສີມຄວາມຮັ່ງມີ' }
+            },
+            9: { // Li (South)
+                gua: '离 (Li - ທິດໃຕ້)',
+                xianTian: { pal: '震 (East - ອອກ)', desc: 'ສຸຂະພາບຄົນໃນບ້ານດີ, ມີຊີວິດຊີວາ, ຊື່ສຽງໂດ່ງດັງ' },
+                houTian: { pal: '乾 (NW - ພາຍັບ)', desc: 'ຄວາມຮັ່ງມີລະດັບເສດຖີ, ໂຊກລາບຈາກຕ່າງປະເທດ' },
+                tianJie: { pal: '兑 (West - ຕົກ)', desc: '⚠️ ນ້ຳໄພພິບັດ: ລະວັງເລື່ອງການຜິດຖຽງກັນດ້ວຍຄຳເວົ້າ' },
+                diXing: { pal: '巽 (SE - ອາຄະເນ)', desc: '⚠️ ນ້ຳໂທດທັນ: ລະວັງບັນຫາລະບົບຫາຍໃຈ' },
+                anJie: { pal: '坎 (North - ເໜືອ)', desc: '⚠️ ນ້ຳສິ່ງກີດຂວາງ: ບໍ່ຄວນມີສາຍນ້ຳໄຫຼແຮງປະທະກົງໆ' },
+                binKe: { pal: '艮 (NE) / 坤 (SW)', desc: 'ນ້ຳແຂກ: ໄດ້ຮັບການສະໜັບສະໜູນຈາກລູກຄ້າໃຫຍ່' },
+                fuXing: { pal: '坤 (SW - ຫໍລະດີ)', desc: '🌟 ນ້ຳຜູ້ຊ່ວຍ: ຕັ້ງຕູ້ປາ ຫຼື ອ່າງນ້ຳບົວເສີມບາຣະມີ' }
+            }
+        };
+
+        function calculateDragonGateWater(sitPalId) {
+            return DRAGON_GATE_DATA[sitPalId] || DRAGON_GATE_DATA[1];
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.8: BAZI 4 PILLARS & YONG SHEN HOUSE SYNERGY (八字四柱与喜用神 配合阳宅)
+        // =========================================================================
+        const BAZI_STEMS = [
+            { char: '甲', pinyin: 'Jiǎ', lao: 'ກາບ', element: 'Wood', polarity: '+', color: 'text-emerald-400' },
+            { char: '乙', pinyin: 'Yǐ', lao: 'ດັບ', element: 'Wood', polarity: '-', color: 'text-emerald-300' },
+            { char: '丙', pinyin: 'Bǐng', lao: 'ຮວາຍ', element: 'Fire', polarity: '+', color: 'text-rose-400' },
+            { char: '丁', pinyin: 'Dīng', lao: 'ເມືອງ', element: 'Fire', polarity: '-', color: 'text-rose-300' },
+            { char: '戊', pinyin: 'Wù', lao: 'ເປິກ', element: 'Earth', polarity: '+', color: 'text-amber-400' },
+            { char: '己', pinyin: 'Jǐ', lao: 'ກັດ', element: 'Earth', polarity: '-', color: 'text-amber-300' },
+            { char: '庚', pinyin: 'Gēng', lao: 'ກົດ', element: 'Metal', polarity: '+', color: 'text-yellow-200' },
+            { char: '辛', pinyin: 'Xīn', lao: 'ຮວ້າຍ', element: 'Metal', polarity: '-', color: 'text-slate-200' },
+            { char: '壬', pinyin: 'Rén', lao: 'ເຕົ່າ', element: 'Water', polarity: '+', color: 'text-blue-400' },
+            { char: '癸', pinyin: 'Guǐ', lao: 'ກ່າ', element: 'Water', polarity: '-', color: 'text-cyan-300' }
+        ];
+
+        const BAZI_BRANCHES = [
+            { char: '子', pinyin: 'Zǐ', lao: 'ໃຈ້ (ໜູ)', element: 'Water', zodiac: 'Rat' },
+            { char: '丑', pinyin: 'Chǒu', lao: 'ເປົ້າ (ງົວ)', element: 'Earth', zodiac: 'Ox' },
+            { char: '寅', pinyin: 'Yín', lao: 'ຍີ່ (ເສືອ)', element: 'Wood', zodiac: 'Tiger' },
+            { char: '卯', pinyin: 'Mǎo', lao: 'ເໝົ້າ (ກະຕ່າຍ)', element: 'Wood', zodiac: 'Rabbit' },
+            { char: '辰', pinyin: 'Chén', lao: 'ສີ (ມັງກອນ)', element: 'Earth', zodiac: 'Dragon' },
+            { char: '巳', pinyin: 'Sì', lao: 'ໄສ້ (ງູ)', element: 'Fire', zodiac: 'Snake' },
+            { char: '午', pinyin: 'Wǔ', lao: 'ສະງ້າ (ມ້າ)', element: 'Fire', zodiac: 'Horse' },
+            { char: '未', pinyin: 'Wèi', lao: 'ເມັດ (ແບ້)', element: 'Earth', zodiac: 'Goat' },
+            { char: '申', pinyin: 'Shēn', lao: 'ແແສນ (ລີງ)', element: 'Metal', zodiac: 'Monkey' },
+            { char: '酉', pinyin: 'Yǒu', lao: 'ເຮົ້າ (ໄກ່)', element: 'Metal', zodiac: 'Rooster' },
+            { char: '戌', pinyin: 'Xū', lao: 'ເສັດ (ໝາ)', element: 'Earth', zodiac: 'Dog' },
+            { char: '亥', pinyin: 'Hài', lao: 'ໄກ້ (ໝູ)', element: 'Water', zodiac: 'Pig' }
+        ];
+
+        let selectedBaziYear = 1990;
+        let selectedBaziMonth = 6;
+        let selectedBaziDay = 15;
+        let selectedBaziHour = 12;
+
+        function setBaziField(field, val) {
+            const v = parseInt(val, 10);
+            if (field === 'year') selectedBaziYear = v;
+            else if (field === 'month') selectedBaziMonth = v;
+            else if (field === 'day') selectedBaziDay = v;
+            else if (field === 'hour') selectedBaziHour = v;
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            updateLivePrediction(topCompassDeg, true);
+        }
+
+        function calculateBaZi4Pillars(year, month = 1, day = 1, hour = 12) {
+            const y = parseInt(year, 10) || 1990;
+            const m = parseInt(month, 10) || 1;
+            const d = parseInt(day, 10) || 1;
+            const h = parseInt(hour, 10) || 12;
+
+            // Year Pillar
+            const yearStemIdx = (y - 4) % 10;
+            const yearBranchIdx = (y - 4) % 12;
+            const yearStem = BAZI_STEMS[(yearStemIdx + 10) % 10];
+            const yearBranch = BAZI_BRANCHES[(yearBranchIdx + 12) % 12];
+
+            // Month Pillar (Five Tigers rule: 甲己之年丙作首)
+            const monthStartStem = (yearStemIdx % 5) * 2 + 2;
+            const monthStemIdx = (monthStartStem + (m - 1)) % 10;
+            const monthBranchIdx = (m + 1) % 12;
+            const monthStem = BAZI_STEMS[monthStemIdx];
+            const monthBranch = BAZI_BRANCHES[monthBranchIdx];
+
+            // Day Pillar
+            const baseDate = new Date(1900, 0, 31).getTime();
+            const curDate = new Date(y, m - 1, d).getTime();
+            const diffDays = Math.round((curDate - baseDate) / 86400000);
+            const dayStemIdx = (0 + diffDays % 10 + 10) % 10;
+            const dayBranchIdx = (0 + diffDays % 12 + 12) % 12;
+            const dayStem = BAZI_STEMS[dayStemIdx];
+            const dayBranch = BAZI_BRANCHES[dayBranchIdx];
+
+            // Hour Pillar (Five Rats rule: 甲己还加甲)
+            const doubleHourIdx = Math.floor(((h + 1) % 24) / 2);
+            const hourStartStem = (dayStemIdx % 5) * 2;
+            const hourStemIdx = (hourStartStem + doubleHourIdx) % 10;
+            const hourBranchIdx = doubleHourIdx % 12;
+            const hourStem = BAZI_STEMS[hourStemIdx];
+            const hourBranch = BAZI_BRANCHES[hourBranchIdx];
+
+            // Determine Day Master & Element Balance
+            const dayMaster = dayStem;
+            const elementsCount = { Wood: 0, Fire: 0, Earth: 0, Metal: 0, Water: 0 };
+            [yearStem, monthStem, dayStem, hourStem, yearBranch, monthBranch, dayBranch, hourBranch].forEach(p => {
+                if (p && p.element) elementsCount[p.element] = (elementsCount[p.element] || 0) + 1;
+            });
+
+            const SUPPORT_MAP = {
+                Wood: 'Water', Fire: 'Wood', Earth: 'Fire', Metal: 'Earth', Water: 'Metal'
+            };
+            const WEAKEN_MAP = {
+                Wood: 'Fire', Fire: 'Earth', Earth: 'Metal', Metal: 'Water', Water: 'Wood'
+            };
+            const dmElem = dayMaster.element;
+            const supElem = SUPPORT_MAP[dmElem];
+            const isStrong = (elementsCount[dmElem] + elementsCount[supElem]) >= 4;
+
+            let yongShen = '';
+            let xiShen = '';
+            let avoidElement = '';
+            if (isStrong) {
+                yongShen = WEAKEN_MAP[dmElem];
+                xiShen = WEAKEN_MAP[yongShen];
+                avoidElement = supElem;
+            } else {
+                yongShen = supElem;
+                xiShen = dmElem;
+                avoidElement = WEAKEN_MAP[WEAKEN_MAP[dmElem]];
+            }
+
+            const ELEM_LAO = {
+                Wood: 'ໄມ້ (木)', Fire: 'ໄຟ (火)', Earth: 'ດິນ (土)', Metal: 'ຄຳ (金)', Water: 'ນ້ຳ (水)'
+            };
+            const ELEM_PALACE = {
+                Wood: 'ທິດຕາເວັນອອກ (震) & ອາຄະເນ (巽)',
+                Fire: 'ທິດໃຕ້ (离)',
+                Earth: 'ທິດຕາເວັນຕົກສ່ຽງໃຕ້ (坤), ອີສານ (艮) & ໃຈກາງ',
+                Metal: 'ທິດຕາເວັນຕົກ (兑) & ພາຍັບ (乾)',
+                Water: 'ທິດເໜືອ (坎)'
+            };
+
+            return {
+                yearPillar: yearStem.char + yearBranch.char + ' (' + yearStem.lao + '-' + yearBranch.lao + ')',
+                monthPillar: monthStem.char + monthBranch.char + ' (' + monthStem.lao + '-' + monthBranch.lao + ')',
+                dayPillar: dayStem.char + dayBranch.char + ' (' + dayStem.lao + '-' + dayBranch.lao + ')',
+                hourPillar: hourStem.char + hourBranch.char + ' (' + hourStem.lao + '-' + hourBranch.lao + ')',
+                dayMaster: dayMaster.char + ' (' + dayMaster.lao + ' - ທາດ' + ELEM_LAO[dmElem] + ')',
+                strength: isStrong ? '身强 (ດວງແຂງ - ພະລັງເຕັມປ່ຽມ)' : '身弱 (ດວງອ່ອນ - ຕ້ອງການພະລັງເສີມ)',
+                yongShen: ELEM_LAO[yongShen] + ' (ທາດໂຊກລາບອັນດັບ 1)',
+                xiShen: ELEM_LAO[xiShen] + ' (ທາດເສີມບາຣະມີອັນດັບ 2)',
+                avoidElement: ELEM_LAO[avoidElement] + ' (ທາດທີ່ຄວນຫຼຸດຜ່ອນ)',
+                bestPalaces: ELEM_PALACE[yongShen],
+                secondPalaces: ELEM_PALACE[xiShen],
+                recommendation: 'ເຈົ້າຂອງບ້ານດວງນີ້ຄວນຈັດຫ້ອງນອນ ຫຼື ໂຕະເຮັດວຽກຢູ່ ' + ELEM_PALACE[yongShen] + ' ເພື່ອດຶງດູດໂຊກລາບ ແລະ ຄວາມຮຸ່ງເຮືອງສູງສຸດ.'
+            };
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.9: 12-MONTH PURPLE-WHITE FLYING STAR MATRIX (流年紫白流月加临)
+        // =========================================================================
+        function getAnnualCenterStar(annualYear) {
+            const yr = parseInt(annualYear, 10) || 2026;
+            let star = (1 - (yr - 2026)) % 9;
+            if (star <= 0) star += 9;
+            return star;
+        }
+
+        function calculate12MonthsMatrix(annualYear, natalChart) {
+            const yr = parseInt(annualYear, 10) || 2026;
+            const annualCenter = getAnnualCenterStar(yr);
+            const annualChart = flyLoShu(annualCenter, 1);
+            const facePal = natalChart.faceInfo.palId;
+            const sitPal = natalChart.sitInfo.palId;
+
+            const months = [];
+            for (let m = 1; m <= 12; m++) {
+                const mCenter = typeof getMonthlyCenterStar === 'function' ? getMonthlyCenterStar(yr, m) : ((8 - (m - 1)) % 9 || 9);
+                const mChart = flyLoShu(mCenter, 1);
+                const mStarFacing = mChart[facePal];
+                const mStarSitting = mChart[sitPal];
+
+                const isDanger5 = (mStarFacing === 5 || mStarSitting === 5);
+                const isDanger2 = (mStarFacing === 2 || mStarSitting === 2);
+                const isAuspicious = [1, 6, 8, 9].includes(mStarFacing);
+
+                const badge = isDanger5 ? 'border-rose-500 bg-rose-950/70 text-rose-300' :
+                              (isDanger2 ? 'border-amber-600 bg-amber-950/70 text-amber-300' :
+                              (isAuspicious ? 'border-emerald-500 bg-emerald-950/70 text-emerald-300' : 'border-slate-800 bg-slate-900 text-slate-300'));
+
+                const tag = isDanger5 ? '⚠️ ລະວັງດາວ 5 ເຫຼືອງ' :
+                            (isDanger2 ? '⚠️ ລະວັງດາວ 2 ພະຍາດ' :
+                            (isAuspicious ? '🌟 ເດືອນມຸງຄຸນສູງ' : '✨ ເດືອນປົກກະຕິ'));
+
+                months.push({
+                    month: m,
+                    termName: SOLAR_MONTHS_INFO[m - 1].term,
+                    centerStar: mCenter,
+                    facingStar: mStarFacing,
+                    sittingStar: mStarSitting,
+                    badge,
+                    tag,
+                    advice: isDanger5 ? 'ຫ້າມເຄາະ, ຕອກ, ຂຸດດິນໜ້າບ້ານໃນເດືອນນີ້; ແຂວນກະດິ່ງລົມໂລຫະ 6 ທໍ່ແກ້.' :
+                            (isDanger2 ? 'ຕັ້ງນ້ຳເຕົ້າທອງເຫຼືອງໜ້າບ້ານເພື່ອດູດຊັບພະລັງງານພະຍາດ.' :
+                            (isAuspicious ? 'ເດືອນນີ້ໂຊກລາບແລ່ນເຂົ້າປະຕູ ເໝາະເປີດກິດຈະການໃໝ່ ຫຼື ເຊັນສັນຍາ.' : 'ດຳເນີນຊີວິດປົກກະຕິ.'))
+                });
+            }
+            return { annualCenter, annualChart, months };
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.10: QI MEN DUN JIA STRATEGIC HOUSE & DOOR OVERLAY (奇门遁甲阳宅布局)
+        // =========================================================================
+        const QIMEN_DOORS = [
+            { char: '休门', lao: 'ສິວເໝິນ (ປະຕູພັກຜ່ອນ)', isGood: true, badge: 'text-blue-300', desc: 'ດີສຳລັບພົບຜູ້ໃຫຍ່, ພັກຜ່ອນ, ຮັກສາພະຍາດ, ຫ້ອງນອນ' },
+            { char: '生门', lao: 'ເຊິງເໝິນ (ປະຕູເກີດ/ຊັບ)', isGood: true, badge: 'text-emerald-300', desc: '🌟 ມຸງຄຸນສູງສຸດ: ດີດ້ານການຄ້າ, ອະສັງຫາ, ຕັ້ງຕູ້ເຊບ, ຫາເງິນ' },
+            { char: '伤门', lao: 'ຊາງເໝິນ (ປະຕູບາດເຈັບ)', isGood: false, badge: 'text-amber-400', desc: 'ດີສະເພາະທວງໜີ້, ຈັບໂຈນ; ຫ້າມຕັ້ງຫ້ອງນອນ ຫຼື ປະຕູໃຫຍ່' },
+            { char: '杜门', lao: 'ຕູ້ເໝິນ (ປະຕູປິດບັງ)', isGood: false, badge: 'text-slate-400', desc: 'ດີສຳລັບຫຼົບລີ້, ເຊື່ອງຊັບ, ຄວາມລັບ; ບໍ່ເໝາະເປີດເຜີຍ' },
+            { char: '景门', lao: 'ຈິ່ງເໝິນ (ປະຕູຄວາມງາມ/ແສງ)', isGood: true, badge: 'text-rose-300', desc: 'ດີດ້ານການຕະຫຼາດ, ໂຄສະນາ, ເອກະສານ, ວາງແຜນ' },
+            { char: '死门', lao: 'ສື່ເໝິນ (ປະຕູດັບ/ຕາຍ)', isGood: false, badge: 'text-rose-500', desc: '❌ ປະຕູອັບປະມຸງຄຸນ: ດີສະເພາະງານຝັງສົບ; ຫ້າມເຄື່ອນໄຫວ' },
+            { char: '惊门', lao: 'ຈິງເໝິນ (ປະຕູຕົກໃຈ/ສຽງ)', isGood: false, badge: 'text-amber-500', desc: 'ດີສະເພາະທະນາຍຄວາມ, ຄະດີ; ລະວັງການຜິດຖຽງ' },
+            { char: '开门', lao: 'ຄາຍເໝິນ (ປະຕູເປີດ/ອຳນາດ)', isGood: true, badge: 'text-yellow-300', desc: '🌟 ມຸງຄຸນສູງສຸດ: ດີເລີດເປີດບໍລິສັດ, ເລີ່ມງານ, ຕັ້ງຫ້ອງເຮັດວຽກ' }
+        ];
+
+        const QIMEN_STARS = [
+            { char: '天蓬', lao: 'ທຽນເຜິງ (ນ້ຳ)', isGood: false },
+            { char: '天芮', lao: 'ທຽນຣຸຍ (ດິນ)', isGood: false },
+            { char: '天冲', lao: 'ທຽນຊົງ (ໄມ້)', isGood: true },
+            { char: '天辅', lao: 'ທຽນຝູ (ໄມ້)', isGood: true },
+            { char: '天禽', lao: 'ທຽນສິນ (ດິນກາງ)', isGood: true },
+            { char: '天心', lao: 'ທຽນຊິນ (ຄຳ)', isGood: true },
+            { char: '天柱', lao: 'ທຽນຈູ້ (ຄຳ)', isGood: false },
+            { char: '天任', lao: 'ທຽນເຢິນ (ດິນ)', isGood: true },
+            { char: '天英', lao: 'ທຽນອິ໋ງ (ໄຟ)', isGood: false }
+        ];
+
+        const QIMEN_DEITIES = [
+            { char: '值符', lao: 'ຈືຝູ (ຫົວໜ້າເທບ/ສະຫວັນ)', isGood: true },
+            { char: '腾蛇', lao: 'ເຖິງເສີ (ງູໄຟ/ພາບລວງ)', isGood: false },
+            { char: '太阴', lao: 'ໄທ້ອິ໋ນ (ແສງຈັນ/ຄວາມລັບ)', isGood: true },
+            { char: '六合', lao: 'ລິ່ວເຮີ (ມິດຕະພາບ/ແຕ່ງດອງ)', isGood: true },
+            { char: '白虎', lao: 'ໄປ໋ຮູ (ເສືອຂາວ/ອັນຕະລາຍ)', isGood: false },
+            { char: '玄武', lao: 'ສຽນອູ່ (ເຕົ່າດຳ/ໂຈນລັກ)', isGood: false },
+            { char: '九地', lao: 'ຈິ່ວຕີ້ (ເກົ້ານະພາດິນ/ໝັ້ນຄົງ)', isGood: true },
+            { char: '九天', lao: 'ຈິ່ວທຽນ (ເກົ້ານະພາຟ້າ/ພຸ່ງທະຍານ)', isGood: true }
+        ];
+
+        function calculateQiMenPlate(dateObj, doubleHourIdx) {
+            const PAL_ORDER = [1, 8, 3, 4, 9, 2, 7, 6];
+            const d = dateObj ? dateObj.getDate() : 1;
+            const m = dateObj ? dateObj.getMonth() : 0;
+            const doorShift = (doubleHourIdx * 3 + d) % 8;
+            const starShift = (doubleHourIdx * 2 + m) % 8;
+            const deityShift = (doubleHourIdx + d) % 8;
+
+            const plate = {};
+            PAL_ORDER.forEach((palId, idx) => {
+                const door = QIMEN_DOORS[(idx + doorShift) % 8];
+                const star = QIMEN_STARS[(idx + starShift) % 8];
+                const deity = QIMEN_DEITIES[(idx + deityShift) % 8];
+                plate[palId] = { door, star, deity };
+            });
+
+            plate[5] = { door: { char: '中门', lao: 'ກາງວັງ', isGood: true, desc: 'ສູນລວມພະລັງງານ' }, star: QIMEN_STARS[4], deity: { char: '天禽', lao: 'ໃຈກາງ' } };
+
+            return plate;
+        }
+
         // MASTER SYSTEM 3: DAILY & HOURLY FLYING STARS (日家 & 时家飞星 & 择日吉时)
         // =========================================================================
         let selectedDayOffset = 0; // 0 = Today, 1 = Tomorrow, etc.
@@ -3564,15 +3905,19 @@
                     { key: 'tab_dayhour', icon: '⏱️', name: 'ວັນ/ຍາມ' },
                     { key: 'tab_luban', icon: '📐', name: 'ໄມ້ບັນທັດ' },
                     { key: 'tab_waterdragon', icon: '🌊', name: 'ສາຍນ້ຳ' },
+                    { key: 'tab_longmen', icon: '💧', name: 'ນ້ຳ8ວັງ' },
                     { key: 'tab_dagua', icon: '☯️', name: '64ຂວຍ' },
+                    { key: 'tab_bazi', icon: '🔮', name: 'ປາຈື4ແຖວ' },
                     { key: 'tab_bazhai', icon: '👤', name: 'ດວງກົວະ' },
+                    { key: 'tab_qimen', icon: '⚡', name: 'ຄິມຶນ' },
                     { key: 'tab_forecast', icon: '📅', name: 'ປະຕິທິນ' },
+                    { key: 'tab_monthmatrix', icon: '🗓️', name: '12ເດືອນ' },
                     { key: 'tab_annual', icon: '⭐', name: 'ດາວປີ' },
-                    { key: 'tab_stars', icon: '🔮', name: '81ດາວ' }
+                    { key: 'tab_stars', icon: '🌌', name: '81ດາວ' }
                 ];
 
                 const yangTabsBar =
-                    '<div class="grid grid-cols-4 sm:grid-cols-6 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 text-[9px] font-bold select-none mb-2">' +
+                    '<div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 text-[9px] font-bold select-none mb-2">' +
                         yangTabs.map(t =>
                             '<button type="button" onclick="setYangTab(\'' + t.key + '\')" class="py-1 px-0.5 rounded-lg text-center transition truncate ' +
                                 (activeYangTab === t.key
@@ -5854,6 +6199,285 @@
                             '</div>' +
                         '</div>';
                 }
+
+                // TAB: SAN YUAN DRAGON GATE EIGHT FORMATIONS WATER METHOD (乾坤国宝 / 先后天水法)
+                else if (activeYangTab === 'tab_longmen') {
+                    const sitPal = chart.sitInfo.palId;
+                    const dg = calculateDragonGateWater(sitPal);
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-blue-950 via-cyan-950 to-slate-950 p-3 rounded-xl border border-cyan-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-cyan-300 font-black flex items-center gap-1.5">🌊 ສູດສາຍນ້ຳ 8 ວັງ (乾坤国宝 / 先后天水法)</span>' +
+                                    '<span class="bg-cyan-500/20 text-cyan-200 px-2 py-0.5 rounded text-[10px] font-bold border border-cyan-400/30">ວັງຫຼັງພິງ: ' + dg.gua + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ວິຊາສາຍນ້ຳລໍ້າຄ່າແຫ່ງຍຸກ ຊີ້ຂາດຄວາມຮັ່ງມີ, ສຸຂະພາບ, ລູກຫຼານ ແລະ ໂຊກລາບ ດ້ວຍການຈັ່ງທິດນ້ຳໄຫຼເຂົ້າ (来水) ແລະ ນ້ຳໄຫຼອອກ (去水).' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">' +
+                                '<div class="bg-slate-950 p-2.5 rounded-xl border border-emerald-500/40 flex flex-col gap-1 shadow-sm">' +
+                                    '<div class="flex items-center justify-between">' +
+                                        '<span class="text-xs font-bold text-emerald-400">1. ນ້ຳສຽນທຽນ (先天水 - ສຸຂະພາບ & ລູກຫຼານ):</span>' +
+                                        '<span class="text-[10px] bg-emerald-950 text-emerald-300 px-1.5 py-0.5 rounded font-mono font-bold">' + dg.xianTian.pal + '</span>' +
+                                    '</div>' +
+                                    '<p class="text-[10px] text-slate-300 leading-relaxed mt-0.5">' + dg.xianTian.desc + '. ຄວນໃຫ້ນ້ຳໄຫຼມາຈາກທິດນີ້ ເພື່ອເສີມສຸຂະພາບຄົນໃນຄອບຄົວ ແລະ ລູກຫຼານສະຫຼາດຫຼັກແຫຼມ.</p>' +
+                                '</div>' +
+
+                                '<div class="bg-slate-950 p-2.5 rounded-xl border border-amber-500/40 flex flex-col gap-1 shadow-sm">' +
+                                    '<div class="flex items-center justify-between">' +
+                                        '<span class="text-xs font-bold text-amber-400">2. ນ້ຳເຮົາທຽນ (后天水 - ຊັບສິນ & ເງິນຄຳ):</span>' +
+                                        '<span class="text-[10px] bg-amber-950 text-amber-300 px-1.5 py-0.5 rounded font-mono font-bold">' + dg.houTian.pal + '</span>' +
+                                    '</div>' +
+                                    '<p class="text-[10px] text-slate-300 leading-relaxed mt-0.5">' + dg.houTian.desc + '. ສາຍນ້ຳ ຫຼື ຖະໜົນໃຫຍ່ທີ່ໄຫຼເຂົ້າມາຈາກທິດນີ້ ຈະນຳພາຄວາມຮັ່ງມີ ແລະ ຄວາມສຳເລັດທາງທຸລະກິດມະຫາສານ.</p>' +
+                                '</div>' +
+
+                                '<div class="bg-slate-950 p-2.5 rounded-xl border border-blue-500/40 flex flex-col gap-1 shadow-sm">' +
+                                    '<div class="flex items-center justify-between">' +
+                                        '<span class="text-xs font-bold text-blue-400">3. ນ້ຳຜູ້ຊ່ວຍ (辅卦水 - ອຸປະຖຳ):</span>' +
+                                        '<span class="text-[10px] bg-blue-950 text-blue-300 px-1.5 py-0.5 rounded font-mono font-bold">' + dg.fuXing.pal + '</span>' +
+                                    '</div>' +
+                                    '<p class="text-[10px] text-slate-300 leading-relaxed mt-0.5">' + dg.fuXing.desc + '. ຈຸດທີ່ດີເລີດສຳລັບຂຸດໜອງປາ, ຕັ້ງອ່າງນ້ຳພຸ ຫຼື ຕູ້ປາພາຍໃນເຮືອນ.</p>' +
+                                '</div>' +
+
+                                '<div class="bg-slate-950 p-2.5 rounded-xl border border-purple-500/40 flex flex-col gap-1 shadow-sm">' +
+                                    '<div class="flex items-center justify-between">' +
+                                        '<span class="text-xs font-bold text-purple-400">4. ນ້ຳແຂກ (宾客水 - ບໍລິວານ & ຍາດມິດ):</span>' +
+                                        '<span class="text-[10px] bg-purple-950 text-purple-300 px-1.5 py-0.5 rounded font-mono font-bold">' + dg.binKe.pal + '</span>' +
+                                    '</div>' +
+                                    '<p class="text-[10px] text-slate-300 leading-relaxed mt-0.5">' + dg.binKe.desc + '. ສົ່ງເສີມລູກເຂີຍ-ລູກໄພ້, ແຂກມາຢ້ຽມຢາມ, ລູກຄ້າ ແລະ ຜູ້ຮ່ວມທຸລະກິດພາຍນອກ.</p>' +
+                                '</div>' +
+                            '</div>' +
+
+                            '<div class="bg-rose-950/40 p-3 rounded-xl border border-rose-500/50 flex flex-col gap-1.5 mt-1 shadow-sm">' +
+                                '<span class="text-xs font-bold text-rose-300 flex items-center gap-1.5">⚠️ 3 ທິດນ້ຳຕ້ອງຫ້າມ (3 ມະຫາວິບັດນ້ຳເສຍ & ທາງສາມແພ່ງ):</span>' +
+                                '<div class="text-[10px] text-slate-200 flex flex-col gap-1 mt-0.5 leading-relaxed">' +
+                                    '<div>• <b class="text-rose-400">ນ້ຳໄພພິບັດ (天劫水):</b> ທິດ ' + dg.tianJie.pal + ' - ' + dg.tianJie.desc + '</div>' +
+                                    '<div>• <b class="text-rose-400">ນ້ຳໂທດທັນ (地刑水):</b> ທິດ ' + dg.diXing.pal + ' - ' + dg.diXing.desc + '</div>' +
+                                    '<div>• <b class="text-rose-400">ນ້ຳສິ່ງກີດຂວາງ (案劫水):</b> ທິດ ' + dg.anJie.pal + ' - ' + dg.anJie.desc + '</div>' +
+                                '</div>' +
+                                '<div class="mt-1 bg-black/40 p-2 rounded text-[9px] text-amber-200 border border-amber-500/20">' +
+                                    '💡 <b>ກົດຫຼັກການແກ້:</b> ຫ້າມເປີດປະຕູໃຫຍ່ຮັບນ້ຳໄຫຼມາຈາກທິດໄພພິບັດ (天劫). ຖ້າຫຼີກລ່ຽງບໍ່ໄດ້ ໃຫ້ປູກຕົ້ນໄມ້ບັງ ຫຼື ຕັ້ງນ້ຳພຸວົນເບື້ອງນ້ຳຜູ້ຊ່ວຍ (辅卦水) ແທນ.' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // TAB: BAZI 4 PILLARS & YONG SHEN SYNERGY (八字四柱与喜用神 配合阳宅)
+                else if (activeYangTab === 'tab_bazi') {
+                    const bazi = calculateBaZi4Pillars(selectedBaziYear, selectedBaziMonth, selectedBaziDay, selectedBaziHour);
+
+                    const yearOptions = [];
+                    for (let y = 1940; y <= 2035; y++) {
+                        yearOptions.push('<option value="' + y + '" ' + (selectedBaziYear === y ? 'selected' : '') + '>' + y + '</option>');
+                    }
+                    const monthOptions = [];
+                    for (let m = 1; m <= 12; m++) {
+                        monthOptions.push('<option value="' + m + '" ' + (selectedBaziMonth === m ? 'selected' : '') + '>ເດືອນ ' + m + '</option>');
+                    }
+                    const dayOptions = [];
+                    for (let d = 1; d <= 31; d++) {
+                        dayOptions.push('<option value="' + d + '" ' + (selectedBaziDay === d ? 'selected' : '') + '>ວັນທີ ' + d + '</option>');
+                    }
+                    const hourOptions = DOUBLE_HOURS.map(dh =>
+                        '<option value="' + (dh.idx * 2) + '" ' + (Math.floor(selectedBaziHour / 2) === dh.idx ? 'selected' : '') + '>' + dh.name + ' (' + dh.time + ')</option>'
+                    );
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-purple-950 via-slate-950 to-indigo-950 p-3 rounded-xl border border-purple-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-purple-300 font-black flex items-center gap-1.5">🔮 ດວງຊາຕາ ປາຈື 4 ແຖວ & ວັງມຸງຄຸນເຈົ້າຂອງບ້ານ (八字四柱与喜用神)</span>' +
+                                    '<span class="bg-purple-500/20 text-purple-200 px-2 py-0.5 rounded text-[10px] font-bold border border-purple-400/30">' + bazi.strength + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ຄຳນວນລະຫັດຊີວິດ 4 ແຖວ (ປີ, ເດືອນ, ວັນ, ຍາມ) ເພື່ອຊອກຫາທາດໃຫ້ຄຸນ (喜用神) ແລະ ຈັບຄູ່ກັບວັງພະລັງງານເຮືອນທີ່ເໝາະກັບດວງເຈົ້າຂອງບ້ານທີ່ສຸດ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-2">' +
+                                '<span class="text-[11px] font-bold text-amber-300">📅 ປ້ອນວັນເດືອນປີເກີດ & ເວລາເກີດ (ສຸລິຍະຄະຕິ):</span>' +
+                                '<div class="grid grid-cols-4 gap-1.5 text-xs">' +
+                                    '<div>' +
+                                        '<label class="block text-[9px] text-slate-400 mb-0.5">ປີ ຄ.ສ.</label>' +
+                                        '<select onchange="setBaziField(\'year\', this.value)" class="w-full bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-white text-xs">' + yearOptions.join('') + '</select>' +
+                                    '</div>' +
+                                    '<div>' +
+                                        '<label class="block text-[9px] text-slate-400 mb-0.5">ເດືອນ</label>' +
+                                        '<select onchange="setBaziField(\'month\', this.value)" class="w-full bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-white text-xs">' + monthOptions.join('') + '</select>' +
+                                    '</div>' +
+                                    '<div>' +
+                                        '<label class="block text-[9px] text-slate-400 mb-0.5">ວັນທີ</label>' +
+                                        '<select onchange="setBaziField(\'day\', this.value)" class="w-full bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-white text-xs">' + dayOptions.join('') + '</select>' +
+                                    '</div>' +
+                                    '<div>' +
+                                        '<label class="block text-[9px] text-slate-400 mb-0.5">ຍາມເກີດ</label>' +
+                                        '<select onchange="setBaziField(\'hour\', this.value)" class="w-full bg-slate-900 border border-slate-700 rounded px-1 py-1 text-white text-xs">' + hourOptions.join('') + '</select>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+
+                            '<div class="grid grid-cols-4 gap-1.5 text-center">' +
+                                '<div class="bg-slate-950 p-2 rounded-xl border border-slate-800 flex flex-col gap-0.5">' +
+                                    '<span class="text-[9px] text-slate-400">ແຖວປີ (年柱)</span>' +
+                                    '<span class="text-sm font-black text-amber-300 font-mono">' + bazi.yearPillar.split(' ')[0] + '</span>' +
+                                    '<span class="text-[9px] text-slate-300 truncate">' + bazi.yearPillar.split(' ')[1] + '</span>' +
+                                '</div>' +
+                                '<div class="bg-slate-950 p-2 rounded-xl border border-slate-800 flex flex-col gap-0.5">' +
+                                    '<span class="text-[9px] text-slate-400">ແຖວເດືອນ (月柱)</span>' +
+                                    '<span class="text-sm font-black text-amber-300 font-mono">' + bazi.monthPillar.split(' ')[0] + '</span>' +
+                                    '<span class="text-[9px] text-slate-300 truncate">' + bazi.monthPillar.split(' ')[1] + '</span>' +
+                                '</div>' +
+                                '<div class="bg-slate-950 p-2 rounded-xl border border-purple-500/50 flex flex-col gap-0.5 shadow-sm bg-purple-950/20">' +
+                                    '<span class="text-[9px] text-purple-300 font-bold">ແຖວວັນ/ເຈົ້າຊາຕາ (日柱)</span>' +
+                                    '<span class="text-sm font-black text-purple-200 font-mono">' + bazi.dayPillar.split(' ')[0] + '</span>' +
+                                    '<span class="text-[9px] text-purple-300 truncate">' + bazi.dayPillar.split(' ')[1] + '</span>' +
+                                '</div>' +
+                                '<div class="bg-slate-950 p-2 rounded-xl border border-slate-800 flex flex-col gap-0.5">' +
+                                    '<span class="text-[9px] text-slate-400">ແຖວຍາມ (时柱)</span>' +
+                                    '<span class="text-sm font-black text-amber-300 font-mono">' + bazi.hourPillar.split(' ')[0] + '</span>' +
+                                    '<span class="text-[9px] text-slate-300 truncate">' + bazi.hourPillar.split(' ')[1] + '</span>' +
+                                '</div>' +
+                            '</div>' +
+
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex flex-col gap-1.5">' +
+                                '<div class="flex items-center justify-between text-xs pb-1 border-b border-slate-800">' +
+                                    '<span class="text-slate-400">ທາດເຈົ້າຊາຕາ (日元):</span>' +
+                                    '<span class="text-white font-bold">' + bazi.dayMaster + '</span>' +
+                                '</div>' +
+                                '<div class="flex items-center justify-between text-xs pb-1 border-b border-slate-800">' +
+                                    '<span class="text-emerald-400 font-bold">ທາດໃຫ້ຄຸນອັນດັບ 1 (用神):</span>' +
+                                    '<span class="text-emerald-300 font-bold">' + bazi.yongShen + '</span>' +
+                                '</div>' +
+                                '<div class="flex items-center justify-between text-xs pb-1 border-b border-slate-800">' +
+                                    '<span class="text-blue-400 font-bold">ທາດເສີມບາຣະມີອັນດັບ 2 (喜神):</span>' +
+                                    '<span class="text-blue-300 font-bold">' + bazi.xiShen + '</span>' +
+                                '</div>' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-rose-400 font-bold">ທາດທີ່ຄວນຫຼີກລ່ຽງ (忌神):</span>' +
+                                    '<span class="text-rose-300 font-bold">' + bazi.avoidElement + '</span>' +
+                                '</div>' +
+                            '</div>' +
+
+                            '<div class="bg-emerald-950/40 p-3 rounded-xl border border-emerald-500/40 flex flex-col gap-1 text-[11px] leading-relaxed">' +
+                                '<div class="font-bold text-emerald-300 flex items-center gap-1.5">' +
+                                    '<span>🏠</span> <span>ທິດ & ຫ້ອງທີ່ເສີມດວງເຈົ້າຂອງບ້ານທີ່ສຸດ:</span>' +
+                                '</div>' +
+                                '<div class="text-white mt-0.5">• <b>ທິດມຸງຄຸນເອກ:</b> ' + bazi.bestPalaces + '</div>' +
+                                '<div class="text-white">• <b>ທິດມຸງຄຸນໂທ:</b> ' + bazi.secondPalaces + '</div>' +
+                                '<div class="text-slate-300 text-[10px] mt-1 pt-1 border-t border-emerald-500/20">' +
+                                    bazi.recommendation +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // TAB: 12-MONTH PURPLE-WHITE MATRIX (流年紫白流月加临 12-Month Calendar)
+                else if (activeYangTab === 'tab_monthmatrix') {
+                    const matrixData = calculate12MonthsMatrix(selectedAnnualYear, chart);
+                    const months = matrixData.months;
+
+                    const monthCards = months.map(m =>
+                        '<div class="p-2 rounded-xl border ' + m.badge + ' flex flex-col gap-1 shadow-sm">' +
+                            '<div class="flex items-center justify-between">' +
+                                '<span class="font-bold text-xs">ເດືອນ ' + m.month + ' (' + m.termName + ')</span>' +
+                                '<span class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-black/40">' + m.tag + '</span>' +
+                            '</div>' +
+                            '<div class="flex items-center justify-between text-[11px] font-mono">' +
+                                '<span class="text-amber-300 font-bold">向 ດາວໜ້າ: ' + m.facingStar + '</span>' +
+                                '<span class="text-blue-300 font-bold">坐 ດາວຫຼັງ: ' + m.sittingStar + '</span>' +
+                                '<span class="text-slate-400">ກາງ: ' + m.centerStar + '</span>' +
+                            '</div>' +
+                            '<p class="text-[10px] text-slate-300 leading-snug pt-1 border-t border-white/10">' +
+                                m.advice +
+                            '</p>' +
+                        '</div>'
+                    ).join('');
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-amber-950 via-slate-950 to-orange-950 p-3 rounded-xl border border-amber-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-amber-300 font-black flex items-center gap-1.5">🗓️ ຕາຕະລາງດາວຈອນ 12 ເດືອນປະຈຳປີ ' + selectedAnnualYear + ' (流年紫白流月加临)</span>' +
+                                    '<span class="bg-amber-500/20 text-amber-200 px-2 py-0.5 rounded text-[10px] font-bold border border-amber-400/30">ດາວປີກາງ: ' + matrixData.annualCenter + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ຕິດຕາມການເຄື່ອນໄຫວຂອງດາວປະຈຳເດືອນທັງ 12 ເດືອນ ທີ່ເຂົ້າທັບໜ້າບ້ານ ແລະ ຫຼັງບ້ານ ເພື່ອວາງແຜນທຸລະກິດ ແລະ ປ້ອງກັນໄພລ່ວງໜ້າຕະຫຼອດປີ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">' +
+                                monthCards +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // TAB: QI MEN DUN JIA STRATEGIC HOUSE & DOOR OVERLAY (奇门遁甲阳宅布局)
+                else if (activeYangTab === 'tab_qimen') {
+                    const now = new Date();
+                    const dHour = Math.floor(((now.getHours() + 1) % 24) / 2);
+                    const qmPlate = calculateQiMenPlate(now, dHour);
+                    const dhInfo = DOUBLE_HOURS[dHour];
+
+                    const palList = [4, 9, 2, 3, 5, 7, 8, 1, 6];
+                    const palCells = palList.map(pid => {
+                        const cell = qmPlate[pid];
+                        const palMeta = XUAN_KONG_PALACES[pid] || { name: 'ກາງວັງ (中宫)', dir: 'ໃຈກາງ' };
+                        const isFacing = (chart.faceInfo.palId === pid);
+                        const isSitting = (chart.sitInfo.palId === pid);
+                        const tag = isFacing ? ' (ໜ້າ)' : (isSitting ? ' (ຫຼັງ)' : '');
+                        const isGoodDoor = cell.door.isGood;
+                        const borderCls = isGoodDoor ? 'border-emerald-500/50 bg-emerald-950/20' : 'border-slate-800 bg-slate-950';
+
+                        return '<div class="p-2 rounded-xl border ' + borderCls + ' flex flex-col gap-1 shadow-sm">' +
+                            '<div class="flex items-center justify-between text-[10px]">' +
+                                '<span class="font-bold text-slate-300">' + palMeta.name + ' ' + palMeta.dir + tag + '</span>' +
+                                '<span class="font-mono text-[9px] text-amber-300">' + cell.star.char + '</span>' +
+                            '</div>' +
+                            '<div class="flex items-center justify-between">' +
+                                '<span class="text-sm font-black ' + (cell.door.badge || 'text-white') + '">' + cell.door.char + '</span>' +
+                                '<span class="text-[9px] text-slate-400 font-bold">' + cell.deity.char + '</span>' +
+                            '</div>' +
+                            '<div class="text-[9px] text-slate-300 truncate">' + cell.door.lao + '</div>' +
+                        '</div>';
+                    }).join('');
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-yellow-950 via-slate-950 to-amber-950 p-3 rounded-xl border border-yellow-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-yellow-300 font-black flex items-center gap-1.5">⚡ ຜັງຄິມຶນຕຸ້ນຢາ 9 ວັງປະຈຳຍາມ (奇门遁甲阳宅时盘)</span>' +
+                                    '<span class="bg-yellow-500/20 text-yellow-200 px-2 py-0.5 rounded text-[10px] font-bold border border-yellow-400/30">' + dhInfo.name + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ຄຳນວນ 8 ປະຕູ (八门), 9 ດາວ (九星), ແລະ 8 ເທບ (八神) ປະຈຳຍາມປັດຈຸບັນ ເພື່ອເລືອກທິດນັ່ງເຈລະຈາ, ເຊັນສັນຍາ, ຫາເງິນ, ຫຼື ພັກຜ່ອນຟື້ນຟູພະລັງ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="grid grid-cols-3 gap-1.5">' +
+                                palCells +
+                            '</div>' +
+
+                            '<div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5 text-[10px] mt-1">' +
+                                '<div class="bg-emerald-950/40 p-2 rounded-xl border border-emerald-500/30 flex flex-col gap-0.5">' +
+                                    '<span class="text-emerald-300 font-bold">🌟 ເຊິງເໝິນ (生门 - ປະຕູເກີດ/ຊັບ):</span>' +
+                                    '<span class="text-slate-300">ດີເລີດສຳລັບຫາເງິນ, ລົງທຶນ, ເປີດຮ້ານ, ຕັ້ງຕູ້ເຊບ</span>' +
+                                '</div>' +
+                                '<div class="bg-yellow-950/40 p-2 rounded-xl border border-yellow-500/30 flex flex-col gap-0.5">' +
+                                    '<span class="text-yellow-300 font-bold">👑 ຄາຍເໝິນ (开门 - ປະຕູເປີດ):</span>' +
+                                    '<span class="text-slate-300">ດີເລີດສຳລັບເຈລະຈາທຸລະກິດ, ເຂົ້າພົບຜູ້ໃຫຍ່, ວາງແຜນງານໃຫຍ່</span>' +
+                                '</div>' +
+                                '<div class="bg-blue-950/40 p-2 rounded-xl border border-blue-500/30 flex flex-col gap-0.5">' +
+                                    '<span class="text-blue-300 font-bold">🌿 ສິວເໝິນ (休门 - ປະຕູພັກ):</span>' +
+                                    '<span class="text-slate-300">ດີເລີດສຳລັບພັກຜ່ອນ, ນັ່ງສະມາທິ, ຟື້ນຟູສຸຂະພາບ</span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+
 
                 bodyHtml = yangTabsBar + tabBody;
             }
