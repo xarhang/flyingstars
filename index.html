@@ -3292,6 +3292,234 @@
             window.print();
         }
 
+        
+        // =========================================================================
+        // MASTER SYSTEM 2.15: SOLAR PATH, AZIMUTH & SUN SHADOW ANALYZER (阳宅采光与日照分析)
+        // =========================================================================
+        function calculateSolarPath(facingDeg, latitude = 17.97) {
+            const normDeg = ((parseFloat(facingDeg) % 360) + 360) % 360;
+
+            let sectorName = '';
+            let sunlightHours = '';
+            let thermalImpact = '';
+            let badgeClass = '';
+            let verdict = '';
+            let architecturalRemedy = '';
+
+            // East / SE Sector: 45° - 135°
+            if (normDeg >= 45 && normDeg < 135) {
+                sectorName = 'ທິດຕາເວັນອອກ & ອາຄະເນ (东方晨曦 / 紫气东来)';
+                sunlightHours = '06:00 - 11:30 (ແສງເຊົ້າມຸງຄຸນ)';
+                thermalImpact = '🌟 ແດດອ່ອນຍາມເຊົ້າ ອາກາດສົດຊື່ນ ບໍ່ສະສົມຄວາມຮ້ອນ';
+                badgeClass = 'bg-emerald-950 border-emerald-500 text-emerald-300';
+                verdict = '🌟 ທິດຮັບແສງມຸງຄຸນສູງສຸດ (紫气东来): ສົ່ງເສີມພະລັງງານຊີວິດ, ສຸຂະພາບແຂງແຮງ, ຄວາມຄິດສ້າງສັນ.';
+                architecturalRemedy = 'ເໝາະສຳລັບຕັ້ງຫ້ອງຮັບແຂກ, ຫ້ອງນອນໃຫຍ່ ຫຼື ຫ້ອງເຮັດວຽກ. ສາມາດເປີດປ່ອງຢ້ຽມຮັບແສງທຳມະຊາດໄດ້ເຕັມທີ່.';
+            }
+            // South Sector: 135° - 225°
+            else if (normDeg >= 135 && normDeg < 225) {
+                sectorName = 'ທິດໃຕ້ (午火正阳 / 冬暖夏凉)';
+                sunlightHours = '10:00 - 15:30 (ແສງກາງເວັນເຕັມພະລັງ)';
+                thermalImpact = '☀️ ແດດສູງໃນລະດູຮ້ອນ (ມຸມ 85°), ແດດສ່ອງເລິກໃນລະດູໜາວ (ມຸມ 48°)';
+                badgeClass = 'bg-amber-950 border-amber-500 text-amber-300';
+                verdict = '✨ ພະລັງງານທາດໄຟສົມບູນ: ເຮືອນສະຫວ່າງສະໄຫວ ລະບາຍອາກາດໄດ້ດີຕະຫຼອດປີ.';
+                architecturalRemedy = 'ຄວນເຮັດກັນສາດຍື່ນອອກ 1.2m - 1.5m ເພື່ອບັງແດດທ່ຽງລະດູຮ້ອນ ແຕ່ເປີດຮັບໄອອຸ່ນໃນລະດູໜາວ.';
+            }
+            // West / SW Sector: 225° - 315°
+            else if (normDeg >= 225 && normDeg < 315) {
+                sectorName = 'ທິດຕາເວັນຕົກ & ຫໍລະດີ (西晒炎煞)';
+                sunlightHours = '13:30 - 17:45 (ແດດບ່າຍແຜດເຜົາ)';
+                thermalImpact = '⚠️ ໄພແດດບ່າຍ (西晒煞): ຝາເຮືອນດູດຊັບຄວາມຮ້ອນສູງ ອົບເອົ້າຮອດກາງຄືນ';
+                badgeClass = 'bg-rose-950 border-rose-500 text-rose-300';
+                verdict = '❌ ໄພແດດບ່າຍ (西晒煞): ເຮັດໃຫ້ທາດໄຟເກີນຂະໜາດ, ນອນບໍ່ຫຼັບ, ອາລົມຮ້ອນງ່າຍ.';
+                architecturalRemedy = 'ຫ້າມຕັ້ງຫ້ອງນອນ ຫຼື ຫ້ອງຄົວທິດນີ້! ຄວນຕິດຟິມກັນແດດ Low-E, ຜ້າມ່ານກັນ UV 2 ຊັ້ນ ຫຼື ປູກຕົ້ນໄມ້ໃຫຍ່ບັງແດດບ່າຍ.';
+            }
+            // North / NW Sector: 315° - 45°
+            else {
+                sectorName = 'ທິດເໜືອ (玄阴清风 / 柔光普照)';
+                sunlightHours = 'ແສງກະຈາຍທຳມະຊາດ (ບໍ່ມີແສງແດດສ່ອງກົງ)';
+                thermalImpact = '❄️ ອາກາດເຢັນສະບາຍຕະຫຼອດປີ ບໍ່ມີບັນຫາຄວາມຮ້ອນສະສົມ';
+                badgeClass = 'bg-blue-950 border-blue-500 text-blue-300';
+                verdict = '🌿 ແສງເງົາສະຫງົບ: ບໍ່ມີຄວາມຮ້ອນລົບກວນ ເໝາະສຳລັບການພັກຜ່ອນ ແລະ ໃຊ້ສະມາທິ.';
+                architecturalRemedy = 'ເໝາະສຳລັບຕັ້ງຫ້ອງອ່ານໜັງສື, ຫ້ອງສະມາທິ, ຫ້ອງພຣະ ຫຼື ຫ້ອງເກັບອາຫານ (Pantry) ເພາະອຸນຫະພູມຄົງທີ່.';
+            }
+
+            return {
+                facingDeg: normDeg.toFixed(1),
+                sectorName,
+                sunlightHours,
+                thermalImpact,
+                badgeClass,
+                verdict,
+                architecturalRemedy,
+                summerAngle: '85.4° (ແດດສູງຕັ້ງສາກ)',
+                winterAngle: '48.6° (ແດດອຽງລວງໃຕ້)'
+            };
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.16: XUAN KONG TI GUA SUBSTITUTE STARS (玄空替卦 / 兼向诀)
+        // =========================================================================
+        const TI_GUA_SONG_MAP = {
+            '甲': 1, '申': 1, '子': 1, '癸': 1, // 贪狼一路行
+            '壬': 2, '卯': 2, '乙': 2, '未': 2, '坤': 2, // 五位为巨门
+            '乾': 6, '亥': 6, '戌': 6, '辰': 6, '巽': 6, '巳': 6, // 联珠武曲位
+            '艮': 7, '丙': 7, '辛': 7, '酉': 7, '丑': 7, // 破军为坐守
+            '寅': 9, '午': 9, '庚': 9, '丁': 9  // 右弼四星首
+        };
+
+        function calculateTiGuaChart(period, faceDeg) {
+            const faceInfo = findMountainInfo(faceDeg);
+            const sitDeg = (faceDeg + 180) % 360;
+            const sitInfo = findMountainInfo(sitDeg);
+
+            const mtnCenter = (faceInfo.mtn.start + faceInfo.mtn.end) / 2;
+            const dev = Math.abs(faceDeg - mtnCenter);
+            const isTiGuaActive = dev >= 3.0 && dev <= 4.5;
+
+            const faceSubStar = TI_GUA_SONG_MAP[faceInfo.mtn.name] || faceInfo.palId;
+            const sitSubStar = TI_GUA_SONG_MAP[sitInfo.mtn.name] || sitInfo.palId;
+
+            // Compute standard chart
+            const stdChart = calculateFlyingStarsChart(period, faceDeg);
+
+            // Compute Ti Gua water and mountain fly
+            const tiFaceChart = flyLoShu(faceSubStar, faceInfo.mtn.pol);
+            const tiSitChart = flyLoShu(sitSubStar, sitInfo.mtn.pol);
+
+            return {
+                isTiGuaActive,
+                devDeg: dev.toFixed(1),
+                lineType: isTiGuaActive ? '兼向 / 替卦 (ເສັ້ນສາຍກ້ຳ - ໃຊ້ດາວແທນທີ່)' : '正针 / 下卦 (ເສັ້ນກົງ - ໃຊ້ດາວປົກກະຕິ)',
+                faceMtn: faceInfo.mtn.name,
+                sitMtn: sitInfo.mtn.name,
+                faceSubStar,
+                sitSubStar,
+                stdChart,
+                tiFaceChart,
+                tiSitChart,
+                verdict: isTiGuaActive
+                    ? '⚠️ ເຂັມທິດບ່ຽງ ' + dev.toFixed(1) + '°: ພະລັງງານປ່ຽນເປັນ "ດາວແທນທີ່ (替卦)"! ດາວໜ້າປ່ຽນເປັນ ' + faceSubStar + ', ດາວຫຼັງປ່ຽນເປັນ ' + sitSubStar + '.'
+                    : '✓ ເຂັມທິດກົງສູນກາງພູເຂົາ (正针): ໃຊ້ຜັງດາວເຫີນມາດຕະຖານໄດ້ 100% ບໍ່ມີການບ່ຽງເບນ.',
+                advice: isTiGuaActive
+                    ? 'ເມື່ອອາຄານຕົກເສັ້ນສາຍກ້ຳ (兼向), ດາວທີ່ສົ່ງຜົນຕໍ່ຊັບສິນ ແລະ ສຸຂະພາບ ຈະປ່ຽນໄປຕາມດາວແທນທີ່. ຕ້ອງຈັດວາງຮວງຊຸ້ຍຕາມຜັງ替卦.'
+                    : 'ຮັກສາການຈັດວາງຕາມຜັງດາວເຫີນປົກກະຕິ ພະລັງງານຊີ່ບໍລິສຸດ.'
+            };
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.17: INTERIOR 5 ELEMENTS COLOR & MATERIALS ENGINE (五行装潢配色系统)
+        // =========================================================================
+        const FIVE_ELEMENTS_DECOR = {
+            'Wood': {
+                name: 'ທາດໄມ້ (木)',
+                hexList: ['#064e3b', '#059669', '#10b981', '#a7f3d0'],
+                colorsText: 'ຂຽວມໍລະກົດ, ຂຽວໃບຕອງ, ຂຽວໝາກກອກ',
+                materials: 'ໄມ້ສັກ, ໄມ້ໄຜ່, ຜ້າຝ້າຍທຳມະຊາດ, ຕົ້ນໄມ້ມຸງຄຸນ (ໄຜ່ກວນອິມ, ຕົ້ນເງິນໄຫຼມາ)',
+                shapes: 'ເສົາຊື່ສູງ, ລວດລາຍແນວຕັ້ງ, ຜ້າມ່ານລວງຍາວ'
+            },
+            'Fire': {
+                name: 'ທາດໄຟ (火)',
+                hexList: ['#881337', '#b91c1c', '#e11d48', '#fecdd3'],
+                colorsText: 'ແດງເລືອດນົກ, ສີມ່ວງອະມະພອນ, ສີບົວເຂັ້ມ, ສີສົ້ມອົບອຸ່ນ',
+                materials: 'ໂຄມໄຟຄຣິສຕັລ, ແສງໄຟ Warm White, ພົມຂົນສັດ, ງານສິລະປະຮູບແປວໄຟ',
+                shapes: 'ສາມຫຼ່ຽມ, ຍອດແຫຼມ, ດາວ, ແສງສ່ອງກະຈາຍ'
+            },
+            'Earth': {
+                name: 'ທາດດິນ (土)',
+                hexList: ['#78350f', '#b45309', '#d97706', '#fef3c7'],
+                colorsText: 'ສີເຫຼືອງຄຳ, ສີນ້ຳຕານດິນເຜົາ, ສີຄຣີມ, ສີກາກີ',
+                materials: 'ຫີນອ່ອນ, ກະເບື້ອງເຊລາມິກ, ດິນເຜົາ, ຫີນແກຣນິດ, ແຈກັນດິນ',
+                shapes: 'ສີ່ຫຼ່ຽມຈະຕຸລັດ, ແຜ່ນຫີນຮາບພຽງ, ໂຄງສ້າງແຂງແກ່ນ'
+            },
+            'Metal': {
+                name: 'ທາດຄຳ (金)',
+                hexList: ['#ca8a04', '#eab308', '#94a3b8', '#f8fafc'],
+                colorsText: 'ສີທອງຄຳ, ສີເງິນພຣາຕິນຳ, ສີຂາວມຸກ, ສີເທາະໂລຫະ',
+                materials: 'ໂລຫະສະແຕນເລດ, ທອງເຫຼືອງຂັດເງົາ, ກະຈົກເງົາ, ກະດິ່ງລົມໂລຫະ 6 ທໍ່',
+                shapes: 'ວົງມົນ, ວົງມົນມຸມມົນ, ໂຄ້ງມົນສະຫງ່າງາມ'
+            },
+            'Water': {
+                name: 'ທາດນ້ຳ (水)',
+                hexList: ['#0f172a', '#1e3a8a', '#0284c7', '#bae6fd'],
+                colorsText: 'ສີຟ້ານ້ຳທະເລ, ສີນ້ຳເງິນເຂັ້ມ, ສີດຳນິນ',
+                materials: 'ອ່າງນ້ຳພຸວົນ, ຕູ້ປາ, ແກ້ວໃສ, ກະຈົກສະທ້ອນນ້ຳ',
+                shapes: 'ຄື້ນນ້ຳ, ລວດລາຍໂຄ້ງອິດສະຫຼະ, ທາງໄຫຼລຽບງ່າຍ'
+            }
+        };
+
+        function calculateDecorPalette(facingStar, mountainStar, yongShenStr = 'Water') {
+            const ELEM_MAP = {
+                1: 'Water', 2: 'Earth', 3: 'Wood', 4: 'Wood', 5: 'Earth',
+                6: 'Metal', 7: 'Metal', 8: 'Earth', 9: 'Fire'
+            };
+
+            const wealthElem = ELEM_MAP[facingStar] || 'Water';
+            const healthElem = ELEM_MAP[mountainStar] || 'Metal';
+
+            let yongElem = 'Water';
+            if (yongShenStr.includes('Wood') || yongShenStr.includes('ໄມ້')) yongElem = 'Wood';
+            else if (yongShenStr.includes('Fire') || yongShenStr.includes('ໄຟ')) yongElem = 'Fire';
+            else if (yongShenStr.includes('Earth') || yongShenStr.includes('ດິນ')) yongElem = 'Earth';
+            else if (yongShenStr.includes('Metal') || yongShenStr.includes('ຄຳ')) yongElem = 'Metal';
+            else yongElem = 'Water';
+
+            return {
+                wealthDecor: FIVE_ELEMENTS_DECOR[wealthElem],
+                healthDecor: FIVE_ELEMENTS_DECOR[healthElem],
+                yongDecor: FIVE_ELEMENTS_DECOR[yongElem],
+                period9Decor: FIVE_ELEMENTS_DECOR['Fire'],
+                livingRoom: 'ເນັ້ນ ' + FIVE_ELEMENTS_DECOR[wealthElem].colorsText + ' ຮ່ວມກັບ ' + FIVE_ELEMENTS_DECOR[wealthElem].materials + ' ເພື່ອດຶງດູດໂຊກລາບດາວນ້ຳ ' + facingStar + '.',
+                bedroom: 'ເນັ້ນ ' + FIVE_ELEMENTS_DECOR[healthElem].colorsText + ' ຮ່ວມກັບ ' + FIVE_ELEMENTS_DECOR[healthElem].materials + ' ເພື່ອສຸຂະພາບ ແລະ ຄວາມສະຫງົບຂອງດາວພູເຂົາ ' + mountainStar + '.',
+                office: 'ເນັ້ນ ' + FIVE_ELEMENTS_DECOR[yongElem].colorsText + ' ຊ່ວຍເສີມບາຣະມີ ແລະ ຄວາມກ້າວໜ້າໃຫ້ເຈົ້າຊາຕາ.'
+            };
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.18: WIND VENTILATION & ACOUSTIC SHA QI ANALYZER (藏风聚气与声煞风煞)
+        // =========================================================================
+        let selectedFloorLevel = 1;
+
+        function setFloorLevel(lvl) {
+            selectedFloorLevel = parseInt(lvl, 10) || 1;
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            updateLivePrediction(topCompassDeg, true);
+        }
+
+        function calculateWindAndAcoustics(facingDeg, floorLevel = 1) {
+            const fl = parseInt(floorLevel, 10) || 1;
+            let windSha = '';
+            let windBadge = '';
+            let windAdvice = '';
+
+            if (fl >= 12) {
+                windSha = '🌪️ ໄພລົມພັດແຮງສູງ (疾风煞): ອາຄານສູງຊັ້ນ ' + fl + ' ປະທະກະແສລົມແຮງ';
+                windBadge = 'bg-rose-950 border-rose-500 text-rose-300';
+                windAdvice = 'ລົມພັດແຮງເກີນໄປຈະພັດພະລັງງານຊີ່ໃຫ້ກະຈັດກະຈາຍ (气乘风则散). ຫ້າມເປີດປ່ອງຢ້ຽມປະທະໂດຍກົງ ຄວນຕິດຜ້າມ່ານໜາ ແລະ ໃຊ້ລະບົບລະບາຍອາກາດທາງອ້ອມ.';
+            } else if (fl >= 5) {
+                windSha = '🍃 ກະແສລົມປານກາງ (和风微动): ຊັ້ນ ' + fl + ' ອາກາດຖ່າຍເທດີ';
+                windBadge = 'bg-emerald-950 border-emerald-500 text-emerald-300';
+                windAdvice = 'ກະແສລົມພັດຜ່ານພໍດີ ຊ່ວຍໃຫ້ພະລັງງານຊີ່ໝຸນວຽນສະດວກ ແລະ ນຳພາໂຊກລາບເຂົ້າມາຢ່າງຕໍ່ເນື່ອງ.';
+            } else {
+                windSha = '🏡 ກະແສລົມພື້ນດິນ (地气凝聚): ຊັ້ນ ' + fl + ' ພະລັງດິນໝັ້ນຄົງ';
+                windBadge = 'bg-blue-950 border-blue-500 text-blue-300';
+                windAdvice = 'ໃກ້ຊິດພະລັງງານດິນ (地气), ລະວັງສິ່ງກີດຂວາງໜ້າບ້ານ ແລະ ກວດສອບບໍ່ໃຫ້ມີລົມພັດທະລຸປະຕູໜ້າອອກຫຼັງ (穿堂煞).';
+            }
+
+            const acousticRemedies = [
+                '• <b>ສຽງລົດຖະໜົນ/ແກລົດ:</b> ປູກແນວຕົ້ນໄມ້ໃບໜາ (ຕົ້ນໄຊ, ໄຜ່) ຫຼື ຕິດກະຈົກສຽງ 2 ຊັ້ນ (Double Glazing).',
+                '• <b>ສຽງສັ່ນສະເທືອນຄວາມຖີ່ຕ່ຳ:</b> ວາງພົມຂົນສັດ, ປູພື້ນໄມ້, ແລະ ຕັ້ງອ່າງນ້ຳພຸເພື່ອໃຊ້ສຽງນ້ຳໄຫຼທຳມະຊາດກົບສຽງລົບກວນ (White Noise).'
+            ];
+
+            return {
+                floor: fl,
+                windSha,
+                windBadge,
+                windAdvice,
+                acousticRemedies: acousticRemedies.join('<br>')
+            };
+        }
+
         // MASTER SYSTEM 3: DAILY & HOURLY FLYING STARS (日家 & 时家飞星 & 择日吉时)
         // =========================================================================
         let selectedDayOffset = 0; // 0 = Today, 1 = Tomorrow, etc.
@@ -4124,13 +4352,17 @@
                     { key: 'tab_room', icon: '🚪', name: 'ໃນບ້ານ(43)' },
                     { key: 'tab_luantou', icon: '🏞️', name: 'ນອກບ້ານ(36)' },
                     { key: 'tab_formations', icon: '🏯', name: '4ຮູບດວງ' },
+                    { key: 'tab_tigua', icon: '🔮', name: 'ດາວແທນ' },
                     { key: 'tab_dayhour', icon: '⏱️', name: 'ວັນ/ຍາມ' },
+                    { key: 'tab_solar', icon: '☀️', name: 'ແສງແດດ' },
+                    { key: 'tab_wind', icon: '💨', name: 'ລົມ&ສຽງ' },
+                    { key: 'tab_decor', icon: '🎨', name: 'ສີ&ວັດສະດຸ' },
                     { key: 'tab_luban', icon: '📐', name: 'ໄມ້ບັນທັດ' },
                     { key: 'tab_waterdragon', icon: '🌊', name: 'ສາຍນ້ຳ' },
                     { key: 'tab_watersim', icon: '🌀', name: 'ຈຳລອງນ້ຳ' },
                     { key: 'tab_longmen', icon: '💧', name: 'ນ້ຳ8ວັງ' },
                     { key: 'tab_dagua', icon: '☯️', name: '64ຂວຍ' },
-                    { key: 'tab_bazi', icon: '🔮', name: 'ປາຈື4ແຖວ' },
+                    { key: 'tab_bazi', icon: '📿', name: 'ປາຈື4ແຖວ' },
                     { key: 'tab_ziwei', icon: '👑', name: 'ຈືເຫວີຍ' },
                     { key: 'tab_bazhai', icon: '👤', name: 'ດວງກົວະ' },
                     { key: 'tab_qimen', icon: '⚡', name: 'ຄິມຶນ' },
@@ -6884,6 +7116,194 @@
                             '</div>' +
                         '</div>';
                 }
+
+                // TAB: SOLAR PATH, AZIMUTH & SUN SHADOW ANALYZER (阳宅采光与日照分析)
+                else if (activeYangTab === 'tab_solar') {
+                    const sol = calculateSolarPath(faceDeg);
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-amber-950 via-slate-950 to-orange-950 p-3 rounded-xl border border-amber-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-amber-300 font-black flex items-center gap-1.5">☀️ ວິເຄາະມຸມແສງຕາເວັນ & ເງົາແດດ (阳宅采光分析)</span>' +
+                                    '<span class="bg-amber-500/20 text-amber-200 px-2 py-0.5 rounded text-[10px] font-bold border border-amber-400/30">ອົງສາໜ້າບ້ານ: ' + sol.facingDeg + '°</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ຄຳນວນທິດທາງແສງແດດແທ້ຕາມລະດູການ (ຄີມຫັນຕະ & ເໝັນຕະ) ເພື່ອປ້ອງກັນໄພແດດບ່າຍ ແລະ ເປີດຮັບແສງມຸງຄຸນຍາມເຊົ້າ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="p-3 rounded-xl border ' + sol.badgeClass + ' flex flex-col gap-1.5 shadow-sm">' +
+                                '<div class="flex items-center justify-between">' +
+                                    '<span class="font-bold text-xs">' + sol.sectorName + '</span>' +
+                                    '<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-black/40">' + sol.sunlightHours + '</span>' +
+                                '</div>' +
+                                '<div class="text-[11px] text-white font-bold">' + sol.thermalImpact + '</div>' +
+                                '<p class="text-[10px] text-slate-200 leading-relaxed pt-1 border-t border-white/10">' +
+                                    sol.verdict +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="grid grid-cols-2 gap-2 text-[10px]">' +
+                                '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">' +
+                                    '<span class="text-amber-400 font-bold block mb-0.5">ມຸມແດດລະດູຮ້ອນ (Summer):</span>' +
+                                    '<span class="text-white font-mono">' + sol.summerAngle + '</span>' +
+                                    '<p class="text-slate-400 text-[9px] mt-1">ແດດສູງຕັ້ງສາກ ຄວນມີກັນສາດຍື່ນອອກ 1.2m</p>' +
+                                '</div>' +
+                                '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">' +
+                                    '<span class="text-cyan-400 font-bold block mb-0.5">ມຸມແດດລະດູໜາວ (Winter):</span>' +
+                                    '<span class="text-white font-mono">' + sol.winterAngle + '</span>' +
+                                    '<p class="text-slate-400 text-[9px] mt-1">ແດດສ່ອງລວງໃຕ້ ຊ່ວຍໃຫ້ເຮືອນອົບອຸ່ນ</p>' +
+                                '</div>' +
+                            '</div>' +
+
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-amber-500/30 text-[11px] text-slate-300 leading-relaxed">' +
+                                '<b class="text-amber-300">ຄຳແນະນຳທາງສະຖາປັດຕະຍະກຳ:</b> ' + sol.architecturalRemedy +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // TAB: XUAN KONG TI GUA SUBSTITUTE STARS (玄空替卦 / 兼向诀)
+                else if (activeYangTab === 'tab_tigua') {
+                    const tg = calculateTiGuaChart(currentPeriod, faceDeg);
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-purple-950 via-slate-950 to-indigo-950 p-3 rounded-xl border border-purple-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-purple-300 font-black flex items-center gap-1.5">🔮 ວິຊາລັບ ດາວແທນທີ່ຊວງຄົງ (玄空替卦 / 兼向诀)</span>' +
+                                    '<span class="bg-purple-500/20 text-purple-200 px-2 py-0.5 rounded text-[10px] font-bold border border-purple-400/30">' + tg.lineType + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ເມື່ອເຂັມທິດບ່ຽງອຽງ ≥ 3° ຈາກກາງພູເຂົາ ດາວພື້ນຖານຈະແປງຮູບເປັນ "ດາວແທນທີ່ (替卦)" ຕາມຄຳພີບູຮານ ເພື່ອຄວາມແມ່ນຍຳລະດັບສູງສຸດ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex flex-col gap-1.5">' +
+                                '<div class="flex items-center justify-between text-xs pb-1 border-b border-slate-800">' +
+                                    '<span class="text-slate-400">ໄລຍະບ່ຽງເບນຈາກກາງເຂົາ:</span>' +
+                                    '<span class="text-amber-300 font-mono font-bold">' + tg.devDeg + '° (ພູເຂົາ ' + tg.faceMtn + '山)</span>' +
+                                '</div>' +
+                                '<div class="flex items-center justify-between text-xs pb-1 border-b border-slate-800">' +
+                                    '<span class="text-slate-400">ດາວແທນທີ່ໜ້າບ້ານ (向星替卦):</span>' +
+                                    '<span class="text-emerald-400 font-bold">ດາວ ' + tg.faceSubStar + '</span>' +
+                                '</div>' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-slate-400">ດາວແທນທີ່ຫຼັງບ້ານ (山星替卦):</span>' +
+                                    '<span class="text-blue-400 font-bold">ດາວ ' + tg.sitSubStar + '</span>' +
+                                '</div>' +
+                            '</div>' +
+
+                            '<div class="p-3 rounded-xl border ' + (tg.isTiGuaActive ? 'border-amber-500 bg-amber-950/40 text-amber-200' : 'border-emerald-500 bg-emerald-950/40 text-emerald-200') + ' text-[11px] leading-relaxed">' +
+                                '<div class="font-bold text-xs mb-1">' + tg.verdict + '</div>' +
+                                '<div class="text-[10px] text-slate-300">' + tg.advice + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // TAB: INTERIOR 5 ELEMENTS COLOR & MATERIALS (五行装潢配色系统)
+                else if (activeYangTab === 'tab_decor') {
+                    const curW = chart.wStars[chart.faceInfo.palId];
+                    const curM = chart.mStars[chart.sitInfo.palId];
+                    const bazi = calculateBaZi4Pillars(selectedBaziYear, selectedBaziMonth, selectedBaziDay, selectedBaziHour);
+                    const dec = calculateDecorPalette(curW, curM, bazi.yongShen);
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-emerald-950 via-slate-950 to-teal-950 p-3 rounded-xl border border-emerald-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-emerald-300 font-black flex items-center gap-1.5">🎨 ອອກແບບສີ & ວັດສະດຸຕົບແຕ່ງ 5 ທາດ (五行装潢配色)</span>' +
+                                    '<span class="bg-emerald-500/20 text-emerald-200 px-2 py-0.5 rounded text-[10px] font-bold border border-emerald-400/30">ຍຸກ 9 ທາດໄຟ</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ຈັບຄູ່ພະລັງງານດາວນ້ຳ ' + curW + ', ດາວພູເຂົາ ' + curM + ', ແລະ ທາດໃຫ້ຄຸນຂອງເຈົ້າຂອງບ້ານ ເພື່ອເລືອກໂທນສີ ແລະ ວັດສະດຸຕົບແຕ່ງພາຍໃນ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex flex-col gap-2">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="font-bold text-amber-300">ໂທນສີດຶງດູດຊັບສິນ (财位):</span>' +
+                                    '<span class="text-slate-400 text-[10px]">' + dec.wealthDecor.name + '</span>' +
+                                '</div>' +
+                                '<div class="flex items-center gap-1.5">' +
+                                    dec.wealthDecor.hexList.map(h =>
+                                        '<div class="w-8 h-8 rounded-lg shadow-md border border-white/20 flex items-center justify-center text-[8px] font-mono font-bold" style="background-color: ' + h + '; color: #fff;">' + h.substring(1) + '</div>'
+                                    ).join('') +
+                                '</div>' +
+                                '<div class="text-[10px] text-slate-300"><b>ວັດສະດຸ:</b> ' + dec.wealthDecor.materials + '</div>' +
+                            '</div>' +
+
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex flex-col gap-2">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="font-bold text-emerald-300">ໂທນສີເສີມສຸຂະພາບ & ບາຣະມີ (丁位):</span>' +
+                                    '<span class="text-slate-400 text-[10px]">' + dec.healthDecor.name + '</span>' +
+                                '</div>' +
+                                '<div class="flex items-center gap-1.5">' +
+                                    dec.healthDecor.hexList.map(h =>
+                                        '<div class="w-8 h-8 rounded-lg shadow-md border border-white/20 flex items-center justify-center text-[8px] font-mono font-bold" style="background-color: ' + h + '; color: #fff;">' + h.substring(1) + '</div>'
+                                    ).join('') +
+                                '</div>' +
+                                '<div class="text-[10px] text-slate-300"><b>ວັດສະດຸ:</b> ' + dec.healthDecor.materials + '</div>' +
+                            '</div>' +
+
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-emerald-500/30 text-[11px] text-slate-200 space-y-1.5 leading-relaxed">' +
+                                '<div>• <b>ຫ້ອງຮັບແຂກ:</b> ' + dec.livingRoom + '</div>' +
+                                '<div>• <b>ຫ້ອງນອນໃຫຍ່:</b> ' + dec.bedroom + '</div>' +
+                                '<div>• <b>ຫ້ອງເຮັດວຽກ:</b> ' + dec.office + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // TAB: WIND VENTILATION & ACOUSTIC SHA QI (藏风聚气与声煞风煞)
+                else if (activeYangTab === 'tab_wind') {
+                    const wa = calculateWindAndAcoustics(faceDeg, selectedFloorLevel);
+
+                    const floorPresets = [1, 2, 3, 5, 8, 12, 18, 25];
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-sky-950 via-slate-950 to-blue-950 p-3 rounded-xl border border-sky-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-sky-300 font-black flex items-center gap-1.5">💨 ກະແສລົມ & ສຽງລົບກວນ (藏风聚气与声煞)</span>' +
+                                    '<span class="bg-sky-500/20 text-sky-200 px-2 py-0.5 rounded text-[10px] font-bold border border-sky-400/30">ຊັ້ນ ' + selectedFloorLevel + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ຫຼັກການ "ກັກເກັບລົມ ແລະ ຮວບຮວມພະລັງຊີ່ (藏风聚气)". ວິເຄາະຄວາມແຮງຂອງລົມຕາມລະດັບຄວາມສູງ ແລະ ປ້ອງກັນໄພສຽງລົບກວນ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1.5">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-slate-300 font-bold">🏢 ເລືອກລະດັບຊັ້ນຂອງເຮືອນ/ຄອນໂດ:</span>' +
+                                    '<span class="text-amber-300 font-bold font-mono">ຊັ້ນ ' + selectedFloorLevel + '</span>' +
+                                '</div>' +
+                                '<div class="flex flex-wrap gap-1">' +
+                                    floorPresets.map(f =>
+                                        '<button type="button" onclick="setFloorLevel(' + f + ')" class="px-2 py-0.5 rounded text-[9px] font-bold transition ' +
+                                            (selectedFloorLevel === f ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-900 text-slate-400 border border-slate-800 hover:text-white') + '">' +
+                                            'ຊັ້ນ ' + f +
+                                        '</button>'
+                                    ).join('') +
+                                '</div>' +
+                            '</div>' +
+
+                            '<div class="p-3 rounded-xl border ' + wa.windBadge + ' flex flex-col gap-1 shadow-sm">' +
+                                '<div class="font-bold text-xs">' + wa.windSha + '</div>' +
+                                '<p class="text-[10px] text-slate-200 leading-relaxed pt-1 border-t border-white/10">' +
+                                    wa.windAdvice +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex flex-col gap-1.5 text-[11px] leading-relaxed">' +
+                                '<span class="font-bold text-amber-300 flex items-center gap-1">🔇 ວິທີແກ້ໄຂໄພສຽງລົບກວນ (声煞):</span>' +
+                                '<div class="text-[10px] text-slate-300 space-y-1">' +
+                                    wa.acousticRemedies +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+
 
 
 
