@@ -3520,6 +3520,241 @@
             };
         }
 
+        
+        // =========================================================================
+        // MASTER SYSTEM 2.19: MEI HUA YI SHU PLUM BLOSSOM I CHING DIVINATION (梅花易数)
+        // =========================================================================
+        const MEI_HUA_BAGUA = [
+            null,
+            { name: '乾 (Qian)', lao: 'ສຽນ (ຟ້າ)', elem: 'Metal', nature: '天 (ຟ້າ)' },
+            { name: '兑 (Dui)', lao: 'ຕຸ້ຍ (ໜອງນ້ຳ)', elem: 'Metal', nature: '泽 (ໜອງ)' },
+            { name: '离 (Li)', lao: 'ຫຼີ (ໄຟ)', elem: 'Fire', nature: '火 (ໄຟ)' },
+            { name: '震 (Zhen)', lao: 'ເຈິ້ນ (ຟ້າຮ້ອງ)', elem: 'Wood', nature: '雷 (ຟ້າຮ້ອງ)' },
+            { name: '巽 (Xun)', lao: 'ຊຸ່ນ (ລົມ)', elem: 'Wood', nature: '风 (ລົມ)' },
+            { name: '坎 (Kan)', lao: 'ຄານ (ນ້ຳ)', elem: 'Water', nature: '水 (ນ້ຳ)' },
+            { name: '艮 (Gen)', lao: 'ເກິ້ນ (ພູເຂົາ)', elem: 'Earth', nature: '山 (ພູ)' },
+            { name: '坤 (Kun)', lao: 'ຄຸນ (ດິນ)', elem: 'Earth', nature: '地 (ດິນ)' }
+        ];
+
+        function calculateMeiHuaYiShu(year, month, day, hour) {
+            const y = parseInt(year, 10) || 2026;
+            const m = parseInt(month, 10) || 10;
+            const d = parseInt(day, 10) || 18;
+            const h = parseInt(hour, 10) || 11;
+
+            const doubleHour = Math.floor(((h + 1) % 24) / 2) + 1;
+            const yBranch = ((y - 4) % 12 + 12) % 12 + 1;
+
+            // Upper Trigram: (Year + Month + Day) % 8
+            let upperNum = (yBranch + m + d) % 8;
+            if (upperNum === 0) upperNum = 8;
+
+            // Lower Trigram: (Year + Month + Day + Hour) % 8
+            let lowerNum = (yBranch + m + d + doubleHour) % 8;
+            if (lowerNum === 0) lowerNum = 8;
+
+            // Moving line: (Year + Month + Day + Hour) % 6
+            let movingLine = (yBranch + m + d + doubleHour) % 6;
+            if (movingLine === 0) movingLine = 6;
+
+            const upperGua = MEI_HUA_BAGUA[upperNum];
+            const lowerGua = MEI_HUA_BAGUA[lowerNum];
+
+            // Ti Gua (Self) vs Yong Gua (Matter):
+            // If moving line is in lower trigram (1, 2, 3) -> Upper is Ti, Lower is Yong
+            // If moving line is in upper trigram (4, 5, 6) -> Lower is Ti, Upper is Yong
+            const isLowerMoving = movingLine <= 3;
+            const tiGua = isLowerMoving ? upperGua : lowerGua;
+            const yongGua = isLowerMoving ? lowerGua : upperGua;
+
+            // Element interaction between Ti and Yong
+            const ELEM_RELATION = {
+                'Wood': { generates: 'Fire', overcomes: 'Earth', generatedBy: 'Water', overcomeBy: 'Metal' },
+                'Fire': { generates: 'Earth', overcomes: 'Metal', generatedBy: 'Wood', overcomeBy: 'Water' },
+                'Earth': { generates: 'Metal', overcomes: 'Water', generatedBy: 'Fire', overcomeBy: 'Wood' },
+                'Metal': { generates: 'Water', overcomes: 'Wood', generatedBy: 'Earth', overcomeBy: 'Fire' },
+                'Water': { generates: 'Wood', overcomes: 'Fire', generatedBy: 'Metal', overcomeBy: 'Earth' }
+            };
+
+            const tElem = tiGua.elem;
+            const yElem = yongGua.elem;
+
+            let verdict = '';
+            let verdictBadge = '';
+            let detailedAdvice = '';
+
+            if (tElem === yElem) {
+                verdict = '🌟 ປຽບເໝືອນເພື່ອນຮ່ວມມິດ (比和卦 - ມຸງຄຸນສູງ)';
+                verdictBadge = 'border-emerald-500 bg-emerald-950/80 text-emerald-300';
+                detailedAdvice = 'ທາດດຽວກັນຊ່ວຍຊູກັນ ເຮັດສິ່ງໃດກໍມີຜູ້ອຸປະຖຳຊ່ວຍເຫຼືອ ທຸລະກິດຮຸ່ງເຮືອງ ການເຈລະຈາລົງໂຕ.';
+            } else if (ELEM_RELATION[tElem].generatedBy === yElem) {
+                verdict = '👑 ສິ່ງທີ່ຖາມຫາເກີດຕົວເຮົາ (用生体 - ມະຫາມຸງຄຸນ)';
+                verdictBadge = 'border-emerald-500 bg-emerald-950/80 text-emerald-300';
+                detailedAdvice = 'ໂຊກລາບແລ່ນເຂົ້າມາຫາເອງ ການເງິນໄຫຼມາເທມາ ຄົນມາຊ່ວຍເຫຼືອ ຜົນປະໂຫຍດເກີນຄາດໝາຍ!';
+            } else if (ELEM_RELATION[tElem].overcomes === yElem) {
+                verdict = '✨ ຕົວເຮົາຊະນະອຸປະສັກ (体克用 - ປະສົບຜົນສຳເລັດ)';
+                verdictBadge = 'border-blue-500 bg-blue-950/80 text-blue-300';
+                detailedAdvice = 'ຕ້ອງອອກແຮງແຂ່ງຂັນ ແຕ່ຈະໄດ້ຮັບໄຊຊະນະ ແລະ ຄວບຄຸມສະຖານະການໄດ້ທັງໝົດ.';
+            } else if (ELEM_RELATION[tElem].generates === yElem) {
+                verdict = '⚠️ ຕົວເຮົາເສຍພະລັງ (体生用 - ເມື່ອຍ/ເສຍຊັບ)';
+                verdictBadge = 'border-amber-500 bg-amber-950/80 text-amber-300';
+                detailedAdvice = 'ຕ້ອງເສຍສະຫຼະເງິນຄຳ ຫຼື ເວລາຫຼາຍ ຄວນຄິດໃຫ້ຮອບຄອບກ່ອນລົງທຶນ.';
+            } else {
+                verdict = '❌ ອຸປະສັກມາປະທະຕົວເຮົາ (用克体 - ລະມັດລະວັງ)';
+                verdictBadge = 'border-rose-500 bg-rose-950/80 text-rose-300';
+                detailedAdvice = 'ມີຄວາມກົດດັນ ແລະ ສິ່ງກີດຂວາງ ຄວນຊະລໍການຕັດສິນໃຈໃຫຍ່ ແລະ ຫຼີກລ່ຽງການຂັດແຍ້ງ.';
+            }
+
+            return {
+                benGua: upperGua.name + ' ເທິງ / ' + lowerGua.name + ' ລຸ່ມ',
+                tiGuaName: tiGua.name + ' (ທາດ' + tiGua.elem + ')',
+                yongGuaName: yongGua.name + ' (ທາດ' + yongGua.elem + ')',
+                movingLine: 'ເສັ້ນທີ ' + movingLine + ' (爻 ' + movingLine + ')',
+                verdict,
+                verdictBadge,
+                detailedAdvice
+            };
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.20: DA LIU REN HUMAN AFFAIRS DIVINATION (大六壬神课)
+        // =========================================================================
+        const LIU_REN_GENERALS = [
+            { char: '贵人', lao: 'ກຸ້ຍເຢິນ (ຜູ້ນຳ/ຜູ້ໃຫຍ່ອຸປະຖຳ)', isGood: true, badge: 'text-amber-300' },
+            { char: '腾蛇', lao: 'ເຖິງເສີ (ງູໄຟ/ຄວາມຕົກໃຈ/ຮ້ອນໃຈ)', isGood: false, badge: 'text-rose-400' },
+            { char: '朱雀', lao: 'ຈູເຊວ້ (ຫົງໄຟ/ເອກະສານ/ສຽງດັງ)', isGood: true, badge: 'text-rose-300' },
+            { char: '六合', lao: 'ລິ່ວເຮີ (ມິດຕະພາບ/ແຕ່ງດອງ/ຮ່ວມມື)', isGood: true, badge: 'text-emerald-300' },
+            { char: '勾陈', lao: 'ໂກວເສີນ (ການຊັກຊ້າ/ທີ່ດິນ/ຄະດີ)', isGood: false, badge: 'text-amber-400' },
+            { char: '青龙', lao: 'ຊິງຫຼົງ (ມັງກອນຂຽວ/ຊັບສິນ/ງານບຸນ)', isGood: true, badge: 'text-emerald-400' },
+            { char: '天空', lao: 'ທຽນຄົງ (ຄວາມວ່າງເປົ່າ/ຜິດສັນຍາ)', isGood: false, badge: 'text-slate-400' },
+            { char: '白虎', lao: 'ໄປ໋ຮູ (ເສືອຂາວ/ອຸບັດເຫດ/ພະຍາດ)', isGood: false, badge: 'text-red-400' },
+            { char: '太常', lao: 'ໄທ້ຊາງ (ງານລ້ຽງ/ອາຫານ/ຜ້າແພ)', isGood: true, badge: 'text-yellow-300' },
+            { char: '玄武', lao: 'ສຽນອູ່ (ເຕົ່າດຳ/ໂຈນລັກ/ຄວາມລັບ)', isGood: false, badge: 'text-blue-400' },
+            { char: '太阴', lao: 'ໄທ້ອິ໋ນ (ແສງຈັນ/ຜູ້ຍິງຊ່ວຍ/ລັບໆ)', isGood: true, badge: 'text-indigo-300' },
+            { char: '天后', lao: 'ທຽນໂຮ່ວ (ລາຊິນີ/ຄວາມຮັກ/ພາຍໃນ)', isGood: true, badge: 'text-pink-300' }
+        ];
+
+        function calculateDaLiuRen(dateObj, hourIdx = 6) {
+            const d = dateObj || new Date();
+            const hIdx = parseInt(hourIdx, 10) % 12;
+
+            // Yue Jiang (Month general based on month)
+            const m = d.getMonth();
+            const YUE_JIANG_LIST = ['神后(子)', '登明(亥)', '河魁(戌)', '从魁(酉)', '传送(申)', '小吉(未)', '胜光(午)', '太乙(巳)', '天罡(辰)', '太冲(卯)', '功曹(寅)', '大吉(丑)'];
+            const yueJiang = YUE_JIANG_LIST[m] || '胜光(午)';
+
+            // Three Transmissions (三传)
+            const BRANCHES_TEXT = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
+            const chuChuan = BRANCHES_TEXT[(hIdx + 2) % 12];
+            const zhongChuan = BRANCHES_TEXT[(hIdx + 6) % 12];
+            const moChuan = BRANCHES_TEXT[(hIdx + 10) % 12];
+
+            // Assigned Generals
+            const g1 = LIU_REN_GENERALS[(hIdx) % 12];
+            const g2 = LIU_REN_GENERALS[(hIdx + 4) % 12];
+            const g3 = LIU_REN_GENERALS[(hIdx + 8) % 12];
+
+            return {
+                yueJiang,
+                chuChuan: chuChuan + ' · ' + g1.char + ' (' + g1.lao + ')',
+                zhongChuan: zhongChuan + ' · ' + g2.char + ' (' + g2.lao + ')',
+                moChuan: moChuan + ' · ' + g3.char + ' (' + g3.lao + ')',
+                firstLesson: 'ບົດຮຽນທີ 1 (日干阳神): ' + g1.char + ' ' + (g1.isGood ? '🌟 ມຸງຄຸນ' : '⚠️ ຄວນລະວັງ'),
+                secondLesson: 'ບົດຮຽນທີ 2 (日干阴神): ' + g2.char,
+                thirdLesson: 'ບົດຮຽນທີ 3 (日支阳神): ' + g3.char,
+                fourthLesson: 'ບົດຮຽນທີ 4 (日支阴神): ສະພາບແວດລ້ອມໝັ້ນຄົງ'
+            };
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.21: LIU YAO 64 HEXAGRAM ORACLE (六爻神卦 / 文王神课)
+        // =========================================================================
+        const SIX_BEASTS = [
+            { char: '青龙', lao: 'ຊິງຫຼົງ (ມັງກອນຂຽວ)', desc: '🌟 ໂຊກລາບ, ງານມຸງຄຸນ, ເງິນຄຳ, ຊື່ສຽງ, ເລື່ອນຕຳແໜ່ງ' },
+            { char: '朱雀', lao: 'ຈູເຊວ້ (ຫົງໄຟ)', desc: '📜 ເອກະສານ, ສັນຍາ, ການສື່ສານ, ລະວັງການຜິດຖຽງ' },
+            { char: '勾陈', lao: 'ໂກວເສີນ (ມັງກອນດິນ)', desc: '⏳ ການຊັກຊ້າ, ທີ່ດິນອະສັງຫາ, ຄວາມລ່າຊ້າທີ່ຕ້ອງລໍຖ້າ' },
+            { char: '螣蛇', lao: 'ເຖິງເສີ (ງູໄຟ)', desc: '⚠️ ຄວາມກັງວົນ, ພາບລວງຕາ, ຝັນຮ້າຍ, ຄວາມລຶກລັບ' },
+            { char: '白虎', lao: 'ໄປ໋ຮູ (ເສືອຂາວ)', desc: '❌ ອຸປະສັກ, ຜ່າຕັດ, ອຸບັດເຫດ, ຕ້ອງເດັດຂາດຈຶ່ງສຳເລັດ' },
+            { char: '玄武', lao: 'ສຽນອູ່ (ເຕົ່າດຳ)', desc: '🔒 ຄວາມລັບ, ຖືກຫຼອກລວງ, ການເງິນທີ່ບໍ່ເປີດເຜີຍ' }
+        ];
+
+        function calculateLiuYaoOracle(stemChar = '甲', hexNum = 1) {
+            // Determine starting beast by day stem
+            let startIdx = 0;
+            if (['甲', '乙'].includes(stemChar)) startIdx = 0;
+            else if (['丙', '丁'].includes(stemChar)) startIdx = 1;
+            else if (stemChar === '戊') startIdx = 2;
+            else if (stemChar === '己') startIdx = 3;
+            else if (['庚', '辛'].includes(stemChar)) startIdx = 4;
+            else startIdx = 5;
+
+            const lines = [];
+            for (let i = 0; i < 6; i++) {
+                const beast = SIX_BEASTS[(startIdx + i) % 6];
+                const isShi = (i === 4); // Line 5 as Shi
+                const isYing = (i === 1); // Line 2 as Ying
+                lines.push({
+                    lineNum: i + 1,
+                    beast: beast.char + ' (' + beast.lao + ')',
+                    role: isShi ? '👑 ເຈົ້າຕົວ (世爻)' : (isYing ? '🎯 ສິ່ງທີ່ຖາມ (应爻)' : ''),
+                    desc: beast.desc
+                });
+            }
+
+            return {
+                shiLine: 'ເສັ້ນທີ 5: 👑 ເຈົ້າຕົວ (世爻) - ມີບາຣະມີ ແລະ ອຳນາດຕັດສິນໃຈ',
+                yingLine: 'ເສັ້ນທີ 2: 🎯 ສິ່ງທີ່ຖາມ (应爻) - ສະໜັບສະໜູນ ແລະ ສອດຄ່ອງກັນ',
+                lines,
+                verdict: '🌟 ຮູບຂວຍມຸງຄຸນ (应生世): ເປົ້າໝາຍທີ່ຖາມຫາຈະແລ່ນເຂົ້າມາຫາຕົວເຈົ້າຊາຕາເອງ ບໍ່ມີອຸປະສັກ!',
+                actionAdvice: 'ດຳເນີນການລົງທຶນ ຫຼື ເຊັນສັນຍາໄດ້ທັນທີ ຈະໄດ້ຮັບຄວາມຮ່ວມມືດີເລີດ.'
+            };
+        }
+
+        // =========================================================================
+        // MASTER SYSTEM 2.22: TIE BAN SHEN SHU DESTINY NUMBERS (铁板神数)
+        // =========================================================================
+        function calculateTieBanNumbers(birthYear, birthMonth, birthDay, birthHour) {
+            const y = parseInt(birthYear, 10) || 1990;
+            const m = parseInt(birthMonth, 10) || 6;
+            const d = parseInt(birthDay, 10) || 15;
+            const h = parseInt(birthHour, 10) || 12;
+
+            const destinyBase = (y * 3 + m * 7 + d * 5 + h * 9) % 12000;
+
+            const verses = [
+                {
+                    chapter: '1. ພື້ນຖານຊາຕາ & ພໍ່ແມ່ (父母根基)',
+                    code: 'ເລກລະຫັດ: ' + (destinyBase + 101),
+                    rhyme: 'ພໍ່ແມ່ສ້າງສົມບາຣະມີສູງສົ່ງ, ເຈົ້າຊາຕາມີສິນລະທຳປະຈຳໃຈ, ຕະກຸນຮັ່ງມີດ້ວຍຄວາມຊື່ສັດ.'
+                },
+                {
+                    chapter: '2. ຄູ່ຄອງ & ຄວາມຮັກ (夫妻合相)',
+                    code: 'ເລກລະຫັດ: ' + (destinyBase + 342),
+                    rhyme: 'ຄູ່ຄອງເປັນຄົນສະຫຼາດຫຼັກແຫຼມ, ຮ່ວມສ້າງສາທຸລະກິດຈົນເປັນເສດຖີ, ຍາມຍາກບໍ່ປະຍາມດີບໍ່ໜີ.'
+                },
+                {
+                    chapter: '3. ບຸດຫຼານ & ຜູ້ສືບທອດ (子女继嗣)',
+                    code: 'ເລກລະຫັດ: ' + (destinyBase + 588),
+                    rhyme: 'ລູກຫຼານສືບຕະກຸນກະຕັນຍູຮູ້ຄຸນ, ສອບເສັງຕິດຂັ້ນສູງ, ນຳກຽດຕິຍົດຊື່ສຽງມາສູ່ວົງຕະກຸນ.'
+                },
+                {
+                    chapter: '4. ປີທອງແຫ່ງຄວາມຮັ່ງມີ (财帛运限)',
+                    code: 'ເລກລະຫັດ: ' + (destinyBase + 789),
+                    rhyme: 'ອາຍຸ 36 ຮອດ 55 ປີ ເປັນຍຸກຄຳມະຫາເສດຖີ, ເງິນຄຳຫຼັ່ງໄຫຼມາຈາກ 4 ທິດ, ຊື້ດິນໄດ້ດິນຊື້ຄຳໄດ້ຄຳ.'
+                },
+                {
+                    chapter: '5. ບົດສະຫຼຸບຊີວິດ (寿数定局)',
+                    code: 'ເລກລະຫັດ: ' + (destinyBase + 999),
+                    rhyme: 'ອາຍຸໝັ້ນຂວັນຍືນເກີນ 80 ປີ, ຈິດໃຈສະຫງົບມີຄວາມສຸກ, ລູກຫຼານລ້ອມໜ້າລ້ອມຫຼັງອົບອຸ່ນ.'
+                }
+            ];
+
+            return {
+                destinyBase,
+                verses
+            };
+        }
+
         // MASTER SYSTEM 3: DAILY & HOURLY FLYING STARS (日家 & 时家飞星 & 择日吉时)
         // =========================================================================
         let selectedDayOffset = 0; // 0 = Today, 1 = Tomorrow, etc.
@@ -4364,6 +4599,10 @@
                     { key: 'tab_dagua', icon: '☯️', name: '64ຂວຍ' },
                     { key: 'tab_bazi', icon: '📿', name: 'ປາຈື4ແຖວ' },
                     { key: 'tab_ziwei', icon: '👑', name: 'ຈືເຫວີຍ' },
+                    { key: 'tab_meihua', icon: '🌸', name: 'ດອກເໝີຍ' },
+                    { key: 'tab_liuren', icon: '🔮', name: 'ລິ່ວເຢິນ' },
+                    { key: 'tab_liuyao', icon: '🪙', name: '64ຫຼິວຢາວ' },
+                    { key: 'tab_tieban', icon: '📜', name: 'ເລກເຫຼັກ' },
                     { key: 'tab_bazhai', icon: '👤', name: 'ດວງກົວະ' },
                     { key: 'tab_qimen', icon: '⚡', name: 'ຄິມຶນ' },
                     { key: 'tab_28stars', icon: '🌌', name: '28ດາວ' },
@@ -7302,6 +7541,170 @@
                             '</div>' +
                         '</div>';
                 }
+
+                // TAB: MEI HUA YI SHU PLUM BLOSSOM I CHING DIVINATION (梅花易数)
+                else if (activeYangTab === 'tab_meihua') {
+                    const now = new Date();
+                    const mh = calculateMeiHuaYiShu(now.getFullYear(), now.getMonth() + 1, now.getDate(), now.getHours());
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-pink-950 via-slate-950 to-rose-950 p-3 rounded-xl border border-pink-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-pink-300 font-black flex items-center gap-1.5">🌸 ພະຍາກອນດອກເໝີຍອີຈິງ (梅花易数)</span>' +
+                                    '<span class="bg-pink-500/20 text-pink-200 px-2 py-0.5 rounded text-[10px] font-bold border border-pink-400/30">ຍາມປັດຈຸບັນ</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ວິຊາພະຍາກອນລຶກລັບຂອງປໍຣະມາຈານ ຊາວຢົງ (邵雍). ຕັ້ງຂວຍອີ້ຈິງທຳນາຍເຫດການທັນທີ ຕາມເວລາ ແລະ ພະລັງງານປັດຈຸບັນ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="grid grid-cols-2 gap-2 text-center text-xs">' +
+                                '<div class="bg-slate-950 p-3 rounded-xl border border-slate-800">' +
+                                    '<span class="text-slate-400 block text-[9px] mb-1">ຂວຍຫຼັກ (本卦):</span>' +
+                                    '<span class="text-white font-black text-sm block">' + mh.benGua + '</span>' +
+                                    '<span class="text-amber-300 text-[10px] block mt-1">' + mh.movingLine + '</span>' +
+                                '</div>' +
+                                '<div class="bg-slate-950 p-3 rounded-xl border border-slate-800">' +
+                                    '<span class="text-slate-400 block text-[9px] mb-1">ຕົວເຮົາ (体) vs ເຫດການ (用):</span>' +
+                                    '<span class="text-emerald-300 font-bold text-[11px] block">体: ' + mh.tiGuaName + '</span>' +
+                                    '<span class="text-blue-300 font-bold text-[11px] block">用: ' + mh.yongGuaName + '</span>' +
+                                '</div>' +
+                            '</div>' +
+
+                            '<div class="p-3 rounded-xl border ' + mh.verdictBadge + ' flex flex-col gap-1.5 shadow-sm">' +
+                                '<div class="font-bold text-xs leading-snug">' + mh.verdict + '</div>' +
+                                '<p class="text-[11px] leading-relaxed pt-1 border-t border-white/10 text-slate-200">' +
+                                    mh.detailedAdvice +
+                                '</p>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // TAB: DA LIU REN HUMAN AFFAIRS DIVINATION (大六壬神课)
+                else if (activeYangTab === 'tab_liuren') {
+                    const now = new Date();
+                    const lr = calculateDaLiuRen(now, Math.floor(((now.getHours() + 1) % 24) / 2));
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-blue-950 via-slate-950 to-indigo-950 p-3 rounded-xl border border-blue-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-blue-300 font-black flex items-center gap-1.5">🔮 ຕ້າລິ່ວເຢິນ ພະຍາກອນເລື່ອງມະນຸດ (大六壬神课)</span>' +
+                                    '<span class="bg-blue-500/20 text-blue-200 px-2 py-0.5 rounded text-[10px] font-bold border border-blue-400/30">月将: ' + lr.yueJiang + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ໜຶ່ງໃນ 3 ສຸດຍອດວິຊາຄຳນວນສະຫວັນບູຮານ (古三式之首). ວິເຄາະ 3 ສົ້ນສາຍເຫດການ (三传) ແລະ 12 ເທວະດາ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex flex-col gap-2">' +
+                                '<span class="text-amber-300 font-bold text-xs">⚡ ສາມສົ່ງສາຍເຫດການ (三传):</span>' +
+                                '<div class="space-y-1.5 text-[11px]">' +
+                                    '<div class="bg-slate-900 p-2 rounded-lg border border-slate-700 flex items-center justify-between">' +
+                                        '<span class="text-slate-400">1. 初传 (ຕົ້ນເຫດ/ຈຸດເລີ່ມ):</span>' +
+                                        '<span class="text-white font-bold">' + lr.chuChuan + '</span>' +
+                                    '</div>' +
+                                    '<div class="bg-slate-900 p-2 rounded-lg border border-slate-700 flex items-center justify-between">' +
+                                        '<span class="text-slate-400">2. 中传 (ຂະບວນການ):</span>' +
+                                        '<span class="text-white font-bold">' + lr.zhongChuan + '</span>' +
+                                    '</div>' +
+                                    '<div class="bg-slate-900 p-2 rounded-lg border border-slate-700 flex items-center justify-between">' +
+                                        '<span class="text-slate-400">3. 末传 (ບົດສະຫຼຸບຜົນ):</span>' +
+                                        '<span class="text-emerald-300 font-bold">' + lr.moChuan + '</span>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-blue-500/30 text-[10px] text-slate-300 space-y-1">' +
+                                '<div>• ' + lr.firstLesson + '</div>' +
+                                '<div>• ' + lr.secondLesson + '</div>' +
+                                '<div>• ' + lr.thirdLesson + '</div>' +
+                                '<div>• ' + lr.fourthLesson + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // TAB: LIU YAO 64 HEXAGRAM ORACLE (六爻神卦 / 文王神课)
+                else if (activeYangTab === 'tab_liuyao') {
+                    const bazi = calculateBaZi4Pillars(selectedBaziYear, selectedBaziMonth, selectedBaziDay, selectedBaziHour);
+                    const stemChar = bazi.dayMaster.substring(0, 1);
+                    const ly = calculateLiuYaoOracle(stemChar, 1);
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-yellow-950 via-slate-950 to-amber-950 p-3 rounded-xl border border-yellow-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-yellow-300 font-black flex items-center gap-1.5">🪙 64 ຂວຍ ຫຼິວຢາວ (六爻神卦 / 文王神课)</span>' +
+                                    '<span class="bg-yellow-500/20 text-yellow-200 px-2 py-0.5 rounded text-[10px] font-bold border border-yellow-400/30">6 ສັດເທບ</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ວິຊາພະຍາກອນ 6 ເສັ້ນຂອງພະຍາເວີນຫວາງ (King Wen). ວິເຄາະເຈົ້າຕົວ (世) ແລະ ເປົ້າໝາຍ (应) ຮ່ວມກັບ 6 ສັດເທບສະຫວັນ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex flex-col gap-1.5">' +
+                                '<div class="flex items-center justify-between text-xs pb-1 border-b border-slate-800">' +
+                                    '<span class="text-emerald-400 font-bold">' + ly.shiLine + '</span>' +
+                                '</div>' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-blue-400 font-bold">' + ly.yingLine + '</span>' +
+                                '</div>' +
+                            '</div>' +
+
+                            '<div class="space-y-1">' +
+                                ly.lines.map(l =>
+                                    '<div class="bg-slate-950 p-2 rounded-xl border border-slate-800 flex items-center justify-between text-[10px]">' +
+                                        '<div class="flex items-center gap-1.5">' +
+                                            '<span class="font-mono text-slate-400 font-bold">爻' + l.lineNum + '</span>' +
+                                            '<span class="text-white font-bold">' + l.beast + '</span>' +
+                                            (l.role ? '<span class="px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-bold text-[9px]">' + l.role + '</span>' : '') +
+                                        '</div>' +
+                                        '<span class="text-slate-400 text-[9px] truncate max-w-[180px]">' + l.desc + '</span>' +
+                                    '</div>'
+                                ).join('') +
+                            '</div>' +
+
+                            '<div class="bg-emerald-950/40 p-3 rounded-xl border border-emerald-500/40 text-[11px] leading-relaxed">' +
+                                '<div class="text-emerald-300 font-bold">' + ly.verdict + '</div>' +
+                                '<div class="text-slate-300 text-[10px] mt-1">' + ly.actionAdvice + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // TAB: TIE BAN SHEN SHU DESTINY NUMBERS (铁板神数)
+                else if (activeYangTab === 'tab_tieban') {
+                    const tb = calculateTieBanNumbers(selectedBaziYear, selectedBaziMonth, selectedBaziDay, selectedBaziHour);
+
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-orange-950 via-slate-950 to-amber-950 p-3 rounded-xl border border-orange-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-orange-300 font-black flex items-center gap-1.5">📜 ເລກສາດຊາຕາແຜ່ນເຫຼັກ (铁板神数)</span>' +
+                                    '<span class="bg-orange-500/20 text-orange-200 px-2 py-0.5 rounded text-[10px] font-bold border border-orange-400/30">ລະຫັດ: ' + tb.destinyBase + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">' +
+                                    'ສຸດຍອດວິຊາເລກສາດຄະນິດສາດບູຮານ ຖອດລະຫັດຊາຕາຊີວິດ 100 ປີ ອອກມາເປັນກອນຄຳທຳນາຍແຜ່ນເຫຼັກ 5 ບົດ.' +
+                                '</p>' +
+                            '</div>' +
+
+                            '<div class="space-y-1.5">' +
+                                tb.verses.map(v =>
+                                    '<div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex flex-col gap-1">' +
+                                        '<div class="flex items-center justify-between text-xs">' +
+                                            '<span class="font-bold text-amber-300">' + v.chapter + '</span>' +
+                                            '<span class="text-[9px] font-mono text-slate-400 bg-slate-900 px-1.5 py-0.5 rounded">' + v.code + '</span>' +
+                                        '</div>' +
+                                        '<p class="text-[11px] text-slate-200 leading-relaxed italic">' +
+                                            '“' + v.rhyme + '”' +
+                                        '</p>' +
+                                    '</div>'
+                                ).join('') +
+                            '</div>' +
+                        '</div>';
+                }
+
+
 
 
 
