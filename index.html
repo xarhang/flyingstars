@@ -3246,7 +3246,7 @@
             const y = parseInt(birthYear, 10) || 1990;
             const m = parseInt(birthMonth, 10) || 1;
             const d = parseInt(birthDay, 10) || 1;
-            const h = parseInt(birthHour, 10) || 12;
+            const h = (typeof birthHour !== "undefined" && birthHour !== null && !isNaN(parseInt(birthHour, 10))) ? parseInt(birthHour, 10) : 12;
 
             // Compute Stem of Year
             const stemIdx = (y - 4) % 10;
@@ -3717,7 +3717,7 @@
             const y = parseInt(birthYear, 10) || 1990;
             const m = parseInt(birthMonth, 10) || 6;
             const d = parseInt(birthDay, 10) || 15;
-            const h = parseInt(birthHour, 10) || 12;
+            const h = (typeof birthHour !== "undefined" && birthHour !== null && !isNaN(parseInt(birthHour, 10))) ? parseInt(birthHour, 10) : 12;
 
             const destinyBase = (y * 3 + m * 7 + d * 5 + h * 9) % 12000;
 
@@ -4202,25 +4202,29 @@
         // =========================================================================
         function calculateEarthLuckSpan(faceDeg, period) {
             const p = parseInt(period, 10) || 9;
-            const deg = (typeof faceDeg === 'number' && !isNaN(faceDeg)) ? faceDeg : 180;
+            const deg = (typeof faceDeg === 'number' && !isNaN(faceDeg)) ? ((faceDeg % 360) + 360) % 360 : 180;
+            const normDeg = ((deg - 337.5) % 360 + 360) % 360;
+            const mtnIdx = Math.floor(normDeg / 15);
 
-            // 24 Mountain Earth Luck durations
-            // 子午卯酉 / 乾坤艮巽 = 160 or 20 years
-            // 辰戌丑未 = 120 or 20 years
-            // 寅申巳亥 = 140 or 40 years
-            const mtnIdx = Math.floor(((deg + 7.5) % 360) / 15);
-            const durations = [160, 120, 140, 160, 120, 140, 160, 120, 140, 160, 120, 140,
-                               160, 120, 140, 160, 120, 140, 160, 120, 140, 160, 120, 140];
-            const spanYears = durations[mtnIdx] || 140;
+            const EARTH_LUCK_MAP = [
+                100, 100, 100, 60, 60, 60, 140, 140, 140, 160, 160, 160,
+                80, 80, 80, 120, 120, 120, 140, 140, 140, 20, 20, 20
+            ];
 
+            const spanYears = EARTH_LUCK_MAP[mtnIdx] || 80;
             const baseYear = 2024;
             const prisonYear = baseYear + spanYears;
+            const currentPeriodYearsLeft = Math.max(0, (2043 - new Date().getFullYear()) + 1);
 
             return {
-                spanYears,
-                prisonYear,
-                status: '🌟 ບ້ານຍັງຢູ່ໃນຊ່ວງໂຊກຈະເລີນຮຸ່ງເຮືອງ (旺气充盈)',
-                huanTianXin: 'ວິທີພິກຟ້າປ່ຽນໃຈບ້ານ (换天心): ເປີດຫຼັງຄາໃຫ້ແສງຕາເວັນສ່ອງໃສ່ກາງບ້ານ 7 ວັນ ຫຼື ປ່ຽນພື້ນກະເບື້ອງໃໝ່.'
+                spanYears: spanYears,
+                prisonYear: prisonYear,
+                totalEarthLuckSpan: spanYears + ' ປີ (ອາຍຸໄຂພະລັງງານແຜ່ນດິນ)',
+                yearsLeftInPeriod9: currentPeriodYearsLeft + ' ປີ (ໃນຍຸກ 9: 2024–2043)',
+                status: spanYears >= 140 ? '🌟 ບ້ານດິນຍາວນານພິເສດ (旺气长久 140-160 ປີ)' : (spanYears <= 20 ? '⚠️ ບ້ານດິນສັ້ນ (入囚ໄວ ຕ້ອງໝັ່ນປັບປຸງ)' : '✅ ບ້ານດິນປານກາງ (ພະລັງງານສະຖຽນ)'),
+                huanTianXin: 'ວິທີພິກຟ້າປ່ຽນໃຈບ້ານ (换天心): ຖ້າບ້ານສ້າງໃນຍຸກເກົ່າແລ້ວໝົດພະລັງດິນ, ສາມາດເປີດຫຼັງຄາໃຫ້ແສງຕາເວັນສ່ອງໃສ່ກາງບ້ານ 49 ວັນ ຫຼື ປູພື້ນກະເບື້ອງໃໝ່ເພື່ອເລີ່ມນັບ 1 ໃໝ່.',
+                facingDeg: deg,
+                period: p
             };
         }
 
@@ -4255,33 +4259,93 @@
             const y = parseInt(birthYear, 10) || 1990;
             const m = parseInt(birthMonth, 10) || 5;
             const d = parseInt(birthDay, 10) || 15;
-            const h = parseInt(birthHour, 10) || 12;
+            const parsedH = parseInt(birthHour, 10);
+            const h = (!isNaN(parsedH) && parsedH >= 0 && parsedH <= 23) ? parsedH : 12;
 
-            const yWeight = ((y % 12) * 0.1 + 0.6);
-            const mWeight = ((m % 12) * 0.1 + 0.5);
-            const dWeight = ((d % 30) * 0.05 + 0.5);
-            const hWeight = ((Math.floor(h / 2) % 12) * 0.1 + 0.6);
+            // Authentic 60 Jia-Zi Year Weights (Liang)
+            const JIA_ZI_YEAR_WEIGHTS = {
+                '甲子': 1.2, '丙子': 1.6, '戊子': 1.5, '庚子': 0.7, '壬子': 0.5,
+                '乙丑': 0.9, '丁丑': 0.8, '己丑': 0.7, '辛丑': 0.7, '癸丑': 0.7,
+                '丙寅': 0.6, '戊寅': 0.8, '庚寅': 0.9, '壬寅': 0.9, '甲寅': 1.2,
+                '丁卯': 0.7, '己卯': 1.9, '辛卯': 1.2, '癸卯': 1.2, '乙卯': 0.8,
+                '戊辰': 1.2, '庚辰': 1.2, '壬辰': 1.0, '甲辰': 0.8, '丙辰': 0.8,
+                '己巳': 0.5, '辛巳': 0.6, '癸巳': 0.7, '乙巳': 0.7, '丁巳': 0.6,
+                '庚午': 0.9, '壬午': 0.8, '甲午': 1.5, '丙午': 1.3, '戊午': 1.9,
+                '辛未': 0.8, '癸未': 0.7, '乙未': 0.6, '丁未': 0.5, '己未': 0.6,
+                '壬申': 0.7, '甲申': 0.5, '丙申': 0.5, '戊申': 1.4, '庚申': 0.8,
+                '癸酉': 0.8, '乙酉': 1.5, '丁酉': 1.4, '己酉': 0.5, '辛酉': 1.6,
+                '甲戌': 1.5, '丙戌': 0.6, '戊戌': 1.4, '庚戌': 0.9, '壬戌': 1.0,
+                '乙亥': 0.9, '丁亥': 1.6, '己亥': 0.9, '辛亥': 1.7, '癸亥': 0.6
+            };
+
+            // Derive 60 Jia Zi Year Stem & Branch
+            const heavenlyStems = ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'];
+            const earthlyBranches = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
+            const yearStem = heavenlyStems[((y - 4) % 10 + 10) % 10];
+            const yearBranch = earthlyBranches[((y - 4) % 12 + 12) % 12];
+            const yearPillar = yearStem + yearBranch;
+            const yWeight = JIA_ZI_YEAR_WEIGHTS[yearPillar] || 1.0;
+
+            // Authentic 12 Lunar Month Weights
+            const MONTH_WEIGHTS = [0.6, 0.7, 1.8, 0.9, 0.5, 1.6, 0.9, 1.5, 1.8, 0.8, 0.9, 0.5];
+            const mWeight = MONTH_WEIGHTS[((m - 1) % 12 + 12) % 12];
+
+            // Authentic 30 Lunar Day Weights
+            const DAY_WEIGHTS = [
+                0.5, 1.0, 0.8, 1.5, 1.6, 1.5, 0.8, 1.6, 0.8, 1.6,
+                0.9, 1.7, 0.8, 1.7, 1.0, 0.8, 0.9, 1.8, 0.5, 1.5,
+                1.0, 0.9, 0.8, 0.9, 1.5, 1.8, 0.7, 0.8, 1.6, 0.6
+            ];
+            const dWeight = DAY_WEIGHTS[((d - 1) % 30 + 30) % 30];
+
+            // Authentic 12 Double Hour Weights
+            const HOUR_WEIGHTS = [1.6, 0.6, 0.7, 1.0, 0.9, 1.6, 1.8, 0.8, 0.8, 0.9, 0.6, 0.6];
+            const doubleHourIdx = Math.floor(((h + 1) % 24) / 2);
+            const hWeight = HOUR_WEIGHTS[doubleHourIdx];
 
             const totalWeight = parseFloat((yWeight + mWeight + dWeight + hWeight).toFixed(1));
             const liang = Math.floor(totalWeight);
             const qian = Math.round((totalWeight - liang) * 10);
 
+            // Authentic Classical Destiny Verses by Weight Tier
             let destinyPoem = '';
+            let chinesePoem = '';
             let tier = '';
-            if (totalWeight >= 5.0) {
-                tier = '👑 ວາດສະໜາເສດຖີໃຫຍ່ / ຂຸນນາງຊັ້ນສູງ';
-                destinyPoem = 'ຊາຕາເກີດມາມີບາຣະມີເກົ່າໜູນຫຼັງ, ເຮັດສິ່ງໃດກໍຮັ່ງມີ, ລາບຍົດຊື່ສຽງກະຈາຍໄກ, ລູກຫຼານສືບຕະກຸນສະຫງ່າງາມ.';
+
+            if (totalWeight >= 6.0) {
+                tier = '👑 ວາດສະໜາເຈົ້າພະຍາ / ມະຫາເສດຖີລະດັບປະເທດ (6.0 - 7.2 两)';
+                chinesePoem = '此命推来礼义通，一身福禄用无穷。甜酸苦辣皆尝过，财帛高堆富贵翁。';
+                destinyPoem = 'ວາດສະໜາສູງສົ່ງມີບາຣະມີເກົ່າໜູນຫຼັງ, ເຮັດສິ່ງໃດກໍຮັ່ງມີ, ລາບຍົດຊື່ສຽງກະຈາຍໄກ, ລູກຫຼານສືບຕະກຸນສະຫງ່າງາມ, ຊັບສິນກອງສູງຄືພູເຂົາ.';
+            } else if (totalWeight >= 5.0) {
+                tier = '🌟 ວາດສະໜາເສດຖີໃຫຍ່ / ເປັນເຈົ້ານາຍຄົນ (5.0 - 5.9 两)';
+                chinesePoem = '一世荣华事事通，不须劳碌自亨通。兄弟叔侄皆如意，家业成时福禄丰。';
+                destinyPoem = 'ຊີວິດຈະເລີນຮຸ່ງເຮືອງທຸກປະການ, ບໍ່ຕ້ອງລຳບາກກໍມີເງິນທອງໄຫຼມາ, ຍາດພີ່ນ້ອງປອງດອງ, ຕັ້ງຕົວໄດ້ໄວ ແລະ ຖານະໝັ້ນຄົງ.';
             } else if (totalWeight >= 4.0) {
-                tier = '🌟 ວາດສະໜາປານກາງ-ສູງ / ຊີວິດອຸດົມສົມບູນ';
-                destinyPoem = 'ຕົ້ນຊີວິດຕ້ອງສູ້ຊົນ, ກາງຊີວິດຕັ້ງໂຕໄດ້, ປາຍຊີວິດສຸກສະບາຍຄືເສດຖີ, ບໍ່ມີອົດຢາກ.';
+                tier = '💎 ວາດສະໜາອຸດົມສົມບູນ / ຊີວິດສະບາຍ (4.0 - 4.9 两)';
+                chinesePoem = '不须劳碌过春秋，客商买卖便相投。自有丰衣足食足，到老终身不用愁。';
+                destinyPoem = 'ຄ້າຂາຍສະດວກສະບາຍ, ມີກິນມີໃຊ້ບໍ່ອຶດຢາກ, ຕົ້ນຊີວິດສູ້ຊົນ ແຕ່ປາຍຊີວິດສະບາຍ, ບໍ່ມີເລື່ອງເດືອດຮ້ອນເລື່ອງປັດໄຈສີ່.';
+            } else if (totalWeight >= 3.0) {
+                tier = '✅ ວາດສະໜາສ້າງໂຕ / ພາກພຽນຊະນະໂຊກ (3.0 - 3.9 两)';
+                chinesePoem = '劳劳碌碌苦中求，东奔西走何日休。若遇贵人提拔起，晚年衣食自然丰。';
+                destinyPoem = 'ຕ້ອງສ້າງຕົວດ້ວຍລຳແຂ່ງຕົວເອງ, ຫາກໄດ້ພົບຜູ້ໃຫຍ່ອຸປະຖຳຈະຕັ້ງຫຼັກໄດ້, ຍິ່ງເຮັດບຸນຍິ່ງຮັ່ງມີ, ໄວຊະລາຈະສະບາຍອົບອຸ່ນ.';
             } else {
-                tier = '✅ ວາດສະໜາພໍກິນພໍໃຊ້ / ສ້າງໂຕດ້ວຍຄວາມພາກພຽນ';
-                destinyPoem = 'ພະລັງຄວາມພາກພຽນຊະນະໂຊກຊາຕາ, ຍິ່ງເຮັດບຸນຍິ່ງຮັ່ງມີ, ຄວາມອົດທົນນຳມາເຊິ່ງຄວາມໝັ້ນຄົງ.';
+                tier = '🕊️ ວາດສະໜາພໍກິນພໍໃຊ້ / ອາໄສຄຸນນະທຳ (2.1 - 2.9 两)';
+                chinesePoem = '身单力薄事难成，白手成家苦经营。修善积德培阴骘，方保平安过此生。';
+                destinyPoem = 'ຄວນສ້າງສົມບຸນບາຣະມີ, ອາໄສຄວາມຊື່ສັດ ແລະ ຄວາມອົດທົນ, ຄວາມດີຈະຄຸ້ມຄອງໃຫ້ແຄ້ວຄາດປອດໄພຕະຫຼອດຊີວິດ.';
             }
 
             return {
-                totalWeight: liang + ' ຕຳລຶງ ' + qian + ' ສະຫຼຶງ (' + totalWeight + ' 两)',
+                yearPillar,
+                yWeight,
+                mWeight,
+                dWeight,
+                hWeight,
+                totalWeight: totalWeight,
+                totalWeightStr: liang + ' ຕຳລຶງ ' + qian + ' ສະຫຼຶງ (' + totalWeight + ' 两)',
+                liang,
+                qian,
                 tier,
+                chinesePoem,
                 destinyPoem
             };
         }
@@ -4312,24 +4376,66 @@
             const d = dateObj || new Date();
             const m = d.getMonth() + 1;
             const day = d.getDate();
-            const h = Math.floor((d.getHours() + 1) / 2) % 12 + 1;
+            // Traditional Double Hour: 子=1, 丑=2, 寅=3, 卯=4, 辰=5, 巳=6, 午=7, 未=8, 申=9, 酉=10, 戌=11, 亥=12
+            const h = Math.floor(((d.getHours() + 1) % 24) / 2) + 1;
 
+            // Authentic Xiao Liu Ren 6 Knuckle Spirits & Classic Poems
             const sixStates = [
-                { name: '大安 (ຕ້າອ່ານ - ສະຫງົບປອດໄພ)', color: 'text-emerald-300', badge: 'border-emerald-500 bg-emerald-950/80', desc: 'ໂຊກລາບໝັ້ນຄົງ, ບໍ່ມີອຸປະສັກ, ເໝາະກັບການຕັ້ງຫຼັກ ແລະ ເຊັນສັນຍາ.' },
-                { name: '留连 (ຫຼິວລຽນ - ຊັກຊ້າລໍຖ້າ)', color: 'text-amber-300', badge: 'border-amber-500 bg-amber-950/80', desc: 'ເລື່ອງລາວຈະຍືດເຍື້ອ, ຕ້ອງໃຈເຢັນ, ຢ່າຟ້າວລົງທຶນກ້ອນໃຫຍ່.' },
-                { name: '速喜 (ຊູ້ສີ - ຂ່າວດີມາໄວ)', color: 'text-rose-300', badge: 'border-rose-500 bg-rose-950/80', desc: 'ຂ່າວດີມາຮອດໄວ, ໄຊຊະນະສະເພາະໜ້າ, ເງິນຄຳໄຫຼເຂົ້າທັນທີ.' },
-                { name: '赤口 (ຊືໂຂ່ວ - ລະວັງປາກສຽງ)', color: 'text-purple-300', badge: 'border-purple-500 bg-purple-950/80', desc: 'ລະວັງການຜິດຖຽງ, ການນິນທາ, ຄວນຫຼີກລ່ຽງການປະເຊີນໜ້າ.' },
-                { name: '小吉 (ສຽວຈີ໋ - ໂຊກລາບນ້ອຍ)', color: 'text-cyan-300', badge: 'border-cyan-500 bg-cyan-950/80', desc: 'ການເດີນທາງລາບລື່ນ, ພົບຄູ່ຄອງທີ່ດີ, ມີຄົນຊ່ວຍເຫຼືອອຸປະຖຳ.' },
-                { name: '空亡 (ຄົງວາງ - ວ່າງເປົ່າ)', color: 'text-slate-400', badge: 'border-slate-700 bg-slate-900/80', desc: 'ບໍ່ຄວນລົງມືໃນຍາມນີ້, ເລື່ອງລາວອາດສູນເປົ່າ, ຄວນລໍຖ້າຈັງຫວະໃໝ່.' }
+                {
+                    name: '大安 (ຕ້າອ່ານ - ພະໃຫຍ່ສະຫງົບ)',
+                    color: 'text-emerald-300',
+                    badge: 'border-emerald-500 bg-emerald-950/80',
+                    poem: '大安事事昌，求谋在东方，失物去不远，宅舍保平安。',
+                    desc: '🌟 ມຸງຄຸນສູງສຸດ: ເລື່ອງທີ່ຖາມຈະສະຫງົບລາບລື່ນ, ຄົນໃນບ້ານປອດໄພ, ເໝາະກັບການເຊັນສັນຍາ, ເປີດກິດຈະການ, ແລະ ຕັ້ງຫຼັກໝັ້ນຄົງ.'
+                },
+                {
+                    name: '留连 (ຫຼິວລຽນ - ຊັກຊ້າລໍຖ້າ)',
+                    color: 'text-amber-300',
+                    badge: 'border-amber-500 bg-amber-950/80',
+                    poem: '留连事难成，求谋日未明，官事只宜缓，去者未回程。',
+                    desc: '⏳ ຍັງບໍ່ທັນເຖິງເວລາ: ເລື່ອງລາວຈະຍືດເຍື້ອ, ເອກະສານຕິດຂັດ, ຕ້ອງໃຈເຢັນລໍຖ້າຈັງຫວະ, ຫ້າມໃຈຮ້ອນລົງທຶນກ້ອນໃຫຍ່.'
+                },
+                {
+                    name: '速喜 (ຊູ້ສີ - ຂ່າວດີມາໄວ)',
+                    color: 'text-rose-300',
+                    badge: 'border-rose-500 bg-rose-950/80',
+                    poem: '速喜喜来临，求财向南行，失物申未午，逢人路上寻。',
+                    desc: '🔥 ຂ່າວດີມາໄວທັນໃຈ: ໄຊຊະນະສະເພາະໜ້າ, ເງິນຄຳຫຼັ່ງໄຫຼເຂົ້າມາໄວ, ຄູ່ຄ້າຕອບຕົກລົງ, ເລັ່ງລົງມືເຮັດທັນທີຈະສຳເລັດ.'
+                },
+                {
+                    name: '赤口 (ຊືໂຂ່ວ - ປາກສຽງວິວາດ)',
+                    color: 'text-purple-300',
+                    badge: 'border-purple-500 bg-purple-950/80',
+                    poem: '赤口主口舌，官事且紧防，失物急去找，行人有惊慌。',
+                    desc: '⚠️ ລະວັງປາກສຽງ: ຈະເກີດການຜິດຖຽງ, ຄວາມເຂົ້າໃຈຜິດ, ຂຶ້ນໂຮງຂຶ້ນສານ, ຄວນສະຫງົບປາກຄຳ ແລະ ຫຼີກລ່ຽງການປະເຊີນໜ້າ.'
+                },
+                {
+                    name: '小吉 (ສຽວຈີ໋ - ໂຊກລາບມຸງຄຸນ)',
+                    color: 'text-cyan-300',
+                    badge: 'border-cyan-500 bg-cyan-950/80',
+                    poem: '小吉最吉昌，路上好商量，阴人来报喜，失物在坤方。',
+                    desc: '✨ ໂຊກລາບມຸງຄຸນ: ການເດີນທາງລາບລື່ນ, ພົບຄູ່ຄອງທີ່ດີ, ມີຜູ້ໃຫຍ່ຊ່ວຍເຫຼືອອຸປະຖຳ, ທຸລະກິດມີກຳໄລຕໍ່ເນື່ອງ.'
+                },
+                {
+                    name: '空亡 (ຄົງວາງ - ວ່າງເປົ່າສູນເສຍ)',
+                    color: 'text-slate-400',
+                    badge: 'border-slate-700 bg-slate-900/80',
+                    poem: '空亡事不详，阴人多乖张，求财无利益，行人有灾殃。',
+                    desc: '❌ ວ່າງເປົ່າບໍ່ຄວນລົງມື: ສິ່ງທີ່ຫວັງອາດສູນເປົ່າ, ຖືກຫຼອກລວງ, ເງິນຮົ່ວໄຫຼ, ຄວນພັກຜ່ອນ ແລະ ລໍຖ້າເວລາໃໝ່.'
+                }
             ];
 
-            const idx = (m + day + h - 2) % 6;
+            // Authentic Sequential Knuckle Algorithm:
+            // Count Month from Da An -> count Day from Month knuckle -> count Hour from Day knuckle
+            const idx = ((m - 1) + (day - 1) + (h - 1)) % 6;
             const state = sixStates[idx];
 
             return {
+                m, day, h,
                 name: state.name,
                 badge: state.badge,
                 color: state.color,
+                poem: state.poem,
                 desc: state.desc
             };
         }
@@ -4339,22 +4445,42 @@
         // =========================================================================
         function calculateWuYunLiuQi(targetYear) {
             const y = parseInt(targetYear, 10) || new Date().getFullYear();
+            const stemIdx = ((y - 4) % 10 + 10) % 10;
+            const branchIdx = ((y - 4) % 12 + 12) % 12;
 
             const movements = [
-                { name: '土运 (ທາດດິນ)', organ: 'ມ້າມ ແລະ ກະເພາະອາຫານ', advice: 'ລະວັງຄວາມຊຸ່ມຊື່ນ, ຫ້າມຫ້ອງນອນອັບຊຸ່ມ.' },
-                { name: '金运 (ທາດທອງ)', organ: 'ປອດ ແລະ ລະບົບຫາຍໃຈ', advice: 'ຄວນລະບາຍອາກາດໃຫ້ໂລ່ງ, ປູກຕົ້ນໄມ້ຟອກອາກາດ.' },
-                { name: '水运 (ທາດນ້ຳ)', organ: 'ໝາກໄຂ່ຫຼັງ ແລະ ກະດູກ', advice: 'ຮັກສາຫ້ອງນອນໃຫ້ອົບອຸ່ນ, ຫຼີກລ່ຽງລົມໜາວ.' },
-                { name: '木运 (ທາດໄມ້)', organ: 'ຕັບ ແລະ ສາຍຕາ', advice: 'ເພີ່ມແສງສະຫວ່າງທຳມະຊາດ, ຫຼີກລ່ຽງຄວາມຄຽດ.' },
-                { name: '火运 (ທາດໄຟ)', organ: 'ຫົວໃຈ ແລະ ຫຼອດເລືອດ', advice: 'ລະວັງຄວາມຮ້ອນອົບເອົ້າ, ຕັ້ງນ້ຳໄຫຼລົດຄວາມຮ້ອນ.' }
+                { stem: '甲', name: '土运太过 (ທາດດິນເກີນ)', organ: 'ມ້າມ ແລະ ກະເພາະອາຫານ', advice: 'ລະວັງຄວາມຊຸ່ມຊື່ນ, ຫ້າມຫ້ອງນອນອັບຊຸ່ມ, ກິນອາຫານອຸ່ນ.' },
+                { stem: '乙', name: '金运不及 (ທາດທອງອ່ອນ)', organ: 'ປອດ ແລະ ລະບົບຫາຍໃຈ', advice: 'ເສີມທາດທອງ, ລະບາຍອາກາດໃຫ້ໂລ່ງ, ປູກຕົ້ນໄມ້ຟອກປອດ.' },
+                { stem: '丙', name: '水运太过 (ທາດນ້ຳເກີນ)', organ: 'ໝາກໄຂ່ຫຼັງ ແລະ ກະດູກ', advice: 'ຮັກສາຫ້ອງນອນໃຫ້ອົບອຸ່ນ, ຫຼີກລ່ຽງລົມໜາວ ແລະ ຄວາມຊຸ່ມ.' },
+                { stem: '丁', name: '木运不及 (ທາດໄມ້ອ່ອນ)', organ: 'ຕັບ ແລະ ສາຍຕາ', advice: 'ເພີ່ມແສງສະຫວ່າງທຳມະຊາດ, ຫຼີກລ່ຽງຄວາມຄຽດ, ບຳລຸງສາຍຕາ.' },
+                { stem: '戊', name: '火运太过 (ທາດໄຟເກີນ)', organ: 'ຫົວໃຈ ແລະ ຫຼອດເລືອດ', advice: 'ລະວັງຄວາມຮ້ອນອົບເອົ້າ, ຕັ້ງນ້ຳໄຫຼລົດຄວາມຮ້ອນ.' },
+                { stem: '己', name: '土运不及 (ທາດດິນອ່ອນ)', organ: 'ມ້າມ ແລະ ກະເພາະອາຫານ', advice: 'ລະວັງອາຫານຍ່ອຍຍາກ, ຮັກສາກາງບ້ານໃຫ້ສະອາດ.' },
+                { stem: '庚', name: '金运太过 (ທາດທອງເກີນ)', organ: 'ປອດ ແລະ ຜິວໜັງ', advice: 'ລະວັງອາກາດແຫ້ງ, ດື່ມນ້ຳຫຼາຍໆ, ຫຼີກລ່ຽງຝຸ່ນລະອອງ.' },
+                { stem: '辛', name: '水运不及 (ທາດນ້ຳອ່ອນ)', organ: 'ໝາກໄຂ່ຫຼັງ ແລະ ຫູ', advice: 'ບຳລຸງຮ່າງກາຍດ້ວຍນ້ຳສະອາດ, ຫ້າມເຮັດວຽກຫັກໂຫມ.' },
+                { stem: '壬', name: '木运太过 (ທາດໄມ້ເກີນ)', organ: 'ຕັບ ແລະ ລະບົບປະສາດ', advice: 'ພັກຜ່ອນໃຫ້ພຽງພໍ, ຫຼີກລ່ຽງລົມພັດແຮງເຂົ້ານອນ.' },
+                { stem: '癸', name: '火运不及 (ທາດໄຟອ່ອນ)', organ: 'ຫົວໃຈ ແລະ ຄວາມດັນ', advice: 'ຮັກສາຮ່າງກາຍໃຫ້ອົບອຸ່ນ, ອອກກຳລັງກາຍເບົາໆ.' }
             ];
 
-            const currentMov = movements[(y - 4) % 5];
+            const sixQiMap = [
+                { pair: '子午', siTian: '少阴君火司天', zaiQuan: '阳明燥金在泉', desc: 'ເຄິ່ງປີທຳອິດອາກາດຮ້ອນ, ເຄິ່ງປີຫຼັງອາກາດແຫ້ງ.' },
+                { pair: '丑未', siTian: '太阴湿土司天', zaiQuan: '太阳寒水在泉', desc: 'ເຄິ່ງປີທຳອິດຝົນຕົກຊຸ່ມ, ເຄິ່ງປີຫຼັງໜາວເຢັນ.' },
+                { pair: '寅申', siTian: '少阳相火司天', zaiQuan: '厥阴风木在泉', desc: 'ເຄິ່ງປີທຳອິດອາກາດຮ້ອນອົບເອົ້າ, ເຄິ່ງປີຫຼັງລົມພັດແຮງ.' },
+                { pair: '卯酉', siTian: '阳明燥金司天', zaiQuan: '少阴君火在泉', desc: 'ເຄິ່ງປີທຳອິດແຫ້ງແລ້ງ, ເຄິ່ງປີຫຼັງອົບອຸ່ນ.' },
+                { pair: '辰戌', siTian: '太阳寒水司天', zaiQuan: '太阴湿土在泉', desc: 'ເຄິ່ງປີທຳອິດອາກາດໜາວ, ເຄິ່ງປີຫຼັງຊຸ່ມຊື່ນ.' },
+                { pair: '巳亥', siTian: '厥阴风木司天', zaiQuan: '少阳相火在泉', desc: 'ເຄິ່ງປີທຳອິດລົມແຮງ, ເຄິ່ງປີຫຼັງອົບອຸ່ນຮ້ອນ.' }
+            ];
+
+            const currentMov = movements[stemIdx];
+            const currentQi = sixQiMap[branchIdx % 6];
 
             return {
                 year: y,
                 movementName: currentMov.name,
                 organ: currentMov.organ,
                 advice: currentMov.advice,
+                siTian: currentQi.siTian,
+                zaiQuan: currentQi.zaiQuan,
+                climatePattern: currentQi.desc,
                 warning: '⚠️ ຜູ້ເຖົ້າ ແລະ ຄົນປ່ວຍຄວນຫຼີກລ່ຽງການນອນໃນທິດລົມພິດປະຈຳປີ.'
             };
         }
@@ -4363,18 +4489,66 @@
         // CELESTIAL MASTER ENGINE 9: YANG GONG 72 DRAGONS (杨公穿山七十二龙)
         // =========================================================================
         function calculate72Dragons(compassDeg) {
-            const deg = (typeof compassDeg === 'number' && !isNaN(compassDeg)) ? compassDeg : 180;
-            const dragonIndex = Math.floor(((deg % 360) + 360) % 360 / 5) % 72;
+            const deg = ((compassDeg % 360) + 360) % 360;
+            // Authentic 24 Mountains start at Ren (337.5°). Zi is centered at 0° (352.5° to 7.5°).
+            // Each mountain spans 15° and contains 3 Dragons of 5° each (total 72 Dragons).
+            const normDeg = ((deg - 337.5) % 360 + 360) % 360;
+            const dragonTotalIdx = Math.floor(normDeg / 5);
+            const mtnIdx = Math.floor(dragonTotalIdx / 3);
+            const posInMtn = dragonTotalIdx % 3;
 
-            // Jewel Dragon (珠宝龙) vs Empty Dragon (火坑龙)
-            const isJewel = (dragonIndex % 6 === 2 || dragonIndex % 6 === 3);
+            const mountainNames = [
+                '壬 (Ren)', '子 (Zi)', '癸 (Gui)', '丑 (Chou)', '艮 (Gen)', '寅 (Yin)',
+                '甲 (Jia)', '卯 (Mao)', '乙 (Yi)', '辰 (Chen)', '巽 (Xun)', '巳 (Si)',
+                '丙 (Bing)', '午 (Wu)', '丁 (Ding)', '未 (Wei)', '坤 (Kun)', '申 (Shen)',
+                '庚 (Geng)', '酉 (You)', '辛 (Xin)', '戌 (Xu)', '乾 (Qian)', '亥 (Hai)'
+            ];
+
+            const isEarthBranch = (mtnIdx % 2 === 1);
+            const currentMtn = mountainNames[mtnIdx];
+
+            let isJewel = false;
+            let dragonName = '';
+            let naYinElem = '';
+            let verdict = '';
+
+            if (isEarthBranch && posInMtn === 1) {
+                isJewel = true;
+                dragonName = '丙/庚 珠宝龙 (ສາຍເລືອດຄຳມັງກອນສົມບູນ - ມະຫາໂຊກ)';
+                naYinElem = 'ທາດທອງ/ໄຟ (金/火)';
+                verdict = '🌟 ມຸງຄຸນສູງສຸດ: ສາຍມັງກອນຄຳແທ້ 100% ດຶງດູດຊັບສິນ, ຍົດຖາບັນດາສັກ, ຕະກຸນຮັ່ງມີຍືນຍົງ.';
+            } else if (isEarthBranch && posInMtn === 2) {
+                isJewel = false;
+                dragonName = '戊/己 龟甲空亡 (ສາຍຫຼັງເຕົ່າວ່າງເປົ່າ - ໄຟໄໝ້/ສູນເສຍ)';
+                naYinElem = 'ທາດໄຟຮ້າຍ (火坑)';
+                verdict = '❌ ຫຼີກລ່ຽງເດັດຂາດ: ຕົກເສັ້ນຫຼັງເຕົ່າຫວ່າງເປົ່າ ຈະເກີດອັກຄີໄພ ຫຼື ຄົນໃນບ້ານເຈັບປ່ວຍຊຳເຮື້ອ.';
+            } else if (isEarthBranch && posInMtn === 0) {
+                isJewel = false;
+                dragonName = '甲/乙 孤虚龙 (ສາຍມັງກອນໂດດດ່ຽວ)';
+                naYinElem = 'ທາດໄມ້/ນ້ຳ (木/水)';
+                verdict = '⚠️ ພະລັງອ່ອນແອ: ເສັ້ນມັງກອນໂດດດ່ຽວ ຂາດແຮງໜູນຈາກຜູ້ໃຫຍ່, ຄວນປັບມຸມເຂັມທິດ 2-3 ອົງສາຫາເສັ້ນກາງ.';
+            } else {
+                isJewel = false;
+                dragonName = '正针空亡/差错龙 (ເສັ້ນແກນກາງຫວ່າງເປົ່າ - ພະລັງບໍ່ສະຖຽນ)';
+                naYinElem = 'ທາດດິນ (土)';
+                verdict = '⚠️ ຄວນປັບທິດ: ທິດສັນຍະລັກສະຫວັນ/ແປດທິດ ພະລັງງານແຕກແຍກ, ຄວນອາໄສສາຍພູເຂົາ 12 ນັກສັດແທນ.';
+            }
+
+            const degStart = parseFloat(((mtnIdx * 15 + posInMtn * 5 + 337.5) % 360).toFixed(1));
+            const degEnd = parseFloat(((degStart + 5) % 360).toFixed(1));
 
             return {
-                dragonIndex: dragonIndex + 1,
-                degreeSpan: (dragonIndex * 5) + '° - ' + ((dragonIndex + 1) * 5) + '°',
+                dragonIndex: dragonTotalIdx + 1,
+                mountain: currentMtn,
+                degreeSpan: degStart + '° - ' + degEnd + '°',
+                dragonName: dragonName,
                 dragonType: isJewel ? '💎 ມັງກອນສົມບູນ (珠宝龙 - ລາບຍົດຮັ່ງມີ)' : '⚠️ ມັງກອນຫວ່າງເປົ່າ (火坑空亡 - ຄວນປັບອ່ຽງອົງສາ)',
                 badge: isJewel ? 'border-emerald-500 bg-emerald-950/80 text-emerald-300' : 'border-amber-500 bg-amber-950/80 text-amber-300',
-                advice: isJewel ? 'ສາຍເລືອດມັງກອນໃຕ້ດິນເຂັ້ມແຂງ ດຶງດູດຄວາມຈະເລີນ 3 ຊົ່ວຄົນ.' : 'ແນະນຳໃຫ້ປັບອົງສາປະຕູໃຫຍ່ 1-2 ອົງສາ ເພື່ອເຂົ້າສູ່ສາຍມັງກອນສົມບູນ.'
+                advice: isJewel ? 'ສາຍເລືອດມັງກອນໃຕ້ດິນເຂັ້ມແຂງ ດຶງດູດຄວາມຈະເລີນ 3 ຊົ່ວຄົນ.' : 'ແນະນຳໃຫ້ປັບອົງສາປະຕູໃຫຍ່ 1-2 ອົງສາ ເພື່ອເຂົ້າສູ່ສາຍມັງກອນສົມບູນ.',
+                isJewel: isJewel,
+                naYinElem: naYinElem,
+                verdict: verdict,
+                classicalRule: '杨公穿山七十二龙: 乙丙戊庚壬, 惟丙庚二位为珠宝, 余皆孤虚差错空亡.'
             };
         }
 
@@ -4383,13 +4557,33 @@
         // =========================================================================
         function calculateWuTuSolarDays(targetMonth, targetYear) {
             const m = parseInt(targetMonth, 10) || (new Date().getMonth() + 1);
+            const y = parseInt(targetYear, 10) || new Date().getFullYear();
+
+            const monthSunMap = {
+                1:  { sun: [1, 10, 19, 28], moon: [2, 11, 20, 29] },
+                2:  { sun: [4, 13, 22],     moon: [5, 14, 23] },
+                3:  { sun: [7, 16, 25],     moon: [8, 17, 26] },
+                4:  { sun: [1, 10, 19, 28], moon: [2, 11, 20, 29] },
+                5:  { sun: [4, 13, 22],     moon: [5, 14, 23] },
+                6:  { sun: [7, 16, 25],     moon: [8, 17, 26] },
+                7:  { sun: [9, 18, 27],     moon: [8, 17, 26] },
+                8:  { sun: [6, 15, 24],     moon: [5, 14, 23] },
+                9:  { sun: [3, 12, 21, 30], moon: [2, 11, 20, 29] },
+                10: { sun: [9, 18, 27],     moon: [8, 17, 26] },
+                11: { sun: [6, 15, 24],     moon: [5, 14, 23] },
+                12: { sun: [3, 12, 21, 30], moon: [2, 11, 20, 29] }
+            };
+
+            const data = monthSunMap[((m - 1) % 12) + 1] || monthSunMap[1];
 
             return {
                 month: m,
-                sunDays: 'ວັນທີ ' + ((m * 3) % 28 + 1) + ', ' + ((m * 3 + 7) % 28 + 1) + ', ' + ((m * 3 + 14) % 28 + 1),
-                moonDays: 'ວັນທີ ' + ((m * 5) % 28 + 1) + ', ' + ((m * 5 + 9) % 28 + 1),
+                sunDays: 'ວັນທີ ' + data.sun.join(', ') + ' (ຕາມປະຕິທິນຈັນທະຄະຕິ)',
+                moonDays: 'ວັນທີ ' + data.moon.join(', ') + ' (ຕາມປະຕິທິນຈັນທະຄະຕິ)',
                 power: '☀️ ແສງຕາເວັນແທ້ (太阳到山): ລ້າງໄດ້ທຸກສິ່ງອັບປະມຸງຄຸນ, ໄທ້ສວຍ ແລະ ດາວຫ້າເຫຼືອງ ບໍ່ສາມາດທຳຮ້າຍໄດ້.',
-                verdict: '✅ ມື້ມຸງຄຸນສູງສຸດສຳລັບການເຈາະດິນ, ສ້ອມແປງ, ແລະ ຂຶ້ນບ້ານໃໝ່.'
+                verdict: '✅ ມື້ມຸງຄຸນສູງສຸດສຳລັບການເຈາະດິນ, ສ້ອມແປງ, ແລະ ຂຶ້ນບ້ານໃໝ່.',
+                sunHoursGuide: '⏰ ໂມງຕາເວັນສ່ອງ (太阳吉时): ວັນ甲己=未时(13-15), ວັນ乙庚=申时(15-17), ວັນ丙辛=辰时(07-09), ວັນ丁壬=申时(15-17), ວັນ戊癸=卯时(05-07)',
+                usage: '☀️ ວັນຕາເວັນ (太阳): ເໝາະກັບການລົງເສົາເອກ, ຍົກຍ້າຍ, ເປີດປະຕູໃຫຍ່, ປັດເປົ່າສິ່ງອັບມຸງຄຸນ. 🌙 ວັນດວງຈັນ (太阴): ເໝາະກັບການສ້າງຫ້ອງນອນ, ງານແຕ່ງດອງ, ແລະ ພິທີພາຍໃນ.'
             };
         }
 
@@ -8632,7 +8826,7 @@
                             '<div class="bg-gradient-to-r from-yellow-950 via-slate-950 to-amber-950 p-3 rounded-xl border border-yellow-500/40 shadow-sm">' +
                                 '<div class="flex items-center justify-between text-xs">' +
                                     '<span class="text-yellow-300 font-black flex items-center gap-1.5">⚖️ ຊັ່ງກະດູກຊາຕາ ຢວນທຽນກັງ (称骨算命)</span>' +
-                                    '<span class="bg-yellow-500/20 text-yellow-200 px-2 py-0.5 rounded text-[10px] font-bold">' + cg.totalWeight + '</span>' +
+                                    '<span class="bg-yellow-500/20 text-yellow-200 px-2 py-0.5 rounded text-[10px] font-bold">' + (cg.totalWeightStr || (cg.totalWeight + ' 两')) + '</span>' +
                                 '</div>' +
                                 '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">ວິຊາໄລ່ນ້ຳໜັກຊາຕາ 2.1 ຫາ 7.2 ຕຳລຶງ ແຫ່ງລາຊະວົງຖັງ ບອກລະດັບວາດສະໜາຊີວິດ.</p>' +
                             '</div>' +
