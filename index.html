@@ -4131,7 +4131,314 @@
         // =========================================================================
         // GRAND IMPERIAL MASTER ENGINE 1: YANG GONG FLATLAND WATER DRAGON (杨公平洋水龙经)
         // =========================================================================
-        function calculatePingYangWater(facingDeg, waterInAngle, waterOutAngle) {
+        
+        // =========================================================================
+        // GRAND IMPERIAL MASTER ENGINE 11: SAN HE 4 WATER BUREAUS & 12 LIFE STAGES (三合四大局与十二长生水法)
+        // =========================================================================
+        function calculateSanHeWater12Stages(facingDeg, waterInAngle, waterOutAngle) {
+            const fDeg = (typeof facingDeg === 'number' && !isNaN(facingDeg)) ? ((facingDeg % 360) + 360) % 360 : 180;
+            const wIn = (typeof waterInAngle === 'number' && !isNaN(waterInAngle)) ? ((waterInAngle % 360) + 360) % 360 : (fDeg + 60) % 360;
+            const wOut = (typeof waterOutAngle === 'number' && !isNaN(waterOutAngle)) ? ((waterOutAngle % 360) + 360) % 360 : (fDeg + 270) % 360;
+
+            // 4 Great Water Bureaus of San He (三合四大局):
+            // Metal Bureau (巳酉丑) -> Water exits at Gui/Chou (癸丑)
+            // Wood Bureau (亥卯未) -> Water exits at Ding/Wei (丁未)
+            // Water Bureau (申子辰) -> Water exits at Yi/Chen (乙辰)
+            // Fire Bureau (寅午戌) -> Water exits at Xin/Xu (辛戌)
+            const mtnIdx = Math.floor((((fDeg - 337.5) % 360 + 360) % 360) / 15);
+            const bureaus = ['Water Bureau (ສຳນັກນ້ຳ - 申子辰)', 'Fire Bureau (ສຳນັກໄຟ - 寅午戌)', 'Wood Bureau (ສຳນັກໄມ້ - 亥卯未)', 'Metal Bureau (ສຳນັກທອງ - 巳酉丑)'];
+            const curBureau = bureaus[mtnIdx % 4];
+
+            // 12 Life Stages (十二长生):
+            const STAGES = [
+                { name: '长生 (ເກີດໃຫມ່)', nature: 'auspicious', desc: 'ສາຍນ້ຳແຫ່ງການເລີ່ມຕົ້ນ, ເໝາະເປັນນ້ຳໄຫຼເຂົ້າ (来水), ລູກຫຼານສະຫຼາດ.' },
+                { name: '沐浴 (ອາບນ້ຳ)', nature: 'inauspicious', desc: 'ສາຍນ້ຳດອກຄາຍ/ໂລກີ, ຫ້າມໄຫຼເຂົ້າ ຈະເສຍເງິນຍ້ອນເລື່ອງຊູ້ສາວ.' },
+                { name: '冠带 (ເຕີບໃຫຍ່)', nature: 'auspicious', desc: 'ສາຍນ້ຳຍົດຖາບັນດາສັກ, ເໝາະເປັນນ້ຳໄຫຼເຂົ້າ, ໄດ້ເລື່ອນຂັ້ນໄວ.' },
+                { name: '临官 (ເຂົ້າຮັບລາຊະການ)', nature: 'auspicious', desc: '🌟 ມຸງຄຸນສູງ: ນ້ຳແຫ່ງໂຊກລາບເງິນເດືອນ, ດຶງດູດຄວາມຈະເລີນ.' },
+                { name: '帝旺 (ຈະເລີນສູງສຸດ)', nature: 'auspicious', desc: '👑 ມະຫາໂຊກ: ສາຍນ້ຳພະລັງສູງສຸດ, ຫ້າມໃຫ້ນ້ຳໄຫຼອອກທິດນີ້ເດັດຂາດ.' },
+                { name: '衰 (ຖົດຖອຍ)', nature: 'neutral', desc: 'ພະລັງງານເລີ່ມອ່ອນແຮງ, ພໍໃຊ້ໄດ້.' },
+                { name: '病 (ເຈັບປ່ວຍ)', nature: 'inauspicious', desc: 'ສາຍນ້ຳໂລກໄພ, ຫ້າມໄຫຼເຂົ້າ ຈະເຈັບອອດໆແອດໆ.' },
+                { name: '死 (ຕາຍ)', nature: 'inauspicious', desc: 'ສາຍນ້ຳອັບປະມຸງຄຸນ, ຫ້າມໄຫຼເຂົ້າ.' },
+                { name: '墓 (ສຸສານ/ອ່າງເກັບ)', nature: 'auspicious_out', desc: '💎 ຈຸດນ້ຳໄຫຼອອກທີ່ດີທີ່ສຸດ (正库去水), ກັກເກັບຊັບສິນບໍ່ໃຫ້ເສຍຫາຍ.' },
+                { name: '绝 (ສິ້ນສຸດ)', nature: 'auspicious_out', desc: 'ເໝາະເປັນທິດລະບາຍນ້ຳເສຍອອກ, ຕັດສິ່ງອັບປະມຸງຄຸນ.' },
+                { name: '胎 (ກຳເນີດ)', nature: 'neutral', desc: 'ສາຍນ້ຳອ່ອນ, ບໍ່ຄວນມີການລົບກວນ.' },
+                { name: '养 (ລ້ຽງດູ)', nature: 'auspicious', desc: 'ສາຍນ້ຳບຳລຸງ, ເໝາະແກ່ສຸຂະພາບຜູ້ເຖົ້າ ແລະ ເດັກນ້ອຍ.' }
+            ];
+
+            const inStageIdx = Math.floor((wIn / 30) % 12);
+            const outStageIdx = Math.floor((wOut / 30) % 12);
+            const inStage = STAGES[inStageIdx];
+            const outStage = STAGES[outStageIdx];
+
+            return {
+                bureau: curBureau,
+                waterInStage: inStage.name + ' (' + inStage.desc + ')',
+                waterOutStage: outStage.name + ' (' + outStage.desc + ')',
+                inVerdict: inStage.nature === 'auspicious' ? '✅ ນ້ຳໄຫຼເຂົ້າຖືກຕ້ອງຕາມຕຳລາ' : '⚠️ ນ້ຳໄຫຼເຂົ້າຈາກທິດອ່ອນແອ/ຊູ້ສາວ',
+                outVerdict: outStage.nature === 'auspicious_out' ? '✅ ນ້ຳໄຫຼອອກຕົກທິດສຸສານ/ສິ້ນສຸດ (ມຸງຄຸນ)' : '❌ ລະວັງ: ນ້ຳໄຫຼອອກທິດໂຊກລາບ ຈະເສຍຊັບ',
+                classicalFormula: '三合水法金诀: 生旺互蒙来注吉，死绝墓库去为良。最忌帝旺临官泻，败绝儿孙丧资粮。'
+            };
+        }
+
+        // =========================================================================
+        // GRAND IMPERIAL MASTER ENGINE 12: YANG GONG XIE ZI FA (杨公玄空些子法)
+        // =========================================================================
+        function calculateXieZiFa(facingDeg) {
+            const deg = (typeof facingDeg === 'number' && !isNaN(facingDeg)) ? ((facingDeg % 360) + 360) % 360 : 180;
+            const normDeg = ((deg - 337.5) % 360 + 360) % 360;
+            const mtnIdx = Math.floor(normDeg / 15);
+
+            // In Xie Zi Fa:
+            // "天机安在些子间，些子翻得起，富贵无穷已；些子翻不起，贫穷绝嗣矣"
+            // Living Xie Zi (生些子) vs Dying Xie Zi (死些子)
+            const isLivingXieZi = (mtnIdx % 3 !== 0);
+
+            return {
+                facingDeg: deg,
+                xieZiStatus: isLivingXieZi ? '生些子 (ເຊຍຈື໋ມີຊີວິດ - ມະຫາໂຊກ)' : '死些子 (ເຊຍຈື໋ຕາຍ - ຕ້ອງປັບອ່ຽງມຸມ)',
+                badge: isLivingXieZi ? 'border-emerald-500 bg-emerald-950/80 text-emerald-300' : 'border-rose-500 bg-rose-950/80 text-rose-300',
+                verdict: isLivingXieZi ? '🌟 ພະລັງງານເຊຍຈື໋ພິກຂຶ້ນ (些子翻起): ດຶງດູດຄວາມຮັ່ງມີ, ສຸຂະພາບແຂງແຮງ, ຕະກຸນສືບທອດຍາວນານ.' : '⚠️ ເຊຍຈື໋ພິກບໍ່ຂຶ້ນ (些子翻不起): ພະລັງງານຕິດຂັດ, ຄວນປັບອ່ຽງມຸມປະຕູໃຫຍ່ 2-3 ອົງສາ ເພື່ອປ່ຽນຈາກຕາຍເປັນເປັນ.',
+                remedy: 'ຕັ້ງຈຸດຮັບແສງ ແລະ ເປີດປ່ອງລົມໃນທິດຕາເວັນອອກສ່ຽງໃຕ້ ຫຼື ທິດເໜືອ ເພື່ອກະຕຸ້ນເຊຍຈື໋ມີຊີວິດ.',
+                classicalVerse: '杨公些子法: 些子合得生，富贵百年春；些子合得死，代代受穷贫。'
+            };
+        }
+
+        // =========================================================================
+        // GRAND IMPERIAL MASTER ENGINE 13: EARLY & LATER HEAVEN WATER (乾坤国宝·先天后天水法)
+        // =========================================================================
+        function calculateXianTianHouTianWater(facingDeg) {
+            const deg = (typeof facingDeg === 'number' && !isNaN(facingDeg)) ? ((facingDeg % 360) + 360) % 360 : 180;
+            const baguaIdx = Math.floor(((deg + 22.5) % 360) / 45);
+
+            // 8 Trigram Sitting Palaces:
+            const BAGUA_DATA = [
+                { name: '坎 (North)', xianTian: '兑方 (West)', houTian: '坤方 (Southwest)', tianJie: '巽方 (Southeast)', desc: 'ນ້ຳກ່ອນຟ້າເສີມລູກຊາຍ, ນ້ຳຫຼັງຟ້າເສີມເງິນຄຳ.' },
+                { name: '艮 (Northeast)', xianTian: '乾方 (Northwest)', houTian: '震方 (East)', tianJie: '离方 (South)', desc: 'ນ້ຳກ່ອນຟ້າເສີມປັນຍາ, ນ້ຳຫຼັງຟ້າເສີມອະສັງຫາ.' },
+                { name: '震 (East)', xianTian: '艮方 (Northeast)', houTian: '离方 (South)', tianJie: '乾方 (Northwest)', desc: 'ນ້ຳກ່ອນຟ້າເສີມຍົດສັກ, ນ້ຳຫຼັງຟ້າເສີມການຄ້າ.' },
+                { name: '巽 (Southeast)', xianTian: '坤方 (Southwest)', houTian: '兑方 (West)', tianJie: '坎方 (North)', desc: 'ນ້ຳກ່ອນຟ້າເສີມແມ່ຍິງ, ນ້ຳຫຼັງຟ້າເສີມຊື່ສຽງ.' },
+                { name: '离 (South)', xianTian: '震方 (East)', houTian: '乾方 (Northwest)', tianJie: '艮方 (Northeast)', desc: 'ນ້ຳກ່ອນຟ້າເສີມວາດສະໜາ, ນ້ຳຫຼັງຟ້າເສີມອຳນາດ.' },
+                { name: '坤 (Southwest)', xianTian: '坎方 (North)', houTian: '巽方 (Southeast)', tianJie: '震方 (East)', desc: 'ນ້ຳກ່ອນຟ້າເສີມຄວາມອຸດົມສົມບູນ, ນ້ຳຫຼັງຟ້າເສີມທຸລະກິດ.' },
+                { name: '兑 (West)', xianTian: '巽方 (Southeast)', houTian: '坎方 (North)', tianJie: '艮方 (Northeast)', desc: 'ນ້ຳກ່ອນຟ້າເສີມຄວາມສຸກ, ນ້ຳຫຼັງຟ້າເສີມການເງິນ.' },
+                { name: '乾 (Northwest)', xianTian: '离方 (South)', houTian: '艮方 (Northeast)', tianJie: '巽方 (Southeast)', desc: 'ນ້ຳກ່ອນຟ້າເສີມຜູ້ນຳ, ນ້ຳຫຼັງຟ້າເສີມບາຣະມີ.' }
+            ];
+
+            const cur = BAGUA_DATA[baguaIdx];
+
+            return {
+                palace: cur.name,
+                xianTianWater: cur.xianTian + ' (先天水 - ເສີມສຸຂະພາບ, ລູກຫຼານ, ຄວາມໝັ້ນຄົງຂອງຕະກຸນ)',
+                houTianWater: cur.houTian + ' (后天水 - ເສີມເງິນຄຳ, ໂຊກລາບ, ກະແສເງິນສົດ)',
+                tianJieWaterSha: cur.tianJie + ' (天劫水 - ⚠️ ຫ້າມມີສາຍນ້ຳໄຫຼພຸ່ງໃສ່ ຈະຖືກປຸ້ນຊັບ)',
+                guidance: cur.desc,
+                classicalRhyme: '乾坤国宝龙门水法: 先天水来发人丁，后天水来旺财源。天劫地刑切莫见，流归库位福绵绵。'
+            };
+        }
+
+        // =========================================================================
+        // GRAND IMPERIAL MASTER ENGINE 14: TIAN YUAN WU GE INTERNAL (蒋大鸿《天元五歌》阳宅篇)
+        // =========================================================================
+        function calculateTianYuanWuGeInternal(sittingDeg) {
+            const deg = (typeof sittingDeg === 'number' && !isNaN(sittingDeg)) ? ((sittingDeg % 360) + 360) % 360 : 0;
+            const isEastGroup = (deg < 45 || (deg >= 90 && deg < 180) || deg >= 315);
+
+            return {
+                stoveRule: '🔥 ຕຳແໜ່ງເຕົາໄຟ (灶位): ຕ້ອງໃຊ້ຫຼັກການ “ນັ່ງທິດຮ້າຍ-ຫັນໜ້າຫາທິດດີ (压凶向吉)”. ເຕົາໄຟຕັ້ງທິດ ' + (isEastGroup ? 'ຕາເວັນຕົກ/ຕາເວັນຕົກສ່ຽງເໜືອ' : 'ຕາເວັນອອກ/ໃຕ້') + ' ແລ້ວຫັນສະວິດໄປທິດມຸງຄຸນ.',
+                doorRule: '🚪 ປະຕູໃຫຍ່ (大门): ຕ້ອງຕັ້ງໃນທິດດາວເຫີນວັງໂຊກ (旺气之方) ເພື່ອຮັບພະລັງງານໃຫຍ່, ຫ້າມກົງກັບປະຕູຫຼັງບ້ານ (穿堂风).',
+                stairsRule: '🪜 ຂັ້ນໄດ (梯位): ຫ້າມຕັ້ງຂັ້ນໄດຢູ່ກາງບ້ານ (穿心煞) ເພາະຈະເຮັດໃຫ້ເຈົ້າຂອງບ້ານປວດຫຼັງ ແລະ ເສຍຊັບ.',
+                toiletRule: '🚽 ຫ້ອງນ້ຳ (厕位): ຕ້ອງຕັ້ງໃນທິດອັບມຸງຄຸນທີ່ສຸດ (绝命/五鬼) ເພື່ອກົດທັບພະລັງຮ້າຍ ຫ້າມຕັ້ງກົງກັບປະຕູໃຫຍ່ ຫຼື ເໜືອຫົວຕຽງ.',
+                masterAdvice: '蔣大鴻《天元五歌》: 第一要紧看宅门，宅门吉凶最显神。次看厨灶压何处，压住凶煞向吉轮。'
+            };
+        }
+
+        // =========================================================================
+        // GRAND IMPERIAL MASTER ENGINE 15: LU BAN TALISMANS & CURES (鲁班经镇宅秘法)
+        // =========================================================================
+        function calculateLuBanZhenZhai(problemType) {
+            const cures = {
+                't_junction': {
+                    name: 'ຫີນໄທ້ຊານ (泰山石敢当)',
+                    problem: 'ທາງສາມແພ່ງ, ຖະໜົນແລ່ນຊື່ຕຳໜ້າບ້ານ (路冲煞)',
+                    instruction: 'ຕັ້ງແຜ່ນຫີນຄວັດຄຳວ່າ “泰山石敢当” ໄວ້ໜ້າບ້ານກົງຈຸດທີ່ຖະໜົນຕຳ ເພື່ອດູດຊັບແຮງປະທະ.'
+                },
+                'sharp_eave': {
+                    name: 'ແວ່ນປາກົ້ວໂນນ (八卦凸透镜)',
+                    problem: 'ຫຼັງຄາແຫຼມ, ມຸມຕຶກແຫຼມຕຳໃສ່ (壁刀煞/屋角煞)',
+                    instruction: 'ຕິດແວ່ນໂນນແປດທິດເໜືອປະຕູ ຫຼື ປ່ອງຢ້ຽມທີ່ປະເຊີນໜ້າກັບມຸມແຫຼມ ເພື່ອສະທ້ອນພະລັງຮ້າຍອອກ.'
+                },
+                'illness_stars': {
+                    name: 'ນ້ຳເຕົ້າທອງແທ້ (纯铜风水葫芦)',
+                    problem: 'ດາວພະຍາດ 2 ດຳ (巨门) ແລະ ດາວຫ້າເຫຼືອງ (廉贞)',
+                    instruction: 'ແຂວນນ້ຳເຕົ້າທອງ 1 ຄູ່ ໄວ້ຫົວຕຽງ ຫຼື ທິດທີ່ດາວ 2 ແລະ ດາວ 5 ຕົກປະຈຳປີ ເພື່ອດູດພະຍາດ.'
+                },
+                'door_clash': {
+                    name: 'ຫຼຽນ 5 ຈັກກະພັດ (五帝钱)',
+                    problem: 'ປະຕູຫ້ອງຕຳກັນ, ປະຕູກົງກັບລີຟ ຫຼື ຂັ້ນໄດ',
+                    instruction: 'ຮ້ອຍຫຼຽນຈັກກະພັດ 5 ລາຊະວົງ (ຊຸ່ນຈື, ຄັງຊີ, ຍົງເຈິ້ງ, ຊຽນຫຼົງ, ເຈຍຊິງ) ໄວ້ໃຕ້ຜ້າເຊັດຕີນໜ້າປະຕູ.'
+                },
+                'default': {
+                    name: 'ກິເລນຄູ່ທອງ (纯铜麒麟一对)',
+                    problem: 'ປົກປັກຮັກສາບ້ານ, ແກ້ອາຖັນທົ່ວໄປ, ເສີມບາຣະມີ',
+                    instruction: 'ຕັ້ງກິເລນ 1 ຄູ່ (ຜູ້-ແມ່) ຫັນໜ້າອອກສູ່ປະຕູໃຫຍ່ ເພື່ອປ້ອງກັນສິ່ງຊົ່ວຮ້າຍ ແລະ ດຶງດູດຊັບ.'
+                }
+            };
+
+            const selected = cures[problemType] || cures['default'];
+
+            return {
+                cureItem: selected.name,
+                targetProblem: selected.problem,
+                howToUse: selected.instruction,
+                classicQuote: '鲁班经镇宅秘诀: 石敢当处魔障伏，五帝钱行鬼魅消。八卦神镜化刀煞，铜葫芦收病气辽。'
+            };
+        }
+
+        // =========================================================================
+        // GRAND IMPERIAL MASTER ENGINE 16: TIAN XIN SHI DAO CROSS (天心十道与四应砂水)
+        // =========================================================================
+        function calculateTianXinShiDao(facingDeg) {
+            const fDeg = (typeof facingDeg === 'number' && !isNaN(facingDeg)) ? ((facingDeg % 360) + 360) % 360 : 180;
+            const sitDeg = (fDeg + 180) % 360;
+            const leftDeg = (fDeg + 270) % 360;
+            const rightDeg = (fDeg + 90) % 360;
+
+            return {
+                frontZhuQue: 'ທິດໜ້າບ້ານ (' + fDeg.toFixed(1) + '° - ຫົງໄຟ): ຕ້ອງການຄວາມໂລ່ງແຈ້ງ, ມີລານກວ້າງ, ນ້ຳສະອາດ, ຫ້າມມີສິ່ງກີດຂວາງ.',
+                backXuanWu: 'ທິດຫຼັງບ້ານ (' + sitDeg.toFixed(1) + '° - ເຕົ່າດຳ): ຕ້ອງການຄວາມໜັກແໜ້ນ, ກຳແພງສູງ ຫຼື ເນີນດິນໜູນຫຼັງ ຫ້າມເປັນເຫວເລິກ.',
+                leftQingLong: 'ທິດຊ້າຍ (' + leftDeg.toFixed(1) + '° - ມັງກອນຂຽວ): ຄວນສູງກວ່າເບື້ອງຂວາເລັກນ້ອຍ, ເສີມອຳນາດຜູ້ຊາຍ ແລະ ຄວາມກ້າວໜ້າ.',
+                rightBaiHu: 'ທິດຂວາ (' + rightDeg.toFixed(1) + '° - ເສືອຂາວ): ຄວນຕ່ຳກວ່າ ແລະ ສະຫງົບ, ຫ້າມມີສຽງດັງ ຫຼື ຂຸມໃຫຍ່.',
+                verdict: '🌟 ແກນກາກະບາດສະຫວັນສົມດຸນ: ຫາກ 4 ທິດໄດ້ຕາມມາດຕະຖານນີ້ ບ້ານຈະມີພະລັງງານສະຖຽນ 100%.',
+                classicalPrinciple: '天心十道: 前后左右四应分明，横直相交直指天心。青龙蜿蜒白虎蹲，玄武垂头朱雀翔。'
+            };
+        }
+
+        // =========================================================================
+        // GRAND IMPERIAL MASTER ENGINE 17: PARENTS THREE TRIGRAMS (地理辨正之父母三般卦)
+        // =========================================================================
+        function calculateFuMuSanBanGua(period) {
+            const p = parseInt(period, 10) || 9;
+
+            return {
+                period: p,
+                parentsTrigrams: '1-4-7, 2-5-8, 3-6-9 (父母三般卦)',
+                consecutiveTrigrams: '1-2-3, 2-3-4, 3-4-5, 4-5-6, 5-6-7, 6-7-8, 7-8-9 (连珠三般卦)',
+                effect: '🌟 ບ້ານທີ່ໄດ້ຮູບດວງພໍ່ແມ່ສາມວັງ ຫຼື ລຽນແຖວ ຈະເປັນ “ບ້ານບໍ່ມີວັນເສື່ອມໂຊມ 180 ປີ (三元不败之宅)”, ຕະກຸນຈະເລີນຮຸ່ງເຮືອງຂ້າມ 3 ຍຸກ 9 ຮອບ.',
+                requirement: 'ຕ້ອງອາໄສສາຍພູເຂົາ ແລະ ສາຍນ້ຳພາຍນອກທີ່ສອດຄ່ອງກັນ, ປະຕູໃຫຍ່ ແລະ ຫ້ອງນອນໃຫຍ່ຢູ່ໃນວັງສາມກຸ່ມພໍ່ແມ່.',
+                classicalAuthority: '蒋大鸿《地理辨正》: 识得父母三般卦，便是真神仙。连珠合得三元贵，富贵代代出明贤。'
+            };
+        }
+
+        // =========================================================================
+        // GRAND IMPERIAL MASTER ENGINE 18: NINE STARS DOOR PLACEMENT (九星翻卦安门催财法)
+        // =========================================================================
+        function calculateAnMenCuiCai(sittingDeg) {
+            const deg = (typeof sittingDeg === 'number' && !isNaN(sittingDeg)) ? ((sittingDeg % 360) + 360) % 360 : 0;
+            const baguaIdx = Math.floor(((deg + 22.5) % 360) / 45);
+
+            const DOOR_MAP = [
+                { sit: '坎 (North)', tanLang: '巽方 (Southeast)', juMen: '震方 (East)', wuQu: '离方 (South)' },
+                { sit: '艮 (Northeast)', tanLang: '坤方 (Southwest)', juMen: '乾方 (Northwest)', wuQu: '兑方 (West)' },
+                { sit: '震 (East)', tanLang: '离方 (South)', juMen: '巽方 (Southeast)', wuQu: '坎方 (North)' },
+                { sit: '巽 (Southeast)', tanLang: '坎方 (North)', juMen: '离方 (South)', wuQu: '震方 (East)' },
+                { sit: '离 (South)', tanLang: '震方 (East)', juMen: '坎方 (North)', wuQu: '巽方 (Southeast)' },
+                { sit: '坤 (Southwest)', tanLang: '艮方 (Northeast)', juMen: '兑方 (West)', wuQu: '乾方 (Northwest)' },
+                { sit: '兑 (West)', tanLang: '乾方 (Northwest)', juMen: '坤方 (Southwest)', wuQu: '艮方 (Northeast)' },
+                { sit: '乾 (Northwest)', tanLang: '兑方 (West)', juMen: '艮方 (Northeast)', wuQu: '坤方 (Southwest)' }
+            ];
+
+            const cur = DOOR_MAP[baguaIdx];
+
+            return {
+                sittingMountain: cur.sit,
+                tanLangDoor: cur.tanLang + ' (ທຳລາງ - ໄມ້: 🌟 ມະຫາໂຊກ, ດຶງດູດເງິນຄຳ ແລະ ລູກຄ້າ)',
+                juMenDoor: cur.juMen + ' (ຈື່ເໝີນ - ດິນ: 💎 ຊັບສິນອະສັງຫາ, ຄວາມຮັ່ງມີໝັ້ນຄົງ)',
+                wuQuDoor: cur.wuQu + ' (ອູ່ຊູ - ທອງ: ⚔️ ອຳນາດການບໍລິຫານ, ຕັດສິນໃຈວ່ອງໄວ)',
+                verdict: 'ປະຕູຮ້ານຄ້າ ຫຼື ປະຕູໃຫຍ່ຄວນເຈາະໃນຕຳແໜ່ງ ' + cur.tanLang + ' ຫຼື ' + cur.juMen + ' ເພື່ອດຶງດູດຍອດຂາຍສູງສຸດ.',
+                classicalRule: '九星翻卦安门诀: 贪狼巨门开大门，金银财宝滚滚行。武曲延年皆吉位，破军禄存闭门庭。'
+            };
+        }
+
+        // =========================================================================
+        // GRAND IMPERIAL MASTER ENGINE 19: QI ZHENG 12 PALACES (七政四余十二宫天盘行度)
+        // =========================================================================
+        function calculateQiZheng12Palaces(birthYear, birthMonth, birthDay, birthHour) {
+            const y = parseInt(birthYear, 10) || 1990;
+            const m = parseInt(birthMonth, 10) || 5;
+            const d = parseInt(birthDay, 10) || 15;
+            const h = parseInt(birthHour, 10) || 12;
+
+            const PALACES = [
+                { name: '命宫 (ວັງຊາຕາ)', star: '太阳 (Sun)', desc: 'ສຸຂະພາບ, ບຸກຄະລິກກະພາບ, ຄວາມເປັນຜູ້ນຳ' },
+                { name: '财帛宫 (ວັງຊັບສິນ)', star: '太白 (Venus)', desc: 'ລາຍຮັບ, ກະແສເງິນສົດ, ຄວາມຮັ່ງມີ' },
+                { name: '兄弟宫 (ວັງພີ່ນ້ອງ)', star: '岁星 (Jupiter)', desc: 'ເພື່ອນມິດ, ຫຸ້ນສ່ວນທຸລະກິດ, ຄວາມຮ່ວມມື' },
+                { name: '田宅宫 (ວັງອະສັງຫາ)', star: '填星 (Saturn)', desc: 'ເຮືອນຊານ, ທີ່ດິນ, ຄວາມໝັ້ນຄົງຂອງຄອບຄົວ' },
+                { name: '男女宫 (ວັງບຸດຕາ)', star: '辰星 (Mercury)', desc: 'ລູກຫຼານ, ບໍລິວານ, ຄວາມຄິດສ້າງສັນ' },
+                { name: '奴仆宫 (ວັງລູກນ້ອງ)', star: '月孛 (Yuebei)', desc: 'ທີມງານ, ຜູ້ຊ່ວຍ, ລະວັງການຫຼອກລວງ' },
+                { name: '夫妻宫 (ວັງຄູ່ຄອງ)', star: '太阴 (Moon)', desc: 'ຊີວິດສົມລົດ, ຄວາມຮັກ, ຄວາມອົບອຸ່ນ' },
+                { name: '疾厄宫 (ວັງພະຍາດ)', star: '荧惑 (Mars)', desc: 'ສຸຂະພາບພາຍໃນ, ລະວັງການອັກເສບ ແລະ ໄຟ' },
+                { name: '迁移宫 (ວັງເດີນທາງ)', star: '紫炁 (Ziqi)', desc: 'ການເດີນທາງໄກ, ໂອກາດຕ່າງແດນ, ເທວະດາອຸປະຖຳ' },
+                { name: '官禄宫 (ວັງການງານ)', star: '太阳 (Sun)', desc: 'ຕຳແໜ່ງໜ້າທີ່, ຄວາມສຳເລັດ, ຊື່ສຽງ' },
+                { name: '福德宫 (ວັງບຸນວາດສະໜາ)', star: '计都 (Ketu)', desc: 'ຄວາມສະຫງົບທາງໃຈ, ບຸນເກົ່າ, ອາຍຸຍືນ' },
+                { name: '相貌宫 (ວັງຮູບໂສມ)', star: '罗睺 (Rahu)', desc: 'ສະເໜ່, ພາບລັກພາຍນອກ, ຄວາມກ້າຫານ' }
+            ];
+
+            const shift = (y + m + d + h) % 12;
+            const curPalace = PALACES[shift];
+
+            return {
+                dominantPalace: curPalace.name,
+                governingPlanet: curPalace.star,
+                aspect: curPalace.desc,
+                astralBlessing: '🌟 ດາວ ' + curPalace.star + ' ສະຖິດ ' + curPalace.name + ': ໃຫ້ຄຸນດ້ານ ' + curPalace.desc + '.',
+                classicalOrigin: '果老星宗七政四余天盘: 日月五星四余，经纬十二宫辰。定富贵贫贱之数，显吉凶祸福之机。'
+            };
+        }
+
+        // =========================================================================
+        // GRAND IMPERIAL MASTER ENGINE 20: 24 SOLAR TERMS SUN PALACE (二十四节气太阳到宫)
+        // =========================================================================
+        function calculate24SolarTermSunPalace(solarTermIndex) {
+            const idx = (parseInt(solarTermIndex, 10) || 0) % 24;
+
+            const SOLAR_TERMS_SUN = [
+                { name: '立春', sunPalace: '壬寅 (寅宫 - ຂຸນເຂົາເສືອ)', date: '4-5 ກຸມພາ', starFlight: '一白水星入中' },
+                { name: '雨水', sunPalace: '癸卯 (卯宫 - ຂຸນເຂົາກະຕ່າຍ)', date: '19-20 ກຸມພາ', starFlight: '二黑土星入中' },
+                { name: '惊蛰', sunPalace: '甲辰 (辰宫 - ຂຸນເຂົາມັງກອນ)', date: '5-6 ມີນາ', starFlight: '三碧木星入中' },
+                { name: '春分', sunPalace: '乙巳 (巳宫 - ຂຸນເຂົາງູ)', date: '20-21 ມີນາ', starFlight: '四绿木星入中' },
+                { name: '清明', sunPalace: '丙午 (午宫 - ຂຸນເຂົາມ້າ)', date: '4-5 ເມສາ', starFlight: '五黄土星入中' },
+                { name: '谷雨', sunPalace: '丁未 (未宫 - ຂຸນເຂົາແບ້)', date: '20-21 ເມສາ', starFlight: '六白金星入中' },
+                { name: '立夏', sunPalace: '戊申 (申宫 - ຂຸນເຂົາລີງ)', date: '5-6 ພຶດສະພາ', starFlight: '七赤金星入中' },
+                { name: '小满', sunPalace: '己酉 (酉宫 - ຂຸນເຂົາໄກ່)', date: '21-22 ພຶດສະພາ', starFlight: '八白土星入中' },
+                { name: '芒种', sunPalace: '庚戌 (戌宫 - ຂຸນເຂົາໝາ)', date: '5-6 ມິຖຸນາ', starFlight: '九紫火星入中' },
+                { name: '夏至', sunPalace: '辛亥 (亥宫 - ຂຸນເຂົາໝູ)', date: '21-22 ມິຖຸນາ', starFlight: '一白水星逆飞' },
+                { name: '小暑', sunPalace: '壬子 (子宫 - ຂຸນເຂົາໜູ)', date: '7-8 ກໍລະກົດ', starFlight: '二黑土星逆飞' },
+                { name: '大暑', sunPalace: '癸丑 (丑宫 - ຂຸນເຂົາງົວ)', date: '22-23 ກໍລະກົດ', starFlight: '三碧木星逆飞' },
+                { name: '立秋', sunPalace: '甲寅 (寅宫 - ຂຸນເຂົາເສືອ)', date: '7-8 ສິງຫາ', starFlight: '四绿木星逆飞' },
+                { name: '处暑', sunPalace: '乙卯 (卯宫 - ຂຸນເຂົາກະຕ່າຍ)', date: '23-24 ສິງຫາ', starFlight: '五黄土星逆飞' },
+                { name: '白露', sunPalace: '丙辰 (辰宫 - ຂຸນເຂົາມັງກອນ)', date: '7-8 ກັນຍາ', starFlight: '六白金星逆飞' },
+                { name: '秋分', sunPalace: '丁巳 (巳宫 - ຂຸນເຂົາງູ)', date: '22-23 ກັນຍາ', starFlight: '七赤金星逆飞' },
+                { name: '寒露', sunPalace: '戊午 (午宫 - ຂຸນເຂົາມ້າ)', date: '8-9 ຕຸລາ', starFlight: '八白土星逆飞' },
+                { name: '霜降', sunPalace: '己未 (未宫 - ຂຸນເຂົາແບ້)', date: '23-24 ຕຸລາ', starFlight: '九紫火星逆飞' },
+                { name: '立冬', sunPalace: '庚申 (申宫 - ຂຸນເຂົາລີງ)', date: '7-8 ພະຈິກ', starFlight: '一白水星顺飞' },
+                { name: '小雪', sunPalace: '辛酉 (酉宫 - ຂຸນເຂົາໄກ່)', date: '22-23 ພະຈິກ', starFlight: '二黑土星顺飞' },
+                { name: '大雪', sunPalace: '壬戌 (戌宫 - ຂຸນເຂົາໝາ)', date: '7-8 ທັນວາ', starFlight: '三碧木星顺飞' },
+                { name: '冬至', sunPalace: '癸亥 (亥宫 - ຂຸນເຂົາໝູ)', date: '21-22 ທັນວາ', starFlight: '四绿木星顺飞' },
+                { name: '小寒', sunPalace: '甲子 (子宫 - ຂຸນເຂົາໜູ)', date: '5-6 ມັງກອນ', starFlight: '五黄土星顺飞' },
+                { name: '大寒', sunPalace: '乙丑 (丑宫 - ຂຸນເຂົາງົວ)', date: '20-21 ມັງກອນ', starFlight: '六白金星顺飞' }
+            ];
+
+            const cur = SOLAR_TERMS_SUN[idx];
+
+            return {
+                solarTerm: cur.name,
+                dateRange: cur.date,
+                sunPalace: cur.sunPalace,
+                starFlight: cur.starFlight,
+                significance: '☀️ ແສງຕາເວັນສະຖິດ ' + cur.sunPalace + ': ໃນຊ່ວງວັນທີ ' + cur.date + ' ຂຸນເຂົານີ້ຈະໄດ້ຮັບພະລັງງານແສງຕາເວັນສູງສຸດ ເປັນລຶກມຸງຄຸນແກ່ການລົງເສົາເອກ.',
+                canonicalRule: '日躔二十四节气到宫诀: 冬至夏至定顺逆，节气交接太阳临。到山到向大吉课，修造安坟万福迎。'
+            };
+        }
+
+function calculatePingYangWater(facingDeg, waterInAngle, waterOutAngle) {
             const fDeg = (typeof facingDeg === 'number' && !isNaN(facingDeg)) ? ((facingDeg % 360) + 360) % 360 : 180;
             const wIn = (typeof waterInAngle === 'number' && !isNaN(waterInAngle)) ? ((waterInAngle % 360) + 360) % 360 : (fDeg + 60) % 360;
             const wOut = (typeof waterOutAngle === 'number' && !isNaN(waterOutAngle)) ? ((waterOutAngle % 360) + 360) % 360 : (fDeg + 300) % 360;
@@ -5922,6 +6229,16 @@ function calculateQiZhengSiYu(year, month, day, hour) {
                     { key: 'tab_yanqin', icon: '🦅', name: '28ສັດດາວ' },
                     { key: 'tab_you_nian', icon: '🔮', name: '8ດາວລອຍ' },
                     { key: 'tab_celestial_transit', icon: '☀️', name: 'ຕາເວັນຈັນສ່ອງ' },
+                    { key: 'tab_sanhe_water', icon: '🌊', name: 'ນ້ຳ3ສຳນັກ' },
+                    { key: 'tab_xiezi', icon: '💎', name: 'ເຊຍຈື໋ລັບ' },
+                    { key: 'tab_xiantian_water', icon: '☯️', name: 'ນ້ຳກ່ອນຟ້າ' },
+                    { key: 'tab_tianyuan_internal', icon: '🔥', name: 'ເຕົາ&ຂັ້ນໄດ' },
+                    { key: 'tab_luban_cures', icon: '🛡️', name: 'ຫຼູປານແກ້ອາຖັນ' },
+                    { key: 'tab_tianxin_cross', icon: '🎯', name: 'ກາກະບາດຟ້າ' },
+                    { key: 'tab_sanban_gua', icon: '👑', name: '180ປີບໍ່ເສື່ອມ' },
+                    { key: 'tab_anmen_water', icon: '🚪', name: 'ປະຕູຮັບຊັບ' },
+                    { key: 'tab_qizheng_12palaces', icon: '🪐', name: '12ວັງດາວ' },
+                    { key: 'tab_solar_24terms', icon: '☀️', name: 'ຕາເວັນ24ລະດູ' },
                     { key: 'tab_bazhai', icon: '👤', name: 'ດວງກົວະ' },
                     { key: 'tab_qimen', icon: '⚡', name: 'ຄິມຶນ' },
                     { key: 'tab_28stars', icon: '🌌', name: '28ດາວ' },
@@ -9631,6 +9948,265 @@ function calculateQiZhengSiYu(year, month, day, hour) {
                 }
 
                 // Tab 50: True Sun & Moon Planetary Transit (天星弧角太阳太阴到方)
+                
+                // Tab 51: San He 12 Life Stages Water (三合四大局与十二长生水法)
+                else if (activeYangTab === 'tab_sanhe_water') {
+                    const sh = calculateSanHeWater12Stages(actualFacingDegree);
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-blue-950 via-slate-950 to-teal-950 p-3 rounded-xl border border-blue-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-blue-300 font-black flex items-center gap-1.5">🌊 ນ້ຳ 12 ໄລຍະ 4 ສຳນັກ (三合四大局水法)</span>' +
+                                    '<span class="bg-blue-500/20 text-blue-200 px-2 py-0.5 rounded text-[10px] font-bold">' + sh.bureau + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">ຕຳລານ້ຳສູງສຸດຂອງສຳນັກຊານເຫີ: ນ້ຳໄຫຼເຂົ້າຕ້ອງມາຈາກໄລຍະຈະເລີນ (生旺), ນ້ຳໄຫຼອອກຕ້ອງເຂົ້າສູ່ອ່າງເກັບ (墓库).</p>' +
+                            '</div>' +
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-blue-900/50 flex flex-col gap-1.5 text-xs">' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    '<b class="text-emerald-400">💧 ນ້ຳໄຫຼເຂົ້າ (来水):</b> ' + sh.waterInStage + '<br>' +
+                                    '<span class="text-emerald-300 font-bold">' + sh.inVerdict + '</span>' +
+                                '</div>' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    '<b class="text-cyan-400">🌊 ນ້ຳໄຫຼອອກ (去水):</b> ' + sh.waterOutStage + '<br>' +
+                                    '<span class="text-cyan-300 font-bold">' + sh.outVerdict + '</span>' +
+                                '</div>' +
+                                '<div class="text-[9px] text-slate-500 font-mono italic">' + sh.classicalFormula + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // Tab 52: Yang Gong Xie Zi Fa (杨公玄空些子法)
+                else if (activeYangTab === 'tab_xiezi') {
+                    const xz = calculateXieZiFa(actualFacingDegree);
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-emerald-950 via-slate-950 to-indigo-950 p-3 rounded-xl border border-emerald-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-emerald-300 font-black flex items-center gap-1.5">💎 ລະຫັດລັບສະຫວັນ ເຊຍຈື໋ (杨公玄空些子法)</span>' +
+                                    '<span class="px-2 py-0.5 rounded text-[10px] font-bold border ' + xz.badge + '">' + xz.xieZiStatus + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">ຕຳລາລັບສຸດຍອດ: “天机安在些子间，些子翻得起，富贵无穷已”.</p>' +
+                            '</div>' +
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-emerald-900/50 flex flex-col gap-1.5 text-xs">' +
+                                '<div class="text-[11px] text-emerald-300 leading-relaxed bg-slate-900/80 p-2 rounded-lg border border-slate-800">' +
+                                    xz.verdict +
+                                '</div>' +
+                                '<div class="text-[11px] text-amber-300 leading-relaxed bg-amber-950/40 p-2 rounded-lg border border-amber-800/40">' +
+                                    '🛠️ <b>ວິທີກະຕຸ້ນ:</b> ' + xz.remedy +
+                                '</div>' +
+                                '<div class="text-[9px] text-slate-500 font-mono italic">' + xz.classicalVerse + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // Tab 53: Early & Later Heaven Water (乾坤国宝·先天后天水法)
+                else if (activeYangTab === 'tab_xiantian_water') {
+                    const xt = calculateXianTianHouTianWater(actualFacingDegree);
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-amber-950 via-slate-950 to-yellow-950 p-3 rounded-xl border border-amber-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-amber-300 font-black flex items-center gap-1.5">☯️ ສາຍນ້ຳກ່ອນຟ້າ ແລະ ຫຼັງຟ້າ (乾坤国宝水法)</span>' +
+                                    '<span class="bg-amber-500/20 text-amber-200 px-2 py-0.5 rounded text-[10px] font-bold">' + xt.palace + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">ນ້ຳກ່ອນຟ້າຄຸ້ມຄອງສຸຂະພາບແລະລູກຫຼານ, ນ້ຳຫຼັງຟ້າຄຸ້ມຄອງເງິນຄຳແລະທຸລະກິດ.</p>' +
+                            '</div>' +
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-amber-900/50 flex flex-col gap-1.5 text-xs">' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    '<b class="text-emerald-400">🌱 ນ້ຳກ່ອນຟ້າ (先天水):</b> ' + xt.xianTianWater +
+                                '</div>' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    '<b class="text-yellow-400">💰 ນ້ຳຫຼັງຟ້າ (后天水):</b> ' + xt.houTianWater +
+                                '</div>' +
+                                '<div class="bg-rose-950/40 p-2 rounded-lg border border-rose-800/40 text-[11px] text-rose-300">' +
+                                    xt.tianJieWaterSha +
+                                '</div>' +
+                                '<div class="text-[9px] text-slate-500 font-mono italic">' + xt.classicalRhyme + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // Tab 54: Tian Yuan Wu Ge Internal Layout (蒋大鸿《天元五歌》)
+                else if (activeYangTab === 'tab_tianyuan_internal') {
+                    const ty = calculateTianYuanWuGeInternal(actualSittingDegree);
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-orange-950 via-slate-950 to-red-950 p-3 rounded-xl border border-orange-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-orange-300 font-black flex items-center gap-1.5">🔥 ວິຊາເຕົາໄຟ, ປະຕູ, ຂັ້ນໄດ (天元五歌阳宅篇)</span>' +
+                                    '<span class="bg-orange-500/20 text-orange-200 px-2 py-0.5 rounded text-[10px] font-bold">ກົດເກນພາຍໃນ</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">ຕຳລາພາຍໃນບ້ານຂອງປໍຣະມາຈານ ຈ່ຽງຕ້າຫົງ: ຫຼັກການນັ່ງທິດຮ້າຍ-ຫັນໜ້າຫາທິດດີ (压凶向吉).</p>' +
+                            '</div>' +
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-orange-900/50 flex flex-col gap-1.5 text-xs">' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    ty.stoveRule +
+                                '</div>' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    ty.doorRule +
+                                '</div>' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    ty.stairsRule +
+                                '</div>' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    ty.toiletRule +
+                                '</div>' +
+                                '<div class="text-[9px] text-slate-500 font-mono italic">' + ty.masterAdvice + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // Tab 55: Lu Ban Talismans & Cures (鲁班经镇宅秘法)
+                else if (activeYangTab === 'tab_luban_cures') {
+                    const lb = calculateLuBanZhenZhai('t_junction');
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-red-950 via-slate-950 to-amber-950 p-3 rounded-xl border border-red-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-red-300 font-black flex items-center gap-1.5">🛡️ ວິຊາແກ້ອາຖັນ ຄຳພີຫຼູປານ (鲁班经镇宅)</span>' +
+                                    '<span class="bg-red-500/20 text-red-200 px-2 py-0.5 rounded text-[10px] font-bold">' + lb.cureItem + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">ວິຊາຊ່າງໄມ້ຫຼູປານ: ວັດຖຸມຸງຄຸນແກ້ທາງສາມແພ່ງ, ມຸມແຫຼມ, ດາວພະຍາດ 2 ແລະ 5.</p>' +
+                            '</div>' +
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-red-900/50 flex flex-col gap-1.5 text-xs">' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    '<b class="text-rose-400">⚠️ ອາຖັນທີ່ແກ້ໄຂ:</b> ' + lb.targetProblem +
+                                '</div>' +
+                                '<div class="bg-amber-950/40 p-2 rounded-lg border border-amber-800/40 text-[11px] text-amber-200">' +
+                                    '🛠️ <b>ວິທີຕິດຕັ້ງ/ນຳໃຊ້:</b> ' + lb.howToUse +
+                                '</div>' +
+                                '<div class="text-[9px] text-slate-500 font-mono italic">' + lb.classicQuote + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // Tab 56: Tian Xin Shi Dao Cross (天心十道与四应砂水)
+                else if (activeYangTab === 'tab_tianxin_cross') {
+                    const tx = calculateTianXinShiDao(actualFacingDegree);
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-teal-950 via-slate-950 to-indigo-950 p-3 rounded-xl border border-teal-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-teal-300 font-black flex items-center gap-1.5">🎯 ກາກະບາດສະຫວັນ 4 ທິດ (天心十道)</span>' +
+                                    '<span class="bg-teal-500/20 text-teal-200 px-2 py-0.5 rounded text-[10px] font-bold">ແກນກາງບ້ານ</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">ກວດສອບຄວາມສົມດຸນຂອງ 4 ສັດເທບ: ມັງກອນຂຽວ, ເສືອຂາວ, ຫົງໄຟ, ແລະ ເຕົ່າດຳ.</p>' +
+                            '</div>' +
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-teal-900/50 flex flex-col gap-1.5 text-xs">' +
+                                '<div class="grid grid-cols-1 md:grid-cols-2 gap-1.5 text-[10px]">' +
+                                    '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800">' + tx.frontZhuQue + '</div>' +
+                                    '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800">' + tx.backXuanWu + '</div>' +
+                                    '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800">' + tx.leftQingLong + '</div>' +
+                                    '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800">' + tx.rightBaiHu + '</div>' +
+                                '</div>' +
+                                '<div class="text-[11px] text-emerald-400 font-bold">' + tx.verdict + '</div>' +
+                                '<div class="text-[9px] text-slate-500 font-mono italic">' + tx.classicalPrinciple + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // Tab 57: Parents Three Trigrams (地理辨正之父母三般卦)
+                else if (activeYangTab === 'tab_sanban_gua') {
+                    const sb = calculateFuMuSanBanGua(9);
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-purple-950 via-slate-950 to-pink-950 p-3 rounded-xl border border-purple-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-purple-300 font-black flex items-center gap-1.5">👑 ສາມກຸ່ມພໍ່ແມ່ 180 ປີ (父母三般卦)</span>' +
+                                    '<span class="bg-purple-500/20 text-purple-200 px-2 py-0.5 rounded text-[10px] font-bold">三元不败</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">ຄຳພີຕີ້ລີປຽນເຈີ້ງ: ບ້ານທີ່ໄດ້ຮູບດວງພໍ່ແມ່ສາມວັງ ຈະຮັ່ງມີຍາວນານ 180 ປີ ບໍ່ມີວັນເສື່ອມໂຊມ.</p>' +
+                            '</div>' +
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-purple-900/50 flex flex-col gap-1.5 text-xs">' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    '<b class="text-purple-300">ກຸ່ມດາວພໍ່ແມ່:</b> ' + sb.parentsTrigrams + '<br>' +
+                                    '<b class="text-pink-300">ກຸ່ມດາວລຽນແຖວ:</b> ' + sb.consecutiveTrigrams +
+                                '</div>' +
+                                '<div class="text-[11px] text-emerald-300 bg-emerald-950/40 p-2 rounded-lg border border-emerald-800/40 leading-relaxed">' +
+                                    sb.effect +
+                                '</div>' +
+                                '<div class="text-[9px] text-slate-500 font-mono italic">' + sb.classicalAuthority + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // Tab 58: Nine Stars Door Placement (九星翻卦安门催财)
+                else if (activeYangTab === 'tab_anmen_water') {
+                    const am = calculateAnMenCuiCai(actualSittingDegree);
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-emerald-950 via-slate-950 to-cyan-950 p-3 rounded-xl border border-emerald-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-emerald-300 font-black flex items-center gap-1.5">🚪 ວິຊາເປີດປະຕູຮັບຊັບ (九星翻卦安门法)</span>' +
+                                    '<span class="bg-emerald-500/20 text-emerald-200 px-2 py-0.5 rounded text-[10px] font-bold">' + am.sittingMountain + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">ປ່ຽນວັງ 9 ດາວຫາຕຳແໜ່ງທຳລາງ (贪狼) ແລະ ຈື່ເໝີນ (巨门) ເພື່ອຕັ້ງປະຕູໜ້າຮ້ານຄ້າ.</p>' +
+                            '</div>' +
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-emerald-900/50 flex flex-col gap-1.5 text-xs">' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    am.tanLangDoor +
+                                '</div>' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    am.juMenDoor +
+                                '</div>' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    am.wuQuDoor +
+                                '</div>' +
+                                '<div class="text-[11px] text-emerald-400 font-bold">' + am.verdict + '</div>' +
+                                '<div class="text-[9px] text-slate-500 font-mono italic">' + am.classicalRule + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // Tab 59: Qi Zheng 12 Palaces (七政四余十二宫)
+                else if (activeYangTab === 'tab_qizheng_12palaces') {
+                    const qz12 = calculateQiZheng12Palaces(selectedBaziYear, selectedBaziMonth, selectedBaziDay, selectedBaziHour);
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-indigo-950 via-slate-950 to-blue-950 p-3 rounded-xl border border-indigo-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-indigo-300 font-black flex items-center gap-1.5">🪐 7 ດາວ 4 ເງົາ ສະຖິດ 12 ວັງ (七政十二宫)</span>' +
+                                    '<span class="bg-indigo-500/20 text-indigo-200 px-2 py-0.5 rounded text-[10px] font-bold">' + qz12.dominantPalace + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">ຕຳລາໂຫລາສາດດາລາສາດ ກົ່ວເຫຼົາຊິງຈົງ: ດາວເຄາະສະຖິດ 12 ວັງຊີວິດ.</p>' +
+                            '</div>' +
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-indigo-900/50 flex flex-col gap-1.5 text-xs">' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    '<b>ດາວປະຈຳວັງ:</b> <span class="text-indigo-300 font-bold">' + qz12.governingPlanet + '</span> (' + qz12.dominantPalace + ')' +
+                                '</div>' +
+                                '<div class="text-[11px] text-cyan-200 bg-cyan-950/40 p-2 rounded-lg border border-cyan-800/40 leading-relaxed">' +
+                                    qz12.astralBlessing +
+                                '</div>' +
+                                '<div class="text-[9px] text-slate-500 font-mono italic">' + qz12.classicalOrigin + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // Tab 60: 24 Solar Terms Sun Palace (二十四节气太阳到宫)
+                else if (activeYangTab === 'tab_solar_24terms') {
+                    const sp = calculate24SolarTermSunPalace(new Date().getMonth() * 2);
+                    tabBody =
+                        '<div class="flex flex-col gap-2">' +
+                            '<div class="bg-gradient-to-r from-amber-950 via-slate-950 to-yellow-950 p-3 rounded-xl border border-amber-500/40 shadow-sm">' +
+                                '<div class="flex items-center justify-between text-xs">' +
+                                    '<span class="text-amber-300 font-black flex items-center gap-1.5">☀️ ຕາເວັນສະຖິດ 12 ລາສີ 24 ລະດູ (太阳到宫)</span>' +
+                                    '<span class="bg-amber-500/20 text-amber-200 px-2 py-0.5 rounded text-[10px] font-bold">' + sp.solarTerm + '</span>' +
+                                '</div>' +
+                                '<p class="text-[10px] text-slate-300 mt-1 leading-relaxed">ວິຊາດາລາສາດ: ແສງຕາເວັນແທ້ໂຄຈອນຮອດຂຸນເຂົາໃດ ຈະດັບລ້າງສິ່ງອັບມຸງຄຸນທັນທີ.</p>' +
+                            '</div>' +
+                            '<div class="bg-slate-950 p-3 rounded-xl border border-amber-900/50 flex flex-col gap-1.5 text-xs">' +
+                                '<div class="bg-slate-900 p-2 rounded-lg border border-slate-800 text-[11px]">' +
+                                    '<b class="text-amber-300">ວັງທີ່ແສງຕາເວັນສະຖິດ:</b> ' + sp.sunPalace + ' (' + sp.dateRange + ')<br>' +
+                                    '<b class="text-yellow-300">ການບິນຂອງດາວ:</b> ' + sp.starFlight +
+                                '</div>' +
+                                '<div class="text-[11px] text-amber-200 bg-amber-950/40 p-2 rounded-lg border border-amber-800/40 leading-relaxed">' +
+                                    sp.significance +
+                                '</div>' +
+                                '<div class="text-[9px] text-slate-500 font-mono italic">' + sp.canonicalRule + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
                 else if (activeYangTab === 'tab_celestial_transit') {
                     const ct = calculateTrueSolarMoonTransit(actualSittingDegree);
                     tabBody =
