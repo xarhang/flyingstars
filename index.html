@@ -475,26 +475,15 @@
                     </div>
                 </div>
 
-                <!-- Inputs: Day, Month, Year, Hour -->
-                <div class="grid grid-cols-4 gap-1.5">
-                    <div>
-                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ວັນ:</span>
-                        <select id="dtBirthDaySelect" onchange="setUserBirthProfile(null, null, this.value, null, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded px-1.5 py-1 text-white text-[11px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
-                        </select>
+                <!-- Inputs: Native Date Picker + Hour -->
+                <div class="grid grid-cols-12 gap-1.5 items-center">
+                    <div class="col-span-7">
+                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">📅 ວັນທີ-ເດືອນ-ປີເກີດ (Date):</span>
+                        <input type="date" id="dtBirthDatePicker" min="1924-01-01" max="2043-12-31" onchange="onBirthDatePicked(this.value)" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-2.5 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 cursor-pointer [color-scheme:dark]">
                     </div>
-                    <div>
-                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ເດືອນ:</span>
-                        <select id="dtBirthMonthSelect" onchange="setUserBirthProfile(null, this.value, null, null, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded px-1.5 py-1 text-white text-[11px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
-                        </select>
-                    </div>
-                    <div>
-                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ປີ ຄ.ສ.:</span>
-                        <select id="dtBirthYearSelect" onchange="setUserBirthProfile(this.value, null, null, null, null)" class="w-full bg-slate-900 border border-amber-500/40 rounded px-1.5 py-1 text-amber-300 text-[11px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
-                        </select>
-                    </div>
-                    <div>
-                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ຍາມເກີດ:</span>
-                        <select id="dtBirthHourSelect" onchange="setUserBirthProfile(null, null, null, this.value, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded px-1 py-1 text-white text-[10px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
+                    <div class="col-span-5">
+                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">⏰ ຍາມເກີດ:</span>
+                        <select id="dtBirthHourSelect" onchange="setUserBirthProfile(null, null, null, this.value, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded-lg px-2 py-1 text-white text-[11px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
                         </select>
                     </div>
                 </div>
@@ -820,26 +809,15 @@
                 </div>
             </div>
 
-            <!-- Inputs: Day, Month, Year, Hour -->
-            <div class="grid grid-cols-4 gap-1">
-                <div>
-                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ວັນ:</span>
-                    <select id="mobBirthDaySelect" onchange="setUserBirthProfile(null, null, this.value, null, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded px-1 py-1 text-white text-[10px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
-                    </select>
+            <!-- Inputs: Native Date Picker + Hour -->
+            <div class="grid grid-cols-12 gap-1.5 items-center">
+                <div class="col-span-7">
+                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">📅 ວັນທີ-ເດືອນ-ປີເກີດ (Date):</span>
+                    <input type="date" id="mobBirthDatePicker" min="1924-01-01" max="2043-12-31" onchange="onBirthDatePicked(this.value)" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-2 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 cursor-pointer [color-scheme:dark]">
                 </div>
-                <div>
-                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ເດືອນ:</span>
-                    <select id="mobBirthMonthSelect" onchange="setUserBirthProfile(null, this.value, null, null, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded px-1 py-1 text-white text-[10px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
-                    </select>
-                </div>
-                <div>
-                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ປີ ຄ.ສ.:</span>
-                    <select id="mobBirthYearSelect" onchange="setUserBirthProfile(this.value, null, null, null, null)" class="w-full bg-slate-900 border border-amber-500/40 rounded px-1 py-1 text-amber-300 text-[10px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
-                    </select>
-                </div>
-                <div>
-                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ຍາມ:</span>
-                    <select id="mobBirthHourSelect" onchange="setUserBirthProfile(null, null, null, this.value, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded px-0.5 py-1 text-white text-[9px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
+                <div class="col-span-5">
+                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">⏰ ຍາມເກີດ:</span>
+                    <select id="mobBirthHourSelect" onchange="setUserBirthProfile(null, null, null, this.value, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded-lg px-1.5 py-1 text-white text-[10px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
                     </select>
                 </div>
             </div>
@@ -2149,15 +2127,30 @@
             setUserBirthProfile(yr, null, null, null, gender);
         }
 
-        function updateBirthProfileUI() {
-            const dayEls = [document.getElementById('mobBirthDaySelect'), document.getElementById('dtBirthDaySelect')];
-            const monthEls = [document.getElementById('mobBirthMonthSelect'), document.getElementById('dtBirthMonthSelect')];
-            const yearEls = [document.getElementById('mobBirthYearSelect'), document.getElementById('dtBirthYearSelect')];
-            const hourEls = [document.getElementById('mobBirthHourSelect'), document.getElementById('dtBirthHourSelect')];
+        function onBirthDatePicked(dateStr) {
+            if (!dateStr) return;
+            const parts = dateStr.split('-');
+            if (parts.length === 3) {
+                const y = parseInt(parts[0], 10);
+                const m = parseInt(parts[1], 10);
+                const d = parseInt(parts[2], 10);
+                if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+                    setUserBirthProfile(y, m, d, null, null);
+                }
+            }
+        }
 
-            dayEls.forEach(el => { if (el) el.value = selectedBaziDay; });
-            monthEls.forEach(el => { if (el) el.value = selectedBaziMonth; });
-            yearEls.forEach(el => { if (el) el.value = selectedBaziYear; });
+        function updateBirthProfileUI() {
+            const dateStr = selectedBaziYear + '-' +
+                String(selectedBaziMonth).padStart(2, '0') + '-' +
+                String(selectedBaziDay).padStart(2, '0');
+
+            const dateInputs = [document.getElementById('mobBirthDatePicker'), document.getElementById('dtBirthDatePicker')];
+            dateInputs.forEach(input => {
+                if (input && input.value !== dateStr) input.value = dateStr;
+            });
+
+            const hourEls = [document.getElementById('mobBirthHourSelect'), document.getElementById('dtBirthHourSelect')];
             hourEls.forEach(el => { if (el) el.value = Math.floor(selectedBaziHour / 2) * 2; });
 
             // Gender styling
@@ -2203,32 +2196,7 @@
         }
 
         function initBirthProfileWidgets() {
-            // Day options (1-31)
-            let dayHtml = '';
-            for (let d = 1; d <= 31; d++) {
-                dayHtml += '<option value="' + d + '">' + d + '</option>';
-            }
-
-            // Month options (1-12)
-            const monthNames = ['ມັງກອນ (1)', 'ກຸມພາ (2)', 'ມີນາ (3)', 'ເມສາ (4)', 'ພຶດສະພາ (5)', 'ມິຖຸນາ (6)', 'ກໍລະກົດ (7)', 'ສິງຫາ (8)', 'ກັນຍາ (9)', 'ຕຸລາ (10)', 'ພະຈິກ (11)', 'ທັນວາ (12)'];
-            let monthHtml = '';
-            for (let m = 1; m <= 12; m++) {
-                monthHtml += '<option value="' + m + '">' + monthNames[m - 1] + '</option>';
-            }
-
-            // Year options (2043 down to 1924)
-            const zodiacs = ['ໜູ', 'ງົວ', 'ເສືອ', 'ກະຕ່າຍ', 'ມັງກອນ', 'ງູ', 'ມ້າ', 'ແພະ', 'ລິງ', 'ໄກ່', 'ໝາ', 'ໝູ'];
-            const stems = ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'];
-            const branches = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
-            let yearHtml = '';
-            for (let y = 2043; y >= 1924; y--) {
-                const sIdx = ((y - 4) % 10 + 10) % 10;
-                const bIdx = ((y - 4) % 12 + 12) % 12;
-                const label = y + ' · ' + stems[sIdx] + branches[bIdx] + ' (ປີ' + zodiacs[bIdx] + ')';
-                yearHtml += '<option value="' + y + '">' + label + '</option>';
-            }
-
-            // Hour options
+            // Hour options (12 Chinese double hours)
             let hourHtml = '';
             const dhList = [
                 { idx: 0, name: 'ຍາມໜູ (子)', time: '23:00 - 01:00' },
@@ -2248,14 +2216,7 @@
                 hourHtml += '<option value="' + (dh.idx * 2) + '">' + dh.name + ' (' + dh.time + ')</option>';
             });
 
-            const dayEls = [document.getElementById('mobBirthDaySelect'), document.getElementById('dtBirthDaySelect')];
-            const monthEls = [document.getElementById('mobBirthMonthSelect'), document.getElementById('dtBirthMonthSelect')];
-            const yearEls = [document.getElementById('mobBirthYearSelect'), document.getElementById('dtBirthYearSelect')];
             const hourEls = [document.getElementById('mobBirthHourSelect'), document.getElementById('dtBirthHourSelect')];
-
-            dayEls.forEach(el => { if (el) el.innerHTML = dayHtml; });
-            monthEls.forEach(el => { if (el) el.innerHTML = monthHtml; });
-            yearEls.forEach(el => { if (el) el.innerHTML = yearHtml; });
             hourEls.forEach(el => { if (el) el.innerHTML = hourHtml; });
 
             updateBirthProfileUI();
