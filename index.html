@@ -610,6 +610,12 @@
             <div id="mobileHudBestSpotBadge" class="hidden items-center justify-center gap-1.5 bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 px-2.5 py-0.5 rounded-full text-[9px] font-black shadow-md animate-pulse">
                 <span id="mobileHudBestSpotText">ວັງໂຊກລາບສູງສຸດ</span>
             </div>
+
+            <!-- Row 3: Live Personal Ming Gua (ດວງກົວະປະຈຳຕົວ & ທິດມຸງຄຸນສົດ) -->
+            <div id="mobileHudGuaBadge" class="flex items-center justify-between text-[9px] font-mono px-2 py-0.5 rounded-lg border transition-all bg-slate-900/90 border-purple-500/30">
+                <span id="mobileHudGuaName" class="text-purple-300 font-bold truncate">👤 ໝິງກວ້າ: 坎1 (ນ້ຳ) · ຕາເວັນອອກ</span>
+                <span id="mobileHudGuaDirection" class="text-emerald-300 font-bold shrink-0 ml-1">生氣 ໂຊກລາບ</span>
+            </div>
         </div>
     </div>
 
@@ -11727,6 +11733,59 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
                         mobHudBadge.className = "hidden";
                     }
                 }
+            }
+
+            // Update Mobile Live Ming Gua Direction Badge (ສະແດງດວງກົວະສົດເທິງມືຖື)
+            const mobGuaBadge = document.getElementById('mobileHudGuaBadge');
+            const mobGuaName = document.getElementById('mobileHudGuaName');
+            const mobGuaDirection = document.getElementById('mobileHudGuaDirection');
+
+            if (mobGuaBadge && mobGuaName && mobGuaDirection && typeof calculateMingGua === 'function') {
+                const userGua = calculateMingGua(userBirthYear, userGender);
+                const curBaguaCode = chart.faceInfo.pal.baguaCode;
+
+                let dirName = '祸害 (ຮົວຮ້າຍ)';
+                let dirColor = 'text-slate-400';
+                let dirBg = 'bg-slate-900 border-purple-500/30';
+
+                if (userGua.shengQi === curBaguaCode) {
+                    dirName = '✨ 生氣 (ມະຫາໂຊກ)';
+                    dirColor = 'text-emerald-300';
+                    dirBg = 'bg-emerald-950/90 border-emerald-500/60 shadow-sm';
+                } else if (userGua.tianYi === curBaguaCode) {
+                    dirName = '🏥 天醫 (ໝໍເທບ/ສຸຂະພາບ)';
+                    dirColor = 'text-teal-300';
+                    dirBg = 'bg-teal-950/90 border-teal-500/60 shadow-sm';
+                } else if (userGua.yanNian === curBaguaCode) {
+                    dirName = '💖 延年 (ອາຍຸຍືນ/ຮັກ)';
+                    dirColor = 'text-cyan-300';
+                    dirBg = 'bg-cyan-950/90 border-cyan-500/60 shadow-sm';
+                } else if (userGua.fuWei === curBaguaCode) {
+                    dirName = '🧘 伏位 (ຄວາມສະຫງົບ)';
+                    dirColor = 'text-blue-300';
+                    dirBg = 'bg-blue-950/90 border-blue-500/60 shadow-sm';
+                } else if (userGua.jueMing === curBaguaCode) {
+                    dirName = '⚠️ 絕命 (ດັບສູນ/ອັນຕະລາຍ)';
+                    dirColor = 'text-rose-400';
+                    dirBg = 'bg-rose-950/90 border-rose-500/60';
+                } else if (userGua.wuGui === curBaguaCode) {
+                    dirName = '🔥 五鬼 (ຜີຫ້າຕົນ/ຄະດີ)';
+                    dirColor = 'text-rose-300';
+                    dirBg = 'bg-rose-950/80 border-rose-600/50';
+                } else if (userGua.liuSha === curBaguaCode) {
+                    dirName = '⚡ 六煞 (ຫົກພິດ/ເສຍຊັບ)';
+                    dirColor = 'text-amber-300';
+                    dirBg = 'bg-amber-950/80 border-amber-600/50';
+                } else {
+                    dirName = '⚠️ 禍害 (ອຸປະສັກ/ນິນທາ)';
+                    dirColor = 'text-slate-300';
+                    dirBg = 'bg-slate-900/90 border-slate-700/60';
+                }
+
+                mobGuaName.innerHTML = '👤 <b>' + userGua.name.split(' ')[0] + ' (' + userGua.trigram + userGua.guaNumber + ')</b> · ' + userGua.groupName.split(' ')[0];
+                mobGuaDirection.className = 'font-bold shrink-0 ml-1 ' + dirColor;
+                mobGuaDirection.textContent = dirName;
+                mobGuaBadge.className = 'flex items-center justify-between text-[9px] font-mono px-2 py-0.5 rounded-lg border transition-all ' + dirBg;
             }
 
             // Performance Gate: Skip heavy drawer HTML rendering if drawer is closed on mobile
