@@ -462,6 +462,48 @@
                 </div>
             </div>
 
+            <!-- User Birth Profile Widget on Desktop -->
+            <div id="desktopBirthProfileWidget" class="bg-slate-950 p-2.5 rounded-xl border border-purple-500/30 flex flex-col gap-1.5 shadow-sm">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-purple-300 flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-purple-400 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        <span>ວັນເດືອນປີເກີດ (ດວງຊາຕາ):</span>
+                    </span>
+                    <div class="flex items-center gap-1">
+                        <button type="button" id="dtBtnGenderMale" onclick="setUserBirthProfile(null, null, null, null, 'male')" class="px-2 py-0.5 rounded text-[10px] font-bold transition bg-blue-600 text-white">ຊາຍ 👨</button>
+                        <button type="button" id="dtBtnGenderFemale" onclick="setUserBirthProfile(null, null, null, null, 'female')" class="px-2 py-0.5 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white">ຍິງ 👩</button>
+                    </div>
+                </div>
+
+                <!-- Inputs: Day, Month, Year, Hour -->
+                <div class="grid grid-cols-4 gap-1.5">
+                    <div>
+                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ວັນ:</span>
+                        <select id="dtBirthDaySelect" onchange="setUserBirthProfile(null, null, this.value, null, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded px-1.5 py-1 text-white text-[11px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
+                        </select>
+                    </div>
+                    <div>
+                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ເດືອນ:</span>
+                        <select id="dtBirthMonthSelect" onchange="setUserBirthProfile(null, this.value, null, null, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded px-1.5 py-1 text-white text-[11px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
+                        </select>
+                    </div>
+                    <div>
+                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ປີ ຄ.ສ.:</span>
+                        <select id="dtBirthYearSelect" onchange="setUserBirthProfile(this.value, null, null, null, null)" class="w-full bg-slate-900 border border-amber-500/40 rounded px-1.5 py-1 text-amber-300 text-[11px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
+                        </select>
+                    </div>
+                    <div>
+                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ຍາມເກີດ:</span>
+                        <select id="dtBirthHourSelect" onchange="setUserBirthProfile(null, null, null, this.value, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded px-1 py-1 text-white text-[10px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Natal Summary Pill -->
+                <div id="dtBirthSummaryPill" class="bg-purple-950/40 p-2 rounded-lg border border-purple-500/20 text-[10px] text-slate-300 flex flex-col gap-0.5">
+                </div>
+            </div>
+
             <!-- Dynamic Live Prediction Content -->
             <div id="desktopPredictionContent" class="flex flex-col gap-2 text-xs">
                 <!-- Populated dynamically via JS -->
@@ -763,6 +805,48 @@
                 <option value="2">ຍຸກ 2 (1884 - 1903)</option>
                 <option value="1">ຍຸກ 1 (1864 - 1883)</option>
             </select>
+        </div>
+
+        <!-- User Birth Profile Widget (ວັນເດືອນປີເກີດ & ດວງຊາຕາ) -->
+        <div id="mobBirthProfileWidget" class="bg-slate-950 p-2 rounded-xl border border-purple-500/30 flex flex-col gap-1.5 shadow-sm">
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-purple-300 flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-purple-400 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    <span>ວັນເດືອນປີເກີດ (ດວງຊາຕາ):</span>
+                </span>
+                <div class="flex items-center gap-1">
+                    <button type="button" id="mobBtnGenderMale" onclick="setUserBirthProfile(null, null, null, null, 'male')" class="px-2 py-0.5 rounded text-[10px] font-bold transition bg-blue-600 text-white">ຊາຍ 👨</button>
+                    <button type="button" id="mobBtnGenderFemale" onclick="setUserBirthProfile(null, null, null, null, 'female')" class="px-2 py-0.5 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white">ຍິງ 👩</button>
+                </div>
+            </div>
+
+            <!-- Inputs: Day, Month, Year, Hour -->
+            <div class="grid grid-cols-4 gap-1">
+                <div>
+                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ວັນ:</span>
+                    <select id="mobBirthDaySelect" onchange="setUserBirthProfile(null, null, this.value, null, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded px-1 py-1 text-white text-[10px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
+                    </select>
+                </div>
+                <div>
+                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ເດືອນ:</span>
+                    <select id="mobBirthMonthSelect" onchange="setUserBirthProfile(null, this.value, null, null, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded px-1 py-1 text-white text-[10px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
+                    </select>
+                </div>
+                <div>
+                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ປີ ຄ.ສ.:</span>
+                    <select id="mobBirthYearSelect" onchange="setUserBirthProfile(this.value, null, null, null, null)" class="w-full bg-slate-900 border border-amber-500/40 rounded px-1 py-1 text-amber-300 text-[10px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
+                    </select>
+                </div>
+                <div>
+                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">ຍາມ:</span>
+                    <select id="mobBirthHourSelect" onchange="setUserBirthProfile(null, null, null, this.value, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded px-0.5 py-1 text-white text-[9px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
+                    </select>
+                </div>
+            </div>
+
+            <!-- Natal Summary Pill -->
+            <div id="mobBirthSummaryPill" class="bg-purple-950/40 p-1.5 rounded-lg border border-purple-500/20 text-[10px] text-slate-300 flex flex-col gap-0.5">
+            </div>
         </div>
 
         <!-- Dynamic Live Prediction Content on Mobile -->
@@ -2037,12 +2121,144 @@
         let userBirthYear = 1990;
         let userGender = 'male'; // 'male' or 'female'
 
-        function setMingGuaProfile(yr, gender) {
-            userBirthYear = parseInt(yr, 10);
-            userGender = gender;
+        function setUserBirthProfile(year, month, day, hour, gender) {
+            if (year !== null && year !== undefined) {
+                selectedBaziYear = parseInt(year, 10);
+                userBirthYear = selectedBaziYear;
+            }
+            if (month !== null && month !== undefined) {
+                selectedBaziMonth = parseInt(month, 10);
+            }
+            if (day !== null && day !== undefined) {
+                selectedBaziDay = parseInt(day, 10);
+            }
+            if (hour !== null && hour !== undefined) {
+                selectedBaziHour = parseInt(hour, 10);
+            }
+            if (gender !== null && gender !== undefined) {
+                userGender = gender;
+            }
+            updateBirthProfileUI();
+
             const normRot = ((currentRotation % 360) + 360) % 360;
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
             updateLivePrediction(topCompassDeg, true);
+        }
+
+        function setMingGuaProfile(yr, gender) {
+            setUserBirthProfile(yr, null, null, null, gender);
+        }
+
+        function updateBirthProfileUI() {
+            const dayEls = [document.getElementById('mobBirthDaySelect'), document.getElementById('dtBirthDaySelect')];
+            const monthEls = [document.getElementById('mobBirthMonthSelect'), document.getElementById('dtBirthMonthSelect')];
+            const yearEls = [document.getElementById('mobBirthYearSelect'), document.getElementById('dtBirthYearSelect')];
+            const hourEls = [document.getElementById('mobBirthHourSelect'), document.getElementById('dtBirthHourSelect')];
+
+            dayEls.forEach(el => { if (el) el.value = selectedBaziDay; });
+            monthEls.forEach(el => { if (el) el.value = selectedBaziMonth; });
+            yearEls.forEach(el => { if (el) el.value = selectedBaziYear; });
+            hourEls.forEach(el => { if (el) el.value = Math.floor(selectedBaziHour / 2) * 2; });
+
+            // Gender styling
+            const maleBtns = [document.getElementById('mobBtnGenderMale'), document.getElementById('dtBtnGenderMale')];
+            const femaleBtns = [document.getElementById('mobBtnGenderFemale'), document.getElementById('dtBtnGenderFemale')];
+
+            maleBtns.forEach(btn => {
+                if (!btn) return;
+                btn.className = (userGender === 'male')
+                    ? 'px-2 py-0.5 rounded text-[10px] font-bold transition bg-blue-600 text-white shadow-sm ring-1 ring-blue-300'
+                    : 'px-2 py-0.5 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white';
+            });
+
+            femaleBtns.forEach(btn => {
+                if (!btn) return;
+                btn.className = (userGender === 'female')
+                    ? 'px-2 py-0.5 rounded text-[10px] font-bold transition bg-pink-600 text-white shadow-sm ring-1 ring-pink-300'
+                    : 'px-2 py-0.5 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white';
+            });
+
+            // Compute Ming Gua & BaZi
+            if (typeof calculateMingGua === 'function' && typeof calculateBaZi4Pillars === 'function') {
+                const gua = calculateMingGua(userBirthYear, userGender);
+                const bazi = calculateBaZi4Pillars(selectedBaziYear, selectedBaziMonth, selectedBaziDay, selectedBaziHour);
+
+                const summaryHtml =
+                    '<div class="flex items-center justify-between text-[10px] leading-tight">' +
+                        '<div><span class="text-amber-300 font-bold">🌟 ໝິງກວ້າ (Ming Gua):</span> ' + gua.name + ' · ' + gua.elem + ' · <span class="text-emerald-300 font-bold">' + gua.groupName + '</span></div>' +
+                        '<span class="text-slate-400 font-mono text-[9px]">' + (userGender === 'male' ? '👨 ຊາຍ' : '👩 ຍິງ') + '</span>' +
+                    '</div>' +
+                    '<div class="flex items-center justify-between text-[10px] border-t border-purple-500/20 pt-1 mt-0.5">' +
+                        '<div><span class="text-purple-300 font-bold">📿 ປາຈື (BaZi):</span> ດິດຖີ <b class="text-white">' + bazi.dayMaster + '</b> · ຍົງສິ່ນ: <b class="text-emerald-300">' + bazi.yongShen + '</b> · ຫຼີກລ່ຽງ: <b class="text-rose-300">' + bazi.avoidElement + '</b></div>' +
+                    '</div>' +
+                    '<div class="text-[9px] text-slate-300 pt-0.5 font-mono">' +
+                        '🧭 4 ທິດມຸງຄຸນ: ໂຊກລາບ(生氣) <b class="text-amber-300">' + gua.shengQi + '</b> · ໝໍເທບ(天醫) <b class="text-teal-300">' + gua.tianYi + '</b> · ອາຍຸຍືນ(延年) <b class="text-blue-300">' + gua.yanNian + '</b>' +
+                    '</div>';
+
+                const pillEls = [document.getElementById('mobBirthSummaryPill'), document.getElementById('dtBirthSummaryPill')];
+                pillEls.forEach(el => {
+                    if (el) el.innerHTML = summaryHtml;
+                });
+            }
+        }
+
+        function initBirthProfileWidgets() {
+            // Day options (1-31)
+            let dayHtml = '';
+            for (let d = 1; d <= 31; d++) {
+                dayHtml += '<option value="' + d + '">' + d + '</option>';
+            }
+
+            // Month options (1-12)
+            const monthNames = ['ມັງກອນ (1)', 'ກຸມພາ (2)', 'ມີນາ (3)', 'ເມສາ (4)', 'ພຶດສະພາ (5)', 'ມິຖຸນາ (6)', 'ກໍລະກົດ (7)', 'ສິງຫາ (8)', 'ກັນຍາ (9)', 'ຕຸລາ (10)', 'ພະຈິກ (11)', 'ທັນວາ (12)'];
+            let monthHtml = '';
+            for (let m = 1; m <= 12; m++) {
+                monthHtml += '<option value="' + m + '">' + monthNames[m - 1] + '</option>';
+            }
+
+            // Year options (2043 down to 1924)
+            const zodiacs = ['ໜູ', 'ງົວ', 'ເສືອ', 'ກະຕ່າຍ', 'ມັງກອນ', 'ງູ', 'ມ້າ', 'ແພະ', 'ລິງ', 'ໄກ່', 'ໝາ', 'ໝູ'];
+            const stems = ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'];
+            const branches = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
+            let yearHtml = '';
+            for (let y = 2043; y >= 1924; y--) {
+                const sIdx = ((y - 4) % 10 + 10) % 10;
+                const bIdx = ((y - 4) % 12 + 12) % 12;
+                const label = y + ' · ' + stems[sIdx] + branches[bIdx] + ' (ປີ' + zodiacs[bIdx] + ')';
+                yearHtml += '<option value="' + y + '">' + label + '</option>';
+            }
+
+            // Hour options
+            let hourHtml = '';
+            const dhList = [
+                { idx: 0, name: 'ຍາມໜູ (子)', time: '23:00 - 01:00' },
+                { idx: 1, name: 'ຍາມງົວ (丑)', time: '01:00 - 03:00' },
+                { idx: 2, name: 'ຍາມເສືອ (寅)', time: '03:00 - 05:00' },
+                { idx: 3, name: 'ຍາມກະຕ່າຍ (卯)', time: '05:00 - 07:00' },
+                { idx: 4, name: 'ຍາມມັງກອນ (辰)', time: '07:00 - 09:00' },
+                { idx: 5, name: 'ຍາມງູ (巳)', time: '09:00 - 11:00' },
+                { idx: 6, name: 'ຍາມມ້າ (午)', time: '11:00 - 13:00' },
+                { idx: 7, name: 'ຍາມແພະ (未)', time: '13:00 - 15:00' },
+                { idx: 8, name: 'ຍາມລິງ (申)', time: '15:00 - 17:00' },
+                { idx: 9, name: 'ຍາມໄກ່ (酉)', time: '17:00 - 19:00' },
+                { idx: 10, name: 'ຍາມໝາ (戌)', time: '19:00 - 21:00' },
+                { idx: 11, name: 'ຍາມໝູ (亥)', time: '21:00 - 23:00' }
+            ];
+            dhList.forEach(dh => {
+                hourHtml += '<option value="' + (dh.idx * 2) + '">' + dh.name + ' (' + dh.time + ')</option>';
+            });
+
+            const dayEls = [document.getElementById('mobBirthDaySelect'), document.getElementById('dtBirthDaySelect')];
+            const monthEls = [document.getElementById('mobBirthMonthSelect'), document.getElementById('dtBirthMonthSelect')];
+            const yearEls = [document.getElementById('mobBirthYearSelect'), document.getElementById('dtBirthYearSelect')];
+            const hourEls = [document.getElementById('mobBirthHourSelect'), document.getElementById('dtBirthHourSelect')];
+
+            dayEls.forEach(el => { if (el) el.innerHTML = dayHtml; });
+            monthEls.forEach(el => { if (el) el.innerHTML = monthHtml; });
+            yearEls.forEach(el => { if (el) el.innerHTML = yearHtml; });
+            hourEls.forEach(el => { if (el) el.innerHTML = hourHtml; });
+
+            updateBirthProfileUI();
         }
 
         // Authentic San Yuan Ming Gua (命卦) & 8 Mansions (八宅) calculation
@@ -2880,13 +3096,10 @@
 
         function setBaziField(field, val) {
             const v = parseInt(val, 10);
-            if (field === 'year') selectedBaziYear = v;
-            else if (field === 'month') selectedBaziMonth = v;
-            else if (field === 'day') selectedBaziDay = v;
-            else if (field === 'hour') selectedBaziHour = v;
-            const normRot = ((currentRotation % 360) + 360) % 360;
-            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
-            updateLivePrediction(topCompassDeg, true);
+            if (field === 'year') setUserBirthProfile(v, null, null, null, null);
+            else if (field === 'month') setUserBirthProfile(null, v, null, null, null);
+            else if (field === 'day') setUserBirthProfile(null, null, v, null, null);
+            else if (field === 'hour') setUserBirthProfile(null, null, null, v, null);
         }
 
         
@@ -13122,6 +13335,7 @@ function updateCompassTransform(deltaAngle = null) {
         window.onload = function () {
             populateBirthYears();
             updateGuaDisplay();
+            initBirthProfileWidgets();
             setupLiveCompass();
             buildOuterBasePlate('lacquer');
             buildCompassSVG();
