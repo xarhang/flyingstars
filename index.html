@@ -6777,30 +6777,82 @@ function setYangTab(tabName) {
 
 function setSelectedRoom(roomKey) {
             selectedRoomType = roomKey;
+            const mobSel = document.querySelector('#mobActiveTabBody #roomSelectorContainer');
+            const pcSel = document.querySelector('#pcActiveTabBody #roomSelectorContainer');
+            if (mobSel || pcSel) {
+                const sHtml = renderRoomSelectorHtml();
+                if (mobSel) mobSel.innerHTML = sHtml;
+                if (pcSel) pcSel.innerHTML = sHtml;
+            }
             const normRot = ((currentRotation % 360) + 360) % 360;
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
-            updateLivePrediction(topCompassDeg, true);
+            const mobVerdict = document.querySelector('#mobActiveTabBody #roomVerdictContainer');
+            const pcVerdict = document.querySelector('#pcActiveTabBody #roomVerdictContainer');
+            if (mobVerdict || pcVerdict) {
+                updateLivePrediction(topCompassDeg, false);
+            } else {
+                updateLivePrediction(topCompassDeg, true);
+            }
         }
 
         function setSelectedRoomCategory(catKey) {
             selectedRoomCategory = catKey;
+            const mobSel = document.querySelector('#mobActiveTabBody #roomSelectorContainer');
+            const pcSel = document.querySelector('#pcActiveTabBody #roomSelectorContainer');
+            if (mobSel || pcSel) {
+                const sHtml = renderRoomSelectorHtml();
+                if (mobSel) mobSel.innerHTML = sHtml;
+                if (pcSel) pcSel.innerHTML = sHtml;
+            }
             const normRot = ((currentRotation % 360) + 360) % 360;
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
-            updateLivePrediction(topCompassDeg, true);
+            const mobVerdict = document.querySelector('#mobActiveTabBody #roomVerdictContainer');
+            const pcVerdict = document.querySelector('#pcActiveTabBody #roomVerdictContainer');
+            if (mobVerdict || pcVerdict) {
+                updateLivePrediction(topCompassDeg, false);
+            } else {
+                updateLivePrediction(topCompassDeg, true);
+            }
         }
 
         function setSelectedLuantou(key) {
             selectedLuantouType = key;
+            const mobSel = document.querySelector('#mobActiveTabBody #luantouSelectorContainer');
+            const pcSel = document.querySelector('#pcActiveTabBody #luantouSelectorContainer');
+            if (mobSel || pcSel) {
+                const sHtml = renderLuantouSelectorHtml();
+                if (mobSel) mobSel.innerHTML = sHtml;
+                if (pcSel) pcSel.innerHTML = sHtml;
+            }
             const normRot = ((currentRotation % 360) + 360) % 360;
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
-            updateLivePrediction(topCompassDeg, true);
+            const mobVerdict = document.querySelector('#mobActiveTabBody #luantouVerdictContainer');
+            const pcVerdict = document.querySelector('#pcActiveTabBody #luantouVerdictContainer');
+            if (mobVerdict || pcVerdict) {
+                updateLivePrediction(topCompassDeg, false);
+            } else {
+                updateLivePrediction(topCompassDeg, true);
+            }
         }
 
         function setSelectedLuantouCategory(catKey) {
             selectedLuantouCategory = catKey;
+            const mobSel = document.querySelector('#mobActiveTabBody #luantouSelectorContainer');
+            const pcSel = document.querySelector('#pcActiveTabBody #luantouSelectorContainer');
+            if (mobSel || pcSel) {
+                const sHtml = renderLuantouSelectorHtml();
+                if (mobSel) mobSel.innerHTML = sHtml;
+                if (pcSel) pcSel.innerHTML = sHtml;
+            }
             const normRot = ((currentRotation % 360) + 360) % 360;
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
-            updateLivePrediction(topCompassDeg, true);
+            const mobVerdict = document.querySelector('#mobActiveTabBody #luantouVerdictContainer');
+            const pcVerdict = document.querySelector('#pcActiveTabBody #luantouVerdictContainer');
+            if (mobVerdict || pcVerdict) {
+                updateLivePrediction(topCompassDeg, false);
+            } else {
+                updateLivePrediction(topCompassDeg, true);
+            }
         }
 
         function setSelectedAnnualYear(yr) {
@@ -6865,276 +6917,8 @@ function setSelectedRoom(roomKey) {
 
         let latestFlyingChart = null;
 
-        function computePredictionBody(faceDeg, chart, kw, sitDeg, curPal, curM, curP, curW, comboInfo) {
-            const actualFacingDegree = ((faceDeg % 360) + 360) % 360;
-            const actualSittingDegree = ((faceDeg + 180) % 360 + 360) % 360;
-            let tabBody = '';
-            if (fengShuiMode === 'yin') {
-                if (activeYinTab === 'tab_fenjin') {
-                    const fj = calculate120Fenjin(faceDeg);
-                    const mtnObj = chart.faceInfo.mtn;
-
-                    let kwBadge = '';
-                    if (kw.type === 'big') {
-                        kwBadge = '<div class="p-2 rounded-lg bg-rose-950/80 border border-rose-500 text-rose-300 text-xs font-bold mb-2">❌ ຕົກມະຫາເສັ້ນດັບສູນ (大空亡)! ຫ້າມຕັ້ງປ້າຍຫີນສຸສານອົງສານີ້ເດັດຂາດ. ຕະກຸນຈະລົ້ມລະລາຍ, ຕ້ອງບ່ຽງ 2-3 ອົງສາທັນທີ.</div>';
-                    } else if (kw.type === 'small') {
-                        kwBadge = '<div class="p-2 rounded-lg bg-amber-950/80 border border-amber-500 text-amber-300 text-xs font-bold mb-2">⚠️ ຕົກເສັ້ນວ່າງເປົ່າສາຍ (小空亡)! ພະລັງງານສັບສົນ ລູກຫຼານເຮັດຫຍັງຕິດຂັດ ຄວນປັບຈູນໃຫ້ຕົກເສັ້ນເພັດພອຍ.</div>';
-                    }
-
-                    tabBody =
-                        kwBadge +
-                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-purple-500/40 flex flex-col gap-1.5">' +
-                            '<div class="flex items-center justify-between text-xs">' +
-                                '<span class="text-purple-300 font-bold">ອົງສາປ້າຍຫີນ (碑向):</span>' +
-                                '<span class="text-amber-300 font-mono font-bold">' + faceDeg.toFixed(1) + '° (' + mtnObj.name + '山 ' + mtnObj.lao + ')</span>' +
-                            '</div>' +
-                            '<div class="flex items-center justify-between text-[11px] text-slate-400">' +
-                                '<span>ພູເຂົາ 15°: ' + mtnObj.start + '° - ' + mtnObj.end + '°</span>' +
-                                '<span>ໄລຍະໃນເຂົາ: ' + fj.degInMtn + '° (ຊ່ອງທີ ' + fj.divIdx + '/5)</span>' +
-                            '</div>' +
-                        '</div>' +
-
-                        '<div class="p-3 rounded-xl border ' + fj.badgeClass + ' flex flex-col gap-1.5 mt-2 shadow-sm">' +
-                            '<div class="flex items-center justify-between">' +
-                                '<span class="font-bold text-xs">' + fj.verdict + '</span>' +
-                                '<span class="text-[10px] font-mono font-bold opacity-90">' + fj.lineType + '</span>' +
-                            '</div>' +
-                            '<div class="text-white font-bold text-sm">' + fj.pair + ' · ' + fj.naYin + '</div>' +
-                            '<p class="text-[11px] leading-relaxed pt-1 border-t border-white/10">' + fj.desc + '</p>' +
-                        '</div>';
-                }
-
-                // YIN TAB 2: XIAN MING DECEASED COMPATIBILITY
-                else if (activeYinTab === 'tab_xianming') {
-                    const sitDeg = (faceDeg + 180) % 360;
-                    const xm = calculateXianMing(selectedXianMingYear, sitDeg);
-
-                    const presetYears = [1936, 1948, 1954, 1960, 1964, 1970, 1976, 1982, 1990];
-                    const presetBtns =
-                        '<div class="flex flex-wrap gap-1 mb-2">' +
-                            presetYears.map(y =>
-                                '<button type="button" onclick="setSelectedXianMingYear(' + y + ')" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold transition ' +
-                                    (selectedXianMingYear === y ? 'bg-purple-600 text-white' : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800') + '">' +
-                                    y +
-                                '</button>'
-                            ).join('') +
-                        '</div>';
-
-                    tabBody =
-                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-purple-500/40 flex flex-col gap-2">' +
-                            '<div class="flex items-center justify-between text-xs">' +
-                                '<span class="text-purple-300 font-bold">👤 ປີເກີດຜູ້ລ່ວງລັບ (仙命):</span>' +
-                                '<div class="flex items-center gap-1.5">' +
-                                    '<input type="number" min="1910" max="2026" value="' + selectedXianMingYear + '" onchange="setSelectedXianMingYear(this.value)" class="w-16 px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-amber-300 text-xs font-mono font-bold text-center" />' +
-                                    '<span class="text-[10px] text-slate-400">ຄ.ສ.</span>' +
-                                '</div>' +
-                            '</div>' +
-                            presetBtns +
-                            '<div class="grid grid-cols-2 gap-2 text-xs pt-1 border-t border-slate-800">' +
-                                '<div><span class="text-slate-400 text-[10px] block">ດວງກິ່ງຟ້າ-ກ້ານດິນ:</span><b class="text-white text-sm">' + xm.pair + ' (' + xm.animal + ')</b></div>' +
-                                '<div><span class="text-slate-400 text-[10px] block">ທາດນາອິມ:</span><b class="text-amber-300 text-[11px]">' + xm.naYin + '</b></div>' +
-                            '</div>' +
-                        '</div>' +
-
-                        '<div class="p-3 rounded-xl border ' + (xm.isAuspicious ? 'border-emerald-500 bg-emerald-950/70 text-emerald-200' : 'border-rose-500 bg-rose-950/70 text-rose-200') + ' flex flex-col gap-1.5 mt-2">' +
-                            '<div class="flex items-center justify-between text-xs font-bold">' +
-                                '<span>' + (xm.isAuspicious ? '🌟 ສຽນມິ່ງສົມພົງກັບພູຫຼັງພິງ (Auspicious)' : '❌ ສຽນມິ່ງຂັດກັບພູຫຼັງພິງ (Inauspicious)') + '</span>' +
-                                '<span class="font-mono text-[10px]">坐山: ' + xm.sitMtn + '山</span>' +
-                            '</div>' +
-                            '<div class="text-[11px] leading-relaxed">' +
-                                (xm.isChong ? '❌ <b>ຕິດປ້າຍປະທະສຽນມິ່ງ (坐山冲命):</b> ພູຫຼັງ ' + xm.sitMtn + '山 ປະທະກັບນັກສັດ ' + xm.branch + ' ຂອງຜູ້ລ່ວງລັບ ວິນຍານບໍ່ສະຫງົບ ລູກຫຼານຈະເກີດເລື່ອງເດືອດຮ້ອນ. ' : '') +
-                                (xm.isSanSha ? '❌ <b>ຕິດ 3 ມານຮ້າຍ (三煞):</b> ' + xm.sanShaDesc + ' ຫ້າມຕັ້ງສຸສານຫັນຫຼັງໃສ່ທິດນີ້. ' : '') +
-                                (xm.isAuspicious ? '🌟 ທິດຫຼັງພິງ ' + xm.sitMtn + '山 ບໍ່ຕິດປະທະ ແລະ ບໍ່ຕິດສາມຊາ. ພະລັງງານແຜ່ນດິນສົ່ງເສີມດວງວິນຍານບັນພະບຸລຸດ ໃຫ້ຄຸ້ມຄອງລູກຫຼານໃຫ້ຈະເລີນຮຸ່ງເຮືອງ.' : '') +
-                            '</div>' +
-                        '</div>';
-                }
-
-                // YIN TAB 3: 4 DIVINE BEASTS (四灵山水)
-                else if (activeYinTab === 'tab_fourbeasts') {
-                    const sitDeg = (faceDeg + 180) % 360;
-                    const fb = analyzeFourDivineBeasts(sitDeg, faceDeg, chart);
-
-                    tabBody =
-                        '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">' +
-                            '<div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col gap-1">' +
-                                '<div class="flex items-center justify-between">' +
-                                    '<b class="text-purple-300">' + fb.xuanWu.name + '</b>' +
-                                    '<span class="text-[10px] font-mono text-purple-400 bg-purple-950/60 px-1.5 py-0.2 rounded border border-purple-500/30">ດາວພູ: ' + fb.xuanWu.star + '</span>' +
-                                '</div>' +
-                                '<div class="text-[10px] text-amber-300 font-mono">' + fb.xuanWu.dir + '</div>' +
-                                '<p class="text-[10px] text-slate-300 leading-relaxed">' + fb.xuanWu.desc + '</p>' +
-                            '</div>' +
-                            '<div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col gap-1">' +
-                                '<div class="flex items-center justify-between">' +
-                                    '<b class="text-rose-300">' + fb.zhuQue.name + '</b>' +
-                                    '<span class="text-[10px] font-mono text-cyan-400 bg-cyan-950/60 px-1.5 py-0.2 rounded border border-cyan-500/30">ດາວນ້ຳ: ' + fb.zhuQue.star + '</span>' +
-                                '</div>' +
-                                '<div class="text-[10px] text-amber-300 font-mono">' + fb.zhuQue.dir + '</div>' +
-                                '<p class="text-[10px] text-slate-300 leading-relaxed">' + fb.zhuQue.desc + '</p>' +
-                            '</div>' +
-                            '<div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col gap-1">' +
-                                '<div class="flex items-center justify-between">' +
-                                    '<b class="text-emerald-300">' + fb.qingLong.name + '</b>' +
-                                    '<span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-1.5 py-0.2 rounded border border-emerald-500/30">ດາວ: ' + fb.qingLong.star + '</span>' +
-                                '</div>' +
-                                '<div class="text-[10px] text-amber-300 font-mono">' + fb.qingLong.dir + '</div>' +
-                                '<p class="text-[10px] text-slate-300 leading-relaxed">' + fb.qingLong.desc + '</p>' +
-                            '</div>' +
-                            '<div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col gap-1">' +
-                                '<div class="flex items-center justify-between">' +
-                                    '<b class="text-amber-300">' + fb.baiHu.name + '</b>' +
-                                    '<span class="text-[10px] font-mono text-yellow-400 bg-yellow-950/60 px-1.5 py-0.2 rounded border border-yellow-500/30">ດາວ: ' + fb.baiHu.star + '</span>' +
-                                '</div>' +
-                                '<div class="text-[10px] text-amber-300 font-mono">' + fb.baiHu.dir + '</div>' +
-                                '<p class="text-[10px] text-slate-300 leading-relaxed">' + fb.baiHu.desc + '</p>' +
-                            '</div>' +
-                        '</div>';
-                }
-
-                // YIN TAB 4: HUANG QUAN 8 SHA (八煞黄泉)
-                else if (activeYinTab === 'tab_huangquan') {
-                    const sitDeg = (faceDeg + 180) % 360;
-                    const hq = calculateHuangQuan(faceDeg, sitDeg);
-
-                    tabBody =
-                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1.5 mb-2">' +
-                            '<div class="flex items-center justify-between text-xs">' +
-                                '<span class="text-purple-300 font-bold">ກາບກອນໂບຮານ 8 ດ້ວງຮວງສຽນ (八煞黄泉歌):</span>' +
-                            '</div>' +
-                            '<div class="bg-black/50 p-2 rounded-lg text-amber-300 font-mono text-[11px] leading-relaxed border border-amber-500/30">' +
-                                '庚丁坤上是黄泉，乙丙须防巽水先，<br>' +
-                                '甲癸向中休见艮，辛壬水路怕当乾。' +
-                            '</div>' +
-                        '</div>' +
-
-                        '<div class="p-3 rounded-xl border ' + (hq.hasHQ ? 'border-amber-500 bg-amber-950/70 text-amber-200' : 'border-emerald-500 bg-emerald-950/70 text-emerald-200') + ' flex flex-col gap-1.5">' +
-                            '<div class="flex items-center justify-between text-xs font-bold">' +
-                                '<span>' + (hq.hasHQ ? '⚠️ ຈຸດຄວນລະວັງສາຍນ້ຳຮວງສຽນ' : '🌟 ປອດໂປ່ງຈາກ 8 ຮວງສຽນ') + '</span>' +
-                                '<span class="font-mono text-[10px]">向首: ' + hq.fMtn + '向</span>' +
-                            '</div>' +
-                            '<div class="text-white text-xs font-bold">' + hq.rhyme + '</div>' +
-                            '<p class="text-[11px] leading-relaxed">' +
-                                (hq.hasHQ
-                                    ? 'ສຸສານຫັນໜ້າໄປ ' + hq.fMtn + '向 ຫ້າມມີສາຍນ້ຳ, ຮ່ອງລະບາຍນ້ຳ ຫຼື ຖະໜົນ ໄຫຼມາ ຫຼື ໄຫຼອອກໃນທິດ <b>' + hq.badDir + '</b> ເດັດຂາດ! ເພາະຈະຕິດສູດ "ນ້ຳສີເຫຼືອງມໍລະນະ" ເຮັດໃຫ້ລູກຫຼານອາຍຸສັ້ນ ຫຼື ສູນເສຍຊັບສິນ.'
-                                    : 'ທິດໜ້າຫັນ ' + hq.fMtn + '向 ບໍ່ມີຂໍ້ຫ້າມຮວງສຽນໂດຍກົງ ສາມາດວາງສາຍນ້ຳຕາມຫຼັກ 12 ທ່າໄດ້ຢ່າງປອດໄພ.') +
-                            '</p>' +
-                        '</div>';
-                }
-
-                // YIN TAB 5: SAN HE 4 MAJOR WATER BUREAUS (三合四大局)
-                else if (activeYinTab === 'tab_sanhewater') {
-                    const sh = calculateSanHeWaterBureau(faceDeg, selectedYinWaterExit);
-
-                    const exitBtns = ['辰', '戌', '丑', '未'].map(b =>
-                        '<button type="button" onclick="setSelectedYinWaterExit(\'' + b + '\')" class="py-1 px-2 rounded-lg text-xs font-bold transition ' +
-                            (selectedYinWaterExit === b ? 'bg-cyan-600 text-white font-black shadow' : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800') + '">' +
-                            b + ' (ປາກນ້ຳ ' + b + ')' +
-                        '</button>'
-                    ).join('');
-
-                    tabBody =
-                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-2 mb-2">' +
-                            '<span class="text-xs font-bold text-cyan-300">ເລືອກທິດປາກນ້ຳອອກສຸສານ (水口 4 墓库):</span>' +
-                            '<div class="grid grid-cols-4 gap-1.5">' + exitBtns + '</div>' +
-                        '</div>' +
-
-                        '<div class="p-3 rounded-xl border border-cyan-500/50 bg-slate-950 flex flex-col gap-2">' +
-                            '<div class="flex items-center justify-between text-xs font-bold">' +
-                                '<span class="text-cyan-300">' + sh.name + '</span>' +
-                                '<span class="text-amber-300 font-mono text-[10px]">ສຸສານ: ' + sh.grave + '</span>' +
-                            '</div>' +
-                            '<div class="grid grid-cols-2 gap-2 text-[11px] text-slate-300">' +
-                                '<div><span class="text-slate-400 text-[10px] block">ນ້ຳໄຫຼເຂົ້າທີ່ເກີດ (生水):</span><b>' + sh.life + '</b></div>' +
-                                '<div><span class="text-slate-400 text-[10px] block">ນ້ຳໄຫຼເຂົ້າທີ່ຮຸ່ງ (旺水):</span><b>' + sh.king + '</b></div>' +
-                            '</div>' +
-                            '<div class="p-2 rounded-lg bg-cyan-950/60 border border-cyan-500/30 text-[11px] text-cyan-200 leading-relaxed">' +
-                                sh.verdict +
-                            '</div>' +
-                        '</div>';
-                }
-
-                // YIN TAB 6: LINEAGE IMPACTS (房份)
-                else if (activeYinTab === 'tab_lineage') {
-                    const sitDeg = (faceDeg + 180) % 360;
-                    const lines = analyzeYinLineage(chart, sitDeg, faceDeg);
-
-                    tabBody =
-                        '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">' +
-                            lines.map(item =>
-                                '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1">' +
-                                    '<b class="text-amber-400">' + item.title + '</b>' +
-                                    '<span class="text-[10px] text-slate-400 font-mono">' + item.palace + '</span>' +
-                                    '<p class="text-[10px] text-slate-300 leading-relaxed pt-1 border-t border-slate-800">' + item.effect + '</p>' +
-                                '</div>'
-                            ).join('') +
-                        '</div>';
-                }
-
-                // YIN TAB 7: EVENT FORECAST (应期)
-                else if (activeYinTab === 'tab_yinforecast') {
-                    const selMon = SOLAR_MONTHS_INFO[selectedForecastMonth - 1] || SOLAR_MONTHS_INFO[0];
-                    const mCenter = getMonthlyCenterStar(selectedAnnualYear, selMon.m);
-                    const mChart = flyLoShu(mCenter, 1);
-                    const mStar = mChart[curPal];
-
-                    const monthPills =
-                        '<div class="grid grid-cols-6 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 mb-2">' +
-                            SOLAR_MONTHS_INFO.map(item =>
-                                '<button type="button" onclick="setSelectedForecastMonth(' + item.m + ')" class="py-1 rounded-lg text-center text-[10px] font-bold transition ' +
-                                    (selectedForecastMonth === item.m ? 'bg-purple-600 text-white font-black shadow-md' : 'text-slate-400 hover:text-slate-200') + '">' +
-                                    'ມ.' + item.m +
-                                '</button>'
-                            ).join('') +
-                        '</div>';
-
-                    tabBody =
-                        '<div class="flex items-center justify-between text-xs mb-1 px-1">' +
-                            '<span class="text-purple-300 font-bold">ເວລາເກີດເຫດສຸສານ (ປີ ' + selectedAnnualYear + '):</span>' +
-                        '</div>' +
-                        monthPills +
-
-                        '<div class="bg-slate-950 p-3 rounded-xl border border-purple-500/40 flex flex-col gap-2">' +
-                            '<div class="flex items-center justify-between">' +
-                                '<span class="text-xs font-bold text-purple-200">' + selMon.name + ' · ' + selMon.term + '</span>' +
-                                '<span class="text-[10px] text-amber-300 font-mono bg-black/40 px-2 py-0.5 rounded">' + selMon.dates + '</span>' +
-                            '</div>' +
-                            '<div class="text-[11px] text-slate-300 leading-relaxed">' +
-                                'ດາວຈອນເດືອນ <b>' + mStar + '</b> ໝູນມາຕົກໜ້າປ້າຍສຸສານ (ດາວນ້ຳ ' + curW + '). ' +
-                                (mStar === 5 || mStar === 2
-                                    ? '⚠️ <b>ເດືອນຕ້ອງລະວັງ:</b> ດາວພິດ/ພະຍາດມາທັບປ້າຍຫີນ ລູກຫຼານອາດຈະເກີດເລື່ອງຕິດຂັດ ຫຼື ເຈັບປ່ວຍ.'
-                                    : '🌟 <b>ເດືອນມຸງຄຸນ:</b> ພະລັງງານສຸສານສົ່ງເສີມລູກຫຼານໃຫ້ໄດ້ຮັບໂຊກລາບ ແລະ ຄວາມຮຸ່ງເຮືອງ.') +
-                            '</div>' +
-                            '<div class="bg-black/40 p-2 rounded-lg text-[10px] text-purple-200 leading-relaxed border border-purple-500/30">' +
-                                '⚠️ <b>ນັກສັດທີ່ຊົງໃນເດືອນນີ້:</b> ລູກຫຼານທີ່ເກີດ <b>' + selMon.clash + '</b> ຕ້ອງລະວັງສຸຂະພາບເປັນພິເສດໃນເດືອນນີ້.' +
-                            '</div>' +
-                        '</div>';
-                }
-
-                // YIN TAB 8: 64 DA GUA FOR TOMB (玄空大卦 抽爻换象)
-                else if (activeYinTab === 'tab_dagua_yin') {
-                    const dg = calculateDaGua(faceDeg);
-
-                    tabBody =
-                        '<div class="bg-slate-950 p-3 rounded-xl border border-purple-500/40 flex flex-col gap-2">' +
-                            '<div class="flex items-center justify-between">' +
-                                '<span class="text-xs font-bold text-purple-300">☯️ ສຽນຄົງຕ້າກວ້າປ້າຍຫີນ (玄空大卦):</span>' +
-                                '<span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-purple-950 border border-purple-500/50 text-purple-200">' + dg.status + '</span>' +
-                            '</div>' +
-                            '<div class="flex items-center gap-2 pt-1 border-t border-slate-800">' +
-                                '<span class="text-2xl font-mono text-amber-400">' + dg.symbol + '</span>' +
-                                '<div>' +
-                                    '<div class="text-sm font-bold text-white">' + dg.hexName + '</div>' +
-                                    '<div class="text-[10px] text-slate-400 font-mono">ກວ້າຍຸນ: ' + dg.guaYun + ' · ພະລັງກວ້າ (卦气): ' + dg.guaQi + ' · ເສັ້ນຢາວ: ' + dg.yao + '</div>' +
-                                '</div>' +
-                            '</div>' +
-                            '<p class="text-[11px] text-slate-300 leading-relaxed">' + dg.desc + '</p>' +
-                        '</div>';
-                }
-
-                
-            } else {
-                if (activeYangTab === 'tab_room') {
-                    const categories = [
+        
+        const ROOM_CATEGORIES = [
                         { key: 'all', name: 'ທັງໝົດ (43)' },
                         { key: 'door_win', name: '🚪 ປະຕູ/ປ່ອງຢ້ຽມ (11)' },
                         { key: 'kitchen', name: '🍲 ຄົວ/ອາຫານ (5)' },
@@ -7145,7 +6929,7 @@ function setSelectedRoom(roomKey) {
                         { key: 'water_ext', name: '⛲ ນ້ຳ/ສວນ/ພາຍນອກ (8)' }
                     ];
 
-                    const allRooms = [
+        const ALL_ROOMS = [
                         // 🚪 Doors & Openings (11)
                         { key: 'main_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູໃຫຍ່ໜ້າບ້ານ' },
                         { key: 'gate', cat: 'door_win', icon: '⛩️', name: 'ປະຕູຮົ້ວນອກບ້ານ' },
@@ -7204,36 +6988,41 @@ function setSelectedRoom(roomKey) {
                         { key: 'storage', cat: 'water_ext', icon: '📦', name: 'ຫ້ອງເກັບເຄື່ອງ/ສາງ' }
                     ];
 
-                    const activeRooms = selectedRoomCategory === 'all'
-                        ? allRooms
-                        : allRooms.filter(r => r.cat === selectedRoomCategory);
+        function renderRoomSelectorHtml() {
+            const activeRooms = selectedRoomCategory === 'all'
+                ? ALL_ROOMS
+                : ALL_ROOMS.filter(r => r.cat === selectedRoomCategory);
 
-                    const catBar =
-                        '<div class="flex items-center gap-1 overflow-x-auto pb-1 mb-1.5 scrollbar-thin select-none">' +
-                            categories.map(c =>
-                                '<button type="button" onclick="setSelectedRoomCategory(\'' + c.key + '\')" class="px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
-                                    (selectedRoomCategory === c.key
-                                        ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
-                                        : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800') + '">' +
-                                    c.name +
-                                '</button>'
-                            ).join('') +
-                        '</div>';
+            const catBar =
+                '<div class="flex items-center gap-1 overflow-x-auto pb-1 mb-1.5 scrollbar-thin select-none">' +
+                    ROOM_CATEGORIES.map(c =>
+                        '<button type="button" onclick="setSelectedRoomCategory(\'' + c.key + '\')" class="px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
+                            (selectedRoomCategory === c.key
+                                ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
+                                : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800') + '">' +
+                            c.name +
+                        '</button>'
+                    ).join('') +
+                '</div>';
 
-                    const roomPills =
-                        catBar +
-                        '<div class="grid grid-cols-3 gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 mb-2 max-h-48 overflow-y-auto">' +
-                            activeRooms.map(r =>
-                                '<button type="button" onclick="setSelectedRoom(\'' + r.key + '\')" class="py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 ' +
-                                    (selectedRoomType === r.key
-                                        ? 'bg-amber-500 text-slate-950 shadow-md font-black ring-1 ring-amber-300'
-                                        : 'text-slate-300 hover:bg-slate-900') + '">' +
-                                    '<span class="text-xs">' + r.icon + '</span><span class="truncate max-w-full">' + r.name + '</span>' +
-                                '</button>'
-                            ).join('') +
-                        '</div>';
+            const roomPills =
+                catBar +
+                '<div class="grid grid-cols-3 gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 mb-2 max-h-48 overflow-y-auto">' +
+                    activeRooms.map(r =>
+                        '<button type="button" onclick="setSelectedRoom(\'' + r.key + '\')" class="py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 ' +
+                            (selectedRoomType === r.key
+                                ? 'bg-amber-500 text-slate-950 shadow-md font-black ring-1 ring-amber-300'
+                                : 'text-slate-300 hover:bg-slate-900') + '">' +
+                            '<span class="text-xs">' + r.icon + '</span><span class="truncate max-w-full">' + r.name + '</span>' +
+                        '</button>'
+                    ).join('') +
+                '</div>';
 
-                    // Evaluate specific room
+            return roomPills;
+        }
+
+        function renderRoomVerdictHtml(faceDeg, chart, curPal, curM, curW, comboInfo) {
+            // Evaluate specific room
                     let verdictTag = '';
                     let verdictColor = '';
                     let verdictScore = '';
@@ -8215,28 +8004,24 @@ function setSelectedRoom(roomKey) {
                         verdictAction = comboInfo.remedy;
                     }
 
-                    tabBody =
-                        roomPills +
-                        '<div class="p-3 rounded-xl border ' + verdictColor + ' flex flex-col gap-1.5 shadow-sm">' +
-                            '<div class="flex items-center justify-between">' +
-                                '<span class="font-bold text-xs">' + verdictTag + '</span>' +
-                                '<span class="text-[10px] font-mono font-bold opacity-80">' + verdictScore + '</span>' +
-                            '</div>' +
-                            '<div class="text-white font-bold text-sm leading-tight">' + verdictTitle + '</div>' +
-                            '<div class="text-[10px] text-slate-400 font-mono">' +
-                                'ທິດທີ່ສ່ອງ: ' + chart.faceInfo.pal.dir + ' ' + faceDeg.toFixed(1) + '° · ດາວນ້ຳ ' + curW + ' | ດາວພູ ' + curM +
-                            '</div>' +
-                            '<p class="text-[11px] text-slate-200 leading-relaxed pt-1 border-t border-slate-800/80">' + verdictAnalysis + '</p>' +
-                            '<div class="bg-black/40 p-2 rounded-lg text-[10px] text-amber-200 leading-relaxed border border-amber-500/30">' +
-                                '<b>💡 ວິທີຈັດວາງ/ແກ້ໄຂ:</b> ' + verdictAction +
-                            '</div>' +
-                            renderFiveElementsSynergyCard(selectedRoomType, false, curW, curM, curPal, selectedAnnualYear) +
-                        '</div>';
-                }
+            return '<div class="p-3 rounded-xl border ' + verdictColor + ' flex flex-col gap-1.5 shadow-sm">' +
+                '<div class="flex items-center justify-between">' +
+                    '<span class="font-bold text-xs">' + verdictTag + '</span>' +
+                    '<span class="text-[10px] font-mono font-bold opacity-80">' + verdictScore + '</span>' +
+                '</div>' +
+                '<div class="text-white font-bold text-sm leading-tight">' + verdictTitle + '</div>' +
+                '<div class="text-[10px] text-slate-400 font-mono">' +
+                    'ທິດທີ່ສ່ອງ: ' + chart.faceInfo.pal.dir + ' ' + faceDeg.toFixed(1) + '° · ດາວນ້ຳ ' + curW + ' | ດາວພູ ' + curM +
+                '</div>' +
+                '<p class="text-[11px] text-slate-200 leading-relaxed pt-1 border-t border-slate-800/80">' + verdictAnalysis + '</p>' +
+                '<div class="bg-black/40 p-2 rounded-lg text-[10px] text-amber-200 leading-relaxed border border-amber-500/30">' +
+                    '<b>💡 ວິທີຈັດວາງ/ແກ້ໄຂ:</b> ' + verdictAction +
+                '</div>' +
+                renderFiveElementsSynergyCard(selectedRoomType, false, curW, curM, curPal, selectedAnnualYear) +
+            '</div>';
+        }
 
-                // TAB 1.5: LUAN TOU EXTERNAL LANDSCAPE & SHA QI INSPECTOR (36 SPECIFIC EXTERNAL FEATURES)
-                else if (activeYangTab === 'tab_luantou') {
-                    const luantouCategories = [
+        const LUANTOU_CATEGORIES = [
                         { key: 'all', name: 'ທັງໝົດ (36)' },
                         { key: 'flora', name: '🌳 ຕົ້ນໄມ້ & ສວນ (4)' },
                         { key: 'electric', name: '⚡ ເສົາໄຟ & ແມ່ເຫຼັກ (3)' },
@@ -8247,7 +8032,7 @@ function setSelectedRoom(roomKey) {
                         { key: 'special', name: '🏛️ ສິ່ງປຸກສ້າງພິເສດ (7)' }
                     ];
 
-                    const allLuantou = [
+        const ALL_LUANTOU = [
                         // 🌳 Trees & Flora (4)
                         { key: 'tree_front', cat: 'flora', icon: '🌳', name: 'ຕົ້ນໄມ້ຂວາງໜ້າປະຕູ' },
                         { key: 'tree_dry', cat: 'flora', icon: '🥀', name: 'ຕົ້ນໄມ້ແຫ້ງຕາຍ' },
@@ -8299,36 +8084,41 @@ function setSelectedRoom(roomKey) {
                         { key: 'bridge_overpass', cat: 'special', icon: '🌉', name: 'ຂົວຂ້າມທາງ/ຄອງນ້ຳ' }
                     ];
 
-                    const activeLuantou = selectedLuantouCategory === 'all'
-                        ? allLuantou
-                        : allLuantou.filter(r => r.cat === selectedLuantouCategory);
+        function renderLuantouSelectorHtml() {
+            const activeLuantou = selectedLuantouCategory === 'all'
+                ? ALL_LUANTOU
+                : ALL_LUANTOU.filter(r => r.cat === selectedLuantouCategory);
 
-                    const luantouCatBar =
-                        '<div class="flex items-center gap-1 overflow-x-auto pb-1 mb-1.5 scrollbar-thin select-none">' +
-                            luantouCategories.map(c =>
-                                '<button type="button" onclick="setSelectedLuantouCategory(\'' + c.key + '\')" class="px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
-                                    (selectedLuantouCategory === c.key
-                                        ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
-                                        : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800') + '">' +
-                                    c.name +
-                                '</button>'
-                            ).join('') +
-                        '</div>';
+            const catBar =
+                '<div class="flex items-center gap-1 overflow-x-auto pb-1 mb-1.5 scrollbar-thin select-none">' +
+                    LUANTOU_CATEGORIES.map(c =>
+                        '<button type="button" onclick="setSelectedLuantouCategory(\'' + c.key + '\')" class="px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
+                            (selectedLuantouCategory === c.key
+                                ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
+                                : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800') + '">' +
+                            c.name +
+                        '</button>'
+                    ).join('') +
+                '</div>';
 
-                    const luantouPills =
-                        luantouCatBar +
-                        '<div class="grid grid-cols-3 gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 mb-2 max-h-48 overflow-y-auto">' +
-                            activeLuantou.map(r =>
-                                '<button type="button" onclick="setSelectedLuantou(\'' + r.key + '\')" class="py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 ' +
-                                    (selectedLuantouType === r.key
-                                        ? 'bg-amber-500 text-slate-950 shadow-md font-black ring-1 ring-amber-300'
-                                        : 'text-slate-300 hover:bg-slate-900') + '">' +
-                                    '<span class="text-xs">' + r.icon + '</span><span class="truncate max-w-full">' + r.name + '</span>' +
-                                '</button>'
-                            ).join('') +
-                        '</div>';
+            const luantouPills =
+                catBar +
+                '<div class="grid grid-cols-3 gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 mb-2 max-h-48 overflow-y-auto">' +
+                    activeLuantou.map(r =>
+                        '<button type="button" onclick="setSelectedLuantou(\'' + r.key + '\')" class="py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 ' +
+                            (selectedLuantouType === r.key
+                                ? 'bg-amber-500 text-slate-950 shadow-md font-black ring-1 ring-amber-300'
+                                : 'text-slate-300 hover:bg-slate-900') + '">' +
+                            '<span class="text-xs">' + r.icon + '</span><span class="truncate max-w-full">' + r.name + '</span>' +
+                        '</button>'
+                    ).join('') +
+                '</div>';
 
-                    let lTag = '';
+            return luantouPills;
+        }
+
+        function renderLuantouVerdictHtml(faceDeg, chart, curPal, curM, curW, comboInfo) {
+            let lTag = '';
                     let lColor = '';
                     let lScore = '';
                     let lTitle = '';
@@ -8739,23 +8529,302 @@ function setSelectedRoom(roomKey) {
                         lAction = comboInfo.remedy;
                     }
 
+            return '<div class="p-3 rounded-xl border ' + lColor + ' flex flex-col gap-1.5 shadow-sm">' +
+                '<div class="flex items-center justify-between">' +
+                    '<span class="font-bold text-xs">' + lTag + '</span>' +
+                    '<span class="text-[10px] font-mono font-bold opacity-80">' + lScore + '</span>' +
+                '</div>' +
+                '<div class="text-white font-bold text-sm leading-tight">' + lTitle + '</div>' +
+                '<div class="text-[10px] text-slate-400 font-mono">' +
+                    'ທິດທີ່ສ່ອງ: ' + chart.faceInfo.pal.dir + ' ' + faceDeg.toFixed(1) + '° · ດາວນ້ຳ ' + curW + ' | ດາວພູ ' + curM +
+                '</div>' +
+                '<p class="text-[11px] text-slate-200 leading-relaxed pt-1 border-t border-slate-800/80">' + lAnalysis + '</p>' +
+                '<div class="bg-black/40 p-2 rounded-lg text-[10px] text-amber-200 leading-relaxed border border-amber-500/30">' +
+                    '<b>💡 ວິທີຈັດວາງ/ແກ້ໄຂ:</b> ' + lAction +
+                '</div>' +
+                renderFiveElementsSynergyCard(selectedLuantouType, true, curW, curM, curPal, selectedAnnualYear) +
+            '</div>';
+        }
+
+        function computePredictionBody(faceDeg, chart, kw, sitDeg, curPal, curM, curP, curW, comboInfo) {
+            const actualFacingDegree = ((faceDeg % 360) + 360) % 360;
+            const actualSittingDegree = ((faceDeg + 180) % 360 + 360) % 360;
+            let tabBody = '';
+            if (fengShuiMode === 'yin') {
+                if (activeYinTab === 'tab_fenjin') {
+                    const fj = calculate120Fenjin(faceDeg);
+                    const mtnObj = chart.faceInfo.mtn;
+
+                    let kwBadge = '';
+                    if (kw.type === 'big') {
+                        kwBadge = '<div class="p-2 rounded-lg bg-rose-950/80 border border-rose-500 text-rose-300 text-xs font-bold mb-2">❌ ຕົກມະຫາເສັ້ນດັບສູນ (大空亡)! ຫ້າມຕັ້ງປ້າຍຫີນສຸສານອົງສານີ້ເດັດຂາດ. ຕະກຸນຈະລົ້ມລະລາຍ, ຕ້ອງບ່ຽງ 2-3 ອົງສາທັນທີ.</div>';
+                    } else if (kw.type === 'small') {
+                        kwBadge = '<div class="p-2 rounded-lg bg-amber-950/80 border border-amber-500 text-amber-300 text-xs font-bold mb-2">⚠️ ຕົກເສັ້ນວ່າງເປົ່າສາຍ (小空亡)! ພະລັງງານສັບສົນ ລູກຫຼານເຮັດຫຍັງຕິດຂັດ ຄວນປັບຈູນໃຫ້ຕົກເສັ້ນເພັດພອຍ.</div>';
+                    }
+
                     tabBody =
-                        luantouPills +
-                        '<div class="p-3 rounded-xl border ' + lColor + ' flex flex-col gap-1.5 shadow-sm">' +
+                        kwBadge +
+                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-purple-500/40 flex flex-col gap-1.5">' +
+                            '<div class="flex items-center justify-between text-xs">' +
+                                '<span class="text-purple-300 font-bold">ອົງສາປ້າຍຫີນ (碑向):</span>' +
+                                '<span class="text-amber-300 font-mono font-bold">' + faceDeg.toFixed(1) + '° (' + mtnObj.name + '山 ' + mtnObj.lao + ')</span>' +
+                            '</div>' +
+                            '<div class="flex items-center justify-between text-[11px] text-slate-400">' +
+                                '<span>ພູເຂົາ 15°: ' + mtnObj.start + '° - ' + mtnObj.end + '°</span>' +
+                                '<span>ໄລຍະໃນເຂົາ: ' + fj.degInMtn + '° (ຊ່ອງທີ ' + fj.divIdx + '/5)</span>' +
+                            '</div>' +
+                        '</div>' +
+
+                        '<div class="p-3 rounded-xl border ' + fj.badgeClass + ' flex flex-col gap-1.5 mt-2 shadow-sm">' +
                             '<div class="flex items-center justify-between">' +
-                                '<span class="font-bold text-xs">' + lTag + '</span>' +
-                                '<span class="text-[10px] font-mono font-bold opacity-80">' + lScore + '</span>' +
+                                '<span class="font-bold text-xs">' + fj.verdict + '</span>' +
+                                '<span class="text-[10px] font-mono font-bold opacity-90">' + fj.lineType + '</span>' +
                             '</div>' +
-                            '<div class="text-white font-bold text-sm leading-tight">' + lTitle + '</div>' +
-                            '<div class="text-[10px] text-slate-400 font-mono">' +
-                                'ທິດທີ່ສ່ອງ: ' + chart.faceInfo.pal.dir + ' ' + faceDeg.toFixed(1) + '° · ດາວນ້ຳ ' + curW + ' | ດາວພູ ' + curM +
-                            '</div>' +
-                            '<p class="text-[11px] text-slate-200 leading-relaxed pt-1 border-t border-slate-800/80">' + lAnalysis + '</p>' +
-                            '<div class="bg-black/40 p-2 rounded-lg text-[10px] text-amber-200 leading-relaxed border border-amber-500/30">' +
-                                '<b>💡 ວິທີຈັດວາງ/ແກ້ໄຂ:</b> ' + lAction +
-                            '</div>' +
-                            renderFiveElementsSynergyCard(selectedLuantouType, true, curW, curM, curPal, selectedAnnualYear) +
+                            '<div class="text-white font-bold text-sm">' + fj.pair + ' · ' + fj.naYin + '</div>' +
+                            '<p class="text-[11px] leading-relaxed pt-1 border-t border-white/10">' + fj.desc + '</p>' +
                         '</div>';
+                }
+
+                // YIN TAB 2: XIAN MING DECEASED COMPATIBILITY
+                else if (activeYinTab === 'tab_xianming') {
+                    const sitDeg = (faceDeg + 180) % 360;
+                    const xm = calculateXianMing(selectedXianMingYear, sitDeg);
+
+                    const presetYears = [1936, 1948, 1954, 1960, 1964, 1970, 1976, 1982, 1990];
+                    const presetBtns =
+                        '<div class="flex flex-wrap gap-1 mb-2">' +
+                            presetYears.map(y =>
+                                '<button type="button" onclick="setSelectedXianMingYear(' + y + ')" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold transition ' +
+                                    (selectedXianMingYear === y ? 'bg-purple-600 text-white' : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800') + '">' +
+                                    y +
+                                '</button>'
+                            ).join('') +
+                        '</div>';
+
+                    tabBody =
+                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-purple-500/40 flex flex-col gap-2">' +
+                            '<div class="flex items-center justify-between text-xs">' +
+                                '<span class="text-purple-300 font-bold">👤 ປີເກີດຜູ້ລ່ວງລັບ (仙命):</span>' +
+                                '<div class="flex items-center gap-1.5">' +
+                                    '<input type="number" min="1910" max="2026" value="' + selectedXianMingYear + '" onchange="setSelectedXianMingYear(this.value)" class="w-16 px-1.5 py-0.5 rounded bg-slate-900 border border-slate-700 text-amber-300 text-xs font-mono font-bold text-center" />' +
+                                    '<span class="text-[10px] text-slate-400">ຄ.ສ.</span>' +
+                                '</div>' +
+                            '</div>' +
+                            presetBtns +
+                            '<div class="grid grid-cols-2 gap-2 text-xs pt-1 border-t border-slate-800">' +
+                                '<div><span class="text-slate-400 text-[10px] block">ດວງກິ່ງຟ້າ-ກ້ານດິນ:</span><b class="text-white text-sm">' + xm.pair + ' (' + xm.animal + ')</b></div>' +
+                                '<div><span class="text-slate-400 text-[10px] block">ທາດນາອິມ:</span><b class="text-amber-300 text-[11px]">' + xm.naYin + '</b></div>' +
+                            '</div>' +
+                        '</div>' +
+
+                        '<div class="p-3 rounded-xl border ' + (xm.isAuspicious ? 'border-emerald-500 bg-emerald-950/70 text-emerald-200' : 'border-rose-500 bg-rose-950/70 text-rose-200') + ' flex flex-col gap-1.5 mt-2">' +
+                            '<div class="flex items-center justify-between text-xs font-bold">' +
+                                '<span>' + (xm.isAuspicious ? '🌟 ສຽນມິ່ງສົມພົງກັບພູຫຼັງພິງ (Auspicious)' : '❌ ສຽນມິ່ງຂັດກັບພູຫຼັງພິງ (Inauspicious)') + '</span>' +
+                                '<span class="font-mono text-[10px]">坐山: ' + xm.sitMtn + '山</span>' +
+                            '</div>' +
+                            '<div class="text-[11px] leading-relaxed">' +
+                                (xm.isChong ? '❌ <b>ຕິດປ້າຍປະທະສຽນມິ່ງ (坐山冲命):</b> ພູຫຼັງ ' + xm.sitMtn + '山 ປະທະກັບນັກສັດ ' + xm.branch + ' ຂອງຜູ້ລ່ວງລັບ ວິນຍານບໍ່ສະຫງົບ ລູກຫຼານຈະເກີດເລື່ອງເດືອດຮ້ອນ. ' : '') +
+                                (xm.isSanSha ? '❌ <b>ຕິດ 3 ມານຮ້າຍ (三煞):</b> ' + xm.sanShaDesc + ' ຫ້າມຕັ້ງສຸສານຫັນຫຼັງໃສ່ທິດນີ້. ' : '') +
+                                (xm.isAuspicious ? '🌟 ທິດຫຼັງພິງ ' + xm.sitMtn + '山 ບໍ່ຕິດປະທະ ແລະ ບໍ່ຕິດສາມຊາ. ພະລັງງານແຜ່ນດິນສົ່ງເສີມດວງວິນຍານບັນພະບຸລຸດ ໃຫ້ຄຸ້ມຄອງລູກຫຼານໃຫ້ຈະເລີນຮຸ່ງເຮືອງ.' : '') +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // YIN TAB 3: 4 DIVINE BEASTS (四灵山水)
+                else if (activeYinTab === 'tab_fourbeasts') {
+                    const sitDeg = (faceDeg + 180) % 360;
+                    const fb = analyzeFourDivineBeasts(sitDeg, faceDeg, chart);
+
+                    tabBody =
+                        '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">' +
+                            '<div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col gap-1">' +
+                                '<div class="flex items-center justify-between">' +
+                                    '<b class="text-purple-300">' + fb.xuanWu.name + '</b>' +
+                                    '<span class="text-[10px] font-mono text-purple-400 bg-purple-950/60 px-1.5 py-0.2 rounded border border-purple-500/30">ດາວພູ: ' + fb.xuanWu.star + '</span>' +
+                                '</div>' +
+                                '<div class="text-[10px] text-amber-300 font-mono">' + fb.xuanWu.dir + '</div>' +
+                                '<p class="text-[10px] text-slate-300 leading-relaxed">' + fb.xuanWu.desc + '</p>' +
+                            '</div>' +
+                            '<div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col gap-1">' +
+                                '<div class="flex items-center justify-between">' +
+                                    '<b class="text-rose-300">' + fb.zhuQue.name + '</b>' +
+                                    '<span class="text-[10px] font-mono text-cyan-400 bg-cyan-950/60 px-1.5 py-0.2 rounded border border-cyan-500/30">ດາວນ້ຳ: ' + fb.zhuQue.star + '</span>' +
+                                '</div>' +
+                                '<div class="text-[10px] text-amber-300 font-mono">' + fb.zhuQue.dir + '</div>' +
+                                '<p class="text-[10px] text-slate-300 leading-relaxed">' + fb.zhuQue.desc + '</p>' +
+                            '</div>' +
+                            '<div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col gap-1">' +
+                                '<div class="flex items-center justify-between">' +
+                                    '<b class="text-emerald-300">' + fb.qingLong.name + '</b>' +
+                                    '<span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-1.5 py-0.2 rounded border border-emerald-500/30">ດາວ: ' + fb.qingLong.star + '</span>' +
+                                '</div>' +
+                                '<div class="text-[10px] text-amber-300 font-mono">' + fb.qingLong.dir + '</div>' +
+                                '<p class="text-[10px] text-slate-300 leading-relaxed">' + fb.qingLong.desc + '</p>' +
+                            '</div>' +
+                            '<div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col gap-1">' +
+                                '<div class="flex items-center justify-between">' +
+                                    '<b class="text-amber-300">' + fb.baiHu.name + '</b>' +
+                                    '<span class="text-[10px] font-mono text-yellow-400 bg-yellow-950/60 px-1.5 py-0.2 rounded border border-yellow-500/30">ດາວ: ' + fb.baiHu.star + '</span>' +
+                                '</div>' +
+                                '<div class="text-[10px] text-amber-300 font-mono">' + fb.baiHu.dir + '</div>' +
+                                '<p class="text-[10px] text-slate-300 leading-relaxed">' + fb.baiHu.desc + '</p>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // YIN TAB 4: HUANG QUAN 8 SHA (八煞黄泉)
+                else if (activeYinTab === 'tab_huangquan') {
+                    const sitDeg = (faceDeg + 180) % 360;
+                    const hq = calculateHuangQuan(faceDeg, sitDeg);
+
+                    tabBody =
+                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1.5 mb-2">' +
+                            '<div class="flex items-center justify-between text-xs">' +
+                                '<span class="text-purple-300 font-bold">ກາບກອນໂບຮານ 8 ດ້ວງຮວງສຽນ (八煞黄泉歌):</span>' +
+                            '</div>' +
+                            '<div class="bg-black/50 p-2 rounded-lg text-amber-300 font-mono text-[11px] leading-relaxed border border-amber-500/30">' +
+                                '庚丁坤上是黄泉，乙丙须防巽水先，<br>' +
+                                '甲癸向中休见艮，辛壬水路怕当乾。' +
+                            '</div>' +
+                        '</div>' +
+
+                        '<div class="p-3 rounded-xl border ' + (hq.hasHQ ? 'border-amber-500 bg-amber-950/70 text-amber-200' : 'border-emerald-500 bg-emerald-950/70 text-emerald-200') + ' flex flex-col gap-1.5">' +
+                            '<div class="flex items-center justify-between text-xs font-bold">' +
+                                '<span>' + (hq.hasHQ ? '⚠️ ຈຸດຄວນລະວັງສາຍນ້ຳຮວງສຽນ' : '🌟 ປອດໂປ່ງຈາກ 8 ຮວງສຽນ') + '</span>' +
+                                '<span class="font-mono text-[10px]">向首: ' + hq.fMtn + '向</span>' +
+                            '</div>' +
+                            '<div class="text-white text-xs font-bold">' + hq.rhyme + '</div>' +
+                            '<p class="text-[11px] leading-relaxed">' +
+                                (hq.hasHQ
+                                    ? 'ສຸສານຫັນໜ້າໄປ ' + hq.fMtn + '向 ຫ້າມມີສາຍນ້ຳ, ຮ່ອງລະບາຍນ້ຳ ຫຼື ຖະໜົນ ໄຫຼມາ ຫຼື ໄຫຼອອກໃນທິດ <b>' + hq.badDir + '</b> ເດັດຂາດ! ເພາະຈະຕິດສູດ "ນ້ຳສີເຫຼືອງມໍລະນະ" ເຮັດໃຫ້ລູກຫຼານອາຍຸສັ້ນ ຫຼື ສູນເສຍຊັບສິນ.'
+                                    : 'ທິດໜ້າຫັນ ' + hq.fMtn + '向 ບໍ່ມີຂໍ້ຫ້າມຮວງສຽນໂດຍກົງ ສາມາດວາງສາຍນ້ຳຕາມຫຼັກ 12 ທ່າໄດ້ຢ່າງປອດໄພ.') +
+                            '</p>' +
+                        '</div>';
+                }
+
+                // YIN TAB 5: SAN HE 4 MAJOR WATER BUREAUS (三合四大局)
+                else if (activeYinTab === 'tab_sanhewater') {
+                    const sh = calculateSanHeWaterBureau(faceDeg, selectedYinWaterExit);
+
+                    const exitBtns = ['辰', '戌', '丑', '未'].map(b =>
+                        '<button type="button" onclick="setSelectedYinWaterExit(\'' + b + '\')" class="py-1 px-2 rounded-lg text-xs font-bold transition ' +
+                            (selectedYinWaterExit === b ? 'bg-cyan-600 text-white font-black shadow' : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800') + '">' +
+                            b + ' (ປາກນ້ຳ ' + b + ')' +
+                        '</button>'
+                    ).join('');
+
+                    tabBody =
+                        '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-2 mb-2">' +
+                            '<span class="text-xs font-bold text-cyan-300">ເລືອກທິດປາກນ້ຳອອກສຸສານ (水口 4 墓库):</span>' +
+                            '<div class="grid grid-cols-4 gap-1.5">' + exitBtns + '</div>' +
+                        '</div>' +
+
+                        '<div class="p-3 rounded-xl border border-cyan-500/50 bg-slate-950 flex flex-col gap-2">' +
+                            '<div class="flex items-center justify-between text-xs font-bold">' +
+                                '<span class="text-cyan-300">' + sh.name + '</span>' +
+                                '<span class="text-amber-300 font-mono text-[10px]">ສຸສານ: ' + sh.grave + '</span>' +
+                            '</div>' +
+                            '<div class="grid grid-cols-2 gap-2 text-[11px] text-slate-300">' +
+                                '<div><span class="text-slate-400 text-[10px] block">ນ້ຳໄຫຼເຂົ້າທີ່ເກີດ (生水):</span><b>' + sh.life + '</b></div>' +
+                                '<div><span class="text-slate-400 text-[10px] block">ນ້ຳໄຫຼເຂົ້າທີ່ຮຸ່ງ (旺水):</span><b>' + sh.king + '</b></div>' +
+                            '</div>' +
+                            '<div class="p-2 rounded-lg bg-cyan-950/60 border border-cyan-500/30 text-[11px] text-cyan-200 leading-relaxed">' +
+                                sh.verdict +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // YIN TAB 6: LINEAGE IMPACTS (房份)
+                else if (activeYinTab === 'tab_lineage') {
+                    const sitDeg = (faceDeg + 180) % 360;
+                    const lines = analyzeYinLineage(chart, sitDeg, faceDeg);
+
+                    tabBody =
+                        '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">' +
+                            lines.map(item =>
+                                '<div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex flex-col gap-1">' +
+                                    '<b class="text-amber-400">' + item.title + '</b>' +
+                                    '<span class="text-[10px] text-slate-400 font-mono">' + item.palace + '</span>' +
+                                    '<p class="text-[10px] text-slate-300 leading-relaxed pt-1 border-t border-slate-800">' + item.effect + '</p>' +
+                                '</div>'
+                            ).join('') +
+                        '</div>';
+                }
+
+                // YIN TAB 7: EVENT FORECAST (应期)
+                else if (activeYinTab === 'tab_yinforecast') {
+                    const selMon = SOLAR_MONTHS_INFO[selectedForecastMonth - 1] || SOLAR_MONTHS_INFO[0];
+                    const mCenter = getMonthlyCenterStar(selectedAnnualYear, selMon.m);
+                    const mChart = flyLoShu(mCenter, 1);
+                    const mStar = mChart[curPal];
+
+                    const monthPills =
+                        '<div class="grid grid-cols-6 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 mb-2">' +
+                            SOLAR_MONTHS_INFO.map(item =>
+                                '<button type="button" onclick="setSelectedForecastMonth(' + item.m + ')" class="py-1 rounded-lg text-center text-[10px] font-bold transition ' +
+                                    (selectedForecastMonth === item.m ? 'bg-purple-600 text-white font-black shadow-md' : 'text-slate-400 hover:text-slate-200') + '">' +
+                                    'ມ.' + item.m +
+                                '</button>'
+                            ).join('') +
+                        '</div>';
+
+                    tabBody =
+                        '<div class="flex items-center justify-between text-xs mb-1 px-1">' +
+                            '<span class="text-purple-300 font-bold">ເວລາເກີດເຫດສຸສານ (ປີ ' + selectedAnnualYear + '):</span>' +
+                        '</div>' +
+                        monthPills +
+
+                        '<div class="bg-slate-950 p-3 rounded-xl border border-purple-500/40 flex flex-col gap-2">' +
+                            '<div class="flex items-center justify-between">' +
+                                '<span class="text-xs font-bold text-purple-200">' + selMon.name + ' · ' + selMon.term + '</span>' +
+                                '<span class="text-[10px] text-amber-300 font-mono bg-black/40 px-2 py-0.5 rounded">' + selMon.dates + '</span>' +
+                            '</div>' +
+                            '<div class="text-[11px] text-slate-300 leading-relaxed">' +
+                                'ດາວຈອນເດືອນ <b>' + mStar + '</b> ໝູນມາຕົກໜ້າປ້າຍສຸສານ (ດາວນ້ຳ ' + curW + '). ' +
+                                (mStar === 5 || mStar === 2
+                                    ? '⚠️ <b>ເດືອນຕ້ອງລະວັງ:</b> ດາວພິດ/ພະຍາດມາທັບປ້າຍຫີນ ລູກຫຼານອາດຈະເກີດເລື່ອງຕິດຂັດ ຫຼື ເຈັບປ່ວຍ.'
+                                    : '🌟 <b>ເດືອນມຸງຄຸນ:</b> ພະລັງງານສຸສານສົ່ງເສີມລູກຫຼານໃຫ້ໄດ້ຮັບໂຊກລາບ ແລະ ຄວາມຮຸ່ງເຮືອງ.') +
+                            '</div>' +
+                            '<div class="bg-black/40 p-2 rounded-lg text-[10px] text-purple-200 leading-relaxed border border-purple-500/30">' +
+                                '⚠️ <b>ນັກສັດທີ່ຊົງໃນເດືອນນີ້:</b> ລູກຫຼານທີ່ເກີດ <b>' + selMon.clash + '</b> ຕ້ອງລະວັງສຸຂະພາບເປັນພິເສດໃນເດືອນນີ້.' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                // YIN TAB 8: 64 DA GUA FOR TOMB (玄空大卦 抽爻换象)
+                else if (activeYinTab === 'tab_dagua_yin') {
+                    const dg = calculateDaGua(faceDeg);
+
+                    tabBody =
+                        '<div class="bg-slate-950 p-3 rounded-xl border border-purple-500/40 flex flex-col gap-2">' +
+                            '<div class="flex items-center justify-between">' +
+                                '<span class="text-xs font-bold text-purple-300">☯️ ສຽນຄົງຕ້າກວ້າປ້າຍຫີນ (玄空大卦):</span>' +
+                                '<span class="text-[10px] px-2 py-0.5 rounded-full font-bold bg-purple-950 border border-purple-500/50 text-purple-200">' + dg.status + '</span>' +
+                            '</div>' +
+                            '<div class="flex items-center gap-2 pt-1 border-t border-slate-800">' +
+                                '<span class="text-2xl font-mono text-amber-400">' + dg.symbol + '</span>' +
+                                '<div>' +
+                                    '<div class="text-sm font-bold text-white">' + dg.hexName + '</div>' +
+                                    '<div class="text-[10px] text-slate-400 font-mono">ກວ້າຍຸນ: ' + dg.guaYun + ' · ພະລັງກວ້າ (卦气): ' + dg.guaQi + ' · ເສັ້ນຢາວ: ' + dg.yao + '</div>' +
+                                '</div>' +
+                            '</div>' +
+                            '<p class="text-[11px] text-slate-300 leading-relaxed">' + dg.desc + '</p>' +
+                        '</div>';
+                }
+
+                
+            } else {
+                if (activeYangTab === 'tab_room') {
+                    tabBody =
+                        '<div id="roomSelectorContainer">' + renderRoomSelectorHtml() + '</div>' +
+                        '<div id="roomVerdictContainer">' + renderRoomVerdictHtml(faceDeg, chart, curPal, curM, curW, comboInfo) + '</div>';
+                }
+
+                // TAB 1.5: LUAN TOU EXTERNAL LANDSCAPE & SHA QI INSPECTOR (36 SPECIFIC EXTERNAL FEATURES)
+                else if (activeYangTab === 'tab_luantou') {
+                    tabBody =
+                        '<div id="luantouSelectorContainer">' + renderLuantouSelectorHtml() + '</div>' +
+                        '<div id="luantouVerdictContainer">' + renderLuantouVerdictHtml(faceDeg, chart, curPal, curM, curW, comboInfo) + '</div>';
                 }
 
                 // TAB 1.6: 4 MAJOR & SPECIAL FLYING STAR FORMATIONS (玄空四大格局 & 特殊局)
@@ -11492,6 +11561,31 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
                     // Manuals & calculators do not depend on compass angle; stay 100% stationary!
                     return;
                 }
+
+                // Granular DOM update for tab_room: keep 43 room buttons & scroll position 100% intact!
+                if (activeYangTab === 'tab_room') {
+                    const mobVerdict = document.querySelector('#mobActiveTabBody #roomVerdictContainer');
+                    const pcVerdict = document.querySelector('#pcActiveTabBody #roomVerdictContainer');
+                    if (mobVerdict || pcVerdict) {
+                        const verdictHtml = renderRoomVerdictHtml(faceDeg, chart, curPal, curM, curW, comboInfo);
+                        if (mobVerdict) mobVerdict.innerHTML = verdictHtml;
+                        if (pcVerdict) pcVerdict.innerHTML = verdictHtml;
+                        return; // FAST EXIT: ROOM BUTTONS ARE NEVER RE-RENDERED!
+                    }
+                }
+
+                // Granular DOM update for tab_luantou: keep 36 landform buttons 100% intact!
+                if (activeYangTab === 'tab_luantou') {
+                    const mobLuantou = document.querySelector('#mobActiveTabBody #luantouVerdictContainer');
+                    const pcLuantou = document.querySelector('#pcActiveTabBody #luantouVerdictContainer');
+                    if (mobLuantou || pcLuantou) {
+                        const verdictHtml = renderLuantouVerdictHtml(faceDeg, chart, curPal, curM, curW, comboInfo);
+                        if (mobLuantou) mobLuantou.innerHTML = verdictHtml;
+                        if (pcLuantou) pcLuantou.innerHTML = verdictHtml;
+                        return; // FAST EXIT: LUANTOU BUTTONS ARE NEVER RE-RENDERED!
+                    }
+                }
+
                 const mobBody = document.getElementById('mobActiveTabBody');
                 const pcBody = document.getElementById('pcActiveTabBody');
                 if ((!isDesktop && mobBody) || (isDesktop && pcBody)) {

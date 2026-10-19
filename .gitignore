@@ -18,3 +18,8 @@
 !/asset/fonts/
 /asset/fonts/*
 !/asset/fonts/*.ttf
+
+# Whitelist /hmong web app
+!/hmong/
+!/hmong/**
+
