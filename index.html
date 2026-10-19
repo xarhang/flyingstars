@@ -6537,6 +6537,13 @@ function calculateQiZhengSiYu(year, month, day, hour) {
             updateLivePrediction(topCompassDeg, true);
         }
 
+        function setYinTab(tabName) {
+            activeYinTab = tabName;
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            updateLivePrediction(topCompassDeg, true);
+        }
+
         function renderPredictionModeSwitcher() {
             return (
                 '<div class="grid grid-cols-3 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 text-xs font-bold mb-2 shadow-inner">' +
@@ -6860,6 +6867,8 @@ function setSelectedRoom(roomKey) {
         let latestFlyingChart = null;
 
         function computePredictionBody(faceDeg, chart, kw, sitDeg, curPal, curM, curP, curW, comboInfo) {
+            const actualFacingDegree = ((faceDeg % 360) + 360) % 360;
+            const actualSittingDegree = ((faceDeg + 180) % 360 + 360) % 360;
             let tabBody = '';
             if (fengShuiMode === 'yin') {
                 if (activeYinTab === 'tab_fenjin') {
