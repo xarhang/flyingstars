@@ -6518,6 +6518,9 @@ function calculateQiZhengSiYu(year, month, day, hour) {
         let latestFlyingChart = null;
 
         function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
+            const actualFacingDegree = ((faceDeg % 360) + 360) % 360;
+            const actualSittingDegree = ((faceDeg + 180) % 360 + 360) % 360;
+            const sitDeg = actualSittingDegree;
             const chart = calculateFlyingStarsChart(currentPeriod, faceDeg);
             latestFlyingChart = chart;
             const curPal = chart.faceInfo.palId;
