@@ -353,15 +353,19 @@ function renderScissorsShaSvg(lang = 'lao') {
   <circle cx="425" cy="173" r="6" fill="#15803D"/>
 
   <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
-  <!-- Bounded strictly inside triangular boundaries -->
+  <!-- Wide open sunlit manicured green lawn inside plot boundaries -->
   <polygon points="368,172 432,172 452,228 348,228" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <text x="400" y="185" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງໂລ່ງແຈ້ງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+  <text x="400" y="183" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງໂລ່ງແຈ້ງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+  <text x="400" y="195" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">${isLao ? '✓ ບໍ່ມີບໍ່ນ້ຳ (ດີເລີດ): ລານຫຍ້າຂຽວໂລ່ງຮັບແສງ &amp; ລົມ' : '✓ Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
   
-  <!-- Semicircular Jade Belt Water Basin in Front of House (Central Axis) -->
-  <path d="M 378 222 A 22 12 0 0 1 422 222 Z" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.5"/>
-  <circle cx="400" cy="215" r="2.5" fill="#0284C7"/>
-  <ellipse cx="400" cy="215" rx="10" ry="4" fill="none" stroke="#38BDF8" stroke-width="0.8"/>
-  <text x="400" y="205" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ອ່າງນ້ຳພຸ/ສະນ້ຳໂອບອຸ້ມ (ຖ້າມີ)' : 'Pas Dej Puag Ncig (Yog Muaj)'}</text>
+  <!-- COMPACT ORNAMENTAL FOUNTAIN ON DRAGON FLANK (IF HOMEOWNER ADDS WATER) -->
+  <!-- Placed safely on Green Dragon garden flank (cx=360, cy=208), completely clear of driveway & porch! -->
+  <!-- Size: Compact proportional 10-15% of courtyard (Diameter 18px = ~2.2m, 1/6 of house facade) -->
+  <circle cx="360" cy="208" r="9" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.2"/>
+  <ellipse cx="360" cy="208" rx="6" ry="3" fill="none" stroke="#38BDF8" stroke-width="0.8"/>
+  <circle cx="360" cy="208" r="1.8" fill="#0284C7"/>
+  <text x="360" y="194" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="5.8" fill="#0369A1" text-anchor="middle">${isLao ? 'ອ່າງນ້ຳພຸ (ຖ້າມີ)' : 'Pas Dej (Yog Muaj)'}</text>
+  <text x="360" y="223" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.2" fill="#0284C7" text-anchor="middle">${isLao ? '[ຝັ່ງມັງກອນ 10-15%]' : '[Sab Zaj 10-15%]'}</text>
 
   <!-- SAFE RESIDENTIAL QUADRANT: Main House (x=330, y=236, w=140, h=65) -->
   <polygon points="325,236 400,214 475,236" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
@@ -371,17 +375,17 @@ function renderScissorsShaSvg(lang = 'lao') {
   <line x1="380" y1="236" x2="380" y2="301" stroke="#CA8A04" stroke-width="1.5" stroke-dasharray="3,2"/>
   
   <!-- Left Room: Master Bedroom with Bed Head Against Solid Rear Wall -->
-  <rect x="338" y="244" width="34" height="26" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1"/>
-  <rect x="338" y="244" width="34" height="7" fill="#0284C7"/>
-  <text x="355" y="262" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#0369A1" text-anchor="middle">${isLao ? 'ຫົວຕຽງ' : 'Taub Hau'}</text>
-  <text x="355" y="288" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">${isLao ? 'ຫ້ອງນອນໃຫຍ່' : 'Chaw Pw'}</text>
+  <rect x="338" y="268" width="34" height="26" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1"/>
+  <rect x="338" y="287" width="34" height="7" fill="#0284C7"/>
+  <text x="355" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#0369A1" text-anchor="middle">${isLao ? 'ຫົວຕຽງ' : 'Taub Hau'}</text>
+  <text x="355" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">${isLao ? 'ຫ້ອງນອນໃຫຍ່' : 'Chaw Pw'}</text>
 
   <!-- Right Room: Main Living Hall -->
   <text x="425" y="264" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#1E293B" text-anchor="middle">${t.house}</text>
   <text x="425" y="282" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#475569" text-anchor="middle">${t.houseDesc}</text>
   
-  <!-- Front Porch / Door Indicator -->
-  <rect x="417" y="298" width="16" height="5" fill="#1E293B"/>
+  <!-- Front Porch / Door Indicator (Facing Front Ming Tang) -->
+  <rect x="417" y="231" width="16" height="5" fill="#1E293B"/>
 
   <!-- Compass Sitting & Facing Axis Badge (ທິດໜ້າ ⬆ / ທິດພິງ ⬇) -->
   <g transform="translate(480, 240)">
@@ -393,9 +397,9 @@ function renderScissorsShaSvg(lang = 'lao') {
     <text x="28" y="49" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດພິງ (坐)' : 'Zaum (坐)'}</text>
   </g>
 
-  <!-- Left Dragon Driveway: Through the Fence Gate to Courtyard -->
-  <path d="M 235 348 L 284 348 C 310 348 335 320 355 295" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
-  <text x="290" y="338" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle" transform="rotate(-15 290 338)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
+  <!-- Left Dragon Driveway: Through the Fence Gate to Courtyard & Porch -->
+  <path d="M 235 348 L 284 348 C 305 348 316 295 330 260 C 342 232 385 230 415 233" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+  <text x="290" y="336" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle" transform="rotate(-15 290 336)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ' : '⟿ Kev Nkhaus Zoo Siab'}</text>
 
   <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO AVOID DRIVEWAY OVERLAP) -->
   <g transform="translate(180, 339)">

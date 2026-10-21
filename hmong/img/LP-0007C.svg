@@ -155,15 +155,19 @@
         <text x="400" y="162" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">[+] Phab Ntsa 2.2m Txiav</text>
 
         <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
-        <!-- Bounded strictly inside triangular boundaries -->
+        <!-- Wide open sunlit manicured green lawn inside plot boundaries -->
         <polygon points="368,172 432,172 452,228 348,228" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-        <text x="400" y="185" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">Thaj Tshav Kaj (Ming Tang)</text>
+        <text x="400" y="183" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">Thaj Tshav Kaj (Ming Tang)</text>
+        <text x="400" y="195" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">✓ Tsis muaj dej: Tshav xyoob ntsuab kaj</text>
         
-        <!-- Semicircular Jade Belt Water Basin in Front of House (Central Axis) -->
-        <path d="M 378 222 A 22 12 0 0 1 422 222 Z" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.5"/>
-        <circle cx="400" cy="215" r="2.5" fill="#0284C7"/>
-        <ellipse cx="400" cy="215" rx="10" ry="4" fill="none" stroke="#38BDF8" stroke-width="0.8"/>
-        <text x="400" y="205" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">Pas Dej Puag Ncig (Yog Muaj)</text>
+        <!-- COMPACT ORNAMENTAL FOUNTAIN ON DRAGON FLANK (IF HOMEOWNER ADDS WATER) -->
+        <!-- Placed safely on Green Dragon garden flank (cx=360, cy=208), completely clear of driveway & porch! -->
+        <!-- Size: Compact proportional 10-15% of courtyard (Diameter 18px = ~2.2m, 1/6 of house facade) -->
+        <circle cx="360" cy="208" r="9" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.2"/>
+        <ellipse cx="360" cy="208" rx="6" ry="3" fill="none" stroke="#38BDF8" stroke-width="0.8"/>
+        <circle cx="360" cy="208" r="1.8" fill="#0284C7"/>
+        <text x="360" y="194" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="5.8" fill="#0369A1" text-anchor="middle">Pas Dej (Yog Muaj)</text>
+        <text x="360" y="223" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.2" fill="#0284C7" text-anchor="middle">[Sab Zaj 10-15%]</text>
 
         <!-- SAFE RESIDENTIAL QUADRANT: Main House (x=330, y=236, w=140, h=65) -->
         <polygon points="325,236 400,214 475,236" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
@@ -173,15 +177,15 @@
         <line x1="378" y1="236" x2="378" y2="301" stroke="#CA8A04" stroke-width="1.5" stroke-dasharray="3,2"/>
         
         <!-- Master Bedroom on Quiet Left Flank (against neighbor boundary) -->
-        <rect x="338" y="244" width="34" height="26" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1"/>
-        <rect x="338" y="244" width="34" height="7" fill="#0284C7"/>
-        <text x="355" y="262" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#0369A1" text-anchor="middle">Taub Hau</text>
-        <text x="355" y="288" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">Chaw Pw</text>
+        <rect x="338" y="268" width="34" height="26" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1"/>
+        <rect x="338" y="287" width="34" height="7" fill="#0284C7"/>
+        <text x="355" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#0369A1" text-anchor="middle">Taub Hau</text>
+        <text x="355" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">Chaw Pw</text>
 
         <!-- Living Hall on Right (towards road & entrance) -->
         <text x="424" y="264" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#1E293B" text-anchor="middle">Lub Tsev</text>
         <text x="424" y="282" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#475569" text-anchor="middle">Hauv Qab Dav</text>
-        <rect x="416" y="298" width="16" height="5" fill="#1E293B"/>
+        <rect x="416" y="231" width="16" height="5" fill="#1E293B"/>
 
         <!-- Compass Sitting & Facing Axis Badge (ທິດໜ້າ ⬆ / ທິດພິງ ⬇) -->
         <g transform="translate(480, 240)">
@@ -194,8 +198,8 @@
         </g>
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO COURTYARD -->
-        <path d="M 565 348 L 516 348 C 490 348 465 320 445 295" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
-        <text x="340" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-25 340 280)">⟿ Kev Nkhaus Zoo Siab</text>
+        <path d="M 565 348 L 516 348 C 495 348 484 295 470 260 C 462 238 450 232 424 232" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="495" y="336" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle" transform="rotate(15 495 336)">⟿ Kev Nkhaus Zoo Siab</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO RIGHT CLEAR OF DRIVEWAY) -->
         <g transform="translate(528, 339)">
