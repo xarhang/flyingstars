@@ -400,9 +400,12 @@
                         <div id="resZodiac" class="text-xs font-bold text-amber-300">ປີມະເມຍ (ມ້າ)</div>
                         <div id="resGanzhi" class="text-[11px] text-slate-400">庚午 (ແກງມະເມຍ) • ພ.ສ. 2533</div>
                     </div>
-                    <span id="resElementBadge" class="bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-inner">
-                        ທາດດິນ
-                    </span>
+                    <div class="flex flex-col items-end gap-0.5">
+                        <span class="text-[9px] text-slate-400 font-medium">🪙 ທາດປີເກີດ (Year Element):</span>
+                        <span id="resElementBadge" class="bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-bold px-2.5 py-0.5 rounded-lg shadow-inner">
+                            ທາດດິນ
+                        </span>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-2 text-xs">
@@ -472,28 +475,46 @@
             </div>
 
             <!-- User Birth Profile Widget on Desktop -->
-            <div id="desktopBirthProfileWidget" class="bg-slate-950 p-2.5 rounded-xl border border-purple-500/30 flex flex-col gap-1.5 shadow-sm">
+            <div id="desktopBirthProfileWidget" class="bg-slate-950 p-2.5 rounded-xl border border-purple-500/30 flex flex-col gap-2 shadow-sm">
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-bold text-purple-300 flex items-center gap-1.5">
                         <svg class="w-3.5 h-3.5 text-purple-400 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                        <span>ວັນເດືອນປີເກີດ (ດວງຊາຕາ):</span>
+                        <span>ວັນເດືອນປີເກີດ (ດວງຊາຕາ &amp; ປາຈື):</span>
                     </span>
-                    <div class="flex items-center gap-1">
-                        <button type="button" id="dtBtnGenderMale" onclick="setUserBirthProfile(null, null, null, null, 'male')" class="px-2 py-0.5 rounded text-[10px] font-bold transition bg-blue-600 text-white">ຊາຍ 👨</button>
-                        <button type="button" id="dtBtnGenderFemale" onclick="setUserBirthProfile(null, null, null, null, 'female')" class="px-2 py-0.5 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white">ຍິງ 👩</button>
+                    <span class="text-[10px] text-purple-400/80 font-mono">DD / MM / YYYY</span>
+                </div>
+
+                <!-- Inputs: ວັນທີ - ເດືອນ - ປີເກີດ (DD/MM/YYYY) No jumping, seamless typing -->
+                <div class="grid grid-cols-12 gap-1.5 items-center">
+                    <div class="col-span-3">
+                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">📅 ວັນທີ:</span>
+                        <select id="dtBirthDaySelect" onchange="setUserBirthProfile(null, null, this.value, null, null)" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-1.5 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 cursor-pointer text-center">
+                        </select>
+                    </div>
+                    <div class="col-span-5">
+                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">🗓️ ເດືອນ:</span>
+                        <select id="dtBirthMonthSelect" onchange="setUserBirthProfile(null, this.value, null, null, null)" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-1.5 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
+                        </select>
+                    </div>
+                    <div class="col-span-4">
+                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">🚩 ປີ (ຄ.ສ./ພ.ສ.):</span>
+                        <input type="number" id="dtBirthYearInput" min="1924" max="2050" placeholder="1992" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-1 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 text-center font-mono">
                     </div>
                 </div>
 
-                <!-- Inputs: Native Date Picker + Hour -->
+                <!-- Row 2: ຍາມເກີດ + ເພດ -->
                 <div class="grid grid-cols-12 gap-1.5 items-center">
                     <div class="col-span-7">
-                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">📅 ວັນທີ-ເດືອນ-ປີເກີດ (Date):</span>
-                        <input type="date" id="dtBirthDatePicker" min="1924-01-01" max="2043-12-31" onchange="onBirthDatePicked(this.value)" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-2.5 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 cursor-pointer [color-scheme:dark]">
-                    </div>
-                    <div class="col-span-5">
                         <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">⏰ ຍາມເກີດ:</span>
                         <select id="dtBirthHourSelect" onchange="setUserBirthProfile(null, null, null, this.value, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded-lg px-2 py-1 text-white text-[11px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
                         </select>
+                    </div>
+                    <div class="col-span-5">
+                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">👤 ເພດ:</span>
+                        <div class="flex items-center gap-1">
+                            <button type="button" id="dtBtnGenderMale" onclick="setUserBirthProfile(null, null, null, null, 'male')" class="flex-1 py-1 rounded text-[10px] font-bold transition bg-blue-600 text-white shadow-sm">ຊາຍ 👨</button>
+                            <button type="button" id="dtBtnGenderFemale" onclick="setUserBirthProfile(null, null, null, null, 'female')" class="flex-1 py-1 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white">ຍິງ 👩</button>
+                        </div>
                     </div>
                 </div>
 
@@ -623,7 +644,7 @@
             <!-- Row 3: Live Personal Ming Gua (ດວງກົວະປະຈຳຕົວ & ທິດມຸງຄຸນສົດ) -->
             <div id="mobileHudGuaBadge" class="flex items-center justify-between text-[9px] font-mono px-2 py-0.5 rounded-lg border transition-all bg-slate-900/90 border-purple-500/30">
                 <span id="mobileHudGuaName" class="text-purple-300 font-bold truncate">👤 ໝິງກວ້າ: 坎1 (ນ້ຳ) · ຕາເວັນອອກ</span>
-                <span id="mobileHudGuaDirection" class="text-emerald-300 font-bold shrink-0 ml-1">生氣 ໂຊກລາບ</span>
+                <span id="mobileHudGuaDirection" class="text-emerald-300 font-bold shrink-0 ml-1">ໂຊກລາບຮຸ່ງເຮືອງ</span>
             </div>
         </div>
     </div>
@@ -812,28 +833,46 @@
         </div>
 
         <!-- User Birth Profile Widget (ວັນເດືອນປີເກີດ & ດວງຊາຕາ) -->
-        <div id="mobBirthProfileWidget" class="bg-slate-950 p-2 rounded-xl border border-purple-500/30 flex flex-col gap-1.5 shadow-sm">
+        <div id="mobBirthProfileWidget" class="bg-slate-950 p-2.5 rounded-xl border border-purple-500/30 flex flex-col gap-2 shadow-sm">
             <div class="flex items-center justify-between">
                 <span class="text-xs font-bold text-purple-300 flex items-center gap-1.5">
                     <svg class="w-3.5 h-3.5 text-purple-400 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    <span>ວັນເດືອນປີເກີດ (ດວງຊາຕາ):</span>
+                    <span>ວັນເດືອນປີເກີດ (ດວງຊາຕາ &amp; ປາຈື):</span>
                 </span>
-                <div class="flex items-center gap-1">
-                    <button type="button" id="mobBtnGenderMale" onclick="setUserBirthProfile(null, null, null, null, 'male')" class="px-2 py-0.5 rounded text-[10px] font-bold transition bg-blue-600 text-white">ຊາຍ 👨</button>
-                    <button type="button" id="mobBtnGenderFemale" onclick="setUserBirthProfile(null, null, null, null, 'female')" class="px-2 py-0.5 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white">ຍິງ 👩</button>
+                <span class="text-[10px] text-purple-400/80 font-mono">DD / MM / YYYY</span>
+            </div>
+
+            <!-- Inputs: ວັນທີ - ເດືອນ - ປີເກີດ (DD/MM/YYYY) -->
+            <div class="grid grid-cols-12 gap-1.5 items-center">
+                <div class="col-span-3">
+                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">📅 ວັນທີ:</span>
+                    <select id="mobBirthDaySelect" onchange="setUserBirthProfile(null, null, this.value, null, null)" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-1 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 cursor-pointer text-center">
+                    </select>
+                </div>
+                <div class="col-span-5">
+                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">🗓️ ເດືອນ:</span>
+                    <select id="mobBirthMonthSelect" onchange="setUserBirthProfile(null, this.value, null, null, null)" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-1 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
+                    </select>
+                </div>
+                <div class="col-span-4">
+                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">🚩 ປີ (ຄ.ສ./ພ.ສ.):</span>
+                    <input type="number" id="mobBirthYearInput" min="1924" max="2050" placeholder="1992" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-1 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 text-center font-mono">
                 </div>
             </div>
 
-            <!-- Inputs: Native Date Picker + Hour -->
+            <!-- Row 2: ຍາມເກີດ + ເພດ -->
             <div class="grid grid-cols-12 gap-1.5 items-center">
                 <div class="col-span-7">
-                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">📅 ວັນທີ-ເດືອນ-ປີເກີດ (Date):</span>
-                    <input type="date" id="mobBirthDatePicker" min="1924-01-01" max="2043-12-31" onchange="onBirthDatePicked(this.value)" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-2 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 cursor-pointer [color-scheme:dark]">
-                </div>
-                <div class="col-span-5">
                     <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">⏰ ຍາມເກີດ:</span>
                     <select id="mobBirthHourSelect" onchange="setUserBirthProfile(null, null, null, this.value, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded-lg px-1.5 py-1 text-white text-[10px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
                     </select>
+                </div>
+                <div class="col-span-5">
+                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">👤 ເພດ:</span>
+                    <div class="flex items-center gap-1">
+                        <button type="button" id="mobBtnGenderMale" onclick="setUserBirthProfile(null, null, null, null, 'male')" class="flex-1 py-1 rounded text-[10px] font-bold transition bg-blue-600 text-white shadow-sm">ຊາຍ 👨</button>
+                        <button type="button" id="mobBtnGenderFemale" onclick="setUserBirthProfile(null, null, null, null, 'female')" class="flex-1 py-1 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white">ຍິງ 👩</button>
+                    </div>
                 </div>
             </div>
 
@@ -1138,112 +1177,112 @@
                 name: 'ກວ້າ 1 (ຄຳ / 坎)', element: 'ທາດນ້ຳ', elementBadge: 'ທາດນ້ຳ',
                 group: 'ກຸ່ມຕາເວັນອອກ', trigram: '☵',
                 dirs: {
-                    SE: { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
-                    E:  { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
-                    S:  { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
-                    N:  { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
-                    W:  { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
-                    NW: { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
-                    NE: { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
-                    SW: { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                    SE: { type: 'good', star: 'ໂຊກລາບຮຸ່ງເຮືອງ', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    E:  { type: 'good', star: 'ສຸຂະພາບໝໍເທບ', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    S:  { type: 'good', star: 'ຄວາມຮັກອາຍຸຍືນ', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    N:  { type: 'good', star: 'ສະຕິປັນຍາໝັ້ນຄົງ', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    W:  { type: 'bad', star: 'ອຸປະສັກເສຍຊັບ', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    NW: { type: 'bad', star: 'ຄະດີຄວາມໂຊກຮ້າຍ', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    NE: { type: 'bad', star: 'ໂຈນໄພຜິດຖຽງ', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    SW: { type: 'bad', star: 'ມະຫາວິບັດຕັດຊີວິດ', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
                 }
             },
             2: {
                 name: 'ກວ້າ 2 (ຄຸນ / 坤)', element: 'ທາດດິນ', elementBadge: 'ທາດດິນ',
                 group: 'ກຸ່ມຕາເວັນຕົກ', trigram: '☷',
                 dirs: {
-                    NE: { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
-                    W:  { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
-                    NW: { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
-                    SW: { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
-                    E:  { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
-                    S:  { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
-                    SE: { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
-                    N:  { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                    NE: { type: 'good', star: 'ໂຊກລາບຮຸ່ງເຮືອງ', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    W:  { type: 'good', star: 'ສຸຂະພາບໝໍເທບ', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    NW: { type: 'good', star: 'ຄວາມຮັກອາຍຸຍືນ', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    SW: { type: 'good', star: 'ສະຕິປັນຍາໝັ້ນຄົງ', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    E:  { type: 'bad', star: 'ອຸປະສັກເສຍຊັບ', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    S:  { type: 'bad', star: 'ຄະດີຄວາມໂຊກຮ້າຍ', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    SE: { type: 'bad', star: 'ໂຈນໄພຜິດຖຽງ', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    N:  { type: 'bad', star: 'ມະຫາວິບັດຕັດຊີວິດ', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
                 }
             },
             3: {
                 name: 'ກວ້າ 3 (ຈິ້ນ / 震)', element: 'ທາດໄມ້', elementBadge: 'ທາດໄມ້',
                 group: 'ກຸ່ມຕາເວັນອອກ', trigram: '☳',
                 dirs: {
-                    S:  { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
-                    N:  { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
-                    SE: { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
-                    E:  { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
-                    SW: { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
-                    NE: { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
-                    NW: { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
-                    W:  { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                    S:  { type: 'good', star: 'ໂຊກລາບຮຸ່ງເຮືອງ', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    N:  { type: 'good', star: 'ສຸຂະພາບໝໍເທບ', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    SE: { type: 'good', star: 'ຄວາມຮັກອາຍຸຍືນ', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    E:  { type: 'good', star: 'ສະຕິປັນຍາໝັ້ນຄົງ', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    SW: { type: 'bad', star: 'ອຸປະສັກເສຍຊັບ', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    NE: { type: 'bad', star: 'ຄະດີຄວາມໂຊກຮ້າຍ', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    NW: { type: 'bad', star: 'ໂຈນໄພຜິດຖຽງ', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    W:  { type: 'bad', star: 'ມະຫາວິບັດຕັດຊີວິດ', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
                 }
             },
             4: {
                 name: 'ກວ້າ 4 (ຊຸ່ນ / 巽)', element: 'ທາດໄມ້', elementBadge: 'ທາດໄມ້',
                 group: 'ກຸ່ມຕາເວັນອອກ', trigram: '☴',
                 dirs: {
-                    N:  { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
-                    S:  { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
-                    E:  { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
-                    SE: { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
-                    NW: { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
-                    W:  { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
-                    SW: { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
-                    NE: { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                    N:  { type: 'good', star: 'ໂຊກລາບຮຸ່ງເຮືອງ', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    S:  { type: 'good', star: 'ສຸຂະພາບໝໍເທບ', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    E:  { type: 'good', star: 'ຄວາມຮັກອາຍຸຍືນ', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    SE: { type: 'good', star: 'ສະຕິປັນຍາໝັ້ນຄົງ', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    NW: { type: 'bad', star: 'ອຸປະສັກເສຍຊັບ', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    W:  { type: 'bad', star: 'ຄະດີຄວາມໂຊກຮ້າຍ', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    SW: { type: 'bad', star: 'ໂຈນໄພຜິດຖຽງ', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    NE: { type: 'bad', star: 'ມະຫາວິບັດຕັດຊີວິດ', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
                 }
             },
             6: {
                 name: 'ກວ້າ 6 (ເສຽນ / 乾)', element: 'ທາດທອງ', elementBadge: 'ທາດທອງ',
                 group: 'ກຸ່ມຕາເວັນຕົກ', trigram: '☰',
                 dirs: {
-                    W:  { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
-                    NE: { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
-                    SW: { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
-                    NW: { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
-                    SE: { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
-                    N:  { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
-                    E:  { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
-                    S:  { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                    W:  { type: 'good', star: 'ໂຊກລາບຮຸ່ງເຮືອງ', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    NE: { type: 'good', star: 'ສຸຂະພາບໝໍເທບ', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    SW: { type: 'good', star: 'ຄວາມຮັກອາຍຸຍືນ', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    NW: { type: 'good', star: 'ສະຕິປັນຍາໝັ້ນຄົງ', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    SE: { type: 'bad', star: 'ອຸປະສັກເສຍຊັບ', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    N:  { type: 'bad', star: 'ຄະດີຄວາມໂຊກຮ້າຍ', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    E:  { type: 'bad', star: 'ໂຈນໄພຜິດຖຽງ', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    S:  { type: 'bad', star: 'ມະຫາວິບັດຕັດຊີວິດ', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
                 }
             },
             7: {
                 name: 'ກວ້າ 7 (ຕຸ່ຍ / 兌)', element: 'ທາດທອງ', elementBadge: 'ທາດທອງ 🪙',
                 group: 'ກຸ່ມຕາເວັນຕົກ', trigram: '☱',
                 dirs: {
-                    NW: { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
-                    SW: { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
-                    NE: { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
-                    W:  { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
-                    N:  { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
-                    SE: { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
-                    S:  { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
-                    E:  { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                    NW: { type: 'good', star: 'ໂຊກລາບຮຸ່ງເຮືອງ', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    SW: { type: 'good', star: 'ສຸຂະພາບໝໍເທບ', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    NE: { type: 'good', star: 'ຄວາມຮັກອາຍຸຍືນ', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    W:  { type: 'good', star: 'ສະຕິປັນຍາໝັ້ນຄົງ', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    N:  { type: 'bad', star: 'ອຸປະສັກເສຍຊັບ', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    SE: { type: 'bad', star: 'ຄະດີຄວາມໂຊກຮ້າຍ', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    S:  { type: 'bad', star: 'ໂຈນໄພຜິດຖຽງ', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    E:  { type: 'bad', star: 'ມະຫາວິບັດຕັດຊີວິດ', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
                 }
             },
             8: {
                 name: 'ກວ້າ 8 (ເກິ້ນ / 艮)', element: 'ທາດດິນ', elementBadge: 'ທາດດິນ',
                 group: 'ກຸ່ມຕາເວັນຕົກ', trigram: '☶',
                 dirs: {
-                    SW: { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
-                    NW: { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
-                    W:  { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
-                    NE: { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
-                    S:  { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
-                    E:  { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
-                    N:  { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
-                    SE: { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                    SW: { type: 'good', star: 'ໂຊກລາບຮຸ່ງເຮືອງ', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    NW: { type: 'good', star: 'ສຸຂະພາບໝໍເທບ', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    W:  { type: 'good', star: 'ຄວາມຮັກອາຍຸຍືນ', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    NE: { type: 'good', star: 'ສະຕິປັນຍາໝັ້ນຄົງ', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    S:  { type: 'bad', star: 'ອຸປະສັກເສຍຊັບ', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    E:  { type: 'bad', star: 'ຄະດີຄວາມໂຊກຮ້າຍ', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    N:  { type: 'bad', star: 'ໂຈນໄພຜິດຖຽງ', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    SE: { type: 'bad', star: 'ມະຫາວິບັດຕັດຊີວິດ', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
                 }
             },
             9: {
                 name: 'ກວ້າ 9 (ຫຼີ / 離)', element: 'ທາດໄຟ', elementBadge: 'ທາດໄຟ',
                 group: 'ກຸ່ມຕາເວັນອອກ', trigram: '☲',
                 dirs: {
-                    E:  { type: 'good', star: '生氣 (ຊິງຊີ່)', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
-                    SE: { type: 'good', star: '天醫 (ທຽນອີ່)', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
-                    N:  { type: 'good', star: '延年 (ຢຽນໜຽນ)', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
-                    S:  { type: 'good', star: '伏位 (ຟູເວີ່ຍ)', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
-                    NE: { type: 'bad', star: '禍害 (ຫົວຫ້າຍ)', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
-                    SW: { type: 'bad', star: '六煞 (ລິວຊ່າ)', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
-                    W:  { type: 'bad', star: '五鬼 (ອູກຸຍ)', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
-                    NW: { type: 'bad', star: '絕命 (ຈວຽ້ມິ່ງ)', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
+                    E:  { type: 'good', star: 'ໂຊກລາບຮຸ່ງເຮືອງ', name: 'ຣຸ່ງເຮືອງ', desc: 'ມະຫາໂຊກ ຈະເລີນຮຸ່ງເຮືອງ' },
+                    SE: { type: 'good', star: 'ສຸຂະພາບໝໍເທບ', name: 'ສຸຂະພາບ', desc: 'ສຸຂະພາບດີ ອາຍຸໝັ້ນ' },
+                    N:  { type: 'good', star: 'ຄວາມຮັກອາຍຸຍືນ', name: 'ຄວາມຮັກ', desc: 'ຄວາມສຳພັນດີ ຄອບຄົວອົບອຸ່ນ' },
+                    S:  { type: 'good', star: 'ສະຕິປັນຍາໝັ້ນຄົງ', name: 'ໝັ້ນຄົງ', desc: 'ສະຕິປັນຍາ ຄວາມສະຫງົບ' },
+                    NE: { type: 'bad', star: 'ອຸປະສັກເສຍຊັບ', name: 'ຫົວຫ້າຍ', desc: 'ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ' },
+                    SW: { type: 'bad', star: 'ຄະດີຄວາມໂຊກຮ້າຍ', name: 'ລິວຊ່າ', desc: 'ໂຊກຮ້າຍ ຄະດີຄວາມ' },
+                    W:  { type: 'bad', star: 'ໂຈນໄພຜິດຖຽງ', name: 'ອູກຸຍ', desc: 'ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ' },
+                    NW: { type: 'bad', star: 'ມະຫາວິບັດຕັດຊີວິດ', name: 'ຈວຽ້ມິ່ງ', desc: 'ຕັດຊີວິດ ອັນຕະລາຍຮ້າຍແຮງ' }
                 }
             }
         };
@@ -2114,24 +2153,39 @@
         let userBirthYear = 1990;
         let userGender = 'male'; // 'male' or 'female'
 
-        function setUserBirthProfile(year, month, day, hour, gender) {
+        function setUserBirthProfile(year, month, day, hour, gender, syncInput = true) {
             if (year !== null && year !== undefined) {
-                selectedBaziYear = parseInt(year, 10);
-                userBirthYear = selectedBaziYear;
+                let y = parseInt(year, 10);
+                if (y >= 2400 && y <= 2600) y -= 543;
+                if (!isNaN(y)) {
+                    selectedBaziYear = y;
+                    userBirthYear = y;
+                }
             }
             if (month !== null && month !== undefined) {
-                selectedBaziMonth = parseInt(month, 10);
+                const m = parseInt(month, 10);
+                if (!isNaN(m) && m >= 1 && m <= 12) selectedBaziMonth = m;
             }
             if (day !== null && day !== undefined) {
-                selectedBaziDay = parseInt(day, 10);
+                const d = parseInt(day, 10);
+                if (!isNaN(d) && d >= 1 && d <= 31) selectedBaziDay = d;
             }
             if (hour !== null && hour !== undefined) {
-                selectedBaziHour = parseInt(hour, 10);
+                const h = parseInt(hour, 10);
+                if (!isNaN(h)) selectedBaziHour = h;
             }
             if (gender !== null && gender !== undefined) {
                 userGender = gender;
             }
-            updateBirthProfileUI();
+
+            // Sync Section 4 input if different
+            const s4Input = document.getElementById('birthYearInput');
+            if (s4Input && parseInt(s4Input.value, 10) !== selectedBaziYear) {
+                s4Input.value = selectedBaziYear;
+                if (typeof updateGuaDisplay === 'function') updateGuaDisplay(false);
+            }
+
+            updateBirthProfileUI(syncInput);
 
             const normRot = ((currentRotation % 360) + 360) % 360;
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
@@ -2142,31 +2196,34 @@
             setUserBirthProfile(yr, null, null, null, gender);
         }
 
-        function onBirthDatePicked(dateStr) {
-            if (!dateStr) return;
-            const parts = dateStr.split('-');
-            if (parts.length === 3) {
-                const y = parseInt(parts[0], 10);
-                const m = parseInt(parts[1], 10);
-                const d = parseInt(parts[2], 10);
-                if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
-                    setUserBirthProfile(y, m, d, null, null);
-                }
-            }
-        }
-
-        function updateBirthProfileUI() {
-            const dateStr = selectedBaziYear + '-' +
-                String(selectedBaziMonth).padStart(2, '0') + '-' +
-                String(selectedBaziDay).padStart(2, '0');
-
-            const dateInputs = [document.getElementById('mobBirthDatePicker'), document.getElementById('dtBirthDatePicker')];
-            dateInputs.forEach(input => {
-                if (input && input.value !== dateStr) input.value = dateStr;
+        function updateBirthProfileUI(syncYearInput = true) {
+            // Update Day selects
+            const dayEls = [document.getElementById('mobBirthDaySelect'), document.getElementById('dtBirthDaySelect')];
+            dayEls.forEach(el => {
+                if (el && parseInt(el.value, 10) !== selectedBaziDay) el.value = selectedBaziDay;
             });
 
+            // Update Month selects
+            const monthEls = [document.getElementById('mobBirthMonthSelect'), document.getElementById('dtBirthMonthSelect')];
+            monthEls.forEach(el => {
+                if (el && parseInt(el.value, 10) !== selectedBaziMonth) el.value = selectedBaziMonth;
+            });
+
+            // Update Year inputs (DO NOT overwrite if user is actively typing in it)
+            if (syncYearInput) {
+                const yearEls = [document.getElementById('mobBirthYearInput'), document.getElementById('dtBirthYearInput')];
+                yearEls.forEach(el => {
+                    if (el && document.activeElement !== el && parseInt(el.value, 10) !== selectedBaziYear) {
+                        el.value = selectedBaziYear;
+                    }
+                });
+            }
+
+            // Update Hour selects
             const hourEls = [document.getElementById('mobBirthHourSelect'), document.getElementById('dtBirthHourSelect')];
-            hourEls.forEach(el => { if (el) el.value = Math.floor(selectedBaziHour / 2) * 2; });
+            hourEls.forEach(el => {
+                if (el) el.value = Math.floor(selectedBaziHour / 2) * 2;
+            });
 
             // Gender styling
             const maleBtns = [document.getElementById('mobBtnGenderMale'), document.getElementById('dtBtnGenderMale')];
@@ -2175,15 +2232,15 @@
             maleBtns.forEach(btn => {
                 if (!btn) return;
                 btn.className = (userGender === 'male')
-                    ? 'px-2 py-0.5 rounded text-[10px] font-bold transition bg-blue-600 text-white shadow-sm ring-1 ring-blue-300'
-                    : 'px-2 py-0.5 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white';
+                    ? 'flex-1 py-1 rounded text-[10px] font-bold transition bg-blue-600 text-white shadow-sm ring-1 ring-blue-300'
+                    : 'flex-1 py-1 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white';
             });
 
             femaleBtns.forEach(btn => {
                 if (!btn) return;
                 btn.className = (userGender === 'female')
-                    ? 'px-2 py-0.5 rounded text-[10px] font-bold transition bg-pink-600 text-white shadow-sm ring-1 ring-pink-300'
-                    : 'px-2 py-0.5 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white';
+                    ? 'flex-1 py-1 rounded text-[10px] font-bold transition bg-pink-600 text-white shadow-sm ring-1 ring-pink-300'
+                    : 'flex-1 py-1 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white';
             });
 
             // Compute Ming Gua & BaZi
@@ -2192,15 +2249,15 @@
                 const bazi = calculateBaZi4Pillars(selectedBaziYear, selectedBaziMonth, selectedBaziDay, selectedBaziHour);
 
                 const summaryHtml =
-                    '<div class="flex items-center justify-between text-[10px] leading-tight">' +
-                        '<div><span class="text-amber-300 font-bold">🌟 ໝິງກວ້າ (Ming Gua):</span> ' + gua.name + ' · ' + gua.elem + ' · <span class="text-emerald-300 font-bold">' + gua.groupName + '</span></div>' +
-                        '<span class="text-slate-400 font-mono text-[9px]">' + (userGender === 'male' ? '👨 ຊາຍ' : '👩 ຍິງ') + '</span>' +
+                    '<div class="flex items-center justify-between text-[10px] leading-tight pb-1 border-b border-purple-500/20">' +
+                        '<div><span class="text-amber-300 font-bold">🧭 ທາດຮວງຈຸ້ຍ (ມິ່ງກວ້າ):</span> <b class="text-white">' + gua.elem + '</b> (' + gua.name + ' · <span class="text-emerald-300">' + gua.groupName + '</span>)</div>' +
+                        '<span class="text-slate-400 font-bold text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800">' + (userGender === 'male' ? '👨 ຊາຍ' : '👩 ຍິງ') + '</span>' +
                     '</div>' +
-                    '<div class="flex items-center justify-between text-[10px] border-t border-purple-500/20 pt-1 mt-0.5">' +
-                        '<div><span class="text-purple-300 font-bold">📿 ປາຈື (BaZi):</span> ດິດຖີ <b class="text-white">' + bazi.dayMaster + '</b> · ຍົງສິ່ນ: <b class="text-emerald-300">' + bazi.yongShen + '</b> · ຫຼີກລ່ຽງ: <b class="text-rose-300">' + bazi.avoidElement + '</b></div>' +
+                    '<div class="flex items-center justify-between text-[10px] pt-1">' +
+                        '<div><span class="text-purple-300 font-bold">📜 ທາດດວງຊາຕາ (ປາຈື):</span> ດິດຖີ <b class="text-amber-200">' + bazi.dayMaster + '</b> · ເສີມດວງ(ຍົງສິ່ນ): <b class="text-emerald-300">' + bazi.yongShen + '</b> · ຫຼີກລ່ຽງ: <b class="text-rose-300">' + bazi.avoidElement + '</b></div>' +
                     '</div>' +
-                    '<div class="text-[9px] text-slate-300 pt-0.5 font-mono">' +
-                        '🧭 4 ທິດມຸງຄຸນ: ໂຊກລາບ(生氣) <b class="text-amber-300">' + gua.shengQi + '</b> · ໝໍເທບ(天醫) <b class="text-teal-300">' + gua.tianYi + '</b> · ອາຍຸຍືນ(延年) <b class="text-blue-300">' + gua.yanNian + '</b>' +
+                    '<div class="text-[9px] text-slate-300 pt-0.5 font-mono bg-slate-900/60 p-1 rounded mt-0.5 border border-slate-800/60">' +
+                        '🧭 4 ທິດມຸງຄຸນ: ໂຊກລາບ <b class="text-amber-300">' + gua.shengQi + '</b> · ສຸຂະພາບ <b class="text-teal-300">' + gua.tianYi + '</b> · ຄວາມຮັກ <b class="text-blue-300">' + gua.yanNian + '</b> · ສະຕິປັນຍາ <b class="text-purple-300">' + gua.fuWei + '</b>' +
                     '</div>';
 
                 const pillEls = [document.getElementById('mobBirthSummaryPill'), document.getElementById('dtBirthSummaryPill')];
@@ -2211,30 +2268,74 @@
         }
 
         function initBirthProfileWidgets() {
+            // Populate Days 1 to 31
+            let dayHtml = '';
+            for (let d = 1; d <= 31; d++) {
+                dayHtml += '<option value="' + d + '">ວັນທີ ' + d + '</option>';
+            }
+            const dayEls = [document.getElementById('mobBirthDaySelect'), document.getElementById('dtBirthDaySelect')];
+            dayEls.forEach(el => { if (el) el.innerHTML = dayHtml; });
+
+            // Populate Months 1 to 12 in Lao
+            const monthsLao = [
+                '1. ມັງກອນ (Jan)', '2. ກຸມພາ (Feb)', '3. ມີນາ (Mar)', '4. ເມສາ (Apr)',
+                '5. ພຶດສະພາ (May)', '6. ມິຖຸນາ (Jun)', '7. ກໍລະກົດ (Jul)', '8. ສິງຫາ (Aug)',
+                '9. ກັນຍາ (Sep)', '10. ຕຸລາ (Oct)', '11. ພະຈິກ (Nov)', '12. ທັນວາ (Dec)'
+            ];
+            let monthHtml = '';
+            monthsLao.forEach((mName, idx) => {
+                monthHtml += '<option value="' + (idx + 1) + '">' + mName + '</option>';
+            });
+            const monthEls = [document.getElementById('mobBirthMonthSelect'), document.getElementById('dtBirthMonthSelect')];
+            monthEls.forEach(el => { if (el) el.innerHTML = monthHtml; });
+
+            // Year Inputs event listeners
+            const yearEls = [document.getElementById('mobBirthYearInput'), document.getElementById('dtBirthYearInput')];
+            yearEls.forEach(inputEl => {
+                if (!inputEl) return;
+                inputEl.addEventListener('input', (e) => {
+                    let val = parseInt(e.target.value, 10);
+                    if (isNaN(val)) return;
+                    if (val >= 2400 && val <= 2600) val -= 543;
+                    if (val >= 1924 && val <= 2050 && e.target.value.trim().length >= 4) {
+                        setUserBirthProfile(val, null, null, null, null, false);
+                    }
+                });
+                inputEl.addEventListener('change', (e) => {
+                    let val = parseInt(e.target.value, 10);
+                    if (isNaN(val)) val = 1990;
+                    if (val >= 2400 && val <= 2600) val -= 543;
+                    if (val < 1924) val = 1924;
+                    if (val > 2050) val = 2050;
+                    e.target.value = val;
+                    setUserBirthProfile(val, null, null, null, null, true);
+                });
+            });
+
             // Hour options (12 Chinese double hours)
             let hourHtml = '';
             const dhList = [
-                { idx: 0, name: 'ຍາມໜູ (子)', time: '23:00 - 01:00' },
-                { idx: 1, name: 'ຍາມງົວ (丑)', time: '01:00 - 03:00' },
-                { idx: 2, name: 'ຍາມເສືອ (寅)', time: '03:00 - 05:00' },
-                { idx: 3, name: 'ຍາມກະຕ່າຍ (卯)', time: '05:00 - 07:00' },
-                { idx: 4, name: 'ຍາມມັງກອນ (辰)', time: '07:00 - 09:00' },
-                { idx: 5, name: 'ຍາມງູ (巳)', time: '09:00 - 11:00' },
-                { idx: 6, name: 'ຍາມມ້າ (午)', time: '11:00 - 13:00' },
-                { idx: 7, name: 'ຍາມແພະ (未)', time: '13:00 - 15:00' },
-                { idx: 8, name: 'ຍາມລິງ (申)', time: '15:00 - 17:00' },
-                { idx: 9, name: 'ຍາມໄກ່ (酉)', time: '17:00 - 19:00' },
-                { idx: 10, name: 'ຍາມໝາ (戌)', time: '19:00 - 21:00' },
-                { idx: 11, name: 'ຍາມໝູ (亥)', time: '21:00 - 23:00' }
+                { idx: 0, name: 'ຍາມໜູ (23:00 - 01:00)' },
+                { idx: 1, name: 'ຍາມງົວ (01:00 - 03:00)' },
+                { idx: 2, name: 'ຍາມເສືອ (03:00 - 05:00)' },
+                { idx: 3, name: 'ຍາມກະຕ່າຍ (05:00 - 07:00)' },
+                { idx: 4, name: 'ຍາມມັງກອນ (07:00 - 09:00)' },
+                { idx: 5, name: 'ຍາມງູ (09:00 - 11:00)' },
+                { idx: 6, name: 'ຍາມມ້າ (11:00 - 13:00)' },
+                { idx: 7, name: 'ຍາມແພະ (13:00 - 15:00)' },
+                { idx: 8, name: 'ຍາມລິງ (15:00 - 17:00)' },
+                { idx: 9, name: 'ຍາມໄກ່ (17:00 - 19:00)' },
+                { idx: 10, name: 'ຍາມໝາ (19:00 - 21:00)' },
+                { idx: 11, name: 'ຍາມໝູ (21:00 - 23:00)' }
             ];
             dhList.forEach(dh => {
-                hourHtml += '<option value="' + (dh.idx * 2) + '">' + dh.name + ' (' + dh.time + ')</option>';
+                hourHtml += '<option value="' + (dh.idx * 2) + '">' + dh.name + '</option>';
             });
 
-            const hourEls = [document.getElementById('mobBirthHourSelect'), document.getElementById('dtBirthHourSelect')];
-            hourEls.forEach(el => { if (el) el.innerHTML = hourHtml; });
+            const hourSelects = [document.getElementById('mobBirthHourSelect'), document.getElementById('dtBirthHourSelect')];
+            hourSelects.forEach(el => { if (el) el.innerHTML = hourHtml; });
 
-            updateBirthProfileUI();
+            updateBirthProfileUI(true);
         }
 
         // Authentic San Yuan Ming Gua (命卦) & 8 Mansions (八宅) calculation
@@ -2275,30 +2376,30 @@
             }
 
             const guaData = {
-                1: { name: 'ຄານ (坎一白)', trigram: '坎', elem: 'ທາດນ້ຳ (水)', group: 'east', groupName: 'ກຸ່ມຕາເວັນອອກ (东四命)',
-                     shengQi: 'SE', tianYi: 'E', yanNian: 'S', fuWei: 'N',
-                     jueMing: 'SW', wuGui: 'NE', liuSha: 'NW', huoHai: 'W' },
-                2: { name: 'ຄຸນ (坤二黑)', trigram: '坤', elem: 'ທາດດິນ (土)', group: 'west', groupName: 'ກຸ່ມຕາເວັນຕົກ (西四命)',
-                     shengQi: 'NE', tianYi: 'W', yanNian: 'NW', fuWei: 'SW',
-                     jueMing: 'N', wuGui: 'SE', liuSha: 'S', huoHai: 'E' },
-                3: { name: 'ເຈິ່ນ (震三碧)', trigram: '震', elem: 'ທາດໄມ້ (木)', group: 'east', groupName: 'ກຸ່ມຕາເວັນອອກ (东四命)',
-                     shengQi: 'S', tianYi: 'N', yanNian: 'SE', fuWei: 'E',
-                     jueMing: 'W', wuGui: 'NW', liuSha: 'NE', huoHai: 'SW' },
-                4: { name: 'ຊຸ່ນ (巽四绿)', trigram: '巽', elem: 'ທາດໄມ້ (木)', group: 'east', groupName: 'ກຸ່ມຕາເວັນອອກ (东四命)',
-                     shengQi: 'N', tianYi: 'S', yanNian: 'E', fuWei: 'SE',
-                     jueMing: 'NE', wuGui: 'SW', liuSha: 'W', huoHai: 'NW' },
-                6: { name: 'ສຽນ (乾六白)', trigram: '乾', elem: 'ທາດທອງ (金)', group: 'west', groupName: 'ກຸ່ມຕາເວັນຕົກ (西四命)',
-                     shengQi: 'W', tianYi: 'NE', yanNian: 'SW', fuWei: 'NW',
-                     jueMing: 'S', wuGui: 'E', liuSha: 'N', huoHai: 'SE' },
-                7: { name: 'ຕຸຍ (兑七赤)', trigram: '兑', elem: 'ທາດທອງ (金)', group: 'west', groupName: 'ກຸ່ມຕາເວັນຕົກ (西四命)',
-                     shengQi: 'NW', tianYi: 'SW', yanNian: 'NE', fuWei: 'W',
-                     jueMing: 'E', wuGui: 'S', liuSha: 'SE', huoHai: 'N' },
-                8: { name: 'ເກີ່ນ (艮八白)', trigram: '艮', elem: 'ທາດດິນ (土)', group: 'west', groupName: 'ກຸ່ມຕາເວັນຕົກ (西四命)',
-                     shengQi: 'SW', tianYi: 'NW', yanNian: 'W', fuWei: 'NE',
-                     jueMing: 'SE', wuGui: 'N', liuSha: 'E', huoHai: 'S' },
-                9: { name: 'ຫຼີ (离九紫)', trigram: '离', elem: 'ທາດໄຟ (火)', group: 'east', groupName: 'ກຸ່ມຕາເວັນອອກ (东四命)',
-                     shengQi: 'E', tianYi: 'SE', yanNian: 'N', fuWei: 'S',
-                     jueMing: 'NW', wuGui: 'W', liuSha: 'SW', huoHai: 'NE' }
+                1: { name: 'ກວ້າ 1 (ຂາມ)', trigram: '☵', elem: 'ທາດນ້ຳ', group: 'east', groupName: 'ກຸ່ມຕາເວັນອອກ',
+                     shengQi: 'SE (ອອກສ່ຽງໃຕ້)', tianYi: 'E (ຕາເວັນອອກ)', yanNian: 'S (ທິດໃຕ້)', fuWei: 'N (ທິດເໜືອ)',
+                     jueMing: 'SW (ຕົກສ່ຽງໃຕ້)', wuGui: 'NE (ອອກສ່ຽງເໜືອ)', liuSha: 'NW (ຕົກສ່ຽງເໜືອ)', huoHai: 'W (ຕາເວັນຕົກ)' },
+                2: { name: 'ກວ້າ 2 (ຄຸນ)', trigram: '☷', elem: 'ທາດດິນ', group: 'west', groupName: 'ກຸ່ມຕາເວັນຕົກ',
+                     shengQi: 'NE (ອອກສ່ຽງເໜືອ)', tianYi: 'W (ຕາເວັນຕົກ)', yanNian: 'NW (ຕົກສ່ຽງເໜືອ)', fuWei: 'SW (ຕົກສ່ຽງໃຕ້)',
+                     jueMing: 'N (ທິດເໜືອ)', wuGui: 'SE (ອອກສ່ຽງໃຕ້)', liuSha: 'S (ທິດໃຕ້)', huoHai: 'E (ຕາເວັນອອກ)' },
+                3: { name: 'ກວ້າ 3 (ຈິ້ນ)', trigram: '☳', elem: 'ທາດໄມ້', group: 'east', groupName: 'ກຸ່ມຕາເວັນອອກ',
+                     shengQi: 'S (ທິດໃຕ້)', tianYi: 'N (ທິດເໜືອ)', yanNian: 'SE (ອອກສ່ຽງໃຕ້)', fuWei: 'E (ຕາເວັນອອກ)',
+                     jueMing: 'W (ຕາເວັນຕົກ)', wuGui: 'NW (ຕົກສ່ຽງເໜືອ)', liuSha: 'NE (ອອກສ່ຽງເໜືອ)', huoHai: 'SW (ຕົກສ່ຽງໃຕ້)' },
+                4: { name: 'ກວ້າ 4 (ຊຸ່ນ)', trigram: '☴', elem: 'ທາດໄມ້', group: 'east', groupName: 'ກຸ່ມຕາເວັນອອກ',
+                     shengQi: 'N (ທິດເໜືອ)', tianYi: 'S (ທິດໃຕ້)', yanNian: 'E (ຕາເວັນອອກ)', fuWei: 'SE (ອອກສ່ຽງໃຕ້)',
+                     jueMing: 'NE (ອອກສ່ຽງເໜືອ)', wuGui: 'SW (ຕົກສ່ຽງໃຕ້)', liuSha: 'W (ຕາເວັນຕົກ)', huoHai: 'NW (ຕົກສ່ຽງເໜືອ)' },
+                6: { name: 'ກວ້າ 6 (ຂຽນ)', trigram: '☰', elem: 'ທາດທອງ', group: 'west', groupName: 'ກຸ່ມຕາເວັນຕົກ',
+                     shengQi: 'W (ຕາເວັນຕົກ)', tianYi: 'NE (ອອກສ່ຽງເໜືອ)', yanNian: 'SW (ຕົກສ່ຽງໃຕ້)', fuWei: 'NW (ຕົກສ່ຽງເໜືອ)',
+                     jueMing: 'S (ທິດໃຕ້)', wuGui: 'E (ຕາເວັນອອກ)', liuSha: 'N (ທິດເໜືອ)', huoHai: 'SE (ອອກສ່ຽງໃຕ້)' },
+                7: { name: 'ກວ້າ 7 (ຕຸ່ຍ)', trigram: '☱', elem: 'ທາດທອງ', group: 'west', groupName: 'ກຸ່ມຕາເວັນຕົກ',
+                     shengQi: 'NW (ຕົກສ່ຽງເໜືອ)', tianYi: 'SW (ຕົກສ່ຽງໃຕ້)', yanNian: 'NE (ອອກສ່ຽງເໜືອ)', fuWei: 'W (ຕາເວັນຕົກ)',
+                     jueMing: 'E (ຕາເວັນອອກ)', wuGui: 'S (ທິດໃຕ້)', liuSha: 'SE (ອອກສ່ຽງໃຕ້)', huoHai: 'N (ທິດເໜືອ)' },
+                8: { name: 'ກວ້າ 8 (ເກິ່ນ)', trigram: '☶', elem: 'ທາດດິນ', group: 'west', groupName: 'ກຸ່ມຕາເວັນຕົກ',
+                     shengQi: 'SW (ຕົກສ່ຽງໃຕ້)', tianYi: 'NW (ຕົກສ່ຽງເໜືອ)', yanNian: 'W (ຕາເວັນຕົກ)', fuWei: 'NE (ອອກສ່ຽງເໜືອ)',
+                     jueMing: 'SE (ອອກສ່ຽງໃຕ້)', wuGui: 'N (ທິດເໜືອ)', liuSha: 'E (ຕາເວັນອອກ)', huoHai: 'S (ທິດໃຕ້)' },
+                9: { name: 'ກວ້າ 9 (ຫຼີ)', trigram: '☲', elem: 'ທາດໄຟ', group: 'east', groupName: 'ກຸ່ມຕາເວັນອອກ',
+                     shengQi: 'E (ຕາເວັນອອກ)', tianYi: 'SE (ອອກສ່ຽງໃຕ້)', yanNian: 'N (ທິດເໜືອ)', fuWei: 'S (ທິດໃຕ້)',
+                     jueMing: 'NE (ອອກສ່ຽງເໜືອ)', wuGui: 'SW (ຕົກສ່ຽງໃຕ້)', liuSha: 'W (ຕາເວັນຕົກ)', huoHai: 'NW (ຕົກສ່ຽງເໜືອ)' }
             };
 
             return { guaNumber: gua, ...(guaData[gua] || guaData[1]) };
@@ -3158,9 +3259,7 @@
                 avoidElement = WEAKEN_MAP[WEAKEN_MAP[dmElem]];
             }
 
-            const ELEM_LAO = {
-                Wood: 'ໄມ້ (木)', Fire: 'ໄຟ (火)', Earth: 'ດິນ (土)', Metal: 'ຄຳ (金)', Water: 'ນ້ຳ (水)'
-            };
+            const ELEM_LAO = { Wood: 'ໄມ້', Fire: 'ໄຟ', Earth: 'ດິນ', Metal: 'ທອງ', Water: 'ນ້ຳ' };
             const ELEM_PALACE = {
                 Wood: 'ທິດຕາເວັນອອກ (震) & ອາຄະເນ (巽)',
                 Fire: 'ທິດໃຕ້ (离)',
@@ -9315,42 +9414,42 @@ function setSelectedRoom(roomKey) {
                     let directionDesc = '';
 
                     if (userGua.shengQi === curBaguaCode) {
-                        directionType = '生氣 (ເຊີນຊີ່ - ມະຫາໂຊກລາບສູງສຸດ)';
+                        directionType = 'ໂຊກລາບຮຸ່ງເຮືອງ (ມະຫາໂຊກລາບສູງສຸດ)';
                         directionLuck = 'auspicious';
                         directionBadge = 'border-emerald-500 bg-emerald-950/60 text-emerald-300';
                         directionDesc = 'ທິດໂຊກລາບ, ຄວາມຈະເລີນກ້າວໜ້າທາງທຸລະກິດ, ດຶງດູດເງິນຄຳ ແລະ ຊື່ສຽງ. ເໝາະສຳລັບຕັ້ງປະຕູໃຫຍ່, ໂຕະເຮັດວຽກ ຫຼື ຫັນໜ້າໄປທາງນີ້.';
                     } else if (userGua.tianYi === curBaguaCode) {
-                        directionType = '天醫 (ທຽນອີ - ໝໍສະຫວັນ/ສຸຂະພາບ)';
+                        directionType = 'ສຸຂະພາບໝໍເທບ (ສຸຂະພາບແຂງແຮງ ອາຍຸໝັ້ນ)';
                         directionLuck = 'auspicious';
                         directionBadge = 'border-teal-500 bg-teal-950/60 text-teal-300';
                         directionDesc = 'ທິດສຸຂະພາບ, ຫາຍຈາກໂລກໄພ, ມີຜູ້ໃຫຍ່ແລະຄົນອຸປະຖຳຊ່ວຍເຫຼືອຕະຫຼອດເວລາ. ເໝາະສຳລັບຫ້ອງນອນ ຫຼື ຫົວຕຽງ.';
                     } else if (userGua.yanNian === curBaguaCode) {
-                        directionType = '延年 (ຢຽນໜຽນ - ອາຍຸຍືນ & ຄວາມຮັກ)';
+                        directionType = 'ຄວາມຮັກອາຍຸຍືນ (ຄອບຄົວອົບອຸ່ນ ສາຍສຳພັນດີ)';
                         directionLuck = 'auspicious';
                         directionBadge = 'border-cyan-500 bg-cyan-950/60 text-cyan-300';
                         directionDesc = 'ທິດຄວາມຮັກ, ຄວາມສາມັກຄີໃນຄອບຄົວ, ສາຍສຳພັນອັນດີກັບຄົນອ້ອມຂ້າງ ແລະ ອາຍຸໝັ້ນຂວັນຍືນ.';
                     } else if (userGua.fuWei === curBaguaCode) {
-                        directionType = '伏位 (ຟູເຫວີ່ຍ - ຄວາມສະຫງົບ & ປັນຍາ)';
+                        directionType = 'ສະຕິປັນຍາໝັ້ນຄົງ (ຄວາມສະຫງົບ ແລະ ປັນຍາ)';
                         directionLuck = 'auspicious';
                         directionBadge = 'border-blue-500 bg-blue-950/60 text-blue-300';
                         directionDesc = 'ທິດແຫ່ງຄວາມສະຫງົບ, ພະລັງຈິດໃຈໝັ້ນຄົງ, ເສີມສະຕິປັນຍາ ແລະ ການຮຽນຮູ້. ເໝາະສຳລັບຫ້ອງພຣະ ຫຼື ໂຕະອ່ານໜັງສື.';
                     } else if (userGua.jueMing === curBaguaCode) {
-                        directionType = '絕命 (ຈວຽ້ມິ້ງ - ດັບສູນ/ອັນຕະລາຍສູງສຸດ)';
+                        directionType = 'ມະຫາວິບັດຕັດຊີວິດ (ອັນຕະລາຍສູງສຸດ ຄວນຫຼີກລ່ຽງ)';
                         directionLuck = 'inauspicious';
                         directionBadge = 'border-rose-500 bg-rose-950/60 text-rose-300';
                         directionDesc = 'ທິດອັນຕະລາຍຮ້າຍແຮງທີ່ສຸດຂອງດວງທ່ານ! ສົ່ງຜົນໃຫ້ລົ້ມລະລາຍ, ສຸຂະພາບຊຸດໂຊມໜັກ, ຫຼື ເກີດອຸບັດຕິເຫດ. ຫ້າມຕັ້ງປະຕູໃຫຍ່ ຫຼື ຫົວຕຽງທິດນີ້!';
                     } else if (userGua.wuGui === curBaguaCode) {
-                        directionType = '五鬼 (ອູກຸ່ຍ - ຜີຫ້າຕົນ/ໄຟໄໝ້/ຄະດີ)';
+                        directionType = 'ໂຈນໄພຜິດຖຽງ (ອຸບັດເຫດ ໄຟໄໝ້ ຖືກຫັກຫຼັງ)';
                         directionLuck = 'inauspicious';
                         directionBadge = 'border-rose-700 bg-rose-950/50 text-rose-300';
                         directionDesc = 'ທິດຜີຫ້າຕົນ: ເຮັດໃຫ້ເກີດການຜິດຖຽງ, ຖືກສໍ້ໂກງ, ຟ້ອງຮ້ອງຄະດີຄວາມ, ຫຼື ອັກຄີໄພ. ຫ້າມຕັ້ງຫ້ອງນອນ ຫຼື ໂຕະເຮັດວຽກ.';
                     } else if (userGua.liuSha === curBaguaCode) {
-                        directionType = '六煞 (ຫຼິວຊ່າ - ຫົກພິດ/ເສຍຊັບ/ຊູ້ສາວ)';
+                        directionType = 'ຄະດີຄວາມໂຊກຮ້າຍ (ໂຊກຮ້າຍ ເສຍຊັບ ຊູ້ສາວ)';
                         directionLuck = 'inauspicious';
                         directionBadge = 'border-amber-600 bg-amber-950/50 text-amber-300';
                         directionDesc = 'ທິດຫົກພິດ: ນຳພາເລື່ອງຊູ້ສາວອັບປະມຸງຄຸນ, ການເສຍເງິນ, ພະຍາດຊຳເຮື້ອ ແລະ ຄວາມລົ້ມເຫຼວໃນໜ້າທີ່.';
                     } else {
-                        directionType = '禍害 (ຮົວຮ້າຍ - ອຸປະສັກ/ຖືກນິນທາ)';
+                        directionType = 'ອຸປະສັກເສຍຊັບ (ອຸປະສັກ ຜິດຖຽງ ເສຍຊັບ)';
                         directionLuck = 'inauspicious';
                         directionBadge = 'border-slate-600 bg-slate-950 text-slate-300';
                         directionDesc = 'ທິດອຸປະສັກ: ເຮັດຫຍັງກໍຕິດຂັດ, ຖືກນິນທາໃສ່ຮ້າຍ, ຜິດພາດເລັກໆນ້ອຍໆຕະຫຼອດ.';
@@ -11758,35 +11857,35 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
                 let dirBg = 'bg-slate-900 border-purple-500/30';
 
                 if (userGua.shengQi === curBaguaCode) {
-                    dirName = '✨ 生氣 (ມະຫາໂຊກ)';
+                    dirName = '✨ ໂຊກລາບຮຸ່ງເຮືອງ';
                     dirColor = 'text-emerald-300';
                     dirBg = 'bg-emerald-950/90 border-emerald-500/60 shadow-sm';
                 } else if (userGua.tianYi === curBaguaCode) {
-                    dirName = '🏥 天醫 (ໝໍເທບ/ສຸຂະພາບ)';
+                    dirName = '🏥 ສຸຂະພາບໝໍເທບ';
                     dirColor = 'text-teal-300';
                     dirBg = 'bg-teal-950/90 border-teal-500/60 shadow-sm';
                 } else if (userGua.yanNian === curBaguaCode) {
-                    dirName = '💖 延年 (ອາຍຸຍືນ/ຮັກ)';
+                    dirName = '💖 ຄວາມຮັກອາຍຸຍືນ';
                     dirColor = 'text-cyan-300';
                     dirBg = 'bg-cyan-950/90 border-cyan-500/60 shadow-sm';
                 } else if (userGua.fuWei === curBaguaCode) {
-                    dirName = '🧘 伏位 (ຄວາມສະຫງົບ)';
+                    dirName = '🧘 ສະຕິປັນຍາໝັ້ນຄົງ';
                     dirColor = 'text-blue-300';
                     dirBg = 'bg-blue-950/90 border-blue-500/60 shadow-sm';
                 } else if (userGua.jueMing === curBaguaCode) {
-                    dirName = '⚠️ 絕命 (ດັບສູນ/ອັນຕະລາຍ)';
+                    dirName = '⚠️ ມະຫາວິບັດຕັດຊີວິດ';
                     dirColor = 'text-rose-400';
                     dirBg = 'bg-rose-950/90 border-rose-500/60';
                 } else if (userGua.wuGui === curBaguaCode) {
-                    dirName = '🔥 五鬼 (ຜີຫ້າຕົນ/ຄະດີ)';
+                    dirName = '🔥 ໂຈນໄພຜິດຖຽງ';
                     dirColor = 'text-rose-300';
                     dirBg = 'bg-rose-950/80 border-rose-600/50';
                 } else if (userGua.liuSha === curBaguaCode) {
-                    dirName = '⚡ 六煞 (ຫົກພິດ/ເສຍຊັບ)';
+                    dirName = '⚡ ຄະດີຄວາມໂຊກຮ້າຍ';
                     dirColor = 'text-amber-300';
                     dirBg = 'bg-amber-950/80 border-amber-600/50';
                 } else {
-                    dirName = '⚠️ 禍害 (ອຸປະສັກ/ນິນທາ)';
+                    dirName = '⚠️ ອຸປະສັກເສຍຊັບ';
                     dirColor = 'text-slate-300';
                     dirBg = 'bg-slate-900/90 border-slate-700/60';
                 }
@@ -12529,6 +12628,11 @@ function updateCompassTransform(deltaAngle = null) {
             currentBirthYear = val;
             if (syncInput) {
                 birthYearInput.value = val;
+            }
+            if (typeof selectedBaziYear !== 'undefined' && selectedBaziYear !== val) {
+                if (typeof setUserBirthProfile === 'function') {
+                    setUserBirthProfile(val, null, null, null, isMale ? 'male' : 'female', true);
+                }
             }
             if (birthYearSelect.value != val && birthYearSelect.querySelector(`option[value="${val}"]`)) {
                 birthYearSelect.value = val;

@@ -461,13 +461,96 @@ function renderCenterDrawing(id, lang) {
         </g>
       `;
 
-    case 'ENV-0007': // Front Jade Belt Water
+    case 'ENV-0007-A': // Front Jade Belt Water Only (No Road)
       return `
-        <!-- Jade Belt River Gracefully Hugging Front (Vibrant Blue with Waves) -->
-        <path d="M 190 310 C 290 355 510 355 610 310" fill="none" stroke="#0284C7" stroke-width="26"/>
-        <path d="M 190 310 C 290 355 510 355 610 310" fill="none" stroke="#38BDF8" stroke-width="16"/>
-        <path d="M 190 310 C 290 355 510 355 610 310" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="8,6"/>
-        <text x="400" y="342" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#FFFFFF" text-anchor="middle">${isLao ? '🌊 ສາຍນ້ຳສາຍຮັດແອວຫົກ (Yu Dai Shui - ໂອບອຸ້ມຊັບ)' : '🌊 Dej Txoj Siv Hlua Jade'}</text>
+        <!-- Jade Belt River Gracefully Hugging Front -->
+        <path d="M 190 320 C 290 365 510 365 610 320" fill="none" stroke="#0284C7" stroke-width="32"/>
+        <path d="M 190 320 C 290 365 510 365 610 320" fill="none" stroke="#38BDF8" stroke-width="20"/>
+        <path d="M 190 320 C 290 365 510 365 610 320" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-dasharray="8,6"/>
+        <text x="400" y="352" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#FFFFFF" text-anchor="middle">${isLao ? '🌊 ສາຍນ້ຳສາຍຮັດແອວຫົກ ທຳມະຊາດ (Yu Dai Shui - ໂອບອຸ້ມຊັບ)' : '🌊 Dej Txoj Siv Hlua Jade (Yu Dai Shui)'}</text>
+
+        <!-- Plot Ground -->
+        <rect x="270" y="95" width="260" height="210" fill="#DCFCE7" rx="3"/>
+        <line x1="270" y1="95" x2="530" y2="95" stroke="#15803D" stroke-width="4"/>
+        <line x1="270" y1="95" x2="270" y2="305" stroke="#334155" stroke-width="3"/>
+        <line x1="530" y1="95" x2="530" y2="305" stroke="#334155" stroke-width="3"/>
+        <text x="400" y="85" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">${isLao ? 'ດິນເພື່ອນບ້ານຫຼັງ (Rear Neighbor)' : 'Ciam Av Tom Qab'}</text>
+        <text x="245" y="200" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-90 245 200)">${isLao ? 'ເພື່ອນບ້ານຊ້າຍ' : 'Tsev Sab Laug'}</text>
+        <text x="555" y="200" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(90 555 200)">${isLao ? 'ເພື່ອນບ້ານຂວາ' : 'Tsev Sab Xis'}</text>
+
+        ${renderBoundaryHouse(335, 125, 130, 52, '325,125 400,102 475,125', isLao, houseText, '')}
+
+        <!-- Lush Riverside Weeping Willows & Green Bank -->
+        <circle cx="285" cy="305" r="7" fill="#15803D"/><circle cx="310" cy="308" r="6" fill="#16A34A"/>
+        <circle cx="490" cy="308" r="6" fill="#16A34A"/><circle cx="515" cy="305" r="7" fill="#15803D"/>
+
+        <!-- Wooden Viewing Pier / Pavilion over Water at Dragon Side -->
+        <rect x="360" y="298" width="40" height="20" fill="#B45309" stroke="#78350F" stroke-width="1.5" rx="2"/>
+        <text x="380" y="311" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6" fill="#FEF3C7" text-anchor="middle">${isLao ? 'ທ່າເຮືອຊົມວິວ' : 'Chaw Nres Nkoj'}</text>
+
+        <!-- Garden Walkway connecting Pier to Front Door -->
+        <path d="M 380 298 C 380 260 375 220 380 182" fill="none" stroke="#94A3B8" stroke-width="3" stroke-dasharray="4,3"/>
+
+        <!-- [✓] RECOMMENDED WATER ACCESS / GARDEN GATE -->
+        <g transform="translate(195, 360)">
+          <rect x="0" y="0" width="105" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="52.5" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູສວນຊົມສາຍນ້ຳ' : '✓ Rooj Vaj Ntsib Dej'}</text>
+        </g>
+      `;
+
+    case 'ENV-0007-B': // Front Curved Road Jade Belt Only (No River)
+      return `
+        <!-- Curved Jade Belt Roadway (Virtual Water - Traffic flowing gently around plot) -->
+        <path d="M 190 345 C 290 395 510 395 610 345" fill="none" stroke="#1E293B" stroke-width="48"/>
+        <path d="M 190 345 C 290 395 510 395 610 345" fill="none" stroke="#334155" stroke-width="38"/>
+        <!-- Yellow Centerline -->
+        <path d="M 190 345 C 290 395 510 395 610 345" fill="none" stroke="#EAB308" stroke-width="2.5" stroke-dasharray="14,8"/>
+        <!-- White Road Edges -->
+        <path d="M 190 324 C 290 374 510 374 610 324" fill="none" stroke="#F8FAFC" stroke-width="1.5"/>
+        <path d="M 190 366 C 290 416 510 416 610 366" fill="none" stroke="#F8FAFC" stroke-width="1.5"/>
+        <text x="400" y="415" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#FDE047" text-anchor="middle">${isLao ? '🛣️ ຖະໜົນສາຍໂຄ້ງໂອບອຸ້ມ (Virtual Water - ທາງໂຄ້ງມີໄມຕີ)' : '🛣️ Kev Nkhaus Hlua Jade (Virtual Water)'}</text>
+
+        <!-- Plot Ground -->
+        <rect x="270" y="95" width="260" height="210" fill="#DCFCE7" rx="3"/>
+        <line x1="270" y1="95" x2="530" y2="95" stroke="#15803D" stroke-width="4"/>
+        <line x1="270" y1="95" x2="270" y2="305" stroke="#334155" stroke-width="3"/>
+        <line x1="530" y1="95" x2="530" y2="305" stroke="#334155" stroke-width="3"/>
+        <text x="400" y="85" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">${isLao ? 'ດິນເພື່ອນບ້ານຫຼັງ (Rear Neighbor)' : 'Ciam Av Tom Qab'}</text>
+        <text x="245" y="200" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-90 245 200)">${isLao ? 'ເພື່ອນບ້ານຊ້າຍ' : 'Tsev Sab Laug'}</text>
+        <text x="555" y="200" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(90 555 200)">${isLao ? 'ເພື່ອນບ້ານຂວາ' : 'Tsev Sab Xis'}</text>
+
+        ${renderBoundaryHouse(335, 125, 130, 52, '325,125 400,102 475,125', isLao, houseText, '')}
+
+        <!-- Paved Driveway entering from curved road into Front Door -->
+        <path d="M 335 345 L 335 305 C 335 255 365 215 380 182" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="6,4"/>
+
+        <!-- Front Fence Wall with Gate Opening at Dragon side -->
+        <line x1="270" y1="305" x2="318" y2="305" stroke="#334155" stroke-width="4"/>
+        <line x1="352" y1="305" x2="530" y2="305" stroke="#334155" stroke-width="4"/>
+
+        <!-- [✓] RECOMMENDED GATE BADGE AT DRAGON SIDE -->
+        <g transform="translate(195, 300)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${gateOkText}</text>
+          <line x1="90" y1="9" x2="122" y2="9" stroke="#15803D" stroke-width="1.8"/>
+          <circle cx="122" cy="9" r="2.2" fill="#15803D"/>
+        </g>
+      `;
+
+    case 'ENV-0007':
+    case 'ENV-0007-C': // Front Dual Jade Belt Water & Road with Solid Bridge
+      return `
+        <!-- Main Asphalt Roadway at Bottom (Y=380 to 445) -->
+        <rect x="190" y="380" width="420" height="60" fill="url(#roadGrad)" rx="2"/>
+        <line x1="190" y1="410" x2="610" y2="410" stroke="#FDE047" stroke-width="2" stroke-dasharray="14,8"/>
+        <text x="490" y="425" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">${isLao ? '🛣️ ຖະໜົນສາຍຫຼັກແຄມນ້ຳ' : 'Kev Loj Ntug Dej'}</text>
+
+        <!-- Jade Belt River Gracefully Hugging Front (Between Road & House, Y=310..355) -->
+        <path d="M 190 325 C 290 365 510 365 610 325" fill="none" stroke="#0284C7" stroke-width="26"/>
+        <path d="M 190 325 C 290 365 510 365 610 325" fill="none" stroke="#38BDF8" stroke-width="16"/>
+        <path d="M 190 325 C 290 365 510 365 610 325" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="8,6"/>
+        <!-- River Label Offset to Right so Bridge at X=337 does NOT cover it! -->
+        <text x="475" y="352" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#FFFFFF" text-anchor="middle">${isLao ? '🌊 ສາຍນ້ຳສາຍຮັດແອວຫົກ (Yu Dai Shui)' : '🌊 Dej Txoj Siv Hlua Jade'}</text>
 
         <!-- Plot Ground -->
         <rect x="270" y="95" width="260" height="205" fill="#DCFCE7" rx="3"/>
@@ -480,31 +563,33 @@ function renderCenterDrawing(id, lang) {
 
         ${renderBoundaryHouse(335, 125, 130, 52, '325,125 400,102 475,125', isLao, houseText, '')}
 
-        <!-- SOLID STONE BRIDGE SPANNING ACROSS RIVER AT DRAGON SIDE -->
-        <rect x="318" y="302" width="34" height="48" fill="#F8FAFC" stroke="#475569" stroke-width="1.5" rx="2"/>
-        <line x1="318" y1="302" x2="318" y2="350" stroke="#0284C7" stroke-width="2.5"/>
-        <line x1="352" y1="302" x2="352" y2="350" stroke="#0284C7" stroke-width="2.5"/>
-        <text x="335" y="328" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="5.8" fill="#334155" text-anchor="middle">${isLao ? '[ຂົວຂ້າມນ້ຳ]' : '[Choj]'}</text>
+        <!-- SOLID STONE BRIDGE SPANNING ACROSS RIVER AT DRAGON SIDE (X=320..354, Y=300..385) -->
+        <rect x="320" y="300" width="34" height="82" fill="#F8FAFC" stroke="#475569" stroke-width="1.5" rx="2"/>
+        <!-- Bridge Curbs / Railings -->
+        <line x1="320" y1="300" x2="320" y2="382" stroke="#0284C7" stroke-width="3"/>
+        <line x1="354" y1="300" x2="354" y2="382" stroke="#0284C7" stroke-width="3"/>
+        <!-- Clear Horizontal Bridge Label -->
+        <text x="337" y="344" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#1E293B" text-anchor="middle">${isLao ? '[ຂົວຂ້າມນ້ຳ]' : '[Choj]'}</text>
 
-        <!-- Driveway Crossing Bridge to Residence -->
-        <path d="M 335 395 L 335 300 C 335 260 360 235 375 210" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
+        <!-- Driveway Crossing Bridge & Continuing Directly to Front Door Porch Step -->
+        <path d="M 337 410 L 337 300 C 337 250 365 215 380 182" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
 
-        <!-- [✓] RECOMMENDED GATE BADGE (OFFSET LEFT CLEAR OF BRIDGE) -->
-        <g transform="translate(195, 350)">
+        <!-- [✓] RECOMMENDED GATE BADGE (AT BRIDGE HEAD) -->
+        <g transform="translate(195, 385)">
           <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
           <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${gateOkText}</text>
-          <line x1="88" y1="9" x2="120" y2="-25" stroke="#15803D" stroke-width="1.8"/>
-          <circle cx="120" cy="-25" r="2.2" fill="#15803D"/>
+          <line x1="88" y1="9" x2="125" y2="9" stroke="#15803D" stroke-width="1.8"/>
+          <circle cx="125" cy="9" r="2.2" fill="#15803D"/>
         </g>
       `;
 
-    case 'ENV-0008': // Front Reverse Bow Water
+    case 'ENV-0008-A': // Front Reverse Bow Water Only (No Road)
       return `
-        <!-- Reverse Bow River Blasting Toward Front Boundary (Vibrant Blue, No Road Collision!) -->
-        <path d="M 200 375 C 310 295 490 295 600 375" fill="none" stroke="#0284C7" stroke-width="28"/>
-        <path d="M 200 375 C 310 295 490 295 600 375" fill="none" stroke="#38BDF8" stroke-width="16"/>
-        <path d="M 200 375 C 310 295 490 295 600 375" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="8,6"/>
-        <text x="400" y="325" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#FFFFFF" text-anchor="middle">${isLao ? '🌊 ສາຍນ້ຳຄັນທະນູປີ້ນ (Fan Gong Shui - ພະລັງພິຄາດ)' : '🌊 Dej Ua Hneev Tua (Fan Gong Shui)'}</text>
+        <!-- Reverse Bow River Blasting Toward Front Boundary (No Road Collision) -->
+        <path d="M 200 375 C 310 295 490 295 600 375" fill="none" stroke="#0284C7" stroke-width="32"/>
+        <path d="M 200 375 C 310 295 490 295 600 375" fill="none" stroke="#38BDF8" stroke-width="20"/>
+        <path d="M 200 375 C 310 295 490 295 600 375" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-dasharray="8,6"/>
+        <text x="400" y="325" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#FFFFFF" text-anchor="middle">${isLao ? '🌊 ສາຍນ້ຳຄັນທະນູປີ້ນ ທຳມະຊາດ (Fan Gong Shui - ພະລັງພິຄາດ)' : '🌊 Dej Ua Hneev Tua (Fan Gong Shui)'}</text>
 
         <!-- Plot Ground with 15m Safety Setback -->
         <rect x="260" y="90" width="280" height="195" fill="#FEF2F2" rx="3"/>
@@ -529,21 +614,124 @@ function renderCenterDrawing(id, lang) {
         <text x="400" y="206" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
         <text x="400" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">${isLao ? '• ຖອຍຮົ່ນອາຄານ >15m ຫຼີກກະແສນ້ຳແທງ' : '• Thim tsev deb tshaj 15m'}</text>
 
-        <!-- Gate on Left Flank (Safe from Reverse Bow Peak) -->
+        <!-- Access Path on Left Flank (Safe from Reverse Bow Peak) -->
         <path d="M 230 380 C 240 330 255 290 275 285" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
 
-        <!-- [✓] RECOMMENDED GATE BADGE (ANCHORED TO SHELTERED FLANK) -->
+        <!-- [✓] RECOMMENDED ACCESS BADGE (ANCHORED TO SHELTERED FLANK) -->
         <g transform="translate(195, 360)">
           <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
           <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${gateOkText}</text>
         </g>
 
-        <!-- [✗] FORBIDDEN GATE BADGE (ANCHORED TO WATER IMPACT APEX) -->
+        <!-- [✗] FORBIDDEN GATE BADGE (AT WATER IMPACT APEX) -->
         <g transform="translate(450, 360)">
           <rect x="0" y="0" width="90" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
           <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${gateNoText}</text>
           <line x1="45" y1="0" x2="45" y2="-45" stroke="#DC2626" stroke-width="1.8"/>
           <circle cx="45" cy="-45" r="2.2" fill="#DC2626"/>
+        </g>
+      `;
+
+    case 'ENV-0008-B': // Front Reverse Bow Road Only (No River)
+      return `
+        <!-- Reverse Bow Roadway Blasting Convex Curve Toward Front Boundary -->
+        <path d="M 200 375 C 310 295 490 295 600 375" fill="none" stroke="#1E293B" stroke-width="48"/>
+        <path d="M 200 375 C 310 295 490 295 600 375" fill="none" stroke="#334155" stroke-width="38"/>
+        <!-- Yellow Centerline -->
+        <path d="M 200 375 C 310 295 490 295 600 375" fill="none" stroke="#EAB308" stroke-width="2.5" stroke-dasharray="14,8"/>
+        <!-- White Curbs -->
+        <path d="M 200 351 C 310 271 490 271 600 351" fill="none" stroke="#F8FAFC" stroke-width="1.5"/>
+        <path d="M 200 399 C 310 319 490 319 600 399" fill="none" stroke="#F8FAFC" stroke-width="1.5"/>
+        <text x="400" y="318" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#FDE047" text-anchor="middle">${isLao ? '🛣️ ຖະໜົນໂຄ້ງຄັນທະນູປີ້ນ (Fan Gong Road - ແສງໄຟ/ລົດຫຼຸດໂຄ້ງ)' : '🛣️ Kev Nkhaus Ua Hneev Tua (Fan Gong Road)'}</text>
+
+        <!-- Plot Ground with 12m Safety Setback -->
+        <rect x="260" y="90" width="280" height="175" fill="#FEF2F2" rx="3"/>
+        <line x1="260" y1="90" x2="540" y2="90" stroke="#15803D" stroke-width="4"/>
+        <line x1="260" y1="90" x2="260" y2="265" stroke="#334155" stroke-width="3"/>
+        <line x1="540" y1="90" x2="540" y2="265" stroke="#334155" stroke-width="3"/>
+
+        <!-- High Impact Crash Barrier Wall & Dense Hedges -->
+        <line x1="260" y1="265" x2="540" y2="265" stroke="#991B1B" stroke-width="6"/>
+        <circle cx="280" cy="252" r="7" fill="#14532D"/><circle cx="320" cy="252" r="8" fill="#166534"/>
+        <circle cx="360" cy="252" r="8" fill="#14532D"/><circle cx="400" cy="252" r="9" fill="#166534"/>
+        <circle cx="440" cy="252" r="8" fill="#14532D"/><circle cx="480" cy="252" r="8" fill="#166534"/><circle cx="520" cy="252" r="7" fill="#14532D"/>
+
+        <text x="400" y="80" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">${isLao ? 'ດິນເພື່ອນບ້ານຫຼັງ (Rear Neighbor)' : 'Ciam Av Tom Qab'}</text>
+        <text x="240" y="180" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-90 240 180)">${isLao ? 'ເພື່ອນບ້ານຊ້າຍ' : 'Tsev Sab Laug'}</text>
+        <text x="560" y="180" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(90 560 180)">${isLao ? 'ເພື່ອນບ້ານຂວາ' : 'Tsev Sab Xis'}</text>
+
+        ${renderBoundaryHouse(335, 115, 130, 52, '325,115 400,92 475,115', isLao, houseText, '')}
+
+        <!-- Driveway on Safe Left Flank -->
+        <path d="M 230 380 C 240 320 255 270 275 265" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
+
+        <!-- [✓] RECOMMENDED GATE BADGE (AT SHELTERED FLANK) -->
+        <g transform="translate(195, 340)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${gateOkText}</text>
+        </g>
+
+        <!-- [✗] FORBIDDEN GATE BADGE (AT DIRECT HEADLIGHT IMPACT APEX) -->
+        <g transform="translate(450, 340)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${gateNoText}</text>
+          <line x1="45" y1="0" x2="45" y2="-55" stroke="#DC2626" stroke-width="1.8"/>
+          <circle cx="45" cy="-55" r="2.2" fill="#DC2626"/>
+        </g>
+      `;
+
+    case 'ENV-0008':
+    case 'ENV-0008-C': // Front Dual Reverse Bow (Both Water & Road)
+      return `
+        <!-- Reverse Bow Roadway at Bottom (Y=385 to 445) -->
+        <path d="M 200 415 C 310 355 490 355 600 415" fill="none" stroke="#1E293B" stroke-width="36"/>
+        <path d="M 200 415 C 310 355 490 355 600 415" fill="none" stroke="#EAB308" stroke-width="2" stroke-dasharray="12,6"/>
+        <text x="400" y="435" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FDE047" text-anchor="middle">${isLao ? '🛣️ ຖະໜົນໂຄ້ງຄັນທະນູແທງ (Reverse Bow Road)' : 'Kev Nkhaus Ua Hneev Tua'}</text>
+
+        <!-- Reverse Bow River (Between Road and House, Y=310 to 365) -->
+        <path d="M 200 365 C 310 295 490 295 600 365" fill="none" stroke="#0284C7" stroke-width="24"/>
+        <path d="M 200 365 C 310 295 490 295 600 365" fill="none" stroke="#38BDF8" stroke-width="14"/>
+        <path d="M 200 365 C 310 295 490 295 600 365" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="8,6"/>
+        <text x="400" y="325" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#FFFFFF" text-anchor="middle">${isLao ? '🌊 ສາຍນ້ຳຄັນທະນູແທງ (Reverse Bow River)' : 'Dej Ua Hneev Tua'}</text>
+
+        <!-- Plot Ground with 18m Deep Safety Setback -->
+        <rect x="260" y="90" width="280" height="195" fill="#FEF2F2" rx="3"/>
+        <line x1="260" y1="90" x2="540" y2="90" stroke="#15803D" stroke-width="4"/>
+        <line x1="260" y1="90" x2="260" y2="285" stroke="#334155" stroke-width="3"/>
+        <line x1="540" y1="90" x2="540" y2="285" stroke="#334155" stroke-width="3"/>
+        
+        <!-- Double Protective Barrier: Concrete Seawall + 7 Dense Evergreen Pines -->
+        <line x1="260" y1="285" x2="540" y2="285" stroke="#991B1B" stroke-width="7"/>
+        <circle cx="280" cy="272" r="7" fill="#14532D"/><circle cx="320" cy="272" r="8" fill="#166534"/>
+        <circle cx="360" cy="272" r="8" fill="#14532D"/><circle cx="400" cy="272" r="9" fill="#166534"/>
+        <circle cx="440" cy="272" r="8" fill="#14532D"/><circle cx="480" cy="272" r="8" fill="#166534"/><circle cx="520" cy="272" r="7" fill="#14532D"/>
+
+        <text x="400" y="80" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">${isLao ? 'ດິນເພື່ອນບ້ານຫຼັງ (Rear Neighbor)' : 'Ciam Av Tom Qab'}</text>
+        <text x="240" y="190" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-90 240 190)">${isLao ? 'ເພື່ອນບ້ານຊ້າຍ' : 'Tsev Sab Laug'}</text>
+        <text x="560" y="190" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(90 560 190)">${isLao ? 'ເພື່ອນບ້ານຂວາ' : 'Tsev Sab Xis'}</text>
+
+        ${renderBoundaryHouse(335, 115, 130, 52, '325,115 400,92 475,115', isLao, houseText, '')}
+
+        <!-- Ming Tang Bright Hall (Seated deep in plot >18m) -->
+        <rect x="320" y="190" width="160" height="42" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="400" y="206" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="400" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">${isLao ? '• ຖອຍຮົ່ນອາຄານ >18m ຫຼີກແຮງນ້ຳແລະແສງໄຟ' : '• Thim tsev deb tshaj 18m'}</text>
+
+        <!-- Safe Access on Far Left Flank -->
+        <path d="M 230 410 C 235 340 250 290 275 285" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
+
+        <!-- [✓] RECOMMENDED GATE BADGE (AT SHELTERED FLANK) -->
+        <g transform="translate(195, 360)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${gateOkText}</text>
+        </g>
+
+        <!-- [✗] FORBIDDEN GATE BADGE (AT IMPACT APEX) -->
+        <g transform="translate(450, 360)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${gateNoText}</text>
+          <line x1="45" y1="0" x2="45" y2="-50" stroke="#DC2626" stroke-width="1.8"/>
+          <circle cx="45" cy="-50" r="2.2" fill="#DC2626"/>
         </g>
       `;
 
@@ -1184,7 +1372,7 @@ function renderBoundarySvg(item, lang = 'lao') {
   <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ ຮັກສາຄວາມສະອາດ &amp; ແສງສະຫວ່າງ</text>
 
   <!-- ========================================================================= -->
-  ${item.hasFrontRoad !== false ? `
+  ${item.hasFrontRoad !== false && !item.id.startsWith('ENV-0007') && !item.id.startsWith('ENV-0008') ? `
   <!-- MAIN ROADWAY AT BOTTOM (Y=355 to 440, bounded in Central Zone X=190..610) -->
   <!-- Placed before centerSvg so fence gates and badges paint clearly on top! -->
   <rect x="190" y="355" width="420" height="85" fill="url(#roadGrad)" rx="3"/>

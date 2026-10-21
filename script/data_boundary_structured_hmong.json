@@ -294,7 +294,7 @@
     "score": 96,
     "isGood": true,
     "roadType": "Dej Txoj Siv Hlua Jade (Jade Belt)",
-    "hasFrontRoad": true,
+    "hasFrontRoad": false,
     "summary": "Tswv Yim: Dej puag ncig zoo li txoj siv hlua jade (Yu Dai Shui), coj kev nplua mias thiab nyiaj txiag los tsis tu ncua.",
     "entrance": {
       "title": "🚪 QHOV ROOJ & THAJ TSHAV",
@@ -333,6 +333,150 @@
       "t1": "Txwv kev tsheb ncaj tua rooj loj (Zhi Chong Sha)",
       "t2": "Txwv tsis txhob cia pem hauv ntej qias ntsim los yog dej lwj",
       "t3": "Txwv qhib rooj tom qab ncaj rooj pem hauv ntej"
+    }
+  },
+  {
+    "id": "ENV-0007-C",
+    "baseName": "Av Ntsib Ob Yam Dej Thiab Kev Muaj Choj Pob Zeb / Dual Water & Road with Bridge",
+    "category": "ດິນຕິດແຫຼ່ງນ້ຳ (Water Adjacency)",
+    "score": 96,
+    "isGood": true,
+    "roadType": "Ntsib Dej Thiab Kev (Dual Jade Belt)",
+    "hasFrontRoad": false,
+    "summary": "Looj Mem: Av zoo tshaj plaws muaj dej ntshiab thiab kev tsheb nrog choj pob zeb ruaj khov hla mus rau hauv tsev.",
+    "entrance": {
+      "title": "🚪 Qhov Rooj & Kev Nkag",
+      "l1": "• Rooj vag: Teem sab zaj ntsuab hla choj pob zeb",
+      "l2": "• Kev tsheb: Nkhaus du tsis txhob chob tsev",
+      "l3": "• Ciam av: Cog ntoo ntsuab tiv thaiv av tawg",
+      "l4": "• Dej: Dej ntshiab huv si coj nyiaj txiag los",
+      "sub1": "Thaj tshav kaj pem hauv ntej",
+      "sub2": "✓ Dej nkhaus hlub tsev nqa nyiaj txiag los"
+    },
+    "gua": {
+      "title": "🧭 Lub Zog &ทິດທາງ",
+      "l1": "• Lub zog: Zog dej ntshiab pub rau tsev",
+      "l2": "• Qhov chaw: Tig pem hauv ntej ntsib dej",
+      "l3": "• Haum rau: Txhua tus tswv tsev",
+      "l4": "• Tom qab: Zaum roob siab ruaj khov",
+      "l5": "• Txoj cai: Yu Dai Shui dej nkhaus jade",
+      "sub1": "Txuj Ci Looj Mem Ntuj Tsim",
+      "sub2": "✓ Nyiaj txiag nplua mias thiab nyob ntev"
+    },
+    "house": {
+      "title": "🏡 Tsev & Chav Pw",
+      "l1": "• Qhov chaw: Tsim tom qab tsa siab dua dej",
+      "l2": "• Chav pw loj: Zaum tom qab phab ntsa ruaj",
+      "l3": "• Chav txais qhua: Qhib qhov rai saib dej",
+      "l4": "• Rooj loj: Txais lub zog nyiaj txiag",
+      "bed": "Zaum phab ntsa ruaj khov",
+      "bedSub": "Txais kev thaj yeeb los ntawm dej"
+    },
+    "remedy": {
+      "title": "🛡️ Kev Kho & Tiv Thaiv",
+      "l1": "1. Tsim phab ntsa pob zeb tiv thaiv dejเซาะ",
+      "l2": "2. Ua choj pob zeb ruaj khov zoo nkauj",
+      "l3": "3. Cog ntoo tiv thaiv cua daj cua dub",
+      "l4": "4. Tu kom dej pem hauv ntej huv si",
+      "t1": "Txwv tsis pub cia dej qias neeg",
+      "t2": "Txwv tsis pub tsim tsev ze dej dhau (>10m)",
+      "t3": "Txwv tsis pub txiav ntoo ntawm ntug dej"
+    }
+  },
+  {
+    "id": "ENV-0007-B",
+    "baseName": "Av Ntsib Kev Nkhaus Jade (Tsuas Muaj Kev, Tsis Muaj Dej) / Curved Jade Belt Road Only",
+    "category": "ສະພາບແວດລ້ອມຕິດແປະ & ທາງເຂົ້າ-ອອກ",
+    "score": 94,
+    "isGood": true,
+    "roadType": "Kev Nkhaus Jade (Virtual Water Only)",
+    "hasFrontRoad": false,
+    "summary": "Looj Mem: Kev tsheb nkhaus puag tsev zoo li dej virtual water. Tsheb khiav qeeb lub zog ncig zoo nkauj nqa lag luam nyiaj txiag los.",
+    "entrance": {
+      "title": "🚪 Qhov Rooj & Kev Nkag",
+      "l1": "• Rooj vag: Teem sab zaj ntsuab hla choj pob zeb",
+      "l2": "• Kev tsheb: Nkhaus du tsis txhob chob tsev",
+      "l3": "• Ciam av: Cog ntoo ntsuab tiv thaiv av tawg",
+      "l4": "• Dej: Dej ntshiab huv si coj nyiaj txiag los",
+      "sub1": "Thaj tshav kaj pem hauv ntej",
+      "sub2": "✓ Dej nkhaus hlub tsev nqa nyiaj txiag los"
+    },
+    "gua": {
+      "title": "🧭 Lub Zog &ทິດທາງ",
+      "l1": "• Lub zog: Zog dej ntshiab pub rau tsev",
+      "l2": "• Qhov chaw: Tig pem hauv ntej ntsib dej",
+      "l3": "• Haum rau: Txhua tus tswv tsev",
+      "l4": "• Tom qab: Zaum roob siab ruaj khov",
+      "l5": "• Txoj cai: Yu Dai Shui dej nkhaus jade",
+      "sub1": "Txuj Ci Looj Mem Ntuj Tsim",
+      "sub2": "✓ Nyiaj txiag nplua mias thiab nyob ntev"
+    },
+    "house": {
+      "title": "🏡 Tsev & Chav Pw",
+      "l1": "• Qhov chaw: Tsim tom qab tsa siab dua dej",
+      "l2": "• Chav pw loj: Zaum tom qab phab ntsa ruaj",
+      "l3": "• Chav txais qhua: Qhib qhov rai saib dej",
+      "l4": "• Rooj loj: Txais lub zog nyiaj txiag",
+      "bed": "Zaum phab ntsa ruaj khov",
+      "bedSub": "Txais kev thaj yeeb los ntawm dej"
+    },
+    "remedy": {
+      "title": "🛡️ Kev Kho & Tiv Thaiv",
+      "l1": "1. Tsim phab ntsa pob zeb tiv thaiv dejเซาะ",
+      "l2": "2. Ua choj pob zeb ruaj khov zoo nkauj",
+      "l3": "3. Cog ntoo tiv thaiv cua daj cua dub",
+      "l4": "4. Tu kom dej pem hauv ntej huv si",
+      "t1": "Txwv tsis pub cia dej qias neeg",
+      "t2": "Txwv tsis pub tsim tsev ze dej dhau (>10m)",
+      "t3": "Txwv tsis pub txiav ntoo ntawm ntug dej"
+    }
+  },
+  {
+    "id": "ENV-0007-A",
+    "baseName": "Av Ntsib Dej Nkhaus Jade (Tsuas Muaj Dej, Tsis Muaj Kev) / Jade Belt River Only",
+    "category": "ດິນຕິດແຫຼ່ງນ້ຳ (Water Adjacency)",
+    "score": 98,
+    "isGood": true,
+    "roadType": "Dej Nkhaus Jade Ntuj Tsim (Natural Water Only)",
+    "hasFrontRoad": false,
+    "summary": "Looj Mem: Dej ntuj tsim nkhaus puag pem hauv ntej tsis muaj kev tsheb nrov. Lub zog kaj siab lug nqa nyiaj txiag thiab kev noj qab nyob zoo los.",
+    "entrance": {
+      "title": "🚪 Qhov Rooj & Kev Nkag",
+      "l1": "• Rooj vag: Teem sab zaj ntsuab hla choj pob zeb",
+      "l2": "• Kev tsheb: Nkhaus du tsis txhob chob tsev",
+      "l3": "• Ciam av: Cog ntoo ntsuab tiv thaiv av tawg",
+      "l4": "• Dej: Dej ntshiab huv si coj nyiaj txiag los",
+      "sub1": "Thaj tshav kaj pem hauv ntej",
+      "sub2": "✓ Dej nkhaus hlub tsev nqa nyiaj txiag los"
+    },
+    "gua": {
+      "title": "🧭 Lub Zog &ทິດທາງ",
+      "l1": "• Lub zog: Zog dej ntshiab pub rau tsev",
+      "l2": "• Qhov chaw: Tig pem hauv ntej ntsib dej",
+      "l3": "• Haum rau: Txhua tus tswv tsev",
+      "l4": "• Tom qab: Zaum roob siab ruaj khov",
+      "l5": "• Txoj cai: Yu Dai Shui dej nkhaus jade",
+      "sub1": "Txuj Ci Looj Mem Ntuj Tsim",
+      "sub2": "✓ Nyiaj txiag nplua mias thiab nyob ntev"
+    },
+    "house": {
+      "title": "🏡 Tsev & Chav Pw",
+      "l1": "• Qhov chaw: Tsim tom qab tsa siab dua dej",
+      "l2": "• Chav pw loj: Zaum tom qab phab ntsa ruaj",
+      "l3": "• Chav txais qhua: Qhib qhov rai saib dej",
+      "l4": "• Rooj loj: Txais lub zog nyiaj txiag",
+      "bed": "Zaum phab ntsa ruaj khov",
+      "bedSub": "Txais kev thaj yeeb los ntawm dej"
+    },
+    "remedy": {
+      "title": "🛡️ Kev Kho & Tiv Thaiv",
+      "l1": "1. Tsim phab ntsa pob zeb tiv thaiv dejเซาะ",
+      "l2": "2. Ua choj pob zeb ruaj khov zoo nkauj",
+      "l3": "3. Cog ntoo tiv thaiv cua daj cua dub",
+      "l4": "4. Tu kom dej pem hauv ntej huv si",
+      "t1": "Txwv tsis pub cia dej qias neeg",
+      "t2": "Txwv tsis pub tsim tsev ze dej dhau (>10m)",
+      "t3": "Txwv tsis pub txiav ntoo ntawm ntug dej"
     }
   },
   {
@@ -381,6 +525,150 @@
       "t1": "Txwv kev tsheb ncaj tua rooj loj (Zhi Chong Sha)",
       "t2": "Txwv tsis txhob cia pem hauv ntej qias ntsim los yog dej lwj",
       "t3": "Txwv qhib rooj tom qab ncaj rooj pem hauv ntej"
+    }
+  },
+  {
+    "id": "ENV-0008-C",
+    "baseName": "Av Ntsib Ob Yam Dej Thiab Kev Ua Hneev Tua / Dual Reverse Bow",
+    "category": "ດິນຕິດແຫຼ່ງນ້ຳ (Water Adjacency)",
+    "score": 20,
+    "isGood": false,
+    "roadType": "Ob Yam Chob Tsev (Dual Reverse Bow)",
+    "hasFrontRoad": false,
+    "summary": "Looj Mem: Chaw txaus ntshai heev muaj dej thiab kev nkhaus chob tsev ib zaug. Yuav tsum thim tsev deb tshaj 18m thiab tsim phab ntsa pob zeb loj.",
+    "entrance": {
+      "title": "🚪 Qhov Rooj & Kev Nkag",
+      "l1": "• Rooj vag: Teem sab zaj ntsuab hla choj pob zeb",
+      "l2": "• Kev tsheb: Nkhaus du tsis txhob chob tsev",
+      "l3": "• Ciam av: Cog ntoo ntsuab tiv thaiv av tawg",
+      "l4": "• Dej: Dej ntshiab huv si coj nyiaj txiag los",
+      "sub1": "Thaj tshav kaj pem hauv ntej",
+      "sub2": "✓ Dej nkhaus hlub tsev nqa nyiaj txiag los"
+    },
+    "gua": {
+      "title": "🧭 Lub Zog &ทິດທາງ",
+      "l1": "• Lub zog: Zog dej ntshiab pub rau tsev",
+      "l2": "• Qhov chaw: Tig pem hauv ntej ntsib dej",
+      "l3": "• Haum rau: Txhua tus tswv tsev",
+      "l4": "• Tom qab: Zaum roob siab ruaj khov",
+      "l5": "• Txoj cai: Yu Dai Shui dej nkhaus jade",
+      "sub1": "Txuj Ci Looj Mem Ntuj Tsim",
+      "sub2": "✓ Nyiaj txiag nplua mias thiab nyob ntev"
+    },
+    "house": {
+      "title": "🏡 Tsev & Chav Pw",
+      "l1": "• Qhov chaw: Tsim tom qab tsa siab dua dej",
+      "l2": "• Chav pw loj: Zaum tom qab phab ntsa ruaj",
+      "l3": "• Chav txais qhua: Qhib qhov rai saib dej",
+      "l4": "• Rooj loj: Txais lub zog nyiaj txiag",
+      "bed": "Zaum phab ntsa ruaj khov",
+      "bedSub": "Txais kev thaj yeeb los ntawm dej"
+    },
+    "remedy": {
+      "title": "🛡️ Kev Kho & Tiv Thaiv",
+      "l1": "1. Tsim phab ntsa pob zeb tiv thaiv dejเซาะ",
+      "l2": "2. Ua choj pob zeb ruaj khov zoo nkauj",
+      "l3": "3. Cog ntoo tiv thaiv cua daj cua dub",
+      "l4": "4. Tu kom dej pem hauv ntej huv si",
+      "t1": "Txwv tsis pub cia dej qias neeg",
+      "t2": "Txwv tsis pub tsim tsev ze dej dhau (>10m)",
+      "t3": "Txwv tsis pub txiav ntoo ntawm ntug dej"
+    }
+  },
+  {
+    "id": "ENV-0008-B",
+    "baseName": "Av Ntsib Kev Nkhaus Ua Hneev Tua (Tsuas Muaj Kev, Tsis Muaj Dej) / Reverse Bow Road Only",
+    "category": "ສະພາບແວດລ້ອມຕິດແປະ & ທາງເຂົ້າ-ອອກ",
+    "score": 30,
+    "isGood": false,
+    "roadType": "Kev Nkhaus Ua Hneev Tua (Fan Gong Road Only)",
+    "hasFrontRoad": false,
+    "summary": "Looj Mem: Kev tsheb nkhaus chob tsev. Teeb tsheb thiab cua tsheb chob pem hauv ntej yuav tsum ua phab ntsa siab tiv thaiv.",
+    "entrance": {
+      "title": "🚪 Qhov Rooj & Kev Nkag",
+      "l1": "• Rooj vag: Teem sab zaj ntsuab hla choj pob zeb",
+      "l2": "• Kev tsheb: Nkhaus du tsis txhob chob tsev",
+      "l3": "• Ciam av: Cog ntoo ntsuab tiv thaiv av tawg",
+      "l4": "• Dej: Dej ntshiab huv si coj nyiaj txiag los",
+      "sub1": "Thaj tshav kaj pem hauv ntej",
+      "sub2": "✓ Dej nkhaus hlub tsev nqa nyiaj txiag los"
+    },
+    "gua": {
+      "title": "🧭 Lub Zog &ทິດທາງ",
+      "l1": "• Lub zog: Zog dej ntshiab pub rau tsev",
+      "l2": "• Qhov chaw: Tig pem hauv ntej ntsib dej",
+      "l3": "• Haum rau: Txhua tus tswv tsev",
+      "l4": "• Tom qab: Zaum roob siab ruaj khov",
+      "l5": "• Txoj cai: Yu Dai Shui dej nkhaus jade",
+      "sub1": "Txuj Ci Looj Mem Ntuj Tsim",
+      "sub2": "✓ Nyiaj txiag nplua mias thiab nyob ntev"
+    },
+    "house": {
+      "title": "🏡 Tsev & Chav Pw",
+      "l1": "• Qhov chaw: Tsim tom qab tsa siab dua dej",
+      "l2": "• Chav pw loj: Zaum tom qab phab ntsa ruaj",
+      "l3": "• Chav txais qhua: Qhib qhov rai saib dej",
+      "l4": "• Rooj loj: Txais lub zog nyiaj txiag",
+      "bed": "Zaum phab ntsa ruaj khov",
+      "bedSub": "Txais kev thaj yeeb los ntawm dej"
+    },
+    "remedy": {
+      "title": "🛡️ Kev Kho & Tiv Thaiv",
+      "l1": "1. Tsim phab ntsa pob zeb tiv thaiv dejเซาะ",
+      "l2": "2. Ua choj pob zeb ruaj khov zoo nkauj",
+      "l3": "3. Cog ntoo tiv thaiv cua daj cua dub",
+      "l4": "4. Tu kom dej pem hauv ntej huv si",
+      "t1": "Txwv tsis pub cia dej qias neeg",
+      "t2": "Txwv tsis pub tsim tsev ze dej dhau (>10m)",
+      "t3": "Txwv tsis pub txiav ntoo ntawm ntug dej"
+    }
+  },
+  {
+    "id": "ENV-0008-A",
+    "baseName": "Av Ntsib Dej Ua Hneev Tua (Tsuas Muaj Dej, Tsis Muaj Kev) / Reverse Bow River Only",
+    "category": "ດິນຕິດແຫຼ່ງນ້ຳ (Water Adjacency)",
+    "score": 28,
+    "isGood": false,
+    "roadType": "Dej Ua Hneev Tua (Fan Gong River Only)",
+    "hasFrontRoad": false,
+    "summary": "Looj Mem: Dej ntuj tsim nkhaus chob pem hauv ntej. Zog dej chob ua rau poob nyiaj txiag yuav tsum thim tsev deb tshaj 15m.",
+    "entrance": {
+      "title": "🚪 Qhov Rooj & Kev Nkag",
+      "l1": "• Rooj vag: Teem sab zaj ntsuab hla choj pob zeb",
+      "l2": "• Kev tsheb: Nkhaus du tsis txhob chob tsev",
+      "l3": "• Ciam av: Cog ntoo ntsuab tiv thaiv av tawg",
+      "l4": "• Dej: Dej ntshiab huv si coj nyiaj txiag los",
+      "sub1": "Thaj tshav kaj pem hauv ntej",
+      "sub2": "✓ Dej nkhaus hlub tsev nqa nyiaj txiag los"
+    },
+    "gua": {
+      "title": "🧭 Lub Zog &ทິດທາງ",
+      "l1": "• Lub zog: Zog dej ntshiab pub rau tsev",
+      "l2": "• Qhov chaw: Tig pem hauv ntej ntsib dej",
+      "l3": "• Haum rau: Txhua tus tswv tsev",
+      "l4": "• Tom qab: Zaum roob siab ruaj khov",
+      "l5": "• Txoj cai: Yu Dai Shui dej nkhaus jade",
+      "sub1": "Txuj Ci Looj Mem Ntuj Tsim",
+      "sub2": "✓ Nyiaj txiag nplua mias thiab nyob ntev"
+    },
+    "house": {
+      "title": "🏡 Tsev & Chav Pw",
+      "l1": "• Qhov chaw: Tsim tom qab tsa siab dua dej",
+      "l2": "• Chav pw loj: Zaum tom qab phab ntsa ruaj",
+      "l3": "• Chav txais qhua: Qhib qhov rai saib dej",
+      "l4": "• Rooj loj: Txais lub zog nyiaj txiag",
+      "bed": "Zaum phab ntsa ruaj khov",
+      "bedSub": "Txais kev thaj yeeb los ntawm dej"
+    },
+    "remedy": {
+      "title": "🛡️ Kev Kho & Tiv Thaiv",
+      "l1": "1. Tsim phab ntsa pob zeb tiv thaiv dejเซาะ",
+      "l2": "2. Ua choj pob zeb ruaj khov zoo nkauj",
+      "l3": "3. Cog ntoo tiv thaiv cua daj cua dub",
+      "l4": "4. Tu kom dej pem hauv ntej huv si",
+      "t1": "Txwv tsis pub cia dej qias neeg",
+      "t2": "Txwv tsis pub tsim tsev ze dej dhau (>10m)",
+      "t3": "Txwv tsis pub txiav ntoo ntawm ntug dej"
     }
   },
   {
