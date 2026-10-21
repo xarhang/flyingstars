@@ -138,9 +138,9 @@
         <circle cx="535" cy="230" r="8" fill="#15803D"/>
         <circle cx="245" cy="210" r="8" fill="#15803D"/>
         <rect x="522" y="240" width="16" height="10" rx="2" fill="#334155"/>
-        <text x="530" y="248" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="6" fill="#F8FAFC" text-anchor="middle">石</text>
+        <text x="530" y="248" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="6" fill="#F8FAFC" text-anchor="middle">Pob</text>
         <rect x="237" y="220" width="16" height="10" rx="2" fill="#334155"/>
-        <text x="245" y="228" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="6" fill="#F8FAFC" text-anchor="middle">石</text>
+        <text x="245" y="228" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="6" fill="#F8FAFC" text-anchor="middle">Pob</text>
 
         <!-- Main House inside rectangular sanctuary (Architectural Layout) -->
         <polygon points="325,145 395,120 465,145" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
@@ -166,10 +166,10 @@
         <!-- Compass Axis Badge inside rectangular core -->
         <g transform="translate(465, 150)">
           <rect x="0" y="0" width="34" height="48" rx="3" fill="#FFFFFF" fill-opacity="0.92" stroke="#0284C7" stroke-width="1.2"/>
-          <text x="17" y="12" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">坐 ⬆</text>
+          <text x="17" y="12" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">Zaum ⬆</text>
           <line x1="17" y1="16" x2="17" y2="32" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
           <polygon points="17,34 14,28 20,28" fill="#0284C7"/>
-          <text x="17" y="44" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">向 ⬇</text>
+          <text x="17" y="44" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">Ntsia ⬇</text>
         </g>
 
         <!-- Central Fountain to convert chaotic energy -->

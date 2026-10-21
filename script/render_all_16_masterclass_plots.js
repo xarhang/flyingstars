@@ -95,7 +95,7 @@ function renderScissorsShaSvg(lang = 'lao') {
   const isLao = lang === 'lao';
   const rawT = isLao ? {
     id: 'LP-0007',
-    name: 'ຕອນດິນສາມຫຼ່ຽມ ຄົມມີດຕັດ ທາງສາມແພ່ງ (Scissors Sha / 剪刀煞)',
+    name: 'ຕອນດິນສາມຫຼ່ຽມ ຄົມມີດຕັດ ທາງສາມແພ່ງ (Scissors Sha / ມີດຕັດສາມແພ່ງ)',
     score: 'ອັນຕະລາຍ: 18 / 100',
     leftRoad: '↓ ຖະໜົນສາຍຊ້າຍ (Left Road)',
     rightRoad: '↓ ຖະໜົນສາຍຂວາ (Right Road)',
@@ -114,9 +114,9 @@ function renderScissorsShaSvg(lang = 'lao') {
     dragonLine2: '• ທາງລົດ: ໂຄ້ງອ່ອນນ້ອມ ຫ້າມແທງຊື່ຫາເຮືອນ',
     dragonLine3: '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ-ລົມ',
     dragonSub1: '• ຫາກມີບໍ່ນ້ຳ: ນ້ຳໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ',
-    dragonSub2: '✓ ທາງໂຄ້ງມີໄມຕີ (曲则有情) ປອດໄພສູງ',
+    dragonSub2: '✓ ທາງໂຄ້ງມີໄມຕີ (ເສັ້ນໂຄ້ງມີເມດຕາ) ປອດໄພສູງ',
     tigerTitle: 'ທາດກວ້າ & ຄວາມຖືກຊາຕາ',
-    tigerLine1: '• ທາດປະຈຳຮູບ: ທາດໄຟ (火)',
+    tigerLine1: '• ທາດປະຈຳຮູບ: ທາດໄຟ (ທາດໄຟ)',
     tigerLine2: '• ລັກສະນະ: ຄົມມີດ, ໄຟພິສ',
     tigerLine3: '• ✗ ບໍ່ຖືກກັບ: ທາດທອງ & ໄມ້',
     tigerLine4: '• ຫ້າມຄົນກວ້າ: 6, 7, 3, 4',
@@ -142,7 +142,7 @@ function renderScissorsShaSvg(lang = 'lao') {
     impactLine4: '• ເງິນຄຳຮົ່ວໄຫຼຍ້ອນແຮງລົມ',
     bedTitle: 'ທິດຫົວຕຽງ: ພິງຝາທຶບ',
     bedSub: 'ຫ້າມຫັນຫົວໄປຫາມຸມແຫຼມ',
-    bottomSummary: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສາມຫຼ່ຽມເປັນທາດໄຟ (火) ຖືກທາງຕັດຄືມີດຕັດ ຕ້ອງສ້າງກຳແພງຕັດມຸມປ່ຽນຮູບຊົງໃຫ້ເປັນຄາງໝູ/ສີ່ຫຼ່ຽມ.'
+    bottomSummary: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສາມຫຼ່ຽມເປັນທາດໄຟ (ທາດໄຟ) ຖືກທາງຕັດຄືມີດຕັດ ຕ້ອງສ້າງກຳແພງຕັດມຸມປ່ຽນຮູບຊົງໃຫ້ເປັນຄາງໝູ/ສີ່ຫຼ່ຽມ.'
   } : {
     id: 'LP-0007',
     name: 'San Jiao Tu: Dui Jiao Chong (Thaj Av Peb Fab Ntse Scissors Sha)',
@@ -166,7 +166,7 @@ function renderScissorsShaSvg(lang = 'lao') {
     dragonSub1: '• Yog muaj dej: Dej ntshiab puag ncig semicircular',
     dragonSub2: '✓ Kev Nkhaus Muaj Siab Zoo (Qu Ze You Qing)',
     tigerTitle: 'Zog Tsib Yam & Neeg Haum',
-    tigerLine1: '• Zog thaj av: Hluav Taws (火)',
+    tigerLine1: '• Zog thaj av: Hluav Taws (ທາດໄຟ)',
     tigerLine2: '• Ciam av: Riam hlais, Huo Sha',
     tigerLine3: '• ✗ Tsis haum: Neeg Kub & Ntoo',
     tigerLine4: '• Txwv tsis haum: Gua 6, 7, 3, 4',
@@ -353,19 +353,11 @@ function renderScissorsShaSvg(lang = 'lao') {
   <circle cx="425" cy="173" r="6" fill="#15803D"/>
 
   <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
-  <!-- Wide open sunlit manicured green lawn inside plot boundaries -->
+  <!-- Wide open sunlit manicured green lawn with clean vertical stacking & zero overlap -->
   <polygon points="368,172 432,172 452,228 348,228" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <text x="400" y="183" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງໂລ່ງແຈ້ງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
-  <text x="400" y="195" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">${isLao ? '✓ ບໍ່ມີບໍ່ນ້ຳ (ດີເລີດ): ລານຫຍ້າຂຽວໂລ່ງຮັບແສງ &amp; ລົມ' : '✓ Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
-  
-  <!-- COMPACT ORNAMENTAL FOUNTAIN ON DRAGON FLANK (IF HOMEOWNER ADDS WATER) -->
-  <!-- Placed safely on Green Dragon garden flank (cx=360, cy=208), completely clear of driveway & porch! -->
-  <!-- Size: Compact proportional 10-15% of courtyard (Diameter 18px = ~2.2m, 1/6 of house facade) -->
-  <circle cx="360" cy="208" r="9" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.2"/>
-  <ellipse cx="360" cy="208" rx="6" ry="3" fill="none" stroke="#38BDF8" stroke-width="0.8"/>
-  <circle cx="360" cy="208" r="1.8" fill="#0284C7"/>
-  <text x="360" y="194" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="5.8" fill="#0369A1" text-anchor="middle">${isLao ? 'ອ່າງນ້ຳພຸ (ຖ້າມີ)' : 'Pas Dej (Yog Muaj)'}</text>
-  <text x="360" y="223" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.2" fill="#0284C7" text-anchor="middle">${isLao ? '[ຝັ່ງມັງກອນ 10-15%]' : '[Sab Zaj 10-15%]'}</text>
+  <text x="400" y="185" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງໂລ່ງແຈ້ງ (Bright Hall)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+  <text x="400" y="198" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '✓ ລານຫຍ້າຂຽວໂລ່ງຮັບແສງ-ລົມ (ດີເລີດທີ່ສຸດ)' : '✓ Tshav xyoob ntsuab kaj (Zoo tshaj)'}</text>
+  <text x="400" y="210" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.8" fill="#0284C7" text-anchor="middle">${isLao ? '• ອ່າງນ້ຳພຸ (ຖ້າມີ): ຂະໜາດນ້ອຍ 10-15%' : '• Pas dej (yog muaj): Me 10-15%'}</text>
 
   <!-- SAFE RESIDENTIAL QUADRANT: Main House (x=330, y=236, w=140, h=65) -->
   <polygon points="325,236 400,214 475,236" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
@@ -390,11 +382,11 @@ function renderScissorsShaSvg(lang = 'lao') {
   <!-- Compass Sitting & Facing Axis Badge (ທິດໜ້າ ⬆ / ທິດພິງ ⬇) -->
   <g transform="translate(480, 240)">
     <rect x="0" y="0" width="56" height="56" rx="4" fill="#FFFFFF" fill-opacity="0.96" stroke="#0284C7" stroke-width="1.2"/>
-    <text x="28" y="14" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດໜ້າ (向)' : 'Ntsia (向)'}</text>
+    <text x="28" y="14" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດໜ້າ' : 'Ntsia'}</text>
     <line x1="28" y1="18" x2="28" y2="34" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="2,2"/>
     <polygon points="28,16 25,22 31,22" fill="#0284C7"/>
     <polygon points="28,38 25,32 31,32" fill="#0284C7"/>
-    <text x="28" y="49" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດພິງ (坐)' : 'Zaum (坐)'}</text>
+    <text x="28" y="49" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດພິງ' : 'Zaum'}</text>
   </g>
 
   <!-- Left Dragon Driveway: Through the Fence Gate to Courtyard & Porch -->
