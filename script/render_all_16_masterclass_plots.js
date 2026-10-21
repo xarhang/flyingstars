@@ -317,49 +317,49 @@ function renderScissorsShaSvg(lang = 'lao') {
   <circle cx="410" cy="171" r="7" fill="#166534"/>
   <circle cx="425" cy="173" r="6" fill="#15803D"/>
 
-  <!-- Semicircular Ming Tang Water Pond (Front Courtyard) at Y=195 -->
-  <path d="M 372 202 A 28 15 0 0 0 428 202 Z" fill="#38BDF8" stroke="#0284C7" stroke-width="1.8"/>
-  <text x="400" y="196" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">${t.mingTang}</text>
+  <!-- Semicircular Ming Tang Water Pond (Front Courtyard) at Y=190 -->
+  <path d="M 374 192 A 26 14 0 0 0 426 192 Z" fill="#38BDF8" stroke="#0284C7" stroke-width="1.8"/>
+  <text x="400" y="186" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">${t.mingTang}</text>
 
-  <!-- SAFE RESIDENTIAL QUADRANT: Main House (x=330, y=225, w=140, h=65) -->
-  <rect x="330" y="225" width="140" height="65" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
-  <polygon points="325,225 400,202 475,225" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+  <!-- SAFE RESIDENTIAL QUADRANT: Main House (x=330, y=236, w=140, h=65) -->
+  <polygon points="325,236 400,214 475,236" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+  <rect x="330" y="236" width="140" height="65" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
   
   <!-- Architectural Room Partition inside House -->
-  <line x1="380" y1="225" x2="380" y2="290" stroke="#CA8A04" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <line x1="380" y1="236" x2="380" y2="301" stroke="#CA8A04" stroke-width="1.5" stroke-dasharray="3,2"/>
   
   <!-- Left Room: Master Bedroom with Bed Head Against Solid Rear Wall -->
-  <rect x="338" y="234" width="34" height="26" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1"/>
-  <rect x="338" y="234" width="34" height="7" fill="#0284C7"/>
-  <text x="355" y="252" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#0369A1" text-anchor="middle">${isLao ? 'ຫົວຕຽງ' : 'Taub Hau'}</text>
-  <text x="355" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">${isLao ? 'ຫ້ອງນອນໃຫຍ່' : 'Chaw Pw'}</text>
+  <rect x="338" y="244" width="34" height="26" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1"/>
+  <rect x="338" y="244" width="34" height="7" fill="#0284C7"/>
+  <text x="355" y="262" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#0369A1" text-anchor="middle">${isLao ? 'ຫົວຕຽງ' : 'Taub Hau'}</text>
+  <text x="355" y="288" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">${isLao ? 'ຫ້ອງນອນໃຫຍ່' : 'Chaw Pw'}</text>
 
   <!-- Right Room: Main Living Hall -->
-  <text x="425" y="254" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#1E293B" text-anchor="middle">${t.house}</text>
-  <text x="425" y="272" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#475569" text-anchor="middle">${t.houseDesc}</text>
+  <text x="425" y="264" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#1E293B" text-anchor="middle">${t.house}</text>
+  <text x="425" y="282" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#475569" text-anchor="middle">${t.houseDesc}</text>
   
   <!-- Front Porch / Door Indicator -->
-  <rect x="417" y="287" width="16" height="5" fill="#1E293B"/>
+  <rect x="417" y="298" width="16" height="5" fill="#1E293B"/>
 
-  <!-- Compass Sitting & Facing Axis Badge -->
-  <g transform="translate(476, 230)">
+  <!-- Compass Sitting & Facing Axis Badge (Base=South Zuo ⬇, Facing=North Xiang ⬆) -->
+  <g transform="translate(476, 240)">
     <rect x="0" y="0" width="36" height="48" rx="3" fill="#FFFFFF" fill-opacity="0.95" stroke="#0284C7" stroke-width="1.2"/>
-    <text x="18" y="12" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Zuo ⬆</text>
-    <line x1="18" y1="16" x2="18" y2="32" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
-    <polygon points="18,34 15,28 21,28" fill="#0284C7"/>
-    <text x="18" y="44" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Xiang ⬇</text>
+    <text x="18" y="12" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Xiang ⬆</text>
+    <polygon points="18,16 15,22 21,22" fill="#0284C7"/>
+    <line x1="18" y1="22" x2="18" y2="34" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
+    <text x="18" y="44" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Zuo ⬇</text>
   </g>
 
   <!-- Left Dragon Driveway: Through the Fence Gate to Courtyard -->
   <path d="M 235 348 L 284 348 C 310 348 335 320 355 295" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
 
-  <!-- [✓] RECOMMENDED GATE BADGE (DIRECTLY AT FENCE OPENING) -->
-  <g transform="translate(195, 339)">
+  <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO AVOID DRIVEWAY OVERLAP) -->
+  <g transform="translate(180, 339)">
     <rect x="0" y="0" width="82" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
     <text x="41" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູຮົ້ວໃຫຍ່' : '✓ Rooj Vag Loj'}</text>
     <!-- Pointer Line to Gate Post -->
-    <line x1="82" y1="9" x2="89" y2="9" stroke="#15803D" stroke-width="2"/>
-    <circle cx="89" cy="9" r="2" fill="#15803D"/>
+    <line x1="82" y1="9" x2="94" y2="9" stroke="#15803D" stroke-width="2"/>
+    <circle cx="94" cy="9" r="2" fill="#15803D"/>
   </g>
 
   <!-- [✗] FORBIDDEN GATE BADGE (DIRECTLY ON ACUTE FENCE APEX) -->
@@ -521,18 +521,20 @@ function renderMasterPlotSvg(plot, lang = 'lao') {
 
   <rect x="620" y="326" width="162" height="106" rx="4" fill="#F3E8FF"/>
   <text x="700" y="342" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#7E22CE" text-anchor="middle">${tabooHeader}</text>
-  <text x="700" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA" text-anchor="middle">${rem.t1}</text>
-  <text x="700" y="376" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA" text-anchor="middle">${rem.t2}</text>
-  <text x="700" y="392" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA" text-anchor="middle">${rem.t3}</text>
+  <text x="626" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">${rem.t1}</text>
+  <text x="626" y="377" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">${rem.t2}</text>
+  <text x="626" y="394" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">${rem.t3}</text>
   <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ ຮັກສາຄວາມສະອາດ &amp; ແສງສະຫວ່າງ</text>
 
   <!-- ========================================================================= -->
+  ${plot.hasFrontRoad !== false ? `
   <!-- MAIN ROADWAY (Y=355 to 440, bounded in Central Zone X=190..610) -->
   <!-- Placed before centerSvg so fence gates and badges paint clearly on top! -->
   <rect x="190" y="355" width="420" height="85" fill="url(#roadGrad)" rx="3"/>
   <line x1="190" y1="395" x2="610" y2="395" stroke="#FDE047" stroke-width="2" stroke-dasharray="14,8"/>
   <line x1="190" y1="360" x2="610" y2="360" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4"/>
   <text x="400" y="420" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#F8FAFC" text-anchor="middle">&#10140; ${escapeXml(roadLabel)} &#10140;</text>
+  ` : ''}
 
   <!-- ========================================================================= -->
   <!-- CENTER: THE PLOT ARCHITECTURAL DRAWING (X=195 to 605, Y=48 to 384) -->
