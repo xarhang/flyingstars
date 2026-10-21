@@ -334,8 +334,13 @@ function renderScissorsShaSvg(lang = 'lao') {
 
   <!-- Left Dragon Driveway & Gate (Situated on Property Line at X=288, Y=335) -->
   <path d="M 288 340 C 310 325 335 310 355 295" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="4,3"/>
-  <rect x="260" y="333" width="56" height="15" rx="2" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
-  <text x="288" y="344" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${isLao ? 'ປະຕູຮົ້ວໃຫຍ່' : 'Rooj Vag Loj'}</text>
+  <!-- [✓] Recommended Gate Badge (Dragon Left Setback >15m) -->
+  <rect x="255" y="333" width="82" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+  <text x="296" y="345" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູທີ່ຖືກຕ້ອງ' : '✓ Rooj Vag Zoo'}</text>
+
+  <!-- [✗] Forbidden Gate Badge (Sharp Acute Scissors Apex) -->
+  <rect x="360" y="125" width="80" height="17" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+  <text x="400" y="137" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${isLao ? '✗ ຫ້າມຕັ້ງປະຕູ' : '✗ Txwv Rooj Vag'}</text>
   <line x1="244" y1="350" x2="260" y2="340" stroke="#F59E0B" stroke-width="2"/>
   <polygon points="262,339 255,336 256,344" fill="#F59E0B"/>
 
@@ -569,8 +574,8 @@ for (const plot of allPlots) {
   // 4. Save to asset/book_figures/clean_hmong/ (Hmong for RPA book)
   fs.writeFileSync(`asset/book_figures/clean_hmong/${plot.id}.png`, pngHmong);
 
-  // Also write LP-0007, LP-0009, LP-0010, LP-0012, LP-0015 to artifactDir for inspection
-  if (['LP-0001', 'LP-0007', 'LP-0009', 'LP-0010', 'LP-0012', 'LP-0015', 'LP-0016'].includes(plot.id)) {
+  // Also write selected plots to artifactDir for inspection
+  if (['LP-0001', 'LP-0007', 'LP-0007B', 'LP-0007C', 'LP-0009', 'LP-0010', 'LP-0012', 'LP-0015', 'LP-0016'].includes(plot.id)) {
     fs.writeFileSync(path.join(artifactDir, `${plot.id}-lao-masterclass.png`), pngLao);
     fs.writeFileSync(path.join(artifactDir, `${plot.id}-hmong-masterclass.png`), pngHmong);
   }

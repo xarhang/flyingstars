@@ -158,8 +158,13 @@ module.exports = [
         <path d="M 300 355 C 300 300 320 270 340 240" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
 
         <!-- Entrance Gate Badge on Front Road -->
-        <rect x="270" y="346" width="60" height="16" rx="3" fill="#15803D"/>
-        <text x="300" y="357" font-family="'Phetsarath OT', 'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${escapeXml(gateText)}</text>
+        <!-- [✓] Recommended Gate Badge (Dragon Leg) -->
+        <rect x="260" y="344" width="82" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+        <text x="301" y="356" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູທີ່ຖືກຕ້ອງ' : '✓ Rooj Vag Zoo'}</text>
+        
+        <!-- [✗] Forbidden Gate Badge (Missing Sector Notch) -->
+        <rect x="440" y="180" width="80" height="17" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+        <text x="480" y="192" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${isLao ? '✗ ຫ້າມຕັ້ງປະຕູ' : '✗ Txwv Rooj Vag'}</text>
         <line x1="300" y1="385" x2="300" y2="364" stroke="#F59E0B" stroke-width="2.5"/>
         <polygon points="300,362 296,368 304,368" fill="#F59E0B"/>
 
@@ -465,8 +470,13 @@ module.exports = [
         <path d="M 330 355 C 330 310 360 280 390 245" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
 
         <!-- Entrance Gate on Front Road -->
-        <rect x="300" y="346" width="60" height="16" rx="3" fill="#15803D"/>
-        <text x="330" y="357" font-family="'Phetsarath OT', 'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${escapeXml(gateText)}</text>
+        <!-- [✓] Recommended Gate Badge (Central Flat Corridor) -->
+        <rect x="290" y="344" width="82" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+        <text x="331" y="356" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູທີ່ຖືກຕ້ອງ' : '✓ Rooj Vag Zoo'}</text>
+        
+        <!-- [✗] Forbidden Gate Badge (Sawtooth Knife Edge) -->
+        <rect x="460" y="344" width="80" height="17" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+        <text x="500" y="356" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${isLao ? '✗ ຫ້າມຕັ້ງປະຕູ' : '✗ Txwv Rooj Vag'}</text>
         <line x1="330" y1="385" x2="330" y2="364" stroke="#F59E0B" stroke-width="2.5"/>
         <polygon points="330,362 326,368 334,368" fill="#F59E0B"/>
 
@@ -618,8 +628,13 @@ module.exports = [
         <path d="M 320 355 C 320 310 350 280 380 265" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
 
         <!-- Entrance Gate Badge on Front Boundary -->
-        <rect x="290" y="346" width="60" height="16" rx="3" fill="#15803D"/>
-        <text x="320" y="357" font-family="'Phetsarath OT', 'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${escapeXml(gateText)}</text>
+        <!-- [✓] Recommended Gate Badge (Chamfered Dragon Side) -->
+        <rect x="280" y="344" width="82" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+        <text x="321" y="356" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູທີ່ຖືກຕ້ອງ' : '✓ Rooj Vag Zoo'}</text>
+        
+        <!-- [✗] Forbidden Gate Badge (Sharp Front Tip) -->
+        <rect x="440" y="344" width="80" height="17" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+        <text x="480" y="356" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${isLao ? '✗ ຫ້າມຕັ້ງປະຕູ' : '✗ Txwv Rooj Vag'}</text>
         <line x1="320" y1="385" x2="320" y2="364" stroke="#F59E0B" stroke-width="2.5"/>
         <polygon points="320,362 316,368 324,368" fill="#F59E0B"/>
       `;
@@ -778,8 +793,13 @@ module.exports = [
         <text x="492" y="258" font-family="'Phetsarath OT', 'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#F8FAFC" text-anchor="middle">${escapeXml(wallPill)}</text>
 
         <!-- Entrance Gate Badge on Front Road -->
-        <rect x="290" y="346" width="60" height="16" rx="3" fill="#15803D"/>
-        <text x="320" y="357" font-family="'Phetsarath OT', 'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${escapeXml(gateText)}</text>
+        <!-- [✓] Recommended Gate Badge (Lowest Stable Terrace) -->
+        <rect x="280" y="344" width="82" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+        <text x="321" y="356" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູທີ່ຖືກຕ້ອງ' : '✓ Rooj Vag Zoo'}</text>
+        
+        <!-- [✗] Forbidden Gate Badge (High Cliff Ledge) -->
+        <rect x="450" y="100" width="80" height="17" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+        <text x="490" y="112" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${isLao ? '✗ ຫ້າມຕັ້ງປະຕູ' : '✗ Txwv Rooj Vag'}</text>
         <line x1="320" y1="385" x2="320" y2="364" stroke="#F59E0B" stroke-width="2.5"/>
         <polygon points="320,362 316,368 324,368" fill="#F59E0B"/>
       `;
@@ -1069,8 +1089,13 @@ module.exports = [
         <path d="M 320 95 C 320 120 350 130 380 140" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
 
         <!-- Entrance Gate Badge at top rear boundary -->
-        <rect x="290" y="86" width="60" height="16" rx="3" fill="#15803D"/>
-        <text x="320" y="97" font-family="'Phetsarath OT', 'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${escapeXml(gateText)}</text>
+        <!-- [✓] Recommended Gate Badge (North Bridge Access) -->
+        <rect x="280" y="84" width="82" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+        <text x="321" y="96" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູທີ່ຖືກຕ້ອງ' : '✓ Rooj Vag Zoo'}</text>
+        
+        <!-- [✗] Forbidden Gate Badge (Direct River Current) -->
+        <rect x="360" y="344" width="80" height="17" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+        <text x="400" y="356" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${isLao ? '✗ ຫ້າມຕັ້ງປະຕູ' : '✗ Txwv Rooj Vag'}</text>
 
         <!-- Trees along riverbank -->
         <circle cx="285" cy="200" r="9" fill="#16A34A"/>
