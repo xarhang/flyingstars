@@ -63,8 +63,8 @@ function renderBoundaryHouse(hx, hy, hw, hh, roofPoints, isLao, houseText, subTe
   const bedSide = options.bedSide || 'left';
   const partX = bedSide === 'left' ? hx + Math.round(hw * 0.44) : hx + Math.round(hw * 0.56);
   const bedText = isLao ? 'ຫ້ອງນອນໃຫຍ່' : 'Chaw Pw Loj';
-  const bedSub = isLao ? '(ຫົວຕຽງ)' : '(Taub Hau)';
-  const hallText = isLao ? 'ຫ້ອງໂຖງ' : 'Chaw Txais';
+  const bedSub = isLao ? 'ຫົວຕຽງ' : 'Taub Hau';
+  const hallText = isLao ? 'ຫ້ອງໂຖງໃຫຍ່' : 'Chaw Txais';
   const doorText = isLao ? 'ປະຕູໃຫຍ່' : 'Rooj Loj';
 
   let bedSvg = '';
@@ -75,29 +75,26 @@ function renderBoundaryHouse(hx, hy, hw, hh, roofPoints, isLao, houseText, subTe
     const bedX = hx + 6;
     const bedY = hy + 6;
     const bedW = 28;
-    const bedH = Math.min(hh - 12, 22);
+    const bedH = Math.min(hh - 14, 20);
     const bedCenterX = bedX + bedW / 2;
     const hallCenterX = partX + (hx + hw - partX) / 2;
     bedSvg = `
-      <!-- Master Bedroom (Dragon / Seated Wing) -->
-      <rect x="${bedX}" y="${bedY}" width="${bedW}" height="${bedH}" fill="#FDE68A" stroke="#B45309" stroke-width="1" rx="2"/>
-      <rect x="${bedX}" y="${bedY}" width="${bedW}" height="5" fill="#92400E" rx="1"/>
-      <text x="${bedCenterX}" y="${hy + hh - 16}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#78350F" text-anchor="middle">${bedText}</text>
-      <text x="${bedCenterX}" y="${hy + hh - 6}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#92400E" text-anchor="middle">${bedSub}</text>
+      <!-- Master Bedroom -->
+      <rect x="${bedX}" y="${bedY}" width="${bedW}" height="${bedH}" fill="#FFFFFF" stroke="#0284C7" stroke-width="1" rx="2"/>
+      <rect x="${bedX}" y="${bedY}" width="${bedW}" height="5" fill="#0284C7" rx="1"/>
+      <text x="${bedCenterX}" y="${hy + 16}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#0369A1" text-anchor="middle">${bedSub}</text>
+      <text x="${bedCenterX}" y="${hy + hh - 12}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">${bedText}</text>
     `;
     hallSvg = `
       <!-- Living Hall -->
-      <text x="${hallCenterX}" y="${hy + 20}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#1E293B" text-anchor="middle">${escapeXml(houseText)}</text>
-      <text x="${hallCenterX}" y="${hy + 33}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">${hallText}</text>
+      <text x="${hallCenterX}" y="${hy + 20}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#1E293B" text-anchor="middle">${escapeXml(houseText)}</text>
+      <text x="${hallCenterX}" y="${hy + 35}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">${hallText}</text>
     `;
-    if (subText) {
-      hallSvg += `<text x="${hallCenterX}" y="${hy + 44}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#64748B" text-anchor="middle">${subText}</text>`;
-    }
     if (options.hasDoor !== false) {
       doorSvg = `
-        <!-- Front Main Door -->
-        <rect x="${hallCenterX - 11}" y="${hy + hh - 5}" width="22" height="5" fill="#B45309" rx="1"/>
-        <text x="${hallCenterX}" y="${hy + hh - 7}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#92400E" text-anchor="middle">${doorText}</text>
+        <!-- Front Main Door Step & Prominent Label -->
+        <rect x="${hallCenterX - 10}" y="${hy + hh}" width="20" height="5" fill="#1E293B"/>
+        <text x="${hallCenterX}" y="${hy + hh + 14}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">${doorText}</text>
       `;
     }
   } else {
@@ -105,29 +102,26 @@ function renderBoundaryHouse(hx, hy, hw, hh, roofPoints, isLao, houseText, subTe
     const bedX = hx + hw - 34;
     const bedY = hy + 6;
     const bedW = 28;
-    const bedH = Math.min(hh - 12, 22);
+    const bedH = Math.min(hh - 14, 20);
     const bedCenterX = bedX + bedW / 2;
     const hallCenterX = hx + (partX - hx) / 2;
     bedSvg = `
-      <!-- Master Bedroom (Tiger / Seated Wing) -->
-      <rect x="${bedX}" y="${bedY}" width="${bedW}" height="${bedH}" fill="#FDE68A" stroke="#B45309" stroke-width="1" rx="2"/>
-      <rect x="${bedX}" y="${bedY}" width="${bedW}" height="5" fill="#92400E" rx="1"/>
-      <text x="${bedCenterX}" y="${hy + hh - 16}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#78350F" text-anchor="middle">${bedText}</text>
-      <text x="${bedCenterX}" y="${hy + hh - 6}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#92400E" text-anchor="middle">${bedSub}</text>
+      <!-- Master Bedroom -->
+      <rect x="${bedX}" y="${bedY}" width="${bedW}" height="${bedH}" fill="#FFFFFF" stroke="#0284C7" stroke-width="1" rx="2"/>
+      <rect x="${bedX}" y="${bedY}" width="${bedW}" height="5" fill="#0284C7" rx="1"/>
+      <text x="${bedCenterX}" y="${hy + 16}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#0369A1" text-anchor="middle">${bedSub}</text>
+      <text x="${bedCenterX}" y="${hy + hh - 12}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">${bedText}</text>
     `;
     hallSvg = `
       <!-- Living Hall -->
-      <text x="${hallCenterX}" y="${hy + 20}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#1E293B" text-anchor="middle">${escapeXml(houseText)}</text>
-      <text x="${hallCenterX}" y="${hy + 33}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">${hallText}</text>
+      <text x="${hallCenterX}" y="${hy + 20}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#1E293B" text-anchor="middle">${escapeXml(houseText)}</text>
+      <text x="${hallCenterX}" y="${hy + 35}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">${hallText}</text>
     `;
-    if (subText) {
-      hallSvg += `<text x="${hallCenterX}" y="${hy + 44}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#64748B" text-anchor="middle">${subText}</text>`;
-    }
     if (options.hasDoor !== false) {
       doorSvg = `
-        <!-- Front Main Door -->
-        <rect x="${hallCenterX - 11}" y="${hy + hh - 5}" width="22" height="5" fill="#B45309" rx="1"/>
-        <text x="${hallCenterX}" y="${hy + hh - 7}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#92400E" text-anchor="middle">${doorText}</text>
+        <!-- Front Main Door Step & Prominent Label -->
+        <rect x="${hallCenterX - 10}" y="${hy + hh}" width="20" height="5" fill="#1E293B"/>
+        <text x="${hallCenterX}" y="${hy + hh + 14}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">${doorText}</text>
       `;
     }
   }
@@ -143,93 +137,6 @@ function renderBoundaryHouse(hx, hy, hw, hh, roofPoints, isLao, houseText, subTe
   `;
 }
 
-// Generate Center SVG drawing for each of the 18 Boundary Archetypes
-// Architectural House Helper for Boundary Plots
-function renderBoundaryHouse(hx, hy, hw, hh, roofPoints, isLao, houseText, subText, options = {}) {
-  const bedSide = options.bedSide || 'left';
-  const partX = bedSide === 'left' ? hx + Math.round(hw * 0.44) : hx + Math.round(hw * 0.56);
-  const bedText = isLao ? 'ຫ້ອງນອນໃຫຍ່' : 'Chaw Pw Loj';
-  const bedSub = isLao ? '(ຫົວຕຽງ)' : '(Taub Hau)';
-  const hallText = isLao ? 'ຫ້ອງໂຖງ' : 'Chaw Txais';
-  const doorText = isLao ? 'ປະຕູໃຫຍ່' : 'Rooj Loj';
-
-  let bedSvg = '';
-  let hallSvg = '';
-  let doorSvg = '';
-
-  if (bedSide === 'left') {
-    const bedX = hx + 6;
-    const bedY = hy + 6;
-    const bedW = 28;
-    const bedH = Math.min(hh - 12, 22);
-    const bedCenterX = bedX + bedW / 2;
-    const hallCenterX = partX + (hx + hw - partX) / 2;
-    bedSvg = `
-      <!-- Master Bedroom (Dragon / Seated Wing) -->
-      <rect x="${bedX}" y="${bedY}" width="${bedW}" height="${bedH}" fill="#FDE68A" stroke="#B45309" stroke-width="1" rx="2"/>
-      <rect x="${bedX}" y="${bedY}" width="${bedW}" height="5" fill="#92400E" rx="1"/>
-      <text x="${bedCenterX}" y="${hy + hh - 16}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#78350F" text-anchor="middle">${bedText}</text>
-      <text x="${bedCenterX}" y="${hy + hh - 6}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#92400E" text-anchor="middle">${bedSub}</text>
-    `;
-    hallSvg = `
-      <!-- Living Hall -->
-      <text x="${hallCenterX}" y="${hy + 20}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#1E293B" text-anchor="middle">${escapeXml(houseText)}</text>
-      <text x="${hallCenterX}" y="${hy + 33}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">${hallText}</text>
-    `;
-    if (subText) {
-      hallSvg += `<text x="${hallCenterX}" y="${hy + 44}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#64748B" text-anchor="middle">${escapeXml(subText)}</text>`;
-    }
-    if (options.hasDoor !== false) {
-      doorSvg = `
-        <!-- Front Main Door -->
-        <rect x="${hallCenterX - 11}" y="${hy + hh - 5}" width="22" height="5" fill="#B45309" rx="1"/>
-        <text x="${hallCenterX}" y="${hy + hh - 7}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#92400E" text-anchor="middle">${doorText}</text>
-      `;
-    }
-  } else {
-    // Bed on right side
-    const bedX = hx + hw - 34;
-    const bedY = hy + 6;
-    const bedW = 28;
-    const bedH = Math.min(hh - 12, 22);
-    const bedCenterX = bedX + bedW / 2;
-    const hallCenterX = hx + (partX - hx) / 2;
-    bedSvg = `
-      <!-- Master Bedroom (Tiger / Seated Wing) -->
-      <rect x="${bedX}" y="${bedY}" width="${bedW}" height="${bedH}" fill="#FDE68A" stroke="#B45309" stroke-width="1" rx="2"/>
-      <rect x="${bedX}" y="${bedY}" width="${bedW}" height="5" fill="#92400E" rx="1"/>
-      <text x="${bedCenterX}" y="${hy + hh - 16}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#78350F" text-anchor="middle">${bedText}</text>
-      <text x="${bedCenterX}" y="${hy + hh - 6}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#92400E" text-anchor="middle">${bedSub}</text>
-    `;
-    hallSvg = `
-      <!-- Living Hall -->
-      <text x="${hallCenterX}" y="${hy + 20}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#1E293B" text-anchor="middle">${escapeXml(houseText)}</text>
-      <text x="${hallCenterX}" y="${hy + 33}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">${hallText}</text>
-    `;
-    if (subText) {
-      hallSvg += `<text x="${hallCenterX}" y="${hy + 44}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#64748B" text-anchor="middle">${escapeXml(subText)}</text>`;
-    }
-    if (options.hasDoor !== false) {
-      doorSvg = `
-        <!-- Front Main Door -->
-        <rect x="${hallCenterX - 11}" y="${hy + hh - 5}" width="22" height="5" fill="#B45309" rx="1"/>
-        <text x="${hallCenterX}" y="${hy + hh - 7}" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#92400E" text-anchor="middle">${doorText}</text>
-      `;
-    }
-  }
-
-  return `
-    <!-- House Structure & Interior -->
-    <rect x="${hx}" y="${hy}" width="${hw}" height="${hh}" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
-    <polygon points="${roofPoints}" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
-    <line x1="${partX}" y1="${hy}" x2="${partX}" y2="${hy + hh}" stroke="#B45309" stroke-width="1.2" stroke-dasharray="3,2"/>
-    ${bedSvg}
-    ${hallSvg}
-    ${doorSvg}
-  `;
-}
-
-// Generate Center SVG drawing for each of the 18 Boundary Archetypes
 function renderCenterDrawing(id, lang) {
   const isLao = lang === 'lao';
   const houseText = isLao ? 'ອາຄານຫຼັກ' : 'Lub Tsev';
@@ -450,36 +357,57 @@ function renderCenterDrawing(id, lang) {
         </g>
       `;
 
-    case 'ENV-0005': // Island Plot / Roundabout
+    case 'ENV-0005': // Island Plot / Roundabout 360
       return `
-        <!-- Roundabout Ring -->
-        <ellipse cx="400" cy="215" rx="170" ry="140" fill="none" stroke="#475569" stroke-width="36"/>
-        <ellipse cx="400" cy="215" rx="170" ry="140" fill="none" stroke="#FDE047" stroke-width="1.5" stroke-dasharray="10,6"/>
-        <ellipse cx="400" cy="215" rx="145" ry="115" fill="#DCFCE7"/>
-        <ellipse cx="400" cy="215" rx="145" ry="115" fill="none" stroke="#16A34A" stroke-width="3"/>
-        <circle cx="300" cy="150" r="8" fill="#14532D"/><circle cx="500" cy="150" r="8" fill="#14532D"/>
-        
-        ${renderBoundaryHouse(345, 185, 110, 60, '335,185 400,160 465,185', isLao, houseText, isLao ? 'ປູກຕົ້ນໄມ້ບັງລົມ 360°' : 'Hav Ntoo Ncig Ciam Av')}
+        <!-- Circular Traffic Roundabout Ring (Asphalt with bright yellow lane divider) -->
+        <ellipse cx="400" cy="210" rx="175" ry="135" fill="none" stroke="#1E293B" stroke-width="34"/>
+        <ellipse cx="400" cy="210" rx="175" ry="135" fill="none" stroke="#EAB308" stroke-width="2" stroke-dasharray="12,8"/>
+        <ellipse cx="400" cy="210" rx="192" ry="152" fill="none" stroke="#475569" stroke-width="1.5"/>
+        <ellipse cx="400" cy="210" rx="158" ry="118" fill="none" stroke="#F8FAFC" stroke-width="2"/>
 
-        <!-- PHYSICAL GATE ON RING AT DRAGON SIDE (X=295, Y=290) -->
-        <rect x="290" y="285" width="8" height="8" rx="2" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
-        <rect x="310" y="270" width="8" height="8" rx="2" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
-        <path d="M 270 310 L 300 280 C 315 265 330 255 350 245" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
+        <!-- Traffic Flow Direction Arrows & Label -->
+        <text x="400" y="62" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#F8FAFC" text-anchor="middle">&#10227; ${isLao ? 'ຖະໜົນວົງວຽນອ້ອມຮອບ 360° (Island Roundabout)' : 'Kev Ncig 360° (Island Roundabout)'} &#10227;</text>
 
-        <!-- [✓] RECOMMENDED GATE BADGE (ANCHORED TO TANGENTIAL ACCESS) -->
-        <g transform="translate(195, 345)">
+        <!-- Island Property Ground Fill -->
+        <ellipse cx="400" cy="210" rx="156" ry="116" fill="#DCFCE7" stroke="#15803D" stroke-width="3"/>
+
+        <!-- Dense 360° Protective Evergreen Windbreak Trees Encircling Island -->
+        <circle cx="280" cy="140" r="8" fill="#15803D"/><circle cx="320" cy="115" r="9" fill="#166534"/>
+        <circle cx="365" cy="102" r="8" fill="#15803D"/><circle cx="435" cy="102" r="8" fill="#15803D"/>
+        <circle cx="480" cy="115" r="9" fill="#166534"/><circle cx="520" cy="140" r="8" fill="#15803D"/>
+        <circle cx="545" cy="180" r="8" fill="#166534"/><circle cx="545" cy="240" r="8" fill="#15803D"/>
+        <circle cx="520" cy="280" r="9" fill="#166534"/><circle cx="475" cy="305" r="8" fill="#15803D"/>
+        <circle cx="400" cy="320" r="9" fill="#166534"/><circle cx="330" cy="310" r="8" fill="#15803D"/>
+        <circle cx="255" cy="240" r="8" fill="#166534"/><circle cx="255" cy="180" r="8" fill="#15803D"/>
+
+        <!-- Central Residence (Seated Securely at Center) -->
+        ${renderBoundaryHouse(345, 142, 110, 52, '335,142 400,120 465,142', isLao, houseText, '')}
+
+        <!-- Ming Tang Bright Hall Lawn in Front of Residence -->
+        <rect x="320" y="218" width="160" height="42" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="400" y="234" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / ເກັບພະລັງຊີ່)' : 'Thaj Tshav Kaj (Ju Qi)'}</text>
+        <text x="400" y="248" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">${isLao ? '• ແນວຕົ້ນໄມ້ບັງລົມ 360° ສະກັດລົມປັ່ນປ່ວນ' : '• Hav ntoo 360° thaiv cua ntsawj'}</text>
+
+        <!-- Single Controlled Dragon Gate on Low-Speed Arc (x=280, y=285) -->
+        <rect x="274" y="280" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="296" y="265" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <path d="M 245 305 C 265 292 285 280 315 272 C 355 260 410 248 420 200" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
+        <text x="355" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ' : '⟿ Kev Nkhaus Zoo Siab'}</text>
+
+        <!-- [✓] RECOMMENDED SINGLE CONTROLLED GATE BADGE -->
+        <g transform="translate(195, 360)">
           <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
           <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${gateOkText}</text>
-          <line x1="75" y1="0" x2="95" y2="-45" stroke="#15803D" stroke-width="1.8"/>
-          <circle cx="95" cy="-45" r="2" fill="#15803D"/>
+          <line x1="88" y1="9" x2="95" y2="-65" stroke="#15803D" stroke-width="1.8"/>
+          <circle cx="95" cy="-65" r="2.2" fill="#15803D"/>
         </g>
 
-        <!-- [✗] FORBIDDEN GATE BADGE (ANCHORED TO DIRECT RADIAL CLASH) -->
-        <g transform="translate(450, 345)">
+        <!-- [✗] FORBIDDEN GATE BADGE (ANCHORED TO DIRECT TRAFFIC ARC) -->
+        <g transform="translate(450, 360)">
           <rect x="0" y="0" width="90" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
           <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${gateNoText}</text>
-          <line x1="20" y1="0" x2="-10" y2="-40" stroke="#DC2626" stroke-width="1.8"/>
-          <circle cx="-10" cy="-40" r="2" fill="#DC2626"/>
+          <line x1="20" y1="0" x2="-20" y2="-45" stroke="#DC2626" stroke-width="1.8"/>
+          <circle cx="-20" cy="-45" r="2" fill="#DC2626"/>
         </g>
       `;
 
@@ -535,79 +463,87 @@ function renderCenterDrawing(id, lang) {
 
     case 'ENV-0007': // Front Jade Belt Water
       return `
-        <!-- Jade Belt River Between Road and Plot -->
-        <path d="M 210 320 C 290 350 510 350 590 320" fill="none" stroke="#0284C7" stroke-width="24"/>
-        <path d="M 210 320 C 290 350 510 350 590 320" fill="none" stroke="#38BDF8" stroke-width="14"/>
-        <text x="400" y="342" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#FFFFFF" text-anchor="middle">${isLao ? 'ສາຍນ້ຳສາຍຮັດແອວຫົກ (Jade Belt Water)' : 'Dej Txoj Siv Hlua Jade'}</text>
+        <!-- Jade Belt River Gracefully Hugging Front (Vibrant Blue with Waves) -->
+        <path d="M 190 310 C 290 355 510 355 610 310" fill="none" stroke="#0284C7" stroke-width="26"/>
+        <path d="M 190 310 C 290 355 510 355 610 310" fill="none" stroke="#38BDF8" stroke-width="16"/>
+        <path d="M 190 310 C 290 355 510 355 610 310" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="8,6"/>
+        <text x="400" y="342" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#FFFFFF" text-anchor="middle">${isLao ? '🌊 ສາຍນ້ຳສາຍຮັດແອວຫົກ (Yu Dai Shui - ໂອບອຸ້ມຊັບ)' : '🌊 Dej Txoj Siv Hlua Jade'}</text>
 
         <!-- Plot Ground -->
-        <rect x="270" y="95" width="260" height="210" fill="#DCFCE7" rx="3"/>
+        <rect x="270" y="95" width="260" height="205" fill="#DCFCE7" rx="3"/>
         <line x1="270" y1="95" x2="530" y2="95" stroke="#15803D" stroke-width="4"/>
-        <line x1="270" y1="95" x2="270" y2="305" stroke="#334155" stroke-width="3"/>
-        <line x1="530" y1="95" x2="530" y2="305" stroke="#334155" stroke-width="3"/>
+        <line x1="270" y1="95" x2="270" y2="300" stroke="#334155" stroke-width="3"/>
+        <line x1="530" y1="95" x2="530" y2="300" stroke="#334155" stroke-width="3"/>
         <text x="400" y="85" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">${isLao ? 'ດິນເພື່ອນບ້ານຫຼັງ (Rear Neighbor)' : 'Ciam Av Tom Qab'}</text>
         <text x="245" y="200" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-90 245 200)">${isLao ? 'ເພື່ອນບ້ານຊ້າຍ' : 'Tsev Sab Laug'}</text>
         <text x="555" y="200" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(90 555 200)">${isLao ? 'ເພື່ອນບ້ານຂວາ' : 'Tsev Sab Xis'}</text>
 
-        ${renderBoundaryHouse(335, 130, 130, 65, '325,130 400,105 475,130', isLao, houseText, isLao ? 'ໂອບຮັບຊັບສົມບັດໃຫຍ່' : 'Kev Nyiaj Kev Txiaj Loj')}
+        ${renderBoundaryHouse(335, 125, 130, 52, '325,125 400,102 475,125', isLao, houseText, '')}
 
-        <!-- SOLID BRIDGE OVER WATER AT DRAGON SIDE (X=320..350) -->
-        <rect x="318" y="312" width="34" height="42" fill="#E2E8F0" stroke="#475569" stroke-width="1.5" rx="2"/>
-        <line x1="318" y1="312" x2="318" y2="354" stroke="#94A3B8" stroke-width="2"/>
-        <line x1="352" y1="312" x2="352" y2="354" stroke="#94A3B8" stroke-width="2"/>
-        <path d="M 335 395 L 335 310 C 335 270 355 245 375 220" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <!-- SOLID STONE BRIDGE SPANNING ACROSS RIVER AT DRAGON SIDE -->
+        <rect x="318" y="302" width="34" height="48" fill="#F8FAFC" stroke="#475569" stroke-width="1.5" rx="2"/>
+        <line x1="318" y1="302" x2="318" y2="350" stroke="#0284C7" stroke-width="2.5"/>
+        <line x1="352" y1="302" x2="352" y2="350" stroke="#0284C7" stroke-width="2.5"/>
+        <text x="335" y="328" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="5.8" fill="#334155" text-anchor="middle">${isLao ? '[ຂົວຂ້າມນ້ຳ]' : '[Choj]'}</text>
 
-        <!-- [✓] RECOMMENDED GATE BADGE (OFFSET LEFT TO CLEAR BRIDGE DRIVEWAY) -->
+        <!-- Driveway Crossing Bridge to Residence -->
+        <path d="M 335 395 L 335 300 C 335 260 360 235 375 210" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
+
+        <!-- [✓] RECOMMENDED GATE BADGE (OFFSET LEFT CLEAR OF BRIDGE) -->
         <g transform="translate(195, 350)">
           <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
           <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${gateOkText}</text>
-          <line x1="88" y1="9" x2="120" y2="-15" stroke="#15803D" stroke-width="1.8"/>
-          <circle cx="120" cy="-15" r="2.2" fill="#15803D"/>
+          <line x1="88" y1="9" x2="120" y2="-25" stroke="#15803D" stroke-width="1.8"/>
+          <circle cx="120" cy="-25" r="2.2" fill="#15803D"/>
         </g>
       `;
 
     case 'ENV-0008': // Front Reverse Bow Water
       return `
-        <!-- Reverse Bow River Blasting Against Front Boundary -->
-        <path d="M 210 375 C 310 320 490 320 590 375" fill="none" stroke="#991B1B" stroke-width="24"/>
-        <path d="M 210 375 C 310 320 490 320 590 375" fill="none" stroke="#EF4444" stroke-width="14"/>
-        <text x="400" y="340" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#FFFFFF" text-anchor="middle">${isLao ? 'ສາຍນ້ຳຄັນທະນູປີ້ນ (Fan Gong Shui - ພະລັງພິຄາດ)' : 'Dej Ua Hneev Tua (Fan Gong Shui)'}</text>
+        <!-- Reverse Bow River Blasting Toward Front Boundary (Vibrant Blue, No Road Collision!) -->
+        <path d="M 200 375 C 310 295 490 295 600 375" fill="none" stroke="#0284C7" stroke-width="28"/>
+        <path d="M 200 375 C 310 295 490 295 600 375" fill="none" stroke="#38BDF8" stroke-width="16"/>
+        <path d="M 200 375 C 310 295 490 295 600 375" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="8,6"/>
+        <text x="400" y="325" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#FFFFFF" text-anchor="middle">${isLao ? '🌊 ສາຍນ້ຳຄັນທະນູປີ້ນ (Fan Gong Shui - ພະລັງພິຄາດ)' : '🌊 Dej Ua Hneev Tua (Fan Gong Shui)'}</text>
 
-        <!-- Plot Ground with 15m Setback -->
-        <rect x="260" y="95" width="280" height="205" fill="#FEF2F2" rx="3"/>
-        <line x1="260" y1="95" x2="540" y2="95" stroke="#15803D" stroke-width="4"/>
-        <line x1="260" y1="95" x2="260" y2="300" stroke="#334155" stroke-width="3"/>
-        <line x1="540" y1="95" x2="540" y2="300" stroke="#334155" stroke-width="3"/>
+        <!-- Plot Ground with 15m Safety Setback -->
+        <rect x="260" y="90" width="280" height="195" fill="#FEF2F2" rx="3"/>
+        <line x1="260" y1="90" x2="540" y2="90" stroke="#15803D" stroke-width="4"/>
+        <line x1="260" y1="90" x2="260" y2="285" stroke="#334155" stroke-width="3"/>
+        <line x1="540" y1="90" x2="540" y2="285" stroke="#334155" stroke-width="3"/>
         
-        <!-- Reinforced Water Defense Wall & Tree Buffer -->
-        <line x1="260" y1="300" x2="540" y2="300" stroke="#991B1B" stroke-width="6"/>
-        <circle cx="280" cy="285" r="7" fill="#14532D"/><circle cx="320" cy="285" r="8" fill="#166534"/>
-        <circle cx="360" cy="285" r="8" fill="#14532D"/><circle cx="400" cy="285" r="9" fill="#166534"/>
-        <circle cx="440" cy="285" r="8" fill="#14532D"/><circle cx="480" cy="285" r="8" fill="#166534"/><circle cx="520" cy="285" r="7" fill="#14532D"/>
+        <!-- Reinforced Water Defense Wall & 7 Protective Pines -->
+        <line x1="260" y1="285" x2="540" y2="285" stroke="#991B1B" stroke-width="6"/>
+        <circle cx="280" cy="272" r="7" fill="#14532D"/><circle cx="320" cy="272" r="8" fill="#166534"/>
+        <circle cx="360" cy="272" r="8" fill="#14532D"/><circle cx="400" cy="272" r="9" fill="#166534"/>
+        <circle cx="440" cy="272" r="8" fill="#14532D"/><circle cx="480" cy="272" r="8" fill="#166534"/><circle cx="520" cy="272" r="7" fill="#14532D"/>
 
-        <text x="400" y="85" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">${isLao ? 'ດິນເພື່ອນບ້ານຫຼັງ (Rear Neighbor)' : 'Ciam Av Tom Qab'}</text>
-        <text x="240" y="195" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-90 240 195)">${isLao ? 'ເພື່ອນບ້ານຊ້າຍ' : 'Tsev Sab Laug'}</text>
-        <text x="560" y="195" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(90 560 195)">${isLao ? 'ເພື່ອນບ້ານຂວາ' : 'Tsev Sab Xis'}</text>
+        <text x="400" y="80" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">${isLao ? 'ດິນເພື່ອນບ້ານຫຼັງ (Rear Neighbor)' : 'Ciam Av Tom Qab'}</text>
+        <text x="240" y="190" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-90 240 190)">${isLao ? 'ເພື່ອນບ້ານຊ້າຍ' : 'Tsev Sab Laug'}</text>
+        <text x="560" y="190" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(90 560 190)">${isLao ? 'ເພື່ອນບ້ານຂວາ' : 'Tsev Sab Xis'}</text>
 
-        ${renderBoundaryHouse(335, 110, 130, 60, '325,110 400,85 475,110', isLao, houseText, isLao ? 'ຖອຍຫ່າງສາຍນ້ຳ >15 ແມັດ' : 'Deb Ntug Dej >15m')}
+        ${renderBoundaryHouse(335, 115, 130, 52, '325,115 400,92 475,115', isLao, houseText, '')}
 
-        <!-- PHYSICAL GATE IN TANGENTIAL SAFE CORNER (X=275, Y=300) -->
-        <rect x="268" y="295" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
-        <rect x="295" y="295" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
-        <path d="M 250 375 L 282 300 C 300 270 330 230 355 200" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <!-- Ming Tang Bright Hall (Seated deep in plot) -->
+        <rect x="320" y="190" width="160" height="42" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="400" y="206" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="400" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">${isLao ? '• ຖອຍຮົ່ນອາຄານ >15m ຫຼີກກະແສນ້ຳແທງ' : '• Thim tsev deb tshaj 15m'}</text>
 
-        <!-- [✓] RECOMMENDED GATE BADGE (OFFSET LEFT TO CLEAR DRIVEWAY) -->
-        <g transform="translate(180, 290)">
-          <rect x="0" y="0" width="85" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
-          <text x="42" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${gateOkText}</text>
-          <line x1="85" y1="9" x2="95" y2="9" stroke="#15803D" stroke-width="1.8"/>
-          <circle cx="95" cy="9" r="2.2" fill="#15803D"/>
+        <!-- Gate on Left Flank (Safe from Reverse Bow Peak) -->
+        <path d="M 230 380 C 240 330 255 290 275 285" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
+
+        <!-- [✓] RECOMMENDED GATE BADGE (ANCHORED TO SHELTERED FLANK) -->
+        <g transform="translate(195, 360)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${gateOkText}</text>
         </g>
 
-        <!-- [✗] FORBIDDEN GATE BADGE (ANCHORED IN CENTER APEX OF WATER BLAST) -->
-        <g transform="translate(355, 305)">
+        <!-- [✗] FORBIDDEN GATE BADGE (ANCHORED TO WATER IMPACT APEX) -->
+        <g transform="translate(450, 360)">
           <rect x="0" y="0" width="90" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
           <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${gateNoText}</text>
+          <line x1="45" y1="0" x2="45" y2="-45" stroke="#DC2626" stroke-width="1.8"/>
+          <circle cx="45" cy="-45" r="2.2" fill="#DC2626"/>
         </g>
       `;
 
@@ -782,24 +718,24 @@ function renderCenterDrawing(id, lang) {
         </g>
       `;
 
-    case 'ENV-0013': // Cemetery / Graves / Yin Sha (ILLUSTRATED WITH REAL TOMBSTONES)
+    case 'ENV-0013': // Cemetery / Graves / Yin Sha (ZERO CHINESE TEXT)
       return `
         <!-- Cemetery Zone on the Left (x=205 to 275) -->
         <rect x="205" y="95" width="70" height="260" fill="#0F172A" rx="3"/>
         <text x="240" y="112" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#EF4444" text-anchor="middle">${isLao ? 'ສຸສານ/ປ່າຊ້າ' : 'Hav Ntxa'}</text>
         
-        <!-- 3 Tombstones (Graves) -->
+        <!-- 3 Tombstones (Graves) - Pure Lao/Hmong Text, ZERO Chinese characters -->
         <g transform="translate(220, 125)">
           <path d="M 0 25 L 0 8 C 0 0 20 0 20 8 L 20 25 Z" fill="#64748B" stroke="#94A3B8" stroke-width="1"/>
-          <text x="10" y="16" font-size="6.5" fill="#FFFFFF" text-anchor="middle">墓</text>
+          <text x="10" y="17" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="5.5" fill="#FFFFFF" text-anchor="middle">${isLao ? 'ສຸສານ' : 'Ntxa'}</text>
         </g>
         <g transform="translate(245, 175)">
           <path d="M 0 25 L 0 8 C 0 0 20 0 20 8 L 20 25 Z" fill="#64748B" stroke="#94A3B8" stroke-width="1"/>
-          <text x="10" y="16" font-size="6.5" fill="#FFFFFF" text-anchor="middle">墓</text>
+          <text x="10" y="17" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="5.5" fill="#FFFFFF" text-anchor="middle">${isLao ? 'ສຸສານ' : 'Ntxa'}</text>
         </g>
         <g transform="translate(220, 230)">
           <path d="M 0 25 L 0 8 C 0 0 20 0 20 8 L 20 25 Z" fill="#64748B" stroke="#94A3B8" stroke-width="1"/>
-          <text x="10" y="16" font-size="6.5" fill="#FFFFFF" text-anchor="middle">墓</text>
+          <text x="10" y="17" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="5.5" fill="#FFFFFF" text-anchor="middle">${isLao ? 'ສຸສານ' : 'Ntxa'}</text>
         </g>
         <circle cx="230" cy="290" r="8" fill="#1E293B"/><circle cx="255" cy="315" r="9" fill="#1E293B"/>
 
@@ -814,7 +750,7 @@ function renderCenterDrawing(id, lang) {
         <text x="406" y="85" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">${isLao ? 'ດິນເພື່ອນບ້ານຫຼັງ (Rear Neighbor)' : 'Ciam Av Tom Qab'}</text>
         <text x="555" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(90 555 220)">${isLao ? 'ເພື່ອນບ້ານຂວາ' : 'Tsev Sab Xis'}</text>
 
-        ${renderBoundaryHouse(345, 140, 125, 65, '335,140 407,115 480,140', isLao, houseText, isLao ? 'ຫັນຮັບແສງແດດ Yang Qi' : 'Txais Tshav Ntuj Yang')}
+        ${renderBoundaryHouse(345, 140, 125, 52, '335,140 407,118 480,140', isLao, houseText, '')}
 
         <!-- PHYSICAL FRONT FENCE WITH GATE OPENING FAR FROM GRAVES (Y=355) -->
         <line x1="282" y1="355" x2="435" y2="355" stroke="#334155" stroke-width="3.5"/>
@@ -829,7 +765,7 @@ function renderCenterDrawing(id, lang) {
         <line x1="485" y1="355" x2="475" y2="344" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (UNOBSTRUCTED) -->
-        <path d="M 460 395 L 460 355 C 460 310 440 270 415 235" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <path d="M 460 395 L 460 355 C 460 310 440 270 415 210" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET LEFT OF GATE TO CLEAR DRIVEWAY) -->
         <g transform="translate(335, 350)">

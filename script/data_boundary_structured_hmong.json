@@ -198,7 +198,7 @@
     "score": 35,
     "isGood": false,
     "roadType": "Kev Ncig 360° Pov Txwv (Island)",
-    "hasFrontRoad": true,
+    "hasFrontRoad": false,
     "summary": "Tswv Yim: Thaj av pov txwv raug tsheb ncig 360°, cua ntsawj ntau, yuav tsum cog ntoo thaiv cua ncig thaj av.",
     "entrance": {
       "title": "🚪 QHOV ROOJ & THAJ TSHAV",
@@ -342,7 +342,7 @@
     "score": 22,
     "isGood": false,
     "roadType": "Dej Ua Hneev Tua (Fan Gong Shui)",
-    "hasFrontRoad": true,
+    "hasFrontRoad": false,
     "summary": "Tswv Yim: Dej ua hneev tua (Fan Gong Shui) ntsawj heev, yuav tsum txhim phab ntsa thaiv av thiab cog ntoo thaiv.",
     "entrance": {
       "title": "🚪 QHOV ROOJ & THAJ TSHAV",
