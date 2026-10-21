@@ -192,17 +192,17 @@ function renderScissorsShaSvg(lang = 'lao') {
   <!-- ========================================================================= -->
   <!-- LEFT COLUMN: CARDS (X=18 to 182) -->
   <!-- ========================================================================= -->
-  <rect x="18" y="48" width="164" height="150" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.2" filter="url(#shadow)"/>
-  <rect x="18" y="48" width="164" height="24" rx="6" fill="#16A34A"/>
+  <rect x="12" y="48" width="174" height="150" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="48" width="174" height="24" rx="6" fill="#16A34A"/>
   <text x="100" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">${t.dragonTitle}</text>
-  <text x="26" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#14532D">${t.dragonLine1}</text>
+  <text x="20" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#14532D">${t.dragonLine1}</text>
   <text x="26" y="106" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#14532D">${t.dragonLine2}</text>
   <text x="26" y="124" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#14532D">${t.dragonLine3}</text>
-  <rect x="24" y="138" width="152" height="52" rx="4" fill="#DCFCE7"/>
+  <rect x="18" y="138" width="162" height="52" rx="4" fill="#DCFCE7"/>
   <text x="100" y="156" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${t.dragonSub1}</text>
   <text x="100" y="174" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.2" fill="#166534" text-anchor="middle">${t.dragonSub2}</text>
 
-  <rect x="18" y="204" width="164" height="240" rx="6" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="204" width="174" height="240" rx="6" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.2" filter="url(#shadow)"/>
   <rect x="18" y="204" width="164" height="24" rx="6" fill="#D97706"/>
   <text x="100" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">${t.tigerTitle}</text>
   <text x="26" y="242" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#78350F">${t.tigerLine1}</text>
@@ -211,7 +211,7 @@ function renderScissorsShaSvg(lang = 'lao') {
   <text x="26" y="293" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#78350F">${t.tigerLine4}</text>
   <text x="26" y="310" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#78350F">${t.tigerLine5}</text>
   
-  <rect x="24" y="324" width="152" height="110" rx="4" fill="#FEF3C7"/>
+  <rect x="18" y="324" width="162" height="110" rx="4" fill="#FEF3C7"/>
   <text x="100" y="342" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.8" fill="#92400E" text-anchor="middle">${t.guaSub1}</text>
   <text x="100" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.2" fill="#78350F" text-anchor="middle">${t.guaSub2}</text>
   <text x="100" y="378" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.2" fill="#78350F" text-anchor="middle">${t.guaSub3}</text>
@@ -220,18 +220,18 @@ function renderScissorsShaSvg(lang = 'lao') {
   <!-- ========================================================================= -->
   <!-- RIGHT COLUMN: CARDS (X=618 to 782) -->
   <!-- ========================================================================= -->
-  <rect x="618" y="48" width="164" height="150" rx="6" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.2" filter="url(#shadow)"/>
-  <rect x="618" y="48" width="164" height="24" rx="6" fill="#DC2626"/>
+  <rect x="614" y="48" width="174" height="150" rx="6" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="48" width="174" height="24" rx="6" fill="#DC2626"/>
   <text x="700" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">${t.impactTitle}</text>
-  <text x="626" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">${t.impactLine1}</text>
+  <text x="622" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">${t.impactLine1}</text>
   <text x="626" y="106" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">${t.impactLine2}</text>
   <text x="626" y="124" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">${t.impactLine3}</text>
   <text x="626" y="142" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">${t.impactLine4}</text>
-  <rect x="624" y="152" width="152" height="38" rx="4" fill="#FEE2E2"/>
+  <rect x="620" y="152" width="162" height="38" rx="4" fill="#FEE2E2"/>
   <text x="700" y="167" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#B91C1C" text-anchor="middle">${t.bedTitle}</text>
   <text x="700" y="181" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.2" fill="#DC2626" text-anchor="middle">${t.bedSub}</text>
 
-  <rect x="618" y="204" width="164" height="240" rx="6" fill="#FDF4FF" stroke="#A855F7" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="204" width="174" height="240" rx="6" fill="#FDF4FF" stroke="#A855F7" stroke-width="1.2" filter="url(#shadow)"/>
   <rect x="618" y="204" width="164" height="24" rx="6" fill="#9333EA"/>
   <text x="700" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">${t.remedyTitle}</text>
   <text x="626" y="242" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#6B21A8">${t.remedyLine1}</text>
@@ -239,7 +239,7 @@ function renderScissorsShaSvg(lang = 'lao') {
   <text x="626" y="276" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#6B21A8">${t.remedyLine3}</text>
   <text x="626" y="293" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#6B21A8">${t.remedyLine4}</text>
   
-  <rect x="624" y="324" width="152" height="110" rx="4" fill="#F3E8FF"/>
+  <rect x="620" y="324" width="162" height="110" rx="4" fill="#F3E8FF"/>
   <text x="700" y="342" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.8" fill="#7E22CE" text-anchor="middle">${t.tabooTitle}</text>
   <text x="630" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.2" fill="#9333EA">${t.taboo1}</text>
   <text x="630" y="377" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.2" fill="#9333EA">${t.taboo2}</text>
@@ -274,8 +274,26 @@ function renderScissorsShaSvg(lang = 'lao') {
   <text x="542" y="168" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FDE047" text-anchor="middle">${t.rightRoad}</text>
 
   <!-- THE TRIANGULAR PLOT: Apex=(400, 95), LeftBase=(255, 410), RightBase=(545, 410) -->
-  <polygon points="400,95 255,410 545,410" fill="#FEF2F2" stroke="#DC2626" stroke-width="2.5"/>
+  <!-- Property Ground Fill -->
+  <polygon points="400,95 255,410 545,410" fill="#FEF2F2"/>
   <polygon points="400,102 262,406 538,406" fill="none" stroke="#EF4444" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- PHYSICAL BOUNDARY FENCE WITH ACTUAL GATE OPENING ON LEFT FENCE -->
+  <!-- Base Fence: (255,410) to (545,410) -->
+  <line x1="255" y1="410" x2="545" y2="410" stroke="#DC2626" stroke-width="3"/>
+  <!-- Right Fence: (545,410) up to Apex (400,95) -->
+  <line x1="545" y1="410" x2="400" y2="95" stroke="#DC2626" stroke-width="3"/>
+  <!-- Left Fence Upper Segment: Apex (400,95) down to Upper Gate Pillar (292,330) -->
+  <line x1="400" y1="95" x2="292" y2="330" stroke="#DC2626" stroke-width="3"/>
+  <!-- Left Fence Lower Segment: Lower Gate Pillar (276,365) down to Base (255,410) -->
+  <line x1="276" y1="365" x2="255" y2="410" stroke="#DC2626" stroke-width="3"/>
+
+  <!-- GATE POSTS ON THE FENCE LINE -->
+  <rect x="288" y="326" width="8" height="8" rx="2" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+  <rect x="272" y="361" width="8" height="8" rx="2" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+  <!-- OPEN GATE DOORS (Swinging inward towards courtyard) -->
+  <line x1="292" y1="330" x2="306" y2="338" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="276" y1="365" x2="290" y2="357" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
 
   <!-- Apex Acute Hazard Zone: from (400,95) down to Y=145 -->
   <polygon points="400,95 375,145 425,145" fill="#FEE2E2"/>
@@ -332,15 +350,26 @@ function renderScissorsShaSvg(lang = 'lao') {
     <text x="18" y="44" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Xiang ⬇</text>
   </g>
 
-  <!-- Left Dragon Driveway & Gate (Situated on Property Line at X=288, Y=335) -->
-  <path d="M 288 340 C 310 325 335 310 355 295" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="4,3"/>
-  <!-- [✓] Recommended Gate Badge (Dragon Left Setback >15m) -->
-  <rect x="255" y="333" width="82" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
-  <text x="296" y="345" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູທີ່ຖືກຕ້ອງ' : '✓ Rooj Vag Zoo'}</text>
+  <!-- Left Dragon Driveway: Through the Fence Gate to Courtyard -->
+  <path d="M 235 348 L 284 348 C 310 348 335 320 355 295" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
 
-  <!-- [✗] Forbidden Gate Badge (Sharp Acute Scissors Apex) -->
-  <rect x="360" y="125" width="80" height="17" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
-  <text x="400" y="137" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${isLao ? '✗ ຫ້າມຕັ້ງປະຕູ' : '✗ Txwv Rooj Vag'}</text>
+  <!-- [✓] RECOMMENDED GATE BADGE (DIRECTLY AT FENCE OPENING) -->
+  <g transform="translate(195, 339)">
+    <rect x="0" y="0" width="82" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+    <text x="41" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູຮົ້ວໃຫຍ່' : '✓ Rooj Vag Loj'}</text>
+    <!-- Pointer Line to Gate Post -->
+    <line x1="82" y1="9" x2="89" y2="9" stroke="#15803D" stroke-width="2"/>
+    <circle cx="89" cy="9" r="2" fill="#15803D"/>
+  </g>
+
+  <!-- [✗] FORBIDDEN GATE BADGE (DIRECTLY ON ACUTE FENCE APEX) -->
+  <g transform="translate(355, 76)">
+    <rect x="0" y="0" width="90" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+    <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${isLao ? '✗ ຫ້າມຕັ້ງປະຕູຮົ້ວ' : '✗ Txwv Rooj Vag'}</text>
+    <!-- Pointer Line to Fence Apex -->
+    <line x1="45" y1="18" x2="45" y2="24" stroke="#DC2626" stroke-width="2"/>
+    <circle cx="45" cy="24" r="2" fill="#DC2626"/>
+  </g>
   <line x1="244" y1="350" x2="260" y2="340" stroke="#F59E0B" stroke-width="2"/>
   <polygon points="262,339 255,336 256,344" fill="#F59E0B"/>
 
@@ -357,7 +386,7 @@ function renderScissorsShaSvg(lang = 'lao') {
   <text x="400" y="377" font-family="'Noto Sans Lao', 'Phetsarath OT', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F0FDF4" text-anchor="middle">${t.xuanWu}</text>
 
   <!-- Bottom Doctrinal Summary -->
-  <rect x="18" y="448" width="764" height="26" rx="5" fill="#1E293B"/>
+  <rect x="12" y="448" width="776" height="26" rx="5" fill="#1E293B"/>
   <text x="400" y="465" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="9" fill="#F8FAFC" text-anchor="middle">${t.bottomSummary}</text>
 </svg>
 `;
@@ -420,7 +449,8 @@ function renderMasterPlotSvg(plot, lang = 'lao') {
   <text x="53" y="25" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">${escapeXml(plot.id)}</text>
   
   <!-- Name -->
-  <text x="100" y="26" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="12.5" fill="#F8FAFC">${escapeXml(name)}</text>
+  <!-- Dynamic Title to prevent collision -->
+  <text x="96" y="26" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="${name.length > 32 ? '10' : '11.5'}" fill="#F8FAFC">${escapeXml(name)}</text>
   
   <!-- Element Badge -->
   <rect x="495" y="9" width="165" height="24" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
@@ -435,29 +465,29 @@ function renderMasterPlotSvg(plot, lang = 'lao') {
   <!-- ========================================================================= -->
 
   <!-- Top-Left Card: Entrance & Driveway (Y=48 to 200) -->
-  <rect x="18" y="48" width="164" height="152" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.2" filter="url(#shadow)"/>
-  <rect x="18" y="48" width="164" height="24" rx="6" fill="#16A34A"/>
+  <rect x="12" y="48" width="174" height="152" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="48" width="174" height="24" rx="6" fill="#16A34A"/>
   <text x="100" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">${ent.title}</text>
-  <text x="26" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">${ent.l1}</text>
-  <text x="26" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">${ent.l2}</text>
-  <text x="26" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">${ent.l3}</text>
-  <text x="26" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">${ent.l4}</text>
+  <text x="20" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">${ent.l1}</text>
+  <text x="20" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">${ent.l2}</text>
+  <text x="20" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">${ent.l3}</text>
+  <text x="20" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">${ent.l4}</text>
   
-  <rect x="26" y="158" width="148" height="34" rx="4" fill="#DCFCE7"/>
+  <rect x="18" y="158" width="162" height="34" rx="4" fill="#DCFCE7"/>
   <text x="100" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${ent.sub1}</text>
   <text x="100" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#166534" text-anchor="middle">${ent.sub2}</text>
 
   <!-- Bottom-Left Card: Gua & Compatibility (Y=206 to 442) -->
-  <rect x="18" y="206" width="164" height="236" rx="6" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.2" filter="url(#shadow)"/>
-  <rect x="18" y="206" width="164" height="24" rx="6" fill="#D97706"/>
+  <rect x="12" y="206" width="174" height="236" rx="6" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="206" width="174" height="24" rx="6" fill="#D97706"/>
   <text x="100" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">${gua.title}</text>
-  <text x="26" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">${gua.l1}</text>
-  <text x="26" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">${gua.l2}</text>
-  <text x="26" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">${gua.l3}</text>
-  <text x="26" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">${gua.l4}</text>
-  <text x="26" y="326" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">${gua.l5}</text>
+  <text x="20" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">${gua.l1}</text>
+  <text x="20" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">${gua.l2}</text>
+  <text x="20" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">${gua.l3}</text>
+  <text x="20" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">${gua.l4}</text>
+  <text x="20" y="326" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">${gua.l5}</text>
   
-  <rect x="26" y="346" width="148" height="86" rx="4" fill="#FEF3C7"/>
+  <rect x="18" y="346" width="162" height="86" rx="4" fill="#FEF3C7"/>
   <text x="100" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#92400E" text-anchor="middle">${gua.sub1}</text>
   <text x="100" y="382" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#78350F" text-anchor="middle">${gua.sub2}</text>
   <text x="100" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">ກົດເກນ 5 ທາດ ແລະ ເຂັມທິດ 8 ທິດ</text>
@@ -468,33 +498,41 @@ function renderMasterPlotSvg(plot, lang = 'lao') {
   <!-- ========================================================================= -->
 
   <!-- Top-Right Card: House Positioning & Facing (Y=48 to 200) -->
-  <rect x="618" y="48" width="164" height="152" rx="6" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.2" filter="url(#shadow)"/>
-  <rect x="618" y="48" width="164" height="24" rx="6" fill="#0284C7"/>
+  <rect x="614" y="48" width="174" height="152" rx="6" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="48" width="174" height="24" rx="6" fill="#0284C7"/>
   <text x="700" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">${hse.title}</text>
-  <text x="626" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">${hse.l1}</text>
-  <text x="626" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">${hse.l2}</text>
-  <text x="626" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">${hse.l3}</text>
-  <text x="626" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">${hse.l4}</text>
+  <text x="622" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">${hse.l1}</text>
+  <text x="622" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">${hse.l2}</text>
+  <text x="622" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">${hse.l3}</text>
+  <text x="622" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">${hse.l4}</text>
   
-  <rect x="626" y="158" width="148" height="34" rx="4" fill="#E0F2FE"/>
+  <rect x="620" y="158" width="162" height="34" rx="4" fill="#E0F2FE"/>
   <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">${bedHeadLabel} ${hse.bed}</text>
   <text x="700" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">${bedHeadSub}</text>
 
   <!-- Bottom-Right Card: Remedies & Taboos (Y=206 to 442) -->
-  <rect x="618" y="206" width="164" height="236" rx="6" fill="#FDF4FF" stroke="#A855F7" stroke-width="1.2" filter="url(#shadow)"/>
-  <rect x="618" y="206" width="164" height="24" rx="6" fill="#9333EA"/>
+  <rect x="614" y="206" width="174" height="236" rx="6" fill="#FDF4FF" stroke="#A855F7" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="206" width="174" height="24" rx="6" fill="#9333EA"/>
   <text x="700" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">${rem.title}</text>
-  <text x="626" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">${rem.l1}</text>
-  <text x="626" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">${rem.l2}</text>
-  <text x="626" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">${rem.l3}</text>
-  <text x="626" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">${rem.l4}</text>
+  <text x="622" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">${rem.l1}</text>
+  <text x="622" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">${rem.l2}</text>
+  <text x="622" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">${rem.l3}</text>
+  <text x="622" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">${rem.l4}</text>
 
-  <rect x="626" y="326" width="148" height="106" rx="4" fill="#F3E8FF"/>
+  <rect x="620" y="326" width="162" height="106" rx="4" fill="#F3E8FF"/>
   <text x="700" y="342" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#7E22CE" text-anchor="middle">${tabooHeader}</text>
   <text x="700" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA" text-anchor="middle">${rem.t1}</text>
   <text x="700" y="376" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA" text-anchor="middle">${rem.t2}</text>
   <text x="700" y="392" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA" text-anchor="middle">${rem.t3}</text>
   <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ ຮັກສາຄວາມສະອາດ &amp; ແສງສະຫວ່າງ</text>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN ROADWAY (Y=355 to 440, bounded in Central Zone X=190..610) -->
+  <!-- Placed before centerSvg so fence gates and badges paint clearly on top! -->
+  <rect x="190" y="355" width="420" height="85" fill="url(#roadGrad)" rx="3"/>
+  <line x1="190" y1="395" x2="610" y2="395" stroke="#FDE047" stroke-width="2" stroke-dasharray="14,8"/>
+  <line x1="190" y1="360" x2="610" y2="360" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4"/>
+  <text x="400" y="420" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#F8FAFC" text-anchor="middle">&#10140; ${escapeXml(roadLabel)} &#10140;</text>
 
   <!-- ========================================================================= -->
   <!-- CENTER: THE PLOT ARCHITECTURAL DRAWING (X=195 to 605, Y=48 to 384) -->
@@ -503,16 +541,9 @@ function renderMasterPlotSvg(plot, lang = 'lao') {
     ${centerSvg}
   </g>
 
-  <!-- ========================================================================= -->
-  <!-- MAIN ROADWAY (Y=355 to 440, bounded in Central Zone X=190..610) -->
-  <rect x="190" y="355" width="420" height="85" fill="url(#roadGrad)" rx="3"/>
-  <line x1="190" y1="395" x2="610" y2="395" stroke="#FDE047" stroke-width="2" stroke-dasharray="14,8"/>
-  <line x1="190" y1="360" x2="610" y2="360" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4"/>
-  <text x="400" y="420" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#F8FAFC" text-anchor="middle">&#10140; ${escapeXml(roadLabel)} &#10140;</text>
-
   <!-- BOTTOM DOCTRINAL SUMMARY CARD (Y=448 to 474) -->
   <!-- ========================================================================= -->
-  <rect x="18" y="448" width="764" height="26" rx="5" fill="#1E293B"/>
+  <rect x="12" y="448" width="776" height="26" rx="5" fill="#1E293B"/>
   <text x="400" y="465" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="9.5" fill="#F8FAFC" text-anchor="middle">${summary}</text>
 </svg>
 `;

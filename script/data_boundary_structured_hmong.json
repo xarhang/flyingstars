@@ -10,41 +10,41 @@
     "summary": "Tswv Yim: Thaj av ciam kev ib sab yog qauv zoo heev, tom qab thiab ob sab nyob twj ywm khaws zog yooj yim.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj vag: Sab laug zaj",
-      "l2": "• Qhov deb: Deb kaum 3m",
-      "l3": "• Kev tsheb: Nkhaus mos muag",
-      "l4": "• Zam kev tshuam peb fab",
+      "l1": "• Qhov rooj vag: Sab.",
+      "l2": "• Qhov deb: Deb kaum.",
+      "l3": "• Kev tsheb: Nkhaus.",
+      "l4": "• Zam kev tshuam peb.",
       "sub1": "Chaw: Ciam kev ib sab",
       "sub2": "✓ Txais zog Sheng Qi"
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Av & Ntoo",
-      "l2": "• ✓ Haum txhua tsev neeg",
+      "l1": "• Zog thaj av: Av &.",
+      "l2": "• ✓ Haum txhua tsev.",
       "l3": "  (Gua 2, 8, 6, 7)",
-      "l4": "• ✗ Tsis muaj kev sib tsoo",
-      "l5": "• Yooj yim kho nyob kaj siab",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "✓ Zog ntuj sib npaug zoo"
+      "l4": "• ✗ Tsis muaj kev si.",
+      "l5": "• Yooj yim kho nyob.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "✓ Zog ntuj sib npaug."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Sab tom qab 1/3",
-      "l2": "• Qhov deb: Deb kev 6-8m",
-      "l3": "• Ntsia (Xiang): Ntsia kev pem",
-      "l4": "• Zaum (Zuo): Zaum ciam qaum",
+      "l1": "• Chaw: Sab tom qab.",
+      "l2": "• Qhov deb: Deb kev.",
+      "l3": "• Ntsia (Xiang): Nts.",
+      "l4": "• Zaum (Zuo): Zaum c.",
       "bed": "Phab ntsa tuab tom qab",
       "bedSub": "Phab ntsa tuab tsis ncaj qhov rai"
     },
     "remedy": {
       "title": "Kev Txhawb Zog & Cov Lus Txwv",
-      "l1": "1. Cog hav ntoo 3 sab ciam",
-      "l2": "2. Pas dej kheej pem hauv",
-      "l3": "3. Ntoo thuv 5 tsob tom qab",
-      "l4": "4. Tso tshav pem kom huv",
-      "t1": "• Txwv tsis ua kev ncaj zoo li phom",
-      "t2": "• Txwv tsis tso tsev ze ciam av",
-      "t3": "• Txwv tsis khawb pas dej tom qab"
+      "l1": "1. Cog hav ntoo 3 sa.",
+      "l2": "2. Pas dej kheej pem.",
+      "l3": "3. Ntoo thuv 5 tsob.",
+      "l4": "4. Tso tshav pem kom.",
+      "t1": "• Txwv tsis ua kev n.",
+      "t2": "• Txwv tsis tso tsev.",
+      "t3": "• Txwv tsis khawb pa."
     }
   },
   {
@@ -58,41 +58,41 @@
     "summary": "Tswv Yim: Thaj av kaum kev zoo rau kev lag luam tiam sis cua ntsawj ob sab yuav tsum txiav kaum kom mos.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj: Txoj kev loj",
+      "l1": "• Qhov rooj: Txoj ke.",
       "l2": "• Deb ntawm kaum >10m",
-      "l3": "• Txwv qhib rau kaum tshuam",
-      "l4": "• Txiav kaum vag kom mos",
+      "l3": "• Txwv qhib rau kaum.",
+      "l4": "• Txiav kaum vag kom.",
       "sub1": "Chaw: Kaum kev tshuam",
-      "sub2": "✓ Tiv thaiv tsheb tsoo"
+      "sub2": "✓ Tiv thaiv tsheb ts."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Zog Kub",
-      "l2": "• ✓ Haum: Neeg ua lag luam",
+      "l1": "• Zog thaj av: Zog K.",
+      "l2": "• ✓ Haum: Neeg ua la.",
       "l3": "  (Gua 6, 7, 1)",
-      "l4": "• ✗ Neeg Zog Ntoo (3, 4)",
-      "l5": "• Suab tsheb nrov ntxhov siab",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "✓ Lag luam zoo tiam sis thaiv cua"
+      "l4": "• ✗ Neeg Zog Ntoo (3.",
+      "l5": "• Suab tsheb nrov nt.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "✓ Lag luam zoo tiam."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
       "l1": "• Chaw: Kaum sab hauv",
       "l2": "• Deb kev ob sab >5m",
-      "l3": "• Ntsia: Ntsia kev loj dav",
-      "l4": "• Zaum: Zaum kaum sab hauv",
+      "l3": "• Ntsia: Ntsia kev l.",
+      "l4": "• Zaum: Zaum kaum sa.",
       "bed": "Phab ntsa sab hauv",
       "bedSub": "Txwv tsis tso txaj ze kev ob sab"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Txiav kaum vag kom voj",
-      "l2": "2. Cog hav ntoo nqus suab",
-      "l3": "3. Pob zeb Tai Shan kaum kev",
-      "l4": "4. Pas dej kheej txo cua",
-      "t1": "• Txwv qhib rooj rau kaum tig",
-      "t2": "• Txwv ua laj kab pom kev kaum",
-      "t3": "• Txwv tso txaj pw ze ciam kev"
+      "l1": "1. Txiav kaum vag ko.",
+      "l2": "2. Cog hav ntoo nqus.",
+      "l3": "3. Pob zeb Tai Shan.",
+      "l4": "4. Pas dej kheej txo.",
+      "t1": "• Txwv qhib rooj rau.",
+      "t2": "• Txwv ua laj kab po.",
+      "t3": "• Txwv tso txaj pw z."
     }
   },
   {
@@ -106,41 +106,41 @@
     "summary": "Tswv Yim: Kev nias pem thiab qaum zoo li cua phov plawv (Chuan Xin Sha) nyiaj txiag poob yuav tsum thaiv qaum.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj loj: Pem hauv ntej",
-      "l2": "• Qhov rooj qaum ua me me",
-      "l3": "• Txwv tsis qhib ncaj qha",
-      "l4": "• Tsim daim ntsa thaiv hauv",
-      "sub1": "Chaw: Kev nias pem & qaum",
-      "sub2": "[X] Nyiaj txiag poob ceev"
+      "l1": "• Qhov rooj loj: Pem.",
+      "l2": "• Qhov rooj qaum ua.",
+      "l3": "• Txwv tsis qhib nca.",
+      "l4": "• Tsim daim ntsa tha.",
+      "sub1": "Chaw: Kev nias pem &.",
+      "sub2": "[X] Nyiaj txiag poob."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Cua phov plawv",
-      "l2": "• ✓ Haum: Khw Drive-thru",
-      "l3": "  (Chaw thauj khoom nkag tawm)",
-      "l4": "• ✗ Tsis haum tsev nyob",
-      "l5": "• Tsis muaj chaw zaum ruaj",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Yuav tsum tsim phab ntsa qaum"
+      "l1": "• Zog thaj av: Cua p.",
+      "l2": "• ✓ Haum: Khw Drive-.",
+      "l3": "(Chaw thauj khoom nk.",
+      "l4": "• ✗ Tsis haum tsev n.",
+      "l5": "• Tsis muaj chaw zau.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Yuav tsum tsim phab."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Sab pem hauv ntej",
-      "l2": "• Tso chaw qaum ua phab ntsa",
-      "l3": "• Ntsia: Ntsia kev loj pem",
-      "l4": "• Zaum: Zaum phab ntsa tuab",
+      "l1": "• Chaw: Sab pem hauv.",
+      "l2": "• Tso chaw qaum ua p.",
+      "l3": "• Ntsia: Ntsia kev l.",
+      "l4": "• Zaum: Zaum phab nt.",
       "bed": "Phab ntsa plawv tsev",
       "bedSub": "Txwv tsis tig taub hau rau kev qaum"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Phab ntsa 2.5m thaiv qaum",
-      "l2": "2. Cog ntoo thuv 7 tsob ua roob",
-      "l3": "3. Tso daim ntsa thaiv hauv",
-      "l4": "4. Pas dej semicircular pem",
-      "t1": "• Txwv rooj pem ncaj rooj qaum",
-      "t2": "• Txwv ua laj kab pom kev qaum",
-      "t3": "• Txwv ua kev tsheb hla plawv"
+      "l1": "1. Phab ntsa 2.5m th.",
+      "l2": "2. Cog ntoo thuv 7 t.",
+      "l3": "3. Tso daim ntsa tha.",
+      "l4": "4. Pas dej semicircu.",
+      "t1": "• Txwv rooj pem ncaj.",
+      "t2": "• Txwv ua laj kab po.",
+      "t3": "• Txwv ua kev tsheb."
     }
   },
   {
@@ -154,41 +154,41 @@
     "summary": "Tswv Yim: Kev tshuam zoo li rab txiab (Scissors Sha) kaum ntse phem heev yuav tsum txiav kaum tsim phab ntsa.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj: Sab zaj ntsuab",
+      "l1": "• Qhov rooj: Sab zaj.",
       "l2": "• Deb kaum ntse >15m",
-      "l3": "• Txwv qhib rau kaum ntse",
-      "l4": "• Ntoo siab thaiv 2.5m",
-      "sub1": "Chaw: Kev tshuam rab txiab",
-      "sub2": "[X] Riam hlais kaum ntse"
+      "l3": "• Txwv qhib rau kaum.",
+      "l4": "• Ntoo siab thaiv 2..",
+      "sub1": "Chaw: Kev tshuam rab.",
+      "sub2": "[X] Riam hlais kaum."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Hluav Taws Sha",
-      "l2": "• ✓ Haum: Neeg Zog Av (2, 8)",
-      "l3": "  (Nyob tau yog kho zoo)",
-      "l4": "• ✗ Txwv neeg Gua 6, 7, 3, 4",
-      "l5": "• Phais mob, ntsib plaub ntug",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Hluav taws kub yuav tsum txiav kaum"
+      "l1": "• Zog thaj av: Hluav.",
+      "l2": "• ✓ Haum: Neeg Zog A.",
+      "l3": "(Nyob tau yog kho zo.",
+      "l4": "• ✗ Txwv neeg Gua 6,.",
+      "l5": "• Phais mob, ntsib p.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Hluav taws kub yuav."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Sab tom qab nyab xeeb",
+      "l1": "• Chaw: Sab tom qab.",
       "l2": "• Deb kaum ntse >20m",
-      "l3": "• Ntsia: Ntsia tshav nruab nrab",
-      "l4": "• Zaum: Zaum phab ntsa tuab",
+      "l3": "• Ntsia: Ntsia tshav.",
+      "l4": "• Zaum: Zaum phab nt.",
       "bed": "Phab ntsa tom qab",
       "bedSub": "Txwv tsis tig mus kaum ntse"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Phab ntsa 2.2m txiav kaum",
-      "l2": "2. Pob zeb Tai Shan ncov kaum",
-      "l3": "3. Cog ntoo thuv nqus cua",
-      "l4": "4. Ua vaj paj rau kaum ntse",
-      "t1": "• Txwv tso tsev rau kaum ntse",
-      "t2": "• Txwv qhib rooj rau kaum ntse",
-      "t3": "• Txwv chav pw ze ciam kev ob sab"
+      "l1": "1. Phab ntsa 2.2m tx.",
+      "l2": "2. Pob zeb Tai Shan.",
+      "l3": "3. Cog ntoo thuv nqu.",
+      "l4": "4. Ua vaj paj rau ka.",
+      "t1": "• Txwv tso tsev rau.",
+      "t2": "• Txwv qhib rooj rau.",
+      "t3": "• Txwv chav pw ze ci."
     }
   },
   {
@@ -202,41 +202,41 @@
     "summary": "Tswv Yim: Thaj av puv kheej plawv kev cua ntsawj ncig tsis muaj chaw zaum tsuas zoo rau chaw nres tsheb xwb.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhib qhov rooj sab tsheb qeeb",
-      "l2": "• Qhib 1 qhov rooj loj xwb",
-      "l3": "• Txwv tsis qhib ntau sab",
-      "l4": "• Kev tsheb nkhaus mos muag",
-      "sub1": "Chaw: Plawv voj voog kev",
-      "sub2": "[X] Cua ntsawj ncig 360°"
+      "l1": "• Qhib qhov rooj sab.",
+      "l2": "• Qhib 1 qhov rooj l.",
+      "l3": "• Txwv tsis qhib nta.",
+      "l4": "• Kev tsheb nkhaus m.",
+      "sub1": "Chaw: Plawv voj voog.",
+      "sub2": "[X] Cua ntsawj ncig."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Cua ncig ntxhov",
-      "l2": "• ✓ Haum: Chaw lag luam, roj",
-      "l3": "  (Chaw ua hauj lwm pej xeem)",
-      "l4": "• ✗ Txwv tsis tsim tsev nyob",
-      "l5": "• Tsev neeg tawg, tsis noj qab",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Yuav tsum cog ntoo thaiv 360°"
+      "l1": "• Zog thaj av: Cua n.",
+      "l2": "• ✓ Haum: Chaw lag l.",
+      "l3": "(Chaw ua hauj lwm pe.",
+      "l4": "• ✗ Txwv tsis tsim t.",
+      "l5": "• Tsev neeg tawg, ts.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Yuav tsum cog ntoo t."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Plawv thaj av xwb",
-      "l2": "• Deb ciam kev ncig >8m",
-      "l3": "• Ntsia: Ntsia kev loj dav",
-      "l4": "• Zaum: Cog ntoo ua roob zaum",
+      "l1": "• Chaw: Plawv thaj a.",
+      "l2": "• Deb ciam kev ncig.",
+      "l3": "• Ntsia: Ntsia kev l.",
+      "l4": "• Zaum: Cog ntoo ua.",
       "bed": "Phab ntsa plawv tsev",
       "bedSub": "Txwv txaj pw ze ciam kev ncig"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Cog ntoo thuv 2 kab ncig",
-      "l2": "2. Phab ntsa tuab 2.2m ncig",
-      "l3": "3. Pas dej kheej plawv tshav",
-      "l4": "4. Teeb pom kev ncig 4 sab",
-      "t1": "• Txwv tso tsev ze ciam kev",
-      "t2": "• Txwv qhib rooj ntau sab",
-      "t3": "• Txwv ua laj kab pom kev ncig"
+      "l1": "1. Cog ntoo thuv 2 k.",
+      "l2": "2. Phab ntsa tuab 2..",
+      "l3": "3. Pas dej kheej pla.",
+      "l4": "4. Teeb pom kev ncig.",
+      "t1": "• Txwv tso tsev ze c.",
+      "t2": "• Txwv qhib rooj nta.",
+      "t3": "• Txwv ua laj kab po."
     }
   },
   {
@@ -250,41 +250,41 @@
     "summary": "Tswv Yim: Thaj av qhov ncauj nqaim ntev zoo li raj phom nyiaj nkag nyuaj yuav tsum ua kev dav thiab tso teeb pom kev.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj: Ncauj kev nqaim",
+      "l1": "• Qhov rooj: Ncauj k.",
       "l2": "• Kev nkag dav >4-6m",
-      "l3": "• Tso teeb ci txhua 10m",
-      "l4": "• Voj lem tsheb txo cua",
+      "l3": "• Tso teeb ci txhua.",
+      "l4": "• Voj lem tsheb txo.",
       "sub1": "Chaw: Kev nqaim ntev",
-      "sub2": "[X] Ceev faj zog Yin ntau"
+      "sub2": "[X] Ceev faj zog Yin."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Cua qhov nqaim",
-      "l2": "• ✓ Haum: Neeg nyiam twj ywm",
-      "l3": "  (Chaw so, chaw thov ntuj)",
-      "l4": "• ✗ Tsis haum ua lag luam",
-      "l5": "• Tsis muaj neeg hla mus los",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Tso teeb pom kev txhawb Yang"
+      "l1": "• Zog thaj av: Cua q.",
+      "l2": "• ✓ Haum: Neeg nyiam.",
+      "l3": "(Chaw so, chaw thov.",
+      "l4": "• ✗ Tsis haum ua lag.",
+      "l5": "• Tsis muaj neeg hla.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Tso teeb pom kev txh."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Sab hauv dav loj",
-      "l2": "• Txwv tso ncaj qhov ncauj kev",
-      "l3": "• Ntsia: Ntsia tshav hauv dav",
-      "l4": "• Zaum: Zaum ciam av qaum",
+      "l1": "• Chaw: Sab hauv dav.",
+      "l2": "• Txwv tso ncaj qhov.",
+      "l3": "• Ntsia: Ntsia tshav.",
+      "l4": "• Zaum: Zaum ciam av.",
       "bed": "Phab ntsa sab hauv",
       "bedSub": "Txwv tsis tig mus qhov ncauj kev"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Ua kev nkag kom dav 4-6m",
-      "l2": "2. Tso teeb ci pom kev ntsa iab",
-      "l3": "3. Pas dej nruab nrab txo cua",
-      "l4": "4. Cog paj ob sab kev nkag",
-      "t1": "• Txwv kev nkag nqaim dua 3m",
-      "t2": "• Txwv cia kev nkag tsaus ntuj",
-      "t3": "• Txwv rooj tsev ncaj qhov ncauj"
+      "l1": "1. Ua kev nkag kom d.",
+      "l2": "2. Tso teeb ci pom k.",
+      "l3": "3. Pas dej nruab nra.",
+      "l4": "4. Cog paj ob sab ke.",
+      "t1": "• Txwv kev nkag nqai.",
+      "t2": "• Txwv cia kev nkag.",
+      "t3": "• Txwv rooj tsev nca."
     }
   },
   {
@@ -298,41 +298,41 @@
     "summary": "Tswv Yim: Dej qhwv pem hauv ntej zoo li txoj siv hlua khi (Jade Belt Water) yog thaj chaw zoo tshaj plaws nplua mias.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj: Sab zaj ntsuab",
-      "l2": "• Ntsia dej qhwv pem hauv",
-      "l3": "• Tsa pem teb kom siab dua dej",
-      "l4": "• Kev tsheb nkhaus raws dej",
-      "sub1": "Chaw: Dej Jade Belt qhwv",
-      "sub2": "✓ Zog zoo tshaj plaws 96/100"
+      "l1": "• Qhov rooj: Sab zaj.",
+      "l2": "• Ntsia dej qhwv pem.",
+      "l3": "• Tsa pem teb kom si.",
+      "l4": "• Kev tsheb nkhaus r.",
+      "sub1": "Chaw: Dej Jade Belt.",
+      "sub2": "✓ Zog zoo tshaj plaw."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Dej Jade Belt",
-      "l2": "• ✓ Haum txhua tus hauv tsev",
+      "l1": "• Zog thaj av: Dej J.",
+      "l2": "• ✓ Haum txhua tus h.",
       "l3": "  (Gua 1, 3, 4, 9)",
-      "l4": "• Npe nrov, nyiaj ntws nkag",
-      "l5": "• Menyuam kawm ntawvเก่ง",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "✓ Dej qhwv nqa kev nplua mias"
+      "l4": "• Npe nrov, nyiaj nt.",
+      "l5": "• Menyuam kawm ntawv.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "✓ Dej qhwv nqa kev n."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Qhov siab hauv plawv",
-      "l2": "• Tsa pem teb >1.5m thaiv dej",
-      "l3": "• Ntsia: Ntsia dej Jade Belt",
-      "l4": "• Zaum: Zaum teb chaws loj",
+      "l1": "• Chaw: Qhov siab ha.",
+      "l2": "• Tsa pem teb >1.5m.",
+      "l3": "• Ntsia: Ntsia dej J.",
+      "l4": "• Zaum: Zaum teb cha.",
       "bed": "Phab ntsa ntsia dej",
       "bedSub": "Qaum ruaj khov pem hauv dav"
     },
     "remedy": {
       "title": "Kev Txhawb Zog & Cov Lus Txwv",
-      "l1": "1. Phab ntsa pob zeb thaiv ntug",
-      "l2": "2. Cog ntoo tuav av ntug dej",
-      "l3": "3. Tsev so saib dej pem hauv",
-      "l4": "4. Khaws dej kom huv si",
-      "t1": "• Txwv tso tsev ze ntug dej dhau",
-      "t2": "• Txwv tsis cia dej phem ntxhiab",
-      "t3": "• Txwv cia dej ntws rhuav ciam av"
+      "l1": "1. Phab ntsa pob zeb.",
+      "l2": "2. Cog ntoo tuav av.",
+      "l3": "3. Tsev so saib dej.",
+      "l4": "4. Khaws dej kom huv.",
+      "t1": "• Txwv tso tsev ze n.",
+      "t2": "• Txwv tsis cia dej.",
+      "t3": "• Txwv cia dej ntws."
     }
   },
   {
@@ -346,41 +346,41 @@
     "summary": "Tswv Yim: Dej nkhaus riam hlais pem hauv ntej (Fan Gong Shui) dej ntws rhuav ciam av poob nyiaj yuav tsum ua phab ntsa thaiv.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj: Zam qhov dej hlais",
-      "l2": "• Deb ntug dej >15-20m",
-      "l3": "• Txwv qhib rooj ncaj dej",
-      "l4": "• Phab ntsa tuav av ruaj khov",
-      "sub1": "Chaw: Dej hlais zoo li riam",
-      "sub2": "[X] Riam hlais poob nyiaj"
+      "l1": "• Qhov rooj: Zam qho.",
+      "l2": "• Deb ntug dej >15-2.",
+      "l3": "• Txwv qhib rooj nca.",
+      "l4": "• Phab ntsa tuav av.",
+      "sub1": "Chaw: Dej hlais zoo.",
+      "sub2": "[X] Riam hlais poob."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Dej Fan Gong Sha",
-      "l2": "• ✗ Tsis haum rau leej twg",
-      "l3": "  (Phem rau txhua tus)",
-      "l4": "• Poob nyiaj, ntsib plaub ntug",
-      "l5": "• Yuav tsum kho thaiv ceev",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Dej hlais txiav lub zog neeg"
+      "l1": "• Zog thaj av: Dej F.",
+      "l2": "• ✗ Tsis haum rau le.",
+      "l3": "(Phem rau txhua tus)",
+      "l4": "• Poob nyiaj, ntsib.",
+      "l5": "• Yuav tsum kho thai.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Dej hlais txiav lub."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Sab tom qab tob tshaj",
+      "l1": "• Chaw: Sab tom qab.",
       "l2": "• Deb ntug dej >20m",
-      "l3": "• Ntsia: Ntsia zam dej tsoo",
-      "l4": "• Zaum: Zaum thaj av ruaj khov",
+      "l3": "• Ntsia: Ntsia zam d.",
+      "l4": "• Zaum: Zaum thaj av.",
       "bed": "Phab ntsa sab tom qab",
       "bedSub": "Txwv tsis tig taub hau rau dej"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Phab ntsa pob zeb tuav ntug",
-      "l2": "2. Cog ntoo loj 2 kab thaiv",
-      "l3": "3. Pob zeb Tai Shan ntug dej",
-      "l4": "4. Phab ntsa tuab thaiv dej ceev",
-      "t1": "• Txwv tso tsev ze ntug dej",
-      "t2": "• Txwv qhib rooj ncaj dej hlais",
-      "t3": "• Txwv ua sam thiajยื่น rau dej"
+      "l1": "1. Phab ntsa pob zeb.",
+      "l2": "2. Cog ntoo loj 2 ka.",
+      "l3": "3. Pob zeb Tai Shan.",
+      "l4": "4. Phab ntsa tuab th.",
+      "t1": "• Txwv tso tsev ze n.",
+      "t2": "• Txwv qhib rooj nca.",
+      "t3": "• Txwv ua sam thiajย."
     }
   },
   {
@@ -394,41 +394,41 @@
     "summary": "Tswv Yim: Pas dej tom qab zoo li Xuan Wu poob dej tsis muaj chaw zaum ruaj khov yuav tsum cog ntoo thuv 7 tsob ua roob.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj vag: Pem hauv ntej",
-      "l2": "• Deb kev pem hauv ntej",
-      "l3": "• Txwv tsis qhib rooj loj qaum",
-      "l4": "• Phab ntsa tuab thaiv dej qaum",
-      "sub1": "Chaw: Pas dej tom qab tsev",
-      "sub2": "[X] Xuan Wu poob dej tsis muaj roob"
+      "l1": "• Qhov rooj vag: Pem.",
+      "l2": "• Deb kev pem hauv n.",
+      "l3": "• Txwv tsis qhib roo.",
+      "l4": "• Phab ntsa tuab tha.",
+      "sub1": "Chaw: Pas dej tom qa.",
+      "sub2": "[X] Xuan Wu poob dej."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Dej nias qaum",
-      "l2": "• ✗ Tsis haum: Neeg laus, thawj",
-      "l3": "  (Poob hwj chim, raug dag)",
-      "l4": "• Mob nraub qaum thiab raum",
-      "l5": "• Yuav tsum tsim roob kho",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Tsev yuav tsum zaum roob"
+      "l1": "• Zog thaj av: Dej n.",
+      "l2": "• ✗ Tsis haum: Neeg.",
+      "l3": "(Poob hwj chim, raug.",
+      "l4": "• Mob nraub qaum thi.",
+      "l5": "• Yuav tsum tsim roo.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Tsev yuav tsum zaum."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Sab pem hauv ntej",
+      "l1": "• Chaw: Sab pem hauv.",
       "l2": "• Deb pas dej tom qab",
-      "l3": "• Ntsia: Ntsia kev pem hauv",
-      "l4": "• Zaum: Zaum ntoo thuv qaum",
+      "l3": "• Ntsia: Ntsia kev p.",
+      "l4": "• Zaum: Zaum ntoo th.",
       "bed": "Phab ntsa plawv tsev",
       "bedSub": "Txwv tsis tso txaj ze dej qaum"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Cog ntoo thuv 7 tsob ua roob",
-      "l2": "2. Phab ntsa tuab 2.2m thaiv dej",
-      "l3": "3. Tsa av tom qab kom siab",
-      "l4": "4. Pob zeb loj zaum nraub qaum",
-      "t1": "• Txwv rooj iav loj tom qab",
-      "t2": "• Txwv tso chav pw ze dej qaum",
-      "t3": "• Txwv qhib qhov rai saib dej"
+      "l1": "1. Cog ntoo thuv 7 t.",
+      "l2": "2. Phab ntsa tuab 2..",
+      "l3": "3. Tsa av tom qab ko.",
+      "l4": "4. Pob zeb loj zaum.",
+      "t1": "• Txwv rooj iav loj.",
+      "t2": "• Txwv tso chav pw z.",
+      "t3": "• Txwv qhib qhov rai."
     }
   },
   {
@@ -442,41 +442,41 @@
     "summary": "Tswv Yim: Dej ntws sab laug zaj ntsuab txhawb hwj chim zoo heev yog sab xis tsov dawb yuav tsum ua phab ntsa thaiv suab.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj vag: Pem hauv ntej",
+      "l1": "• Qhov rooj vag: Pem.",
       "l2": "• Deb ntug dej >5m",
-      "l3": "• Kev tsheb nkhaus mos muag",
-      "l4": "• Tuav ciam av kom ruaj",
-      "sub1": "Chaw: Dej ntws sab tav",
-      "sub2": "✓ Dej ntws mos muag nqa nyiaj"
+      "l3": "• Kev tsheb nkhaus m.",
+      "l4": "• Tuav ciam av kom r.",
+      "sub1": "Chaw: Dej ntws sab t.",
+      "sub2": "✓ Dej ntws mos muag."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Ntoo & Dej",
-      "l2": "• ✓ Sab laug: Koob meej loj",
-      "l3": "  (Gua 1, 3, 4 zoo heev)",
-      "l4": "• ✗ Sab xis: Sib cav sib ceg",
-      "l5": "• Cog ntoo thaiv sab xis",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Zaj nyiam dej tsov nyiam twj ywm"
+      "l1": "• Zog thaj av: Ntoo.",
+      "l2": "• ✓ Sab laug: Koob m.",
+      "l3": "(Gua 1, 3, 4 zoo hee.",
+      "l4": "• ✗ Sab xis: Sib cav.",
+      "l5": "• Cog ntoo thaiv sab.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Zaj nyiam dej tsov n."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
       "l1": "• Chaw: Plawv thaj av",
       "l2": "• Deb ntug dej >5m",
-      "l3": "• Ntsia: Ntsia kev pem hauv",
-      "l4": "• Zaum: Zaum ciam av qaum",
+      "l3": "• Ntsia: Ntsia kev p.",
+      "l4": "• Zaum: Zaum ciam av.",
       "bed": "Phab ntsa sab hauv",
       "bedSub": "Txwv phab ntsa tiv dej sab nraud"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Phab ntsa pob zeb tuav ciam",
-      "l2": "2. Cog xyoob nqus dej noo",
-      "l3": "3. Yog dej sab xis ua phab ntsa",
-      "l4": "4. Kev taug kev saib dej sab laug",
-      "t1": "• Txwv tso tsev ze ntug dej dhau",
-      "t2": "• Txwv dej ntws nrov nrov",
-      "t3": "• Txwv cia dej ntws rhuav ciam"
+      "l1": "1. Phab ntsa pob zeb.",
+      "l2": "2. Cog xyoob nqus de.",
+      "l3": "3. Yog dej sab xis u.",
+      "l4": "4. Kev taug kev saib.",
+      "t1": "• Txwv tso tsev ze n.",
+      "t2": "• Txwv dej ntws nrov.",
+      "t3": "• Txwv cia dej ntws."
     }
   },
   {
@@ -490,41 +490,41 @@
     "summary": "Tswv Yim: Toj roob thiab hav ntoo tom qab yog Xuan Wu ruaj khov tshaj plaws noj qab nyob zoo hwj chim vam meej mus ntev.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj: Pem hauv ntej",
-      "l2": "• Sab zaj ntsuab (Sab laug)",
-      "l3": "• Txais lub zog Sheng Qi",
-      "l4": "• Tshav Ming Tang dav loj",
-      "sub1": "Chaw: Toj roob zaum qaum",
-      "sub2": "✓ Zog zoo tshaj plaws 98/100"
+      "l1": "• Qhov rooj: Pem hau.",
+      "l2": "• Sab zaj ntsuab (Sa.",
+      "l3": "• Txais lub zog Shen.",
+      "l4": "• Tshav Ming Tang da.",
+      "sub1": "Chaw: Toj roob zaum.",
+      "sub2": "✓ Zog zoo tshaj plaw."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Av & Ntoo",
-      "l2": "• ✓ Haum txhua tsev neeg",
+      "l1": "• Zog thaj av: Av &.",
+      "l2": "• ✓ Haum txhua tsev.",
       "l3": "  (Gua 8 艮, 2 坤, 6 乾)",
-      "l4": "• Noj qab nyob zoo neeg laus",
-      "l5": "• Thawj coj txhawb koob meej",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "✓ Xuan Wu ruaj khov zoo li roob"
+      "l4": "• Noj qab nyob zoo n.",
+      "l5": "• Thawj coj txhawb k.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "✓ Xuan Wu ruaj khov."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Zaum raws toj roob qaum",
-      "l2": "• Tsa av tom qab siab dua pem",
-      "l3": "• Ntsia: Ntsia tshav loj pem",
-      "l4": "• Zaum: Zaum roob ntuj tsim",
+      "l1": "• Chaw: Zaum raws to.",
+      "l2": "• Tsa av tom qab sia.",
+      "l3": "• Ntsia: Ntsia tshav.",
+      "l4": "• Zaum: Zaum roob nt.",
       "bed": "Phab ntsa zaum roob qaum",
       "bedSub": "Qaum ruaj khov txais zog zoo"
     },
     "remedy": {
       "title": "Kev Txhawb Zog & Cov Lus Txwv",
-      "l1": "1. Khaws hav ntoo roob kom ntsuab",
-      "l2": "2. Ua kwj dej ncig nram roob",
-      "l3": "3. Pas dej semicircular pem",
-      "l4": "4. Laj kab qhwv txais huab cua",
-      "t1": "• Txwv txiav ntoo rhuav roob qaum",
-      "t2": "• Txwv khawb roob komเสียทรง",
-      "t3": "• Txwv cia dej nag nyab tsev"
+      "l1": "1. Khaws hav ntoo ro.",
+      "l2": "2. Ua kwj dej ncig n.",
+      "l3": "3. Pas dej semicircu.",
+      "l4": "4. Laj kab qhwv txai.",
+      "t1": "• Txwv txiav ntoo rh.",
+      "t2": "• Txwv khawb roob ko.",
+      "t3": "• Txwv cia dej nag n."
     }
   },
   {
@@ -538,41 +538,41 @@
     "summary": "Tswv Yim: Ntug tsua siab zoo li huab cua poob qhov ntxa (Duan Ya Sha) av nti poob nyiaj yuav tsum thim deb thiab ua ntsa.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj: Phab av ruaj khov",
-      "l2": "• Deb ntug tsua >15-20m",
-      "l3": "• Ua ntsa hlau ciam ntug tsua",
-      "l4": "• Txwv kev tsheb mus rau tsua",
-      "sub1": "Chaw: Ntug tsua siab nti",
-      "sub2": "[X] Av nti poob nyiaj ceev"
+      "l1": "• Qhov rooj: Phab av.",
+      "l2": "• Deb ntug tsua >15-.",
+      "l3": "• Ua ntsa hlau ciam.",
+      "l4": "• Txwv kev tsheb mus.",
+      "sub1": "Chaw: Ntug tsua siab.",
+      "sub2": "[X] Av nti poob nyia."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Av nti poob qhov",
-      "l2": "• ✗ Tsis haum leej twg li",
+      "l1": "• Zog thaj av: Av nt.",
+      "l2": "• ✗ Tsis haum leej t.",
       "l3": "  (Phem tshaj plaws)",
-      "l4": "• Poob nyiaj loj, lag luam vau",
-      "l5": "• Ntshai tsis tseg siab ntxhov",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Av tsis muaj hauv paus zog poob"
+      "l4": "• Poob nyiaj loj, la.",
+      "l5": "• Ntshai tsis tseg s.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Av tsis muaj hauv pa."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Sab av ruaj khov hauv",
-      "l2": "• Thim deb ntug tsua >15m",
-      "l3": "• Ntsia: Ntsia kev loj pem",
-      "l4": "• Zaum: Zaum teb chaws loj",
+      "l1": "• Chaw: Sab av ruaj.",
+      "l2": "• Thim deb ntug tsua.",
+      "l3": "• Ntsia: Ntsia kev l.",
+      "l4": "• Zaum: Zaum teb cha.",
       "bed": "Phab ntsa sab av ruaj",
       "bedSub": "Txwv tsis tig mus ntug tsua"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Ntaus ncej pob zeb tuav av",
-      "l2": "2. Cog nyom vetiver tuav ciam",
-      "l3": "3. Ua laj kab hlau thaiv tsua",
-      "l4": "4. Kwj dej tsis pub เซาะ av",
-      "t1": "• Txwv tso tsev ze ntug tsua",
-      "t2": "• Txwv ua sam thiajยื่น rau tsua",
-      "t3": "• Txwv khawb av ntug tsua"
+      "l1": "1. Ntaus ncej pob ze.",
+      "l2": "2. Cog nyom vetiver.",
+      "l3": "3. Ua laj kab hlau t.",
+      "l4": "4. Kwj dej tsis pub.",
+      "t1": "• Txwv tso tsev ze n.",
+      "t2": "• Txwv ua sam thiajย.",
+      "t3": "• Txwv khawb av ntug."
     }
   },
   {
@@ -586,41 +586,41 @@
     "summary": "Tswv Yim: Hav ntoo tuag lossis ntxa muaj zog Yin phem heev ua rau mob nkeeg yuav tsum tsim phab ntsa thiab teeb ci.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj: Ntsia tshav ntuj",
-      "l2": "• Teeb ci ntsa iab pem hauv",
-      "l3": "• Txwv qhib rooj rau hav ntoo",
-      "l4": "• Phab ntsa tuab thaiv hav ntxa",
-      "sub1": "Chaw: Ciam hav ntoo/ntxa",
+      "l1": "• Qhov rooj: Ntsia t.",
+      "l2": "• Teeb ci ntsa iab p.",
+      "l3": "• Txwv qhib rooj rau.",
+      "l4": "• Phab ntsa tuab tha.",
+      "sub1": "Chaw: Ciam hav ntoo/.",
       "sub2": "[X] Zog Yin ntau dhau"
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Zog Yin tsaus ntuj",
-      "l2": "• ✗ Tsis haum: Menyuam, neeg mob",
-      "l3": "  (Npau suav phem, mob nkeeg)",
-      "l4": "• ✓ Neeg muaj zog Yang heev",
-      "l5": "• Tso teeb ci xim kub kho",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Txhawb Yang kom ntiab Yin"
+      "l1": "• Zog thaj av: Zog Y.",
+      "l2": "• ✗ Tsis haum: Menyu.",
+      "l3": "(Npau suav phem, mob.",
+      "l4": "• ✓ Neeg muaj zog Ya.",
+      "l5": "• Tso teeb ci xim ku.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Txhawb Yang kom ntia."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Sab kaj pom kev pem",
-      "l2": "• Deb ciam hav ntoo >10m",
-      "l3": "• Ntsia: Ntsia tshav ntuj ci",
-      "l4": "• Zaum: Zaum phab ntsa tuab",
+      "l1": "• Chaw: Sab kaj pom.",
+      "l2": "• Deb ciam hav ntoo.",
+      "l3": "• Ntsia: Ntsia tshav.",
+      "l4": "• Zaum: Zaum phab nt.",
       "bed": "Phab ntsa sab kaj siab",
       "bedSub": "Txwv txaj pw ze phab ciam ntxa"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Txiav hav ntoo kom pom kev",
-      "l2": "2. Phab ntsa tuab 2.5m thaiv",
-      "l3": "3. Teeb spotlight ci rau ntsa",
-      "l4": "4. Tha xim sov (xim cream)",
-      "t1": "• Txwv ua laj kab pom kev sab ntxa",
-      "t2": "• Txwv cia tsev tsaus ntuj",
-      "t3": "• Txwv ntoo ntxoov ru tsev"
+      "l1": "1. Txiav hav ntoo ko.",
+      "l2": "2. Phab ntsa tuab 2..",
+      "l3": "3. Teeb spotlight ci.",
+      "l4": "4. Tha xim sov (xim.",
+      "t1": "• Txwv ua laj kab po.",
+      "t2": "• Txwv cia tsev tsau.",
+      "t3": "• Txwv ntoo ntxoov r."
     }
   },
   {
@@ -634,41 +634,41 @@
     "summary": "Tswv Yim: Tsev siab nias zoo li Qiao Sha nias lub zog tsaus ntuj yuav tsum tsim ru tsev siab thiab cog ntoo thaiv.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj: Phab kaj pom kev",
-      "l2": "• Zam qhov ntxoov tsev siab",
-      "l3": "• Tsim qhov rooj kom zoo nkauj",
-      "l4": "• Cog ntoo siab thaiv tsev",
-      "sub1": "Chaw: Tsev siab nias sab tav",
-      "sub2": "[X] Ceev faj zog nias hnyav"
+      "l1": "• Qhov rooj: Phab ka.",
+      "l2": "• Zam qhov ntxoov ts.",
+      "l3": "• Tsim qhov rooj kom.",
+      "l4": "• Cog ntoo siab thai.",
+      "sub1": "Chaw: Tsev siab nias.",
+      "sub2": "[X] Ceev faj zog nia."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Zog nias hnyav",
-      "l2": "• ✗ Tsis haum: Neeg pib lag luam",
-      "l3": "  (Raug nias tsis nce qib)",
-      "l4": "• Mob taub hau, ntxhov siab",
-      "l5": "• Txhawb lub zog Yang siab",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Tsa lub zog tiv thaiv kev nias"
+      "l1": "• Zog thaj av: Zog n.",
+      "l2": "• ✗ Tsis haum: Neeg.",
+      "l3": "(Raug nias tsis nce.",
+      "l4": "• Mob taub hau, ntxh.",
+      "l5": "• Txhawb lub zog Yan.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Tsa lub zog tiv thai."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Thim deb tsev siab",
-      "l2": "• Ru tsev tsim kom siab",
-      "l3": "• Ntsia: Ntsia ntuj pom kev dav",
-      "l4": "• Zaum: Zaum phab ntsa ruaj",
+      "l1": "• Chaw: Thim deb tse.",
+      "l2": "• Ru tsev tsim kom s.",
+      "l3": "• Ntsia: Ntsia ntuj.",
+      "l4": "• Zaum: Zaum phab nt.",
       "bed": "Phab ntsa sab kaj",
       "bedSub": "Txwv txaj pw ze phab tsev siab"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Cog ntoo siab thaiv ntxoov",
-      "l2": "2. Ru tsev 2 txheej tiv thaiv",
-      "l3": "3. Tso ntaub thaiv iav tsev",
-      "l4": "4. Teeb pom kev hauv tsev ntau",
-      "t1": "• Txwv ru tsev tiaj ze tsev siab",
-      "t2": "• Txwv qhov rai ntsia tsev siab",
-      "t3": "• Txwv chav ua hauj lwm hauv ntxoov"
+      "l1": "1. Cog ntoo siab tha.",
+      "l2": "2. Ru tsev 2 txheej.",
+      "l3": "3. Tso ntaub thaiv i.",
+      "l4": "4. Teeb pom kev hauv.",
+      "t1": "• Txwv ru tsev tiaj.",
+      "t2": "• Txwv qhov rai ntsi.",
+      "t3": "• Txwv chav ua hauj."
     }
   },
   {
@@ -682,41 +682,41 @@
     "summary": "Tswv Yim: Qhov nqaim nruab nrab ob lub tsev loj zoo li riam phov ntuj (Tian Zhan Sha) cua ntsawj ceev yuav tsum tso pob zeb Tai Shan.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj: Zam qhov cua phov",
-      "l2": "• Txwv rooj ncaj qhov nqaim",
-      "l3": "• Phab ntsa thaiv cua 2.5m",
-      "l4": "• Cog ntoo thuv nqus cua",
-      "sub1": "Chaw: Cua riam phov ntuj",
-      "sub2": "[X] Riam phov txom nyem hnyav"
+      "l1": "• Qhov rooj: Zam qho.",
+      "l2": "• Txwv rooj ncaj qho.",
+      "l3": "• Phab ntsa thaiv cu.",
+      "l4": "• Cog ntoo thuv nqus.",
+      "sub1": "Chaw: Cua riam phov.",
+      "sub2": "[X] Riam phov txom n."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Cua riam hlais",
-      "l2": "• ✗ Tsis haum txhua tus leej twg",
-      "l3": "  (Phais mob, mob nkeeg ceev)",
-      "l4": "• Nyiaj txiag poob vim cua",
-      "l5": "• Tso pob zeb Tai Shan kho",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Txo cua ntsawj kom mos muag"
+      "l1": "• Zog thaj av: Cua r.",
+      "l2": "• ✗ Tsis haum txhua.",
+      "l3": "(Phais mob, mob nkee.",
+      "l4": "• Nyiaj txiag poob v.",
+      "l5": "• Tso pob zeb Tai Sh.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Txo cua ntsawj kom m."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Tso zam qhov cua nqaim",
-      "l2": "• Txwv tso ncaj qhov cua phov",
-      "l3": "• Ntsia: Tig 45° zam cua",
-      "l4": "• Zaum: Zaum phab ntsa tuab",
+      "l1": "• Chaw: Tso zam qhov.",
+      "l2": "• Txwv tso ncaj qhov.",
+      "l3": "• Ntsia: Tig 45° zam.",
+      "l4": "• Zaum: Zaum phab nt.",
       "bed": "Phab ntsa chaw zam cua",
       "bedSub": "Txwv txaj pw ncaj qhov cua phov"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Pob zeb Tai Shan ncaj cua",
-      "l2": "2. Phab ntsa voj ntxeev cua",
-      "l3": "3. Cog xyoob/ntoo thuv tuab",
-      "l4": "4. Pas dej kheej txo cua",
-      "t1": "• Txwv rooj loj ncaj qhov cua",
-      "t2": "• Txwv qhov rai ncaj qhov cua",
-      "t3": "• Txwv txaj pw ncaj qhov cua"
+      "l1": "1. Pob zeb Tai Shan.",
+      "l2": "2. Phab ntsa voj ntx.",
+      "l3": "3. Cog xyoob/ntoo th.",
+      "l4": "4. Pas dej kheej txo.",
+      "t1": "• Txwv rooj loj ncaj.",
+      "t2": "• Txwv qhov rai ncaj.",
+      "t3": "• Txwv txaj pw ncaj."
     }
   },
   {
@@ -730,41 +730,41 @@
     "summary": "Tswv Yim: Thaj av raug tsev ncig 3 sab huab cua tsis ncig yuav tsum tsim courtyard tshav nruab nrab kom txais cua.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj vag: Pem hauv ntej",
-      "l2": "• Qhib dav txais tshav ntuj",
-      "l3": "• Qhov rai txais cua ncig",
-      "l4": "• Tiv thaiv tsev noo heev",
+      "l1": "• Qhov rooj vag: Pem.",
+      "l2": "• Qhib dav txais tsh.",
+      "l3": "• Qhov rai txais cua.",
+      "l4": "• Tiv thaiv tsev noo.",
       "sub1": "Chaw: Tsev ncig 3 sab",
-      "sub2": "✓ Qhib pem hauv txais zog"
+      "sub2": "✓ Qhib pem hauv txai."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Av nias ntxhov",
-      "l2": "• ✓ Haum: Neeg nyiam twj ywm",
+      "l1": "• Zog thaj av: Av ni.",
+      "l2": "• ✓ Haum: Neeg nyiam.",
       "l3": "  (Gua 2, 8 nyob tau)",
-      "l4": "• ✗ Ceev faj kev ua pa mob",
-      "l5": "• Huab cua ncig nyuaj ntxhov siab",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Tso tshav nruab nrab txais zog"
+      "l4": "• ✗ Ceev faj kev ua.",
+      "l5": "• Huab cua ncig nyua.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Tso tshav nruab nrab."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Tsev qauv U lossis L",
-      "l2": "• Muaj tshav courtyard hauv",
-      "l3": "• Ntsia: Ntsia kev pem hauv",
-      "l4": "• Zaum: Zaum ciam av qaum",
+      "l1": "• Chaw: Tsev qauv U.",
+      "l2": "• Muaj tshav courtya.",
+      "l3": "• Ntsia: Ntsia kev p.",
+      "l4": "• Zaum: Zaum ciam av.",
       "bed": "Phab ntsa ze courtyard",
       "bedSub": "Txais tshav ntuj thiab cua ntuj"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Qhib qhov rai ntuj Skylight",
-      "l2": "2. Tsim tshav courtyard hauv",
-      "l3": "3. Tso kiv cua nqus cua zoo",
-      "l4": "4. Tha xim dawb kaj pom kev",
-      "t1": "• Txwv tsev tuab tsis muaj tshav",
-      "t2": "• Txwv tsis qhib qhov rai pem",
-      "t3": "• Txwv cia tsev noo tsw phem"
+      "l1": "1. Qhib qhov rai ntu.",
+      "l2": "2. Tsim tshav courty.",
+      "l3": "3. Tso kiv cua nqus.",
+      "l4": "4. Tha xim dawb kaj.",
+      "t1": "• Txwv tsev tuab tsi.",
+      "t2": "• Txwv tsis qhib qho.",
+      "t3": "• Txwv cia tsev noo."
     }
   },
   {
@@ -778,41 +778,41 @@
     "summary": "Tswv Yim: Phab ntsa tuab siab 3m thaiv tshav ntuj (Bi Ya Sha) noo heev yuav tsum thim 3m thiab cog xyoob nqus noo.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj vag: Pem hauv ntej",
-      "l2": "• Deb phab ntsa tuab sab tav",
-      "l3": "• Txwv qhib rooj ze phab ntsa",
-      "l4": "• Teeb ci pom kev raws phab ntsa",
-      "sub1": "Chaw: Phab ntsa tuab siab 3m",
-      "sub2": "[X] Noo heev thiab tsaus ntuj"
+      "l1": "• Qhov rooj vag: Pem.",
+      "l2": "• Deb phab ntsa tuab.",
+      "l3": "• Txwv qhib rooj ze.",
+      "l4": "• Teeb ci pom kev ra.",
+      "sub1": "Chaw: Phab ntsa tuab.",
+      "sub2": "[X] Noo heev thiab t."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Av tuab nias",
-      "l2": "• ✗ Tsis haum: Neeg mob ntsws",
-      "l3": "  (Dej noo, tsis pom tshav)",
-      "l4": "• ✓ Neeg Zog Kub (6, 7)",
-      "l5": "• Tso teeb ci xim kub kho",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Cog xyoob nqus noo tshem tsaus"
+      "l1": "• Zog thaj av: Av tu.",
+      "l2": "• ✗ Tsis haum: Neeg.",
+      "l3": "(Dej noo, tsis pom t.",
+      "l4": "• ✓ Neeg Zog Kub (6,.",
+      "l5": "• Tso teeb ci xim ku.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Cog xyoob nqus noo t."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Thim deb ntsa >3m",
-      "l2": "• Ua kev taug ntoo ntsuab",
-      "l3": "• Ntsia: Ntsia kev pem hauv",
-      "l4": "• Zaum: Zaum ciam av qaum",
+      "l1": "• Chaw: Thim deb nts.",
+      "l2": "• Ua kev taug ntoo n.",
+      "l3": "• Ntsia: Ntsia kev p.",
+      "l4": "• Zaum: Zaum ciam av.",
       "bed": "Phab ntsa sab kaj pom kev",
       "bedSub": "Txwv txaj pw ze phab ntsa noo"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Cog xyoob nqus dej noo",
-      "l2": "2. Teeb ci ntsa iab raws ntsa",
-      "l3": "3. Tha xim dawb rau phab ntsa",
-      "l4": "4. Kwj dej tsis pub noo tsev",
-      "t1": "• Txwv tso tsev ze phab ntsa",
-      "t2": "• Txwv cia lim dej ntsuab ntsa",
-      "t3": "• Txwv chav pw ze phab ntsa noo"
+      "l1": "1. Cog xyoob nqus de.",
+      "l2": "2. Teeb ci ntsa iab.",
+      "l3": "3. Tha xim dawb rau.",
+      "l4": "4. Kwj dej tsis pub.",
+      "t1": "• Txwv tso tsev ze p.",
+      "t2": "• Txwv cia lim dej n.",
+      "t3": "• Txwv chav pw ze ph."
     }
   },
   {
@@ -826,41 +826,41 @@
     "summary": "Tswv Yim: Tsev teev hawm/tsev kho mob yog zog Yin kho siab lossis hluav taws xob kub yuav tsum ua ntsa 2.5m thaiv 100%.",
     "entrance": {
       "title": "Qhov Rooj & Ciam Av",
-      "l1": "• Qhov rooj: Zam chaw teev hawm",
-      "l2": "• Txwv rooj ncaj ru tsev teev",
-      "l3": "• Phab ntsa 2.5m thaiv 100%",
-      "l4": "• Cog ntoo loj thaiv qhov muag",
-      "sub1": "Chaw: Ciam tsev teev/kho mob",
-      "sub2": "[X] Huab cua ntxhov siab"
+      "l1": "• Qhov rooj: Zam cha.",
+      "l2": "• Txwv rooj ncaj ru.",
+      "l3": "• Phab ntsa 2.5m tha.",
+      "l4": "• Cog ntoo loj thaiv.",
+      "sub1": "Chaw: Ciam tsev teev.",
+      "sub2": "[X] Huab cua ntxhov."
     },
     "gua": {
       "title": "Zog Bagua & Neeg Haum",
-      "l1": "• Zog thaj av: Hluav Taws & Yin",
-      "l2": "• ✗ Tsis haum txhua tsev neeg",
-      "l3": "  (Tsev teev: Kho siab; Mob: Nkeeg)",
-      "l4": "• Hluav taws xob: Kub ntxhov",
-      "l5": "• Tso pob zeb Tai Shan thaiv",
-      "sub1": "Tsib Yam Zog & Koob Qhia",
-      "sub2": "Txiav txoj kev phem sab nraud"
+      "l1": "• Zog thaj av: Hluav.",
+      "l2": "• ✗ Tsis haum txhua.",
+      "l3": "(Tsev teev: Kho siab.",
+      "l4": "• Hluav taws xob: Ku.",
+      "l5": "• Tso pob zeb Tai Sh.",
+      "sub1": "Tsib Yam Zog & Koob.",
+      "sub2": "Txiav txoj kev phem."
     },
     "house": {
       "title": "Chaw Tso Tsev & Xiang",
-      "l1": "• Chaw: Thim deb chaw teev",
-      "l2": "• Tig mus rau lwm phab 100%",
-      "l3": "• Ntsia: Ntsia kev loj pem",
-      "l4": "• Zaum: Zaum phab ntsa tuab",
+      "l1": "• Chaw: Thim deb cha.",
+      "l2": "• Tig mus rau lwm ph.",
+      "l3": "• Ntsia: Ntsia kev l.",
+      "l4": "• Zaum: Zaum phab nt.",
       "bed": "Phab ntsa sab nyab xeeb",
       "bedSub": "Txwv txaj pw ntsia tsev teev"
     },
     "remedy": {
       "title": "Kev Kho & Cov Lus Txwv",
-      "l1": "1. Phab ntsa 2.5m thaiv 100%",
-      "l2": "2. Cog ntoo thuv thaiv qhov muag",
-      "l3": "3. Pob zeb Tai Shan tig rau tom",
-      "l4": "4. Pas dej kheej kho lub zog",
-      "t1": "• Txwv rooj ncaj ru tsev teev",
-      "t2": "• Txwv ua laj kab pom kev",
-      "t3": "• Txwv qhov rai ntsia kaum ntse"
+      "l1": "1. Phab ntsa 2.5m th.",
+      "l2": "2. Cog ntoo thuv tha.",
+      "l3": "3. Pob zeb Tai Shan.",
+      "l4": "4. Pas dej kheej kho.",
+      "t1": "• Txwv rooj ncaj ru.",
+      "t2": "• Txwv ua laj kab po.",
+      "t3": "• Txwv qhov rai ntsi."
     }
   }
 ]
