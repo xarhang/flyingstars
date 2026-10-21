@@ -16,6 +16,7 @@ const hmongDir = path.resolve(projectDir, 'hmong');
 // 1. Load 91 Archetypes Data
 const ltData = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'data_75_core_luan_tou_archetypes.json'), 'utf8'));
 const lpData = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'data_16_core_land_plot_archetypes.json'), 'utf8'));
+const envData = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'data_boundary_adjacencies_hmong.json'), 'utf8'));
 
 const archetypes = [];
 
@@ -34,7 +35,44 @@ lpData.forEach(lp => {
     entrance: lp.entranceAnalysis || lp.entranceRules || lp.entrance || '',
     water: lp.waterAnalysis || lp.waterRules || lp.water || '',
     bagua: lp.baguaSectors || lp.baguaRules || lp.bagua || '',
-    remedy: lp.remedy || lp.remediationProtocol || ''
+    remedy: lp.remedy || lp.remediationProtocol || '',
+    housePositioning: lp.housePositioning || '',
+    entrancePlacement: lp.entrancePlacement || '',
+    orientationFacing: lp.orientationFacing || '',
+    elementGua: lp.elementGua || '',
+    favorablePeople: lp.favorablePeople || '',
+    clashingPeople: lp.clashingPeople || '',
+    comprehensiveRemedy: lp.comprehensiveRemedy || '',
+    taboos: lp.taboos || ''
+  });
+});
+
+// 18 Boundary & Environmental Adjacencies
+envData.forEach(env => {
+  const score = (typeof env.score === 'number') ? env.score : 75;
+  archetypes.push({
+    id: env.id,
+    type: 'boundary',
+    name: env.baseName || env.nameHmong || env.id,
+    category: env.category || 'Cov Qauv Ciam Av & Kev Nkag Tsev',
+    score: score,
+    isGood: env.isGood !== undefined ? env.isGood : score >= 60,
+    img: `img/${env.id}.png`,
+    physics: env.geometryPhysics || '',
+    entrance: env.entrancePlacement || '',
+    house: env.housePositioning || '',
+    orientation: env.orientationFacing || '',
+    water: env.taboos ? env.taboos.replace(/\n/g, '<br>') : '',
+    bagua: (env.elementGua || '') + (env.favorablePeople ? '<br>• Haum: ' + env.favorablePeople : '') + (env.clashingPeople ? '<br>• Tsis haum: ' + env.clashingPeople : ''),
+    remedy: env.comprehensiveRemedy || '',
+    housePositioning: env.housePositioning || '',
+    entrancePlacement: env.entrancePlacement || '',
+    orientationFacing: env.orientationFacing || '',
+    elementGua: env.elementGua || '',
+    favorablePeople: env.favorablePeople || '',
+    clashingPeople: env.clashingPeople || '',
+    comprehensiveRemedy: env.comprehensiveRemedy || '',
+    taboos: env.taboos || ''
   });
 });
 
@@ -842,9 +880,9 @@ const html = `<!DOCTYPE html>
       </a>
 
       <div class="nav-tabs">
-        <button class="nav-tab-btn active" data-tab="tabAtlas">🗺️ 91 Qauv Atlas</button>
-        <button class="nav-tab-btn" data-tab="tabPlots">📐 16 Thaj Av Site Plans</button>
-        <button class="nav-tab-btn" data-tab="tabBook">📖 Phau 1: ຕຳລາ 24 Bhoov</button>
+        <button class="nav-tab-btn active" data-tab="tabAtlas">🗺️ 109 Qauv Atlas</button>
+        <button class="nav-tab-btn" data-tab="tabPlots">📐 34 Thaj Av Site Plans</button>
+        <button class="nav-tab-btn" data-tab="tabBook">📖 Phau 1: 24 Tshooj</button>
         <button class="nav-tab-btn" data-tab="tabCalc">🧭 81 Hnub Qub & Lus Txhais</button>
       </div>
 
@@ -863,13 +901,14 @@ const html = `<!DOCTYPE html>
   <!-- MAIN APP CONTAINER -->
   <main>
 
-    <!-- TAB 1: MASTER ATLAS 91 ARCHETYPES -->
+    <!-- TAB 1: MASTER ATLAS 109 ARCHETYPES -->
     <div id="tabAtlas" class="tab-view active">
       <div class="atlas-hero">
-        <h2>🗺️ PHAU NTAWV QHIA TAG NRHO 91 QAUV ROOB THIAB THAJ AV</h2>
-        <p>Tshawb nrhiav cov qauv roob, kwj deg, av xue, thiab 16 thaj av nrog rau physics huab cua, kev teeb qhov rooj, pas dej thiab tswv yim kho kom haum Looj Mem.</p>
+        <h2>🗺️ PHAU NTAWV QHIA TAG NRHO 109 QAUV ROOB THIAB THAJ AV</h2>
+        <p>Tshawb nrhiav cov qauv roob, kwj deg, av xue, 16 thaj av thiab 18 ciam av nrog rau physics huab cua, kev teeb qhov rooj, pas dej thiab tswv yim kho kom haum Looj Mem.</p>
         <div class="stats-row">
-          <div class="stat-badge"><strong>91</strong> Tag Nrho Qauv</div>
+          <div class="stat-badge"><strong>109</strong> Tag Nrho Qauv</div>
+          <div class="stat-badge"><strong>18</strong> Ciam Av (Boundaries)</div>
           <div class="stat-badge"><strong>16</strong> Thaj Av (Land Plots)</div>
           <div class="stat-badge"><strong>35</strong> Roob Sha (Mountain Sha)</div>
           <div class="stat-badge"><strong>16</strong> Dej Ntws (Waters)</div>
@@ -880,11 +919,12 @@ const html = `<!DOCTYPE html>
       </div>
 
       <div class="search-box">
-        <input type="text" id="atlasSearchInput" class="search-input" placeholder="🔍 Tshawb nrhiav qauv (Piv txwv: LP-0007, San Jiao, Triangle, Dej, Roob, Granite, Hluav Taws, Lu Chong...)">
+        <input type="text" id="atlasSearchInput" class="search-input" placeholder="🔍 Tshawb nrhiav qauv (Piv txwv: ENV-0001, LP-0007, San Jiao, Triangle, Dej, Roob, Granite, Hluav Taws, Lu Chong...)">
       </div>
 
       <div class="filter-row" id="atlasFilters">
-        <button class="filter-btn active" data-cat="all">Tag Nrho (91)</button>
+        <button class="filter-btn active" data-cat="all">Tag Nrho (109)</button>
+        <button class="filter-btn" data-cat="env">🏞️ 18 Ciam Av (Boundaries)</button>
         <button class="filter-btn" data-cat="plot">16 Thaj Av (Land Plots)</button>
         <button class="filter-btn" data-cat="sha">35 Roob Sha</button>
         <button class="filter-btn" data-cat="water">16 Dej Ntws</button>
@@ -898,11 +938,11 @@ const html = `<!DOCTYPE html>
       <div class="items-grid" id="atlasGrid"></div>
     </div>
 
-    <!-- TAB 2: 16 LAND PLOTS COMPARATIVE STUDIO -->
+    <!-- TAB 2: 34 LAND PLOTS & BOUNDARIES STUDIO -->
     <div id="tabPlots" class="tab-view">
       <div class="plots-studio-head">
-        <h2>📐 16 THAJ AV & KEV KHO KOM HAUM LOOJ MEM (SITE PLANS STUDIO)</h2>
-        <p>Kev tshuaj xyuas 16 hom thaj av tiag tiag raws li txoj cai 360° (Zaj Ntsuab sab laug, Tsov Dawb sab xis, Vaub Kib Dub nram qab, Tshav Pob Ntej qhov rooj). Saib qhov chaw teeb tsev, qhov rooj nkag zoo/phem, pas dej thiab txoj kev kho pob zeb granite.</p>
+        <h2>📐 34 THAJ AV & CIAM AV KHO KOM HAUM LOOJ MEM (SITE PLANS STUDIO)</h2>
+        <p>Kev tshuaj xyuas 34 hom thaj av tiag tiag: 16 qauv duab thaj av + 18 qauv ciam av (ciam kev 1 sab, ciam kev 2 sab kaum, ciam kev 3-4 sab, kev nkag driveway, ciam pas dej, ciam hav zoov, ciam phab ntsa...) raws li txoj cai 360°.</p>
       </div>
       <div class="items-grid" id="plotsGrid"></div>
     </div>
@@ -1085,6 +1125,7 @@ const html = `<!DOCTYPE html>
         }
 
         if (atlasCat !== 'all') {
+          if (atlasCat === 'env' && item.type !== 'boundary') return false;
           if (atlasCat === 'plot' && item.type !== 'landplot') return false;
           if (atlasCat === 'sha' && item.category.indexOf('Sha') === -1) return false;
           if (atlasCat === 'water' && item.category.indexOf('Dej') === -1) return false;
@@ -1109,7 +1150,7 @@ const html = `<!DOCTYPE html>
         var it = filtered[i];
         var sClass = it.isGood ? 'good' : 'bad';
         var sText = (it.isGood ? '✓ ZOO' : '✗ PHEM') + ': ' + it.score + '/100';
-        var badgeType = it.type === 'landplot' ? '📐 360° Site Plan' : '🏞️ Luan Tou';
+        var badgeType = it.type === 'landplot' ? '📐 360° Site Plan' : it.type === 'boundary' ? '🏞️ Ciam Av & Kev Nkag' : '🏞️ Luan Tou';
 
         htmlCards += '<div class="item-card" onclick="openItemModal(\\'' + it.id + '\\')">' +
           '<div class="card-img-wrap">' +
@@ -1131,9 +1172,9 @@ const html = `<!DOCTYPE html>
       atlasGrid.innerHTML = htmlCards;
     }
 
-    // RENDER 16 LAND PLOTS STUDIO
+    // RENDER 34 LAND PLOTS & BOUNDARIES STUDIO
     function renderPlotsStudio() {
-      const plots = archetypesData.filter(x => x.type === 'landplot');
+      const plots = archetypesData.filter(x => x.type === 'landplot' || x.type === 'boundary');
       var htmlCards = '';
       for (var i = 0; i < plots.length; i++) {
         var it = plots[i];
@@ -1147,7 +1188,7 @@ const html = `<!DOCTYPE html>
             '<span class="card-score-pill ' + sClass + '">' + sText + '</span>' +
           '</div>' +
           '<div class="card-body">' +
-            '<div class="card-cat">16 QAUV THAJ AV</div>' +
+            '<div class="card-cat">' + (it.type === 'boundary' ? '18 CIAM AV & KEV NKAG' : '16 QAUV THAJ AV') + '</div>' +
             '<div class="card-title">' + it.name + '</div>' +
             '<div class="card-desc">' + it.physics + '</div>' +
             '<div class="card-footer">' +
@@ -1173,27 +1214,27 @@ const html = `<!DOCTYPE html>
       document.getElementById('modalDetailImg').src = item.img;
 
       var bodyHtml = '';
-      if (item.type === 'landplot') {
+      if (item.type === 'landplot' || item.type === 'boundary') {
         bodyHtml =
           '<div class="section-block">' +
-            '<div class="section-title">1. Qauv Duab & Physics Huab Cua (Geological Geometry & Aerodynamics)</div>' +
+            '<div class="section-title">1. Qauv Ciam Av & Physics Huab Cua (Geological Geometry & Aerodynamics)</div>' +
             '<div class="section-text">' + item.physics + '</div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : '') + '">' +
             '<div class="section-title">2. Kev Teeb Qhov Rooj & Txoj Kev Nkag (Entrance & Driveway Placement)</div>' +
-            '<div class="section-text">' + item.entrance + '</div>' +
+            '<div class="section-text">' + (item.entrancePlacement || item.entrance) + '</div>' +
           '</div>' +
           '<div class="section-block">' +
-            '<div class="section-title">3. Qhov Chaw Tso Pas Dej & Kwj Dej (Pond, Pool & Drainage Flow)</div>' +
-            '<div class="section-text">' + item.water + '</div>' +
+            '<div class="section-title">3. Chaw Tso Tsev & Kev Ntsia/Zaum (House Siting & Orientation Facing)</div>' +
+            '<div class="section-text">' + (item.housePositioning ? ('<strong>• Chaw tso tsev:</strong> ' + item.housePositioning + '<br><strong>• Ntsia & Zaum:</strong> ' + item.orientationFacing) : item.water) + '</div>' +
           '</div>' +
           '<div class="section-block">' +
-            '<div class="section-title">4. Kev Tshuaj Xyuas Raws Li 8 Phab Bagua (Compass Sectors Analysis)</div>' +
+            '<div class="section-title">4. Zog Tsib Yam & Neeg Haum/Tsis Haum (Trigram Elements & Compatibility)</div>' +
             '<div class="section-text">' + item.bagua + '</div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : 'bad') + '">' +
             '<div class="section-title">5. Cov Tswv Yim Kho Kom Haum Looj Mem (Master Architectural Remediation Protocol)</div>' +
-            '<div class="section-text">' + item.remedy + '</div>' +
+            '<div class="section-text">' + (item.comprehensiveRemedy || item.remedy) + (item.taboos ? '<div style="margin-top:8px; color:var(--bad);"><strong>Cov Kev Txwv:</strong><br>' + item.taboos.replace(/\n/g, '<br>') + '</div>' : '') + '</div>' +
           '</div>';
       } else {
         bodyHtml =

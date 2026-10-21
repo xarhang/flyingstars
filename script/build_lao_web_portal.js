@@ -19,6 +19,7 @@ if (!fs.existsSync(laoDir)) fs.mkdirSync(laoDir, { recursive: true });
 // 1. Load Lao 91 Archetypes Data
 const ltData = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'data_75_core_luan_tou_archetypes_lao.json'), 'utf8'));
 const lpData = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'data_16_core_land_plot_archetypes_lao.json'), 'utf8'));
+const envData = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'data_boundary_adjacencies_lao.json'), 'utf8'));
 
 const archetypes = [];
 
@@ -44,7 +45,35 @@ lpData.forEach(lp => {
     elementGua: lp.elementGua || '',
     favorablePeople: lp.favorablePeople || '',
     clashingPeople: lp.clashingPeople || '',
-    comprehensiveRemedy: lp.comprehensiveRemedy || ''
+    comprehensiveRemedy: lp.comprehensiveRemedy || '',
+    taboos: lp.taboos || ''
+  });
+});
+
+// 18 Boundary & Environmental Adjacencies
+envData.forEach(env => {
+  const score = (typeof env.score === 'number') ? env.score : 75;
+  archetypes.push({
+    id: env.id,
+    type: 'boundary',
+    name: env.baseName,
+    category: env.category || 'ສະພາບແວດລ້ອມຕິດແປະ & ທາງເຂົ້າ-ອອກ',
+    score: score,
+    isGood: env.isGood !== undefined ? env.isGood : score >= 60,
+    img: `img/${env.id}.png`,
+    physics: env.geometryPhysics || '',
+    entranceRules: env.entrancePlacement || '',
+    waterRules: env.taboos || '',
+    baguaSectors: env.elementGua || '',
+    remedy: env.comprehensiveRemedy || '',
+    housePositioning: env.housePositioning || '',
+    entrancePlacement: env.entrancePlacement || '',
+    orientationFacing: env.orientationFacing || '',
+    elementGua: env.elementGua || '',
+    favorablePeople: env.favorablePeople || '',
+    clashingPeople: env.clashingPeople || '',
+    comprehensiveRemedy: env.comprehensiveRemedy || '',
+    taboos: env.taboos || ''
   });
 });
 
@@ -734,8 +763,8 @@ const html = `<!DOCTYPE html>
       </a>
 
       <div class="nav-tabs">
-        <button class="nav-tab-btn active" data-tab="tabAtlas">🗺️ ສາລະນຸກົມ 91 ຮູບແບບ</button>
-        <button class="nav-tab-btn" data-tab="tabPlots">📐 ສະຕູດີໂອ 16 ຕອນດິນ</button>
+        <button class="nav-tab-btn active" data-tab="tabAtlas">🗺️ ສາລະນຸກົມ 109 ຮູບແບບ</button>
+        <button class="nav-tab-btn" data-tab="tabPlots">📐 ສະຕູດີໂອ 34 ຕອນດິນ</button>
         <button class="nav-tab-btn" data-tab="tabBook">📖 ຕຳລາຫຼັກ 24 ບົດຮຽນ</button>
         <button class="nav-tab-btn" data-tab="tabCalc">🧭 ຄິດໄລ່ດາວ 81 ຄູ່</button>
       </div>
@@ -755,14 +784,15 @@ const html = `<!DOCTYPE html>
   <!-- MAIN APP CONTAINER -->
   <main>
 
-    <!-- TAB 1: MASTER ATLAS 91 ARCHETYPES -->
+    <!-- TAB 1: MASTER ATLAS 109 ARCHETYPES -->
     <div id="tabAtlas" class="tab-view active">
       <div class="atlas-hero">
-        <h2>🗺️ ສາລະນຸກົມຮວງຈຸ້ຍ 91 ຮູບແບບ ພູເຂົາ, ສາຍນ້ຳ ແລະ ຕອນດິນ</h2>
-        <p>ຄັງຄວາມຮູ້ຮວງຈຸ້ຍຫຼວນໂຖວ (Luan Tou) ແລະ ຜັງຕອນດິນ 91 ຮູບແບບ: ວິເຄາະພະລັງງານຊີ່, ຫຼັກການວາງປະຕູ, ໜອງນ້ຳ ແລະ ວິທີແກ້ໄຂຮວງຈຸ້ຍຢ່າງລະອຽດ.</p>
+        <h2>🗺️ ສາລະນຸກົມຮວງຈຸ້ຍ 109 ຮູບແບບ ພູເຂົາ, ສາຍນ້ຳ, ຕອນດິນ & ສະພາບແວດລ້ອມຕິດແປະ</h2>
+        <p>ຄັງຄວາມຮູ້ຮວງຈຸ້ຍຫຼວນໂຖວ (Luan Tou), ຜັງຕອນດິນ ແລະ ສະພາບແວດລ້ອມຕິດແປະ 109 ຮູບແບບ: ວິເຄາະພະລັງງານຊີ່, ຫຼັກການວາງປະຕູ, ໜອງນ້ຳ ແລະ ວິທີແກ້ໄຂຮວງຈຸ້ຍຢ່າງລະອຽດ.</p>
         <div class="stats-row">
-          <div class="stat-badge"><strong>91</strong> ຮູບແບບທັງໝົດ</div>
-          <div class="stat-badge"><strong>16</strong> ຕອນດິນ (Land Plots)</div>
+          <div class="stat-badge"><strong>109</strong> ຮູບແບບທັງໝົດ</div>
+          <div class="stat-badge"><strong>18</strong> ສະພາບແວດລ້ອມຕິດແປະ (Boundary Adjacency)</div>
+          <div class="stat-badge"><strong>16</strong> ຮູບຊົງຕອນດິນ (Land Plots)</div>
           <div class="stat-badge"><strong>35</strong> ພູເຂົາພິສ (Mountain Sha)</div>
           <div class="stat-badge"><strong>16</strong> ສາຍນ້ຳ (Water Courses)</div>
           <div class="stat-badge"><strong>16</strong> ດິນມັງກອນ (Sacred Soils)</div>
@@ -772,12 +802,13 @@ const html = `<!DOCTYPE html>
       </div>
 
       <div class="search-box">
-        <input type="text" id="atlasSearchInput" class="search-input" placeholder="🔍 ຄົ້ນຫາຕາມຊື່, ລະຫັດ (LP/LT), ທາດ, ຫຼື ວິທີແກ້ໄຂ...">
+        <input type="text" id="atlasSearchInput" class="search-input" placeholder="🔍 ຄົ້ນຫາຕາມຊື່, ລະຫັດ (ENV/LP/LT), ທາດ, ຫຼື ວິທີແກ້ໄຂ...">
       </div>
 
       <div class="filter-pills" id="atlasFilters">
-        <button class="filter-btn active" data-cat="all">ທັງໝົດ (91)</button>
-        <button class="filter-btn" data-cat="plots">16 ຕອນດິນ (Land Plots)</button>
+        <button class="filter-btn active" data-cat="all">ທັງໝົດ (109)</button>
+        <button class="filter-btn" data-cat="env">🏞️ 18 ສະພາບແວດລ້ອມຕິດແປະ (Boundaries)</button>
+        <button class="filter-btn" data-cat="plots">16 ຕອນດິນເລຂາຄະນິດ (Land Plots)</button>
         <button class="filter-btn" data-cat="peaks">5 ພູເຂົາຫ້າທາດ</button>
         <button class="filter-btn" data-cat="winds">ຮູບແບບລົມ (Winds)</button>
         <button class="filter-btn" data-cat="waters">ສາຍນ້ຳ (Waters)</button>
@@ -788,11 +819,11 @@ const html = `<!DOCTYPE html>
       <div class="atlas-grid" id="atlasGrid"></div>
     </div>
 
-    <!-- TAB 2: 16 LAND PLOTS STUDIO -->
+    <!-- TAB 2: 34 LAND PLOTS & BOUNDARIES STUDIO -->
     <div id="tabPlots" class="tab-view">
       <div class="plots-studio-header">
-        <h2>📐 ສະຕູດີໂອປຽບທຽບ 16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ</h2>
-        <p>ປຽບທຽບຜັງຕອນດິນ 16 ແບບ: ຈະຕຸລັດ, ຜືນຜ້າ, ຖົງເງິນ, ນ້ຳເຕົ້າ, ສາມຫຼ່ຽມ, ໂຕແອວ, ໂຕທີ, ແລະ ຕອນດິນແຂ້ວເລື່ອຍ ພ້ອມຫຼັກການ 360 ອົງສາ.</p>
+        <h2>📐 ສະຕູດີໂອປຽບທຽບ 34 ຮູບແບບຕອນດິນ & ສະພາບແວດລ້ອມຕິດແປະ</h2>
+        <p>ປຽບທຽບຜັງຕອນດິນ 34 ແບບ: 16 ຮູບຊົງເລຂາຄະນິດ (ຈະຕຸລັດ, ຜືນຜ້າ, ຖົງເງິນ, ນ້ຳເຕົ້າ, ສາມຫຼ່ຽມ, ໂຕແອວ...) + 18 ສະພາບແວດລ້ອມຕິດແປະ (ຕິດທາງດ້ານດຽວ, ສອງດ້ານ, ສາມ-ສີ່ດ້ານ, ທາງຈົ່ງ, ຕິດໜອງ, ຕິດປ່າ, ຕິດເພື່ອນບ້ານ, ຕິດກຳແພງ...) ພ້ອມຫຼັກການ 360 ອົງສາ.</p>
       </div>
       <div class="atlas-grid" id="plotsGrid"></div>
     </div>
@@ -977,7 +1008,7 @@ const html = `<!DOCTYPE html>
           <div class="card-score \${scoreClass}">\${scoreLabel}: \${item.score}/100</div>
         </div>
         <div class="card-body">
-          <div class="card-id-tag">\${item.id} • \${item.type === 'landplot' ? 'ຕອນດິນ' : 'ພູມິທັດ'}</div>
+          <div class="card-id-tag">\${item.id} • \${item.type === 'landplot' ? 'ຮູບຊົງຕອນດິນ' : item.type === 'boundary' ? 'ສະພາບແວດລ້ອມ' : 'ພູມິທັດ'}</div>
           <div class="card-title">\${item.name}</div>
           <div class="card-desc">\${item.physics || item.impact || item.remedy}</div>
           <div class="card-footer">
@@ -998,6 +1029,7 @@ const html = `<!DOCTYPE html>
 
       const filtered = archetypesData.filter(item => {
         // Category filter
+        if (atlasCat === 'env' && item.type !== 'boundary') return false;
         if (atlasCat === 'plots' && item.type !== 'landplot') return false;
         if (atlasCat === 'peaks' && !item.category.includes('5 ພູເຂົາ')) return false;
         if (atlasCat === 'winds' && !item.category.includes('ລົມ')) return false;
@@ -1021,10 +1053,10 @@ const html = `<!DOCTYPE html>
       filtered.forEach(item => atlasGrid.appendChild(createCard(item)));
     }
 
-    // 16 PLOTS STUDIO GRID
+    // 34 PLOTS & BOUNDARIES STUDIO GRID
     function renderPlotsStudio() {
       plotsGrid.innerHTML = '';
-      const plots = archetypesData.filter(x => x.type === 'landplot');
+      const plots = archetypesData.filter(x => x.type === 'landplot' || x.type === 'boundary');
       plots.forEach(item => plotsGrid.appendChild(createCard(item)));
     }
 
@@ -1055,7 +1087,7 @@ const html = `<!DOCTYPE html>
       const entSec = document.getElementById('mEntranceSec');
       const watSec = document.getElementById('mWaterSec');
 
-      if (item.type === 'landplot') {
+      if (item.type === 'landplot' || item.type === 'boundary') {
         impSec.style.display = 'none';
         hseSec.style.display = 'block';
         guaSec.style.display = 'block';
@@ -1068,8 +1100,8 @@ const html = `<!DOCTYPE html>
         document.getElementById('mFavorable').textContent = item.favorablePeople || '-';
         document.getElementById('mClashing').textContent = item.clashingPeople || '-';
         document.getElementById('mEntrancePlacement').textContent = item.entrancePlacement || '-';
-        document.getElementById('mEntrance').textContent = item.entranceRules || '-';
-        document.getElementById('mWater').textContent = item.waterRules || '-';
+        document.getElementById('mEntrance').textContent = item.entranceRules || item.entrancePlacement || '-';
+        document.getElementById('mWater').textContent = item.waterRules || item.taboos || '-';
         document.getElementById('mRemedy').textContent = item.comprehensiveRemedy || item.remedy || '-';
       } else {
         impSec.style.display = 'block';
