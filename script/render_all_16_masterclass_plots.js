@@ -74,12 +74,12 @@ function renderScissorsShaSvg(lang = 'lao') {
     houseDesc: 'ຕັ້ງໃນເຂດປອດໄພ (Safe Zone)',
     mingTang: 'ໜອງນ້ຳໝິງຖັງ (Ming Tang)',
     xuanWu: 'ເຕົ່າດຳ (Xuan Wu): ຕົ້ນສົນ 5 ຕົ້ນພິງຫຼັງແໜ້ນ',
-    dragonTitle: 'ມັງກອນຂຽວ (Dragon - ຊ້າຍ)',
-    dragonLine1: '• ທາງເຂົ້າ-ອອກລົດຫຼັກ',
-    dragonLine2: '• ປະຕູຮົ້ວຫ່າງມຸມແຫຼມ >15m',
-    dragonLine3: '• ຕົ້ນໄມ້ໂອບລ້ອມສູງ 2.5m',
-    dragonSub1: 'ທາງລົດເຂົ້າ: ຝັ່ງມັງກອນຂຽວ',
-    dragonSub2: '✓ ເປີດຮັບພະລັງ Sheng Qi',
+    dragonTitle: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
+    dragonLine1: '• ປະຕູຮົ້ວ: ຕັ້ງຝັ່ງມັງກອນ ຫ່າງມຸມແຫຼມ >15m',
+    dragonLine2: '• ທາງລົດ: ໂຄ້ງອ່ອນນ້ອມ ຫ້າມແທງຊື່ຫາເຮືອນ',
+    dragonLine3: '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ-ລົມ',
+    dragonSub1: '• ຫາກມີບໍ່ນ້ຳ: ນ້ຳໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ',
+    dragonSub2: '✓ ທາງໂຄ້ງມີໄມຕີ (曲则有情) ປອດໄພສູງ',
     tigerTitle: 'ທາດກວ້າ & ຄວາມຖືກຊາຕາ',
     tigerLine1: '• ທາດປະຈຳຮູບ: ທາດໄຟ (火)',
     tigerLine2: '• ລັກສະນະ: ຄົມມີດ, ໄຟພິສ',
@@ -124,12 +124,12 @@ function renderScissorsShaSvg(lang = 'lao') {
     houseDesc: 'Tso rau thaj chaw nyab xeeb',
     mingTang: 'Pas Dej Ming Tang (Kev Nyiaj)',
     xuanWu: 'Xuan Wu: Ntoo thuv 5 tsob zaum roob qaum',
-    dragonTitle: 'Zaj Ntsuab (Dragon - Sab Laug)',
-    dragonLine1: '• Qhov rooj nkag tsheb loj',
-    dragonLine2: '• Rooj vag deb kaum ntse >15m',
-    dragonLine3: '• Ntoo siab ncig 2.5m thaiv',
-    dragonSub1: 'Kev tsheb: Sab Zaj Ntsuab',
-    dragonSub2: '✓ Txais lub zog Sheng Qi',
+    dragonTitle: '🚪 QHOV ROOJ & THAJ TSHAV',
+    dragonLine1: '• Qhov rooj vag: Sab zaj, deb kaum ntse >15m',
+    dragonLine2: '• Kev tsheb: Nkhaus mos muag, txwv ncaj tua',
+    dragonLine3: '• Tsis muaj dej: Tshav xyoob ntsuab kaj sau zog',
+    dragonSub1: '• Yog muaj dej: Dej ntshiab puag ncig semicircular',
+    dragonSub2: '✓ Kev Nkhaus Muaj Siab Zoo (Qu Ze You Qing)',
     tigerTitle: 'Zog Tsib Yam & Neeg Haum',
     tigerLine1: '• Zog thaj av: Hluav Taws (火)',
     tigerLine2: '• Ciam av: Riam hlais, Huo Sha',
@@ -318,8 +318,13 @@ function renderScissorsShaSvg(lang = 'lao') {
   <circle cx="425" cy="173" r="6" fill="#15803D"/>
 
   <!-- Semicircular Ming Tang Water Pond (Front Courtyard) at Y=190 -->
-  <path d="M 374 192 A 26 14 0 0 0 426 192 Z" fill="#38BDF8" stroke="#0284C7" stroke-width="1.8"/>
-  <text x="400" y="186" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">${t.mingTang}</text>
+  <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+  <rect x="310" y="155" width="180" height="42" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="400" y="167" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+  <text x="400" y="178" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ • ມີບໍ່ນ້ຳ: ນ້ຳໃສໂອບອຸ້ມ' : '• Tsis muaj dej: Tshav ntsuab • Muaj dej: Dej ntshiab'}</text>
+  <!-- Optional Water Feature Badge -->
+  <path d="M 445 192 A 16 9 0 0 0 475 192 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="460" y="190" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.2" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
 
   <!-- SAFE RESIDENTIAL QUADRANT: Main House (x=330, y=236, w=140, h=65) -->
   <polygon points="325,236 400,214 475,236" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
@@ -352,6 +357,7 @@ function renderScissorsShaSvg(lang = 'lao') {
 
   <!-- Left Dragon Driveway: Through the Fence Gate to Courtyard -->
   <path d="M 235 348 L 284 348 C 310 348 335 320 355 295" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+  <text x="290" y="338" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle" transform="rotate(-15 290 338)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
 
   <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO AVOID DRIVEWAY OVERLAP) -->
   <g transform="translate(180, 339)">

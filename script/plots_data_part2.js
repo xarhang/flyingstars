@@ -16,22 +16,22 @@ module.exports = [
     summaryHmong: 'Tswv Yim: Thaj av tus phom poob kaum tshaj 30% tsim zog phem ntsia plawv kaum txiav yuav tsum kho nrog hav ntoo & ncej fais (ncej hluav taws xob).',
 
     entranceLao: {
-      title: '🚪 ທາງເຂົ້າ & ປີກຫຼັກ',
-      l1: '• ປະຕູຮົ້ວ: ຕັ້ງດ້ານໜ້າປີກໃຫຍ່',
-      l2: '• ຝັ່ງມັງກອນຂຽວ ຫ່າງມຸມ 3m',
-      l3: '• ຫ້າມເປີດປະຕູກົງມຸມຫັກໂຕແອວ',
-      l4: '• ທາງລົດເຂົ້າ: ໂຄ້ງໃນປີກໃຫຍ່',
-      sub1: 'ທາງລົດເຂົ້າ: ປີກໃຫຍ່ມັງກອນຂຽວ',
-      sub2: '✗ ຫ້າມເປີດປະຕູກົງມຸມຫັກໂຕ L'
+      title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
+      l1: '• ປະຕູຮົ້ວ: ຕັ້ງດ້ານໜ້າປີກໃຫຍ່ ຝັ່ງມັງກອນຂຽວ',
+      l2: '• ທາງລົດ: ໂຄ້ງອ່ອນນ້ອມ ຫ້າມແທງຊື່ຫາເຮືອນ',
+      l3: '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ-ລົມ',
+      l4: '• ຫາກມີບໍ່ນ້ຳ: ນ້ຳໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ',
+      sub1: 'ລານໝິງຖາງ: ໂລ່ງແຈ້ງກັກເກັບພະລັງຊີ່ (Ju Qi)',
+      sub2: '✓ ທາງໂຄ້ງມີໄມຕີ (曲则有情) ຈະເລີນຮຸ່ງເຮືອງ'
     },
     entranceHmong: {
-      title: '🚪 QHOV ROOJ & TIS LOJ',
-      l1: '• Qhov Rooj Loj: Phab tis loj',
-      l2: '• Sab Laug Zaj deb kaum 3m',
-      l3: '• Txwv tsis qhib rau kaum txiav',
-      l4: '• Kev Tsheb: Nkhaus phab tis loj',
-      sub1: 'Kev Nkag: Sab Laug Tis Loj',
-      sub2: '✗ Txwv tsis qhib rau kaum L'
+      title: '🚪 QHOV ROOJ & THAJ TSHAV',
+      l1: '• Qhov Rooj Vag: Tis tsev loj sab Zaj Ntsuab',
+      l2: '• Kev Tsheb: Nkhaus mos muag (S-Curve), txwv ncaj tua',
+      l3: '• Tsis Muaj Dej: Tshav xyoob ntsuab kaj sau zog',
+      l4: '• Yog Muaj Dej: Dej ntshiab puag ncig semicircular',
+      sub1: 'Thaj Tshav Kaj: Huv si sau ntau lub zog',
+      sub2: '✓ Kev Nkhaus Muaj Siab Zoo (Qu Ze You Qing)'
     },
 
     guaLao: {
@@ -173,9 +173,14 @@ module.exports = [
           <text x="17" y="46" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">向 ⬇</text>
         </g>
 
-        <!-- Semicircular Ming Tang Pond in front of main house -->
-        <path d="M 310 215 A 30 18 0 0 0 370 215 Z" fill="#38BDF8" stroke="#0284C7" stroke-width="1.8"/>
-        <text x="340" y="210" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">${escapeXml(waterText)}</text>
+        <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+        <rect x="265" y="192" width="150" height="56" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="340" y="206" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="340" y="219" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
+        <text x="340" y="231" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ຕ້ອງໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Dej ntshiab puag ncig'}</text>
+        <!-- Optional Water Feature Badge -->
+        <path d="M 385 238 A 18 10 0 0 0 421 238 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="403" y="235" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
 
         <!-- PHYSICAL FRONT FENCE WITH GATE OPENING ON DRAGON SIDE -->
         <line x1="255" y1="355" x2="285" y2="355" stroke="#334155" stroke-width="3.5"/>
@@ -191,6 +196,7 @@ module.exports = [
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
         <path d="M 310 395 L 310 355 C 310 300 320 270 340 240" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="340" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-25 340 280)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO LEFT CLEAR OF DRIVEWAY) -->
         <g transform="translate(195, 350)">
@@ -230,22 +236,22 @@ module.exports = [
     summaryHmong: 'Tswv Yim: Thaj av tus T muaj zog nias tsis sib npaug tus ncej tsim cua tshuab tsoo yuav tsum faib av ua 2 feem nrog phab ntsa.',
 
     entranceLao: {
-      title: '🚪 ທາງເຂົ້າ & ສ່ວນລຳຄ້ອນ',
-      l1: '• ປະຕູຮົ້ວ: ຢູ່ດ້ານໜ້າສ່ວນລຳຄ້ອນ',
-      l2: '• ຝັ່ງມັງກອນຂຽວ (ຊ້າຍ)',
-      l3: '• ທາງລົດເຂົ້າ: ໂຄ້ງຊະລໍຄວາມໄວ',
-      l4: '• ປູກໄມ້ບັງສອງຂ້າງທາງລົດ',
-      sub1: 'ທາງລົດເຂົ້າ: ຝັ່ງມັງກອນຂຽວ (ຊ້າຍ)',
-      sub2: '✓ ປູກໄມ້ຊະລໍກະແສລົມລຳຄ້ອນ'
+      title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
+      l1: '• ປະຕູຮົ້ວ: ຢູ່ດ້ານໜ້າສ່ວນລຳຄ້ອນ ຝັ່ງມັງກອນ',
+      l2: '• ທາງລົດ: ໂຄ້ງອ່ອນນ້ອມ ຫ້າມແທງຊື່ຫາເຮືອນ',
+      l3: '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ-ລົມ',
+      l4: '• ຫາກມີບໍ່ນ້ຳ: ນ້ຳໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ',
+      sub1: 'ລານໝິງຖາງ: ໂລ່ງແຈ້ງກັກເກັບພະລັງຊີ່ (Ju Qi)',
+      sub2: '✓ ທາງໂຄ້ງມີໄມຕີ (曲则有情) ຈະເລີນຮຸ່ງເຮືອງ'
     },
     entranceHmong: {
-      title: '🚪 QHOV ROOJ & TUS NCEJ',
-      l1: '• Qhov Rooj Loj: Pem tus ncej',
-      l2: '• Sab Laug Zaj (phab laug)',
-      l3: '• Kev Tsheb: Nkhaus mos muag',
-      l4: '• Cog ntoo thaiv 2 sab kev',
-      sub1: 'Kev Nkag: Sab Laug (Dragon)',
-      sub2: '✓ Cog ntoo txo cua ntsawj'
+      title: '🚪 QHOV ROOJ & THAJ TSHAV',
+      l1: '• Qhov Rooj Vag: Qauv rauj pem hauv ntej sab zaj',
+      l2: '• Kev Tsheb: Nkhaus mos muag (S-Curve), txwv ncaj tua',
+      l3: '• Tsis Muaj Dej: Tshav xyoob ntsuab kaj sau zog',
+      l4: '• Yog Muaj Dej: Dej ntshiab puag ncig semicircular',
+      sub1: 'Thaj Tshav Kaj: Huv si sau ntau lub zog',
+      sub2: '✓ Kev Nkhaus Muaj Siab Zoo (Qu Ze You Qing)'
     },
 
     guaLao: {
@@ -370,7 +376,14 @@ module.exports = [
         </g>
 
         <!-- Circular Fountain at junction -->
-        <circle cx="400" cy="180" r="14" fill="#38BDF8" stroke="#0284C7" stroke-width="1.8"/>
+        <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+        <rect x="320" y="159" width="160" height="52" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="400" y="173" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="400" y="186" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
+        <text x="400" y="198" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ຕ້ອງໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Dej ntshiab puag ncig'}</text>
+        <!-- Optional Water Feature Badge -->
+        <path d="M 445 198 A 18 10 0 0 0 481 198 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="463" y="195" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
         <circle cx="400" cy="180" r="5" fill="#0284C7"/>
 
         <!-- Stem Courtyard: Garden trees & Driveway -->
@@ -391,6 +404,7 @@ module.exports = [
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
         <path d="M 400 395 L 400 355 C 400 310 390 260 395 210" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="350" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-25 350 280)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO LEFT CLEAR OF DRIVEWAY) -->
         <g transform="translate(255, 350)">
@@ -431,22 +445,22 @@ module.exports = [
     summaryHmong: 'Tswv Yim: Thaj av pob zeb diamond muaj kaum ntse tsis yog 90° lub tsev yuav tsum tsim 90° ncaj & cog ntoo kho kaum ntse.',
 
     entranceLao: {
-      title: '🚪 ທາງເຂົ້າ & ມຸມປອດໄພ',
-      l1: '• ປະຕູຮົ້ວ: ຢູ່ດ້ານໜ້າຝັ່ງມຸມປ້ານ',
-      l2: '• ຫ້າມເປີດປະຕູກົງມຸມແຫຼມ',
-      l3: '• ທາງລົດເຂົ້າ: ໂຄ້ງຊະລໍຄວາມໄວ',
-      l4: '• ປູກໄມ້ພຸ່ມບັງມຸມແຫຼມສອງຂ້າງ',
-      sub1: 'ທາງລົດເຂົ້າ: ຝັ່ງມັງກອນມຸມປ້ານ',
-      sub2: '✗ ຫ້າມເປີດປະຕູກົງມຸມແຫຼມສ້ຽມ'
+      title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
+      l1: '• ປະຕູຮົ້ວ: ດ້ານໜ້າຝັ່ງມຸມປ້ານ ຫ້າມກົງມຸມແຫຼມ',
+      l2: '• ທາງລົດ: ໂຄ້ງອ່ອນນ້ອມ ຫ້າມແທງຊື່ຫາເຮືອນ',
+      l3: '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ-ລົມ',
+      l4: '• ຫາກມີບໍ່ນ້ຳ: ນ້ຳໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ',
+      sub1: 'ລານໝິງຖາງ: ໂລ່ງແຈ້ງກັກເກັບພະລັງຊີ່ (Ju Qi)',
+      sub2: '✓ ທາງໂຄ້ງມີໄມຕີ (曲则有情) ຈະເລີນຮຸ່ງເຮືອງ'
     },
     entranceHmong: {
-      title: '🚪 QHOV ROOJ & KAUM ZOO',
-      l1: '• Qhov Rooj Loj: Pem kaum dav',
-      l2: '• Txwv tsis qhib rau kaum ntse',
-      l3: '• Kev Tsheb: Nkhaus mos muag',
-      l4: '• Cog hav ntoo thaiv kaum ntse',
-      sub1: 'Kev Nkag: Sab Laug Kaum Dav',
-      sub2: '✗ Txwv tsis qhib rau kaum ntse'
+      title: '🚪 QHOV ROOJ & THAJ TSHAV',
+      l1: '• Qhov Rooj Vag: Sab kaum du, txwv kaum ntse',
+      l2: '• Kev Tsheb: Nkhaus mos muag (S-Curve), txwv ncaj tua',
+      l3: '• Tsis Muaj Dej: Tshav xyoob ntsuab kaj sau zog',
+      l4: '• Yog Muaj Dej: Dej ntshiab puag ncig semicircular',
+      sub1: 'Thaj Tshav Kaj: Huv si sau ntau lub zog',
+      sub2: '✓ Kev Nkhaus Muaj Siab Zoo (Qu Ze You Qing)'
     },
 
     guaLao: {
@@ -571,9 +585,14 @@ module.exports = [
         </g>
 
         <!-- Circular Central Ming Tang Fountain -->
-        <circle cx="400" cy="225" r="18" fill="#38BDF8" stroke="#0284C7" stroke-width="2"/>
-        <circle cx="400" cy="225" r="6" fill="#0284C7"/>
-        <text x="400" y="255" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#0369A1" text-anchor="middle">${escapeXml(waterText)}</text>
+        <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+        <rect x="315" y="197" width="170" height="56" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="400" y="211" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="400" y="224" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
+        <text x="400" y="236" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ຕ້ອງໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Dej ntshiab puag ncig'}</text>
+        <!-- Optional Water Feature Badge -->
+        <path d="M 445 240 A 18 10 0 0 0 481 240 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="463" y="237" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
 
         <!-- PHYSICAL FRONT FENCE WITH GATE OPENING IN SAFE CENTRAL CORRIDOR (Y=355) -->
         <line x1="260" y1="355" x2="330" y2="355" stroke="#334155" stroke-width="3.5"/>
@@ -589,6 +608,7 @@ module.exports = [
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
         <path d="M 355 395 L 355 355 C 355 310 380 280 390 245" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="340" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-25 340 280)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO LEFT CLEAR OF DRIVEWAY) -->
         <g transform="translate(225, 350)">
@@ -627,22 +647,22 @@ module.exports = [
     summaryHmong: 'Tswv Yim: Thaj av voj kheej zog Kub tom qab nkhaus qhwv tsev zoo li npab zaj pem tiaj txais nyiaj txiag muaj hwj chim loj.',
 
     entranceLao: {
-      title: '🚪 ທາງເຂົ້າ & ມັງກອນຂຽວ',
-      l1: '• ປະຕູຮົ້ວ: ຢູ່ດ້ານໜ້າລຽບ ຝັ່ງຊ້າຍ',
-      l2: '• ຫ່າງມຸມຂອບດິນຢ່າງໜ້ອຍ 3m',
-      l3: '• ທາງລົດເຂົ້າ: ໂຄ້ງຄ່ອຍໆສູ່ເຮືອນ',
-      l4: '• ປູກໄມ້ພຸ່ມປະດັບສອງຂ້າງທາງ',
-      sub1: 'ທາງລົດເຂົ້າ: ຝັ່ງມັງກອນຂຽວ (ຊ້າຍ)',
-      sub2: '✓ ເປີດຮັບພະລັງເຊິ້ງຊີ່ (Sheng Qi)'
+      title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
+      l1: '• ປະຕູຮົ້ວ: ດ້ານໜ້າລຽບ ຝັ່ງມັງກອນຂຽວ',
+      l2: '• ທາງລົດ: ໂຄ້ງອ່ອນນ້ອມ ຫ້າມແທງຊື່ຫາເຮືອນ',
+      l3: '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ-ລົມ',
+      l4: '• ຫາກມີບໍ່ນ້ຳ: ນ້ຳໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ',
+      sub1: 'ລານໝິງຖາງ: ໂລ່ງແຈ້ງກັກເກັບພະລັງຊີ່ (Ju Qi)',
+      sub2: '✓ ທາງໂຄ້ງມີໄມຕີ (曲则有情) ຈະເລີນຮຸ່ງເຮືອງ'
     },
     entranceHmong: {
-      title: '🚪 QHOV ROOJ & DRAGON',
-      l1: '• Qhov Rooj Loj: Pem tiaj sab laug',
-      l2: '• Ceev Xwm: Deb kaum av 3m',
-      l3: '• Kev Tsheb: Nkhaus mos muag',
-      l4: '• Cog paj & hav ntoo 2 sab kev',
-      sub1: 'Kev Nkag: Sab Laug (Dragon)',
-      sub2: '✓ Txais Zog Sheng Qi'
+      title: '🚪 QHOV ROOJ & THAJ TSHAV',
+      l1: '• Qhov Rooj Vag: Pem hauv ntej sab Zaj Ntsuab',
+      l2: '• Kev Tsheb: Nkhaus mos muag (S-Curve), txwv ncaj tua',
+      l3: '• Tsis Muaj Dej: Tshav xyoob ntsuab kaj sau zog',
+      l4: '• Yog Muaj Dej: Dej ntshiab puag ncig semicircular',
+      sub1: 'Thaj Tshav Kaj: Huv si sau ntau lub zog',
+      sub2: '✓ Kev Nkhaus Muaj Siab Zoo (Qu Ze You Qing)'
     },
 
     guaLao: {
@@ -761,9 +781,14 @@ module.exports = [
           <text x="19" y="47" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">向 ⬇</text>
         </g>
 
-        <!-- Semicircular Ming Tang Pond in Front Yard -->
-        <path d="M 365 225 A 35 22 0 0 0 435 225 Z" fill="#38BDF8" stroke="#0284C7" stroke-width="1.8"/>
-        <text x="400" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#0369A1" text-anchor="middle">${escapeXml(waterText)}</text>
+        <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+        <rect x="305" y="193" width="190" height="64" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="400" y="207" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="400" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
+        <text x="400" y="232" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ຕ້ອງໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Dej ntshiab puag ncig'}</text>
+        <!-- Optional Water Feature Badge -->
+        <path d="M 445 246 A 18 10 0 0 0 481 246 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="463" y="243" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
 
         <!-- PHYSICAL FRONT FENCE WITH GATE OPENING (Y=355) -->
         <line x1="250" y1="355" x2="325" y2="355" stroke="#334155" stroke-width="3.5"/>
@@ -779,6 +804,7 @@ module.exports = [
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
         <path d="M 350 395 L 350 355 C 350 300 375 260 385 230" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="340" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-25 340 280)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO LEFT CLEAR OF DRIVEWAY) -->
         <g transform="translate(225, 350)">
@@ -813,22 +839,22 @@ module.exports = [
     summaryHmong: 'Tswv Yim: Thaj av toj roob nraub qaum siab pem qis yuav tsum faib ua 3 theem theem nruab nrab tso tsev tom qab zaum roob.',
 
     entranceLao: {
-      title: '🚪 ທາງເຂົ້າ & ຂັ້ນໄດຕ່ຳ',
-      l1: '• ປະຕູຮົ້ວ: ຢູ່ຂັ້ນໄດລຸ່ມຕິດຖະໜົນ',
-      l2: '• ທາງລົດຂຶ້ນ: ໂຄ້ງຊະລໍຄວາມຊັນ',
-      l3: '• ຫ້າມເຮັດທາງລົດຊື່ຊັນເກີນ 12%',
-      l4: '• ຮ່ອງລະບາຍນ້ຳສອງຂ້າງທາງລົດ',
-      sub1: 'ທາງລົດເຂົ້າ: ໂຄ້ງຊະລໍຄວາມຊັນ',
-      sub2: '✓ ຮ່ອງລະບາຍນ້ຳກັນນ້ຳເຊາະເຈື່ອນ'
+      title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
+      l1: '• ປະຕູຮົ້ວ: ຂັ້ນໄດລຸ່ມຕິດຖະໜົນ ຝັ່ງມັງກອນ',
+      l2: '• ທາງລົດ: ໂຄ້ງອ່ອນນ້ອມ ຫ້າມແທງຊື່ຫາເຮືອນ',
+      l3: '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ-ລົມ',
+      l4: '• ຫາກມີບໍ່ນ້ຳ: ນ້ຳໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ',
+      sub1: 'ລານໝິງຖາງ: ໂລ່ງແຈ້ງກັກເກັບພະລັງຊີ່ (Ju Qi)',
+      sub2: '✓ ທາງໂຄ້ງມີໄມຕີ (曲则有情) ຈະເລີນຮຸ່ງເຮືອງ'
     },
     entranceHmong: {
-      title: '🚪 QHOV ROOJ & THEEM QIS',
-      l1: '• Qhov Rooj Loj: Theem qis ze kev',
-      l2: '• Kev Tsheb: Nkhaus txo qhov siab',
-      l3: '• Txwv tsis ua kev ntxhab tshaj 12%',
-      l4: '• Kwj dej 2 sab kev thaiv av liam',
-      sub1: 'Kev Nkag: Nkhaus txo kev ntxhab',
-      sub2: '✓ Kwj dej thaiv av nkos liam'
+      title: '🚪 QHOV ROOJ & THAJ TSHAV',
+      l1: '• Qhov Rooj Vag: Qis theem ciam kev sab zaj',
+      l2: '• Kev Tsheb: Nkhaus mos muag (S-Curve), txwv ncaj tua',
+      l3: '• Tsis Muaj Dej: Tshav xyoob ntsuab kaj sau zog',
+      l4: '• Yog Muaj Dej: Dej ntshiab puag ncig semicircular',
+      sub1: 'Thaj Tshav Kaj: Huv si sau ntau lub zog',
+      sub2: '✓ Kev Nkhaus Muaj Siab Zoo (Qu Ze You Qing)'
     },
 
     guaLao: {
@@ -953,9 +979,14 @@ module.exports = [
           <text x="19" y="47" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">向 ⬇</text>
         </g>
 
-        <!-- Semicircular Ming Tang Pond in Lower Terrace Yard -->
-        <path d="M 365 210 A 35 22 0 0 0 435 210 Z" fill="#38BDF8" stroke="#0284C7" stroke-width="1.8"/>
-        <text x="400" y="205" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#0369A1" text-anchor="middle">${escapeXml(waterText)}</text>
+        <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+        <rect x="310" y="186" width="180" height="58" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="400" y="200" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="400" y="213" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
+        <text x="400" y="225" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ຕ້ອງໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Dej ntshiab puag ncig'}</text>
+        <!-- Optional Water Feature Badge -->
+        <path d="M 445 234 A 18 10 0 0 0 481 234 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="463" y="231" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
 
         <!-- PHYSICAL FRONT FENCE WITH GATE OPENING AT DRAGON SIDE -->
         <line x1="260" y1="355" x2="325" y2="355" stroke="#334155" stroke-width="3.5"/>
@@ -971,6 +1002,7 @@ module.exports = [
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
         <path d="M 350 395 L 350 355 C 350 300 375 250 385 220" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="340" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-25 340 280)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO LEFT CLEAR OF DRIVEWAY) -->
         <g transform="translate(225, 350)">
@@ -1005,22 +1037,22 @@ module.exports = [
     summaryHmong: 'Tswv Yim: Thaj av tus txiab muaj kev nkag nqaim ntev tsim cua ntsawj tsoo yuav tsum tso teeb pom kev & voj lem tsheb.',
 
     entranceLao: {
-      title: '🚪 ທາງເຂົ້າ & ລຳດວງທຸງ',
-      l1: '• ປະຕູຮົ້ວ: ຢູ່ປາກທາງເຂົ້າແຄບ',
-      l2: '• ຄວາມກວ້າງທາງເຂົ້າ: ຢ່າງໜ້ອຍ 4m',
-      l3: '• ຕັ້ງໂຄມໄຟສະຫວ່າງຕາມແນວທາງ',
-      l4: '• ວົງວຽນກັບລົດກ່ອນຮອດເຮືອນ',
-      sub1: 'ທາງລົດເຂົ້າ: ແລ່ນຜ່ານລຳດວງທຸງ',
-      sub2: '✓ ວົງວຽນກັບລົດຊະລໍກະແສລົມ'
+      title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
+      l1: '• ປະຕູຮົ້ວ: ປາກທາງເຂົ້າແຄບ ກວ້າງ >4-6 ແມັດ',
+      l2: '• ທາງລົດ: ໂຄ້ງອ່ອນນ້ອມ ຫ້າມແທງຊື່ຫາເຮືອນ',
+      l3: '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ-ລົມ',
+      l4: '• ຫາກມີບໍ່ນ້ຳ: ນ້ຳໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ',
+      sub1: 'ລານໝິງຖາງ: ໂລ່ງແຈ້ງກັກເກັບພະລັງຊີ່ (Ju Qi)',
+      sub2: '✓ ທາງໂຄ້ງມີໄມຕີ (曲则有情) ຈະເລີນຮຸ່ງເຮືອງ'
     },
     entranceHmong: {
-      title: '🚪 QHOV ROOJ & TUS NCEJ',
-      l1: '• Qhov Rooj Loj: Qhov ncauj nqaim',
-      l2: '• Kev Dav: Yam tsawg 4m',
-      l3: '• Tso teeb pom kev raws 2 sab kev',
-      l4: '• Voj lem tsheb ua ntej txog tsev',
-      sub1: 'Kev Nkag: Raws tus ncej ntev',
-      sub2: '✓ Voj lem tsheb txo cua ntsawj'
+      title: '🚪 QHOV ROOJ & THAJ TSHAV',
+      l1: '• Qhov Rooj Vag: Ncauj kev nqaim dav >4-6 meters',
+      l2: '• Kev Tsheb: Nkhaus mos muag (S-Curve), txwv ncaj tua',
+      l3: '• Tsis Muaj Dej: Tshav xyoob ntsuab kaj sau zog',
+      l4: '• Yog Muaj Dej: Dej ntshiab puag ncig semicircular',
+      sub1: 'Thaj Tshav Kaj: Huv si sau ntau lub zog',
+      sub2: '✓ Kev Nkhaus Muaj Siab Zoo (Qu Ze You Qing)'
     },
 
     guaLao: {
@@ -1142,9 +1174,14 @@ module.exports = [
           <text x="18" y="45" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">向 ⬇</text>
         </g>
 
-        <!-- Semicircular Ming Tang Pond -->
-        <path d="M 370 205 A 30 18 0 0 0 430 205 Z" fill="#38BDF8" stroke="#0284C7" stroke-width="1.8"/>
-        <text x="400" y="200" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">${escapeXml(waterText)}</text>
+        <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+        <rect x="315" y="187" width="170" height="56" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="400" y="201" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="400" y="214" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
+        <text x="400" y="226" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ຕ້ອງໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Dej ntshiab puag ncig'}</text>
+        <!-- Optional Water Feature Badge -->
+        <path d="M 445 234 A 18 10 0 0 0 481 234 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="463" y="231" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
 
         <!-- PHYSICAL FRONT FENCE WITH GATE OPENING IN CORRIDOR (Y=355) -->
         <!-- Gate opening: X=295 to 345 -->
@@ -1157,6 +1194,7 @@ module.exports = [
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
         <path d="M 320 395 L 320 230 C 320 200 350 190 380 180" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="340" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-25 340 280)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO LEFT CLEAR OF DRIVEWAY) -->
         <g transform="translate(195, 350)">
@@ -1196,22 +1234,22 @@ module.exports = [
     summaryHmong: 'Tswv Yim: Thaj av dej nkhaus qhwv tsev zoo li siv tawv kub yog thaj av zoo tshaj plaws dej qhwv nqa nyiaj txiag ntau heev.',
 
     entranceLao: {
-      title: '🚪 ທາງເຂົ້າ & ດ້ານຫຼັງພິງ',
-      l1: '• ປະຕູຮົ້ວ: ຢູ່ດ້ານຫຼັງ/ຂ້າງຕິດຖະໜົນ',
-      l2: '• ຫ່າງຈາກແຄມແມ່ນ້ຳປອດໄພ',
-      l3: '• ທາງລົດເຂົ້າ: ໂຄ້ງສູ່ຕົວເຮືອນ',
-      l4: '• ປູກໄມ້ພຸ່ມປະດັບສອງຂ້າງທາງ',
-      sub1: 'ທາງລົດເຂົ້າ: ຝັ່ງມັງກອນຂຽວ (ຊ້າຍ)',
-      sub2: '✓ ເປີດຮັບພະລັງເຊິ້ງຊີ່ (Sheng Qi)'
+      title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
+      l1: '• ປະຕູຮົ້ວ: ດ້ານຄໍແຫຼມທິດເໜືອ ຂ້າມຂົວແໜ້ນໜາ',
+      l2: '• ທາງລົດ: ໂຄ້ງອ່ອນນ້ອມ ຫ້າມແທງຊື່ຫາເຮືອນ',
+      l3: '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ-ລົມ',
+      l4: '• ຫາກມີບໍ່ນ້ຳ: ນ້ຳໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ',
+      sub1: 'ລານໝິງຖາງ: ໂລ່ງແຈ້ງກັກເກັບພະລັງຊີ່ (Ju Qi)',
+      sub2: '✓ ທາງໂຄ້ງມີໄມຕີ (曲则有情) ຈະເລີນຮຸ່ງເຮືອງ'
     },
     entranceHmong: {
-      title: '🚪 QHOV ROOJ & ROOB QAUM',
-      l1: '• Qhov Rooj Loj: Sab nraub qaum/ze kev',
-      l2: '• Ceev Xwm: Deb ntug dej nyab',
-      l3: '• Kev Tsheb: Nkhaus mos muag',
-      l4: '• Cog hav ntoo 2 sab kev tsheb',
-      sub1: 'Kev Nkag: Sab Laug (Dragon)',
-      sub2: '✓ Txais Zog Sheng Qi'
+      title: '🚪 QHOV ROOJ & THAJ TSHAV',
+      l1: '• Qhov Rooj Vag: Sab qaum teb hla choj ruaj khov',
+      l2: '• Kev Tsheb: Nkhaus mos muag (S-Curve), txwv ncaj tua',
+      l3: '• Tsis Muaj Dej: Tshav xyoob ntsuab kaj sau zog',
+      l4: '• Yog Muaj Dej: Dej ntshiab puag ncig semicircular',
+      sub1: 'Thaj Tshav Kaj: Huv si sau ntau lub zog',
+      sub2: '✓ Kev Nkhaus Muaj Siab Zoo (Qu Ze You Qing)'
     },
 
     guaLao: {
@@ -1317,6 +1355,12 @@ module.exports = [
         <rect x="416" y="201" width="16" height="5" fill="#1E293B"/>
         <text x="424" y="213" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.8" fill="#0F172A" text-anchor="middle">${isLao ? 'ປະຕູໃຫຍ່' : 'Rooj Loj'}</text>
 
+        <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+        <rect x="295" y="222" width="190" height="58" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="390" y="236" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="390" y="249" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ • ມີແມ່ນ້ຳໂອບອຸ້ມ' : '• Tsis muaj dej: Tshav ntsuab • Muaj dej qhwv'}</text>
+        <text x="390" y="261" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? '• ສາຍນ້ຳໂອບອຸ້ມທຳມະຊາດ ນຳພາຊັບສົມບັດ' : '• Dej Jade Belt qhwv coj nyiaj txiag los'}</text>
+
         <!-- Compass Axis Badge on House Right -->
         <g transform="translate(478, 145)">
           <rect x="0" y="0" width="38" height="52" rx="3" fill="#FFFFFF" fill-opacity="0.92" stroke="#0284C7" stroke-width="1.2"/>
@@ -1344,6 +1388,7 @@ module.exports = [
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
         <path d="M 315 55 L 315 95 C 315 120 350 130 380 140" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="340" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-25 340 280)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO LEFT OF BRIDGE GATE) -->
         <g transform="translate(195, 85)">
@@ -1382,22 +1427,22 @@ module.exports = [
     summaryHmong: 'Tswv Yim: Thaj av hniav saw muaj kaum ntse ntau tsim cua ntsawj ntxhov siab yuav tsum ua phab ntsa faib ua 4 fab ncaj hauv plawv.',
 
     entranceLao: {
-      title: '🚪 ທາງເຂົ້າ & ດ້ານທີ່ລຽບ',
-      l1: '• ປະຕູຮົ້ວ: ຢູ່ດ້ານທີ່ລຽບງ່າຍທີ່ສຸດ',
-      l2: '• ຫ້າມເປີດປະຕູກົງມຸມແຫຼມແຂ້ວເລື່ອຍ',
-      l3: '• ທາງລົດເຂົ້າ: ໂຄ້ງຊະລໍຄວາມໄວ',
-      l4: '• ປູກໄມ້ພຸ່ມບັງມຸມແຫຼມທຸກຈຸດ',
-      sub1: 'ທາງລົດເຂົ້າ: ດ້ານລຽບປອດໄພ',
-      sub2: '✗ ຫ້າມເປີດປະຕູກົງມຸມແຫຼມແຂ້ວເລື່ອຍ'
+      title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
+      l1: '• ປະຕູຮົ້ວ: ດ້ານທີ່ລຽບງ່າຍທີ່ສຸດ ຫຼີກມຸມແຂ້ວເລື່ອຍ',
+      l2: '• ທາງລົດ: ໂຄ້ງອ່ອນນ້ອມ ຫ້າມແທງຊື່ຫາເຮືອນ',
+      l3: '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ-ລົມ',
+      l4: '• ຫາກມີບໍ່ນ້ຳ: ນ້ຳໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ',
+      sub1: 'ລານໝິງຖາງ: ໂລ່ງແຈ້ງກັກເກັບພະລັງຊີ່ (Ju Qi)',
+      sub2: '✓ ທາງໂຄ້ງມີໄມຕີ (曲则有情) ຈະເລີນຮຸ່ງເຮືອງ'
     },
     entranceHmong: {
-      title: '🚪 QHOV ROOJ & PHAB TIAJ',
-      l1: '• Qhov Rooj Loj: Phab tiaj zoo tshaj',
-      l2: '• Txwv tsis qhib rau kaum hniav saw',
-      l3: '• Kev Tsheb: Nkhaus mos muag',
-      l4: '• Cog hav ntoo thaiv kaum ntse',
-      sub1: 'Kev Nkag: Phab tiaj zoo',
-      sub2: '✗ Txwv tsis qhib rau kaum ntse'
+      title: '🚪 QHOV ROOJ & THAJ TSHAV',
+      l1: '• Qhov Rooj Vag: Sab du tshaj, zam cov hniav txiab',
+      l2: '• Kev Tsheb: Nkhaus mos muag (S-Curve), txwv ncaj tua',
+      l3: '• Tsis Muaj Dej: Tshav xyoob ntsuab kaj sau zog',
+      l4: '• Yog Muaj Dej: Dej ntshiab puag ncig semicircular',
+      sub1: 'Thaj Tshav Kaj: Huv si sau ntau lub zog',
+      sub2: '✓ Kev Nkhaus Muaj Siab Zoo (Qu Ze You Qing)'
     },
 
     guaLao: {
@@ -1522,9 +1567,14 @@ module.exports = [
         </g>
 
         <!-- Central Fountain to convert chaotic energy -->
-        <circle cx="395" cy="245" r="16" fill="#38BDF8" stroke="#0284C7" stroke-width="2"/>
-        <circle cx="395" cy="245" r="5" fill="#0284C7"/>
-        <text x="395" y="275" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">${escapeXml(waterText)}</text>
+        <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+        <rect x="305" y="205" width="180" height="60" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="395" y="219" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="395" y="232" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
+        <text x="395" y="244" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ຕ້ອງໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Dej ntshiab puag ncig'}</text>
+        <!-- Optional Water Feature Badge -->
+        <path d="M 440 252 A 18 10 0 0 0 476 252 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="458" y="249" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
 
         <!-- PHYSICAL FRONT FENCE WITH GATE OPENING IN SAFE FLAT SECTION (Y=355) -->
         <line x1="240" y1="355" x2="310" y2="355" stroke="#334155" stroke-width="3.5"/>
@@ -1540,6 +1590,7 @@ module.exports = [
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
         <path d="M 332 395 L 332 355 C 332 320 350 290 380 260" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="340" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-25 340 280)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO LEFT CLEAR OF DRIVEWAY) -->
         <g transform="translate(210, 350)">

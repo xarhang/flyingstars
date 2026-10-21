@@ -252,8 +252,14 @@ function renderCenterDrawing(id, lang) {
         
         ${renderBoundaryHouse(335, 115, 130, 65, '325,115 400,90 475,115', isLao, houseText, isLao ? 'ຕັ້ງຫຼັງ 1/3 ຮັບພະລັງ' : 'Zaum 1/3 Tom Qab')}
 
-        <!-- Semicircular Ming Tang Pond -->
-        <path d="M 365 210 A 35 20 0 0 0 435 210 Z" fill="#38BDF8" stroke="#0284C7" stroke-width="1.8"/>
+        <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+        <rect x="290" y="200" width="220" height="74" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="400" y="214" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="400" y="227" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
+        <text x="400" y="239" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ຕ້ອງໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Dej ntshiab puag ncig'}</text>
+        <!-- Optional Water Feature Badge -->
+        <path d="M 450 262 A 20 11 0 0 0 490 262 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="470" y="258" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.8" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ/ນ້ຳພຸ (ຖ້າມີ)]' : '[Pas Dej (Yog Muaj)]'}</text>
 
         <!-- PHYSICAL FRONT FENCE WITH GATE OPENING AT DRAGON SIDE -->
         <line x1="275" y1="355" x2="305" y2="355" stroke="#334155" stroke-width="3.5"/>
@@ -268,7 +274,8 @@ function renderCenterDrawing(id, lang) {
         <line x1="350" y1="355" x2="340" y2="344" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
-        <path d="M 327 395 L 327 355 C 327 310 350 270 380 240" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
+        <path d="M 327 395 L 327 355 C 327 320 345 285 375 265 C 405 245 425 220 425 188" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
+        <text x="338" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-30 338 280)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET LEFT TO CLEAR DRIVEWAY) -->
         <g transform="translate(198, 350)">
