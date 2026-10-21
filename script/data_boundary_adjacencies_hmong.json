@@ -14,7 +14,8 @@
     "orientationFacing": "Ntsia (Xiang): Ntsia kev pem hauv ntej; Zaum (Zuo): Zaum nraub qaum ciam av tom qab ruaj; Taub hau pw: Phab ntsa tuab.",
     "comprehensiveRemedy": "1. Cog hav ntoo ntsuab ciam av 3 sab; 2. Pas dej semicircular pem hauv ntej; 3. Ntoo thuv 5 tsob tom qab; 4. Tso tshav kom huv.",
     "geometryPhysics": "Muaj kev nkag ib sab, huab cua ncig pem hauv ntej, tom qab thiab ob sab muaj tsev tiv thaiv, khaws zog zoo.",
-    "taboos": "• Txwv tsis ua kev tsheb ncaj qha rau qhov rooj loj\n• Txwv tsis tsim tsev ze ciam av dhau (yam tsawg 1.5-2m)\n• Txwv tsis khawb pas dej tom qab tsev"
+    "taboos": "• Txwv tsis ua kev tsheb ncaj qha rau qhov rooj loj\n• Txwv tsis tsim tsev ze ciam av dhau (yam tsawg 1.5-2m)\n• Txwv tsis khawb pas dej tom qab tsev",
+    "waterRules": "• Tsis muaj dej: Ua tshav xyoob ntsuab kaj (Ju Qi). Puas tsim nyog ntxiv? -> Ntxiv tau pem tsev (Ming Tang) ua semicircular lossis pas dej kiv kom nplua mias. Txwv ntxiv yog pem tsev nqaim lossis Roob Hnub Qub 9 poob pem. • Yog muaj dej: Puas ntsaws? -> Yog tom qab (Xuan Wu) lossis plawv tsev (Tai Ji) yuav tsum muab av ntsaws pov tseg! Yog pem tsev puag ncig kom ceev cia."
   },
   {
     "id": "ENV-0002",
@@ -31,7 +32,8 @@
     "orientationFacing": "Ntsia: Ntsia kev loj pom kev dav; Zaum: Zaum kaum sab hauv; Taub hau pw: Phab ntsa sab hauv.",
     "comprehensiveRemedy": "1. Txiav kaum vag kom voj mos muag; 2. Cog hav ntoo tuab ntawm kaum nqus suab tsheb; 3. Pob zeb Tai Shan yog muaj kev tsoo; 4. Pas dej kheej.",
     "geometryPhysics": "Nyob ntawm qhov kev sib tshuam cua 2 phab, muaj zog Yang siab heev zoo rau lag luam tab sis ntxhov siab pw.",
-    "taboos": "• Txwv tsis qhib qhov rooj vag loj ntawm kaum kev tig\n• Txwv tsis ua laj kab pob tshab ntawm kaum kev tig\n• Txwv tsis tso txaj pw ze ciam kev ob sab"
+    "taboos": "• Txwv tsis qhib qhov rooj vag loj ntawm kaum kev tig\n• Txwv tsis ua laj kab pob tshab ntawm kaum kev tig\n• Txwv tsis tso txaj pw ze ciam kev ob sab",
+    "waterRules": "• Tsis muaj dej: Tshav xyoob ntsuab kaj. Puas ntxiv? -> Txwv tsis khawb pas dej ntawm kaum kev tsheb sib tsoo (cua tsheb ua phem rau dej). Ntxiv tau hauv vaj tom qab phab ntsa xwb. • Yog muaj dej: Puas ntsaws? -> Yog nyob kaum kev lossis tom qab yuav tsum ntsaws pov tseg!"
   },
   {
     "id": "ENV-0003",
@@ -48,7 +50,8 @@
     "orientationFacing": "Ntsia: Ntsia kev loj pem; Zaum: Zaum phab ntsa tuab tom qab; Taub hau pw: Phab ntsa plawv tsev.",
     "comprehensiveRemedy": "1. Ua phab ntsa 2.2-2.5m thaiv kev tom qab; 2. Cog ntoo thuv 7 tsob ua roob; 3. Tso daim ntsa thaiv hauv tsev kom cua tsis tshuab hla; 4. Pas dej txo cua.",
     "geometryPhysics": "Huab cua tshuab hla ntawm pem mus rau tom qab (Chuan Xin Sha), huab cua zoo khaws tsis tau ua rau poob nyiaj.",
-    "taboos": "• Txwv tsis qhib qhov rooj pem thiab tom qab ncaj qha (nyiaj nkag lawm tawm tam sim)\n• Txwv tsis ua laj kab pom kev tom qab\n• Txwv tsis ua kev tsheb khiav hla plawv av"
+    "taboos": "• Txwv tsis qhib qhov rooj pem thiab tom qab ncaj qha (nyiaj nkag lawm tawm tam sim)\n• Txwv tsis ua laj kab pom kev tom qab\n• Txwv tsis ua kev tsheb khiav hla plawv av",
+    "waterRules": "• Tsis muaj dej: Tshav xyoob ntsuab. Puas ntxiv? -> Txwv tsis khawb pas dej hla pem mus txog tom qab (Chuan Tang Shui) ua poob nyiaj. • Yog muaj dej: Puas ntsaws? -> Yog pas dej nyob tom qab kev yuav tsum ntsaws pov tseg!"
   },
   {
     "id": "ENV-0004",
@@ -65,7 +68,8 @@
     "orientationFacing": "Ntsia: Ntsia tshav nruab nrab; Zaum: Zaum phab ntsa tom qab ruaj; Taub hau pw: Phab ntsa tom qab.",
     "comprehensiveRemedy": "1. Phab ntsa pob zeb 2.2m txiav kaum ntse; 2. Pob zeb Tai Shan (石敢当); 3. Cog ntoo thuv nqus suab tsheb 2 sab; 4. Pas dej semicircular.",
     "geometryPhysics": "Tsheb khiav 2 sab nrawm tsim cua nqus thiab suab nrov 24 teev ua rau ntxhov siab.",
-    "taboos": "• Txwv tsis tsim tsev rau kaum ntse uas raug kev txiav\n• Txwv tsis qhib qhov rooj kaum ntse\n• Txwv tsis ua chav pw ze kev 2 sab"
+    "taboos": "• Txwv tsis tsim tsev rau kaum ntse uas raug kev txiav\n• Txwv tsis qhib qhov rooj kaum ntse\n• Txwv tsis ua chav pw ze kev 2 sab",
+    "waterRules": "• Tsis muaj dej: Tshav xyoob ntsuab. Puas ntxiv? -> Txwv khawb pas dej kaum rawg riam (Hluav Taws & Dej sib tsoo). • Yog muaj dej: Puas ntsaws? -> Yog nyob kaum rawg yuav tsum ntsaws pov tseg!"
   },
   {
     "id": "ENV-0005",
@@ -82,7 +86,8 @@
     "orientationFacing": "Ntsia: Ntsia kev loj; Zaum: Cog ntoo siab ua roob zaum; Taub hau pw: Phab ntsa plawv tsev.",
     "comprehensiveRemedy": "1. Cog ntoo thuv 2 kab ncig ciam av; 2. Phab ntsa 2.2m tuab; 3. Pas dej kheej plawv tshav; 4. Teeb ci pom kev.",
     "geometryPhysics": "Raug cua thiab tsheb ncig txhua sab, tsis muaj Xuan Wu zaum tom qab, zog tawg.",
-    "taboos": "• Txwv tsis tso tsev ze ntug ciam av (yuav tsum nyob plawv)\n• Txwv tsis qhib qhov rooj vag ntau dhau (tsuas qhib 1 qhov)\n• Txwv tsis ua laj kab pom kev ncig"
+    "taboos": "• Txwv tsis tso tsev ze ntug ciam av (yuav tsum nyob plawv)\n• Txwv tsis qhib qhov rooj vag ntau dhau (tsuas qhib 1 qhov)\n• Txwv tsis ua laj kab pom kev ncig",
+    "waterRules": "• Tsis muaj dej: Tshav xyoob ntsuab. Puas ntxiv? -> Tsis tsim nyog khawb pas dej loj vim cua 4 sab nrawm. Ntxiv tau pas dej me kiv plawv tsev xwb. • Yog muaj dej: Puas ntsaws? -> Sab nraud ntsaws; ceev cia sab hauv."
   },
   {
     "id": "ENV-0006",
@@ -99,7 +104,8 @@
     "orientationFacing": "Ntsia: Ntsia tshav dav sab hauv; Zaum: Zaum ciam av tom qab ruaj; Taub hau pw: Phab ntsa tuab.",
     "comprehensiveRemedy": "1. Ua kev dav 4-6m nrog ncej fais (ncej hluav taws xob) txhua 10m; 2. Voj lem tsheb pas dej txo cua; 3. Cog ntoo thaiv kev tsheb; 4. Daim iav.",
     "geometryPhysics": "Kev nkag nqaim ntev zoo li phom tsim cua ntsawj nrawm (Venturi Effect) tsoo tsev.",
-    "taboos": "• Txwv tsis cia kev nqaim dua 3m (tsheb tua hluav taws nkag tsis tau)\n• Txwv tsis cia kev nkag tsaus ntuj (tsim zog Yin)\n• Txwv tsis tso qhov rooj tsev ncaj qha qhov ncauj kev"
+    "taboos": "• Txwv tsis cia kev nqaim dua 3m (tsheb tua hluav taws nkag tsis tau)\n• Txwv tsis cia kev nkag tsaus ntuj (tsim zog Yin)\n• Txwv tsis tso qhov rooj tsev ncaj qha qhov ncauj kev",
+    "waterRules": "• Tsis muaj dej: Tshav xyoob ntsuab. Puas ntxiv? -> Txwv khawb pas dej tav kev nkag. Ntxiv tau pas dej me pem rooj vag tsev kom sau zog. • Yog muaj dej: Puas ntsaws? -> Yog thaiv kev lossis tsw phem yuav tsum ntsaws pov tseg."
   },
   {
     "id": "ENV-0007",
@@ -116,7 +122,8 @@
     "orientationFacing": "Ntsia: Ntsia dej Jade Belt qhwv; Zaum: Zaum teb chaws loj qaum; Taub hau pw: Phab ntsa tuab.",
     "comprehensiveRemedy": "1. Phab ntsa pob zeb thaiv ntug dej (Seawall); 2. Cog ntoo tuav av ntug dej; 3. Chaw saib dej; 4. Teeb pom kev.",
     "geometryPhysics": "Dej nkhaus qhwv zoo li npab zaj, dej ntws mos 0.3-0.5 m/s nqa zog Sheng Qi & oxygen tuaj.",
-    "taboos": "• Txwv tsis tso tsev ze ntug dej dhau (deb 6-10m)\n• Txwv tsis cia dej เซาะ av ntug liam\n• Txwv tsis cia dej tsw phem los sis muaj khib nyiab"
+    "taboos": "• Txwv tsis tso tsev ze ntug dej dhau (deb 6-10m)\n• Txwv tsis cia dej เซาะ av ntug liam\n• Txwv tsis cia dej tsw phem los sis muaj khib nyiab",
+    "waterRules": "• Dej puag pem hauv ntej (Jade Belt Water): Zoo tshaj plaws! • Puas ntxiv? -> Muaj dej ntuj tsim puag ncig lawm tsis tas ntxiv. • Puas ntsaws? -> Txwv ntsaws kiag! Khaws cia thiab cog ntoo."
   },
   {
     "id": "ENV-0008",
@@ -133,7 +140,8 @@
     "orientationFacing": "Ntsia: Ntsia zam qhov nkhaus tsoo; Zaum: Zaum ruaj; Taub hau pw: Phab ntsa tuab.",
     "comprehensiveRemedy": "1. Phab ntsa pob zeb 3 theem tiv thaiv dej; 2. Cog hav xyoob/ntoo 2 kab thaiv; 3. Pob zeb Tai Shan; 4. Pas paj.",
     "geometryPhysics": "Zog dej (Centrifugal Force) tsoo ntug av ncaj qha ua rau av liam thiab cua hlais hnyav.",
-    "taboos": "• Txwv tsis ua chaw soยື່ນ rau qhov dej nkhaus tsoo\n• Txwv tsis qhib qhov rooj loj ncaj dej tsoo\n• Txwv tsis ua chav pw ze ntug dej"
+    "taboos": "• Txwv tsis ua chaw soยື່ນ rau qhov dej nkhaus tsoo\n• Txwv tsis qhib qhov rooj loj ncaj dej tsoo\n• Txwv tsis ua chav pw ze ntug dej",
+    "waterRules": "• Dej nkhaus hneev tua (Fan Gong Shui): Dej txiav ntug av tua tsev! • Puas ntsaws? -> Yog pas dej ntiag tug nkhaus tua yuav tsum ntsaws pov tseg; yog dej loj kom ua phab ntsa pob zeb thiab cog hav ntoo."
   },
   {
     "id": "ENV-0009",
@@ -150,7 +158,8 @@
     "orientationFacing": "Ntsia: Ntsia kev pem; Zaum: Zaum phab ntsa tsim tshiab; Taub hau pw: Phab ntsa pem.",
     "comprehensiveRemedy": "1. Phab ntsa 2.2m tuab thaiv pas dej tom qab; 2. Cog ntoo thuv 7 tsob ua roob zaum qaum; 3. Nchuav av tom qab kom siab dua dej 2m; 4. Pas dej pem hauv ntej.",
     "geometryPhysics": "Tom qab yog qhov qis (Low Void) ua rau tsis muaj chaw tiv thaiv, cua txias & noo tshuab nraub qaum txhua xyoo.",
-    "taboos": "• Txwv tsis qhib qhov rooj tom qab loj pom dej (poob nyiaj)\n• Txwv tsis ua chav pw loj ze pas dej tom qab (mob nraub qaum)\n• Txwv tsis cia av tom qab qis dua pem"
+    "taboos": "• Txwv tsis qhib qhov rooj tom qab loj pom dej (poob nyiaj)\n• Txwv tsis ua chav pw loj ze pas dej tom qab (mob nraub qaum)\n• Txwv tsis cia av tom qab qis dua pem",
+    "waterRules": "• Dej tom qab tsev (Xuan Wu Drowning): Tsis muaj chaw nstais, poob nyiaj, mob nraub qaum. • Puas ntsaws? -> Yuav tsum muab av ntsaws pov tseg tam sim ntawd! Yog dej pej xeem kom ua phab ntsa 2.5m thiab cog 5 tsob ntoo."
   },
   {
     "id": "ENV-0010",
@@ -167,7 +176,8 @@
     "orientationFacing": "Ntsia: Ntsia kev pem; Zaum: Zaum ruaj; Taub hau pw: Phab ntsa tuab.",
     "comprehensiveRemedy": "1. Phab ntsa thaiv ntug kwj dej; 2. Cog hav ntoo nqus suab dej; 3. Cia dej ntws huv; 4. Tshav pem pom kev.",
     "geometryPhysics": "Dej ntws sab nrauv pab nqa zog Sheng Qi, tab sis tsis txhob cia ntws nrawm tshaj 1 m/s.",
-    "taboos": "• Txwv tsis cia kwj dej tsw phem (Sha Qi)\n• Txwv tsis ua chav pw ze dej ntws nrov\n• Txwv tsis muab khib nyiab pov rau hauv kwj dej"
+    "taboos": "• Txwv tsis cia kwj dej tsw phem (Sha Qi)\n• Txwv tsis ua chav pw ze dej ntws nrov\n• Txwv tsis muab khib nyiab pov rau hauv kwj dej",
+    "waterRules": "• Dej sab tav tsev: Sab laug Zaj yog zoo; sab xis Tsov ceev faj dej txiav av. • Puas ntsaws? -> Dej ntshiab ntws qeeb kom ceev cia; dej lwj kom ntsaws."
   },
   {
     "id": "ENV-0011",
@@ -184,7 +194,8 @@
     "orientationFacing": "Ntsia: Ntsia tshav pom kev dav; Zaum: Zaum roob/hav ntoo qaum (Xuan Wu); Taub hau pw: Phab ntsa phab roob.",
     "comprehensiveRemedy": "1. Txiav ceg ntoo tsis txhob cia nias ru tsev; 2. Kwj dej thaiv dej roob; 3. Pas dej semicircular pem; 4. Tshav dav.",
     "geometryPhysics": "Roob thiab hav ntoo tom qab ua phab ntsa thaiv cua txias, khaws cua sov & tso oxygen zoo.",
-    "taboos": "• Txwv tsis khawb taw roob tom qab tsev (rhuav tshem Xuan Wu)\n• Txwv tsis cia ntoo loj qaij tsoo ru tsev\n• Txwv tsis khawb pas dej ze taw roob tom qab"
+    "taboos": "• Txwv tsis khawb taw roob tom qab tsev (rhuav tshem Xuan Wu)\n• Txwv tsis cia ntoo loj qaij tsoo ru tsev\n• Txwv tsis khawb pas dej ze taw roob tom qab",
+    "waterRules": "• Roob nraub qaum: Roob ruaj khov. • Puas ntxiv? -> Ntxiv tau pas dej semicircular pem tsev kom tau duab Roob Nstais Dej Puag (Shan Huan Shui Bao). Txwv khawb dej tom qab."
   },
   {
     "id": "ENV-0012",
@@ -201,7 +212,8 @@
     "orientationFacing": "Ntsia: Ntsia sab nyab xeeb; Zaum: Zaum av ruaj; Taub hau pw: Phab ntsa tuab.",
     "comprehensiveRemedy": "1. Phab ntsa pob zeb loj (Soil Nailing / Retaining Wall); 2. Kwj dej saum tsua thaiv av nkos; 3. Cog nyom tuav av; 4. Laj kab thaiv.",
     "geometryPhysics": "Qhov ntxhab tshaj 45° ua rau av poob, cua ntsawj nce raws ntug tsua (Updraft Wind Sha) tsim kev ntxhov.",
-    "taboos": "• Txwv tsis tsim tsev ze ntug tsua yog tsis muaj phab ntsa thaiv\n• Txwv tsis nchuav av tsis ruaj ntug tsua\n• Txwv tsis cia dej nag ntws เซาะ ntug tsua ncaj qha"
+    "taboos": "• Txwv tsis tsim tsev ze ntug tsua yog tsis muaj phab ntsa thaiv\n• Txwv tsis nchuav av tsis ruaj ntug tsua\n• Txwv tsis cia dej nag ntws เซาะ ntug tsua ncaj qha",
+    "waterRules": "• Ntug pob tsuas siab: Txwv khawb pas dej ze ntug pob tsuas tsam av qhuav qhib! • Puas ntsaws? -> Muaj dej qub ntug pob tsuas kom ntsaws av ruaj."
   },
   {
     "id": "ENV-0013",
@@ -218,7 +230,8 @@
     "orientationFacing": "Ntsia: Ntsia sab hnub tuaj/qab teb txais tshav ntuj (Yang Qi); Zaum: Zaum phab ntsa tuab; Taub hau pw: Phab ntsa tuab.",
     "comprehensiveRemedy": "1. Txiav hav ntoo ciam av kom deb 5m; 2. Phab ntsa 2.2m xim sov; 3. Ncej fais (ncej hluav taws xob) teeb ci 24h; 4. Pas dej txhim kho zog Yang.",
     "geometryPhysics": "Ntoo tuab thaiv tshav ntuj tsim kev noo siab, huab cua ncig qeeb ua rau muaj kab mob & tshuaj lom.",
-    "taboos": "• Txwv tsis qhib qhov rai loj ntsia hav ntoo tuag/ntxa ncaj qha\n• Txwv tsis cia cheeb tsam tsev tsaus ntuj\n• Txwv tsis cog ntoo loj nplooj tuab thaiv tshav ntuj ntxiv"
+    "taboos": "• Txwv tsis qhib qhov rai loj ntsia hav ntoo tuag/ntxa ncaj qha\n• Txwv tsis cia cheeb tsam tsev tsaus ntuj\n• Txwv tsis cog ntoo loj nplooj tuab thaiv tshav ntuj ntxiv",
+    "waterRules": "• Hav zoov ntxhiab / toj ntxas: Txwv khawb pas dej tsaus ntuj tsam ntxiv zog Yeeb (Yin Qi). • Puas ntsaws? -> Pas dej qub hav zoov yuav tsum ntsaws pov tseg thiab txiav ntoo kom tshav ntuj."
   },
   {
     "id": "ENV-0014",
@@ -235,7 +248,8 @@
     "orientationFacing": "Ntsia: Ntsia sab pom kev; Zaum: Zaum phab ntsa ruaj; Taub hau pw: Phab ntsa tuab.",
     "comprehensiveRemedy": "1. Cog ntoo thuv siab thaiv duab ntxoo tsev siab; 2. Ru tsev siab txhim kho zog tiv thaiv; 3. Iav convex; 4. Teeb pom kev.",
     "geometryPhysics": "Tsev siab tsim duab ntxoo nias thiab cua ntsawj nqes hauv qab (Downdraft Wind) tsoo ru tsev.",
-    "taboos": "• Txwv tsis tsim tsev qis ze tsev siab tsis muaj ntoo thaiv\n• Txwv tsis qhib qhov rai saum ru tsev ncaj qhov rai tsev siab ntsia nqes\n• Txwv tsis pleev xim tsev tsaus (yuav ntxiv kev nias)"
+    "taboos": "• Txwv tsis tsim tsev qis ze tsev siab tsis muaj ntoo thaiv\n• Txwv tsis qhib qhov rai saum ru tsev ncaj qhov rai tsev siab ntsia nqes\n• Txwv tsis pleev xim tsev tsaus (yuav ntxiv kev nias)",
+    "waterRules": "• Tsev siab tsuam: Ntxiv pas dej kiv pem tsev kom rub zog Qi los rau hauv av."
   },
   {
     "id": "ENV-0015",
@@ -252,7 +266,8 @@
     "orientationFacing": "Ntsia: Ntsia qaij kaum 45°; Zaum: Zaum phab ntsa ruaj; Taub hau pw: Phab ntsa tuab.",
     "comprehensiveRemedy": "1. Pob zeb Tai Shan (石敢当) loj ncaj qhov cua; 2. Phab ntsa nkhaus thaiv cua; 3. Ntoo thuv 3 kab nqus cua ntsawj; 4. Pas dej.",
     "geometryPhysics": "Qhov nqaim nruab nrab 2 lub tsev ua hauj lwm zoo li qhov tshuab cua (Wind Jet Effect) nrawm zoo li riam.",
-    "taboos": "• Txwv tsis tso qhov rooj loj los sis qhov rai chav pw ncaj qhov nqaim tsev\n• Txwv tsis pw ncaj qhov cua riam saum ntuj\n• Txwv tsis tso tseg tsis muaj phab ntsa thaiv"
+    "taboos": "• Txwv tsis tso qhov rooj loj los sis qhov rai chav pw ncaj qhov nqaim tsev\n• Txwv tsis pw ncaj qhov cua riam saum ntuj\n• Txwv tsis tso tseg tsis muaj phab ntsa thaiv",
+    "waterRules": "• Cua txiav ntuj (Tian Zhan Sha): Txwv tsis tso pas dej txais cua ncaj. Ua phab ntsa ua ntej mam tso dej kiv hauv vaj."
   },
   {
     "id": "ENV-0016",
@@ -269,7 +284,8 @@
     "orientationFacing": "Ntsia: Ntsia kev pem; Zaum: Zaum phab ntsa qaum; Taub hau pw: Phab ntsa tuab.",
     "comprehensiveRemedy": "1. Ua tshav nruab nrab tsev (Courtyard / Skylight) kom cua & tshav ntuj nkag Tai Ji; 2. Vaj ntoo ncig tsev; 3. Kiv cua tshuab; 4. Pas dej.",
     "geometryPhysics": "Raug tsev ncig 3 sab, cua nkag tau pem xwb, yog tsis muaj qhov tshav hauv tsev huab cua yuav txhaws.",
-    "taboos": "• Txwv tsis tsim tsev puv nkaus ciam av txhua sab (tsis muaj cua)\n• Txwv tsis kaw plawv tsev tuab (Tai Ji txhaws ua rau mob ntstsws)\n• Txwv tsis ua laj kab siab dua 2.5m (zoo li tsev loj cuj)"
+    "taboos": "• Txwv tsis tsim tsev puv nkaus ciam av txhua sab (tsis muaj cua)\n• Txwv tsis kaw plawv tsev tuab (Tai Ji txhaws ua rau mob ntstsws)\n• Txwv tsis ua laj kab siab dua 2.5m (zoo li tsev loj cuj)",
+    "waterRules": "• Pas ntses / tsev 3 sab ncig: Dej ntshiab ceev cia; dej lwj muab av ntsaws ua tshav xyoob."
   },
   {
     "id": "ENV-0017",
@@ -286,7 +302,8 @@
     "orientationFacing": "Ntsia: Ntsia sab pom kev; Zaum: Zaum phab ntsa tuab; Taub hau pw: Phab ntsa tuab.",
     "comprehensiveRemedy": "1. Cog ntoo nce phab ntsa (Vertical Garden) los sis hav xyoob thaiv phab ntsa; 2. Pleev xim phab ntsa kom ci; 3. Teeb pom kev; 4. Pas dej.",
     "geometryPhysics": "Phab ntsa siab thaiv cua thiab duab ntxoo thaiv tshav ntuj tsim qhov chaw huab cua tuag (Dead Air Zone).",
-    "taboos": "• Txwv tsis tsim tsev nplaum rau phab ntsa tuab ntawm lwm tus\n• Txwv tsis qhib qhov rai ze phab ntsa tuab qis dua 1.5m\n• Txwv tsis cia qhov chaw ze phab ntsa ua chaw pov khib nyiab"
+    "taboos": "• Txwv tsis tsim tsev nplaum rau phab ntsa tuab ntawm lwm tus\n• Txwv tsis qhib qhov rai ze phab ntsa tuab qis dua 1.5m\n• Txwv tsis cia qhov chaw ze phab ntsa ua chaw pov khib nyiab",
+    "waterRules": "• Pob zeb loj (Rock Sha): Tso dej ntws nruab nrab tsev thiab pob zeb kom hloov zog tawv."
   },
   {
     "id": "ENV-0018",
@@ -303,6 +320,7 @@
     "orientationFacing": "Ntsia: Ntsia sab zoo; Zaum: Zaum ruaj; Taub hau pw: Phab ntsa tuab.",
     "comprehensiveRemedy": "1. Phab ntsa 2.5m nrog ntoo loj 2 kab thaiv 100%; 2. Pob zeb Tai Shan; 3. Pas dej kheej kho zog; 4. Pleev xim sov.",
     "geometryPhysics": "Tsev teev hawm/tsev kho mob muaj zog Yin & kev quaj ntsuag siab; chaw hluav taws xob muaj EMF ntxhov hlwb.",
-    "taboos": "• Txwv tsis tso qhov rooj loj ncaj qhov rooj tsev teev hawm los sis ntxa (Gu Sha 孤煞)\n• Txwv tsis tso chav pw ze transformer hluav taws xob\n• Txwv tsis qhib qhov rai pom ncov ru tsev teev hawm ntse ntsia tsev"
+    "taboos": "• Txwv tsis tso qhov rooj loj ncaj qhov rooj tsev teev hawm los sis ntxa (Gu Sha 孤煞)\n• Txwv tsis tso chav pw ze transformer hluav taws xob\n• Txwv tsis qhib qhov rai pom ncov ru tsev teev hawm ntse ntsia tsev",
+    "waterRules": "• Ncej hluav taws xob (Huo Sha): Txwv tso pas dej ze ncej hluav taws xob (Hluav Taws & Dej sib tsoo); tso dej semicircular hauv vaj pem tsev tua hluav."
   }
 ]

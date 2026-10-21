@@ -63,7 +63,7 @@ envData.forEach(env => {
     img: `img/${env.id}.png`,
     physics: env.geometryPhysics || '',
     entranceRules: env.entrancePlacement || '',
-    waterRules: env.taboos || '',
+    waterRules: env.waterRules || env.taboos || '',
     baguaSectors: env.elementGua || '',
     remedy: env.comprehensiveRemedy || '',
     housePositioning: env.housePositioning || '',
@@ -407,7 +407,9 @@ const html = `<!DOCTYPE html>
       width: 100%;
       height: 100%;
       object-fit: contain;
-      background: #FAFAFA;
+      background: #0F172A;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
     }
     .card-score {
       position: absolute;
@@ -480,12 +482,12 @@ const html = `<!DOCTYPE html>
     .modal-box {
       background: var(--card-bg);
       width: 100%;
-      max-width: 860px;
-      max-height: 90vh;
+      max-width: 1060px;
+      max-height: 92vh;
       border-radius: 18px;
       overflow-y: auto;
       border: 1px solid var(--border);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.35);
       position: relative;
     }
     .modal-header {
@@ -515,20 +517,53 @@ const html = `<!DOCTYPE html>
     .modal-body { padding: 24px; }
     .modal-img-wrap {
       width: 100%;
-      max-height: 440px;
-      background: #FAFAFA;
+      max-height: 560px;
+      background: #0F172A;
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       margin-bottom: 20px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
     .modal-img-wrap img {
       max-width: 100%;
-      max-height: 440px;
+      max-height: 560px;
       object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
+      cursor: zoom-in;
+      transition: transform 0.2s ease;
+    }
+    .modal-img-wrap:hover img {
+      transform: scale(1.01);
+    }
+    .modal-zoom-pill {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #F8FAFC;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 5;
+    }
+    .modal-zoom-pill:hover {
+      background: #DC2626;
+      color: #FFFFFF;
+      transform: translateY(-2px);
     }
     .modal-section { margin-bottom: 18px; }
     .modal-section h4 {
@@ -910,7 +945,10 @@ const html = `<!DOCTYPE html>
       </div>
       <div class="modal-body">
         <div class="modal-img-wrap">
-          <img id="mImg" src="" alt="Drawing">
+          <img id="mImg" src="" alt="Drawing" title="ຄລິກເພື່ອເບິ່ງຮູບເຕັມຈໍ Ultra-HD">
+          <a id="mImgZoomBtn" href="#" target="_blank" class="modal-zoom-pill" title="ເບິ່ງຮູບຂະໜາດເຕັມ Ultra-HD 2400x1440">
+            🔍 ເບິ່ງຮູບໃຫຍ່ Ultra-HD 2400x1440
+          </a>
         </div>
         <div class="modal-section">
           <h4>🔬 ລັກສະນະທາງກາຍະພາບ (Physics & Geometry)</h4>
@@ -936,9 +974,32 @@ const html = `<!DOCTYPE html>
           <p><strong>• ຕຳແໜ່ງທາງເຂົ້າ & ປະຕູຮົ້ວ:</strong> <span id="mEntrancePlacement">-</span></p>
           <p style="margin-top: 6px;"><strong>• ຫຼັກການລະອຽດ:</strong> <span id="mEntrance">-</span></p>
         </div>
-        <div class="modal-section" id="mWaterSec" style="display:none;">
-          <h4>🌊 ຫຼັກການວາງສະລອຍນ້ຳ & ໜອງນ້ຳ (Water Placement)</h4>
-          <p id="mWater">-</p>
+        <div class="modal-section" id="mWaterSec" style="display:none; background: #F0F9FF; border: 1.5px solid #BAE6FD; border-radius: 12px; padding: 16px;">
+          <h4 style="color: #0369A1; margin-top: 0; font-size: 15px; display: flex; align-items: center; gap: 8px;">🌊 ກົດເກນການຈັດການເລື່ອງນ້ຳ (Dual Water Doctrine: ເຕີມໃສ່ vs ຖົມຖິ້ມ)</h4>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div style="background: #FFFFFF; border: 1px solid #7DD3FC; border-radius: 8px; padding: 12px;">
+              <strong style="color: #0284C7; display: flex; align-items: center; gap: 6px; font-size: 13px;">
+                💧 ຖ້າບໍ່ມີບໍ່ນ້ຳ: ຄວນເຕີມໃສ່ດີບໍ?
+              </strong>
+              <div style="font-size: 12.5px; line-height: 1.6; color: #334155; margin-top: 6px;">
+                • <strong>ຄວນເຕີມ:</strong> ຖ້າໜ້າເຮືອນມີລານໝິງຖາງກວ້າງ >6-8m ແລະ ເປັນທິດຮັບຊັບຍຸກ 9 (ເຕີມເປັນສະນ້ຳເຄິ່ງວົງມົນ ຫຼື ອ່າງນ້ຳພຸໝູນວຽນ).<br>
+                • <strong>ຫ້າມເຕີມ:</strong> ຖ້າໜ້າເຮືອນແຄບ, ດາວພູເຂົາ 9 ຕົກໜ້າເຮືອນ (ຈະຈົມນ້ຳ ເສຍສຸຂະພາບ/ບາຣະມີ) ຫຼື ບໍ່ມີຄົນດູແລນ້ຳ ໃຫ້ຈັດເປັນ <strong>ລານຫຍ້າຂຽວໂລ່ງ</strong> ແທນ.
+              </div>
+            </div>
+            <div style="background: #FFFFFF; border: 1px solid #FDA4AF; border-radius: 8px; padding: 12px;">
+              <strong style="color: #DC2626; display: flex; align-items: center; gap: 6px; font-size: 13px;">
+                🚫 ຫາກມີບໍ່ນ້ຳຢູ່ແລ້ວ: ຄວນຖົມບໍ?
+              </strong>
+              <div style="font-size: 12.5px; line-height: 1.6; color: #334155; margin-top: 6px;">
+                • <strong>ຕ້ອງຖົມຖິ້ມທັນທີ:</strong> ຖ້າຢູ່ <strong>ຫຼັງເຮືອນ (Xuan Wu)</strong>, ຢູ່ <strong>ກາງຕອນດິນ (Tai Ji)</strong>, ເປັນ <strong>ມຸມສາມແຈແຫຼມ</strong>, ຫຼື <strong>ນ້ຳເນົ່າຂັງ</strong>.<br>
+                • <strong>ຫ້າມຖົມ (ຮັກສາໄວ້):</strong> ຖ້າຢູ່ <strong>ໜ້າເຮືອນ (ໝິງຖັງ)</strong> ຫຼື ດ້ານຊ້າຍມັງກອນ ໂອບອຸ້ມຕົວເຮືອນ ໃຫ້ລ້າງສະອາດ ແລະ ເຮັດໃຫ້ນ້ຳໄຫຼວຽນ.
+              </div>
+            </div>
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid #BAE6FD; border-radius: 8px; padding: 12px;">
+            <strong style="color: #0369A1; font-size: 13px;">📋 ຄຳແນະນຳສະເພາະຮູບແບບຕອນດິນນີ້:</strong>
+            <p id="mWater" style="margin-top: 6px; font-size: 13px; color: #1E293B; line-height: 1.6;">-</p>
+          </div>
         </div>
         <div class="modal-section">
           <h4>🛡️ ວິທີແກ້ໄຂ & ປັບສົມດຸນຮວງຈຸ້ຍ (Remedy Protocol)</h4>
@@ -1077,7 +1138,11 @@ const html = `<!DOCTYPE html>
     // MODAL
     function openModal(item) {
       document.getElementById('mTitle').textContent = item.id + ': ' + item.name;
-      document.getElementById('mImg').src = item.img;
+      const mImg = document.getElementById('mImg');
+      mImg.src = item.img;
+      mImg.onclick = () => window.open(item.img, '_blank');
+      const zoomBtn = document.getElementById('mImgZoomBtn');
+      if (zoomBtn) zoomBtn.href = item.img;
       document.getElementById('mPhysics').textContent = item.physics || '-';
       document.getElementById('mRemedy').textContent = item.remedy || '-';
 

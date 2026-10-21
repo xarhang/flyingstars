@@ -362,5 +362,25 @@
     "baguaSectors": "Poob kaum sab hnub poob qaum teb, tsim teeb meem rau txiv tsev, yuav tsum kho nrog phab ntsa thiab teeb ci.",
     "remedy": "Txiav kaum ntse, tso pob zeb Tai Shan, cog ntoo thaiv Tsov Dawb, tso tsev rau chaw nyab xeeb.",
     "taboos": "Txwv tsis tso tsev ze kaum ntse, txwv tsis qhib qhov rooj kaum, txwv tsis qhib qhov rooj dav sab tsov."
+  },
+  {
+    "id": "LP-0007D",
+    "name": "San Jiao Tu: Kaum Ntse Pem (Thaj Av Peb Fab Kaum Ntse Ntsib Kev)",
+    "category": "16 Qauv Duab Thaj Av & Kev Tso Vaj Tsev",
+    "score": 28,
+    "isGood": false,
+    "img": "LP-0007D.png",
+    "elementGua": "Zog Hluav Ntse Pem (Front Fire Sha / 尖嘴煞) - Kaum ntse tua rau kev tsheb",
+    "favorablePeople": "Tsis haum rau nyob yog tsis kho; haum rau tuam tsev, chaw tso roj tsheb, chaw muag hlau.",
+    "clashingPeople": "Neeg Zog Kub (Gua 6, 7): Hluav taws hlawv kub ua mob ntsws/pob txha; thiab Neeg Dej (Gua 1).",
+    "housePositioning": "Tso tsev rau sab nraub qaum dav 1/3 (Safe Rear Zone), thim deb ntawm kaum ntse pem > 15-20m, ua tsev rectangle 90°.",
+    "entrancePlacement": "✓ Qhov rooj zoo: Thim deb ntawm kaum ntse > 8m sab Zaj Ntsuab nrog kev S-Curve. ✗ Txwv tsis qhib: Qhov ntse kiag pem kev.",
+    "orientationFacing": "Pem Tsev (向): Tsa rau sab thaj tshav kaj tom qab phab ntsa; Nraub Qaum (坐): Sab nraub qaum dav; Taub Hau: Phab ntsa ruaj.",
+    "comprehensiveRemedy": "Kev kho 4 kauj ruam: 1. Phab ntsa 2.2m txiav kaum ntse pem; 2. Cog hav ntoo ntsuab/xyoob thaiv cua; 3. Tso pob zeb Tai Shan ntawm kaum ntse; 4. Ntsaws pas dej kaum ntse; tso dej semicircular pem tsev.",
+    "physics": "Thaj av peb fab muaj kaum ntse taw ncaj rau txoj kev pem hauv ntej, nraub qaum dav. Kaum ntse < 36° ua rau muaj zog Hluav Taws Sha.",
+    "entrance": "1. Sab Zaj Ntsuab: ✓ Zoo - Rooj vag thim deb ntawm kaum ntse > 8m nrog kev nkhaus S-Curve. 2. Kaum ntse: ✗ Txwv kiag.",
+    "water": "• Tsis muaj dej: Ua tshav xyoob ntsuab kaj. Yog xav ntxiv: Ntxiv tau semicircular pem tsev xwb (txwv khawb pas dej kaum ntse). • Yog muaj dej: Yog pas dej nyob kaum ntse lossis tom qab yuav tsum muab av ntsaws pov tseg! Yog pas dej semicircular pem tsev kom ceev cia.",
+    "bagua": "Nraub qaum dav pab Xuan Wu tab sis pem ntse poob Ming Tang. Yuav tsum txiav kaum txhawm rau kho 8 fab Bagua.",
+    "remedy": "Txiav kaum ntse 2.2m, tso pob zeb Tai Shan, cog ntoo thaiv cua, ntsaws pas dej kaum ntse, tso tsev rau nraub qaum dav 90°."
   }
 ]

@@ -62,7 +62,7 @@ envData.forEach(env => {
     entrance: env.entrancePlacement || '',
     house: env.housePositioning || '',
     orientation: env.orientationFacing || '',
-    water: env.taboos ? env.taboos.replace(/\n/g, '<br>') : '',
+    water: env.waterRules ? env.waterRules.replace(/\n/g, '<br>') : (env.taboos ? env.taboos.replace(/\n/g, '<br>') : ''),
     bagua: (env.elementGua || '') + (env.favorablePeople ? '<br>• Haum: ' + env.favorablePeople : '') + (env.clashingPeople ? '<br>• Tsis haum: ' + env.clashingPeople : ''),
     remedy: env.comprehensiveRemedy || '',
     housePositioning: env.housePositioning || '',
@@ -497,12 +497,12 @@ const html = `<!DOCTYPE html>
     }
     .modal-box {
       background: var(--card-bg);
-      border-radius: 16px;
-      max-width: 960px;
+      border-radius: 18px;
+      max-width: 1060px;
       width: 100%;
-      max-height: 90vh;
+      max-height: 92vh;
       overflow-y: auto;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.35);
       border: 1px solid var(--border);
     }
     .modal-head {
@@ -530,17 +530,50 @@ const html = `<!DOCTYPE html>
     .modal-img-wrap {
       width: 100%;
       background: #0B0F17;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
       margin-bottom: 24px;
       border: 1px solid var(--border);
       text-align: center;
+      position: relative;
     }
     .modal-img {
       max-width: 100%;
-      max-height: 480px;
+      max-height: 560px;
       object-fit: contain;
       display: inline-block;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
+      cursor: zoom-in;
+      transition: transform 0.2s ease;
+    }
+    .modal-img-wrap:hover .modal-img {
+      transform: scale(1.01);
+    }
+    .modal-zoom-pill {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #F8FAFC;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 5;
+    }
+    .modal-zoom-pill:hover {
+      background: #DC2626;
+      color: #FFFFFF;
+      transform: translateY(-2px);
     }
     .section-block {
       margin-bottom: 16px;
@@ -1060,7 +1093,10 @@ const html = `<!DOCTYPE html>
       </div>
       <div class="modal-content">
         <div class="modal-img-wrap">
-          <img id="modalDetailImg" class="modal-img" src="" alt="">
+          <img id="modalDetailImg" class="modal-img" src="" alt="" title="Nyem rau qhov loj Ultra-HD 2400x1440">
+          <a id="modalDetailImgZoomBtn" href="#" target="_blank" class="modal-zoom-pill" title="Saib Duab Loj Ultra-HD 2400x1440">
+            🔍 Saib Duab Loj Ultra-HD (2400x1440)
+          </a>
         </div>
         <div id="modalDetailsArea"></div>
       </div>
@@ -1211,7 +1247,11 @@ const html = `<!DOCTYPE html>
 
       document.getElementById('modalIdTag').textContent = item.id + ' • ' + (item.isGood ? '✓ QAUV ZOO' : '✗ QAUV PHEM') + ' (' + item.score + '/100)';
       document.getElementById('modalMainTitle').textContent = item.name;
-      document.getElementById('modalDetailImg').src = item.img;
+      const mImg = document.getElementById('modalDetailImg');
+      mImg.src = item.img;
+      mImg.onclick = () => window.open(item.img, '_blank');
+      const zoomBtn = document.getElementById('modalDetailImgZoomBtn');
+      if (zoomBtn) zoomBtn.href = item.img;
 
       var bodyHtml = '';
       if (item.type === 'landplot' || item.type === 'boundary') {
@@ -1232,8 +1272,22 @@ const html = `<!DOCTYPE html>
             '<div class="section-title">4. Zog Tsib Yam & Neeg Haum/Tsis Haum (Trigram Elements & Compatibility)</div>' +
             '<div class="section-text">' + item.bagua + '</div>' +
           '</div>' +
+          '<div class="section-block" style="background:rgba(2,132,199,0.08); border-left-color:#0284C7;">' +
+            '<div class="section-title" style="color:#0284C7;">5. Kev Cai Tswj Dej (Dual Water Doctrine: Ntxiv Pas Dej vs Ntsaws Pov Tseg)</div>' +
+            '<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:8px 0;">' +
+              '<div style="background:var(--card-bg); border:1px solid #38BDF8; border-radius:6px; padding:10px;">' +
+                '<strong style="color:#0284C7; font-size:12px;">💧 Tsis Muaj Dej: Puas Ntxiv?</strong>' +
+                '<div style="font-size:11.5px; line-height:1.5; margin-top:4px;">• <strong>Ntxiv:</strong> Yog pem tsev dav >6-8m thiab yog fab txais nyiaj Caij 9 (ntxiv semicircular).<br>• <strong>Txwv:</strong> Yog pem nqaim lossis Roob 9 poob pem, ua <strong>tshav xyoob ntsuab kaj</strong> xwb.</div>' +
+              '</div>' +
+              '<div style="background:var(--card-bg); border:1px solid #DC2626; border-radius:6px; padding:10px;">' +
+                '<strong style="color:#DC2626; font-size:12px;">🚫 Muaj Dej Lawm: Puas Ntsaws?</strong>' +
+                '<div style="font-size:11.5px; line-height:1.5; margin-top:4px;">• <strong>Ntsaws pov tseg:</strong> Yog nyob tom qab (Xuan Wu), plawv tsev (Tai Ji), kaum ntse, lossis dej lwj.<br>• <strong>Khaws cia:</strong> Yog nyob pem tsev puag ncig huv si.</div>' +
+              '</div>' +
+            '</div>' +
+            '<div style="font-size:12.5px; line-height:1.6; margin-top:6px;"><strong>• Cov lus qhia raws thaj av:</strong> ' + item.water + '</div>' +
+          '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : 'bad') + '">' +
-            '<div class="section-title">5. Cov Tswv Yim Kho Kom Haum Looj Mem (Master Architectural Remediation Protocol)</div>' +
+            '<div class="section-title">6. Cov Tswv Yim Kho Kom Haum Looj Mem (Master Architectural Remediation Protocol)</div>' +
             '<div class="section-text">' + (item.comprehensiveRemedy || item.remedy) + (item.taboos ? '<div style="margin-top:8px; color:var(--bad);"><strong>Cov Kev Txwv:</strong><br>' + item.taboos.replace(/\n/g, '<br>') + '</div>' : '') + '</div>' +
           '</div>';
       } else {

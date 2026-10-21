@@ -1590,6 +1590,216 @@ module.exports = [
     }
   },
 
+  // 7D. LP-0007D: Triangle Plot with Front Apex Facing Road
+  {
+    id: 'LP-0007D',
+    score: 28,
+    isGood: false,
+    hasFrontRoad: true,
+    nameLao: 'ຕອນດິນສາມຫຼ່ຽມ ຫົວແຫຼມຕຳທາງໜ້າ ຫຼັງກວ້າງ (Triangle Plot - Front Apex Facing Road)',
+    nameHmong: 'San Jiao Tu: Kaum Ntse Pem (Thaj Av Peb Fab Kaum Ntse Ntsib Kev)',
+    elementLao: 'ທາດໄຟແຫຼມຕຳທາງໜ້າ Front Sharp Fire / 尖嘴煞',
+    elementHmong: 'Zog Hluav Ntse Pem Front Fire Sha / 尖嘴煞',
+    summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສາມຫຼ່ຽມຫົວແຫຼມຊີ້ອອກຫາຖະໜົນໜ້າບ້ານ (ຫຼັງກວ້າງ), ມຸມແຫຼມສ້າງພະລັງພິສທາດໄຟ (Fire Sha) ຕຳໃສ່ກະແສຈະລາຈອນ. ຕ້ອງສ້າງກຳແພງຕັດມຸມແຫຼມໜ້າ ເພື່ອສ້າງລານຕ້ອນຮັບສີ່ຫຼ່ຽມ, ວາງເຮືອນຢູ່ຫຼັງກວ້າງ, ເຮັດທາງລົດໂຄ້ງ S-Curve ແລະ ຮັກສາລານໝິງຖາງໂລ່ງແຈ້ງ.',
+    summaryHmong: 'Tswv Yim: Thaj av peb fab muaj kaum ntse taw rau txoj kev pem hauv ntej, nraub qaum dav. Kaum ntse ua rau muaj zog Hluav Taws Sha. Yuav tsum tsim phab ntsa txiav kaum pem, tso tsev rau sab nraub qaum dav, tsim kev nkhaus S-Curve.',
+
+    entranceLao: {
+      title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
+      l1: '• ປະຕູຮົ້ວ: ຕັ້ງຖອຍຈາກມຸມແຫຼມ >8m ຝັ່ງມັງກອນ',
+      l2: '• ທາງລົດ: ໂຄ້ງອ່ອນນ້ອມ S-Curve ຫ້າມແທງຊື່',
+      l3: '• ບໍ່ມີບໍ່ນ້ຳ: ຈັດລານຫຍ້າຂຽວໂລ່ງ (ຫ້າມເຕີມໃນມຸມແຫຼມ)',
+      l4: '• ມີບໍ່ນ້ຳ: ຖົມມຸມແຫຼມຖິ້ມ! ຮັກສາໄວ້ສະເພາະໜ້າເຮືອນ',
+      sub1: 'ລານໝິງຖາງ: ໂລ່ງແຈ້ງກັກເກັບພະລັງຊີ່ (Ju Qi)',
+      sub2: '✓ ທາງໂຄ້ງມີໄມຕີ (曲则有情) ປ້ອງກັນພະລັງພິສ'
+    },
+    entranceHmong: {
+      title: '🚪 QHOV ROOJ & THAJ TSHAV',
+      l1: '• Qhov Rooj Vag: Pem kaum ntse thim >8m sab Zaj',
+      l2: '• Kev Tsheb: Nkhaus mos muag (S-Curve) txwv ncaj tua',
+      l3: '• Tsis Muaj Dej: Tshav xyoob ntsuab (txwv ntxiv kaum ntse)',
+      l4: '• Yog Muaj Dej: Ntsaws kaum ntse pov tseg! Khaws pem tsev',
+      sub1: 'Thaj Tshav Kaj: Huv si sau ntau lub zog',
+      sub2: '✓ Kev nkhaus zoo siab (曲则有情) tiv thaiv sha'
+    },
+
+    guaLao: {
+      title: '☯ ທາດກວ້າ & ພະລັງຊີ່',
+      l1: '• ທາດປະຈຳດິນ: ທາດໄຟແຫຼມ (Huo Sha 3-8/9)',
+      l2: '• ຖືກກັບ: ວັດວາ, ປ້ຳນ້ຳມັນ, ຮ້ານຂາຍເຫຼັກ/ໄຟຟ້າ',
+      l3: '• ບໍ່ຖືກກັບ: ຄົນທາດທອງ (ກວ້າ 6, 7) ແລະ ນ້ຳ (ກວ້າ 1)',
+      l4: '• ຫຼັງພິງ: ຫຼັງກວ້າງ Xuan Wu ດີເລີດຖ້າຕັ້ງສາກ 90°',
+      l5: '• ຄະແນນພະລັງ: 28/100 (ແກ້ໄຂແລ້ວຂຶ້ນ 75/100)',
+      sub1: 'ການດັດແປງ: ຕັດມຸມແຫຼມໜ້າປ່ຽນເປັນຄາງໝູ',
+      sub2: '✓ ປ່ຽນພະລັງພິສໃຫ້ກາຍເປັນພະລັງມຸງຄຸນ'
+    },
+    guaHmong: {
+      title: '☯ ZOG GUA & LUB ZOG QI',
+      l1: '• Zog Ntsiab: Zog Hluav Ntse (Fire Sha 3-8/9)',
+      l2: '• Haum rau: Tuam tsev, chaw tso roj tsheb, hlau/hluav taws',
+      l3: '• Tsis haum: Neeg Zog Kub (Gua 6, 7) thiab Dej (Gua 1)',
+      l4: '• Nraub Qaum: Xuan Wu dav heev yog tso ncaj 90°',
+      l5: '• Zog Zog: 28/100 (Kho tas nce txog 75/100)',
+      sub1: 'Kev Kho: Txiav kaum ntse hloov ua trapezoid',
+      sub2: '✓ Hloov zog phem ua kom muaj hmoov'
+    },
+
+    houseLao: {
+      title: '🏡 ການວາງເຮືອນ & ທິດ',
+      l1: '• ຕຳແໜ່ງ: ວາງອາຄານຫຼັກໃນເຂດຫຼັງກວ້າງ 1/3',
+      l2: '• ໄລຍະຖອຍ: ຖອຍຫ່າງຈາກມຸມແຫຼມໜ້າ >15-20m',
+      l3: '• ຮູບຊົງເຮືອນ: ສີ່ຫຼ່ຽມຜືນຜ້າຕັ້ງສາກ 90° ເຕັມຫຼັງ',
+      l4: '• ທິດຫົວຕຽງ: ພິງຝາທຶບດ້ານຫຼັງກວ້າງ',
+      bed: 'ຫົວຕຽງພິງກຳແພງຫຼັງທີ່ໜັກແໜ້ນ',
+      bedSub: 'ຫ້າມວາງຕຽງນອນ ຫຼື ເຕົາໄຟໃນເຂດມຸມແຫຼມ'
+    },
+    houseHmong: {
+      title: '🏡 KEV TSO TSEV & KEV TAWS',
+      l1: '• Chaw Tso Tsev: Tso rau sab nraub qaum dav 1/3',
+      l2: '• Qhov Nrug: Thim deb ntawm kaum ntse pem >15-20m',
+      l3: '• Duab Tsev: Rectangle ncaj ncees 90° puv nkaus',
+      l4: '• Taub Hau Pw: Phab ntsa sab nraub qaum dav',
+      bed: 'Taub Hau Pw: Phab ntsa nraub qaum ruaj khov',
+      bedSub: 'Txwv tsis tso txaj pw lossis qhov cub kaum ntse'
+    },
+
+    remedyLao: {
+      title: '🛡 ວິທີແກ້ & ເສີມຊີ່',
+      l1: '1. ສ້າງກຳແພງ 2.2m ຕັດມຸມແຫຼມໜ້າຖິ້ມ',
+      l2: '2. ປູກແນວຕົ້ນສົນ/ໄຜ່ດູດແຮງລົມໃນມຸມແຫຼມ',
+      l3: '3. ຕັ້ງສີລາໄທຊານ (石敢当) ທີ່ມຸມແຫຼມຕຳທາງ',
+      l4: '4. ຖົມໜອງນ້ຳແຫຼມຖິ້ມ; ຕັ້ງນ້ຳພຸເຄິ່ງວົງໜ້າເຮືອນ',
+      t1: '• ຫ້າມສ້າງເຮືອນຍື່ນເຂົ້າໄປໃນມຸມແຫຼມໜ້າ',
+      t2: '• ຫ້າມຕັ້ງປະຕູໃຫຍ່ກົງປາຍແຫຼມພໍດີ',
+      t3: '• ຫ້າມຂຸດສະນ້ຳສາມຫຼ່ຽມໃນມຸມແຫຼມ'
+    },
+    remedyHmong: {
+      title: '🛡️ KEV KHO 4 KAUJ RUAM',
+      l1: '1. Phab ntsa 2.2m txiav kaum ntse pem pov tseg',
+      l2: '2. Cog hav ntoo ntsuab/ntoo xyoob thaiv cua pem',
+      l3: '3. Tso pob zeb Tai Shan ntawm kaum ntse pem',
+      l4: '4. Ntsaws pas dej kaum ntse; tso dej semicircular pem tsev',
+      t1: '• Txwv tsis txhim tsev rau hauv kaum ntse pem',
+      t2: '• Txwv tsis qhib qhov rooj ncaj qhov ntse',
+      t3: '• Txwv tsis khawb pas dej peb fab kaum ntse'
+    },
+
+    renderCenter(lang, escapeXml) {
+      const isLao = lang === 'lao';
+      const houseText = isLao ? 'ອາຄານຫຼັກ' : 'Lub Tsev';
+      const houseSub = isLao ? 'ວາງຫຼັງກວ້າງ 90°' : 'Nraub Qaum Dav';
+      const wallPill = isLao ? '🛡️ ກຳແພງ 2.2m ຕັດມຸມ' : '🛡️ Phab Ntsa 2.2m Txiav';
+      const roadText = isLao ? 'ຖະໜົນດ້ານໜ້າ (Front Main Road)' : 'Kev Pem Hauv Ntej (Front Road)';
+      const hazardText = isLao ? '⚠️ ມຸມແຫຼມຕຳທາງ (Huo Sha)' : '⚠️ Kaum Ntse Ntsib Kev';
+
+      return `
+        <!-- Front Horizontal Road Polygon (Width=420px, Y=375..440) -->
+        <rect x="190" y="375" width="420" height="65" fill="url(#roadGrad)"/>
+        <line x1="190" y1="407" x2="610" y2="407" stroke="#FDE047" stroke-width="2" stroke-dasharray="14,8"/>
+        <line x1="190" y1="375" x2="610" y2="375" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4"/>
+        <rect x="330" y="415" width="140" height="18" rx="3" fill="#0F172A" fill-opacity="0.9" stroke="#F59E0B" stroke-width="1"/>
+        <text x="400" y="427" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FDE047" text-anchor="middle">${escapeXml(roadText)}</text>
+
+        <!-- Triangular Plot Ground: Rear Base (240,95) to (560,95), Front Apex (400,375) -->
+        <polygon points="400,375 240,95 560,95" fill="#FEF2F2"/>
+        <polygon points="400,365 248,102 552,102" fill="none" stroke="#EF4444" stroke-width="1" stroke-dasharray="4,4"/>
+
+        <!-- Rear Base Neighbor Boundary Line (Xuan Wu) -->
+        <line x1="240" y1="95" x2="560" y2="95" stroke="#16A34A" stroke-width="4"/>
+        <!-- Rear Backing Trees (5 Pine Trees for Mountain Support) -->
+        <circle cx="280" cy="85" r="9" fill="#14532D"/>
+        <circle cx="340" cy="82" r="10" fill="#15803D"/>
+        <circle cx="400" cy="80" r="11" fill="#166534"/>
+        <circle cx="460" cy="82" r="10" fill="#15803D"/>
+        <circle cx="520" cy="85" r="9" fill="#14532D"/>
+
+        <!-- Physical Side Fences -->
+        <line x1="240" y1="95" x2="365" y2="320" stroke="#DC2626" stroke-width="3"/>
+        <line x1="560" y1="95" x2="435" y2="320" stroke="#DC2626" stroke-width="3"/>
+
+        <!-- Acute Front Apex Hazard Zone (Y=320 down to 375) -->
+        <polygon points="400,375 365,320 435,320" fill="#FEE2E2"/>
+        <rect x="340" y="348" width="120" height="15" rx="3" fill="#B91C1C"/>
+        <text x="400" y="359" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${escapeXml(hazardText)}</text>
+
+        <!-- Tai Shan Stone at the sharp front apex -->
+        <rect x="375" y="362" width="50" height="12" rx="2" fill="#334155" stroke="#94A3B8" stroke-width="0.8"/>
+        <text x="400" y="371" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#F8FAFC" text-anchor="middle">TAI SHAN</text>
+
+        <!-- Truncation Wall (Remedy) across Front Apex at Y=320 -->
+        <line x1="365" y1="320" x2="435" y2="320" stroke="#15803D" stroke-width="5"/>
+        <rect x="330" y="302" width="140" height="15" rx="3" fill="#15803D"/>
+        <text x="400" y="313" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">[+] ${escapeXml(wallPill)}</text>
+
+        <!-- Gate Post on Front Left of Cut-Off Wall -->
+        <rect x="355" y="316" width="8" height="8" rx="2" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="385" y="316" width="8" height="8" rx="2" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <!-- Swinging Gate Doors -->
+        <line x1="359" y1="320" x2="368" y2="310" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="389" y1="320" x2="380" y2="310" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- S-CURVE DRIVEWAY FROM FRONT GATE TO HOUSE PORCH -->
+        <path d="M 374 375 L 374 320 C 374 285 340 260 365 225 C 375 210 385 205 385 185" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="335" y="270" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-30 335 270)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
+
+        <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+        <rect x="300" y="215" width="200" height="75" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="400" y="232" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="400" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
+        <text x="400" y="259" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ຕ້ອງໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Dej ntshiab puag ncig'}</text>
+        
+        <!-- Optional Semicircular Water Feature in Front of House -->
+        <path d="M 440 270 A 20 12 0 0 0 480 270 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="460" y="267" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
+
+        <!-- Taboo Note at Acute Apex -->
+        <text x="400" y="337" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.2" fill="#DC2626" text-anchor="middle">${isLao ? '🚫 ຖົມໜອງນ້ຳແຫຼມຖິ້ມ (ຫ້າມມີນ້ຳໃນມຸມແຫຼມ)' : '🚫 Ntsaws pas dej kaum ntse pov tseg'}</text>
+
+        <!-- SAFE RESIDENTIAL QUADRANT: Main House in Wide Rear (x=330, y=118, w=140, h=65) -->
+        <polygon points="325,118 400,98 475,118" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+        <rect x="330" y="118" width="140" height="65" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
+        
+        <!-- Architectural Room Partition inside House -->
+        <line x1="380" y1="118" x2="380" y2="183" stroke="#CA8A04" stroke-width="1.5" stroke-dasharray="3,2"/>
+        
+        <!-- Master Bedroom on Quiet Left Flank -->
+        <rect x="338" y="126" width="34" height="26" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1"/>
+        <rect x="338" y="126" width="34" height="7" fill="#0284C7"/>
+        <text x="355" y="144" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#0369A1" text-anchor="middle">${isLao ? 'ຫົວຕຽງ' : 'Taub Hau'}</text>
+        <text x="355" y="170" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">${isLao ? 'ຫ້ອງນອນໃຫຍ່' : 'Chaw Pw'}</text>
+
+        <!-- Living Hall on Right -->
+        <text x="424" y="146" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#1E293B" text-anchor="middle">${escapeXml(houseText)}</text>
+        <text x="424" y="164" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#475569" text-anchor="middle">${escapeXml(houseSub)}</text>
+        <rect x="416" y="180" width="16" height="5" fill="#1E293B"/>
+
+        <!-- Compass Sitting & Facing Axis Badge (Rear=North Zuo ⬆, Facing=South Xiang ⬇) -->
+        <g transform="translate(476, 122)">
+          <rect x="0" y="0" width="36" height="48" rx="3" fill="#FFFFFF" fill-opacity="0.95" stroke="#0284C7" stroke-width="1.2"/>
+          <text x="18" y="12" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Zuo ⬆</text>
+          <line x1="18" y1="16" x2="18" y2="28" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
+          <polygon points="18,34 15,28 21,28" fill="#0284C7"/>
+          <text x="18" y="44" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Xiang ⬇</text>
+        </g>
+
+        <!-- [✓] RECOMMENDED GATE BADGE -->
+        <g transform="translate(230, 312)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູຮົ້ວໃຫຍ່' : '✓ Rooj Vag Loj'}</text>
+          <line x1="90" y1="9" x2="125" y2="8" stroke="#15803D" stroke-width="1.8"/>
+          <circle cx="125" cy="8" r="2" fill="#15803D"/>
+        </g>
+        
+        <!-- [✗] FORBIDDEN GATE BADGE (AT ACUTE FRONT TIP) -->
+        <g transform="translate(440, 362)">
+          <rect x="0" y="0" width="92" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="46" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${isLao ? '✗ ຫ້າມຕັ້ງປາຍແຫຼມ' : '✗ Txwv Qhov Ntse'}</text>
+          <line x1="0" y1="9" x2="-35" y2="6" stroke="#DC2626" stroke-width="1.8"/>
+          <circle cx="-35" cy="6" r="2" fill="#DC2626"/>
+        </g>
+      `;
+    }
+  },
+
   // 8. LP-0008: Inverted Triangle Plot
   {
     id: 'LP-0008',
