@@ -155,13 +155,13 @@
 
   <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
   <!-- Wide open sunlit manicured green lawn with clean vertical stacking & zero overlap -->
-  <polygon points="368,172 432,172 452,228 348,228" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <text x="400" y="185" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">Thaj Tshav Kaj (Ming Tang)</text>
-  <text x="400" y="198" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#166534" text-anchor="middle">✓ Tshav xyoob ntsuab kaj (Zoo tshaj)</text>
-  <text x="400" y="210" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.8" fill="#0284C7" text-anchor="middle">• Pas dej (yog muaj): Me 10-15%</text>
+  <polygon points="368,168 432,168 448,210 352,210" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="400" y="180" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">Thaj Tshav Kaj (Ming Tang)</text>
+  <text x="400" y="193" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#166534" text-anchor="middle">✓ Tshav xyoob ntsuab kaj (Zoo tshaj)</text>
+  <text x="400" y="204" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.8" fill="#0284C7" text-anchor="middle">• Pas dej (yog muaj): Me 10-15%</text>
 
   <!-- SAFE RESIDENTIAL QUADRANT: Main House (x=330, y=236, w=140, h=65) -->
-  <polygon points="325,236 400,214 475,236" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+  <polygon points="325,236 400,222 475,236" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
   <rect x="330" y="236" width="140" height="65" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
   
   <!-- Architectural Room Partition inside House -->
@@ -177,8 +177,9 @@
   <text x="425" y="264" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#1E293B" text-anchor="middle">Lub Tsev Loj (Main House)</text>
   <text x="425" y="282" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#475569" text-anchor="middle">Tso rau thaj chaw nyab xeeb</text>
   
-  <!-- Front Porch / Door Indicator (Facing Front Ming Tang) -->
+  <!-- Front Porch / Door Indicator (Facing Front Ming Tang, Completely Visible & Labeled) -->
   <rect x="417" y="231" width="16" height="5" fill="#1E293B"/>
+  <text x="425" y="226" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">Rooj Loj</text>
 
   <!-- Compass Sitting & Facing Axis Badge (ທິດໜ້າ ⬆ / ທິດພິງ ⬇) -->
   <g transform="translate(480, 240)">

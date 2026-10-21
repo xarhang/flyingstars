@@ -120,41 +120,38 @@
     
         <!-- Surrounding Neighbor Property Labels -->
         <text x="400" y="76" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">Ciam Av Tom Qab</text>
-        <text x="260" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-70 260 220)">Tsev Sab Laug</text>
-        <text x="540" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(70 540 220)">Tsev Sab Xis</text>
 
-        <!-- Plot Ground Fill: (320, 355) front-left, (480, 355) front-right, (560, 95) rear-right, (240, 95) rear-left -->
-        <polygon points="240,95 560,95 480,355 320,355" fill="#DCFCE7"/>
-        <polygon points="246,99 554,99 476,351 324,351" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-dasharray="6,4"/>
+        <!-- Triangular Plot Perimeter Polygon (Apex pointing Down/South at Y=355) -->
+        <polygon points="260,85 540,85 400,355" fill="#FEF2F2" stroke="#DC2626" stroke-width="3"/>
+        
+        <!-- Rear Perimeter Wall (Wide Base at Rear Y=85) -->
+        <line x1="260" y1="85" x2="540" y2="85" stroke="#991B1B" stroke-width="4.5"/>
+        <line x1="260" y1="85" x2="400" y2="355" stroke="#334155" stroke-width="3"/>
+        <line x1="540" y1="85" x2="400" y2="355" stroke="#334155" stroke-width="3"/>
 
-        <!-- Rear & Side Perimeter Fences -->
-        <line x1="240" y1="95" x2="560" y2="95" stroke="#15803D" stroke-width="4.5"/>
-        <line x1="240" y1="95" x2="320" y2="355" stroke="#334155" stroke-width="3"/>
-        <line x1="560" y1="95" x2="480" y2="355" stroke="#334155" stroke-width="3"/>
-
-        <!-- Main House in Broad Rear (Architectural Layout) -->
-        <polygon points="330,115 400,90 470,115" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
-        <rect x="340" y="115" width="120" height="65" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
+        <!-- Main House in Rear Wide Base Area (Architectural Layout) -->
+        <polygon points="330,112 400,90 470,112" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+        <rect x="340" y="112" width="120" height="52" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
         
         <!-- Architectural Room Partition Line -->
-        <line x1="388" y1="115" x2="388" y2="180" stroke="#CA8A04" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <line x1="388" y1="112" x2="388" y2="164" stroke="#CA8A04" stroke-width="1.5" stroke-dasharray="3,2"/>
 
-        <!-- Left Room: Master Bedroom with Bed Head Against Solid Rear Wall -->
-        <rect x="348" y="123" width="32" height="24" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1"/>
-        <rect x="348" y="123" width="32" height="6" fill="#0284C7"/>
-        <text x="364" y="139" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">Taub Hau</text>
-        <text x="364" y="162" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">Chaw Pw</text>
+        <!-- Left Room: Bedroom -->
+        <rect x="348" y="118" width="32" height="22" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1"/>
+        <rect x="348" y="118" width="32" height="5.5" fill="#0284C7"/>
+        <text x="364" y="132" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">Taub Hau</text>
+        <text x="364" y="152" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">Chaw Pw</text>
 
         <!-- Right Room: Main Living Hall -->
-        <text x="424" y="142" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#1E293B" text-anchor="middle">Lub Tsev</text>
-        <text x="424" y="158" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#475569" text-anchor="middle">Chaw Txais Qhua</text>
+        <text x="424" y="136" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#1E293B" text-anchor="middle">Lub Tsev</text>
+        <text x="424" y="152" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#475569" text-anchor="middle">Chaw Txais Qhua</text>
         
-        <!-- Front Main Entrance Door / Porch -->
-        <rect x="416" y="176" width="16" height="5" fill="#1E293B"/>
-        <text x="424" y="188" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.8" fill="#0F172A" text-anchor="middle">Rooj Loj</text>
+        <!-- Front Main Entrance Door / Porch (Clear Buffer Zone) -->
+        <rect x="416" y="164" width="16" height="5" fill="#1E293B"/>
+        <text x="424" y="180" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">Rooj Loj</text>
 
-        <!-- Compass Axis Badge -->
-        <g transform="translate(470, 120)">
+        <!-- Compass Axis Badge (X=470..510) -->
+        <g transform="translate(470, 112)">
           <rect x="0" y="0" width="38" height="52" rx="3" fill="#FFFFFF" fill-opacity="0.92" stroke="#0284C7" stroke-width="1.2"/>
           <text x="19" y="13" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">Zaum ⬆</text>
           <line x1="19" y1="17" x2="19" y2="35" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
@@ -163,47 +160,40 @@
         </g>
 
         <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
-        <rect x="295" y="201" width="210" height="68" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-        <text x="400" y="215" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">Thaj Tshav Kaj (Ming Tang)</text>
-        <text x="400" y="228" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">• Tsis muaj dej: Tshav xyoob ntsuab kaj</text>
-        <text x="400" y="240" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">• Yog muaj dej: Dej ntshiab puag ncig</text>
+        <rect x="305" y="202" width="190" height="68" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="400" y="217" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">Thaj Tshav Kaj (Ming Tang)</text>
+        <text x="400" y="231" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">• Tsis muaj dej: Tshav xyoob ntsuab kaj</text>
+        <text x="400" y="244" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#0369A1" text-anchor="middle">• Yog muaj dej: Dej ntshiab puag ncig</text>
         <!-- Optional Water Feature Badge -->
-        <path d="M 445 258 A 18 10 0 0 0 481 258 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
-        <text x="463" y="255" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">[Pas Dej]</text>
-
-        <!-- ARCHITECTURAL FRONT FENCE WITH GATE OPENING AT DRAGON SIDE -->
-        <!-- Left fence: (320, 355) to (345, 355) -->
-        <line x1="320" y1="355" x2="345" y2="355" stroke="#334155" stroke-width="3.5"/>
-        <!-- Right fence: (390, 355) to (480, 355) -->
-        <line x1="390" y1="355" x2="480" y2="355" stroke="#334155" stroke-width="3.5"/>
+        <path d="M 440 258 A 16 8 0 0 0 472 258 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="456" y="255" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">[Pas Dej]</text>
 
         <!-- GATE POSTS ON FRONT FENCE LINE -->
-        <rect x="341" y="350" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
-        <rect x="386" y="350" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="345" y="348" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="395" y="348" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
 
-        <!-- SWINGING GATE DOORS (Open Inward) -->
-        <line x1="345" y1="355" x2="355" y2="344" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="390" y1="355" x2="380" y2="344" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- SWINGING GATE DOORS -->
+        <line x1="349" y1="353" x2="359" y2="342" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="399" y1="353" x2="389" y2="342" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
-        <path d="M 367 395 L 367 355 C 367 300 375 260 385 230" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
-        <text x="340" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-25 340 280)">⟿ Kev Nkhaus Zoo Siab</text>
+        <path d="M 370 395 L 370 355 C 370 310 390 280 410 240 C 420 210 424 190 424 169" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="355" y="322" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle">⟿ Kev Nkhaus Zoo Siab</text>
 
-        <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO LEFT CLEAR OF DRIVEWAY) -->
-        <g transform="translate(230, 350)">
+        <!-- [✓] RECOMMENDED GATE BADGE -->
+        <g transform="translate(245, 350)">
           <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
           <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">✓ Rooj Vag Loj</text>
-          <!-- Pointer Line to Gate Post -->
-          <line x1="90" y1="9" x2="111" y2="0" stroke="#15803D" stroke-width="1.8"/>
-          <circle cx="111" cy="0" r="2" fill="#15803D"/>
+          <line x1="90" y1="9" x2="100" y2="0" stroke="#15803D" stroke-width="1.8"/>
+          <circle cx="100" cy="0" r="2" fill="#15803D"/>
         </g>
-
-        <!-- [✗] FORBIDDEN GATE BADGE (ANCHORED TO TIGER CORNER) -->
-        <g transform="translate(425, 350)">
-          <rect x="0" y="0" width="82" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
-          <text x="41" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">✗ Txwv Rooj Vag</text>
-          <line x1="41" y1="0" x2="41" y2="-5" stroke="#DC2626" stroke-width="1.8"/>
-          <circle cx="41" cy="-5" r="2" fill="#DC2626"/>
+        
+        <!-- [✗] FORBIDDEN APEX GATE BADGE -->
+        <g transform="translate(415, 350)">
+          <rect x="0" y="0" width="88" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="44" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">✗ Txwv Rooj Vag</text>
+          <line x1="0" y1="9" x2="-12" y2="5" stroke="#DC2626" stroke-width="1.8"/>
+          <circle cx="-12" cy="5" r="2" fill="#DC2626"/>
         </g>
       
   </g>
