@@ -1314,13 +1314,15 @@ module.exports = [
         <text x="400" y="162" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">[+] ${escapeXml(wallPill)}</text>
 
         <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
-        <rect x="315" y="160" width="170" height="50" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-        <text x="400" y="174" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
-        <text x="400" y="187" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
-        <text x="400" y="199" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ຕ້ອງໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Dej ntshiab puag ncig'}</text>
-        <!-- Optional Water Feature Badge -->
-        <path d="M 445 198 A 18 10 0 0 0 481 198 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
-        <text x="463" y="195" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
+        <!-- Bounded strictly inside triangular boundaries -->
+        <polygon points="368,172 432,172 452,228 348,228" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="400" y="185" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງໂລ່ງແຈ້ງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        
+        <!-- Semicircular Jade Belt Water Basin in Front of House (Central Axis) -->
+        <path d="M 378 222 A 22 12 0 0 1 422 222 Z" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.5"/>
+        <circle cx="400" cy="215" r="2.5" fill="#0284C7"/>
+        <ellipse cx="400" cy="215" rx="10" ry="4" fill="none" stroke="#38BDF8" stroke-width="0.8"/>
+        <text x="400" y="205" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ອ່າງນ້ຳພຸ/ສະນ້ຳໂອບອຸ້ມ (ຖ້າມີ)' : 'Pas Dej Puag Ncig (Yog Muaj)'}</text>
 
         <!-- SAFE RESIDENTIAL QUADRANT: Main House (x=330, y=236, w=140, h=65) -->
         <polygon points="325,236 400,214 475,236" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
@@ -1340,13 +1342,14 @@ module.exports = [
         <text x="419" y="262" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#0369A1" text-anchor="middle">${isLao ? 'ຫົວຕຽງ' : 'Taub Hau'}</text>
         <text x="419" y="288" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">${isLao ? 'ຫ້ອງນອນໃຫຍ່' : 'Chaw Pw'}</text>
 
-        <!-- Compass Sitting & Facing Axis Badge (Base=South Zuo ⬇, Facing=North Xiang ⬆) -->
-        <g transform="translate(476, 240)">
-          <rect x="0" y="0" width="36" height="48" rx="3" fill="#FFFFFF" fill-opacity="0.95" stroke="#0284C7" stroke-width="1.2"/>
-          <text x="18" y="12" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Xiang ⬆</text>
-          <polygon points="18,16 15,22 21,22" fill="#0284C7"/>
-          <line x1="18" y1="22" x2="18" y2="34" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
-          <text x="18" y="44" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Zuo ⬇</text>
+        <!-- Compass Sitting & Facing Axis Badge (ທິດໜ້າ ⬆ / ທິດພິງ ⬇) -->
+        <g transform="translate(480, 240)">
+          <rect x="0" y="0" width="56" height="56" rx="4" fill="#FFFFFF" fill-opacity="0.96" stroke="#0284C7" stroke-width="1.2"/>
+          <text x="28" y="14" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດໜ້າ (向)' : 'Ntsia (向)'}</text>
+          <line x1="28" y1="18" x2="28" y2="34" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="2,2"/>
+          <polygon points="28,16 25,22 31,22" fill="#0284C7"/>
+          <polygon points="28,38 25,32 31,32" fill="#0284C7"/>
+          <text x="28" y="49" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດພິງ (坐)' : 'Zaum (坐)'}</text>
         </g>
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO COURTYARD -->
@@ -1524,13 +1527,15 @@ module.exports = [
         <text x="400" y="162" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">[+] ${escapeXml(wallPill)}</text>
 
         <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
-        <rect x="315" y="160" width="170" height="50" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-        <text x="400" y="174" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
-        <text x="400" y="187" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
-        <text x="400" y="199" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ຕ້ອງໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Dej ntshiab puag ncig'}</text>
-        <!-- Optional Water Feature Badge -->
-        <path d="M 445 198 A 18 10 0 0 0 481 198 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
-        <text x="463" y="195" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
+        <!-- Bounded strictly inside triangular boundaries -->
+        <polygon points="368,172 432,172 452,228 348,228" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="400" y="185" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງໂລ່ງແຈ້ງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        
+        <!-- Semicircular Jade Belt Water Basin in Front of House (Central Axis) -->
+        <path d="M 378 222 A 22 12 0 0 1 422 222 Z" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.5"/>
+        <circle cx="400" cy="215" r="2.5" fill="#0284C7"/>
+        <ellipse cx="400" cy="215" rx="10" ry="4" fill="none" stroke="#38BDF8" stroke-width="0.8"/>
+        <text x="400" y="205" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ອ່າງນ້ຳພຸ/ສະນ້ຳໂອບອຸ້ມ (ຖ້າມີ)' : 'Pas Dej Puag Ncig (Yog Muaj)'}</text>
 
         <!-- SAFE RESIDENTIAL QUADRANT: Main House (x=330, y=236, w=140, h=65) -->
         <polygon points="325,236 400,214 475,236" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
@@ -1550,13 +1555,14 @@ module.exports = [
         <text x="424" y="282" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#475569" text-anchor="middle">${escapeXml(houseSub)}</text>
         <rect x="416" y="298" width="16" height="5" fill="#1E293B"/>
 
-        <!-- Compass Sitting & Facing Axis Badge (Base=South Zuo ⬇, Facing=North Xiang ⬆) -->
-        <g transform="translate(476, 240)">
-          <rect x="0" y="0" width="36" height="48" rx="3" fill="#FFFFFF" fill-opacity="0.95" stroke="#0284C7" stroke-width="1.2"/>
-          <text x="18" y="12" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Xiang ⬆</text>
-          <polygon points="18,16 15,22 21,22" fill="#0284C7"/>
-          <line x1="18" y1="22" x2="18" y2="34" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
-          <text x="18" y="44" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Zuo ⬇</text>
+        <!-- Compass Sitting & Facing Axis Badge (ທິດໜ້າ ⬆ / ທິດພິງ ⬇) -->
+        <g transform="translate(480, 240)">
+          <rect x="0" y="0" width="56" height="56" rx="4" fill="#FFFFFF" fill-opacity="0.96" stroke="#0284C7" stroke-width="1.2"/>
+          <text x="28" y="14" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດໜ້າ (向)' : 'Ntsia (向)'}</text>
+          <line x1="28" y1="18" x2="28" y2="34" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="2,2"/>
+          <polygon points="28,16 25,22 31,22" fill="#0284C7"/>
+          <polygon points="28,38 25,32 31,32" fill="#0284C7"/>
+          <text x="28" y="49" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດພິງ (坐)' : 'Zaum (坐)'}</text>
         </g>
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO COURTYARD -->
@@ -1600,8 +1606,8 @@ module.exports = [
     nameHmong: 'San Jiao Tu: Kaum Ntse Pem (Thaj Av Peb Fab Kaum Ntse Ntsib Kev)',
     elementLao: 'ທາດໄຟແຫຼມຕຳທາງໜ້າ Front Sharp Fire / 尖嘴煞',
     elementHmong: 'Zog Hluav Ntse Pem Front Fire Sha / 尖嘴煞',
-    summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສາມຫຼ່ຽມຫົວແຫຼມຊີ້ອອກຫາຖະໜົນໜ້າບ້ານ (ຫຼັງກວ້າງ), ມຸມແຫຼມສ້າງພະລັງພິສທາດໄຟ (Fire Sha) ຕຳໃສ່ກະແສຈະລາຈອນ. ຕ້ອງສ້າງກຳແພງຕັດມຸມແຫຼມໜ້າ ເພື່ອສ້າງລານຕ້ອນຮັບສີ່ຫຼ່ຽມ, ວາງເຮືອນຢູ່ຫຼັງກວ້າງ, ເຮັດທາງລົດໂຄ້ງ S-Curve ແລະ ຮັກສາລານໝິງຖາງໂລ່ງແຈ້ງ.',
-    summaryHmong: 'Tswv Yim: Thaj av peb fab muaj kaum ntse taw rau txoj kev pem hauv ntej, nraub qaum dav. Kaum ntse ua rau muaj zog Hluav Taws Sha. Yuav tsum tsim phab ntsa txiav kaum pem, tso tsev rau sab nraub qaum dav, tsim kev nkhaus S-Curve.',
+    summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສາມຫຼ່ຽມຫົວແຫຼມຕຳທາງໜ້າ ເປັນພະລັງພິສທາດໄຟ (Fire Sha). ຕ້ອງສ້າງກຳແພງຕັດມຸມປ່ຽນເປັນຄາງໝູ, ວາງເຮືອນຢູ່ຫຼັງກວ້າງ ແລະ ເຮັດທາງລົດໂຄ້ງ S-Curve.',
+    summaryHmong: 'Tswv Yim: Thaj av peb fab kaum ntse ntsib kev yog zog Hluav Taws Sha. Yuav tsum tsim phab ntsa txiav kaum ua trapezoid, tso tsev rau sab nraub qaum dav thiab ua kev nkhaus S-Curve.',
 
     entranceLao: {
       title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
@@ -1738,18 +1744,20 @@ module.exports = [
         <line x1="389" y1="320" x2="380" y2="310" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
 
         <!-- S-CURVE DRIVEWAY FROM FRONT GATE TO HOUSE PORCH -->
-        <path d="M 374 375 L 374 320 C 374 285 340 260 365 225 C 375 210 385 205 385 185" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
-        <text x="335" y="270" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-30 335 270)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
+        <path d="M 370 320 C 345 285 340 245 355 215 C 365 195 395 190 416 186" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
+        <text x="325" y="245" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle" transform="rotate(-30 325 245)">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ' : '⟿ Kev Nkhaus Zoo Siab'}</text>
 
         <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
-        <rect x="300" y="215" width="200" height="75" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-        <text x="400" y="232" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
-        <text x="400" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
-        <text x="400" y="259" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ຕ້ອງໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Dej ntshiab puag ncig'}</text>
+        <!-- Bounded strictly inside the triangular plot with safe setbacks from red side fences -->
+        <polygon points="325,192 475,192 432,285 368,285" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="400" y="260" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.2" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງໂລ່ງແຈ້ງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="400" y="274" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? 'ເປີດໂລ່ງຮັບແສງສະຫວ່າງ &amp; ພະລັງຊີ່ (Ju Qi)' : 'Qhib siab txais teeb &amp; txais zog Qi'}</text>
         
-        <!-- Optional Semicircular Water Feature in Front of House -->
-        <path d="M 440 270 A 20 12 0 0 0 480 270 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
-        <text x="460" y="267" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
+        <!-- Semicircular Jade Belt Water Basin in Front of House (Central Axis) -->
+        <path d="M 372 205 A 28 16 0 0 0 428 205 Z" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.5"/>
+        <circle cx="400" cy="214" r="2.8" fill="#0284C7"/>
+        <ellipse cx="400" cy="214" rx="12" ry="4.5" fill="none" stroke="#38BDF8" stroke-width="0.9"/>
+        <text x="400" y="198" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#0369A1" text-anchor="middle">${isLao ? 'ອ່າງນ້ຳພຸ/ສະນ້ຳໂອບອຸ້ມ (ຖ້າມີ)' : 'Pas Dej Puag Ncig (Yog Muaj)'}</text>
 
         <!-- Taboo Note at Acute Apex -->
         <text x="400" y="337" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.2" fill="#DC2626" text-anchor="middle">${isLao ? '🚫 ຖົມໜອງນ້ຳແຫຼມຖິ້ມ (ຫ້າມມີນ້ຳໃນມຸມແຫຼມ)' : '🚫 Ntsaws pas dej kaum ntse pov tseg'}</text>
@@ -1772,13 +1780,14 @@ module.exports = [
         <text x="424" y="164" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#475569" text-anchor="middle">${escapeXml(houseSub)}</text>
         <rect x="416" y="180" width="16" height="5" fill="#1E293B"/>
 
-        <!-- Compass Sitting & Facing Axis Badge (Rear=North Zuo ⬆, Facing=South Xiang ⬇) -->
-        <g transform="translate(476, 122)">
-          <rect x="0" y="0" width="36" height="48" rx="3" fill="#FFFFFF" fill-opacity="0.95" stroke="#0284C7" stroke-width="1.2"/>
-          <text x="18" y="12" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Zuo ⬆</text>
-          <line x1="18" y1="16" x2="18" y2="28" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
-          <polygon points="18,34 15,28 21,28" fill="#0284C7"/>
-          <text x="18" y="44" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Xiang ⬇</text>
+        <!-- Compass Orientation Badge (ທິດພິງຫຼັງ ⬆ / ທິດໜ້າບ້ານ ⬇) -->
+        <g transform="translate(480, 118)">
+          <rect x="0" y="0" width="56" height="56" rx="4" fill="#FFFFFF" fill-opacity="0.96" stroke="#0284C7" stroke-width="1.2"/>
+          <text x="28" y="14" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດພິງ (坐)' : 'Zaum (坐)'}</text>
+          <line x1="28" y1="18" x2="28" y2="34" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="2,2"/>
+          <polygon points="28,16 25,22 31,22" fill="#0284C7"/>
+          <polygon points="28,38 25,32 31,32" fill="#0284C7"/>
+          <text x="28" y="49" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດໜ້າ (向)' : 'Ntsia (向)'}</text>
         </g>
 
         <!-- [✓] RECOMMENDED GATE BADGE -->

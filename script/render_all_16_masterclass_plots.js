@@ -55,6 +55,41 @@ function escapeDict(obj) {
   return res;
 }
 
+// Smart Auto-Wrapping Bottom Doctrinal Summary Bar Renderer
+function renderSummaryBarSvg(summary) {
+  if (!summary) return '';
+  if (summary.length <= 95) {
+    return `
+  <!-- Bottom Doctrinal Summary -->
+  <rect x="12" y="446" width="776" height="27" rx="5" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
+  <text x="400" y="463" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.2" fill="#F8FAFC" text-anchor="middle">${summary}</text>`;
+  }
+  
+  // Split into 2 lines around middle punctuation or space
+  const mid = Math.floor(summary.length / 2);
+  let splitIdx = -1;
+  for (let i = 0; i < 30; i++) {
+    if (summary[mid + i] === '.' || summary[mid + i] === ',' || summary[mid + i] === ' ') {
+      splitIdx = mid + i + 1;
+      break;
+    }
+    if (summary[mid - i] === '.' || summary[mid - i] === ',' || summary[mid - i] === ' ') {
+      splitIdx = mid - i + 1;
+      break;
+    }
+  }
+  if (splitIdx === -1) splitIdx = mid;
+  
+  const l1 = summary.substring(0, splitIdx).trim();
+  const l2 = summary.substring(splitIdx).trim();
+
+  return `
+  <!-- Bottom Doctrinal Summary -->
+  <rect x="12" y="445" width="776" height="29" rx="5" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
+  <text x="400" y="457" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">${l1}</text>
+  <text x="400" y="469" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#CBD5E1" text-anchor="middle">${l2}</text>`;
+}
+
 // Special Scissors Sha Renderer for LP-0007
 function renderScissorsShaSvg(lang = 'lao') {
   const isLao = lang === 'lao';
@@ -317,14 +352,16 @@ function renderScissorsShaSvg(lang = 'lao') {
   <circle cx="410" cy="171" r="7" fill="#166534"/>
   <circle cx="425" cy="173" r="6" fill="#15803D"/>
 
-  <!-- Semicircular Ming Tang Water Pond (Front Courtyard) at Y=190 -->
   <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
-  <rect x="310" y="155" width="180" height="42" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <text x="400" y="167" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
-  <text x="400" y="178" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ • ມີບໍ່ນ້ຳ: ນ້ຳໃສໂອບອຸ້ມ' : '• Tsis muaj dej: Tshav ntsuab • Muaj dej: Dej ntshiab'}</text>
-  <!-- Optional Water Feature Badge -->
-  <path d="M 445 192 A 16 9 0 0 0 475 192 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="460" y="190" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.2" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
+  <!-- Bounded strictly inside triangular boundaries -->
+  <polygon points="368,172 432,172 452,228 348,228" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="400" y="185" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງໂລ່ງແຈ້ງ (Bright Hall / 聚气)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+  
+  <!-- Semicircular Jade Belt Water Basin in Front of House (Central Axis) -->
+  <path d="M 378 222 A 22 12 0 0 1 422 222 Z" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.5"/>
+  <circle cx="400" cy="215" r="2.5" fill="#0284C7"/>
+  <ellipse cx="400" cy="215" rx="10" ry="4" fill="none" stroke="#38BDF8" stroke-width="0.8"/>
+  <text x="400" y="205" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ອ່າງນ້ຳພຸ/ສະນ້ຳໂອບອຸ້ມ (ຖ້າມີ)' : 'Pas Dej Puag Ncig (Yog Muaj)'}</text>
 
   <!-- SAFE RESIDENTIAL QUADRANT: Main House (x=330, y=236, w=140, h=65) -->
   <polygon points="325,236 400,214 475,236" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
@@ -346,13 +383,14 @@ function renderScissorsShaSvg(lang = 'lao') {
   <!-- Front Porch / Door Indicator -->
   <rect x="417" y="298" width="16" height="5" fill="#1E293B"/>
 
-  <!-- Compass Sitting & Facing Axis Badge (Base=South Zuo ⬇, Facing=North Xiang ⬆) -->
-  <g transform="translate(476, 240)">
-    <rect x="0" y="0" width="36" height="48" rx="3" fill="#FFFFFF" fill-opacity="0.95" stroke="#0284C7" stroke-width="1.2"/>
-    <text x="18" y="12" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Xiang ⬆</text>
-    <polygon points="18,16 15,22 21,22" fill="#0284C7"/>
-    <line x1="18" y1="22" x2="18" y2="34" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
-    <text x="18" y="44" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Zuo ⬇</text>
+  <!-- Compass Sitting & Facing Axis Badge (ທິດໜ້າ ⬆ / ທິດພິງ ⬇) -->
+  <g transform="translate(480, 240)">
+    <rect x="0" y="0" width="56" height="56" rx="4" fill="#FFFFFF" fill-opacity="0.96" stroke="#0284C7" stroke-width="1.2"/>
+    <text x="28" y="14" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດໜ້າ (向)' : 'Ntsia (向)'}</text>
+    <line x1="28" y1="18" x2="28" y2="34" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="2,2"/>
+    <polygon points="28,16 25,22 31,22" fill="#0284C7"/>
+    <polygon points="28,38 25,32 31,32" fill="#0284C7"/>
+    <text x="28" y="49" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດພິງ (坐)' : 'Zaum (坐)'}</text>
   </g>
 
   <!-- Left Dragon Driveway: Through the Fence Gate to Courtyard -->
@@ -391,9 +429,7 @@ function renderScissorsShaSvg(lang = 'lao') {
   <rect x="260" y="365" width="280" height="16" rx="3" fill="#14532D"/>
   <text x="400" y="377" font-family="'Noto Sans Lao', 'Phetsarath OT', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F0FDF4" text-anchor="middle">${t.xuanWu}</text>
 
-  <!-- Bottom Doctrinal Summary -->
-  <rect x="12" y="448" width="776" height="26" rx="5" fill="#1E293B"/>
-  <text x="400" y="465" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="9" fill="#F8FAFC" text-anchor="middle">${t.bottomSummary}</text>
+  ${renderSummaryBarSvg(t.bottomSummary)}
 </svg>
 `;
 }
@@ -549,10 +585,7 @@ function renderMasterPlotSvg(plot, lang = 'lao') {
     ${centerSvg}
   </g>
 
-  <!-- BOTTOM DOCTRINAL SUMMARY CARD (Y=448 to 474) -->
-  <!-- ========================================================================= -->
-  <rect x="12" y="448" width="776" height="26" rx="5" fill="#1E293B"/>
-  <text x="400" y="465" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="9.5" fill="#F8FAFC" text-anchor="middle">${summary}</text>
+  ${renderSummaryBarSvg(summary)}
 </svg>
 `;
 }

@@ -153,14 +153,16 @@
   <circle cx="410" cy="171" r="7" fill="#166534"/>
   <circle cx="425" cy="173" r="6" fill="#15803D"/>
 
-  <!-- Semicircular Ming Tang Water Pond (Front Courtyard) at Y=190 -->
   <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
-  <rect x="310" y="155" width="180" height="42" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <text x="400" y="167" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">ລານໝິງຖາງ (Bright Hall / 聚气)</text>
-  <text x="400" y="178" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ • ມີບໍ່ນ້ຳ: ນ້ຳໃສໂອບອຸ້ມ</text>
-  <!-- Optional Water Feature Badge -->
-  <path d="M 445 192 A 16 9 0 0 0 475 192 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="460" y="190" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.2" fill="#0284C7" text-anchor="middle">[ສະນ້ຳ(ຖ້າມີ)]</text>
+  <!-- Bounded strictly inside triangular boundaries -->
+  <polygon points="368,172 432,172 452,228 348,228" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="400" y="185" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">ລານໝິງຖາງໂລ່ງແຈ້ງ (Bright Hall / 聚气)</text>
+  
+  <!-- Semicircular Jade Belt Water Basin in Front of House (Central Axis) -->
+  <path d="M 378 222 A 22 12 0 0 1 422 222 Z" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.5"/>
+  <circle cx="400" cy="215" r="2.5" fill="#0284C7"/>
+  <ellipse cx="400" cy="215" rx="10" ry="4" fill="none" stroke="#38BDF8" stroke-width="0.8"/>
+  <text x="400" y="205" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">ອ່າງນ້ຳພຸ/ສະນ້ຳໂອບອຸ້ມ (ຖ້າມີ)</text>
 
   <!-- SAFE RESIDENTIAL QUADRANT: Main House (x=330, y=236, w=140, h=65) -->
   <polygon points="325,236 400,214 475,236" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
@@ -182,13 +184,14 @@
   <!-- Front Porch / Door Indicator -->
   <rect x="417" y="298" width="16" height="5" fill="#1E293B"/>
 
-  <!-- Compass Sitting & Facing Axis Badge (Base=South Zuo ⬇, Facing=North Xiang ⬆) -->
-  <g transform="translate(476, 240)">
-    <rect x="0" y="0" width="36" height="48" rx="3" fill="#FFFFFF" fill-opacity="0.95" stroke="#0284C7" stroke-width="1.2"/>
-    <text x="18" y="12" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Xiang ⬆</text>
-    <polygon points="18,16 15,22 21,22" fill="#0284C7"/>
-    <line x1="18" y1="22" x2="18" y2="34" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
-    <text x="18" y="44" font-family="'Segoe UI', 'Noto Sans Lao', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Zuo ⬇</text>
+  <!-- Compass Sitting & Facing Axis Badge (ທິດໜ້າ ⬆ / ທິດພິງ ⬇) -->
+  <g transform="translate(480, 240)">
+    <rect x="0" y="0" width="56" height="56" rx="4" fill="#FFFFFF" fill-opacity="0.96" stroke="#0284C7" stroke-width="1.2"/>
+    <text x="28" y="14" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">ທິດໜ້າ (向)</text>
+    <line x1="28" y1="18" x2="28" y2="34" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="2,2"/>
+    <polygon points="28,16 25,22 31,22" fill="#0284C7"/>
+    <polygon points="28,38 25,32 31,32" fill="#0284C7"/>
+    <text x="28" y="49" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0369A1" text-anchor="middle">ທິດພິງ (坐)</text>
   </g>
 
   <!-- Left Dragon Driveway: Through the Fence Gate to Courtyard -->
@@ -227,7 +230,9 @@
   <rect x="260" y="365" width="280" height="16" rx="3" fill="#14532D"/>
   <text x="400" y="377" font-family="'Noto Sans Lao', 'Phetsarath OT', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F0FDF4" text-anchor="middle">ເຕົ່າດຳ (Xuan Wu): ຕົ້ນສົນ 5 ຕົ້ນພິງຫຼັງແໜ້ນ</text>
 
+  
   <!-- Bottom Doctrinal Summary -->
-  <rect x="12" y="448" width="776" height="26" rx="5" fill="#1E293B"/>
-  <text x="400" y="465" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="9" fill="#F8FAFC" text-anchor="middle">ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສາມຫຼ່ຽມເປັນທາດໄຟ (火) ຖືກທາງຕັດຄືມີດຕັດ ຕ້ອງສ້າງກຳແພງຕັດມຸມປ່ຽນຮູບຊົງໃຫ້ເປັນຄາງໝູ/ສີ່ຫຼ່ຽມ.</text>
+  <rect x="12" y="445" width="776" height="29" rx="5" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
+  <text x="400" y="457" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສາມຫຼ່ຽມເປັນທາດໄຟ (火) ຖືກທາງຕັດຄືມີດຕັດ</text>
+  <text x="400" y="469" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#CBD5E1" text-anchor="middle">ຕ້ອງສ້າງກຳແພງຕັດມຸມປ່ຽນຮູບຊົງໃຫ້ເປັນຄາງໝູ/ສີ່ຫຼ່ຽມ.</text>
 </svg>
