@@ -646,11 +646,9 @@ for (const plot of allPlots) {
   fs.writeFileSync(`asset/book_figures/clean_hmong/${plot.id}.png`, pngHmong);
   fs.writeFileSync(`asset/book_figures/clean_hmong/${plot.id}.svg`, svgHmong, 'utf8');
 
-  // Also write selected plots to artifactDir for inspection
-  if (['LP-0001', 'LP-0007', 'LP-0007B', 'LP-0007C', 'LP-0007D', 'LP-0009', 'LP-0010', 'LP-0012', 'LP-0015', 'LP-0016'].includes(plot.id)) {
-    fs.writeFileSync(path.join(artifactDir, `${plot.id}-lao-masterclass.png`), pngLao);
-    fs.writeFileSync(path.join(artifactDir, `${plot.id}-hmong-masterclass.png`), pngHmong);
-  }
+  // Also write all plots to artifactDir for inspection
+  fs.writeFileSync(path.join(artifactDir, `${plot.id}-lao-masterclass.png`), pngLao);
+  fs.writeFileSync(path.join(artifactDir, `${plot.id}-hmong-masterclass.png`), pngHmong);
 
   console.log(`  ✓ Successfully rendered ${plot.id} (Lao & Hmong)`);
 }
