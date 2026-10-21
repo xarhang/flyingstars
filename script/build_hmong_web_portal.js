@@ -939,16 +939,6 @@ const html = `<!DOCTYPE html>
       <div class="atlas-hero">
         <h2>🗺️ PHAU NTAWV QHIA TAG NRHO 109 QAUV ROOB THIAB THAJ AV</h2>
         <p>Tshawb nrhiav cov qauv roob, kwj deg, av xue, 16 thaj av thiab 18 ciam av nrog rau physics huab cua, kev teeb qhov rooj, pas dej thiab tswv yim kho kom haum Looj Mem.</p>
-        <div class="stats-row">
-          <div class="stat-badge"><strong>109</strong> Tag Nrho Qauv</div>
-          <div class="stat-badge"><strong>18</strong> Ciam Av (Boundaries)</div>
-          <div class="stat-badge"><strong>16</strong> Thaj Av (Land Plots)</div>
-          <div class="stat-badge"><strong>35</strong> Roob Sha (Mountain Sha)</div>
-          <div class="stat-badge"><strong>16</strong> Dej Ntws (Waters)</div>
-          <div class="stat-badge"><strong>16</strong> Av Xue (Sacred Soils)</div>
-          <div class="stat-badge"><strong>5</strong> Roob 5 Thas (Elements)</div>
-          <div class="stat-badge"><strong>3</strong> Huab Cua (Winds)</div>
-        </div>
       </div>
 
       <div class="search-box">

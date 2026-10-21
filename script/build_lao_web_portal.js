@@ -822,18 +822,8 @@ const html = `<!DOCTYPE html>
     <!-- TAB 1: MASTER ATLAS 109 ARCHETYPES -->
     <div id="tabAtlas" class="tab-view active">
       <div class="atlas-hero">
-        <h2>🗺️ ສາລະນຸກົມຮວງຈຸ້ຍ 109 ຮູບແບບ ພູເຂົາ, ສາຍນ້ຳ, ຕອນດິນ & ສະພາບແວດລ້ອມຕິດແປະ</h2>
+        <h2>🗺️ ສາລະນຸກົມຮວງຈຸ້ຍ 109 ຮູບແບບ ພູເຂົາ, ສາຍນ້ຳ, ຕອນດິນ &amp; ສະພາບແວດລ້ອມຕິດແປະ</h2>
         <p>ຄັງຄວາມຮູ້ຮວງຈຸ້ຍຫຼວນໂຖວ (Luan Tou), ຜັງຕອນດິນ ແລະ ສະພາບແວດລ້ອມຕິດແປະ 109 ຮູບແບບ: ວິເຄາະພະລັງງານຊີ່, ຫຼັກການວາງປະຕູ, ໜອງນ້ຳ ແລະ ວິທີແກ້ໄຂຮວງຈຸ້ຍຢ່າງລະອຽດ.</p>
-        <div class="stats-row">
-          <div class="stat-badge"><strong>109</strong> ຮູບແບບທັງໝົດ</div>
-          <div class="stat-badge"><strong>18</strong> ສະພາບແວດລ້ອມຕິດແປະ (Boundary Adjacency)</div>
-          <div class="stat-badge"><strong>16</strong> ຮູບຊົງຕອນດິນ (Land Plots)</div>
-          <div class="stat-badge"><strong>35</strong> ພູເຂົາພິສ (Mountain Sha)</div>
-          <div class="stat-badge"><strong>16</strong> ສາຍນ້ຳ (Water Courses)</div>
-          <div class="stat-badge"><strong>16</strong> ດິນມັງກອນ (Sacred Soils)</div>
-          <div class="stat-badge"><strong>5</strong> ພູເຂົາ 5 ທາດ (Five Peaks)</div>
-          <div class="stat-badge"><strong>3</strong> ຮູບແບບລົມ (Winds)</div>
-        </div>
       </div>
 
       <div class="search-box">
@@ -843,12 +833,12 @@ const html = `<!DOCTYPE html>
       <div class="filter-pills" id="atlasFilters">
         <button class="filter-btn active" data-cat="all">ທັງໝົດ (109)</button>
         <button class="filter-btn" data-cat="env">🏞️ 18 ສະພາບແວດລ້ອມຕິດແປະ (Boundaries)</button>
-        <button class="filter-btn" data-cat="plots">16 ຕອນດິນເລຂາຄະນິດ (Land Plots)</button>
-        <button class="filter-btn" data-cat="peaks">5 ພູເຂົາຫ້າທາດ</button>
-        <button class="filter-btn" data-cat="winds">ຮູບແບບລົມ (Winds)</button>
-        <button class="filter-btn" data-cat="waters">ສາຍນ້ຳ (Waters)</button>
-        <button class="filter-btn" data-cat="soils">ດິນມັງກອນ (Sacred Soils)</button>
-        <button class="filter-btn" data-cat="shas">35 ພູເຂົາພິສ Sha</button>
+        <button class="filter-btn" data-cat="plots">📐 16 ຮູບຊົງຕອນດິນ (Land Plots)</button>
+        <button class="filter-btn" data-cat="shas">⛰️ 35 ພູເຂົາພິສ (Mountain Sha)</button>
+        <button class="filter-btn" data-cat="waters">🌊 16 ສາຍນ້ຳ (Water Courses)</button>
+        <button class="filter-btn" data-cat="soils">🌱 16 ດິນມັງກອນ (Sacred Soils)</button>
+        <button class="filter-btn" data-cat="peaks">⭐ 5 ພູເຂົາ 5 ທາດ (Five Peaks)</button>
+        <button class="filter-btn" data-cat="winds">💨 3 ຮູບແບບລົມ (Winds)</button>
       </div>
 
       <div class="atlas-grid" id="atlasGrid"></div>
