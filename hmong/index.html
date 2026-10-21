@@ -290,9 +290,12 @@
     .card-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      background: #0B0F17;
       display: block;
       transition: transform 0.3s;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
     }
     .item-card:hover .card-img {
       transform: scale(1.04);
@@ -381,12 +384,12 @@
     }
     .modal-box {
       background: var(--card-bg);
-      border-radius: 16px;
-      max-width: 960px;
+      border-radius: 18px;
+      max-width: 1060px;
       width: 100%;
-      max-height: 90vh;
+      max-height: 92vh;
       overflow-y: auto;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.35);
       border: 1px solid var(--border);
     }
     .modal-head {
@@ -414,17 +417,50 @@
     .modal-img-wrap {
       width: 100%;
       background: #0B0F17;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
       margin-bottom: 24px;
       border: 1px solid var(--border);
       text-align: center;
+      position: relative;
     }
     .modal-img {
       max-width: 100%;
-      max-height: 480px;
+      max-height: 560px;
       object-fit: contain;
       display: inline-block;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
+      cursor: zoom-in;
+      transition: transform 0.2s ease;
+    }
+    .modal-img-wrap:hover .modal-img {
+      transform: scale(1.01);
+    }
+    .modal-zoom-pill {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #F8FAFC;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 5;
+    }
+    .modal-zoom-pill:hover {
+      background: #DC2626;
+      color: #FFFFFF;
+      transform: translateY(-2px);
     }
     .section-block {
       margin-bottom: 16px;
@@ -944,7 +980,10 @@
       </div>
       <div class="modal-content">
         <div class="modal-img-wrap">
-          <img id="modalDetailImg" class="modal-img" src="" alt="">
+          <img id="modalDetailImg" class="modal-img" src="" alt="" title="Nyem rau qhov loj Ultra-HD 2400x1440">
+          <a id="modalDetailImgZoomBtn" href="#" target="_blank" class="modal-zoom-pill" title="Saib Duab Loj Ultra-HD 2400x1440">
+            🔍 Saib Duab Loj Ultra-HD (2400x1440)
+          </a>
         </div>
         <div id="modalDetailsArea"></div>
       </div>
@@ -1095,7 +1134,11 @@
 
       document.getElementById('modalIdTag').textContent = item.id + ' • ' + (item.isGood ? '✓ QAUV ZOO' : '✗ QAUV PHEM') + ' (' + item.score + '/100)';
       document.getElementById('modalMainTitle').textContent = item.name;
-      document.getElementById('modalDetailImg').src = item.img;
+      const mImg = document.getElementById('modalDetailImg');
+      mImg.src = item.img;
+      mImg.onclick = () => window.open(item.img, '_blank');
+      const zoomBtn = document.getElementById('modalDetailImgZoomBtn');
+      if (zoomBtn) zoomBtn.href = item.img;
 
       var bodyHtml = '';
       if (item.type === 'landplot' || item.type === 'boundary') {

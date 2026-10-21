@@ -557,9 +557,9 @@ function renderMasterPlotSvg(plot, lang = 'lao') {
 `;
 }
 
-// Resvg Configuration with pure Lao OpenType fonts
+// Resvg Configuration with pure Lao OpenType fonts (Ultra-HD 2400x1440 for Retina & 4K screens)
 const resvgOpts = {
-  fitTo: { mode: 'width', value: 800 },
+  fitTo: { mode: 'width', value: 2400 },
   font: {
     defaultFontFamily: 'Noto Sans Lao',
     fontFiles: [
@@ -601,17 +601,21 @@ for (const plot of allPlots) {
   const resvgH = new Resvg(svgHmong, resvgOpts);
   const pngHmong = resvgH.render().asPng();
 
-  // 1. Save Lao PNG to lao/img/
+  // 1. Save Lao PNG & SVG to lao/img/
   fs.writeFileSync(`lao/img/${plot.id}.png`, pngLao);
+  fs.writeFileSync(`lao/img/${plot.id}.svg`, svgLao, 'utf8');
 
-  // 2. Save Hmong PNG to hmong/img/
+  // 2. Save Hmong PNG & SVG to hmong/img/
   fs.writeFileSync(`hmong/img/${plot.id}.png`, pngHmong);
+  fs.writeFileSync(`hmong/img/${plot.id}.svg`, svgHmong, 'utf8');
 
   // 3. Save to book_figures/cases_6126/ (Lao master for primary book reference)
   fs.writeFileSync(`book_figures/cases_6126/${plot.id}.png`, pngLao);
+  fs.writeFileSync(`book_figures/cases_6126/${plot.id}.svg`, svgLao, 'utf8');
 
   // 4. Save to asset/book_figures/clean_hmong/ (Hmong for RPA book)
   fs.writeFileSync(`asset/book_figures/clean_hmong/${plot.id}.png`, pngHmong);
+  fs.writeFileSync(`asset/book_figures/clean_hmong/${plot.id}.svg`, svgHmong, 'utf8');
 
   // Also write selected plots to artifactDir for inspection
   if (['LP-0001', 'LP-0007', 'LP-0007B', 'LP-0007C', 'LP-0009', 'LP-0010', 'LP-0012', 'LP-0015', 'LP-0016'].includes(plot.id)) {

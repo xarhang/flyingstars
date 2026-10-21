@@ -291,7 +291,9 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      background: #FAFAFA;
+      background: #0F172A;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
     }
     .card-score {
       position: absolute;
@@ -364,12 +366,12 @@
     .modal-box {
       background: var(--card-bg);
       width: 100%;
-      max-width: 860px;
-      max-height: 90vh;
+      max-width: 1060px;
+      max-height: 92vh;
       border-radius: 18px;
       overflow-y: auto;
       border: 1px solid var(--border);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.35);
       position: relative;
     }
     .modal-header {
@@ -399,20 +401,53 @@
     .modal-body { padding: 24px; }
     .modal-img-wrap {
       width: 100%;
-      max-height: 440px;
-      background: #FAFAFA;
+      max-height: 560px;
+      background: #0F172A;
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       margin-bottom: 20px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
     .modal-img-wrap img {
       max-width: 100%;
-      max-height: 440px;
+      max-height: 560px;
       object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
+      cursor: zoom-in;
+      transition: transform 0.2s ease;
+    }
+    .modal-img-wrap:hover img {
+      transform: scale(1.01);
+    }
+    .modal-zoom-pill {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #F8FAFC;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 5;
+    }
+    .modal-zoom-pill:hover {
+      background: #DC2626;
+      color: #FFFFFF;
+      transform: translateY(-2px);
     }
     .modal-section { margin-bottom: 18px; }
     .modal-section h4 {
@@ -794,7 +829,10 @@
       </div>
       <div class="modal-body">
         <div class="modal-img-wrap">
-          <img id="mImg" src="" alt="Drawing">
+          <img id="mImg" src="" alt="Drawing" title="ຄລິກເພື່ອເບິ່ງຮູບເຕັມຈໍ Ultra-HD">
+          <a id="mImgZoomBtn" href="#" target="_blank" class="modal-zoom-pill" title="ເບິ່ງຮູບຂະໜາດເຕັມ Ultra-HD 2400x1440">
+            🔍 ເບິ່ງຮູບໃຫຍ່ Ultra-HD 2400x1440
+          </a>
         </div>
         <div class="modal-section">
           <h4>🔬 ລັກສະນະທາງກາຍະພາບ (Physics & Geometry)</h4>
@@ -961,7 +999,11 @@
     // MODAL
     function openModal(item) {
       document.getElementById('mTitle').textContent = item.id + ': ' + item.name;
-      document.getElementById('mImg').src = item.img;
+      const mImg = document.getElementById('mImg');
+      mImg.src = item.img;
+      mImg.onclick = () => window.open(item.img, '_blank');
+      const zoomBtn = document.getElementById('mImgZoomBtn');
+      if (zoomBtn) zoomBtn.href = item.img;
       document.getElementById('mPhysics').textContent = item.physics || '-';
       document.getElementById('mRemedy').textContent = item.remedy || '-';
 

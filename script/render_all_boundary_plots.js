@@ -1272,9 +1272,9 @@ function renderBoundarySvg(item, lang = 'lao') {
 `;
 }
 
-// Resvg Configuration with pure Lao OpenType fonts
+// Resvg Configuration with pure Lao OpenType fonts (Ultra-HD 2400x1440 for Retina & 4K screens)
 const resvgOpts = {
-  fitTo: { mode: 'width', value: 800 },
+  fitTo: { mode: 'width', value: 2400 },
   font: {
     defaultFontFamily: 'Noto Sans Lao',
     fontFiles: [
