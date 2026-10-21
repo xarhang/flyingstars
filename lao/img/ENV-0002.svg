@@ -1,0 +1,143 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EDF2F7"/>
+    </linearGradient>
+    <linearGradient id="waterFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#bgGrad)"/>
+
+  <!-- TOP TITLE HUD BAR -->
+  <rect x="0" y="0" width="800" height="42" fill="#0F172A"/>
+  <rect x="18" y="9" width="80" height="24" rx="4" fill="#0284C7"/>
+  <text x="58" y="25" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">ENV-0002</text>
+  <text x="108" y="26" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#F8FAFC">ລະບົບນ້ຳຮວງຈຸ້ຍ: ໜອງນ້ຳໃນດິນ vs ແມ່ນ້ຳນອກດິນ (Water Systems: Inside vs Outside)</text>
+  <rect x="580" y="9" width="105" height="24" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="632" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#38BDF8" text-anchor="middle">ທາດນ້ຳ / Water</text>
+  <rect x="692" y="9" width="90" height="24" rx="4" fill="#15803D"/>
+  <text x="737" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#FEF2F2" text-anchor="middle">ຫຼັກການຄົບຖ້ວນ</text>
+
+  <!-- LEFT COLUMN CARDS -->
+  <rect x="12" y="48" width="174" height="185" rx="6" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="48" width="174" height="24" rx="6" fill="#0284C7"/>
+  <text x="100" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">🌊 ແມ່ນ້ຳນອກດິນ (Macro Water)</text>
+  <text x="20" y="86" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#0369A1">• ເປັນມັງກອນນ້ຳທຳມະຊາດຂະໜາດໃຫຍ່</text>
+  <text x="20" y="103" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.8" fill="#15803D">✓ ສາຍແອວຫົກ (Jade Belt): ໂຄ້ງໂອບ</text>
+  <text x="26" y="117" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#166534">→ ນຳພາຊັບສິນ, ໂຊກລາບ, ປອດໄພ</text>
+  <text x="20" y="134" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.8" fill="#DC2626">✗ ຄັນທະນູຕັດ (Reverse Bow): ຕີກັບ</text>
+  <text x="26" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#991B1B">→ ເສຍຊັບ, ຄະດີຄວາມ, ລົ້ມລະລາຍ</text>
+  <rect x="18" y="156" width="162" height="24" rx="3" fill="#E0F2FE"/>
+  <text x="99" y="172" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#0369A1" text-anchor="middle">ແກ້ຄັນທະນູ: ກຳແພງຫີນ + ແນວຕົ້ນໄມ້</text>
+
+  <rect x="12" y="240" width="174" height="202" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="240" width="174" height="24" rx="6" fill="#15803D"/>
+  <text x="100" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">🏞️ ໜອງນ້ຳໃນດິນ (Micro Water)</text>
+  <text x="20" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.8" fill="#15803D">✓ ບໍ່ມີບໍ່ນ້ຳ = ດີເລີດທີ່ສຸດ 100%</text>
+  <text x="26" y="292" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#166534">→ ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ &amp; ລົມ</text>
+  <text x="20" y="309" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#0369A1">• ຫາກມີ: ວາງຝັ່ງມັງກອນຂຽວ 10-15%</text>
+  <text x="20" y="326" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#0369A1">• ນ້ຳຕ້ອງໃສສະອາດ ແລະ ໄຫຼວຽນ</text>
+  <rect x="18" y="338" width="162" height="52" rx="3" fill="#DCFCE7"/>
+  <text x="99" y="352" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#14532D" text-anchor="middle">ອັດຕາສ່ວນທອງຄຳ (Golden Ratio):</text>
+  <text x="24" y="366" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534">• ເນື້ອທີ່: 10-15% ຂອງລານໝິງຖາງ</text>
+  <text x="24" y="378" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534">• ຄວາມເລິກ: ພຽງ 30-50 cm (ຫ້າມເລິກ)</text>
+
+  <!-- CENTER SITE PLAN (X=195 to 605, Y=48 to 442) -->
+  <g id="centerSite">
+    <path d="M 195 90 C 270 90 320 135 320 160 C 320 200 240 240 200 280 L 195 285" fill="none" stroke="#BAE6FD" stroke-width="26" stroke-linecap="round"/>
+    <path d="M 195 90 C 270 90 320 135 320 160 C 320 200 240 240 200 280 L 195 285" fill="none" stroke="url(#waterFlow)" stroke-width="20" stroke-linecap="round"/>
+
+    <path d="M 230 110 Q 250 115 270 110" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+    <path d="M 280 145 Q 295 160 285 180" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+    <polygon points="215,260 210,248 222,252" fill="#FFFFFF"/>
+
+    <rect x="235" y="80" width="135" height="18" rx="3" fill="#0284C7"/>
+    <text x="302" y="92" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">✓ ແມ່ນ້ຳໂອບອຸ້ມ (ສາຍແອວຫົກ / Jade Belt)</text>
+
+    <!-- Reverse Bow -->
+    <path d="M 580 85 C 550 120 545 165 570 210 L 605 240" fill="none" stroke="#FCA5A5" stroke-width="22" stroke-linecap="round"/>
+    <path d="M 580 85 C 550 120 545 165 570 210 L 605 240" fill="none" stroke="#EF4444" stroke-width="16" stroke-linecap="round"/>
+    <rect x="495" y="130" width="105" height="26" rx="3" fill="#DC2626"/>
+    <text x="547" y="142" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">✗ ຄັນທະນູຕັດ (Reverse Bow)</text>
+    <text x="547" y="152" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.8" fill="#FEE2E2" text-anchor="middle">ນ້ຳຕຳໃສ່ຝັ່ງກົງກັນຂ້າມ</text>
+
+    <!-- Property Boundary -->
+    <rect x="335" y="115" width="200" height="260" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="2.5"/>
+
+    <!-- Main House -->
+    <polygon points="380,145 435,128 490,145" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+    <rect x="385" y="145" width="100" height="55" fill="#FEF08A" stroke="#854D0E" stroke-width="1.8" rx="3"/>
+    <text x="435" y="172" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#1E293B" text-anchor="middle">ອາຄານຫຼັກ</text>
+    <text x="435" y="186" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">ຫັນໜ້າສູ່ລານໝິງຖາງ &amp; ສາຍນ້ຳ</text>
+    <rect x="427" y="196" width="16" height="5" fill="#1E293B"/>
+
+    <!-- Inside Ming Tang -->
+    <rect x="350" y="215" width="170" height="55" rx="5" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="435" y="232" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">ລານໝິງຖາງໂລ່ງແຈ້ງ (Bright Hall / ເຕົ້າໂຮມພະລັງງານ)</text>
+    <text x="435" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#166534" text-anchor="middle">✓ ບໍ່ມີບໍ່ນ້ຳ (ດີເລີດທີ່ສຸດ): ລານຫຍ້າຂຽວໂລ່ງສະອາດ</text>
+    <text x="435" y="258" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">ປອດໄພ, ບໍ່ຊຸ່ມຊຶມ, ບໍ່ມີຍຸງ, ຮັບລົມ-ແສງ 100%</text>
+
+    <!-- Green Dragon Flank: Compact Fountain -->
+    <g transform="translate(355, 290)">
+      <circle cx="20" cy="20" r="14" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.5"/>
+      <ellipse cx="20" cy="20" rx="9" ry="4.5" fill="none" stroke="#38BDF8" stroke-width="1"/>
+      <circle cx="20" cy="20" r="2.5" fill="#0284C7"/>
+      <text x="20" y="44" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0284C7" text-anchor="middle">✓ ອ່າງນ້ຳພຸຝັ່ງມັງກອນ</text>
+      <text x="20" y="54" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.8" fill="#0369A1" text-anchor="middle">[ຂະໜາດ 10-15%]</text>
+    </g>
+
+    <!-- White Tiger Flank: Taboo -->
+    <g transform="translate(470, 290)">
+      <circle cx="20" cy="20" r="14" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <line x1="8" y1="8" x2="32" y2="32" stroke="#DC2626" stroke-width="2"/>
+      <line x1="32" y1="8" x2="8" y2="32" stroke="#DC2626" stroke-width="2"/>
+      <text x="20" y="44" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#DC2626" text-anchor="middle">🚫 ຫ້າມນ້ຳຝັ່ງເສືອຂາວ</text>
+      <text x="20" y="54" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.8" fill="#991B1B" text-anchor="middle">(ເສືອຂາວອ້າປາກ)</text>
+    </g>
+
+    <path d="M 435 395 L 435 375 C 435 340 415 320 415 275 C 415 225 427 210 435 201" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
+    <text x="435" y="365" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#B45309" text-anchor="middle">⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ ບໍ່ຜ່ານບໍ່ນ້ຳ</text>
+    <rect x="420" y="372" width="30" height="6" rx="1" fill="#15803D"/>
+
+    <rect x="250" y="395" width="355" height="28" fill="#334155"/>
+    <line x1="250" y1="409" x2="605" y2="409" stroke="#FBBF24" stroke-width="2" stroke-dasharray="8,6"/>
+    <text x="435" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FFFFFF" text-anchor="middle">ຖະໜົນດ້ານໜ້າ (Road In Front of Estate)</text>
+  </g>
+
+  <!-- RIGHT COLUMN CARDS -->
+  <rect x="614" y="48" width="174" height="185" rx="6" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="48" width="174" height="24" rx="6" fill="#DC2626"/>
+  <text x="701" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">🚫 4 ຂໍ້ຫ້າມເລື່ອງນ້ຳໃນດິນ</text>
+  <text x="622" y="86" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#991B1B">1. ຫ້າມສະນ້ຳໃຫຍ່ຂວາງກາງທາງ</text>
+  <text x="628" y="99" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#7F1D1D">(ນ້ຳໃຫຍ່ຖ້ວມເຮືອນ / ປອດຊຸ່ມເຢັນ)</text>
+  <text x="622" y="115" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#991B1B">2. ຫ້າມນ້ຳຝັ່ງເສືອຂາວ (ເບື້ອງຂວາ)</text>
+  <text x="628" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#7F1D1D">(ເສືອຂາວອ້າປາກ / ເກີດອຸບັດຕິເຫດ)</text>
+  <text x="622" y="144" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#991B1B">3. ຫ້າມນ້ຳໃນມຸມແຫຼມສາມຫຼ່ຽມ</text>
+  <text x="628" y="157" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#7F1D1D">(ໄຟປະທະນ້ຳ / ວຸ້ນວາຍໃນຄອບຄົວ)</text>
+  <text x="622" y="173" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#991B1B">4. ຫ້າມນ້ຳຂັງດຳເນົ່າເໝັນ (Dead Water)</text>
+
+  <rect x="614" y="240" width="174" height="202" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="240" width="174" height="24" rx="6" fill="#334155"/>
+  <text x="701" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">💡 ຄຳແນະນຳທີ່ດີທີ່ສຸດ</text>
+  <text x="622" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#0F172A">• ບ້ານພັກອາໄສທົ່ວໄປ: ບໍ່ຕ້ອງເຮັດສະນ້ຳ</text>
+  <text x="622" y="297" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#0F172A">• ປູຫຍ້າຂຽວໂລ່ງ = ປອດໄພ &amp; Ju Qi ສູງ</text>
+  <text x="622" y="314" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#0F172A">• ຫາກມັກນ້ຳ: ເຮັດອ່າງນ້ຳພຸວົງມົນນ້ອຍ</text>
+  <rect x="620" y="328" width="162" height="46" rx="3" fill="#E2E8F0"/>
+  <text x="701" y="343" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#1E293B" text-anchor="middle">ຫຼັກຄຳພີ: ມັງກອນຂຽວໄດ້ນ້ຳ</text>
+  <text x="701" y="356" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">ນ້ຳຢູ່ເບື້ອງຊ້າຍ ກະຕຸ້ນໂຊກລາບ</text>
+  <text x="701" y="367" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#334155" text-anchor="middle">ໂດຍບໍ່ກີດຂວາງທາງຍ່າງເຂົ້າເຮືອນ</text>
+
+  <!-- BOTTOM SUMMARY BAR -->
+  <rect x="0" y="445" width="800" height="35" fill="#0F172A"/>
+  <text x="400" y="460" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">ຫຼັກການລະບົບນ້ຳ: ແມ່ນ້ຳນອກດິນຖ້າໂອບອຸ້ມ (ສາຍແອວຫົກ) ເປັນມະຫາເສດຖີ, ຖ້າຄັນທະນູຕັດຕ້ອງສ້າງກຳແພງຫີນບັງ.</text>
+  <text x="400" y="472" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#94A3B8" text-anchor="middle">ໜອງນ້ຳໃນດິນ: ບໍ່ມີເລີຍເປັນລານຫຍ້າຂຽວໂລ່ງ = ດີເລີດທີ່ສຸດ. ຫາກມີຕ້ອງວາງຝັ່ງມັງກອນຂຽວ 10-15%, ຫ້າມຂວາງກາງທາງ ແລະ ຫ້າມຢູ່ຝັ່ງເສືອຂາວ.</text>
+</svg>
