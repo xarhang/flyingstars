@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ຕຳລາຮວງຈຸ້ຍດາວເຫີນ ສະບັບສົມບູນ (Flying Star Feng Shui Lao Edition)</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%237f1d1d' stroke='%23f59e0b' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='26' fill='%230f172a' stroke='%23fbbf24' stroke-width='1.5'/%3E%3Cpath d='M32,8 A24,24 0 0,1 32,56 A12,12 0 0,1 32,32 A12,12 0 0,0 32,8 Z' fill='%23f8fafc'/%3E%3Cpath d='M32,8 A24,24 0 0,0 32,56 A12,12 0 0,0 32,32 A12,12 0 0,1 32,8 Z' fill='%230f172a'/%3E%3Ccircle cx='32' cy='20' r='3.5' fill='%230f172a'/%3E%3Ccircle cx='32' cy='44' r='3.5' fill='%23f8fafc'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --primary: #8B0000;
+      --primary-dark: #5B0000;
+      --gold: #D4AF37;
+      --gold-dark: #AA820A;
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text: #1E293B;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --good: #16A34A;
+      --bad: #DC2626;
+      --sidebar-w: 320px;
+    }
+
+    body.dark-mode {
+      --bg: #0F172A;
+      --card-bg: #1E293B;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Phetsarath OT', 'Noto Sans Lao', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    /* TOP NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--card-bg);
+      border-bottom: 2px solid var(--gold);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .nav-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 24px;
+      box-shadow: 0 2px 8px rgba(139,0,0,0.3);
+    }
+    .brand-text h1 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+    .brand-text span {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* NAV TABS */
+    .nav-tabs {
+      display: flex;
+      gap: 6px;
+      background: var(--bg);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .nav-tab-btn {
+      padding: 8px 16px;
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .nav-tab-btn:hover { color: var(--primary); }
+    .nav-tab-btn.active {
+      background: var(--card-bg);
+      color: var(--primary);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hmong-btn {
+      padding: 7px 14px;
+      background: #0284C7;
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .hmong-btn:hover { background: #0369A1; }
+    .compass-btn {
+      padding: 7px 14px;
+      background: var(--primary);
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .compass-btn:hover { background: var(--primary-dark); }
+    .theme-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+    }
+
+    /* MAIN CONTAINER */
+    main {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px 20px;
+      min-height: calc(100vh - 120px);
+    }
+    .tab-view { display: none; }
+    .tab-view.active { display: block; animation: fadeIn 0.25s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* TAB 1: ATLAS */
+    .atlas-hero {
+      text-align: center;
+      padding: 24px 20px 32px;
+      background: linear-gradient(180deg, rgba(139,0,0,0.06), transparent);
+      border-radius: 16px;
+      margin-bottom: 24px;
+    }
+    .atlas-hero h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .atlas-hero p {
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 760px;
+      margin: 0 auto 16px;
+    }
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .stat-badge {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    }
+    .stat-badge strong { color: var(--primary); font-weight: 800; }
+
+    /* SEARCH & FILTERS */
+    .search-box {
+      margin-bottom: 18px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 15px;
+      font-family: inherit;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      background: var(--card-bg);
+      color: var(--text);
+      outline: none;
+      transition: border 0.2s;
+    }
+    .search-input:focus { border-color: var(--primary); }
+
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .filter-btn {
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text-muted);
+      border-radius: 20px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .filter-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    /* ATLAS GRID */
+    .atlas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .archetype-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+    .archetype-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      border-color: var(--gold);
+    }
+    .card-img-wrap {
+      width: 100%;
+      height: 190px;
+      background: #F1F5F9;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #FAFAFA;
+    }
+    .card-score {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+    .card-score.good { background: var(--good); }
+    .card-score.bad { background: var(--bad); }
+
+    .card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card-id-tag {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    .card-desc {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-footer {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* MODAL */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-box {
+      background: var(--card-bg);
+      width: 100%;
+      max-width: 860px;
+      max-height: 90vh;
+      border-radius: 18px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .modal-header {
+      position: sticky;
+      top: 0;
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+    .modal-title { font-size: 18px; font-weight: 800; color: var(--primary); }
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: var(--bg);
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-body { padding: 24px; }
+    .modal-img-wrap {
+      width: 100%;
+      max-height: 440px;
+      background: #FAFAFA;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 440px;
+      object-fit: contain;
+    }
+    .modal-section { margin-bottom: 18px; }
+    .modal-section h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .modal-section p { font-size: 13.5px; color: var(--text); line-height: 1.6; }
+
+    /* TAB 2: 16 PLOTS STUDIO */
+    .plots-studio-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .plots-studio-header h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .plots-studio-header p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    /* TAB 3: 24 CHAPTERS READER */
+    .book-layout {
+      display: flex;
+      gap: 24px;
+      min-height: 700px;
+    }
+    .book-sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      height: fit-content;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: sticky;
+      top: 88px;
+    }
+    .sidebar-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .chapter-nav-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .chapter-nav-item {
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1.35;
+    }
+    .chapter-nav-item:hover { background: var(--bg); color: var(--primary); }
+    .chapter-nav-item.active {
+      background: rgba(139,0,0,0.08);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .book-reader {
+      flex: 1;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 36px 40px;
+      max-width: 960px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+    .reader-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .reader-chapter-title { font-size: 20px; font-weight: 800; color: var(--primary); }
+    .font-btns { display: flex; gap: 6px; }
+    .font-btn {
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* DOCUMENT CONTENT STYLING */
+    .doc-h1 { font-size: 22px; font-weight: 800; color: var(--primary); margin: 24px 0 12px; }
+    .doc-h2 { font-size: 17px; font-weight: 800; color: #1E40AF; margin: 20px 0 10px; }
+    .doc-lead { font-size: 15px; font-weight: 600; color: var(--primary-dark); margin-bottom: 16px; line-height: 1.7; }
+    .doc-p { font-size: 14px; line-height: 1.75; margin-bottom: 14px; }
+    .doc-callout {
+      background: #EFF6FF;
+      border-left: 4px solid #2563EB;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 18px 0;
+      font-size: 13.5px;
+    }
+    .doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 13px;
+    }
+    .doc-table th {
+      background: var(--primary);
+      color: #FFFFFF;
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 700;
+    }
+    .doc-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-table tr:nth-child(even) { background: var(--bg); }
+    .doc-table tr.highlight-row { background: #FEF08A; font-weight: 700; }
+
+    /* TAB 4: CALCULATOR */
+    .calc-container {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+    }
+    .calc-pickers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .picker-box {
+      background: var(--bg);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .picker-box label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .picker-select {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--card-bg);
+      color: var(--text);
+      outline: none;
+    }
+
+    .calc-result-card {
+      background: linear-gradient(180deg, rgba(139,0,0,0.04), transparent);
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      padding: 24px;
+      margin-top: 24px;
+    }
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .result-combo-name { font-size: 20px; font-weight: 800; color: var(--primary); }
+    .result-score-tag {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--card-bg);
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .book-layout { flex-direction: column; }
+      .book-sidebar { width: 100%; max-height: 240px; position: static; }
+      .calc-pickers { grid-template-columns: 1fr; }
+      .nav-tabs { overflow-x: auto; max-width: calc(100vw - 180px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER NAVBAR -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <div class="brand-logo">☯</div>
+        <div class="brand-text">
+          <h1>ຮວງຈຸ້ຍດາວເຫີນ</h1>
+          <span>XUAN KONG FEI XING • ພາສາລາວ</span>
+        </div>
+      </a>
+
+      <div class="nav-tabs">
+        <button class="nav-tab-btn active" data-tab="tabAtlas">🗺️ ສາລະນຸກົມ 91 ຮູບແບບ</button>
+        <button class="nav-tab-btn" data-tab="tabPlots">📐 ສະຕູດີໂອ 16 ຕອນດິນ</button>
+        <button class="nav-tab-btn" data-tab="tabBook">📖 ຕຳລາຫຼັກ 24 ບົດຮຽນ</button>
+        <button class="nav-tab-btn" data-tab="tabCalc">🧭 ຄິດໄລ່ດາວ 81 ຄູ່</button>
+      </div>
+
+      <div class="nav-actions">
+        <a href="../hmong/index.html" class="hmong-btn" title="ໄປຫາເວັບໄຊສະບັບພາສາມົ້ງ">
+          <span>📖 Hmoob RPA</span>
+        </a>
+        <a href="../index.html" class="compass-btn" title="ກັບຄືນໜ້າຈານເຂັມທິດຫຼັກ">
+          <span>🧭 ຈານເຂັມທິດ</span>
+        </a>
+        <button class="theme-btn" id="themeToggle" title="ປ່ຽນໂໝດມືດ/ແຈ້ງ">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTAINER -->
+  <main>
+
+    <!-- TAB 1: MASTER ATLAS 91 ARCHETYPES -->
+    <div id="tabAtlas" class="tab-view active">
+      <div class="atlas-hero">
+        <h2>🗺️ ສາລະນຸກົມຮວງຈຸ້ຍ 91 ຮູບແບບ ພູເຂົາ, ສາຍນ້ຳ ແລະ ຕອນດິນ</h2>
+        <p>ຄັງຄວາມຮູ້ຮວງຈຸ້ຍຫຼວນໂຖວ (Luan Tou) ແລະ ຜັງຕອນດິນ 91 ຮູບແບບ: ວິເຄາະພະລັງງານຊີ່, ຫຼັກການວາງປະຕູ, ໜອງນ້ຳ ແລະ ວິທີແກ້ໄຂຮວງຈຸ້ຍຢ່າງລະອຽດ.</p>
+        <div class="stats-row">
+          <div class="stat-badge"><strong>91</strong> ຮູບແບບທັງໝົດ</div>
+          <div class="stat-badge"><strong>16</strong> ຕອນດິນ (Land Plots)</div>
+          <div class="stat-badge"><strong>35</strong> ພູເຂົາພິສ (Mountain Sha)</div>
+          <div class="stat-badge"><strong>16</strong> ສາຍນ້ຳ (Water Courses)</div>
+          <div class="stat-badge"><strong>16</strong> ດິນມັງກອນ (Sacred Soils)</div>
+          <div class="stat-badge"><strong>5</strong> ພູເຂົາ 5 ທາດ (Five Peaks)</div>
+          <div class="stat-badge"><strong>3</strong> ຮູບແບບລົມ (Winds)</div>
+        </div>
+      </div>
+
+      <div class="search-box">
+        <input type="text" id="atlasSearchInput" class="search-input" placeholder="🔍 ຄົ້ນຫາຕາມຊື່, ລະຫັດ (LP/LT), ທາດ, ຫຼື ວິທີແກ້ໄຂ...">
+      </div>
+
+      <div class="filter-pills" id="atlasFilters">
+        <button class="filter-btn active" data-cat="all">ທັງໝົດ (91)</button>
+        <button class="filter-btn" data-cat="plots">16 ຕອນດິນ (Land Plots)</button>
+        <button class="filter-btn" data-cat="peaks">5 ພູເຂົາຫ້າທາດ</button>
+        <button class="filter-btn" data-cat="winds">ຮູບແບບລົມ (Winds)</button>
+        <button class="filter-btn" data-cat="waters">ສາຍນ້ຳ (Waters)</button>
+        <button class="filter-btn" data-cat="soils">ດິນມັງກອນ (Sacred Soils)</button>
+        <button class="filter-btn" data-cat="shas">35 ພູເຂົາພິສ Sha</button>
+      </div>
+
+      <div class="atlas-grid" id="atlasGrid"></div>
+    </div>
+
+    <!-- TAB 2: 16 LAND PLOTS STUDIO -->
+    <div id="tabPlots" class="tab-view">
+      <div class="plots-studio-header">
+        <h2>📐 ສະຕູດີໂອປຽບທຽບ 16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ</h2>
+        <p>ປຽບທຽບຜັງຕອນດິນ 16 ແບບ: ຈະຕຸລັດ, ຜືນຜ້າ, ຖົງເງິນ, ນ້ຳເຕົ້າ, ສາມຫຼ່ຽມ, ໂຕແອວ, ໂຕທີ, ແລະ ຕອນດິນແຂ້ວເລື່ອຍ ພ້ອມຫຼັກການ 360 ອົງສາ.</p>
+      </div>
+      <div class="atlas-grid" id="plotsGrid"></div>
+    </div>
+
+    <!-- TAB 3: 24 CHAPTERS READER -->
+    <div id="tabBook" class="tab-view">
+      <div class="book-layout">
+        <aside class="book-sidebar">
+          <div class="sidebar-title">📚 ສາລະບານ 24 ບົດຮຽນ</div>
+          <ul class="chapter-nav-list" id="chapterNavList"></ul>
+        </aside>
+
+        <section class="book-reader">
+          <div class="reader-toolbar">
+            <div class="reader-chapter-title" id="readerTitle">ບົດທີ 1</div>
+            <div class="font-btns">
+              <button class="font-btn" id="btnFontDec">A-</button>
+              <button class="font-btn" id="btnFontInc">A+</button>
+            </div>
+          </div>
+          <div id="readerContent"></div>
+        </section>
+      </div>
+    </div>
+
+    <!-- TAB 4: 81 STARS CALCULATOR -->
+    <div id="tabCalc" class="tab-view">
+      <div class="calc-container">
+        <h2 style="font-size: 20px; font-weight: 800; color: var(--primary); margin-bottom: 6px;">🧭 ເຄື່ອງຄິດໄລ່ດາວປະສົມ 81 ຄູ່ (81 Flying Star Combinations Calculator)</h2>
+        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px;">ເລືອກດາວພູ (Mountain Star) ແລະ ດາວນ້ຳ (Water Star) ເພື່ອກວດສອບຄຸນແລະໂທດ ພ້ອມວິທີແກ້ໄຂຮວງຈຸ້ຍ:</p>
+
+        <div class="calc-pickers">
+          <div class="picker-box">
+            <label>⛰️ ດາວພູ (Shan Xing / Mountain Star):</label>
+            <select id="selMountainStar" class="picker-select">
+              <option value="1">1 - ຂາວ (Tan Lang / ທາດນ້ຳ - ສະຕິປັນຍາ)</option>
+              <option value="2">2 - ດຳ (Ju Men / ທາດດິນ - ໂລກໄພໄຂ້ເຈັບ)</option>
+              <option value="3">3 - ຂຽວ (Lu Cun / ທາດໄມ້ - ຜິດຖຽງ)</option>
+              <option value="4">4 - ຂຽວ (Wen Qu / ທາດໄມ້ - ການສຶກສາ & ສະເໜ່)</option>
+              <option value="5">5 - ເຫຼືອງ (Lian Zhen / ທາດດິນ - ມະຫາວິບັດ)</option>
+              <option value="6">6 - ຂາວ (Wu Qu / ທາດທອງ - ອຳນາດບາຣະມີ)</option>
+              <option value="7">7 - ແດງ (Po Jun / ທາດທອງ - ສູນເສຍ/ໂຈນໄພ)</option>
+              <option value="8">8 - ຂາວ (Zuo Fu / ທາດດິນ - ຄວາມຮັ່ງມີ)</option>
+              <option value="9">9 - ມ່ວງ (You Bi / ທາດໄຟ - ມຸງຄຸນຍຸກ 9)</option>
+            </select>
+          </div>
+
+          <div class="picker-box">
+            <label>🌊 ດາວນ້ຳ (Xiang Xing / Water Star):</label>
+            <select id="selWaterStar" class="picker-select">
+              <option value="9" selected>9 - ມ່ວງ (You Bi / ທາດໄຟ - ມຸງຄຸນຍຸກ 9)</option>
+              <option value="1">1 - ຂາວ (Tan Lang / ທາດນ້ຳ - ສະຕິປັນຍາ)</option>
+              <option value="2">2 - ດຳ (Ju Men / ທາດດິນ - ໂລກໄພໄຂ້ເຈັບ)</option>
+              <option value="3">3 - ຂຽວ (Lu Cun / ທາດໄມ້ - ຜິດຖຽງ)</option>
+              <option value="4">4 - ຂຽວ (Wen Qu / ທາດໄມ້ - ການສຶກສາ & ສະເໜ່)</option>
+              <option value="5">5 - ເຫຼືອງ (Lian Zhen / ທາດດິນ - ມະຫາວິບັດ)</option>
+              <option value="6">6 - ຂາວ (Wu Qu / ທາດທອງ - ອຳນາດບາຣະມີ)</option>
+              <option value="7">7 - ແດງ (Po Jun / ທາດທອງ - ສູນເສຍ/ໂຈນໄພ)</option>
+              <option value="8">8 - ຂາວ (Zuo Fu / ທາດດິນ - ຄວາມຮັ່ງມີ)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-result-card" id="calcResultCard">
+          <div class="result-header">
+            <div class="result-combo-name" id="resComboName">ຄູ່ດາວ 1 - 9 (ໄມ້ & ໄຟ)</div>
+            <div class="result-score-tag" id="resScoreTag" style="background: var(--good);">✓ ດີຫຼາຍ (Auspicious)</div>
+          </div>
+          <div style="font-size: 14px; line-height: 1.7;" id="resDescription">
+            ກຳລັງໂຫຼດຂໍ້ມູນຄູ່ດາວ...
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- MODAL DETAIL -->
+  <div class="modal-backdrop" id="atlasModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title" id="mTitle">ລາຍລະອຽດຮູບແບບ</div>
+        <button class="modal-close" id="modalCloseBtn">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-img-wrap">
+          <img id="mImg" src="" alt="Drawing">
+        </div>
+        <div class="modal-section">
+          <h4>🔬 ລັກສະນະທາງກາຍະພາບ (Physics & Geometry)</h4>
+          <p id="mPhysics">-</p>
+        </div>
+        <div class="modal-section" id="mImpactSec">
+          <h4>⚡ ຜົນກະທົບຕໍ່ໂຊກລາບ & ພະລັງງານ (Impact)</h4>
+          <p id="mImpact">-</p>
+        </div>
+        <div class="modal-section" id="mHouseSec" style="display:none;">
+          <h4>🧭 ຕຳແໜ່ງເຮືອນ, ໄລຍະຖອຍຮົ່ນ & ທິດຫັນໜ້າ (House Positioning & Orientation)</h4>
+          <p><strong>• ຕຳແໜ່ງວາງເຮືອນ & ໄລຍະຖອຍຮົ່ນ:</strong> <span id="mHousePos">-</span></p>
+          <p style="margin-top: 6px;"><strong>• ທິດຫັນໜ້າ (向), ທິດພິງຫຼັງ (坐) & ທິດຫົວຕຽງ:</strong> <span id="mOrientation">-</span></p>
+        </div>
+        <div class="modal-section" id="mGuaSec" style="display:none;">
+          <h4>☯️ ທາດກວ້າປະຈຳຮູບຊົງ & ຄວາມຖືກຊາຕາ (Gua Element & Compatibility)</h4>
+          <p><strong>• ທາດກວ້າປະຈຳຮູບຊົງ:</strong> <span id="mElementGua">-</span></p>
+          <p style="margin-top: 6px; color: var(--good);"><strong>• ✓ ຖືກກັບຄົນແບບໃດ:</strong> <span id="mFavorable">-</span></p>
+          <p style="margin-top: 6px; color: var(--bad);"><strong>• ✗ ບໍ່ຖືກກັບໃຜ / ຂໍ້ຄວນລະວັງ:</strong> <span id="mClashing">-</span></p>
+        </div>
+        <div class="modal-section" id="mEntranceSec" style="display:none;">
+          <h4>🚪 ຫຼັກການວາງປະຕູໃຫຍ່ & ທາງລົດ (Entrance Placement & Rules)</h4>
+          <p><strong>• ຕຳແໜ່ງທາງເຂົ້າ & ປະຕູຮົ້ວ:</strong> <span id="mEntrancePlacement">-</span></p>
+          <p style="margin-top: 6px;"><strong>• ຫຼັກການລະອຽດ:</strong> <span id="mEntrance">-</span></p>
+        </div>
+        <div class="modal-section" id="mWaterSec" style="display:none;">
+          <h4>🌊 ຫຼັກການວາງສະລອຍນ້ຳ & ໜອງນ້ຳ (Water Placement)</h4>
+          <p id="mWater">-</p>
+        </div>
+        <div class="modal-section">
+          <h4>🛡️ ວິທີແກ້ໄຂ & ປັບສົມດຸນຮວງຈຸ້ຍ (Remedy Protocol)</h4>
+          <p id="mRemedy">-</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>ຕຳລາຮວງຈຸ້ຍດາວເຫີນ ສະບັບສົມບູນ (Xuan Kong Fei Xing • Lao Edition)</p>
+    <p style="margin-top: 4px; font-size: 11.5px;">ແປ ແລະ ຮຽບຮຽງໂດຍກົງຈາກຕົ້ນສະບັບຕຳລາຮວງຈຸ້ຍດາວເຫີນ (Stephen Skinner) & ຕຳລາສວຽນຄົງ 沈氏玄空学</p>
+  </footer>
+
+  <script>
+    const archetypesData = [{"id":"LP-0001","type":"landplot","name":"ຕອນດິນສີ່ຫຼ່ຽມຈະຕຸລັດ (Zheng Fang Tu - Square Plot)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":95,"isGood":true,"img":"img/LP-0001.png","physics":"ຕອນດິນສີ່ຫຼ່ຽມຈະຕຸລັດສະເໝີກັນ (ອັດຕາສ່ວນ 1:1), ມຸມທັງ 4 ຕັ້ງສາກ 90 ອົງສາສົມບູນ 100%, ກະແສລົມພັດໝູນວຽນຢ່າງສົມດຸນ ບໍ່ມີກະແສລົມກົດດັນ ຫຼື ລົມໝູນວົນຕັດຜ່ານ.","entranceRules":"1. ດ້ານໜ້າ (Facing / 明堂): ✓ ດີຫຼາຍ - ປະຕູໃຫຍ່ ແລະ ທາງລົດເຂົ້າຄວນຢູ່ດ້ານໜ້າ (ທິດຫັນໜ້າ) ຫຼື ດ້ານຊ້າຍມັງກອນຂຽວ (Green Dragon), ເພື່ອຮັບກະແສພະລັງງານ ເຊິ້ງຊີ່ (Sheng Qi) ທີ່ອຸດົມສົມບູນ. 2. ດ້ານຂວາ (White Tiger): ✗ ບໍ່ດີ - ຫ້າມເປີດປະຕູໃຫຍ່ໃນຕຳແໜ່ງເສືອຂາວ (Bai Hu Kai Kou). 3. ຫົວມຸມ: ✗ ຫ້າມເດັດຂາດ - ຫ້າມເປີດປະຕູກົງມຸມຕອນດິນທີ່ຖືກທາງສາມແພ່ງພຸ່ງຊົນ (Lu Chong Sha).","waterRules":"1. ດ້ານໜ້າ (ໝິງຖັງ): ✓ ດີຫຼາຍ - ໜອງນ້ຳເຄິ່ງວົງມົນ ຫຼື ໜອງນ້ຳຮູບກີບບົວຢູ່ດ້ານໜ້າເຮືອນ, ນ້ຳໄຫຼຄ່ອຍໆ 0.5 ແມັດ/ວິນາທີ ນຳພາໂຊກລາບເງິນຄຳເຂົ້າມາ. 2. ດ້ານຫຼັງເຮືອນ (ເຕົ່າດຳ / Xuan Wu): ✗ ຫ້າມເດັດຂາດ - ຫ້າມຂຸດໜອງນ້ຳຫຼັງເຮືອນ ເພາະເຮັດໃຫ້ສູນເສຍຊັບ ແລະ ຂາດບ່ອນພິງຫຼັງ. 3. ໃຈກາງຕອນດິນ (ໄທຈີ / Tai Ji): ✗ ຫ້າມເດັດຂາດ - ຫ້າມມີໜອງນ້ຳກາງເຮືອນ/ກາງຕອນດິນ (Tai Ji Drowning) ເຮັດໃຫ້ເກີດພະຍາດຫົວໃຈ.","baguaSectors":"1. 8 ທິດປາກວ້າ: ຄົບຖ້ວນທັງ 8 ທິດ (Kan, Gen, Zhen, Xun, Li, Kun, Dui, Qian) 100% ບໍ່ມີທິດໃດຂາດຫາຍ. 2. ດ້ານຊ້າຍມັງກອນ: ສົ່ງເສີມລູກຊາຍກົກ ແລະ ຫົວໜ້າຄອບຄົວ. 3. ດ້ານຂວາເສືອ: ຮັກສາຄວາມໝັ້ນຄົງ. 4. ຄະແນນພະລັງງານ: 95/100 (ຕອນດິນດີເລີດທີ່ສຸດສຳລັບການຢູ່ອາໄສ).","remedy":"ຫຼັກການຈັດວາງ ແລະ ເສີມພະລັງ: 1. ຂອບເຂດຕອນດິນ: ປູກຮົ້ວໄມ້ພຸ່ມສີຂຽວໜາແໜ້ນຕາມແນວແດນເພື່ອສ້າງຂອບເຂດທີ່ໝັ້ນຄົງ. 2. ໜອງນ້ຳ: ສ້າງໜອງນ້ຳເຄິ່ງວົງມົນໂອບອ້ອມດ້ານໜ້າເຮືອນ. 3. ດ້ານຫຼັງ: ປູກຕົ້ນສົນ 5 ຕົ້ນດ້ານຫຼັງເປັນພູເຂົາພິງຫຼັງ. 4. ບໍ່ຈຳເປັນຕ້ອງແກ້ໄຂຫຼາຍເພາະເປັນຕອນດິນມຸງຄຸນສູງສຸດແລ້ວ.","housePositioning":"ວາງອາຄານຫຼັກໃນເຂດຫຼັງພິງ 1/3 (Xuan Wu Rear) ຕັ້ງສາກ 90 ອົງສາສົມດຸນ, ຖອຍຮົ່ນຈາກແນວຖະໜົນດ້ານໜ້າຢ່າງໜ້ອຍ 6-8 ແມັດ ເພື່ອສ້າງລານໜ້າ (Bright Hall / Ming Tang) ກວ້າງຂວາງ.","entrancePlacement":"ປະຕູຮົ້ວໃຫຍ່ ແລະ ທາງລົດເຂົ້າຄວນຕັ້ງຢູ່ດ້ານຊ້າຍມັງກອນຂຽວ (Green Dragon) ຫ່າງຈາກມຸມຮົ້ວຢ່າງໜ້ອຍ 3 ແມັດ, ຫ້າມເປີດປະຕູກົງກັບມຸມຕອນດິນ ຫຼື ກົງກັບປະຕູຫຼັກເຮືອນພໍດີ.","orientationFacing":"ທິດໜ້າເຮືອນ (向): ຫັນໜ້າສູ່ລານໜ້າທີ່ເປີດຮັບແສງ ແລະ ກະແສລົມມຸງຄຸນ; ທິດຫຼັງເຮືອນ (坐): ພິງຫຼັງທີ່ໜັກແໜ້ນ; ທິດຫົວຕຽງ: ຫັນຫົວໄປທາງທິດຫຼັງພິງ ຫຼື ທິດປະຈຳກວ້າມຸງຄຸນ (Sheng Qi / Tian Yi).","elementGua":"ທາດດິນ (Earth Element / 坤 艮 土) - ຄວາມໝັ້ນຄົງ, ອຸດົມສົມບູນ, ບາຣະມີ","favorablePeople":"ຄົນທາດດິນ (ກວ້າ 2 坤, 8 艮) ແລະ ຄົນທາດທອງ (ກວ້າ 6 乾, 7 兑): ດິນເກີດທອງ ຢູ່ແລ້ວຮັ່ງມີ, ສຸຂະພາບແຂງແຮງ, ຄອບຄົວອົບອຸ່ນ, ເໝາະກັບຄອບຄົວໃຫຍ່.","clashingPeople":"ເປັນກາງມຸງຄຸນຕໍ່ທຸກຄົນ ບໍ່ມີຂໍ້ຂັດແຍ້ງຮ້າຍແຮງ; ແຕ່ຄົນທາດນ້ຳ (ກວ້າ 1 坎) ຄວນຂຸດໜອງນ້ຳ ຫຼື ຕັ້ງນ້ຳພຸດ້ານໜ້າເພື່ອຖ່າຍເທພະລັງດິນບໍ່ໃຫ້ກົດຂີ່ນ້ຳ.","comprehensiveRemedy":"ຕອນດິນສົມບູນ 100% ບໍ່ມີພະລັງພິສ: 1. ປູກຮົ້ວໄມ້ພຸ່ມສີຂຽວອ້ອມແນວແດນ; 2. ຂຸດໜອງນ້ຳເຄິ່ງວົງມົນໂອບອຸ້ມດ້ານໜ້າ; 3. ປູກຕົ້ນສົນ 5 ຕົ້ນຫຼັງເຮືອນ; 4. ຮັກສາໃຈກາງໄທຈີໃຫ້ໂລ່ງແຈ້ງ."},{"id":"LP-0002","type":"landplot","name":"ຕອນດິນສີ່ຫຼ່ຽມຜືນຜ້າ ຄຳ (Chang Fang Tu - Golden Rectangle Plot)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":92,"isGood":true,"img":"img/LP-0002.png","physics":"ຕອນດິນສີ່ຫຼ່ຽມຜືນຜ້າ (ອັດຕາສ່ວນ Golden Ratio 1:1.5 ຫາ 1:2), ຄວາມເລິກຂອງດິນຊ່ວຍກັກເກັບພະລັງງານ ແລະ ປ້ອງກັນກະແສລົມລົບກວນໄດ້ດີ.","entranceRules":"1. ດ້ານໜ້າແຄບ: ✓ ດີ - ປະຕູທາງເຂົ້າຢູ່ດ້ານໜ້າແຄບ ພ້ອມທາງລົດໂຄ້ງນຸ່ມນວນ. 2. ດ້ານມັງກອນ: ✓ ດີ - ທາງເຂົ້າລົດດ້ານຊ້າຍມີແນວຕົ້ນໄມ້ບັງ. 3. ທາງລົດຊື່: ✗ ຫ້າມ - ຫ້າມເຮັດທາງລົດແລ່ນກົງຄືລຳປືນສູ່ປະຕູໃຫຍ່.","waterRules":"1. ດ້ານໜ້າ (ໝິງຖັງ): ✓ ດີ - ໜອງນ້ຳຮູບໄຂ່ ຫຼື ໜອງນ້ຳໂອບອ້ອມໃນລານໜ້າ. 2. ນ້ຳໄຫຼອອກຊື່: ✗ ຫ້າມ - ຫ້າມປ່ອຍຮ່ອງນ້ຳໄຫຼຊື່ອອກສູ່ຖະໜົນໂດຍບໍ່ມີສິ່ງກີດຂວາງ.","baguaSectors":"1. 8 ທິດປາກວ້າ: ຮູບຊົງຍາວຊ່ວຍໃຫ້ຫຼັງພິງ Xuan Wu ມີຄວາມເລິກປົກປ້ອງດີເລີດ. 2. ສົ່ງເສີມການສຶກສາ ແລະ ທຸລະກິດໄລຍະຍາວ. 3. ຄະແນນ: 92/100.","remedy":"ວິທີແກ້ໄຂ & ເສີມ: 1. ແນວຕົ້ນໄມ້: ປູກແນວຕົ້ນໄມ້ສອງຂ້າງແນວແດນ; 2. ໜອງນ້ຳ: ຕັ້ງໜອງນ້ຳຮູບໄຂ່ໜ້າເຮືອນ; 3. ຫີນກັນລົມ: ຕັ້ງຫີນປະດັບໃຫຍ່ທີ່ທາງເຂົ້າ; 4. ກຳແພງຫຼັງ: ສ້າງກຳແພງສູງ 2.2 ແມັດ.","housePositioning":"ວາງອາຄານຫຼັກໃນເຂດຫຼັງ 1/3 (ຄວາມເລິກ), ປ່ອຍໃຫ້ດ້ານໜ້າເປັນລານກ້ວາງຍາວຮັບຊັບ. ຖ້າໜ້າແຄບຫຼັງເລິກ (Golden Ratio 1:1.618) ຈະຮັກສາພະລັງງານໄດ້ດົນນານ.","entrancePlacement":"ປະຕູຮົ້ວຢູ່ດ້ານໜ້າຝັ່ງມັງກອນຂຽວ, ຖະໜົນທາງເຂົ້າລົດໂຄ້ງຄ່ອຍໆເຂົ້າຫາຕົວເຮືອນ; ຫ້າມເຮັດທາງລົດແລ່ນຊື່ຄືລຳປືນຍິງກົງໃສ່ປະຕູໃຫຍ່ (Gun Barrel Driveway).","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນອອກສູ່ທິດເປີດຂອງຕອນດິນ; ທິດຫຼັງເຮືອນ: ພິງທິດເລິກຂອງແນວຕອນດິນ; ທິດຫົວຕຽງ: ຫັນຫົວສູ່ທິດຫຼັງພິງ ຫຼື ທິດປະຈຳກວ້າສະເພາະບຸກຄົນ.","elementGua":"ທາດໄມ້ (Wood Element / 震 巽 木) - ການຈະເລີນເຕີບໂຕ, ປັນຍາ, ຄວາມກ້າວໜ້າທາງທຸລະກິດ","favorablePeople":"ຄົນທາດໄມ້ (ກວ້າ 3 震, 4 巽) ແລະ ຄົນທາດໄຟ (ກວ້າ 9 离): ໄມ້ເກີດໄຟ ຈະເລີນຮຸ່ງເຮືອງດ້ານການສຶກສາ, ຕຳແໜ່ງໜ້າທີ່, ຊື່ສຽງ, ເໝາະກັບນັກວິຊາການ ແລະ ຜູ້ປະກອບການ.","clashingPeople":"ຄົນທາດດິນ (ກວ້າ 2 坤, 8 艮): ໄມ້ພິຊິດດິນ ອາດເຮັດໃຫ້ເມື່ອຍລ້າ; ແກ້ໄຂດ້ວຍການທາສີເຮືອນໂທນອົບອຸ່ນ/ຄຣີມ ແລະ ໃຊ້ໂຄມໄຟແສງສີສົ້ມ (ທາດໄຟເຊື່ອມໄມ້ສູ່ດິນ).","comprehensiveRemedy":"1. ປູກຕົ້ນສົນ/ໄມ້ພຸ່ມສອງຂ້າງແນວຮົ້ວເພື່ອຊະລໍກະແສລົມຕາມລວງຍາວ; 2. ວາງອ່າງນ້ຳພຸ ຫຼື ໜອງນ້ຳຮູບໄຂ່ໜ້າເຮືອນ; 3. ຕັ້ງຫີນແກຣນິດປະດັບລານໜ້າ; 4. ກຳແພງຫຼັງສູງ 2.2m."},{"id":"LP-0003","type":"landplot","name":"ຕອນດິນຖົງເງິນຖົງຄຳ (Jin Dai Dou - Money Bag Plot)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":98,"isGood":true,"img":"img/LP-0003.png","physics":"ໜ້າແຄບຄືຄໍຂວດ (12-16m) ແຕ່ຫຼັງກວ້າງອອກຄືທ້ອງຖົງເງິນ (40-50m). ກະແສພະລັງງານ Qi ໄຫຼເຂົ້າງ່າຍ ແຕ່ກັກເກັບຢູ່ພາຍໃນບໍ່ຮົ່ວໄຫຼ.","entranceRules":"1. ຄໍຖົງດ້ານໜ້າ: ✓ ດີຫຼາຍ - ປະຕູຮົ້ວຕັ້ງຢູ່ຄໍແຄບ, ຕັ້ງສອງຕົ້ນໄມ້ປົກປ້ອງ. 2. ປະຕູກວ້າງເກີນ: ✗ ຫ້າມ - ຫ້າມເປີດປະຕູກວ້າງເຕັມຄໍຖົງເຮັດໃຫ້ພະລັງກະຈາຍ.","waterRules":"1. ກາງທ້ອງຖົງ: ✓ ດີຫຼາຍ - ໜອງນ້ຳໃຫຍ່ກາງທ້ອງຖົງກັກເກັບຄວາມຮັ່ງມີ. 2. ນ້ຳໄຫຼອອກໄວ: ✗ ຫ້າມ - ຫ້າມປ່ອຍໃຫ້ນ້ຳໄຫຼອອກຈາກຄໍຖົງໄວເກີນໄປ.","baguaSectors":"1. ຫຼັງກວ້າງ: ເສີມພະລັງ Kun (ແມ່) ແລະ Qian (ພໍ່). 2. ຄວາມຮັ່ງມີ: ຕອນດິນເສດຖີອັນດັບ 1. 3. ຄະແນນ: 98/100.","remedy":"ວິທີເສີມພະລັງ: 1. ປະຕູຄໍຖົງ: ສ້າງປະຕູຮົ້ວສະຫງ່າງາມ; 2. ໜອງນ້ຳທ້ອງຖົງ: ຂຸດໜອງນ້ຳກາງສວນ; 3. ແນວໄມ້: ປູກໄມ້ພຸ່ມລຽບແນວແດນ; 4. ໄຟນຳທາງ: ຕັ້ງໄຟສະຫວ່າງຄໍຖົງ.","housePositioning":"ວາງອາຄານຫຼັກໄວ້ໃຈກາງທ້ອງຖົງທີ່ກວ້າງໃຫຍ່ (ຫຼັງພິງແໜ້ນ), ປ່ອຍໃຫ້ຄໍຖົງດ້ານໜ້າເປັນທາງເຂົ້າ ແລະ ສວນຕ້ອນຮັບ.","entrancePlacement":"ປະຕູຮົ້ວໃຫຍ່ຕັ້ງຢູ່ຄໍຖົງແຄບດ້ານໜ້າ, ຂະໜາດປະຕູພໍດີສົມສ່ວນ (ກວ້າງ 4-5m), ຫ້າມເປີດປາກຖົງກວ້າງເຕັມແນວຈົນພະລັງງານແຕກກະຈາຍ.","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນໜ້າອອກສູ່ປາກຖົງ (ຮັບກະແສລົມໂຊກລາບ); ທິດຫຼັງເຮືອນ: ພິງກົ້ນຖົງທີ່ກວ້າງຂວາງ; ທິດຫົວຕຽງ: ພິງຝາທຶບຫ້ອງນອນຫຼັງ.","elementGua":"ທາດທອງປະສົມດິນ (Metal & Earth Element / 乾 兑 金 & 坤 艮 土) - ມະຫາເສດຖີ, ໂຊກລາບ, ຊັບສົມບັດມະຫາສານ","favorablePeople":"ຖືກກັບທຸກຄົນ 100%! ດີເລີດພິເສດສຳລັບພໍ່ຄ້າ, ນັກທຸລະກິດ, ນັກລົງທຶນ (ກວ້າ 6 乾, 7 兑, 8 艮, 2 坤): ເຂົ້າງ່າຍອອກຍາກ ຊັບສິນເພີ່ມພູນທະວີຄູນ.","clashingPeople":"ບໍ່ມີຂໍ້ຂັດແຍ້ງກັບໃຜ! ເປັນຮູບຊົງດິນທີ່ດີທີ່ສຸດໃນວິຊາຮວງຈຸ້ຍ (ມະຫາເສດຖີ); ພຽງແຕ່ລະວັງບໍ່ໃຫ້ປາກຖົງແຄບຈົນອັບລົມເກີນໄປ.","comprehensiveRemedy":"ຕອນດິນຊັ້ນເລີດ: 1. ປູກຕົ້ນໄມ້ມຸງຄຸນສອງຂ້າງຄໍຖົງ; 2. ຂຸດສະລອຍນ້ຳ ຫຼື ໜອງນ້ຳກາງທ້ອງຖົງ; 3. ຕັ້ງໂຄມໄຟສະຫວ່າງທີ່ປາກທາງເຂົ້າ; 4. ຮົ້ວຫຼັງແໜ້ນໜາ."},{"id":"LP-0004","type":"landplot","name":"ຕອນດິນຮູບນ້ຳເຕົ້າ ອາຍຸຍືນ (Hu Lu Tu - Gourd Longevity Plot)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":94,"isGood":true,"img":"img/LP-0004.png","physics":"ຕອນດິນແບ່ງເປັນ 2 ຫ້ອງໂຄ້ງມົນເຊື່ອມດ້ວຍຄອດກາງຄືນ້ຳເຕົ້າເຊັ່ນຊີວິດ. ກັ່ນຕອງກະແສລົມຮ້າຍໃຫ້ກາຍເປັນພະລັງຊີວິດ Sheng Qi ບໍລິສຸດ.","entranceRules":"1. ປາກນ້ຳເຕົ້າ: ✓ ດີ - ປະຕູເຂົ້າຢູ່ປາກດ້ານໜ້າ. 2. ຄອດກາງ: ✓ ດີ - ທາງລົດແລ່ນຜ່ານຄອດກາງໂອບລ້ອມດ້ວຍໄມ້ດອກ. 3. ປະຕູຫຼັງ: ✗ ຫ້າມ - ຫ້າມເຈາະປະຕູທະລຸທ້າຍນ້ຳເຕົ້າ.","waterRules":"1. ຫ້ອງໜ້າ: ✓ ດີ - ໜອງນ້ຳຮູບກີບບົວໃນຫ້ອງໜ້າ. 2. ຄອດກາງ: ✓ ດີ - ຮ່ອງນ້ຳໄຫຼລອດຂົວຂ້າມ. 3. ຫ້ອງຫຼັງ: ✗ ຫ້າມ - ຫ້າມມີໜອງນ້ຳໃກ້ຫຼັງເຮືອນ.","baguaSectors":"1. ຮູບຊົງນ້ຳເຕົ້າ: ດູດຊັບພະລັງລົບ, ປິ່ນປົວສຸຂະພາບ. 2. ຄະແນນ: 94/100.","remedy":"1. ໄມ້ດັດຄອດກາງ: ປູກໄມ້ດັດສອງຂ້າງຄອດກາງ; 2. ໜອງນ້ຳໜ້າ: ສ້າງໜອງບົວ; 3. ກຳແພງຫຼັງ: ກຳແພງທຶບ 2m; 4. ໄຟສວນ: ຕັ້ງໄຟອົບອຸ່ນ.","housePositioning":"ວາງອາຄານຫຼັກໃນຫ້ອງຫຼັງໃຫຍ່ (Rear Chamber) ເຊິ່ງເປັນຫ້ອງກັກເກັບພະລັງຊີວິດ, ຫ້ອງໜ້າເຮັດເປັນສວນ ຫຼື ລານຕ້ອນຮັບ.","entrancePlacement":"ປະຕູຮົ້ວໃຫຍ່ຕັ້ງຢູ່ປາກນ້ຳເຕົ້າດ້ານໜ້າສຸດ, ມີທາງຍ່າງ ແລະ ທາງລົດແລ່ນຜ່ານຄອດກາງຢ່າງສະຫງົບ.","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນໜ້າຈາກຫ້ອງຫຼັງຜ່ານຄອດກາງສູ່ຫ້ອງໜ້າ; ທິດຫຼັງເຮືອນ: ພິງທ້າຍນ້ຳເຕົ້າ; ທິດຫົວຕຽງ: ຫັນຫົວສູ່ທິດ Tian Yi (ໝໍເທວະດາ).","elementGua":"ທາດນ້ຳປະສົມທອງ (Water & Metal / 坎 水 & 乾 兑 金) - ສຸຂະພາບ, ອາຍຸຍືນຍາວ, ປິ່ນປົວພະຍາດ, ຄວາມສະຫງົບ","favorablePeople":"ດີເລີດສຳລັບຜູ້ສູງອາຍຸ, ແພດໝໍ, ນັກບວດ, ຄົນຮັກສຸຂະພາບ (ກວ້າ 1 坎, 6 乾, 7 兑): ດູດຊັບພະຍາດໂລກາ, ອາຍຸໝັ້ນຂວັນຍືນ, ຄອບຄົວຮັກແພງ.","clashingPeople":"ຄົນທາດໄຟຮ້ອນແຮງ (ກວ້າ 9 离): ພະລັງນ້ຳເຕົ້າເຢັນອາດດັບໄຟ; ແກ້ໄຂດ້ວຍການຈັດສວນດອກໄມ້ສີແດງ/ສົ້ມ ແລະ ຕັ້ງໂຄມໄຟໃນສວນ.","comprehensiveRemedy":"1. ປູກໄມ້ດັດ ຫຼື ໄມ້ພຸ່ມໂອບລ້ອມບໍລິເວນຄອດກາງ; 2. ຕັ້ງອ່າງບົວ ຫຼື ນ້ຳພຸກາງສວນຫ້ອງໜ້າ; 3. ຕັ້ງສີລາແກຣນິດຫຼັງເຮືອນ; 4. ຮົ້ວຮອບຂອບຊິດ."},{"id":"LP-0005","type":"landplot","name":"ຕອນດິນຄາງໝູ ໜ້າແຄບຫຼັງກວ້າງ (Ti Xing: Qian Zhai Hou Kuan)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":88,"isGood":true,"img":"img/LP-0005.png","physics":"ໜ້າແຄບຫຼັງກວ້າງ (ຄາງໝູຜາຍຫຼັງ), ກະແສລົມ Qi ບີບຕົວເຂົ້າແລ້ວກະຈາຍກວ້າງອອກພາຍໃນຢ່າງອ່ອນໂຍນ, ບໍ່ມີລົມພັດແຮງຮົ່ວໄຫຼ.","entranceRules":"1. ໜ້າແຄບ: ✓ ດີ - ປະຕູເຂົ້າຢູ່ໜ້າແຄບຝັ່ງມັງກອນ. 2. ດ້ານຫຼັງ: ✗ ຫ້າມ - ຫ້າມເປີດປະຕູໃຫຍ່ດ້ານຫຼັງກວ້າງ.","waterRules":"1. ໜ້າເຮືອນ: ✓ ດີ - ໜອງນ້ຳເຄິ່ງວົງມົນ. 2. ມຸມຫຼັງ: ✗ ຫ້າມ - ຫ້າມຂຸດໜອງນ້ຳຕິດມຸມຫຼັງ.","baguaSectors":"1. ຫຼັງກວ້າງ: ເສີມພະລັງບາຣະມີ ແລະ ຊັບສົມບັດ. 2. ຄະແນນ: 88/100.","remedy":"1. ໂຄມໄຟນຳທາງ; 2. ແນວຕົ້ນໄມ້ສອງຂ້າງ; 3. ໜອງນ້ຳໜ້າເຮືອນ; 4. ກຳແພງຫຼັງ.","housePositioning":"ວາງອາຄານຫຼັກໃນເຂດຫຼັງທີ່ກວ້າງຂວາງທີ່ສຸດ (Xuan Wu Wide), ປ່ອຍໃຫ້ດ້ານໜ້າແຄບເປັນທາງເຂົ້າ ແລະ ສວນດອກໄມ້.","entrancePlacement":"ປະຕູຮົ້ວໃຫຍ່ຢູ່ດ້ານໜ້າແຄບ ຝັ່ງມັງກອນຂຽວ (ຊ້າຍ), ເປີດຮັບກະແສລົມໃຫ້ໄຫຼເຂົ້າມາແລ້ວກວ້າງອອກພາຍໃນ.","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນໜ້າອອກສູ່ດ້ານໜ້າແຄບ; ທິດຫຼັງເຮືອນ: ພິງຫຼັງກວ້າງທີ່ໜັກແໜ້ນ; ທິດຫົວຕຽງ: ພິງຫຼັງກວ້າງ.","elementGua":"ທາດດິນ & ທາດທອງ (Earth & Metal / 艮 坤 & 乾 兑) - ການສະສົມຊັບ, ຄວາມກ້າວໜ້າ, ຄວາມໝັ້ນຄົງ","favorablePeople":"ດີເລີດສຳລັບຄອບຄົວທີ່ສ້າງເນື້ອສ້າງຕົວ, ພໍ່ຄ້າ, ຜູ້ບໍລິຫານ (ກວ້າ 8 艮, 2 坤, 6 乾, 7 兑): ຍິ່ງຢູ່ຍິ່ງຮັ່ງມີ, ລູກຫຼານຈະເລີນກ້າວໜ້າ.","clashingPeople":"ບໍ່ມີຂໍ້ຂັດແຍ້ງຮ້າຍແຮງ; ທຸກກວ້າສາມາດຢູ່ໄດ້ຢ່າງມີຄວາມສຸກ.","comprehensiveRemedy":"1. ຕັ້ງໂຄມໄຟສະຫວ່າງນຳທາງຈາກປະຕູໜ້າສູ່ຕົວເຮືອນ; 2. ປູກແນວຕົ້ນໄມ້ຕາມແນວແດນທີ່ຜາຍອອກ; 3. ໜອງນ້ຳເຄິ່ງວົງມົນໜ້າເຮືອນ; 4. ກຳແພງຫຼັງແຂງແຮງ."},{"id":"LP-0006","type":"landplot","name":"ຕອນດິນຄາງໝູ ໜ້າກວ້າງຫຼັງແຄບ ຊັບຮົ່ວໄຫຼ (Ti Xing: Qian Kuan Hou Zhai)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":35,"isGood":false,"img":"img/LP-0006.png","physics":"ໜ້າກວ້າງຫຼັງແຄບ (ຄາງໝູສ້ຽມຫຼັງ), ກະແສລົມພັດເຂົ້າມາແລ້ວຖືກບີບອັດອອກດ້ານຫຼັງໄວເກີນໄປ ເຮັດໃຫ້ເງິນຄຳຮົ່ວໄຫຼ ແລະ ເກີດຄວາມຄຽດ.","entranceRules":"1. ໜ້າກວ້າງ: ✗ ລະວັງ - ຫ້າມເປີດປະຕູກວ້າງເກີນໄປ. 2. ດ້ານຊ້າຍ: ✓ ດີ - ເປີດປະຕູສະເພາະດ້ານຊ້າຍມັງກອນ.","waterRules":"1. ດ້ານໜ້າ: ✓ ດີ - ໜອງນ້ຳດັກຊັບ. 2. ດ້ານຫຼັງ: ✗ ຫ້າມ - ຫ້າມມີນ້ຳໄຫຼອອກຫຼັງ.","baguaSectors":"1. ຫຼັງແຄບ: ຂາດພະລັງ Xuan Wu. 2. ຄະແນນ: 35/100 (ອັນຕະລາຍຕ້ອງແກ້).","remedy":"1. ກຳແພງຫຼັງ 2.5m; 2. ຕົ້ນສົນ 7 ຕົ້ນຫຼັງ; 3. ໂຄມໄຟສອງມຸມຫຼັງ; 4. ຫຼຸດຂະໜາດປະຕູໜ້າ.","housePositioning":"ວາງເຮືອນຢູ່ຕຳແໜ່ງກາງຕອນດິນ, ຫ້າມສ້າງເຮືອນຕິດດ້ານຫຼັງແຄບເດັດຂາດ ເພາະລົມຈະບີບອັດຫຼັງເຮືອນ.","entrancePlacement":"ປະຕູຮົ້ວຢູ່ດ້ານໜ້າຝັ່ງມັງກອນຂຽວ, ຫ້າມເປີດປະຕູກວ້າງເຕັມໜ້າດິນ (ເປີດສະເພາະຊ່ອງປະຕູຂະໜາດປົກກະຕິ 4m).","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນສູ່ດ້ານໜ້າກວ້າງ; ທິດຫຼັງເຮືອນ: ພິງກຳແພງແກ້ໄຂດ້ານຫຼັງ; ທິດຫົວຕຽງ: ພິງຝາທຶບພາຍໃນ.","elementGua":"ທາດໄຟພິສ & ລົມແຕກ (Fire Sha & Dispersing Wind) - ຊັບສິນຮົ່ວໄຫຼ, ໄຮ້ທີ່ເພິ່ງ, ຫົວໜ້າຄອບຄົວເມື່ອຍລ້າ","favorablePeople":"ບໍ່ເໝາະສຳລັບການຢູ່ອາໄສຂອງຄອບຄົວໃດໆ (ຍົກເວັ້ນໃຊ້ເປັນຮ້ານຄ້າເປີດໜ້າກວ້າງຊົ່ວຄາວ).","clashingPeople":"ຂັດແຍ້ງຮຸນແຮງກັບຫົວໜ້າຄອບຄົວ (ກວ້າ 6 乾) ແລະ ແມ່ (ກວ້າ 2 坤): ດ້ານຫຼັງແຄບເຮັດໃຫ້ຂາດທີ່ເພິ່ງ, ຢູ່ດົນໄປຊັບສິນຫຼຸດລົງ.","comprehensiveRemedy":"ວິທີແກ້ໄຂດ່ວນ: 1. ສ້າງກຳແພງຫີນແກຣນິດສູງ 2.5m ດ້ານຫຼັງແຄບ; 2. ປູກແນວຕົ້ນສົນ/ຕົ້ນໄຜ່ໜາແໜ້ນດ້ານຫຼັງສ້າງພູເຂົາທຽມ; 3. ຕັ້ງໂຄມໄຟສະຫວ່າງສອງມຸມຫຼັງ; 4. ຕັ້ງສີລາໄທຊານ."},{"id":"LP-0007","type":"landplot","name":"ຕອນດິນສາມຫຼ່ຽມ ຄົມມີດຕັດ ທາງສາມແພ່ງ (San Jiao Tu: Scissors Sha)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":18,"isGood":false,"img":"img/LP-0007.png","physics":"ຕອນດິນສາມຫຼ່ຽມແຫຼມທີ່ຖືກຕັດດ້ວຍຖະໜົນ 2 ສາຍ ມາບັນຈົບກັນຄືຄົມມີດຕັດ (Scissors Y-Fork / Jian Dao Sha). ມຸມແຫຼມຕ່ຳກວ່າ 36 ອົງສາ ສ້າງພະລັງພິສທາດໄຟ (Huo Sha) ແລະ ກະແສລົມລົດພຸ່ງຊົນເຮືອນໂດຍກົງ.","entranceRules":"1. ດ້ານຊ້າຍມັງກອນ: ✓ ດີ - ປະຕູໃຫຍ່ ແລະ ທາງລົດເຂົ້າຕ້ອງຢູ່ດ້ານຊ້າຍທີ່ແນວແດນພຽງສະເໝີ, ຫ່າງຈາກມຸມແຫຼມ > 15 ແມັດ. ✗ ບໍ່ດີ: ເປີດປະຕູໃກ້ມຸມແຫຼມຈະຖືກລົມມີດຕັດຊົນ. 2. ດ້ານຂວາເສືອ: ✗ ຫ້າມເດັດຂາດ - ຫ້າມເປີດປະຕູໃຫຍ່ດ້ານເສືອຂາວ (Tiger Opens Mouth).","waterRules":"1. ດ້ານໜ້າ (ໝິງຖັງ): ✓ ດີ - ໜອງນ້ຳເຄິ່ງວົງມົນໃນສວນໜ້າເຮືອນ (ຢູ່ຫຼັງກຳແພງແກຣນິດ) ເພື່ອດູດຊັບພະລັງ Sheng Qi. 2. ມຸມແຫຼມ & ດ້ານຫຼັງ: ✗ ຫ້າມເດັດຂາດ - ຫ້າມຂຸດໜອງນ້ຳສາມຫຼ່ຽມໃນມຸມແຫຼມ (Fire-Water Clash) ແລະ ຫ້າມຂຸດໜອງນ້ຳຫຼັງເຮືອນ (Xuan Wu Drowning).","baguaSectors":"1. ດ້ານຫຼັງ (Xuan Wu): ✓ ດີ - ເຮືອນຕັ້ງຢູ່ດ້ານຫຼັງທີ່ກວ້າງ, ມີກຳແພງຫີນແກຣນິດ 2.5 ແມັດ ແລະ ຕົ້ນສົນ 5 ຕົ້ນເປັນພູພິງຫຼັງ. 2. ການສູນເສຍມຸມ: ຂາດທິດ Bagua ເຖິງ 3-4 ທິດ ເຮັດໃຫ້ອັນຕະລາຍຕໍ່ສຸຂະພາບຖ້າບໍ່ແກ້ໄຂ. 3. ຄະແນນພະລັງງານ: 18/100 (ອັນຕະລາຍຮຸນແຮງ ຖ້າບໍ່ແກ້ໄຂ).","remedy":"ວິທີແກ້ໄຂ 4 ຂັ້ນຕອນ: 1. ຕັດມຸມແຫຼມ: ສ້າງກຳແພງຫີນແກຣນິດສູງ 2.2 ແມັດ ຕັດມຸມແຫຼມຖິ້ມ, ປ່ຽນພື້ນທີ່ພາຍໃນໃຫ້ເປັນສີ່ຫຼ່ຽມຕັ້ງສາກ. 2. ເຂດກັນຊົນ (Buffer Zone): ປູກໄຜ່ ແລະ ຕົ້ນສົນໜາແໜ້ນໃນມຸມສາມຫຼ່ຽມດ້ານໜ້າເພື່ອຕັນແຮງລົມລົດ 100%. 3. ຫີນຍັນໄພ: ຕັ້ງຫີນຍັນໄພ Tai Shan Shi Gan Dang ໃນມຸມແຫຼມ. 4. ຂໍ້ຫ້າມເດັດຂາດ: ຫ້າມຕັ້ງຫ້ອງນອນ, ເຕົາໄຟ, ຫຼື ໂຕະເຮັດວຽກໃນມຸມແຫຼມເດັດຂາດ.","housePositioning":"ວາງອາຄານຫຼັກເລິກຢູ່ຫຼັງສຸດໃນເຂດປອດໄພ (Safe Rear Zone) ຫຼັງກຳແພງຕັດມຸມ, ຫ້າມວາງອາຄານໃນເຂດມຸມແຫຼມເດັດຂາດ.","entrancePlacement":"ປະຕູຮົ້ວຢູ່ດ້ານຂ້າງມັງກອນຂຽວ ຫ່າງຈາກມຸມແຫຼມທາງແຍກ > 15 ແມັດ, ຫ້າມເປີດປະຕູກົງກັບມຸມແຫຼມທາງສາມແພ່ງ.","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນສູ່ສວນພາຍໃນຫຼັງກຳແພງແກຣນິດ; ທິດຫຼັງເຮືອນ: ພິງກຳແພງຫຼັງແໜ້ນ; ທິດຫົວຕຽງ: ພິງຝາທຶບຫຼັງ.","elementGua":"ທາດໄຟຮ້ອນແຮງ (Sharp Fire Sha / 火煞) - ຄົມມີດຕັດ, ອຸບັດຕິເຫດ, ອັກຄີໄພ, ຄະດີຄວາມ, ຜ່າຕັດ","favorablePeople":"ຫ້າມໃຊ້ຢູ່ອາໄສສຳລັບທຸກຄົນ (ຍົກເວັ້ນວັດວາອາຮາມ, ປ້ຳນ້ຳມັນ, ຫຼື ວົງວຽນສາທາລະນະ).","clashingPeople":"ຂັດແຍ້ງຮຸນແຮງທີ່ສຸດກັບຄົນທາດທອງ (ກວ້າ 6 乾, 7 兑): ໄຟຫຼອມທອງ ເຮັດໃຫ້ເຈັບປ່ວຍປອດ/ກະດູກ, ຜ່າຕັດ; ແລະ ຄົນທາດນ້ຳ (ກວ້າ 1 坎).","comprehensiveRemedy":"ມາດຕະການແກ້ໄຂ 4 ຂັ້ນຕອນ: 1. ສ້າງກຳແພງຫີນແກຣນິດ 2.2m ຕັດມຸມແຫຼມປ່ຽນຮູບຊົງເປັນຄາງໝູ/ສີ່ຫຼ່ຽມ; 2. ປູກຕົ້ນສົນ/ໄຜ່ດູດແຮງລົມ; 3. ຕັ້ງສີລາໄທຊານ (石敢当) ທີ່ຫົວມຸມ; 4. ປັບມຸມແຫຼມເປັນສວນຫຍ້າ/ລານຈອດລົດ."},{"id":"LP-0008","type":"landplot","name":"ຕອນດິນສາມຫຼ່ຽມຫົວສ້ຽມປີ້ນກັບ (Dao San Jiao Tu - Inverted Triangle Plot)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":22,"isGood":false,"img":"img/LP-0008.png","physics":"ໜ້າກວ້າງຫຼັງແຫຼມສ້ຽມຄືສາມຫຼ່ຽມປີ້ນກັບ. ຫຼັງພິງ Xuan Wu ຂາດຫາຍ 100%, ລົມຕີກວາດຫຼັງເຮືອນ ເຮັດໃຫ້ຂາດຄວາມໝັ້ນຄົງ.","entranceRules":"1. ໜ້າກວ້າງ: ✓ ດີ - ປະຕູເຂົ້າຢູ່ໜ້າກວ້າງຝັ່ງມັງກອນ. 2. ຫຼັງແຫຼມ: ✗ ຫ້າມ - ຫ້າມມີປະຕູຫຼັງ.","waterRules":"1. ໜ້າເຮືອນ: ✓ ດີ - ໜອງນ້ຳເຄິ່ງວົງມົນ. 2. ຫຼັງສ້ຽມ: ✗ ຫ້າມ - ຫ້າມມີນ້ຳຫຼັງ.","baguaSectors":"1. ຫຼັງສ້ຽມ: ສູນເສຍພະລັງ Xuan Wu. 2. ຄະແນນ: 22/100 (ອັນຕະລາຍ).","remedy":"1. ກຳແພງຕັດມຸມຫຼັງ 2.2m; 2. ຕົ້ນສົນ 7 ຕົ້ນ; 3. ສີລາໄທຊານຫຼັງ; 4. ສວນດອກໄມ້ຫຼັງ.","housePositioning":"ວາງເຮືອນຢູ່ກາງຕອນດິນຂ້ອນໄປທາງໜ້າ (ເຂດກວ້າງ), ຫ້າມຕັ້ງເຮືອນໃນມຸມສ້ຽມຫຼັງເດັດຂາດ.","entrancePlacement":"ປະຕູຮົ້ວໃຫຍ່ຢູ່ດ້ານໜ້າກວ້າງ ຝັ່ງມັງກອນຂຽວ.","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນສູ່ດ້ານໜ້າກວ້າງ; ທິດຫຼັງເຮືອນ: ພິງກຳແພງຕັດມຸມຫຼັງ; ທິດຫົວຕຽງ: ພິງຝາທຶບ.","elementGua":"ທາດໄຟແຫຼມແທງຫຼັງ (Reverse Fire Sha) - ໄຮ້ບາຣະມີ, ຖືກແທງຂ້າງຫຼັງ, ຂາດຜູ້ອຸປະຖຳ","favorablePeople":"ບໍ່ເໝາະສຳລັບການຢູ່ອາໄສ.","clashingPeople":"ຂັດແຍ້ງຮຸນແຮງກັບຄົນທາດດິນ (ກວ້າ 2 坤, 8 艮) ແລະ ທາດໄມ້ (ກວ້າ 3 震, 4 巽): ດ້ານຫຼັງສ້ຽມແຫຼມຄືຫອກແທງຫຼັງ, ຖືກຫັກຫຼັງ.","comprehensiveRemedy":"1. ສ້າງກຳແພງຫີນແກຣນິດ 2.2m ຕັດມຸມສ້ຽມຫຼັງ; 2. ປູກຕົ້ນສົນ 7 ຕົ້ນໃນມຸມແຫຼມຫຼັງສ້າງພູເຂົາພິງ; 3. ຕັ້ງສີລາໄທຊານທີ່ມຸມແຫຼມຫຼັງ; 4. ປັບມຸມຫຼັງເປັນສວນດອກໄມ້."},{"id":"LP-0009","type":"landplot","name":"ຕອນດິນຮູບປືນ / ໂຕແອວ ຂາດມຸມ (Qiang Xing / L-Shape Plot)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":30,"isGood":false,"img":"img/LP-0009.png","physics":"ຕອນດິນຂາດມຸມ Bagua ໃຫຍ່ກວ່າ 30%, ເກີດມຸມຫັກຄືປືນສັ້ນ. ພະລັງງານໄຫຼວຽນຕິດຂັດ ແລະ ສ້າງພະລັງພິສເລັງໃສ່ບໍລິເວນມຸມຫັກ.","entranceRules":"1. ປີກໃຫຍ່: ✓ ດີ - ປະຕູເຂົ້າຢູ່ປີກໃຫຍ່. 2. ມຸມຫັກ: ✗ ຫ້າມ - ຫ້າມເປີດປະຕູກົງມຸມຫັກ.","waterRules":"1. ປີກໃຫຍ່: ✓ ດີ - ໜອງນ້ຳໜ້າເຮືອນ. 2. ມຸມຂາດ: ✗ ຫ້າມ - ຫ້າມຂຸດໜອງນ້ຳກົງມຸມຫັກ.","baguaSectors":"1. ຂາດທິດ Bagua: ກະທົບສະມາຊິກຄອບຄົວ. 2. ຄະແນນ: 30/100.","remedy":"1. ປູກໄມ້ເຕັມມຸມຂາດ; 2. ເສົາໄຟມຸມຂາດ; 3. ສາລາພັກຜ່ອນ; 4. ແບ່ງດິນ 2 ສ່ວນ.","housePositioning":"ວາງອາຄານຫຼັກໃນປີກໃຫຍ່ທີ່ເປັນສີ່ຫຼ່ຽມສົມບູນ, ຫ້າມສ້າງເຮືອນຂວາງຮອຍຕໍ່ໂຕແອວ (ມຸມຫັກ).","entrancePlacement":"ປະຕູຮົ້ວໃຫຍ່ຢູ່ດ້ານໜ້າປີກຫຼັກ ຝັ່ງມັງກອນຂຽວ.","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນສູ່ລານໜ້າປີກໃຫຍ່; ທິດຫຼັງເຮືອນ: ພິງຫຼັງປີກໃຫຍ່; ທິດຫົວຕຽງ: ພິງຝາທຶບ.","elementGua":"ທາດທອງຫັກ & ທາດພິສຂາດມຸມ (Broken Metal & Missing Sector Sha) - ຄອບຄົວຂາດຄວາມສົມດຸນ, ພະຍາດສະເພາະທິດ","favorablePeople":"ບໍ່ເໝາະສຳລັບການຢູ່ອາໄສ ຖ້າບໍ່ໄດ້ດັດແປງແກ້ໄຂມຸມທີ່ຂາດ.","clashingPeople":"ຂັດແຍ້ງກັບບຸກຄົນປະຈຳທິດທີ່ຂາດຫາຍ: ຖ້າຂາດທິດຕາເວັນຕົກສ່ຽງເໜືອ ກະທົບພໍ່ (ກວ້າ 6 乾); ຖ້າຂາດຕາເວັນຕົກສ່ຽງໃຕ້ ກະທົບແມ່ (ກວ້າ 2 坤); ຖ້າຂາດຕາເວັນອອກ ກະທົບລູກຊາຍກົກ (ກວ້າ 3 震).","comprehensiveRemedy":"1. ເຕັມມຸມທີ່ຂາດ: ສ້າງຮົ້ວ ແລະ ປູກຕົ້ນໄມ້ພຸ່ມໜາແໜ້ນໃນມຸມທີ່ຂາດໃຫ້ຄົບສີ່ຫຼ່ຽມ; 2. ຕັ້ງເສົາໄຟສະຫວ່າງສູງທີ່ມຸມຕັດທີ່ຂາດ; 3. ຕັ້ງສວນດອກໄມ້ ຫຼື ສາລາພັກຜ່ອນໃນມຸມຂາດ; 4. ແຍກສ່ວນດິນເປັນ 2 ສ່ວນ."},{"id":"LP-0010","type":"landplot","name":"ຕອນດິນຮູບຄ້ອນຕີ / ໂຕທີ (T-Shape Hammer Plot)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":40,"isGood":false,"img":"img/LP-0010.png","physics":"ຕອນດິນປະກອບດ້ວຍຫົວຄ້ອນກວ້າງ ແລະ ດ້າມຄ້ອນແຄບຍາວ. ພະລັງງານແຕກແຍກລະຫວ່າງສອງສ່ວນ ເຮັດໃຫ້ເກີດຄວາມບໍ່ສະເໝີພາບ.","entranceRules":"1. ປາຍດ້າມຄ້ອນ: ✓ ດີ - ທາງເຂົ້າລົດ. 2. ຮອຍຕໍ່: ✗ ຫ້າມ - ຫ້າມສ້າງເຮືອນທັບຮອຍຕໍ່.","waterRules":"1. ຫົວຄ້ອນ: ✓ ດີ - ໜອງນ້ຳໜ້າເຮືອນ. 2. ດ້າມຄ້ອນ: ✗ ຫ້າມ - ຫ້າມຂຸດໜອງນ້ຳຂວາງທາງ.","baguaSectors":"1. ຂາດ 2 ປີກຂ້າງດ້າມຄ້ອນ. 2. ຄະແນນ: 40/100.","remedy":"1. ກຳແພງແບ່ງ 2 ສ່ວນ; 2. ແນວຕົ້ນໄມ້; 3. ໂຄມໄຟນຳທາງ; 4. ໜອງນ້ຳຫົວຄ້ອນ.","housePositioning":"ວາງເຮືອນຢູ່ຫົວຄ້ອນດ້ານເທິງ (Crossbar), ຫ້າມສ້າງເຮືອນຂວາງເອວລະຫວ່າງຫົວຄ້ອນກັບດ້າມຄ້ອນ.","entrancePlacement":"ທາງລົດແລ່ນຕາມລຳຕົ້ນດ້າມຄ້ອນຂຶ້ນສູ່ຫົວຄ້ອນ.","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນໜ້າລົງສູ່ລຳຕົ້ນ; ທິດຫຼັງເຮືອນ: ພິງຫົວຄ້ອນ; ທິດຫົວຕຽງ: ພິງຫຼັງຫົວຄ້ອນ.","elementGua":"ທາດດິນແຕກ & ຄ້ອນພິສ (Hammer Clash Earth) - ຄວາມຂັດແຍ້ງ, ປວດເມື່ອຍ, ງານໜັກແຕ່ໄດ້ຜົນໜ້ອຍ","favorablePeople":"ເໝາະສຳລັບໂຮງງານ, ສາງສິນຄ້າ, ຫຼື ອູ່ສ້ອມແປງ (ບໍ່ຄວນໃຊ້ເປັນເຮືອນຢູ່ອາໄສ).","clashingPeople":"ຂັດແຍ້ງກັບຄົນທາດນ້ຳ (ກວ້າ 1 坎) ແລະ ທາດໄຟ (ກວ້າ 9 离): ຄວາມກົດດັນຂອງຄ້ອນຕີເຮັດໃຫ້ເຄັ່ງຕຶງ.","comprehensiveRemedy":"1. ສ້າງກຳແພງແຍກສ່ວນຫົວຄ້ອນ ແລະ ດ້າມຄ້ອນອອກເປັນ 2 ຕອນສີ່ຫຼ່ຽມຈະຕຸລັດ; 2. ປູກຕົ້ນໄມ້ແນວແບ່ງ; 3. ຕັ້ງໂຄມໄຟນຳທາງດ້າມຄ້ອນ; 4. ໜອງນ້ຳກາງຫົວຄ້ອນ."},{"id":"LP-0011","type":"landplot","name":"ຕອນດິນຮູບເຂົ້າຫຼາມຕັດ / ເພັດ (Ling Xing Tu - Rhombus Slanted Plot)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":45,"isGood":false,"img":"img/LP-0011.png","physics":"ຕອນດິນສີ່ຫຼ່ຽມເຂົ້າຫຼາມຕັດມີມຸມແຫຼມ 2 ມຸມ ແລະ ມຸມປ້ານ 2 ມຸມ. ກະແສລົມພັດຕີສະຫຼຽງ ເຮັດໃຫ້ພະລັງງານໝູນວຽນຜິດປົກກະຕິ.","entranceRules":"1. ດ້ານລຽບ: ✓ ດີ - ປະຕູເຂົ້າດ້ານລຽບ. 2. ມຸມແຫຼມ: ✗ ຫ້າມ - ຫ້າມເປີດປະຕູກົງມຸມແຫຼມ.","waterRules":"1. ໃຈກາງ: ✓ ດີ - ອ່າງນ້ຳພຸກາງ. 2. ມຸມແຫຼມ: ✗ ຫ້າມ - ຫ້າມມີນ້ຳໃນມຸມແຫຼມ.","baguaSectors":"1. ທິດທາງບ້ຽວ: ຕ້ອງຕັ້ງເຮືອນສາກ. 2. ຄະແນນ: 45/100.","remedy":"1. ປູກໄມ້ຕັດ 2 ມຸມແຫຼມ; 2. ກຳແພງຕັດມຸມ; 3. ອ່າງນ້ຳພຸ; 4. ເຮືອນຕັ້ງສາກ 90°.","housePositioning":"ວາງເຮືອນຢູ່ໃຈກາງຕອນດິນ ໂດຍຕັ້ງສາກ 90 ອົງສາກັບທິດເຂັມທິດຫຼັກ (ຫ້າມສ້າງເຮືອນບ້ຽວຕາມແນວແດນ).","entrancePlacement":"ປະຕູຮົ້ວຢູ່ດ້ານຂ້າງທີ່ລຽບງ່າຍ, ຫ່າງຈາກສອງມຸມແຫຼມ > 10 ແມັດ.","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນໜ້າຕາມທິດເຂັມທິດຫຼັກ (N/S/E/W); ທິດຫຼັງເຮືອນ: ພິງທິດຕັ້ງສາກ; ທິດຫົວຕຽງ: ພິງຝາສາກ.","elementGua":"ທາດໄມ້ບ້ຽວ & ທາດໄຟມຸມແຫຼມ (Slanted Wood & Fire Angles) - ຄວາມໂລບ, ການພະນັນ, ຄວາມບໍ່ແນ່ນອນ","favorablePeople":"ພໍ່ຄ້າທີ່ມັກລົງທຶນມີຄວາມສ່ຽງສູງ (ແຕ່ຕ້ອງແກ້ໄຂມຸມແຫຼມທັງສອງກ່ອນ).","clashingPeople":"ຂັດແຍ້ງກັບຄົນທາດດິນ (ກວ້າ 2 坤, 8 艮): ມຸມແຫຼມສອງຂ້າງແທງທຳລາຍຄວາມໝັ້ນຄົງ.","comprehensiveRemedy":"1. ປູກຕົ້ນໄມ້ພຸ່ມໜາແໜ້ນຕັດສອງມຸມແຫຼມໃຫ້ກາຍເປັນມົນ; 2. ສ້າງກຳແພງຕັດມຸມແຫຼມທັງສອງ; 3. ຕັ້ງອ່າງນ້ຳພຸຊະລໍແຮງລົມ; 4. ສ້າງເຮືອນສີ່ຫຼ່ຽມຕັ້ງສາກ 90°."},{"id":"LP-0012","type":"landplot","name":"ຕອນດິນຮູບເຄິ່ງວົງມົນ ທາດທອງ (Ban Yuan Tu - Semicircular Metal Plot)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":93,"isGood":true,"img":"img/LP-0012.png","physics":"ດ້ານຫຼັງໂຄ້ງມົນຄືຫຼັງເຕົ່າ ຫຼື ຫຼັງຄາທອງຄຳ, ດ້ານໜ້າຕິດຖະໜົນພຽງສະເໝີ. ກະແສລົມໂອບອຸ້ມຕົວເຮືອນ 100% ບໍ່ມີລົມພັດກະແທກ.","entranceRules":"1. ດ້ານໜ້າ: ✓ ດີ - ປະຕູເຂົ້າດ້ານໜ້າຝັ່ງມັງກອນ. 2. ສ່ວນໂຄ້ງ: ✗ ຫ້າມ - ຫ້າມເຈາະປະຕູຫຼັງສ່ວນໂຄ້ງ.","waterRules":"1. ດ້ານໜ້າ: ✓ ດີ - ໜອງນ້ຳໂອບອຸ້ມ. 2. ດ້ານຫຼັງ: ✗ ຫ້າມ - ຫ້າມມີນ້ຳຫຼັງ.","baguaSectors":"1. ທາດທອງກົມມົນ: ເສີມບາຣະມີ ແລະ ຊັບສົມບັດ. 2. ຄະແນນ: 93/100.","remedy":"1. ຕົ້ນສົນຕາມແນວໂຄ້ງ; 2. ໜອງນ້ຳໜ້າ; 3. ປະຕູຮົ້ວມຸງຄຸນ; 4. ລານຫຍ້າກາງ.","housePositioning":"ວາງອາຄານຫຼັກໄວ້ໃຈກາງສ່ວນໂຄ້ງ (ຖືກສ່ວນໂຄ້ງໂອບອຸ້ມ), ປ່ອຍໃຫ້ດ້ານໜ້າພຽງສະເໝີຕິດຖະໜົນເປັນລານໜ້າ.","entrancePlacement":"ປະຕູຮົ້ວໃຫຍ່ຢູ່ດ້ານໜ້າພຽງສະເໝີ ຝັ່ງມັງກອນຂຽວ (ຊ້າຍ).","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນສູ່ຖະໜົນດ້ານໜ້າ; ທິດຫຼັງເຮືອນ: ພິງສ່ວນໂຄ້ງທີ່ປົກປ້ອງ; ທິດຫົວຕຽງ: ພິງສ່ວນໂຄ້ງຫຼັງ.","elementGua":"ທາດທອງມຸງຄຸນ (Gold & Metal Element / 乾 兑 金) - ຄວາມຮັ່ງມີ, ຊື່ສຽງ, ອຳນາດບາຣະມີ, ຄວາມປອດໄພ","favorablePeople":"ດີເລີດສຳລັບຄົນທາດທອງ (ກວ້າ 6 乾, 7 兑) ແລະ ຄົນທາດນ້ຳ (ກວ້າ 1 坎): ທອງເກີດນ້ຳ ຮັ່ງມີ, ມີອຳນາດ, ບໍລິວານຊື່ສັດ.","clashingPeople":"ຄົນທາດໄມ້ (ກວ້າ 3 震, 4 巽): ທອງພິຊິດໄມ້ ອາດເຄັ່ງຕຶງ; ແກ້ໄຂດ້ວຍການປູກຕົ້ນໄມ້ສີຂຽວ ແລະ ຂຸດສະລອຍນ້ຳ (ທາດນ້ຳເຊື່ອມທອງສູ່ໄມ້).","comprehensiveRemedy":"ຕອນດິນຊັ້ນເລີດ: 1. ປູກແນວຕົ້ນສົນລຽບຕາມແນວໂຄ້ງຫຼັງສ້າງພູເຂົາໂອບອຸ້ມ; 2. ໜອງນ້ຳໜ້າເຮືອນ; 3. ປະຕູຮົ້ວສະຫງ່າງາມ; 4. ລານຫຍ້າກາງ."},{"id":"LP-0013","type":"landplot","name":"ຕອນດິນເທິງເນີນເຂົາ / ຂັ້ນໄດ (Shan Yao Tu - Hillside Terrace Plot)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":82,"isGood":true,"img":"img/LP-0013.png","physics":"ຕອນດິນແບ່ງເປັນ 3 ຂັ້ນໄດຕາມເນີນເຂົາ. ພະລັງງານພູເຂົາໄຫຼລົງມາຢ່າງສະໝ່ຳສະເໝີ ແຕ່ຕ້ອງລະວັງການເຊາະເຈື່ອນຂອງດິນ.","entranceRules":"1. ທາງຂຶ້ນໂຄ້ງ: ✓ ດີ - ທາງລົດຂຶ້ນໂຄ້ງຄ່ອຍໆ. 2. ທາງຊື່ຊັນ: ✗ ຫ້າມ - ຫ້າມເຮັດທາງຊື່ຊັນເກີນ 15% ຍິງກົງ.","waterRules":"1. ຮ່ອງລະບາຍ: ✓ ດີ - ຮ່ອງລະບາຍນ້ຳໂອບຮອບ. 2. ນ້ຳໄຫຼເຊາະ: ✗ ຫ້າມ - ຫ້າມໃຫ້ນ້ຳເຊາະໜ້າດິນ.","baguaSectors":"1. ພູເຂົາ Gen: ເສີມຄວາມໝັ້ນຄົງ ແລະ ອາຍຸຍືນ. 2. ຄະແນນ: 82/100.","remedy":"1. ກຳແພງກັນດິນ Retaining Wall; 2. ລະບົບລະບາຍນ້ຳ; 3. ຫຍ້າແຝກຍຶດດິນ; 4. ຮົ້ວກັ້ນ.","housePositioning":"ວາງອາຄານຫຼັກຢູ່ຊັ້ນກາງ (Mid-Terrace) ເພື່ອຄວາມສົມດຸນ, ພິງຊັ້ນເທິງ ແລະ ແນມເຫັນຊັ້ນລຸ່ມ.","entrancePlacement":"ທາງລົດຂຶ້ນໂຄ້ງຄ່ອຍໆຕາມຄວາມລາດຊັນ ຈາກຊັ້ນລຸ່ມຂຶ້ນສູ່ຊັ້ນກາງ.","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນໜ້າລົງສູ່ຮ່ອມພູ (View Ming Tang); ທິດຫຼັງເຮືອນ: ພິງເນີນສູງດ້ານເທິງ; ທິດຫົວຕຽງ: ພິງເນີນສູງ.","elementGua":"ທາດດິນພູເຂົາ (Mountain Earth / 艮 土) - ຄວາມໜັກແໜ້ນ, ຄວາມສະຫງົບ, ບາຣະມີ, ຄວາມສຳເລັດຍືນຍົງ","favorablePeople":"ດີເລີດສຳລັບຜູ້ບໍລິຫານ, ນັກຄິດ, ຜູ້ສູງອາຍຸ, ຄົນມັກຄວາມສະຫງົບ (ກວ້າ 8 艮, 2 坤, 6 乾): ມີບາຣະມີສູງສົ່ງ, ສຸຂະພາບແຂງແຮງ.","clashingPeople":"ຄົນສຸຂະພາບອ່ອນແອ ຫຼື ຄົນມັກຄວາມວຸ້ນວາຍ (ຄວນສ້າງທາງລົດຂຶ້ນສະດວກສະບາຍ).","comprehensiveRemedy":"1. ສ້າງກຳແພງກັນດິນເຈື່ອນ (Retaining Wall) ທີ່ແໜ້ນໜາດ້ວຍຄອນກຣີດ ແລະ ຫີນແກຣນິດ; 2. ລະບົບລະບາຍນ້ຳຝົນຮອບຊັ້ນດິນ; 3. ປູກຫຍ້າແຝກຍຶດໜ້າດິນ; 4. ຮົ້ວກັ້ນຕົກ."},{"id":"LP-0014","type":"landplot","name":"ຕອນດິນຮູບເສົາທຸງ / ດວງກະບວຍ (Dao Ba Tu - Flagpole Panhandle Plot)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":48,"isGood":false,"img":"img/LP-0014.png","physics":"ຕອນດິນປະກອບດ້ວຍແລວທາງຍາວແຄບ (ເສົາທຸງ 3-4m) ແລະ ຕອນດິນກວ້າງດ້ານໃນ. ກະແສລົມຖືກບີບອັດຕາມແລວທາງຍາວຄື Wind Tunnel.","entranceRules":"1. ປາກທາງ: ✓ ດີ - ປະຕູເຂົ້າຕິດຖະໜົນ. 2. ແລວທາງ: ✗ ຫ້າມ - ຫ້າມມີສິ່ງກີດຂວາງໃນແລວທາງ.","waterRules":"1. ໜ້າເຮືອນໃນ: ✓ ດີ - ໜອງນ້ຳວົງວຽນ. 2. ແລວທາງ: ✗ ຫ້າມ - ຫ້າມມີນ້ຳຂັງໃນແລວທາງ.","baguaSectors":"1. ດິນດ້ານໃນກວ້າງ ແຕ່ທາງເຂົ້າແຄບ. 2. ຄະແນນ: 48/100.","remedy":"1. ໂຄມໄຟຕະຫຼອດທາງ; 2. ດອກໄມ້ສີສົດ; 3. ວົງວຽນກັບລົດ; 4. ໜອງນ້ຳໜ້າເຮືອນ.","housePositioning":"ວາງອາຄານຫຼັກໃນຕອນດິນກວ້າງດ້ານໃນສຸດ (Flag Area), ຫ້າມສ້າງເຮືອນອາໄສໃນແລວທາງຍາວ (Pole Area) ເດັດຂາດ.","entrancePlacement":"ປະຕູຮົ້ວໃຫຍ່ຕິດຖະໜົນຫຼັກທີ່ປາກດວງກະບວຍ, ທາງລົດແລ່ນຕາມແລວທາງຍາວເຂົ້າສູ່ຕົວເຮືອນ.","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນສູ່ສວນກວ້າງພາຍໃນ; ທິດຫຼັງເຮືອນ: ພິງແນວແດນຫຼັງສຸດ; ທິດຫົວຕຽງ: ພິງຝາທຶບ.","elementGua":"ທາດໄມ້ຍາວ & ຊ່ອງລົມກົດດັນ (Flagpole Wood & Wind Tunnel Sha) - ຄວາມໂດດດ່ຽວ, ອັບລົມ, ການສັນຈອນຕິດຂັດ","favorablePeople":"ຄົນມັກຄວາມງຽບສະຫງົບສູງ, ນັກຂຽນ, ສິນລະປິນ (ແຕ່ຕ້ອງແກ້ໄຂແລວທາງຍາວ).","clashingPeople":"ຄົນຂີ້ຢ້ານ, ໂລກຊຶມເສົ້າ, ແລະ ຄອບຄົວທີ່ເຮັດທຸລະກິດຄ້າຂາຍ (ກວ້າ 2 坤, 7 兑): ຂາດພະລັງຊີວິດ Sheng Qi ໝູນວຽນ.","comprehensiveRemedy":"1. ຕັ້ງໂຄມໄຟສະຫວ່າງຕະຫຼອດແລວທາງຍາວ (ທຸກໆ 6-8 ແມັດ) ເພື່ອກຳຈັດພະລັງຢິນ; 2. ປູກດອກໄມ້ສີສັນສົດໃສຕາມທາງຍາວ; 3. ເຮັດວົງວຽນກັບລົດໜ້າເຮືອນ; 4. ໜອງນ້ຳໜ້າເຮືອນດຶງດູດພະລັງ."},{"id":"LP-0015","type":"landplot","name":"ຕອນດິນແຫຼມໂຄ້ງສາຍແອວຫຍົກ (Huan Bao He Wan Tu - River Peninsula Plot)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":96,"isGood":true,"img":"img/LP-0015.png","physics":"ສາຍນ້ຳໂຄ້ງໂອບອຸ້ມຕອນດິນ 3 ດ້ານ (Jade Belt Embrace / 玉带水). ນ້ຳໄຫຼຊ້າໆອ່ອນໂຍນ ຊ່ວຍກັກເກັບພະລັງງານຊີວິດ Sheng Qi ຢ່າງມະຫາສານ.","entranceRules":"1. ດ້ານແຜ່ນດິນ: ✓ ດີ - ປະຕູເຂົ້າດ້ານເທິງ. 2. ແຄມນ້ຳ: ✓ ດີ - ທາງຍ່າງຊົມວິວນ້ຳ. 3. ດ້ານຄົມໂຄ້ງນອກ: ✗ ຫ້າມ - ຫ້າມຕັ້ງເຮືອນຝັ່ງນ້ຳແທງ (Fan Gong).","waterRules":"1. ສາຍນ້ຳໂອບ: ✓ ດີເລີດ - ສາຍນ້ຳໂອບອຸ້ມ 3 ດ້ານ. 2. ນ້ຳເຊາະ: ✗ ລະວັງ - ປ້ອງກັນຕາຝັ່ງເຈື່ອນ.","baguaSectors":"1. ສາຍນ້ຳ Jade Belt: ມະຫາເສດຖີອັນດັບ 1. 2. ຄະແນນ: 96/100.","remedy":"1. ກຳແພງກັນຕາຝັ່ງ; 2. ຕົ້ນໄຜ່ແຄມນ້ຳ; 3. ສວນຫຍ້າໜ້າເຮືອນ; 4. ທ່າເຮືອ.","housePositioning":"ວາງອາຄານຫຼັກໄວ້ໃຈກາງແຫຼມໂຄ້ງ (Jade Belt Center) ທີ່ຖືກສາຍນ້ຳໂອບອຸ້ມ 3 ດ້ານ, ຖອຍຫ່າງຈາກແຄມຝັ່ງຢ່າງໜ້ອຍ 10 ແມັດ.","entrancePlacement":"ປະຕູຮົ້ວໃຫຍ່ຢູ່ດ້ານເທິງແຜ່ນດິນ ຝັ່ງມັງກອນຂຽວ (ຊ້າຍ).","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນໜ້າສູ່ສາຍນ້ຳໂຄ້ງໂອບ (Facing Jade Belt); ທິດຫຼັງເຮືອນ: ພິງສັນດິນຫຼັກ; ທິດຫົວຕຽງ: ພິງຝາທຶບຫຼັງ.","elementGua":"ທາດນ້ຳມຸງຄຸນສາຍແອວຫຍົກ (Jade Belt Water / 坎 水) - ມະຫາເສດຖີ, ໂຊກລາບເງິນຄຳຫຼັ່ງໄຫຼ, ຄວາມຈະເລີນຮຸ່ງເຮືອງ","favorablePeople":"ດີເລີດສຳລັບທຸກຄົນ 100%! ດີພິເສດສຳລັບນັກທຸລະກິດ, ພໍ່ຄ້າ, ນັກການເງິນ (ກວ້າ 1 坎, 3 震, 4 巽, 9 离): ສາຍນ້ຳໂອບອຸ້ມນຳພາຄວາມຮັ່ງມີມາບໍ່ຂາດສາຍ.","clashingPeople":"ບໍ່ມີຂໍ້ຂັດແຍ້ງກັບໃຜ! (ຕອນດິນມະຫາເສດຖີແຄມນ້ຳ).","comprehensiveRemedy":"1. ສ້າງກຳແພງກັນຕາຝັ່ງເຈື່ອນ (Riprap / Seawall) ລຽບຕາມແຄມນ້ຳ; 2. ປູກຕົ້ນໄຜ່ ແລະ ດອກໄມ້ແຄມຝັ່ງ; 3. ສວນຫຍ້າໜ້າເຮືອນ; 4. ທ່າເຮືອສ່ວນຕົວ."},{"id":"LP-0016","type":"landplot","name":"ຕອນດິນຮູບຊົງບໍ່ສະໝ່ຳສະເໝີ ແຂ້ວເລື່ອຍ (Bu Gui Ze Tu - Irregular Jagged Plot)","category":"16 ຮູບແບບຕອນດິນ ແລະ ການວາງຜັງອາຄານ","score":25,"isGood":false,"img":"img/LP-0016.png","physics":"ຕອນດິນມີແຂ້ວເລື່ອຍ ແລະ ມຸມແຫຼມຫຼາຍຈຸດ. ກະແສລົມພັດປະທະແລ້ວແຕກກະຈາຍເປັນລົມໝູນວົນຮອບທິດ ບໍ່ມີຄວາມສະຫງົບ.","entranceRules":"1. ດ້ານລຽບ: ✓ ດີ - ປະຕູເຂົ້າດ້ານລຽບ. 2. ມຸມແຂ້ວເລື່ອຍ: ✗ ຫ້າມ - ຫ້າມເປີດປະຕູກົງມຸມແຫຼມ.","waterRules":"1. ໃຈກາງ: ✓ ດີ - ໜອງນ້ຳຊະລໍລົມ. 2. ມຸມແຫຼມ: ✗ ຫ້າມ - ຫ້າມມີນ້ຳໃນມຸມແຫຼມ.","baguaSectors":"1. ທິດ Bagua ຂາດ-ເກີນຫຼາຍຈຸດ. 2. ຄະແນນ: 25/100 (ອັນຕະລາຍ).","remedy":"1. ກຳແພງດັດສີ່ຫຼ່ຽມພາຍໃນ; 2. ສວນດອກໄມ້ປິດມຸມແຫຼມ; 3. ສີລາໄທຊານ; 4. ອ່າງນ້ຳພຸ.","housePositioning":"ວາງອາຄານຫຼັກໃນເຂດໃຈກາງທີ່ສາມາດດັດໃຫ້ເປັນສີ່ຫຼ່ຽມຈະຕຸລັດໄດ້, ຫ້າມສ້າງເຮືອນຕິດແຄມແຂ້ວເລື່ອຍ.","entrancePlacement":"ປະຕູຮົ້ວໃຫຍ່ຢູ່ດ້ານທີ່ລຽບງ່າຍ ແລະ ປອດໄພທີ່ສຸດ, ຫ່າງຈາກມຸມແຫຼມແຂ້ວເລື່ອຍ.","orientationFacing":"ທິດໜ້າເຮືອນ: ຫັນໜ້າຕາມທິດເຂັມທິດຫຼັກທີ່ຕັ້ງສາກ 90°; ທິດຫຼັງເຮືອນ: ພິງກຳແພງພາຍໃນ; ທິດຫົວຕຽງ: ພິງຝາທຶບ.","elementGua":"ທາດພິສປັ່ນປ່ວນ (Chaotic Sha Element) - ຄວາມວຸ້ນວາຍ, ຄວາມຄິດແຕກແຍກ, ເຈັບປ່ວຍຊຳເຮື້ອ","favorablePeople":"ບໍ່ເໝາະສຳລັບການຢູ່ອາໄສ ຖ້າບໍ່ໄດ້ດັດແປງແກ້ໄຂພາຍໃນ.","clashingPeople":"ຂັດແຍ້ງກັບທຸກຄົນໃນຄອບຄົວ: ຮູບຊົງແຂ້ວເລື່ອຍສ້າງກະແສລົມໝູນວົນຕັດກັນ ເຮັດໃຫ້ເກີດຄວາມຄຽດ ແລະ ຜິດຖຽງກັນເລື້ອຍໆ.","comprehensiveRemedy":"1. ສ້າງກຳແພງພາຍໃນດັດພື້ນທີ່ຫຼັກໃຫ້ເປັນສີ່ຫຼ່ຽມສະເໝີ (Rectangular Partition); 2. ປັບມຸມແຫຼມແຂ້ວເລື່ອຍທັງໝົດເປັນສວນດອກໄມ້ ແລະ ປູກຕົ້ນໄມ້ບັງສາຍຕາ; 3. ຕັ້ງສີລາໄທຊານໃນມຸມແຫຼມທີ່ຮຸນແຮງ; 4. ຕັ້ງອ່າງນ້ຳພຸຊະລໍກະແສລົມ."},{"id":"LT-0001","type":"luantou","name":"ພູເຂົາທາດໄມ້ (Mu Shan / Tan Lang - 木山/贪狼)","category":"5 ພູເຂົາຫ້າທາດ & ລຳດັບຊັ້ນພູເຂົາ","score":92,"isGood":true,"img":"img/LT-0001.png","physics":"ພູເຂົາຕັ້ງຊື່ສູງຄືເສົາໄມ້ສີຂຽວ, ຍອດພູມົນໂຄ້ງມຸງຄຸນ. ເປັນພູເຂົາບັນພະບຸລຸດ (Tai Zu Shan). ພະລັງທາດໄມ້ແຜ່ກະຈາຍລົງມາຕາມສັນເຂົາ.","impact":"ສົ່ງເສີມຊື່ສຽງ, ສຸຂະພາບແຂງແຮງ, ບາຣະມີໜັກແໜ້ນ ແລະ ປົກປ້ອງຄຸ້ມຄອງຄົນໃນເຮືອນຈາກລົມໜາວ.","remedy":"ສ້າງກຳແພງຫີນແກຣນິດບັງທິດທີ່ພູເຂົາໃຫ້ໂທດ, ແລະ ປູກຕົ້ນໄມ້ຂຽວເພື່ອປັບສົມດຸນພະລັງງານ."},{"id":"LT-0097","type":"luantou","name":"ພູເຂົາທາດໄຟ (Huo Shan / Lian Zhen - 火山/廉贞)","category":"5 ພູເຂົາຫ້າທາດ & ລຳດັບຊັ້ນພູເຂົາ","score":15,"isGood":false,"img":"img/LT-0097.png","physics":"ຍອດພູແຫຼມສ້ຽມຄືແປວໄຟ, ຜາຫີນແຕກຫັກສີແດງຄືດາບປາຍແຫຼມ. ພະລັງທາດໄຟແຜ່ລັງສີຮ້ອນແຮງ.","impact":"ໃຫ້ໂທດຮຸນແຮງ: ອັກຄີໄພ, ຜ່າຕັດ, ອຸບັດຕິເຫດເລືອດຕົກຢາງອອກ, ອາລົມໃຈຮ້ອນ ແລະ ເສຍຊັບ.","remedy":"ສ້າງກຳແພງສູງທາສີເຫຼືອງທາດດິນ, ຂຸດອ່າງນ້ຳດັບພະລັງໄຟ, ປູກຕົ້ນໄມ້ທຶບປິດບັງສາຍຕາ."},{"id":"LT-0193","type":"luantou","name":"ພູເຂົາທາດດິນ (Tu Shan / Ju Men - 土山/巨门)","category":"5 ພູເຂົາຫ້າທາດ & ລຳດັບຊັ້ນພູເຂົາ","score":95,"isGood":true,"img":"img/LT-0193.png","physics":"ພູເຂົາຫຼັງພຽງຄືໜ້າໂຕະ (Plateau / Mesa), ຖານກວ້າງໃຫຍ່ໜັກແໜ້ນ. ພະລັງທາດດິນສະສົມຢ່າງສະຫງົບ.","impact":"ສົ່ງເສີມຄວາມຮັ່ງມີ, ຊັບສິນອະສັງຫາລິມະຊັບ, ລູກຫຼານກະຕັນຍູ, ສຸຂະພາບແຂງແຮງອາຍຸຍືນ.","remedy":"ຮັກສາພື້ນທີ່ໃຫ້ສະອາດ, ຫ້າມຂຸດເຈາະທຳລາຍສັນເຂົາດ້ານຫຼັງ, ປູກຫຍ້າຂຽວບຳລຸງໜ້າດິນ."},{"id":"LT-0289","type":"luantou","name":"ພູເຂົາທາດທອງ (Jin Shan / Wu Qu - 金山/武曲)","category":"5 ພູເຂົາຫ້າທາດ & ລຳດັບຊັ້ນພູເຂົາ","score":96,"isGood":true,"img":"img/LT-0289.png","physics":"ຍອດພູມົນກົມຄືໝໍ້ຂວ້ຳ ຫຼື ລະຄັງຄຳ, ເສັ້ນໂຄ້ງສະຫຼວຍມຸງຄຸນ. ພະລັງທາດທອງບໍລິສຸດ.","impact":"ສົ່ງເສີມອຳນາດບາຣະມີ, ຍົດຖາບັນດາສັກ, ຜູ້ນຳອົງກອນ, ຄວາມຮັ່ງມີ ແລະ ຄວາມຍຸຕິທຳ.","remedy":"ເປີດທິດຮັບແສງ, ຕັ້ງອ່າງນ້ຳໂຄ້ງຮັບພະລັງທາດທອງກໍ່ເກີດທາດນ້ຳ (Jin Sheng Shui)."},{"id":"LT-0385","type":"luantou","name":"ພູເຂົາທາດນ້ຳ (Shui Shan / Wen Qu - 水山/文曲)","category":"5 ພູເຂົາຫ້າທາດ & ລຳດັບຊັ້ນພູເຂົາ","score":88,"isGood":true,"img":"img/LT-0385.png","physics":"ທິວເຂົາໂຄ້ງລວງຄື້ນຄືຄື້ນນ້ຳໃນທະເລ, ສັນເຂົາອ່ອນຊ້ອຍຕໍ່ເນື່ອງ. ພະລັງທາດນ້ຳໄຫຼວຽນ.","impact":"ສົ່ງເສີມສະຕິປັນຍາ, ຄວາມສະຫຼາດ, ວຽກງານສິລະປະ, ການຄ້າຂາຍລະຫວ່າງປະເທດ ແລະ ຄວາມຄິດສ້າງສັນ.","remedy":"ປູກຕົ້ນໄມ້ຕາມແນວສັນເຂົາເພື່ອປ້ອງກັນລົມຕັດ, ວາງຕຳແໜ່ງເຮືອນໃນແອ່ງທີ່ສະຫງົບ."},{"id":"LT-0481","type":"luantou","name":"ລົມພັດແຮງກາງທົ່ງຮາບ (Feng Chui Sha - 风吹煞)","category":"ຮູບແບບລົມ & ການເກັບລົມ (Zang Feng)","score":28,"isGood":false,"img":"img/LT-0481.png","physics":"ເຮືອນໂດດດ່ຽວກາງທົ່ງຮາບ ບໍ່ມີພູເຂົາ ຫຼື ຕົ້ນໄມ້ບັງລົມ, ກະແສລົມພັດແຮງເກີນ 3.5-6.5 m/s ພັດກະຈາຍພະລັງຊີ່.","impact":"ພະລັງຊີ່ກະແຈກກະຈາຍ, ເກັບເງິນບໍ່ຢູ່, ເສຍຊັບຕໍ່ເນື່ອງ, ຄົນໃນເຮືອນເຈັບປ່ວຍດ້ວຍພະຍາດທາງເດີນຫາຍໃຈ.","remedy":"ປູກແນວຕົ້ນໄມ້ກັນລົມ 3 ຊັ້ນຮອບບໍລິເວນ, ສ້າງກຳແພງສູງ 2 ແມັດປ້ອງກັນລົມ."},{"id":"LT-0505","type":"luantou","name":"ລົມຊ່ອງພູເຂົາ (Ao Feng Sha - 凹风煞)","category":"ຮູບແບບລົມ & ການເກັບລົມ (Zang Feng)","score":20,"isGood":false,"img":"img/LT-0505.png","physics":"ເຮືອນຕັ້ງກົງກັບຊ່ອງວ່າງລະຫວ່າງ 2 ຍອດພູ, ເກີດປະກົດການ Venturi ເລັ່ງຄວາມໄວລົມພຸ່ງໃສ່ອາຄານ.","impact":"ເກີດອຸບັດຕິເຫດກະທັນຫັນ, ພະຍາດອຳມະພາດ, ລົມບ້າໝູ, ທຸລະກິດລົ້ມລະລາຍຢ່າງໄວວາ.","remedy":"ສ້າງກຳແພງຫີນກັນຊົນຮູບໂຄ້ງ, ປູກຕົ້ນໄມ້ໃຫຍ່ປິດຊ່ອງລົມ, ຍ້າຍປະຕູໃຫຍ່ຫຼົບທິດທາງລົມ."},{"id":"LT-0517","type":"luantou","name":"ແອ່ງເກັບລົມຮວບຮວມຊີ່ (Zang Feng Ju Qi - 藏风聚气)","category":"ຮູບແບບລົມ & ການເກັບລົມ (Zang Feng)","score":98,"isGood":true,"img":"img/LT-0517.png","physics":"ພູເຂົາໂອບອຸ້ມ 4 ດ້ານຄືຕັ່ງນວມ: ຫຼັງມີເຕົ່າດຳ, ຊ້າຍມີມັງກອນ, ຂວາມີເສືອ, ໜ້າມີລານໝິງຖັງ, ລົມພັດອ່ອນໆ 0.5-1.0 m/s.","impact":"ມະຫາມຸງຄຸນສູງສຸດ: ຊັບສິນເພີ່ມພູນ, ລູກຫຼານຈະເລີນກ້າວໜ້າ, ອາຍຸຍືນຍາວ, ຄອບຄົວອົບອຸ່ນ.","remedy":"ຮັກສາສະພາບແວດລ້ອມທຳມະຊາດໃຫ້ສົມບູນ, ວາງອ່າງນ້ຳມຸງຄຸນດ້ານໜ້າເພື່ອຮວບຮວມຊັບ."},{"id":"LT-0865","type":"luantou","name":"ສາຍນ້ຳສາຍແອວຫຍົກ (Yu Dai Shui - 玉带水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":96,"isGood":true,"img":"img/LT-0865.png","physics":"ສາຍນ້ຳໄຫຼໂຄ້ງໂອບອ້ອມອາຄານຄືສາຍແອວຫຍົກ, ເຮືອນຕັ້ງຢູ່ຝັ່ງດ້ານໃນຂອງໂຄ້ງ (Concave Accretion Bank), ນ້ຳໄຫຼຊ້າໆ 0.6 m/s.","impact":"ມະຫາເສດຖີ, ໂຊກລາບຫຼັ່ງໄຫຼບໍ່ຂາດສາຍ, ທຸລະກິດຈະເລີນຮຸ່ງເຮືອງ, ຄອບຄົວປອດໄພແລະມີສຸກ.","remedy":"ຮັກສາສາຍນ້ຳໃຫ້ໃສສະອາດສະເໝີ, ຫ້າມຖິ້ມສິ່ງເສດເຫຼືອລົງນ້ຳ."},{"id":"LT-0897","type":"luantou","name":"ສາຍນ້ຳຄັນທະນູປີ້ນ (Fan Gong Shui - 反弓水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":18,"isGood":false,"img":"img/LT-0897.png","physics":"ສາຍນ້ຳໂຄ້ງປິ່ນຫຼັງໃສ່ເຮືອນ, ເຮືອນຕັ້ງຢູ່ຝັ່ງດ້ານນອກຂອງໂຄ້ງ (Convex Erosion Bank) ຖືກກະແສນ້ຳກັດເຊາະຕັດຜ່ານ.","impact":"ໃຫ້ໂທດຮຸນແຮງ: ຖືກທໍລະຍົດ, ລູກຫຼານເນລະຄຸນ, ຄະດີຄວາມ, ລົ້ມລະລາຍ, ຜ່າຕັດເລືອດຕົກ.","remedy":"ສ້າງກຳແພງຫີນແກຣນິດໂຄ້ງສະທ້ອນພະລັງຮ້າຍ, ປູກແນວຕົ້ນໄມ້ກັນຊົນທຶບ, ຕັ້ງກະຈົກນູນແກ້ໄຂ."},{"id":"LT-0929","type":"luantou","name":"ສາຍນ້ຳເກົ້າຄົດ (Jiu Qu Shui - 九曲水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":95,"isGood":true,"img":"img/LT-0929.png","physics":"ສາຍນ້ຳໄຫຼຄົດເຄ້ຽວໄປມາຫຼາຍທົບຫຼາຍລ້ຽວ, ບໍ່ເຫັນຈຸດເລີ່ມຕົ້ນ ແລະ ຈຸດສິ້ນສຸດຂອງສາຍນ້ຳ.","impact":"ຊັບສິນເງິນຄຳສະສົມຍາວນານຫຼາຍເຊັ່ນຄົນ, ຖານະການເງິນໝັ້ນຄົງຖາວອນ, ມີຊື່ສຽງຂະຈອນຂະຈາຍ.","remedy":"ຮັກສາຕາຝັ່ງນ້ຳທັງສອງດ້ານໃຫ້ແໜ້ນໜາ, ວາງຕຳແໜ່ງເຮືອນຮັບກະແສນ້ຳໄຫຼເຂົ້າມາ."},{"id":"LT-0961","type":"luantou","name":"ສາຍນ້ຳພຸ່ງຊົນກົງ (Zhi Chong Shui - 直冲水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":16,"isGood":false,"img":"img/LT-0961.png","physics":"ສາຍນ້ຳໄຫຼຊື່ຕົງພຸ່ງເຂົ້າໃສ່ໜ້າເຮືອນດ້ວຍຄວາມໄວສູງ, ເກີດແຮງອັດກະແສລົມ ແລະ ນ້ຳຢ່າງຮຸນແຮງ.","impact":"ສູນເສຍສະມາຊິກໃນຄອບຄົວຢ່າງກະທັນຫັນ, ອຸບັດຕິເຫດຮ້າຍແຮງ, ພະຍາດຫົວໃຈ ແລະ ເສຍຊັບສ້ຽງ.","remedy":"ສ້າງກຳແພງກັນຊົນຫີນໜາ 2.5 ແມັດ, ວາງອ່າງນ້ຳພຸວົນປ່ຽນທິດທາງກະແສ, ປູກໄມ້ໄຜ່ບັງຕາ."},{"id":"LT-0993","type":"luantou","name":"ສາຍນ້ຳສາມແຍກ (San Cha Shui - 三叉水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":65,"isGood":true,"img":"img/LT-0993.png","physics":"ສາຍນ້ຳສອງສາຍໄຫຼມາບັນຈົບກັນເປັນສາມແຍກຢູ່ໜ້າເຮືອນ, ກະແສນ້ຳປະສານກັນເກີດແຮງໝູນວົນ.","impact":"ຫາກໄຫຼມາຊ້າໆຈະນຳພາໂຊກລາບ 2 ທາງ; ແຕ່ຫາກໄຫຼໄວຈະເຮັດໃຫ້ເກີດຄວາມຂັດແຍ້ງ ແລະ ຜິດຖຽງ.","remedy":"ຕັ້ງກ້ອນຫີນໄທຊານ (Tai Shan Stone) ສະກັດຈຸດຕັດ, ປູກຕົ້ນໄມ້ປັບກະແສນ້ຳໃຫ້ໄຫຼນິ້ມນວນ."},{"id":"LT-1025","type":"luantou","name":"ສາຍນ້ຳສີ່ແຍກຕັດກັນ (Shi Zi Shui - 十字水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":38,"isGood":false,"img":"img/LT-1025.png","physics":"ສາຍນ້ຳ ຫຼື ຄອງນ້ຳຕັດກັນເປັນຮູບກາກະບາດສີ່ແຍກ, ເຮືອນຕັ້ງຢູ່ຫົວມຸມຂອງຈຸດຕັດ.","impact":"ພະລັງງານແຕກແຍກ, ຄົນໃນເຮືອນແຍກຍ້າຍ, ຜິດຖຽງກັນເລື່ອງມໍລະດົກ, ທຸລະກິດມີອຸປະສັກ.","remedy":"ຕັ້ງກຳແພງມົນຕັດມຸມສາກ, ປູກໄມ້ພຸ່ມຮອບດ້ານ, ຫ້າມເປີດປະຕູກົງຈຸດຕັດສີ່ແຍກ."},{"id":"LT-1057","type":"luantou","name":"ສາຍນ້ຳກົດດັນຕີນອາຄານ (Lin Shui Sha - 淋水煞)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":25,"isGood":false,"img":"img/LT-1057.png","physics":"ສາຍນ້ຳ ຫຼື ນ້ຳຕົກຕາດໄຫຼຕົກລົງມາຈາກທີ່ສູງດ້ານຫຼັງເຮືອນ ກົດທັບໃສ່ຫຼັງຄາອາຄານ.","impact":"ຄົນໃນເຮືອນເປັນພະຍາດຊຶມເສົ້າ, ປວດຫົວຊຳເຮື້ອ, ຖືກຜູ້ໃຫຍ່ກົດຂີ່, ໄຮ້ທີ່ເພິ່ງພາ.","remedy":"ສ້າງທາງລະບາຍນ້ຳອ້ອມອອກດ້ານຂ້າງ, ສ້າງກຳແພງກັນດິນໃຫ້ແໜ້ນໜາ."},{"id":"LT-1089","type":"luantou","name":"ສາຍນ້ຳຕັດຕີນເຂົາ (Ge Jiao Shui - 割脚水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":30,"isGood":false,"img":"img/LT-1089.png","physics":"ສາຍນ້ຳໄຫຼຊິດແຄມຖານອາຄານເກີນໄປ (ຕ່ຳກວ່າ 3 ແມັດ), ນ້ຳກັດເຊາະຮາກຖານເຮືອນຢ່າງຕໍ່ເນື່ອງ.","impact":"ຖານະການເງິນບໍ່ໝັ້ນຄົງ, ໂຊກລາບມາໄວໄປໄວ, ເຈັບປ່ວຍບໍລິເວນຂາ ແລະ ຂໍ້ຕໍ່.","remedy":"ຖົມດິນຂະຫຍາຍແຄມຕາຝັ່ງ, ສ້າງຄັນຄູຄອນກຣີດປ້ອງກັນການກັດເຊາະ, ປູກຫຍ້າແຝກ."},{"id":"LT-1121","type":"luantou","name":"ສາຍນ້ຳສຽງດັງພິສ (Sheng Sha Shui - 声煞水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":32,"isGood":false,"img":"img/LT-1121.png","physics":"ສາຍນ້ຳໄຫຼກະແທກໂງ່ນຫີນເກີດສຽງດັງກຶກກ້ອງຕະຫຼອດ 24 ຊົ່ວໂມງ ດັງເຂົ້າສູ່ຫ້ອງນອນ.","impact":"ລະບົບປະສາດເສື່ອມໂຊມ, ນອນບໍ່ຫຼັບ, ອາລົມຫງຸດຫງິດ, ຕັດສິນໃຈຜິດພາດໃນທຸລະກິດ.","remedy":"ຕິດກະຈົກກັນສຽງ 2 ຊັ້ນ, ສ້າງກຳແພງດູດຊັບສຽງ, ປູກຕົ້ນໄມ້ໃບໜາບັງສຽງ."},{"id":"LT-1153","type":"luantou","name":"ສາຍນ້ຳໃຕ້ດິນ (Qian Shui - 潜水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":22,"isGood":false,"img":"img/LT-1153.png","physics":"ສາຍນ້ຳໄຫຼຢູ່ໃຕ້ດິນລອດຜ່ານໃຕ້ພື້ນເຮືອນ ໂດຍທີ່ຄົນເບິ່ງບໍ່ເຫັນດ້ວຍຕາເປົ່າ.","impact":"ສຸຂະພາບອ່ອນແອ, ພະຍາດກະດູກ, ຊັບສິນຮົ່ວໄຫຼແບບບໍ່ຮູ້ສາເຫດ, ພະລັງຊີວິດຖືກດູດກືນ.","remedy":"ຂຸດຮ່ອງລະບາຍນ້ຳບ່ຽງທາງນ້ຳໃຕ້ດິນອອກໄປນອກເຂດອາຄານ, ປູພື້ນກັນຄວາມຊຸ່ມ."},{"id":"LT-1185","type":"luantou","name":"ສາຍນ້ຳມີຊີວິດ (Huo Shui - 活水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":94,"isGood":true,"img":"img/LT-1185.png","physics":"ສາຍນ້ຳໄຫຼສະອາດ, ມີປາແຫວກລອຍ, ນ້ຳໄຫຼຄ່ອຍໆມີສຽງມ່ວນຫູ, ອົກຊີແຊນສູງ.","impact":"ນຳພາພະລັງຊີວິດອັນສົດໃສ, ສຸຂະພາບແຂງແຮງ, ຈິດໃຈເບີກບານ, ທຸລະກິດຄ່ອງຕົວ.","remedy":"ຮັກສາຄວາມສະອາດຂອງລະບົບນ້ຳ, ປູກຕົ້ນໄມ້ນ້ຳປະດັບໃຫ້ສວຍງາມ."},{"id":"LT-1217","type":"luantou","name":"ສາຍນ້ຳຕາຍບໍ່ໄຫຼວຽນ (Si Shui - 死水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":12,"isGood":false,"img":"img/LT-1217.png","physics":"ໜອງນ້ຳຂັງ, ນ້ຳດຳເນົ່າເໝັນ, ບໍ່ມີທາງນ້ຳໄຫຼເຂົ້າ-ອອກ, ຂີ້ຕົມສະສົມສານພິດ.","impact":"ພະຍາດຊຳເຮື້ອ, ໂລກມະເຮັງ, ທຸລະກິດຕິດຂັດບໍ່ກ້າວໜ້າ, ພະລັງງານຢິນຄອບງຳ.","remedy":"ລອກຂີ້ຕົມອອກ, ຕິດຕັ້ງລະບົບບຳບັດນ້ຳເສຍ, ເຮັດໃຫ້ນ້ຳມີການໄຫຼວຽນດ້ວຍປ້ຳອົກຊີແຊນ."},{"id":"LT-1249","type":"luantou","name":"ສາຍນ້ຳພຸ່ງໃສ່ໜ້າເຮືອນ (Dang Mian Shui - 当面水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":70,"isGood":true,"img":"img/LT-1249.png","physics":"ສາຍນ້ຳໄຫຼກົງເຂົ້າມາຫາໜ້າປະຕູໃຫຍ່ ແລ້ວແຍກອອກສອງຂ້າງໜ້າອາຄານ.","impact":"ຫາກກະແສນ້ຳໄຫຼອ່ອນຈະນຳຊັບມາໄວ; ແຕ່ຫາກໄຫຼແຮງຈະເກີດການປະທະ ແລະ ເສຍຊັບ.","remedy":"ສ້າງລານໝິງຖັງກວ້າງຂວາງຊະລໍຄວາມໄວນ້ຳ, ຕັ້ງອ່າງນ້ຳພຸວົນຮັບຊັບ."},{"id":"LT-1281","type":"luantou","name":"ອ່າງນ້ຳຮວບຮວມຊັບ (Ju Shui - 聚水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":97,"isGood":true,"img":"img/LT-1281.png","physics":"ໜອງນ້ຳ, ອ່າງເກັບນ້ຳ ຫຼື ທະເລສາບກວ້າງໃຫຍ່ຢູ່ດ້ານໜ້າເຮືອນ, ນ້ຳສະຫງົບນິ້ງຄືແວ່ນເງົາ.","impact":"ສູນລວມແຫ່ງຄວາມຮັ່ງມີ (Ju Bao Pen), ຊັບສິນເພີ່ມພູນມະຫາສານ, ທຸລະກິດໝັ້ນຄົງຍາວນານ.","remedy":"ຮັກສາໜ້ານ້ຳໃຫ້ສະອາດ, ປູກບົວຫຼວງປະດັບ, ວາງຕຳແໜ່ງເຮືອນໃຫ້ເຫັນຜືນນ້ຳຊັດເຈນ."},{"id":"LT-1313","type":"luantou","name":"ສາຍນ້ຳໄຫຼລົງຊັນ (Xie Shui - 泻水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":24,"isGood":false,"img":"img/LT-1313.png","physics":"ສາຍນ້ຳໄຫຼອອກຈາກໜ້າເຮືອນເທລົງສູ່ທີ່ຕ່ຳຢ່າງໄວວາ ບໍ່ມີສິ່ງກີດຂວາງ.","impact":"ເງິນຄຳໄຫຼອອກ, ລົ້ມລະລາຍ, ບໍ່ສາມາດເກັບຮັກສາຊັບສິນໄວ້ໄດ້, ຍາກຈົນລົງເລື້ອຍໆ.","remedy":"ສ້າງຝາຍຊະລໍນ້ຳ 3 ຂັ້ນ, ປູກຕົ້ນໄມ້ດັກກະແສນ້ຳ, ສ້າງຄັນຄູຍົກລະດັບໜ້າດິນ."},{"id":"LT-1345","type":"luantou","name":"ສາຍນ້ຳໄຫຼທວນຂຶ້ນ (Ni Shui - 逆水)","category":"ສາຍນ້ຳ & ໂຄ້ງສາຍນ້ຳມຸງຄຸນ/ອັບມຸງຄຸນ","score":93,"isGood":true,"img":"img/LT-1345.png","physics":"ສາຍນ້ຳໄຫຼສວນທາງກັບທິດທາງລົມ, ຫຼື ໄຫຼເຂົ້າມາຫາອາຄານຢ່າງຊ້າໆນິ້ມນວນ.","impact":"ສ້າງຄວາມຮັ່ງມີຢ່າງວ່ອງໄວ, ທຸລະກິດເຕີບໂຕກ້າວກະໂດດ, ມີຜູ້ໃຫຍ່ອຸປະຖຳ.","remedy":"ເປີດປະຕູໃຫຍ່ຮັບກະແສນ້ຳ, ສ້າງຊານເຮືອນກວ້າງຂວາງຊົມວິວສາຍນ້ຳ."},{"id":"LT-1377","type":"luantou","name":"ດິນມັງກອນ 5 ສີສັກສິດ (Wu Se Tu - 五色土)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":99,"isGood":true,"img":"img/LT-1377.png","physics":"ເນື້ອດິນລະອຽດນຽນຄືເນື້ອຫຍົກ, ມີ 5 ສີປະສົມກັນຢ່າງກົມກຽວ: ເຫຼືອງ, ແດງ, ມ່ວງ, ຂາວ, ດຳ. ດິນບໍ່ແຫ້ງແລະບໍ່ແສກ.","impact":"ຈຸດມັງກອນສັກສິດສູງສຸດ (Di Xue): ລູກຫຼານໄດ້ເປັນເຈົ້າພະຍາ, ມະຫາເສດຖີ, ຕະກູນຮຸ່ງເຮືອງ 100 ປີ.","remedy":"ຮັກສາພື້ນທີ່ໃຫ້ບໍລິສຸດ, ຫ້າມສານເຄມີທຳລາຍໜ້າດິນ, ສ້າງສຸສານ ຫຼື ເຮືອນພັກອາໄສມຸງຄຸນ."},{"id":"LT-1401","type":"luantou","name":"ດິນເຫຼືອງອ່ອນຊຸ່ມຊື່ນ (Golden Loam - 黄土)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":92,"isGood":true,"img":"img/LT-1401.png","physics":"ເນື້ອດິນສີເຫຼືອງຄຳ, ມີຄວາມຊຸ່ມພໍດີ, ບີບຕິດກັນເປັນກ້ອນບໍ່ແຕກ, ອຸດົມດ້ວຍແຮ່ທາດທາດດິນ.","impact":"ສົ່ງເສີມຊັບສິນອະສັງຫາລິມະຊັບ, ເງິນຄຳໝັ້ນຄົງ, ຄອບຄົວມີຄວາມສຸກສະຫງົບ.","remedy":"ຮັກສາຄວາມຊຸ່ມຊື່ນຂອງດິນດ້ວຍການປູກຫຍ້າຂຽວ, ຫ້າມດິນແຫ້ງແຕກເຂິ."},{"id":"LT-1425","type":"luantou","name":"ດິນແດງຊາດທາດໄຟ (Cinnabar Clay - 红土)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":86,"isGood":true,"img":"img/LT-1425.png","physics":"ເນື້ອດິນສີແດງຊາດຄືຊາດທາ, ອຸດົມດ້ວຍແຮ່ທາດເຫຼັກ ແລະ ພະລັງຢາງ.","impact":"ສົ່ງເສີມຊື່ສຽງ, ອຳນາດການທະຫານ, ຄວາມກ້າຫານ, ຄວາມກະຕືລືລົ້ນ.","remedy":"ປັບສົມດຸນດ້ວຍຕົ້ນໄມ້ສີຂຽວທາດໄມ້ (Wood feeds Fire) ແລະ ອ່າງນ້ຳ."},{"id":"LT-1449","type":"luantou","name":"ດິນຂາວບໍລິສຸດທາດທອງ (Kaolin Clay - 白土)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":88,"isGood":true,"img":"img/LT-1449.png","physics":"ເນື້ອດິນຂາວນຽນຄືແປ້ງ, ອຸດົມດ້ວຍແຮ່ທາດເກົາລິນ, ບໍລິສຸດໄຮ້ກິ່ນ.","impact":"ສົ່ງເສີມຄວາມຍຸຕິທຳ, ປັນຍາບໍລິສຸດ, ຄວາມສະຫງົບທາງຈິດວິນຍານ.","remedy":"ຮັກສາຄວາມສະອາດ, ປູກດອກໄມ້ສີຂາວປະດັບ."},{"id":"LT-1473","type":"luantou","name":"ດິນມ່ວງສັກສິດ (Purple Earth - 紫土)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":94,"isGood":true,"img":"img/LT-1473.png","physics":"ເນື້ອດິນສີມ່ວງອົມແດງ, ເກີດຈາກຫີນພູເຂົາໄຟບູຮານຍ່ອຍສະຫຼາຍ, ພະລັງງານສູງ.","impact":"ສົ່ງເສີມບາຣະມີຊັ້ນສູງ, ນັກປາດອາຈານ, ຄວາມສຳເລັດໃນໜ້າທີ່ການງານ.","remedy":"ຮັກສາໜ້າດິນໃຫ້ອຸດົມສົມບູນ, ຫ້າມຖອກປູນຊີມັງທັບທັງໝົດ."},{"id":"LT-1497","type":"luantou","name":"ດິນດຳອຸດົມສົມບູນ (Black Rich Loam - 黑土)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":90,"isGood":true,"img":"img/LT-1497.png","physics":"ດິນຮວມຊຸ່ຍສີດຳເຂັ້ມ, ອຸດົມດ້ວຍອິນຊີວັດຖຸ, ກິ່ນຫອມທຳມະຊາດ, ພະລັງທາດນ້ຳ.","impact":"ສົ່ງເສີມການກະສິກຳ, ທຸລະກິດການຄ້າ, ລູກຫຼານດົກໜາ, ສຸຂະພາບແຂງແຮງ.","remedy":"ປູກຕົ້ນໄມ້ໃຫຍ່ໃຫ້ຮົ່ມເງົາ, ຮັກສາໜ້າດິນບໍ່ໃຫ້ຖືກແດດເຜົາ."},{"id":"LT-1521","type":"luantou","name":"ດິນຊາຍແຫ້ງແລ້ງ (Dry Sand - 燥砂)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":35,"isGood":false,"img":"img/LT-1521.png","physics":"ເມັດຊາຍຫຍາບ, ບໍ່ອຸ້ມນ້ຳ, ລົມພັດປິວຟຸ້ງ, ແຫ້ງແລ້ງໄຮ້ພະລັງຊີວິດ.","impact":"ຊັບສິນຮົ່ວໄຫຼ, ຄອບຄົວແຕກແຍກ, ເຈັບປ່ວຍດ້ວຍພະຍາດຜິວໜັງ ແລະ ຕາ.","remedy":"ຖົມດິນດຳປັບປຸງໜ້າດິນ, ປູກຫຍ້າຄຸມດິນ, ຕິດຕັ້ງລະບົບຫົດນ້ຳອັດຕະໂນມັດ."},{"id":"LT-1545","type":"luantou","name":"ດິນກ້ອນຫີນແຫຼມຄົມ (Gravel Scree - 砾石)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":30,"isGood":false,"img":"img/LT-1545.png","physics":"ເສດຫີນແຕກຫັກແຫຼມຄົມ, ດິນແຂງກະດ້າງ, ພືດບໍ່ສາມາດຈະເລີນເຕີບໂຕໄດ້.","impact":"ເກີດອຸບັດຕິເຫດເລືອດຕົກ, ຄົນໃນເຮືອນອາລົມຮ້າຍ, ຜິດຖຽງກັນຕະຫຼອດເວລາ.","remedy":"ເກັບກວາດເສດຫີນແຫຼມຄົມອອກ, ຖົມດິນໃໝ່ໜາຢ່າງໜ້ອຍ 50 ຊັງຕີແມັດ."},{"id":"LT-1569","type":"luantou","name":"ດິນຕົມຂີ້ຕົມເນົ່າເໝັນ (Swamp Mud - 烂泥)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":18,"isGood":false,"img":"img/LT-1569.png","physics":"ດິນຕົມແສກ, ນ້ຳຂັງເໝັນ, ພະລັງຢິນເຂັ້ມຂຸ້ນເກີນຂອບເຂດ.","impact":"ພະຍາດໄຂ້ຍຸງ, ພະຍາດລະບົບຍ່ອຍອາຫານ, ຈິດໃຈຫົດຫູ່, ຖືກຫຼອກລວງ.","remedy":"ຂຸດຮ່ອງລະບາຍນ້ຳຖິ້ມ, ຖົມດິນລູກຮັງຍົກລະດັບ, ປູນຂາວປັບສະພາບກົດ."},{"id":"LT-1593","type":"luantou","name":"ຊັ້ນຫີນແກຣນິດໜັກແໜ້ນ (Solid Granite Base - 坚石)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":85,"isGood":true,"img":"img/LT-1593.png","physics":"ຊັ້ນຫີນແກຣນິດແຂງແກ່ນໃຕ້ດິນ, ຮອງຮັບນ້ຳໜັກອາຄານໄດ້ດີຢ້ຽມ.","impact":"ບາຣະມີໝັ້ນຄົງ, ຕຳແໜ່ງໜ້າທີ່ການງານໜັກແໜ້ນ, ບໍ່ມີບັນຫາເຮືອນຊຸດຕົວ.","remedy":"ປູກຕົ້ນໄມ້ໃນກະຖາງໃຫຍ່ແທນການຂຸດດິນ, ເສີມມຸມດ້ວຍໄຟສະຫວ່າງ."},{"id":"LT-1617","type":"luantou","name":"ດິນລູກຮັງແຂງແຫ້ງ (Hard Laterite - 硬壤)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":45,"isGood":false,"img":"img/LT-1617.png","physics":"ດິນແຂງແໜ້ນສີສົ້ມແດງ, ດິນແຫ້ງເກີນໄປໃນລະດູແລ້ງ, ຂາດຄວາມຍືດຍຸ່ນ.","impact":"ເຮັດວຽກໜັກແຕ່ໄດ້ຜົນຕອບແທນໜ້ອຍ, ຄົນໃນເຮືອນດື້ດ້ານ.","remedy":"ປັບປຸງດິນດ້ວຍປຸ໋ຍໝັກອິນຊີ, ປູກພືດຕະກູນຖົ່ວບຳລຸງດິນ."},{"id":"LT-1641","type":"luantou","name":"ດິນໃບໄມ້ຜຸພັງອຸດົມສົມບູນ (Humus Turf - 腐殖土)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":91,"isGood":true,"img":"img/LT-1641.png","physics":"ຊັ້ນດິນປົກຄຸມດ້ວຍໃບໄມ້ຜຸພັງຕາມທຳມະຊາດ, ຊຸ່ມຊື່ນ, ນຸ່ມນວນຄືພົມ.","impact":"ນຳພາຄວາມອຸດົມສົມບູນ, ຄອບຄົວຮັກໄຄ່ປອງດອງ, ສຸຂະພາບແຂງແຮງ.","remedy":"ຮັກສາແນວປ່າໄມ້ທຳມະຊາດ, ຫ້າມເຜົາໃບໄມ້ທຳລາຍໜ້າດິນ."},{"id":"LT-1665","type":"luantou","name":"ດິນຫີນກາບແຕກຫັກ (Cracked Shale - 碎页岩)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":28,"isGood":false,"img":"img/LT-1665.png","physics":"ຊັ້ນຫີນກາບບາງໆແຕກຫັກງ່າຍ, ດິນບໍ່ໝັ້ນຄົງ, ສ່ຽງຕໍ່ດິນເຈື່ອນ.","impact":"ຄວາມບໍ່ແນ່ນອນໃນຊີວິດ, ຖືກຫັກຫຼັງ, ການເງິນຜັນຜວນຮຸນແຮງ.","remedy":"ສ້າງກຳແພງກັນດິນເຈື່ອນດ້ວຍຄອນກຣີດເສີມເຫຼັກ, ປູກຫຍ້າແຝກ."},{"id":"LT-1689","type":"luantou","name":"ດິນເຄັມຂາວ (Alkaline Earth - 盐碱地)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":20,"isGood":false,"img":"img/LT-1689.png","physics":"ໜ້າດິນຂຶ້ນຄາບເກືອສີຂາວ, ດິນເຄັມຈັດ, ພືດພັນຕາຍໝົດ.","impact":"ຄວາມແຫ້ງແລ້ງໃນຈິດໃຈ, ບໍ່ມີລູກຫຼານສືບຕະກູນ, ທຸລະກິດຕັນ.","remedy":"ລ້າງດິນດ້ວຍນ້ຳສະອາດ, ປູກພືດທົນເຄັມ, ຖົມດິນດີໃໝ່."},{"id":"LT-1713","type":"luantou","name":"ຊັ້ນດິນນ້ຳຊຶມ (Aquifer Layer - 泉涌层)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":87,"isGood":true,"img":"img/LT-1713.png","physics":"ຊັ້ນດິນທີ່ມີນ້ຳພຸທຳມະຊາດຜຸດຂຶ້ນມາໃຕ້ດິນ, ນ້ຳໃສສະອາດ.","impact":"ໂຊກລາບເກີດຂຶ້ນໃໝ່ຢ່າງຕໍ່ເນື່ອງ, ມີແນວຄິດສ້າງສັນໃໝ່ໆສະເໝີ.","remedy":"ຈັດສັນທາງນ້ຳຜຸດໃຫ້ໄຫຼລົງອ່າງນ້ຳໜ້າເຮືອນ, ຫ້າມປິດກັ້ນ."},{"id":"LT-1737","type":"luantou","name":"ດິນອົບອຸ່ນໃນຈຸດມັງກອນ (Warm Dragon Locus - 暖穴)","category":"ດິນສັກສິດ & ຈຸດຝັງສຸສານມັງກອນ (Xue)","score":98,"isGood":true,"img":"img/LT-1737.png","physics":"ດິນມີອຸນຫະພູມອົບອຸ່ນພໍດີຕະຫຼອດປີ, ໃນລະດູໜາວບໍ່ມີນ້ຳຄ້າງແຂງເກາະ.","impact":"ສຸຂະພາບດີເລີດ, ອາຍຸຍືນເກີນ 100 ປີ, ຄອບຄົວອົບອຸ່ນ, ລູກຫຼານຈະເລີນ.","remedy":"ສ້າງເຮືອນພັກອາໄສ ຫຼື ສຸສານບັນພະບຸລຸດໃນຕຳແໜ່ງນີ້."},{"id":"LT-1761","type":"luantou","name":"ພູເຂົາໂຈນແອບສ່ອງ (Tan Tou Shan - 探头山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":18,"isGood":false,"img":"img/LT-1761.png","physics":"ຍອດພູຫີນແຫຼມຄົມແອບຫຼຽວເຫັນຢູ່ຫຼັງສັນເຂົາດ້ານໜ້າ, ຄືໂຈນກຳລັງແອບສ່ອງຂ້າມກຳແພງ.","impact":"ຖືກໂຈນລັກຊັບ, ຖືກສໍ້ໂກງ, ຖືກຫັກຫຼັງຈາກຄົນໃກ້ຊິດ, ຖືກສ່ອງແນມ.","remedy":"ປູກຕົ້ນໄມ້ສູງບັງສາຍຕາບໍ່ໃຫ້ເຫັນຍອດພູໂຈນ, ຕິດກະຈົກປາກົວດຶງພະລັງປ້ອງກັນ."},{"id":"LT-1769","type":"luantou","name":"ພູເຂົາຫຼັງຫັກໜີ / ທໍລະຍົດ (Fan Bei Shan - 反背山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":22,"isGood":false,"img":"img/LT-1769.png","physics":"ສັນເຂົາໂຄ້ງປິ່ນຫຼັງໜີອອກຈາກອາຄານ, ລາດອຽງເທລົງໄປອີກດ້ານໜຶ່ງ.","impact":"ລູກນ້ອງທໍລະຍົດ, ລູກຫຼານຍ້າຍໜີໄປໄກບໍ່ກັບມາ, ໂດດດ່ຽວໄຮ້ທີ່ເພິ່ງ.","remedy":"ສ້າງກຳແພງຫຼັງເຮືອນໃຫ້ສູງໜາ, ປູກຕົ້ນໄມ້ເປັນແນວກັນຊົນດ້ານຫຼັງ."},{"id":"LT-1777","type":"luantou","name":"ພູເຂົາໜ້າແຕກເຈື່ອນ (Po Mian Shan - 破面山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":15,"isGood":false,"img":"img/LT-1777.png","physics":"ໜ້າຜາຫີນແຕກຫັກ, ດິນເຈື່ອນເຫັນຮອຍແປວສີແດງຄືໃບໜ້າຖືກຟັນ.","impact":"ເກີດບາດແຜຕາມໃບໜ້າ, ການຜ່າຕັດ, ອຸບັດຕິເຫດທາງລົດ, ເສຍຊື່ສຽງ.","remedy":"ປູກເຄືອໄມ້ ຫຼື ຕົ້ນໄມ້ປົກຄຸມໜ້າຜາ, ສ້າງກຳແພງປ້ອງກັນຫີນຕົກ."},{"id":"LT-1785","type":"luantou","name":"ພູເຂົາຄົມມີດຕັດ (Bi Dao Shan - 壁刀山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":14,"isGood":false,"img":"img/LT-1785.png","physics":"ສັນເຂົາຕັ້ງຊັນຕັດກົງລົງມາຄືຄົມມີດໃຫຍ່ຊີ້ໃສ່ອາຄານ.","impact":"ຖືກຄົມມີດຕັດ, ຜ່າຕັດດ່ວນ, ຄະດີຄວາມ, ອຸບັດຕິເຫດຮ້າຍແຮງ.","remedy":"ສ້າງກຳແພງຫີນແກຣນິດໂຄ້ງສະທ້ອນ, ຕັ້ງຫີນໄທຊານສະກັດຄົມມີດ."},{"id":"LT-1793","type":"luantou","name":"ພູເຂົາໂດດດ່ຽວສູງຊັນ (Du Feng Shan - 独峰山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":35,"isGood":false,"img":"img/LT-1793.png","physics":"ຍອດພູສູງຊັນໂດດດ່ຽວກາງທົ່ງ ບໍ່ມີພູເຂົາບໍລິວານໂອບອ້ອມ.","impact":"ໂດດດ່ຽວໄຮ້ມິດສະຫາຍ, ຢ່າຮ້າງ, ບໍ່ມີຜູ້ໃຫຍ່ຊ່ວຍເຫຼືອ, ຍິ່ງໃຫຍ່ແຕ່ອ້າງວ້າງ.","remedy":"ສ້າງອາຄານບໍລິວານອ້ອມຮອບ, ປູກຕົ້ນໄມ້ເປັນກຸ່ມສ້າງພະລັງໂອບອຸ້ມ."},{"id":"LT-1801","type":"luantou","name":"ພູເຂົາກົດທັບຫົວ (Ya Ding Shan - 压顶山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":25,"isGood":false,"img":"img/LT-1801.png","physics":"ພູເຂົາສູງໃຫຍ່ຕັ້ງຊິດຫຼັງເຮືອນເກີນໄປ ຄືພວມຈະພັງທັບລົງມາ.","impact":"ຄວາມກົດດັນໃນຊີວິດສູງ, ປວດຫົວຊຳເຮື້ອ, ຜູ້ໃຫຍ່ກົດຂີ່, ໄຮ້ອິດສະຫຼະ.","remedy":"ຖອຍອາຄານອອກຫ່າງຈາກຕີນພູ, ສ້າງລານກວ້າງຂວາງລະຫວ່າງເຮືອນກັບພູ."},{"id":"LT-1809","type":"luantou","name":"ພູເຂົາກະດູກແຫ້ງຕາຍ (Ku Gu Shan - 枯骨山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":12,"isGood":false,"img":"img/LT-1809.png","physics":"ພູເຂົາຫີນສີຂາວຊີດ, ບໍ່ມີດິນແລະຕົ້ນໄມ້, ຄືໂຄງກະດູກຕາກແດດ.","impact":"ພະຍາດມະເຮັງ, ພະຍາດກະດູກ, ຂາດຜູ້ສືບຕະກູນ, ຊີວິດແຫ້ງແລ້ງ.","remedy":"ປູກຕົ້ນໄມ້ໃຫຍ່ປິດບັງສາຍຕາ, ຫຼີກລ່ຽງການເປີດໜ້າຕ່າງເບິ່ງພູ."},{"id":"LT-1817","type":"luantou","name":"ພູເຂົາຄົມຂວານຟັນ (Dao Fu Shan - 刀斧山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":20,"isGood":false,"img":"img/LT-1817.png","physics":"ຍອດພູເຂົາຖືກຕັດຂາດເຄິ່ງຄືຖືກຂວານຍັກຟັນແຕກແຍກ.","impact":"ຄອບຄົວແຕກແຍກ, ຟ້ອງຮ້ອງແບ່ງຊັບສິນ, ຖືກຕັດສິດທິ, ຜ່າຕັດ.","remedy":"ຕັ້ງວັດຖຸຮວງຈຸ້ຍທາດດິນເຊື່ອມປະສານ, ສ້າງຮົ້ວປິດບັງ."},{"id":"LT-1825","type":"luantou","name":"ພູເຂົາຫອກປາຍແຫຼມ (Jian Feng Shan - 尖锋山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":18,"isGood":false,"img":"img/LT-1825.png","physics":"ຍອດພູແຫຼມສ້ຽມຄືປາຍຫອກພຸ່ງຊີ້ໃສ່ໜ້າຕ່າງຫ້ອງນອນ.","impact":"ອຸບັດຕິເຫດແທງຟັນ, ພະຍາດຕາ, ຄວາມດັນເລືອດສູງ, ໄຟໄໝ້.","remedy":"ຕິດມ່ານໜາປິດບັງສາຍຕາ, ຕິດກະຈົກປາກົວນູນສະທ້ອນ."},{"id":"LT-1833","type":"luantou","name":"ພູເຂົາຫີນກ້ອນພຸ່ງຊົນ (Shi Tou Shan - 石头山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":28,"isGood":false,"img":"img/LT-1833.png","physics":"ໂງ່ນຫີນໃຫຍ່ຮູບຊົງຂີ້ຮ້າຍກິ້ງລົງມາໃກ້ຕີນເຮືອນ.","impact":"ຖືກສັດຕູປອງຮ້າຍ, ທຸລະກິດຕິດຂັດຄືຫີນຂວາງທາງ.","remedy":"ສ້າງກຳແພງຄອນກຣີດກັນຫີນ, ປູກໄມ້ເຄືອປົກຄຸມໂງ່ນຫີນ."},{"id":"LT-1841","type":"luantou","name":"ພູເຂົາດິນເຈື່ອນ (Beng Ta Shan - 崩塌山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":10,"isGood":false,"img":"img/LT-1841.png","physics":"ສັນເຂົາມີຮອຍແຕກແຍກ, ດິນພັງທະລາຍລົງມາເລື້ອຍໆ.","impact":"ຊັບສິນພັງທະລາຍ, ທຸລະກິດລົ້ມລະລາຍ, ໄຮ້ຄວາມປອດໄພ.","remedy":"ສ້າງກຳແພງກັນດິນເຈື່ອນມາດຕະຖານວິສະວະກຳ, ປູກຫຍ້າແຝກ."},{"id":"LT-1849","type":"luantou","name":"ພູເຂົາຫີນຕົກ (Kua Shan - 跨山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":15,"isGood":false,"img":"img/LT-1849.png","physics":"ສັນເຂົາແຂວນລອຍຢູ່ເໜືອຫົວອາຄານ ສ່ຽງຕໍ່ການພັງທະລາຍ.","impact":"ຄວາມວິຕົກກັງວົນ, ພະຍາດປະສາດ, ອັນຕະລາຍຮອບຕົວ.","remedy":"ຍ້າຍອາຄານອອກຫ່າງຈາກຈຸດອັນຕະລາຍ, ສ້າງແນວກັນຫີນ."},{"id":"LT-1857","type":"luantou","name":"ພູເຂົາແຫງນໜ້າຂຶ້ນຟ້າ (Chong Tian Shan - 冲天山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":30,"isGood":false,"img":"img/LT-1857.png","physics":"ສັນເຂົາຕັ້ງຊັນສູງເກີນ 80 ອົງສາ ບໍ່ມີຄວາມລາດອຽງອ່ອນຊ້ອຍ.","impact":"ຄວາມທະເຍີທະຍານເກີນຕົວຈົນພັງພິນາດ, ຕົກຈາກຕຳແໜ່ງ.","remedy":"ສ້າງອາຄານແນວນອນເພື່ອປັບສົມດຸນ, ປູກຕົ້ນໄມ້ຊະລໍພະລັງ."},{"id":"LT-1865","type":"luantou","name":"ພູເຂົາກົ້ມຫົວອັບອາຍ (Chui Tou Shan - 垂头山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":25,"isGood":false,"img":"img/LT-1865.png","physics":"ຍອດພູເຂົາຫັກໂຄ້ງລົງມາຄືຄົນກົ້ມຫົວໝົດອາໄລຕາຍຢາກ.","impact":"ໝົດກຳລັງໃຈ, ພະຍາດຊຶມເສົ້າ, ທຸລະກິດຖົດຖອຍ, ຂາດຄວາມໝັ້ນໃຈ.","remedy":"ຕິດໂຄມໄຟສະຫວ່າງສ່ອງຂຶ້ນເທິງ, ຕັ້ງເສົາທຸງສູງດຶງພະລັງຢາງ."},{"id":"LT-1873","type":"luantou","name":"ພູເຂົາແຂ້ວສັດຮ້າຍ (Jiao Ya Shan - 狡牙山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":20,"isGood":false,"img":"img/LT-1873.png","physics":"ສັນເຂົາເປັນແຂ້ວເລື່ອຍສະຫຼັບໄປມາຄືແຂ້ວສັດປ່າກຳລັງຈະກັດ.","impact":"ຖືກນິນທາໃສ່ຮ້າຍ, ຄະດີຄວາມ, ການຫຼອກລວງຫັກຫຼັງ.","remedy":"ປູກແນວຕົ້ນໄມ້ກັນຊົນທຶບຕັດສາຍຕາ, ສ້າງກຳແພງສູງ."},{"id":"LT-1881","type":"luantou","name":"ພູເຂົາເສືອລົງເຂົາ (Qian Hu Shan - 降虎山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":32,"isGood":false,"img":"img/LT-1881.png","physics":"ສັນເຂົາດ້ານຂວາ (ເສືອຂາວ) ສູງຊັນ ແລະ ພຸ່ງລົງມາຂົ່ມມັງກອນຂຽວ.","impact":"ແມ່ຍິງໃນເຮືອນມີອຳນາດຂົ່ມຜົວ, ເກີດການປະທະຮຸນແຮງ.","remedy":"ເສີມພະລັງມັງກອນຂຽວດ້ານຊ້າຍດ້ວຍຕົ້ນໄມ້ສູງ ແລະ ໂຄມໄຟ."},{"id":"LT-1889","type":"luantou","name":"ພູເຂົາເທລົງຊັນ (Xie Shan - 卸山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":28,"isGood":false,"img":"img/LT-1889.png","physics":"ສັນເຂົາເທລົງຢ່າງໄວວາ ບໍ່ມີຈຸດຢຸດພັກ ຫຼື ຕາຝັ່ງຮອງຮັບ.","impact":"ເງິນຄຳໄຫຼອອກໝົດ, ບໍ່ສາມາດສະສົມຊັບສົມບັດໄວ້ໄດ້.","remedy":"ສ້າງກຳແພງເປັນຂັ້ນໄດ (Terrace), ປູກຕົ້ນໄມ້ດັກຊັບ."},{"id":"LT-1897","type":"luantou","name":"ພູເຂົາຂາດເຄິ່ງ (Duan Shan - 断山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":25,"isGood":false,"img":"img/LT-1897.png","physics":"ສັນເຂົາຖືກຕັດຂາດດ້ວຍຖະໜົນ ຫຼື ການຂຸດເຈາະທາງ.","impact":"ເສັ້ນທາງມັງກອນຂາດຕອນ, ທຸລະກິດຢຸດສະງັກ, ເສຍຊັບ.","remedy":"ສ້າງຂົວເຊື່ອມ ຫຼື ປູກຕົ້ນໄມ້ເຊື່ອມສາຍພະລັງງານ."},{"id":"LT-1905","type":"luantou","name":"ພູເຂົາໂລ້ນໄຮ້ຕົ້ນໄມ້ (Gu Shan - 孤山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":22,"isGood":false,"img":"img/LT-1905.png","physics":"ພູເຂົາດິນແດງແຫ້ງແລ້ງ ບໍ່ມີຕົ້ນໄມ້ຂຽວປົກຄຸມແມ່ນແຕ່ຕົ້ນດຽວ.","impact":"ຄວາມຍາກຈົນ, ໄຮ້ລູກຫຼານ, ຊີວິດແຫ້ງແລ້ງຂາດຄວາມສຸກ.","remedy":"ປູກຕົ້ນໄມ້ຟື້ນຟູທຳມະຊາດ, ສ້າງສວນຂຽວຮອບອາຄານ."},{"id":"LT-1913","type":"luantou","name":"ພູເຂົາມືດມົນອັບແສງ (Yin An Shan - 阴暗山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":26,"isGood":false,"img":"img/LT-1913.png","physics":"ພູເຂົາບັງແສງຕາເວັນຕະຫຼອດປີ, ເຮືອນຕົກຢູ່ໃນເງົາມືດຊຸ່ມເຢັນ.","impact":"ພະຍາດຊຶມເສົ້າ, ພະລັງຢິນຄອບງຳ, ພະຍາດຜິວໜັງ ແລະ ປອດ.","remedy":"ຕິດຕັ້ງໄຟສະຫວ່າງພະລັງງານແສງອາທິດ, ທາສີເຮືອນດ້ວຍສີສະຫວ່າງ."},{"id":"LT-1921","type":"luantou","name":"ພູເຂົາແຕກແຍກເປັນສ່ຽງ (Lie Shan - 裂山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":20,"isGood":false,"img":"img/LT-1921.png","physics":"ໜ້າຜາມີຮອຍແຕກແຍກເລິກຄືຈະພັງລົງມາໄດ້ທຸກເວລາ.","impact":"ຄວາມແຕກແຍກໃນຄອບຄົວ, ທຸລະກິດຮ່ວມທຶນແຕກຫັກ.","remedy":"ສ້າງກຳແພງປ້ອງກັນ, ປູກຕົ້ນໄມ້ປະສານໜ້າດິນ."},{"id":"LT-1929","type":"luantou","name":"ພູເຂົາຫີນກັດສີ (Mo Shan - 磨山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":28,"isGood":false,"img":"img/LT-1929.png","physics":"ໂງ່ນຫີນສອງກ້ອນບຽດສີກັນຕາມສັນເຂົາ ເກີດສຽງດັງເວລາລົມພັດ.","impact":"ການຂັດແຍ້ງເລື່ອງຜົນປະໂຫຍດ, ຖືກກົດດັນທາງຈິດໃຈ.","remedy":"ສ້າງສິ່ງກີດຂວາງປິດບັງ, ຍ້າຍຕຳແໜ່ງຫ້ອງນອນ."},{"id":"LT-1937","type":"luantou","name":"ພູເຂົາຟ້າຜ່າຊຳເຮື້ອ (Lei Shan - 雷山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":18,"isGood":false,"img":"img/LT-1937.png","physics":"ຍອດພູເຂົາມີແຮ່ທາດໂລຫະດຶງດູດຟ້າຜ່າເປັນປະຈຳ.","impact":"ອັກຄີໄພ, ໄຟຟ້າຊັອດ, ຄວາມຢ້ານກົວ, ອຸບັດຕິເຫດແຮງດັນສູງ.","remedy":"ຕິດຕັ້ງສາຍລໍ້ຟ້າທີ່ໄດ້ມາດຕະຖານ, ຕັ້ງອາຄານໃຫ້ຫ່າງຈາກຍອດພູ."},{"id":"LT-1945","type":"luantou","name":"ພູເຂົາຕົ້ນໄມ້ຕາຍແຫ້ງ (Can Shan - 残山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":15,"isGood":false,"img":"img/LT-1945.png","physics":"ຕົ້ນໄມ້ເທິງພູຖືກໄຟໄໝ້ ຫຼື ຕາຍແຫ້ງເຫຼືອແຕ່ຕໍໄມ້ສີດຳ.","impact":"ພະລັງຊີວິດມອດດັບ (Si Qi), ທຸລະກິດລົ້ມລະລາຍ, ເຈັບປ່ວຍຊຳເຮື້ອ.","remedy":"ຟື້ນຟູປູກປ່າໄມ້ໃໝ່, ຫ້າມເປີດປະຕູຮັບພະລັງຈາກທິດນີ້."},{"id":"LT-1953","type":"luantou","name":"ພູເຂົາຂາດແຂນຂ້າງໜຶ່ງ (Que Shan - 缺山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":35,"isGood":false,"img":"img/LT-1953.png","physics":"ພູເຂົາດ້ານຊ້າຍ (ມັງກອນ) ຫຼື ດ້ານຂວາ (ເສືອ) ຂາດຫາຍໄປຢ່າງສິ້ນເຊີງ.","impact":"ຂາດຄວາມສົມດຸນ: ຫາກຂາດມັງກອນ ຜູ້ຊາຍຈະຕົກຕ່ຳ; ຫາກຂາດເສືອ ແມ່ຍິງຈະເຈັບປ່ວຍ.","remedy":"ສ້າງອາຄານເສີມ ຫຼື ປູກແນວຕົ້ນໄມ້ສູງທົດແທນຂ້າງທີ່ຂາດຫາຍ."},{"id":"LT-1961","type":"luantou","name":"ພູເຂົາຖ້ຳມືດພິສ (Wa Shan - 洼山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":20,"isGood":false,"img":"img/LT-1961.png","physics":"ໜ້າຜາມີຖ້ຳເລິກມືດມົນອ້າປາກຊີ້ໃສ່ເຮືອນ ຄືປາກສັດຮ້າຍ.","impact":"ພະຍາດທາງຈິດ, ຝັນຮ້າຍ, ຖືກຄອບງຳດ້ວຍພະລັງງານລົບ.","remedy":"ຕິດກະຈົກປາກົວນູນສະທ້ອນ, ປູກຕົ້ນໄມ້ໃຫຍ່ປິດປາກຖ້ຳ."},{"id":"LT-1969","type":"luantou","name":"ພູເຂົາປືນໃຫຍ່ຍິງໃສ່ (Pao Shan - 炮山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":22,"isGood":false,"img":"img/LT-1969.png","physics":"ຍອດພູມົນຍື່ນອອກມາຄືລຳກ້ອງປືນໃຫຍ່ເລັງໃສ່ອາຄານ.","impact":"ອຸບັດຕິເຫດແຕກຫັກ, ການຜ່າຕັດ, ຖືກໂຈມຕີທາງທຸລະກິດ.","remedy":"ສ້າງກຳແພງໂຄ້ງກັນຊົນ, ຕັ້ງຫີນແກຣນິດປ້ອງກັນ."},{"id":"LT-1977","type":"luantou","name":"ພູເຂົາດາບໃຫຍ່ຕັດຄໍ (Dao Shan - 刀山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":18,"isGood":false,"img":"img/LT-1977.png","physics":"ສັນເຂົາແຫຼມຄົມຍາວຄືໃບດາບຕັ້ງຂວາງຢູ່ໜ້າເຮືອນ.","impact":"ຄະດີຄວາມ, ການຖືກຕັດສິດ, ການຜ່າຕັດເລືອດຕົກ.","remedy":"ສ້າງຮົ້ວທຶບບັງສາຍຕາ, ຕັ້ງອ່າງນ້ຳພຸຊະລໍພະລັງ."},{"id":"LT-1985","type":"luantou","name":"ພູເຂົາແປວໄຟເຜົາຜານ (Huo Xing Shan - 火星山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":15,"isGood":false,"img":"img/LT-1985.png","physics":"ກຸ່ມຍອດພູແຫຼມສ້ຽມຫຼາຍຍອດຕິດກັນຄືກອງໄຟກຳລັງລຸກໄໝ້.","impact":"ອັກຄີໄພຮ້າຍແຮງ, ຄວາມຂັດແຍ້ງຮຸນແຮງ, ພະຍາດຫົວໃຈ.","remedy":"ຂຸດສະລອຍນ້ຳໃຫຍ່ທາດນ້ຳດັບໄຟ, ສ້າງກຳແພງທາສີເຫຼືອງ."},{"id":"LT-1993","type":"luantou","name":"ພູເຂົາຫິມະນ້ຳແຂງເຢັນຍະເຢືອກ (Bing Shan - 冰山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":30,"isGood":false,"img":"img/LT-1993.png","physics":"ພູເຂົາປົກຄຸມດ້ວຍຫິມະ ຫຼື ຫີນສີຂາວເຢັນ, ພະລັງຢິນເຢັນຍະເຢືອກ.","impact":"ຄວາມເຢັນຊາໃນຄອບຄົວ, ພະຍາດໄຂ້ຂໍ້, ໄຮ້ຄວາມອົບອຸ່ນ.","remedy":"ເສີມພະລັງທາດໄຟດ້ວຍໄຟສະຫວ່າງ, ທາສີອົບອຸ່ນ."},{"id":"LT-2001","type":"luantou","name":"ພູເຂົາລົມຫວີດຮ້ອງ (Feng Shan - 风山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":24,"isGood":false,"img":"img/LT-2001.png","physics":"ພູເຂົາມີຮູ ແລະ ຊ່ອງຫີນຫຼາຍຈຸດ ເວລາລົມພັດເກີດສຽງຫວີດຮ້ອງໜ້າຢ້ານ.","impact":"ຄວາມຢ້ານກົວ, ພະຍາດປະສາດ, ນອນບໍ່ຫຼັບ, ເສຍຂວັນ.","remedy":"ປູກຕົ້ນໄມ້ປິດຊ່ອງລົມ, ຕິດປ່ອງຢ້ຽມກັນສຽງ."},{"id":"LT-2009","type":"luantou","name":"ພູເຂົາຊາຍດູດ (Sha Shan - 沙山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":22,"isGood":false,"img":"img/LT-2009.png","physics":"ພູເຂົາປະກອບດ້ວຍດິນຊາຍລ້ວນໆ ພັງທະລາຍງ່າຍເວລາລົມພັດ.","impact":"ຖານະການເງິນຄືດິນຊາຍດູດ, ຍິ່ງດິ້ນຍິ່ງຈົມ, ເສຍຊັບ.","remedy":"ສ້າງກຳແພງຮອງຮັບ, ປູກຫຍ້າແຝກຍຶດໜ້າດິນ."},{"id":"LT-2017","type":"luantou","name":"ພູເຂົານ້ຳຮົ່ວໄຫຼ (Lou Shan - 漏山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":26,"isGood":false,"img":"img/LT-2017.png","physics":"ສັນເຂົາມີຮ່ອມນ້ຳໄຫຼເຊາະເປັນຮ່ອງເລິກ ນ້ຳໄຫຼລົງໄວ.","impact":"ເງິນຄຳຮົ່ວໄຫຼຕະຫຼອດເວລາ, ບໍ່ສາມາດເກັບເງິນຢູ່.","remedy":"ສ້າງຝາຍກັ້ນນ້ຳ, ປູກຕົ້ນໄມ້ດັກນ້ຳ."},{"id":"LT-2025","type":"luantou","name":"ພູເຂົານົກອິນຊີຖະລອງ (Can Feng Shan - 残峰山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":20,"isGood":false,"img":"img/LT-2025.png","physics":"ຍອດພູເຂົາແຫຼມໂຄ້ງຄືຈະງອຍປາກນົກອິນຊີກົ້ມລົງຈິກອາຄານ.","impact":"ຖືກຄົນມີອຳນາດກົດຂີ່, ຖືກລັກຊັບ, ຜ່າຕັດ.","remedy":"ຕິດກະຈົກປາກົວນູນ, ຕັ້ງຫີນສະກັດຈະງອຍປາກ."},{"id":"LT-2033","type":"luantou","name":"ພູເຂົາຫົວແຕກພັງ (Po Tou Shan - 破头山)","category":"35 ຮູບແບບພູເຂົາພິສ Sha","score":16,"isGood":false,"img":"img/LT-2033.png","physics":"ຍອດພູເຂົາພັງທະລາຍລົງມາເຫຼືອແຕ່ເສດຫີນແຕກກະຈາຍ.","impact":"ຜູ້ນຳຄອບຄົວເສຍຊີວິດກະທັນຫັນ, ລົ້ມລະລາຍ, ເສຍຊື່ສຽງ.","remedy":"ສ້າງກຳແພງຫຼັງເຮືອນໃຫ້ໜັກແໜ້ນ, ປູກຕົ້ນໄມ້ປົກຄຸມ."}];
+    const chaptersData = [{"id":"ch0","title":"ບົດນຳ & ປະຫວັດຄວາມເປັນມາຂອງວິຊາຮວງຈຸ້ຍດາວເຫີນ","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດນຳ: ຕົ້ນກຳເນີດ ແລະ ປະຫວັດຄວາມເປັນມາຂອງວິຊາຮວງຈຸ້ຍດາວເຫີນ</h1>\n        <p class=\"doc-lead\">ຮວງຈຸ້ຍດາວເຫີນ (Xuan Kong Fei Xing / 玄空飞星) ເປັນວິຊາຮວງຈຸ້ຍຂັ້ນສູງທີ່ສົມບູນແບບທີ່ສຸດໃນບັນດາສຳນັກຮວງຈຸ້ຍຄລາດສິກຂອງຈີນ ໂດຍປະສານມິຕິແຫ່ງ 'ເວລາ' (Time) ແລະ 'ພື້ນທີ່' (Space) ເຂົ້າກັນຢ່າງວິທະຍາສາດ.</p>\n        \n        <h2 class=\"doc-h2\">1. ປະຫວັດສາດແຫ່ງວິຊາສວຽນຄົງ (Xuan Kong History)</h2>\n        <p class=\"doc-p\">ວິຊາຮວງຈຸ້ຍດາວເຫີນມີຮາກຖານມາຈາກຄຳພີບູຮານຕັ້ງແຕ່ສະໄໝລາຊະວົງຖັງ ແລະ ຈິ້ນ ໂດຍມີປຶ້ມຄຳພີຫຼັກເຊັ່ນ: 'ຊິງໜັງຈິງ' (Qing Nang Jing / 青囊经) ຂອງທ່ານກົວຜູ້ (Guo Pu) ແລະ ຕໍ່ມາໄດ້ຮັບການພັດທະນາຢ່າງເລິກເຊິ່ງໂດຍປໍຣະມາຈານຢາງອີ້ຊົງ (Yang Yun Song) ໃນສະໄໝລາຊະວົງຖັງ.</p>\n        <p class=\"doc-p\">ໃນອະດີດ ວິຊານີ້ຖືກປົກປິດເປັນຄວາມລັບສູງສຸດພາຍໃນລາຊະສຳນັກຈີນ ເອີ້ນວ່າ 'ວິຊາຈັກກະພັດ' ເພາະເຊື່ອວ່າມີອຳນາດໃນການກຳນົດຄວາມຈະເລີນຮຸ່ງເຮືອງ ແລະ ຄວາມເສື່ອມຖອຍຂອງລາຊະວົງ. ຈົນຮອດສະໄໝລາຊະວົງຊິງ ທ່ານເສິ່ນຈູໂຢ່ວ (Shen Zhu Reng / 沈竹礽) ໄດ້ຄົ້ນຄວ້າ ແລະ ຂຽນປຶ້ມ 'ເສິ່ນຊື່ສວຽນຄົງເສວ່' (Shen Shi Xuan Kong Xue / 沈氏玄空学) ເຊິ່ງໄດ້ເປີດເຜີຍຄວາມລັບຂອງວິຊາດາວເຫີນອອກສູ່ສາທາລະນະຊົນ.</p>\n\n        <h2 class=\"doc-h2\">2. ຄວາມແຕກຕ່າງລະຫວ່າງຮວງຈຸ້ຍດາວເຫີນ ກັບ ຮວງຈຸ້ຍທົ່ວໄປ</h2>\n        <p class=\"doc-p\">ຮວງຈຸ້ຍທົ່ວໄປສ່ວນໃຫຍ່ມັກເບິ່ງພຽງແຕ່ທິດທາງຕາຍຕົວ (ເຊັ່ນ: ທິດເໜືອຄືທາດນ້ຳ, ທິດໃຕ້ຄືທາດໄຟ) ໂດຍບໍ່ຄຳນຶງເຖິງວົງຮອບເວລາ. ແຕ່ຮວງຈຸ້ຍດາວເຫີນສອນວ່າ: <strong>ພະລັງງານບໍ່ມີມື້ຢຸດນິ້ງ</strong>. ພະລັງງານຊີ່ (Qi) ມີການໝູນວຽນປ່ຽນແປງໄປຕາມຍຸກ (Period) ທຸກໆ 20 ປີ, ປ່ຽນແປງຕາມປີ, ຕາມເດືອນ ແລະ ຕາມວັນ.</p>\n        \n        <div class=\"doc-callout\">\n          <strong>ຫຼັກການພື້ນຖານ:</strong> ເຮືອນຫຼັງດຽວກັນ, ຫັນໜ້າໄປທິດດຽວກັນ ແຕ່ຫາກສ້າງໃນຍຸກທີ່ແຕກຕ່າງກັນ (ເຊັ່ນ: ສ້າງໃນຍຸກ 7, ຍຸກ 8 ຫຼື ຍຸກ 9) ຈະມີຜັງພະລັງງານດາວເຫີນທີ່ແຕກຕ່າງກັນຢ່າງສິ້ນເຊີງ!\n        </div>\n      </div>\n    "},{"id":"ch1","title":"ບົດທີ 1: ທິດສະດີຮວງຈຸ້ຍພື້ນຖານ (Qi, 5 Elements, Ba Gua)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 1: ທິດສະດີຮວງຈຸ້ຍພື້ນຖານ</h1>\n        <p class=\"doc-lead\">ການສຶກສາວິຊາຮວງຈຸ້ຍດາວເຫີນ ຈຳເປັນຕ້ອງເຂົ້າໃຈມະໂນທັດພື້ນຖານ 3 ປະການ ຄື: ພະລັງງານຊີ່ (Qi), ຫຼັກຢິນ-ຢາງ (Yin-Yang), ແລະ ວັດທະຈັກແຫ່ງທາດທັງ 5 (Wu Xing).</p>\n\n        <h2 class=\"doc-h2\">1. ພະລັງງານຊີ່ (Qi / 气)</h2>\n        <p class=\"doc-p\">ຊີ່ ຄືພະລັງຊີວິດທີ່ໄຫຼວຽນຢູ່ໃນຈັກກະວານ, ພື້ນແຜ່ນດິນ ແລະ ຮ່າງກາຍຂອງມະນຸດ. ໃນຮວງຈຸ້ຍ ພວກເຮົາແບ່ງຊີ່ອອກເປັນ 2 ປະເພດຫຼັກ:</p>\n        <ul>\n          <li><strong>ເຊິ້ງຊີ່ (Sheng Qi / 生气):</strong> ຄືພະລັງຊີວິດທີ່ສົດໃສ, ໄຫຼວຽນຢ່າງອ່ອນຊ້ອຍ, ນຳພາສຸຂະພາບ, ໂຊກລາບ ແລະ ຄວາມຮັ່ງມີ.</li>\n          <li><strong>ຊາຊີ່ (Sha Qi / 煞气):</strong> ຄືພະລັງພິສ ຫຼື ພະລັງທີ່ເຄື່ອນໄຫວຮຸນແຮງເກີນໄປ (ເຊັ່ນ: ທາງສາມແພ່ງ, ລົມພັດກະແທກ, ມຸມແຫຼມພຸ່ງຊົນ) ເຮັດໃຫ້ເກີດການເຈັບປ່ວຍ ແລະ ເສຍຊັບ.</li>\n        </ul>\n\n        <h2 class=\"doc-h2\">2. ວັດທະຈັກແຫ່ງທາດທັງ 5 (Five Elements / 五行)</h2>\n        <p class=\"doc-p\">ທາດທັງ 5 ປະກອບດ້ວຍ: <strong>ໄມ້ (Wood), ໄຟ (Fire), ດິນ (Earth), ທອງ (Metal), ແລະ ນ້ຳ (Water)</strong>. ຄວາມສຳພັນລະຫວ່າງທາດມີ 3 ວັດທະຈັກ:</p>\n        \n        <div class=\"table-responsive\">\n          <table class=\"doc-table\">\n            <thead>\n              <tr>\n                <th>ວັດທະຈັກກໍ່ເກີດ (Sheng Cycle)</th>\n                <th>ວັດທະຈັກຂົ່ມ/ທຳລາຍ (Ke Cycle)</th>\n                <th>ວັດທະຈັກຫຼຸດທອນ (Xie Cycle)</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr>\n                <td>ໄມ້ ເກີດ ໄຟ</td>\n                <td>ໄມ້ ຂົ່ມ ດິນ</td>\n                <td>ໄຟ ຫຼຸດທອນ ໄມ້</td>\n              </tr>\n              <tr>\n                <td>ໄຟ ເກີດ ດິນ</td>\n                <td>ດິນ ຂົ່ມ ນ້ຳ</td>\n                <td>ດິນ ຫຼຸດທອນ ໄຟ</td>\n              </tr>\n              <tr>\n                <td>ດິນ ເກີດ ທອງ</td>\n                <td>ນ້ຳ ຂົ່ມ ໄຟ</td>\n                <td>ທອງ ຫຼຸດທອນ ດິນ</td>\n              </tr>\n              <tr>\n                <td>ທອງ ເກີດ ນ້ຳ</td>\n                <td>ໄຟ ຂົ່ມ ທອງ</td>\n                <td>ນ້ຳ ຫຼຸດທອນ ທອງ</td>\n              </tr>\n              <tr>\n                <td>ນ້ຳ ເກີດ ໄມ້</td>\n                <td>ທອງ ຂົ່ມ ໄມ້</td>\n                <td>ໄມ້ ຫຼຸດທອນ ນ້ຳ</td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n\n        <div class=\"doc-callout\">\n          <strong>ກົດເກນສຳຄັນໃນການແກ້ໄຂຮວງຈຸ້ຍ:</strong> ເມື່ອພົບດາວຮ້າຍ (ເຊັ່ນ: ດາວ 2 ດຳ ຫຼື ດາວ 5 ເຫຼືອງ ເຊິ່ງເປັນທາດດິນ), <strong>ຫ້າມໃຊ້ທາດໄມ້ໄປຂົ່ມໂດຍກົງ</strong> ເພາະຈະເກີດການປະທະຮຸນແຮງ! ວິທີທີ່ຖືກຕ້ອງຄືການໃຊ້ 'ທາດທອງ' ມາຫຼຸດທອນ/ຖ່າຍເທພະລັງຮ້າຍອອກໄປຢ່າງສະຫງົບ.\n        </div>\n      </div>\n    "},{"id":"ch2","title":"ບົດທີ 2: ມິຕິເວລາ: 3 ຍຸກ 9 ວົງຮອບ (San Yuan Jiu Yun)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 2: ມິຕິເວລາ: 3 ຍຸກ 9 ວົງຮອບ</h1>\n        <p class=\"doc-lead\">ເວລາໃນວິຊາຮວງຈຸ້ຍດາວເຫີນ ຖືກແບ່ງອອກເປັນ 3 ມະຫາຍຸກ (San Yuan) ແລະ 9 ຍຸກຍ່ອຍ (Jiu Yun) ໂດຍແຕ່ລະຍຸກຍ່ອຍມີອາຍຸ 20 ປີ ລວມເປັນ 1 ວົງຮອບໃຫຍ່ 180 ປີ.</p>\n\n        <h2 class=\"doc-h2\">1. ຕາຕະລາງ 9 ຍຸກແຫ່ງການເຫີນດາວ</h2>\n        <div class=\"table-responsive\">\n          <table class=\"doc-table\">\n            <thead>\n              <tr>\n                <th>ມະຫາຍຸກ</th>\n                <th>ຍຸກຍ່ອຍ</th>\n                <th>ຊ່ວງໄລຍະເວລາ (ຄ.ສ.)</th>\n                <th>ດາວຄອງຍຸກ</th>\n                <th>ທາດປະຈຳຍຸກ</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr><td rowspan=\"3\">ຍຸກຕົ້ນ (Shang Yuan)</td><td>ຍຸກ 1</td><td>1864 – 1883</td><td>ດາວ 1 ຂາວ (Tan Lang)</td><td>ທາດນ້ຳ</td></tr>\n              <tr><td>ຍຸກ 2</td><td>1884 – 1903</td><td>ດາວ 2 ດຳ (Ju Men)</td><td>ທາດດິນ</td></tr>\n              <tr><td>ຍຸກ 3</td><td>1904 – 1923</td><td>ດາວ 3 ຂຽວ (Lu Cun)</td><td>ທາດໄມ້</td></tr>\n              <tr><td rowspan=\"3\">ຍຸກກາງ (Zhong Yuan)</td><td>ຍຸກ 4</td><td>1924 – 1943</td><td>ດາວ 4 ຂຽວ (Wen Qu)</td><td>ທາດໄມ້</td></tr>\n              <tr><td>ຍຸກ 5</td><td>1944 – 1963</td><td>ດາວ 5 ເຫຼືອງ (Lian Zhen)</td><td>ທາດດິນ</td></tr>\n              <tr><td>ຍຸກ 6</td><td>1964 – 1983</td><td>ດາວ 6 ຂາວ (Wu Qu)</td><td>ທາດທອງ</td></tr>\n              <tr><td rowspan=\"3\">ຍຸກປາຍ (Xia Yuan)</td><td>ຍຸກ 7</td><td>1984 – 2003</td><td>ດາວ 7 ແດງ (Po Jun)</td><td>ທາດທອງ</td></tr>\n              <tr><td>ຍຸກ 8</td><td>2004 – 2023</td><td>ດາວ 8 ຂາວ (Zuo Fu)</td><td>ທາດດິນ</td></tr>\n              <tr class=\"highlight-row\"><td><strong>ຍຸກ 9 (ປະຈຸບັນ)</strong></td><td><strong>2024 – 2043</strong></td><td><strong>ດາວ 9 ມ່ວງ (You Bi)</strong></td><td><strong>ທາດໄຟ</strong></td></tr>\n            </tbody>\n          </table>\n        </div>\n\n        <h2 class=\"doc-h2\">2. ຄວາມສຳຄັນຂອງຍຸກ 9 (ປີ 2024 – 2043)</h2>\n        <p class=\"doc-p\">ຕັ້ງແຕ່ວັນທີ 4 ກຸມພາ 2024 ເປັນຕົ້ນມາ ໂລກໄດ້ກ້າວເຂົ້າສູ່ <strong>ຍຸກ 9 ຢ່າງເປັນທາງການ</strong>. ດາວ 9 ມ່ວງ ທາດໄຟ ຄືດາວທີ່ຊົງພະລັງທີ່ສຸດ (Wang Qi). ດາວ 8 ເຊິ່ງເຄີຍຮຸ່ງເຮືອງໃນຍຸກກ່ອນ ໄດ້ກາຍເປັນດາວຖົດຖອຍ (Tui Qi). ອຸດສາຫະກຳ ແລະ ພະລັງງານທີ່ກ່ຽວຂ້ອງກັບເທັກໂນໂລຊີ, ປັນຍາປະດິດ (AI), ພະລັງງານແສງອາທິດ, ວັດທະນະທຳ, ຄວາມງາມ ແລະ ສຸຂະພາບຈິດ ຈະຈະເລີນຮຸ່ງເຮືອງສູງສຸດ.</p>\n      </div>\n    "},{"id":"ch3","title":"ບົດທີ 3: ມິຕິພື້ນທີ່: ຈານເຂັມທິດຫຼົວຜານ ແລະ 24 ທິດເຂົາ","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 3: ມິຕິພື້ນທີ່: ຈານເຂັມທິດຫຼົວຜານ ແລະ 24 ທິດເຂົາ</h1>\n        <p class=\"doc-lead\">ໃນຮວງຈຸ້ຍດາວເຫີນ ພວກເຮົາບໍ່ໄດ້ແບ່ງທິດອອກເປັນພຽງ 8 ທິດທຳມະດາ ແຕ່ແບ່ງອອກເປັນ <strong>24 ທິດເຂົາ (24 Mountains / 24 Shan)</strong> ໂດຍແຕ່ລະທິດເຂົາກວມເອົາ 15 ອົງສາຮອບວົງມົນ 360 ອົງສາ.</p>\n\n        <h2 class=\"doc-h2\">1. ໂຄງສ້າງຂອງ 24 ທິດເຂົາ</h2>\n        <p class=\"doc-p\">ແຕ່ລະທິດຫຼັກໃນ 8 ທິດ ຈະຖືກແບ່ງຍ່ອຍອອກເປັນ 3 ທິດເຂົາ ຄື: ທິດເຂົາທີ 1, ທິດເຂົາທີ 2, ແລະ ທິດເຂົາທີ 3:</p>\n        <ul>\n          <li><strong>ທິດເໜືອ (Kan 坎):</strong> 壬 (Ren: 337.5°–352.5°), 子 (Zi: 352.5°–7.5°), 癸 (Gui: 7.5°–22.5°)</li>\n          <li><strong>ທິດຕາເວັນອອກສ່ຽງເໜືອ (Gen 艮):</strong> 丑 (Chou: 22.5°–37.5°), 艮 (Gen: 37.5°–52.5°), 寅 (Yin: 52.5°–67.5°)</li>\n          <li><strong>ທິດຕາເວັນອອກ (Zhen 震):</strong> 甲 (Jia: 67.5°–82.5°), 卯 (Mao: 82.5°–97.5°), 乙 (Yi: 97.5°–112.5°)</li>\n          <li><strong>ທິດຕາເວັນອອກສ່ຽງໃຕ້ (Xun 巽):</strong> 辰 (Chen: 112.5°–127.5°), 巽 (Xun: 127.5°–142.5°), 巳 (Si: 142.5°–157.5°)</li>\n          <li><strong>ທິດໃຕ້ (Li 离):</strong> 丙 (Bing: 157.5°–172.5°), 午 (Wu: 172.5°–187.5°), 丁 (Ding: 187.5°–202.5°)</li>\n          <li><strong>ທິດຕາເວັນຕົກສ່ຽງໃຕ້ (Kun 坤):</strong> 未 (Wei: 202.5°–217.5°), 坤 (Kun: 217.5°–232.5°), 申 (Shen: 232.5°–247.5°)</li>\n          <li><strong>ທິດຕາເວັນຕົກ (Dui 兑):</strong> 庚 (Geng: 247.5°–262.5°), 酉 (You: 262.5°–277.5°), 辛 (Xin: 277.5°–292.5°)</li>\n          <li><strong>ທິດຕາເວັນຕົກສ່ຽງເໜືອ (Qian 乾):</strong> 戌 (Xu: 292.5°–307.5°), 乾 (Qian: 307.5°–322.5°), 亥 (Hai: 322.5°–337.5°)</li>\n        </ul>\n\n        <h2 class=\"doc-h2\">2. ການກຳນົດທິດຫັນໜ້າ (Facing / Xiang) ແລະ ທິດພິງຫຼັງ (Sitting / Zuo)</h2>\n        <p class=\"doc-p\">ການວັດແທກອົງສາທີ່ຖືກຕ້ອງແມ່ນຫົວໃຈສຳຄັນທີ່ສຸດ. ທິດຫັນໜ້າ (Xiang) ບໍ່ຈຳເປັນຕ້ອງແມ່ນປະຕູສະເໝີໄປ ແຕ່ແມ່ນ<strong>ດ້ານທີ່ມີພະລັງຢາງສູງສຸດ</strong> (ມີແສງສະຫວ່າງຫຼາຍທີ່ສຸດ, ມີທາງລົດແລ່ນຜ່ານ, ຫຼື ມີຊ່ອງເປີດກວ້າງຂວາງທີ່ສຸດ).</p>\n      </div>\n    "},{"id":"ch4","title":"ບົດທີ 4: ວິຊາດາວເຫີນ: ເສັ້ນທາງເຫີນລົ່ວຊູ (Lo Shu Flight Path)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 4: ວິຊາດາວເຫີນ: ເສັ້ນທາງເຫີນລົ່ວຊູ</h1>\n        <p class=\"doc-lead\">ການເຫີນດາວ ຄືການເຄື່ອນຍ້າຍຕົວເລກດາວທັງ 9 ດວງ ເຂົ້າສູ່ 9 ວັງ (9 Palaces) ຕາມລຳດັບເສັ້ນທາງເດີນຂອງຕາຕະລາງລົ່ວຊູ (Lo Shu Trajectory).</p>\n\n        <h2 class=\"doc-h2\">1. ເສັ້ນທາງເດີນ 9 ຂັ້ນຕອນຂອງລົ່ວຊູ</h2>\n        <p class=\"doc-p\">ເມື່ອຕົວເລກເລີ່ມຕົ້ນຢູ່ໃຈກາງ (Tai Ji), ດາວຈະເຫີນໄປຕາມລຳດັບດັ່ງນີ້:</p>\n        <ol>\n          <li>ຈາກ <strong>ໃຈກາງ (Center)</strong> -> ເຫີນໄປຫາ <strong>ທິດຕາເວັນຕົກສ່ຽງເໜືອ (Qian)</strong></li>\n          <li>ຈາກ ທິດຕາເວັນຕົກສ່ຽງເໜືອ -> ເຫີນໄປຫາ <strong>ທິດຕາເວັນຕົກ (Dui)</strong></li>\n          <li>ຈາກ ທິດຕາເວັນຕົກ -> ເຫີນໄປຫາ <strong>ທິດຕາເວັນອອກສ່ຽງເໜືອ (Gen)</strong></li>\n          <li>ຈາກ ທິດຕາເວັນອອກສ່ຽງເໜືອ -> ເຫີນໄປຫາ <strong>ທິດໃຕ້ (Li)</strong></li>\n          <li>ຈາກ ທິດໃຕ້ -> ເຫີນໄປຫາ <strong>ທິດເໜືອ (Kan)</strong></li>\n          <li>ຈາກ ທິດເໜືອ -> ເຫີນໄປຫາ <strong>ທິດຕາເວັນຕົກສ່ຽງໃຕ້ (Kun)</strong></li>\n          <li>ຈາກ ທິດຕາເວັນຕົກສ່ຽງໃຕ້ -> ເຫີນໄປຫາ <strong>ທິດຕາເວັນອອກ (Zhen)</strong></li>\n          <li>ຈາກ ທິດຕາເວັນອອກ -> ເຫີນໄປຫາ <strong>ທິດຕາເວັນອອກສ່ຽງໃຕ້ (Xun)</strong></li>\n          <li>ຈາກ ທິດຕາເວັນອອກສ່ຽງໃຕ້ -> ກັບຄືນສູ່ <strong>ໃຈກາງ (Center)</strong></li>\n        </ol>\n\n        <h2 class=\"doc-h2\">2. ການເຫີນຕາມເຂັມ (Shun / 顺) ແລະ ການເຫີນທວນເຂັມ (Ni / 逆)</h2>\n        <p class=\"doc-p\">ດາວພູ (Shan Xing) ແລະ ດາວນ້ຳ (Xiang Xing) ສາມາດເຫີນໄດ້ທັງ 2 ແບບ:</p>\n        <ul>\n          <li><strong>ເຫີນຕາມເຂັມ (Forward Flight / 顺飞):</strong> ຕົວເລກເພີ່ມຂຶ້ນຕາມລຳດັບ (1, 2, 3, 4, 5, 6, 7, 8, 9). ໃຊ້ເມື່ອທິດເຂົາຕົກຢູ່ໃນ <strong>ພະລັງຢາງ (+)</strong>.</li>\n          <li><strong>ເຫີນທວນເຂັມ (Backward Flight / 逆飞):</strong> ຕົວເລກຫຼຸດລົງຕາມລຳດັບ (9, 8, 7, 6, 5, 4, 3, 2, 1). ໃຊ້ເມື່ອທິດເຂົາຕົກຢູ່ໃນ <strong>ພະລັງຢິນ (-)</strong>.</li>\n        </ul>\n      </div>\n    "},{"id":"ch5","title":"ບົດທີ 5: ດາວທັງ 9 ດວງ: ຄຸນລັກສະນະ, ທາດ, ແລະ ຄວາມໝາຍ","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 5: ດາວທັງ 9 ດວງ: ຄຸນລັກສະນະ ແລະ ຄວາມໝາຍລະອຽດ</h1>\n        <p class=\"doc-lead\">ດາວແຕ່ລະດວງໃນລະບົບ 9 ດາວ (Jiu Xing) ມີຄຸນລັກສະນະ, ທາດ, ສັນຍະລັກ ແລະ ພະລັງງານສະເພາະຕົວ:</p>\n\n        <div class=\"star-card-grid\">\n          <div class=\"star-card\">\n            <h3>⭐ ດາວ 1 ຂາວ (Tan Lang / 贪狼)</h3>\n            <p><strong>ທາດ:</strong> ນ້ຳ (Water) | <strong>ທິດເດີມ:</strong> ທິດເໜືອ (Kan)</p>\n            <p><strong>ຄວາມໝາຍ:</strong> ດາວແຫ່ງສະຕິປັນຍາ, ຄວາມສະຫຼາດ, ການສຶກສາ, ຊື່ສຽງ, ການເດີນທາງໄກ. ໃນຍາມຮຸ່ງເຮືອງຈະນຳພາໂຊກລາບ ແລະ ຄວາມຮັກທີ່ດີ; ໃນຍາມເສື່ອມຖອຍອາດເຮັດໃຫ້ເກີດພະຍາດໝາກໄຂ່ຫຼັງ ຫຼື ເລື່ອງຊູ້ສາວ.</p>\n          </div>\n          <div class=\"star-card danger\">\n            <h3>⭐ ດາວ 2 ດຳ (Ju Men / 巨门)</h3>\n            <p><strong>ທາດ:</strong> ດິນ (Earth) | <strong>ທິດເດີມ:</strong> ທິດຕາເວັນຕົກສ່ຽງໃຕ້ (Kun)</p>\n            <p><strong>ຄວາມໝາຍ:</strong> ດາວແຫ່ງພະຍາດໂລກາ (Bing Fu). ໃນຍາມເສື່ອມຖອຍຈະເຮັດໃຫ້ເກີດພະຍາດຊຳເຮື້ອ, ການເຈັບປ່ວຍຂອງແມ່ຍິງ, ຄວາມຂີ້ຄ້ານ. ວິທີແກ້ໄຂຄືການແຂວນກະດິ່ງລົມໂລຫະ 6 ຫຼອດ.</p>\n          </div>\n          <div class=\"star-card warning\">\n            <h3>⭐ ດາວ 3 ຂຽວ (Lu Cun / 禄存)</h3>\n            <p><strong>ທາດ:</strong> ໄມ້ (Wood) | <strong>ທິດເດີມ:</strong> ທິດຕາເວັນອອກ (Zhen)</p>\n            <p><strong>ຄວາມໝາຍ:</strong> ດາວແຫ່ງຄວາມຂັດແຍ້ງ, ຜິດຖຽງ, ຄະດີຄວາມ, ການຖືກປັບໃໝ. ວິທີແກ້ໄຂຄືການໃຊ້ທາດໄຟ (ໂຄມໄຟສີແດງ, ຜ້າພົມແດງ) ມາຫຼຸດທອນພະລັງໄມ້.</p>\n          </div>\n          <div class=\"star-card\">\n            <h3>⭐ ດາວ 4 ຂຽວ (Wen Qu / 文曲)</h3>\n            <p><strong>ທາດ:</strong> ໄມ້ (Wood) | <strong>ທິດເດີມ:</strong> ທິດຕາເວັນອອກສ່ຽງໃຕ້ (Xun)</p>\n            <p><strong>ຄວາມໝາຍ:</strong> ດາວແຫ່ງນັກປາດ, ຄວາມສຳເລັດໃນການສອບເສັງ, ວຽກງານຂຽນ, ສະເໜ່ ແລະ ຄວາມຮັກ. ເໝາະແກ່ການຕັ້ງໂຕະຮຽນ ຫຼື ໂຕະເຮັດວຽກ.</p>\n          </div>\n          <div class=\"star-card danger\">\n            <h3>⭐ ດາວ 5 ເຫຼືອງ (Lian Zhen / 廉贞)</h3>\n            <p><strong>ທາດ:</strong> ດິນ (Earth) | <strong>ທິດເດີມ:</strong> ໃຈກາງ (Tai Ji)</p>\n            <p><strong>ຄວາມໝາຍ:</strong> ດາວມະຫາວິບັດ (Wu Huang), ເປັນດາວທີ່ຮ້າຍແຮງທີ່ສຸດໃນບັນດາດາວທັງ 9! ເຮັດໃຫ້ເກີດອຸບັດຕິເຫດຮ້າຍແຮງ, ລົ້ມລະລາຍ, ເສຍຊີວິດ. <strong>ຫ້າມເຄາະ, ຫ້າມເຈາະ, ຫ້າມສ້ອມແປງໃນທິດນີ້ເດັດຂາດ!</strong> ແກ້ໄຂດ້ວຍໂຖນ້ຳເກືອພະລັງງານສູງ (Salt Water Cure) ແລະ ກະດິ່ງລົມທອງເຫຼືອງ.</p>\n          </div>\n          <div class=\"star-card\">\n            <h3>⭐ ດາວ 6 ຂາວ (Wu Qu / 武曲)</h3>\n            <p><strong>ທາດ:</strong> ທອງ (Metal) | <strong>ທິດເດີມ:</strong> ທິດຕາເວັນຕົກສ່ຽງເໜືອ (Qian)</p>\n            <p><strong>ຄວາມໝາຍ:</strong> ດາວແຫ່ງອຳນາດບາຣະມີ, ຜູ້ນຳ, ຄວາມເຂັ້ມແຂງ, ລາຊະການ, ໂຊກລາບຈາກຜູ້ໃຫຍ່.</p>\n          </div>\n          <div class=\"star-card warning\">\n            <h3>⭐ ດາວ 7 ແດງ (Po Jun / 破军)</h3>\n            <p><strong>ທາດ:</strong> ທອງ (Metal) | <strong>ທິດເດີມ:</strong> ທິດຕາເວັນຕົກ (Dui)</p>\n            <p><strong>ຄວາມໝາຍ:</strong> ດາວແຫ່ງການທຳລາຍ, ໂຈນໄພ, ຖືກຫຼອກລວງ, ການຜ່າຕັດ, ໄຟໄໝ້. ແກ້ໄຂດ້ວຍອ່າງນ້ຳນິ້ງ (Still Water) ດູດຊັບພະລັງທອງ.</p>\n          </div>\n          <div class=\"star-card\">\n            <h3>⭐ ດາວ 8 ຂາວ (Zuo Fu / 左辅)</h3>\n            <p><strong>ທາດ:</strong> ດິນ (Earth) | <strong>ທິດເດີມ:</strong> ທິດຕາເວັນອອກສ່ຽງເໜືອ (Gen)</p>\n            <p><strong>ຄວາມໝາຍ:</strong> ດາວແຫ່ງຄວາມຮັ່ງມີ, ຊັບສິນເງິນຄຳ, ຄວາມຊື່ສັດ, ຄວາມໝັ້ນຄົງ.</p>\n          </div>\n          <div class=\"star-card highlight\">\n            <h3>⭐ ດາວ 9 ມ່ວງ (You Bi / 右弼)</h3>\n            <p><strong>ທາດ:</strong> ໄຟ (Fire) | <strong>ທິດເດີມ:</strong> ທິດໃຕ້ (Li)</p>\n            <p><strong>ຄວາມໝາຍ:</strong> <strong>ດາວຄອງຍຸກປະຈຸບັນ (ຍຸກ 9: 2024–2043)</strong>, ເປັນດາວແຫ່ງໂຊກລາບສູງສຸດ! ນຳພາຄວາມສຳເລັດໄວວາ, ຊື່ສຽງ, ເທັກໂນໂລຊີ, ງານມຸງຄຸນ, ຄວາມຮຸ່ງເຮືອງຍາວນານ.</p>\n          </div>\n        </div>\n      </div>\n    "},{"id":"ch6","title":"ບົດທີ 6: ການວິເຄາະຜັງພື້ນເຮືອນ: 9 ວັງ (Floor Plan & 9 Palaces)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 6: ການວິເຄາະຜັງພື້ນເຮືອນ ແລະ ການແບ່ງ 9 ວັງ</h1>\n        <p class=\"doc-lead\">ການນຳເອົາຜັງດາວເຫີນມາຊ້ອນທັບລົງເທິງຜັງເຮືອນຕົວຈິງ ເຮັດໃຫ້ພວກເຮົາຮູ້ໄດ້ຢ່າງຊັດເຈນວ່າ ຫ້ອງໃດຮັບພະລັງດີ ແລະ ຫ້ອງໃດຮັບພະລັງຮ້າຍ.</p>\n        \n        <h2 class=\"doc-h2\">1. ສອງວິທີໃນການແບ່ງວັງພະລັງງານ</h2>\n        <p class=\"doc-p\">ໃນທາງປະຕິບັດມີ 2 ວິທີຫຼັກ:</p>\n        <ul>\n          <li><strong>ວິທີຕາຕະລາງ 9 ຊ່ອງ (Nine Palace Grid Method):</strong> ເໝາະສຳລັບເຮືອນຮູບຊົງສີ່ຫຼ່ຽມຈະຕຸລັດ ຫຼື ສີ່ຫຼ່ຽມຜືນຜ້າປົກກະຕິ ໂດຍແບ່ງຄວາມກວ້າງ ແລະ ຄວາມຍາວອອກເປັນ 3 ສ່ວນເທົ່າກັນ.</li>\n          <li><strong>ວິທີແບ່ງຕາມວົງພາຍ (Pie Chart / Directional Sector Method):</strong> ວາງຈຸດໃຈກາງ (Tai Ji) ຂອງເຮືອນ ແລ້ວແບ່ງວົງມົນ 360 ອົງສາອອກເປັນ 8 ຊ່ອງຕາມອົງສາເຂັມທິດ (ຊ່ອງລະ 45 ອົງສາ). ເໝາະສຳລັບເຮືອນທີ່ມີຮູບຊົງບໍ່ສະໝ່ຳສະເໝີ.</li>\n        </ul>\n      </div>\n    "},{"id":"ch7","title":"ບົດທີ 7: ການວິເຄາະແຕ່ລະຫ້ອງ: ປະຕູ, ຫ້ອງນອນ, ຄົວ, ຫ້ອງນ້ຳ","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 7: ການວິເຄາະແຕ່ລະຫ້ອງໃນເຮືອນ</h1>\n        <p class=\"doc-lead\">ການຈັດວາງຕຳແໜ່ງຫ້ອງໃຫ້ສອດຄ່ອງກັບຄູ່ດາວພູ ແລະ ດາວນ້ຳ ເປັນຫົວໃຈສຳຄັນໃນການດຶງດູດໂຊກລາບ ແລະ ປົກປ້ອງສຸຂະພາບ:</p>\n        \n        <h2 class=\"doc-h2\">1. ປະຕູໃຫຍ່ (Main Door / Qi Mouth)</h2>\n        <p class=\"doc-p\">ປະຕູໃຫຍ່ຄື 'ປາກແຫ່ງຊີ່' ທີ່ຮັບພະລັງງານເຂົ້າສູ່ເຮືອນຫຼາຍທີ່ສຸດ. <strong>ຕ້ອງວາງປະຕູໃຫຍ່ໃນວັງທີ່ມີ 'ດາວນ້ຳ' (Water Star) ທີ່ຮຸ່ງເຮືອງທີ່ສຸດປະຈຳຍຸກ</strong> (ໃນຍຸກ 9 ຄື ດາວນ້ຳ 9 ຫຼື ດາວນ້ຳ 1). ຫ້າມເປີດປະຕູໃຫຍ່ໃນວັງທີ່ມີດາວນ້ຳ 5 ເຫຼືອງ ຫຼື ດາວນ້ຳ 2 ດຳ ເດັດຂາດ!</p>\n\n        <h2 class=\"doc-h2\">2. ຫ້ອງນອນໃຫຍ່ (Master Bedroom)</h2>\n        <p class=\"doc-p\">ຫ້ອງນອນຕ້ອງການຄວາມສະຫງົບ (ຢິນ). <strong>ຕ້ອງວາງຫ້ອງນອນ ແລະ ຫົວຕຽງໃນວັງທີ່ມີ 'ດາວພູ' (Mountain Star) ທີ່ດີ</strong> ເພື່ອສົ່ງເສີມສຸຂະພາບ, ຄວາມສະຫງົບສຸກ, ແລະ ຄວາມສຳພັນໃນຄອບຄົວ.</p>\n\n        <h2 class=\"doc-h2\">3. ເຮືອນຄົວ ແລະ ເຕົາໄຟ (Kitchen & Stove)</h2>\n        <p class=\"doc-p\">ເຕົາໄຟມີພະລັງທາດໄຟສູງ. ຫ້າມວາງເຕົາໄຟໃນຕຳແໜ່ງດາວ 2 ດຳ ຫຼື ດາວ 5 ເຫຼືອງ ເພາະໄຟຈະໄປເພີ່ມພະລັງໃຫ້ດິນຮ້າຍກຳເລີບຂຶ້ນ!</p>\n      </div>\n    "},{"id":"ch8","title":"ບົດທີ 8: ຜົນກະທົບຂອງພູມິທັດ ແລະ ຮວງຈຸ້ຍຫຼວນໂຖວ (Luan Tou)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 8: ຜົນກະທົບຂອງພູມິທັດ (Luan Tou & Flying Stars)</h1>\n        <p class=\"doc-lead\">ປໍຣະມາຈານຮວງຈຸ້ຍກ່າວໄວ້ວ່າ: <em>\"ຫຼວນໂຖວ (ຮູບຮ່າງພູມິທັດ) ຕັດສິນຄວາມເປັນໄປ; ຫຼີຊີ່ (ດາວເຫີນ) ກຳນົດຈັງຫວະເວລາ\"</em>. ດາວທີ່ດີຈະສະແດງຜົນໄດ້ຢ່າງເຕັມທີ່ ກໍຕໍ່ເມື່ອມີພູມິທັດພາຍນອກທີ່ຮອງຮັບຢ່າງຖືກຕ້ອງ!</p>\n\n        <h2 class=\"doc-h2\">1. ຫຼັກການ 'ພູເຂົາຄຸ້ມຄອງຄົນ, ສາຍນ້ຳຄຸ້ມຄອງຊັບ'</h2>\n        <p class=\"doc-p\">ໃນຮວງຈຸ້ຍດາວເຫີນ:</p>\n        <ul>\n          <li><strong>ດາວພູ (Mountain Star):</strong> ຕ້ອງການເຫັນ 'ພູເຂົາແທ້' ຫຼື ອາຄານສູງທີ່ໜັກແໜ້ນຢູ່ພາຍນອກ ເພື່ອດຶງເອົາພະລັງສຸຂະພາບ, ບາຣະມີ, ແລະ ຄວາມສາມັກຄີອອກມາ.</li>\n          <li><strong>ດາວນ້ຳ (Water Star):</strong> ຕ້ອງການເຫັນ 'ສາຍນ້ຳແທ້' ຫຼື ຖະໜົນໃຫຍ່, ລານກວ້າງຂວາງຢູ່ພາຍນອກ ເພື່ອດຶງເອົາໂຊກລາບ, ຊັບສິນເງິນຄຳ ແລະ ຄວາມຮັ່ງມີອອກມາ.</li>\n        </ul>\n      </div>\n    "},{"id":"ch9","title":"ບົດທີ 9: ການເຫີນດາວພູ ແລະ ດາວນ້ຳ: ການສ້າງຜັງດາວ","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 9: ການສ້າງຜັງດາວເຫີນ 9 ວັງ ສະບັບສົມບູນ</h1>\n        <p class=\"doc-lead\">ຂັ້ນຕອນການສ້າງຜັງດາວເຫີນສຳລັບເຮືອນໃດໜຶ່ງ ປະກອບດ້ວຍ 3 ຂັ້ນຕອນຫຼັກ:</p>\n        <ol>\n          <li><strong>ຂັ້ນຕອນທີ 1: ເຫີນດາວຍຸກ (Yun Xing):</strong> ເອົາເລກຍຸກປະຈຸບັນເຂົ້າສູ່ໃຈກາງ ແລ້ວເຫີນຕາມເຂັມສະເໝີ.</li>\n          <li><strong>ຂັ້ນຕອນທີ 2: ເຫີນດາວພູ (Shan Xing):</strong> ດຶງເອົາດາວຍຸກທີ່ຕົກຢູ່ທິດພິງຫຼັງ (Sitting) ມາໃສ່ໄວ້ທີ່ມຸມເທິງຊ້າຍຂອງໃຈກາງ, ກວດສອບວ່າເປັນຢິນຫຼືຢາງ ແລ້ວເຫີນຕາມເຂັມຫຼືທວນເຂັມ.</li>\n          <li><strong>ຂັ້ນຕອນທີ 3: ເຫີນດາວນ້ຳ (Xiang Xing):</strong> ດຶງເອົາດາວຍຸກທີ່ຕົກຢູ່ທິດຫັນໜ້າ (Facing) ມາໃສ່ໄວ້ທີ່ມຸມເທິງຂວາຂອງໃຈກາງ, ກວດສອບຢິນ/ຢາງ ແລ້ວເຫີນຕາມເຂັມຫຼືທວນເຂັມ.</li>\n        </ol>\n      </div>\n    "},{"id":"ch10","title":"ບົດທີ 10: ການແປຄວາມໝາຍຂອງດາວພູ ແລະ ດາວນ້ຳ","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 10: ການແປຄວາມໝາຍຂອງດາວພູ ແລະ ດາວນ້ຳ</h1>\n        <p class=\"doc-lead\">ໃນແຕ່ລະວັງຂອງຜັງດາວເຫີນ ຈະມີຕົວເລກດາວ 3 ດວງ: ດາວພູ (ຊ້າຍ), ດາວນ້ຳ (ຂວາ), ແລະ ດາວຍຸກ (ກາງລຸ່ມ).</p>\n        <p class=\"doc-p\">ການອ່ານຄວາມໝາຍຕ້ອງວິເຄາະປະຕິກິລິຍາລະຫວ່າງ <strong>ດາວພູ ກັບ ດາວນ້ຳ</strong> ເປັນຫຼັກ ວ່າທາດທັງສອງສົ່ງເສີມກັນ ຫຼື ຂົ່ມກັນ ແລະ ຕົກຢູ່ໃນສະຖານະທີ່ຮຸ່ງເຮືອງ (Wang) ຫຼື ເສື່ອມຖອຍ (Shuai).</p>\n      </div>\n    "},{"id":"ch11","title":"ບົດທີ 11: ດາວປະສົມ 81 ຄູ່ (The 81 Flying Star Combinations)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 11: ດາວປະສົມ 81 ຄູ່ ສະບັບສົມບູນ</h1>\n        <p class=\"doc-lead\">ເມື່ອດາວ 9 ດວງຈັບຄູ່ກັນ ຈະເກີດເປັນ 81 ຄູ່ປະສົມ ທີ່ມີຄວາມໝາຍເລິກເຊິ່ງສະເພາະຕົວ. ທ່ານສາມາດໃຊ້ <strong>ແທັບ '🧭 ຄິດໄລ່ດາວ 81 ຄູ່'</strong> ໃນເວັບໄຊນີ້ ເພື່ອຄົ້ນຫາຄວາມໝາຍ ແລະ ວິທີແກ້ໄຂຂອງທຸກຄູ່ດາວໄດ້ທັນທີ!</p>\n        \n        <h2 class=\"doc-h2\">ຕົວຢ່າງຄູ່ດາວສຳຄັນ:</h2>\n        <ul>\n          <li><strong>ຄູ່ 1-4 / 4-1:</strong> ໄມ້ ແລະ ນ້ຳ ສົ່ງເສີມກັນ -> ມະຫາມຸງຄຸນດ້ານການສຶກສາ, ສອບເສັງຕິດອັນດັບ 1, ຊື່ສຽງໂດ່ງດັງ, ຄວາມຮັກສົມຫວັງ.</li>\n          <li><strong>ຄູ່ 2-5 / 5-2:</strong> ດິນໃຫຍ່ ແລະ ດິນຮ້າຍປະສົມກັນ -> ມະຫາວິບັດ, ເຈັບປ່ວຍໜັກ, ລົ້ມລະລາຍ! ຕ້ອງແກ້ໄຂດ່ວນດ້ວຍທາດທອງໜັກ.</li>\n          <li><strong>ຄູ່ 9-9:</strong> ໄຟຊ້ອນໄຟ -> ໃນຍຸກ 9 ຄືມະຫາໂຊກລາບ, ຄວາມສຳເລັດກ້າວກະໂດດ, ຊື່ສຽງຂະຈອນໄກ.</li>\n        </ul>\n      </div>\n    "},{"id":"ch12","title":"ບົດທີ 12: ດາວທີ່ມາຢ້ຽມຢາມ (Visiting Stars: Annual & Monthly)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 12: ດາວທີ່ມາຢ້ຽມຢາມ: ດາວປະຈຳປີ ແລະ ດາວປະຈຳເດືອນ</h1>\n        <p class=\"doc-lead\">ນອກຈາກຜັງດາວຖາວອນຂອງເຮືອນແລ້ວ ໃນແຕ່ລະປີ ແລະ ແຕ່ລະເດືອນ ຈະມີ 'ດາວຈອນ' (Visiting Stars) ບິນເຂົ້າມາຢ້ຽມຢາມແຕ່ລະວັງ ເຊິ່ງເປັນຕົວຈຸດຊະນວນໃຫ້ເກີດເຫດການດີຫຼືຮ້າຍຂຶ້ນໃນເວລານັ້ນໆ.</p>\n      </div>\n    "},{"id":"ch13","title":"ບົດທີ 13: ແບບແຜນພິເສດຂອງດາວ (Special Star Formations)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 13: ແບບແຜນພິເສດຂອງດາວເຫີນ</h1>\n        <p class=\"doc-lead\">ໃນວິຊາດາວເຫີນ ມີ 4 ໂຄງສ້າງພິເສດຫຼັກທີ່ນັກຮວງຈຸ້ຍທຸກຄົນຕ້ອງຮູ້:</p>\n        <ol>\n          <li><strong>ວັ່ງຊານວັ່ງສຽງ (Wang Shan Wang Xiang / 旺山旺向):</strong> ດາວພູທີ່ດີຕົກຢູ່ຫຼັງ, ດາວນ້ຳທີ່ດີຕົກຢູ່ໜ້າ -> ໄດ້ທັງຄົນ ແລະ ຊັບ! ເປັນຜັງທີ່ດີເລີດທີ່ສຸດ.</li>\n          <li><strong>ຊວງຊິງຕົ້າວສຽງ (Shuang Xing Dao Xiang / 双星到向):</strong> ທັງດາວພູ ແລະ ດາວນ້ຳທີ່ດີ ຕົກຢູ່ດ້ານໜ້າພ້ອມກັນ -> ດີເລີດດ້ານເງິນຄຳ ແຕ່ດ້ານຫຼັງຕ້ອງມີສວນຫຼືລານເປີດ.</li>\n          <li><strong>ຊວງຊິງຕົ້າວຊົ່ວ (Shuang Xing Dao Zuo / 双星到坐):</strong> ທັງດາວພູ ແລະ ດາວນ້ຳທີ່ດີ ຕົກຢູ່ດ້ານຫຼັງພ້ອມກັນ -> ດີເລີດດ້ານສຸຂະພາບ ແລະ ບາຣະມີ.</li>\n          <li><strong>ຊ້າງຊານເຊັ່ຍສຸ່ຍ (Shang Shan Xia Shui / 上山下水):</strong> ດາວພູຕົກຢູ່ໜ້າ, ດາວນ້ຳຕົກຢູ່ຫຼັງ -> ຜິດທຳມະຊາດ! ອາດເຮັດໃຫ້ເສຍທັງເງິນ ແລະ ເສຍທັງຄົນ ຫາກພູມິທັດບໍ່ຮອງຮັບ.</li>\n        </ol>\n      </div>\n    "},{"id":"ch14","title":"ບົດທີ 14: ດາວຮ້າຍ ແລະ ຊາຊີ່ (Malignant Stars: Tai Sui & San Sha)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 14: ດາວຮ້າຍ ແລະ ຊາຊີ່ປະຈຳປີ</h1>\n        <p class=\"doc-lead\">ນອກຈາກດາວ 5 ເຫຼືອງ ແລະ ດາວ 2 ດຳແລ້ວ ຍັງມີເທບ ແລະ ພະລັງງານພິສປະຈຳປີທີ່ຕ້ອງລະວັງຢ່າງຍິ່ງ:</p>\n        <ul>\n          <li><strong>ໄທ້ສວຍ (Tai Sui / 太岁 - ເທບເຈົ້າຄອງປີ):</strong> ຫ້າມຂຸດເຈາະ, ຕັດໄມ້ ຫຼື ທຸບຕີໃນທິດໄທ້ສວຍເດັດຂາດ!</li>\n          <li><strong>ສຸຍໂພ້ (Sui Po / 岁破 - ທິດປະທະໄທ້ສວຍ):</strong> ທິດຕົງຂ້າມກັບໄທ້ສວຍ, ຫ້າມລົບກວນ.</li>\n          <li><strong>ຊານຊາ (San Sha / 三煞 - ສາມພິສຮ້າຍ):</strong> ກວມເອົາ 3 ທິດເຂົາ, ຫ້າມນັ່ງປິ່ນຫຼັງໃຫ້ຊານຊາ.</li>\n        </ul>\n      </div>\n    "},{"id":"ch15","title":"ບົດທີ 15: ວິທີແກ້ໄຂຮວງຈຸ້ຍ ແລະ ປັບສົມດຸນ 5 ທາດ (Feng Shui Remedies)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 15: ວິທີແກ້ໄຂຮວງຈຸ້ຍ ແລະ ປັບສົມດຸນ 5 ທາດ</h1>\n        <p class=\"doc-lead\">ການແກ້ໄຂຮວງຈຸ້ຍໃນລະບົບດາວເຫີນ ບໍ່ຈຳເປັນຕ້ອງທຸບຮື້ເຮືອນ ແຕ່ໃຊ້ຫຼັກການປັບສົມດຸນຂອງທາດທັງ 5:</p>\n        <ul>\n          <li><strong>ໂຖນ້ຳເກືອພະລັງງານສູງ (Salt Water Cure):</strong> ໃຊ້ແກ້ໄຂດາວ 5 ເຫຼືອງ ແລະ ດາວ 2 ດຳ ຢ່າງມີປະສິດທິຜົນສູງສຸດ.</li>\n          <li><strong>ກະດິ່ງລົມໂລຫະ 6 ຫຼອດ:</strong> ໃຊ້ທາດທອງແທ້ ຖ່າຍເທພະລັງດິນຮ້າຍ.</li>\n          <li><strong>ອ່າງນ້ຳພຸວົນ / ນ້ຳລົ້ນ:</strong> ກະຕຸ້ນພະລັງດາວນ້ຳມຸງຄຸນ (ດາວ 9 ແລະ ດາວ 1).</li>\n        </ul>\n      </div>\n    "},{"id":"ch16","title":"ບົດທີ 16: ຮວງຈຸ້ຍຍຸກ 9 (Period 9: 2024–2043)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 16: ຮວງຈຸ້ຍຍຸກ 9: ຍຸກແຫ່ງທາດໄຟ (2024–2043)</h1>\n        <p class=\"doc-lead\">ຍຸກ 9 ຄືຍຸກແຫ່ງດາວ 9 ມ່ວງ ທາດໄຟ ປະຈຳທິດໃຕ້ (Li Gua):</p>\n        <p class=\"doc-p\">ເຮືອນທີ່ສ້າງ ຫຼື ຍ້າຍເຂົ້າຢູ່ຕັ້ງແຕ່ວັນທີ 4 ກຸມພາ 2024 ເປັນຕົ້ນໄປ ຈະເປັນເຮືອນຍຸກ 9 ຢ່າງສົມບູນ. ທິດໃຕ້ (Li) ແລະ ທິດເໜືອ (Kan) ກາຍເປັນແກນພະລັງງານຫຼັກຂອງໂລກ.</p>\n      </div>\n    "},{"id":"ch17","title":"ບົດທີ 17: ກໍລະນີສຶກສາເຮືອນພັກອາໄສ (Yang Zhai Case Studies)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 17: ກໍລະນີສຶກສາເຮືອນພັກອາໄສຕົວຈິງ</h1>\n        <p class=\"doc-lead\">ການວິເຄາະເຮືອນພັກອາໄສໃນສະພາບແວດລ້ອມຕົວຈິງ: ບ້ານດ່ຽວ, ທາວເຮົ້າສ໌, ແລະ ອາພາດເມັນຄອນໂດມີນຽມ ພ້ອມວິທີແກ້ໄຂບັນຫາສຸຂະພາບ ແລະ ການເງິນ.</p>\n      </div>\n    "},{"id":"ch18","title":"ບົດທີ 18: ກໍລະນີສຶກສາອາຄານທຸລະກິດ (Commercial Case Studies)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 18: ກໍລະນີສຶກສາອາຄານທຸລະກິດ ແລະ ຮ້ານຄ້າ</h1>\n        <p class=\"doc-lead\">ການຈັດວາງປະຕູທາງເຂົ້າຮ້ານຄ້າ, ໂຕະເກັບເງິນ (Cashier), ຫ້ອງເຮັດວຽກຂອງຜູ້ບໍລິຫານ ເພື່ອດຶງດູດລູກຄ້າ ແລະ ເພີ່ມຍອດຂາຍຢ່າງວ່ອງໄວ.</p>\n      </div>\n    "},{"id":"ch19","title":"ບົດທີ 19: ຕຳລາຮວງຈຸ້ຍສຸສານບັນພະບຸລຸດ (Yin Zhai Feng Shui)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 19: ຕຳລາຮວງຈຸ້ຍສຸສານ (Yin Zhai Feng Shui)</h1>\n        <p class=\"doc-lead\">ວິຊາຮວງຈຸ້ຍສຸສານບັນພະບຸລຸດ ຄືຕົ້ນກຳເນີດທີ່ແທ້ຈິງຂອງວິຊາຮວງຈຸ້ຍ: ການຊອກຫາຈຸດມັງກອນ (Xue), ສາຍເລືອດມັງກອນ (Long Mai), ແລະ ດິນ 5 ສີ ເພື່ອສົ່ງພະລັງຄຸ້ມຄອງລູກຫຼານໃຫ້ຮຸ່ງເຮືອງຍາວນານ.</p>\n      </div>\n    "},{"id":"ch20","title":"ບົດທີ 20: ຕາຕະລາງດາວ 24 ທິດ ສະບັບສົມບູນ (24 Mountains Charts)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 20: ຕາຕະລາງດາວ 24 ທິດ ສະບັບສົມບູນ</h1>\n        <p class=\"doc-lead\">ຕາຕະລາງດາວເຫີນທັງໝົດ 24 ທິດເຂົາໃນຍຸກ 9: ທຸກອົງສາ, ທຸກທິດພິງ ແລະ ທິດຫັນໜ້າ ພ້ອມຄະແນນພະລັງງານ.</p>\n      </div>\n    "},{"id":"ch21","title":"ບົດທີ 21: ຕາຕະລາງດາວຍ່ອຍ 144 ແບບ ແລະ ອົງສາບ່ຽງເບນ","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 21: ຕາຕະລາງດາວຍ່ອຍ 144 ແບບ</h1>\n        <p class=\"doc-lead\">ການວິເຄາະລະອຽດຂັ້ນສູງເມື່ອເຂັມທິດຫຼັກຕົກຢູ່ໃນເສັ້ນແຍກອົງສາ (Kong Wang / 空亡) ຫຼື ສາຍບ່ຽງເບນ.</p>\n      </div>\n    "},{"id":"ch22","title":"ບົດທີ 22: ການຄຳນວນຂັ້ນສູງ: ສູດປະຕູປາສາດ ແລະ ດາວແທນ","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ບົດທີ 22: ສູດລັບປະຕູປາສາດ (Castle Gate Formula / 城门诀)</h1>\n        <p class=\"doc-lead\">ສູດລັບຂັ້ນສູງສຸດແຫ່ງວິຊາດາວເຫີນ: ການເປີດປະຕູຮອງ ຫຼື ຕັ້ງອ່າງນ້ຳໃນທິດປະຕູປາສາດ ເພື່ອດຶງດູດຊັບສິນເງິນຄຳເຂົ້າມາຢ່າງມະຫາສານ ແມ່ນແຕ່ໃນເຮືອນທີ່ຜັງດາວຫຼັກເສື່ອມຖອຍ.</p>\n      </div>\n    "},{"id":"glossary","title":"ວັດຈະນານຸກົມຄຳສັບຮວງຈຸ້ຍດາວເຫີນ (Master Glossary)","html":"\n      <div class=\"chapter-content\">\n        <h1 class=\"doc-h1\">ວັດຈະນານຸກົມຄຳສັບຮວງຈຸ້ຍດາວເຫີນ ສະບັບສົມບູນ</h1>\n        <p class=\"doc-lead\">ຮວບຮວມຄຳສັບວິຊາການຮວງຈຸ້ຍດາວເຫີນ ແລະ ຫຼວນໂຖວ ພ້ອມສຽງອ່ານພາສາຈີນກາງ ແລະ ຄຳອະທິບາຍພາສາລາວລະອຽດ:</p>\n        <div class=\"glossary-grid\">\n          <div class=\"glossary-item\"><strong>ຊານ (Shan / 山):</strong> ພູເຂົາ, ທິດພິງຫຼັງ (Sitting), ຕົວແທນຂອງສຸຂະພາບ ແລະ ບາຣະມີ.</div>\n          <div class=\"glossary-item\"><strong>ສຸ່ຍ (Shui / 水):</strong> ສາຍນ້ຳ, ທິດຫັນໜ້າ (Facing), ຕົວແທນຂອງໂຊກລາບ ແລະ ຊັບສິນເງິນຄຳ.</div>\n          <div class=\"glossary-item\"><strong>ໝິງຖັງ (Ming Tang / 明堂):</strong> ລານໜ້າເຮືອນທີ່ໂລ່ງແຈ້ງ, ສູນລວມການສະສົມພະລັງງານຊີ່.</div>\n          <div class=\"glossary-item\"><strong>ເຊິ້ງຊີ່ (Sheng Qi / 生气):</strong> ພະລັງຊີວິດອັນສົດໃສ ແລະ ເປັນມຸງຄຸນ.</div>\n          <div class=\"glossary-item\"><strong>ຊາຊີ່ (Sha Qi / 煞气):</strong> ພະລັງພິສ ຫຼື ພະລັງງານທີ່ເປັນໂທດ.</div>\n          <div class=\"glossary-item\"><strong>ວັ່ງຊີ່ (Wang Qi / 旺气):</strong> ພະລັງທີ່ຮຸ່ງເຮືອງສູງສຸດປະຈຳຍຸກ (ຍຸກ 9 ຄື ດາວ 9).</div>\n        </div>\n      </div>\n    "}];
+
+    // State
+    let currentTab = 'tabAtlas';
+    let atlasCat = 'all';
+    let atlasKeyword = '';
+    let currentChapterIndex = 0;
+    let readerFontSize = 14;
+
+    // Elements
+    const tabBtns = document.querySelectorAll('.nav-tab-btn');
+    const tabViews = document.querySelectorAll('.tab-view');
+    const atlasGrid = document.getElementById('atlasGrid');
+    const plotsGrid = document.getElementById('plotsGrid');
+    const atlasSearchInput = document.getElementById('atlasSearchInput');
+    const atlasFilterBtns = document.querySelectorAll('#atlasFilters .filter-btn');
+    const atlasModal = document.getElementById('atlasModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const themeToggle = document.getElementById('themeToggle');
+
+    // TAB SWITCHING
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabViews.forEach(v => v.classList.remove('active'));
+        btn.classList.add('active');
+        const target = btn.dataset.tab;
+        document.getElementById(target).classList.add('active');
+        currentTab = target;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // THEME TOGGLE
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    });
+
+    // RENDER CARD
+    function createCard(item) {
+      const card = document.createElement('div');
+      card.className = 'archetype-card';
+      const scoreClass = item.isGood ? 'good' : 'bad';
+      const scoreLabel = item.isGood ? 'ດີ' : 'ໂທດ';
+
+      card.innerHTML = `
+        <div class="card-img-wrap">
+          <img src="${item.img}" alt="${item.id}" loading="lazy">
+          <div class="card-score ${scoreClass}">${scoreLabel}: ${item.score}/100</div>
+        </div>
+        <div class="card-body">
+          <div class="card-id-tag">${item.id} • ${item.type === 'landplot' ? 'ຕອນດິນ' : 'ພູມິທັດ'}</div>
+          <div class="card-title">${item.name}</div>
+          <div class="card-desc">${item.physics || item.impact || item.remedy}</div>
+          <div class="card-footer">
+            <span>${item.isGood ? '✓ ມຸງຄຸນ' : '✗ ຄວນແກ້ໄຂ'}</span>
+            <span>ເບິ່ງລາຍລະອຽດ &#10140;</span>
+          </div>
+        </div>
+      `;
+
+      card.addEventListener('click', () => openModal(item));
+      return card;
+    }
+
+    // FILTER & SEARCH
+    function renderAtlas() {
+      atlasGrid.innerHTML = '';
+      const kw = atlasKeyword.toLowerCase().trim();
+
+      const filtered = archetypesData.filter(item => {
+        // Category filter
+        if (atlasCat === 'plots' && item.type !== 'landplot') return false;
+        if (atlasCat === 'peaks' && !item.category.includes('5 ພູເຂົາ')) return false;
+        if (atlasCat === 'winds' && !item.category.includes('ລົມ')) return false;
+        if (atlasCat === 'waters' && !item.category.includes('ສາຍນ້ຳ')) return false;
+        if (atlasCat === 'soils' && !item.category.includes('ດິນ')) return false;
+        if (atlasCat === 'shas' && !item.category.includes('Sha')) return false;
+
+        // Keyword
+        if (kw) {
+          const matchStr = (item.id + ' ' + item.name + ' ' + item.category + ' ' + item.physics + ' ' + (item.impact || '') + ' ' + item.remedy).toLowerCase();
+          if (!matchStr.includes(kw)) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        atlasGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 48px; color: var(--text-muted);">ບໍ່ພົບຂໍ້ມູນທີ່ຕົງກັບຄຳຄົ້ນຫາ</div>';
+        return;
+      }
+
+      filtered.forEach(item => atlasGrid.appendChild(createCard(item)));
+    }
+
+    // 16 PLOTS STUDIO GRID
+    function renderPlotsStudio() {
+      plotsGrid.innerHTML = '';
+      const plots = archetypesData.filter(x => x.type === 'landplot');
+      plots.forEach(item => plotsGrid.appendChild(createCard(item)));
+    }
+
+    atlasSearchInput.addEventListener('input', e => {
+      atlasKeyword = e.target.value;
+      renderAtlas();
+    });
+
+    atlasFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        atlasFilterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        atlasCat = btn.dataset.cat;
+        renderAtlas();
+      });
+    });
+
+    // MODAL
+    function openModal(item) {
+      document.getElementById('mTitle').textContent = item.id + ': ' + item.name;
+      document.getElementById('mImg').src = item.img;
+      document.getElementById('mPhysics').textContent = item.physics || '-';
+      document.getElementById('mRemedy').textContent = item.remedy || '-';
+
+      const impSec = document.getElementById('mImpactSec');
+      const hseSec = document.getElementById('mHouseSec');
+      const guaSec = document.getElementById('mGuaSec');
+      const entSec = document.getElementById('mEntranceSec');
+      const watSec = document.getElementById('mWaterSec');
+
+      if (item.type === 'landplot') {
+        impSec.style.display = 'none';
+        hseSec.style.display = 'block';
+        guaSec.style.display = 'block';
+        entSec.style.display = 'block';
+        watSec.style.display = 'block';
+
+        document.getElementById('mHousePos').textContent = item.housePositioning || '-';
+        document.getElementById('mOrientation').textContent = item.orientationFacing || '-';
+        document.getElementById('mElementGua').textContent = item.elementGua || '-';
+        document.getElementById('mFavorable').textContent = item.favorablePeople || '-';
+        document.getElementById('mClashing').textContent = item.clashingPeople || '-';
+        document.getElementById('mEntrancePlacement').textContent = item.entrancePlacement || '-';
+        document.getElementById('mEntrance').textContent = item.entranceRules || '-';
+        document.getElementById('mWater').textContent = item.waterRules || '-';
+        document.getElementById('mRemedy').textContent = item.comprehensiveRemedy || item.remedy || '-';
+      } else {
+        impSec.style.display = 'block';
+        hseSec.style.display = 'none';
+        guaSec.style.display = 'none';
+        entSec.style.display = 'none';
+        watSec.style.display = 'none';
+        document.getElementById('mImpact').textContent = item.impact || '-';
+        document.getElementById('mRemedy').textContent = item.remedy || '-';
+      }
+
+      atlasModal.classList.add('open');
+    }
+
+    modalCloseBtn.addEventListener('click', () => atlasModal.classList.remove('open'));
+    atlasModal.addEventListener('click', e => {
+      if (e.target === atlasModal) atlasModal.classList.remove('open');
+    });
+
+    // 24 CHAPTERS READER
+    const chapterNavList = document.getElementById('chapterNavList');
+    const readerTitle = document.getElementById('readerTitle');
+    const readerContent = document.getElementById('readerContent');
+
+    function initReader() {
+      chapterNavList.innerHTML = '';
+      chaptersData.forEach((ch, idx) => {
+        const li = document.createElement('li');
+        li.className = 'chapter-nav-item' + (idx === 0 ? ' active' : '');
+        li.textContent = ch.title;
+        li.addEventListener('click', () => loadChapter(idx));
+        chapterNavList.appendChild(li);
+      });
+      loadChapter(0);
+    }
+
+    function loadChapter(idx) {
+      currentChapterIndex = idx;
+      document.querySelectorAll('.chapter-nav-item').forEach((li, i) => {
+        li.classList.toggle('active', i === idx);
+      });
+      const ch = chaptersData[idx];
+      readerTitle.textContent = ch.title;
+      readerContent.innerHTML = ch.html;
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+
+    document.getElementById('btnFontInc').addEventListener('click', () => {
+      if (readerFontSize < 20) {
+        readerFontSize += 1.5;
+        readerContent.style.fontSize = readerFontSize + 'px';
+      }
+    });
+    document.getElementById('btnFontDec').addEventListener('click', () => {
+      if (readerFontSize > 12) {
+        readerFontSize -= 1.5;
+        readerContent.style.fontSize = readerFontSize + 'px';
+      }
+    });
+
+    // 81 STARS CALCULATOR
+    const selM = document.getElementById('selMountainStar');
+    const selW = document.getElementById('selWaterStar');
+    const resComboName = document.getElementById('resComboName');
+    const resScoreTag = document.getElementById('resScoreTag');
+    const resDesc = document.getElementById('resDescription');
+
+    function calculate81Stars() {
+      const m = parseInt(selM.value, 10);
+      const w = parseInt(selW.value, 10);
+
+      const elements = ['', 'ນ້ຳ', 'ດິນ', 'ໄມ້', 'ໄມ້', 'ດິນ', 'ທອງ', 'ທອງ', 'ດິນ', 'ໄຟ'];
+      const elemM = elements[m];
+      const elemW = elements[w];
+
+      resComboName.textContent = `ຄູ່ດາວ ${m} - ${w} (ດາວພູ: ${elemM} • ດາວນ້ຳ: ${elemW})`;
+
+      let isGood = true;
+      let scoreText = '✓ ດີຫຼາຍ (Auspicious)';
+      let scoreColor = 'var(--good)';
+      let analysis = '';
+      let remedy = '';
+
+      // Special Harmful Combinations
+      if ((m === 2 && w === 5) || (m === 5 && w === 2)) {
+        isGood = false;
+        scoreText = '✗ ມະຫາວິບັດຮ້າຍແຮງ (Extremely Inauspicious)';
+        scoreColor = 'var(--bad)';
+        analysis = 'ຄູ່ດາວ 2-5 ຫຼື 5-2 ເອີ້ນວ່າ "ສອງດາວມະຫາພະຍາດ ແລະ ມະຫາວິບັດປະສົມກັນ". ເກີດໂລກໄພໄຂ້ເຈັບຮ້າຍແຮງ, ຜ່າຕັດ, ອຸບັດຕິເຫດເສຍເລືອດ, ລົ້ມລະລາຍ, ຄວາມສູນເສຍໃນຄອບຄົວ.';
+        remedy = '<strong>ວິທີແກ້ໄຂດ່ວນ:</strong> ຫ້າມໃຊ້ໄຟ ຫຼື ສີແດງໃນຕຳແໜ່ງນີ້ເດັດຂາດ! ໃຫ້ຕັ້ງໂຖນ້ຳເກືອພະລັງງານສູງ (Salt Water Cure) ພ້ອມຫຼຽນທອງ 6 ຫຼຽນ ແລະ ແຂວນກະດິ່ງລົມໂລຫະ 6 ຫຼອດ ເພື່ອຖ່າຍເທພະລັງດິນຮ້າຍອອກໄປ.';
+      } else if ((m === 9 && w === 5) || (m === 5 && w === 9)) {
+        isGood = false;
+        scoreText = '✗ ໄຟເຜົາດິນຮ້າຍ (Inauspicious)';
+        scoreColor = 'var(--bad)';
+        analysis = 'ດາວ 9 ທາດໄຟ ເຂົ້າໄປສົ່ງເສີມດາວ 5 ເຫຼືອງ ທາດດິນ ໃຫ້ກຳເລີບຮຸນແຮງຂຶ້ນ (Fire generates Earth)! ເກີດອັກຄີໄພ, ພະຍາດຫົວໃຈ ແລະ ເສັ້ນເລືອດໃນສະໝອງ.';
+        remedy = '<strong>ວິທີແກ້ໄຂ:</strong> ວາງວັດຖຸທາດທອງໜັກ (ເຊັ່ນ: ກະດິ່ງທອງເຫຼືອງ ຫຼື ແຜ່ນທອງເຫຼືອງ) ເພື່ອດັກຈັບ ແລະ ຖ່າຍເທພະລັງງານ.';
+      } else if ((m === 2 && w === 3) || (m === 3 && w === 2)) {
+        isGood = false;
+        scoreText = '✗ ການຕໍ່ສູ້ຂອງງົວ (Dou Niu Sha)';
+        scoreColor = 'var(--bad)';
+        analysis = 'ໄມ້ຂົ່ມດິນ ເກີດການປະທະ "ດາວ 3 ໄມ້ ປະທະ ດາວ 2 ດິນ" ເອີ້ນວ່າ ໂຕນິວຊາ: ຜິດຖຽງ, ຄະດີຄວາມຂຶ້ນໂຮງຂຶ້ນສານ, ຄວາມຂັດແຍ້ງລະຫວ່າງແມ່ເຖົ້າກັບລູກໃພ້.';
+        remedy = '<strong>ວິທີແກ້ໄຂ:</strong> ໃຊ້ "ທາດໄຟ" (ໂຄມໄຟສີແດງ, ຜ້າພົມແດງ) ເປັນຕົວກາງໄກ່ເກ່ຍ (ໄມ້ເກີດໄຟ, ໄຟເກີດດິນ) ປ່ຽນການຂົ່ມກັນໃຫ້ກາຍເປັນການສົ່ງເສີມກັນ.';
+      } else if (w === 9 || m === 9) {
+        isGood = true;
+        scoreText = '✓ ມະຫາມຸງຄຸນຍຸກ 9 (Supreme Period 9 Luck)';
+        scoreColor = 'var(--good)';
+        analysis = `ດາວ 9 ມ່ວງ ຄືດາວຄອງຍຸກປະຈຸບັນ (ປີ 2024–2043). ໃນຕຳແໜ່ງນີ້ ພະລັງງານຊີ່ມີຄວາມສົດໃສ ແລະ ຮຸ່ງເຮືອງສູງສຸດ (Wang Qi). ສົ່ງເສີມຊື່ສຽງ, ເງິນຄຳ, ຄວາມສຳເລັດໃນທຸລະກິດ ແລະ ຄວາມຮັກ.`;
+        remedy = '<strong>ວິທີກະຕຸ້ນ:</strong> ເປີດໄຟສະຫວ່າງ, ຕັ້ງອ່າງນ້ຳພຸວົນ (ຫາກດາວ 9 ເປັນດາວນ້ຳ), ຫຼື ຕັ້ງຕົ້ນໄມ້ຂຽວສົດໃສ (ໄມ້ເກີດໄຟ).';
+      } else if ((m === 1 && w === 4) || (m === 4 && w === 1)) {
+        isGood = true;
+        scoreText = '✓ ມຸງຄຸນນັກປາດ (Wen Chang)';
+        scoreColor = 'var(--good)';
+        analysis = 'ນ້ຳສົ່ງເສີມໄມ້ (Water generates Wood): ມະຫາມຸງຄຸນດ້ານສະຕິປັນຍາ, ການຮຽນ-ການສອບເສັງ, ວຽກງານຂຽນ, ສະເໜ່ ແລະ ຊື່ສຽງ.';
+        remedy = '<strong>ວິທີເສີມ:</strong> ຕັ້ງໄຜ່ກວນອິມ 4 ຕົ້ນໃນແຈກັນນ້ຳ, ຫຼື ຕັ້ງໂຕະເຮັດວຽກ/ໂຕະຮຽນໜັງສື.';
+      } else {
+        analysis = `ການປະສົມລະຫວ່າງ ດາວພູ ${m} (${elemM}) ແລະ ດາວນ້ຳ ${w} (${elemW}). ພະລັງງານດຳເນີນໄປຕາມວັດທະຈັກທຳມະຊາດ.`;
+        remedy = '<strong>ຂໍ້ແນະນຳ:</strong> ຮັກສາຄວາມສະອາດ ແລະ ຄວາມສະຫວ່າງໃຫ້ພໍດີ.';
+      }
+
+      resScoreTag.textContent = scoreText;
+      resScoreTag.style.background = scoreColor;
+      resDesc.innerHTML = `
+        <p style="margin-bottom: 10px;">${analysis}</p>
+        <p style="background: var(--bg); padding: 12px; border-radius: 8px; border-left: 3px solid ${scoreColor};">${remedy}</p>
+      `;
+    }
+
+    selM.addEventListener('change', calculate81Stars);
+    selW.addEventListener('change', calculate81Stars);
+
+    // INIT
+    renderAtlas();
+    renderPlotsStudio();
+    initReader();
+    calculate81Stars();
+  </script>
+</body>
+</html>
