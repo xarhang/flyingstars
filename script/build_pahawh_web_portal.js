@@ -1370,12 +1370,12 @@ const html = `<!DOCTYPE html>
             '<div class="section-title pahawh-glyph" style="color:#0284C7;">𖭕. 𖬉 𖬊𖬰𖬝 𖬌𖬲𖬝 𖬈𖬲𖬝 (Dual Water Doctrine)</div>' +
             '<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:8px 0;">' +
               '<div style="background:var(--card-bg); border:1px solid #38BDF8; border-radius:6px; padding:10px;">' +
-                '<strong style="color:#0284C7; font-size:12.5px;" class="pahawh-glyph">💧 𖬂𖬤𖬵 𖬐𖬰𖬦 𖬈𖬲𖬝: 𖬐𖬰𖬪 𖬎𖬰𖬩𖬵?</strong>' +
-                '<div style="font-size:12px; line-height:1.5; margin-top:4px;" class="pahawh-glyph">• <strong>𖬎𖬰𖬩𖬵:</strong> 𖬊𖬲𖬞 𖬈𖬪𖬵 𖬊𖬰𖬧𖬵 𖬗𖬞 >𖭖-𖭘m 𖬂𖬤𖬵 𖬊𖬲𖬞 𖬖𖬲𖬜 𖬔𖬶𖬮 𖬊𖬶𖬯 𖭙 (semicircular).<br>• <strong>𖬘𖬲𖬝:</strong> 𖬊𖬲𖬞 𖬈𖬪𖬵 𖬊𖬬𖬰 𖬌𖬰𖬞 𖬌𖬲𖬞 𖭙 𖬔𖬰𖬞 𖬈𖬪𖬵, 𖬑 <strong>𖬖𖬰𖬟 𖬆𖬰𖬮 𖬐𖬶𖬝 𖬖𖬰𖬟</strong> 𖬎𖬰𖬝.</div>' +
+                '<strong style="color:#0284C7; font-size:12.5px;" class="pahawh-glyph">💧 𖬂𖬤𖬵 𖬐𖬰𖬦 𖬈𖬲𖬝: 𖬑𖬲𖬪𖬵 𖬎𖬩𖬰?</strong>' +
+                '<div style="font-size:12px; line-height:1.5; margin-top:4px;" class="pahawh-glyph">• <strong>𖬎𖬩𖬰:</strong> 𖬊𖬲𖬞 𖬈𖬪𖬵 𖬊𖬰𖬧𖬵 𖬗𖬞 >𖭖-𖭘m 𖬂𖬤𖬵 𖬊𖬲𖬞 𖬖𖬲𖬜 𖬔𖬶𖬮 𖬊𖬶𖬯 𖭙 (semicircular).<br>• <strong>𖬘𖬲𖬝:</strong> 𖬊𖬲𖬞 𖬈𖬪𖬵 𖬊𖬬𖬰 𖬌𖬰𖬞 𖬌𖬲𖬞 𖭙 𖬔𖬰𖬞 𖬈𖬪𖬵, 𖬑 <strong>𖬖𖬰𖬟 𖬆𖬰𖬮 𖬐𖬶𖬝 𖬖𖬰𖬟</strong> 𖬎𖬰𖬝.</div>' +
               '</div>' +
               '<div style="background:var(--card-bg); border:1px solid #DC2626; border-radius:6px; padding:10px;">' +
-                '<strong style="color:#DC2626; font-size:12.5px;" class="pahawh-glyph">🚫 𖬐𖬰𖬦 𖬈𖬲𖬝 𖬖𖬲𖬞: 𖬐𖬰𖬪 𖬎𖬰𖬧𖬵?</strong>' +
-                '<div style="font-size:12px; line-height:1.5; margin-top:4px;" class="pahawh-glyph">• <strong>𖬎𖬰𖬧𖬵:</strong> 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵 (Xuan Wu), 𖬖𖬲𖬟𖬰 𖬊𖬰𖬧𖬵 (Tai Ji), 𖬄𖬰𖬝 𖬉𖬰𖬝, 𖬌𖬰𖬞 𖬈𖬲𖬝 𖬈𖬲𖬞.<br>• <strong>𖬄𖬰𖬟:</strong> 𖬈𖬪𖬵 𖬊𖬰𖬧𖬵 𖬄𖬲𖬟 𖬂𖬤𖬵 𖬆𖬰𖬟 𖬂𖬲𖬤.</div>' +
+                '<strong style="color:#DC2626; font-size:12.5px;" class="pahawh-glyph">🚫 𖬐𖬰𖬦 𖬈𖬲𖬝 𖬖𖬲𖬞: 𖬑𖬲𖬪𖬵 𖬖𖬰𖬬 𖬋𖬰 𖬑𖬲𖬪𖬵 𖬆𖬰𖬦𖬰 𖬒𖬶𖬪𖬵 𖬉𖬶𖬝𖬰?</strong>' +
+                '<div style="font-size:12px; line-height:1.5; margin-top:4px;" class="pahawh-glyph">• <strong>𖬆𖬰𖬦𖬰 𖬒𖬶𖬪𖬵 𖬉𖬶𖬝𖬰:</strong> 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵 (Xuan Wu), 𖬖𖬲𖬟𖬰 𖬊𖬰𖬧𖬵 (Tai Ji), 𖬄𖬰𖬝 𖬉𖬰𖬝, 𖬌𖬰𖬞 𖬈𖬲𖬝 𖬈𖬲𖬞.<br>• <strong>𖬖𖬰𖬬 𖬋𖬰:</strong> 𖬈𖬪𖬵 𖬊𖬰𖬧𖬵 𖬄𖬲𖬟 𖬂𖬤𖬵 𖬆𖬰𖬟 𖬂𖬲𖬤.</div>' +
               '</div>' +
             '</div>' +
             '<div style="font-size:13px; line-height:1.6; margin-top:6px;" class="pahawh-glyph"><strong>• 𖬌𖬰𖬟 𖬆𖬰𖬞 𖬐𖬲𖬟:</strong> ' + item.water + '</div>' +

@@ -1264,15 +1264,15 @@ const html = `<!DOCTYPE html>
             '<div class="section-text">' + item.bagua + '</div>' +
           '</div>' +
           '<div class="section-block" style="background:rgba(2,132,199,0.08); border-left-color:#0284C7;">' +
-            '<div class="section-title" style="color:#0284C7;">5. Kev Cai Tswj Dej (Dual Water Doctrine: Ntxiv Pas Dej vs Ntsaws Pov Tseg)</div>' +
+            '<div class="section-title" style="color:#0284C7;">5. Kev Cai Tswj Dej (Dual Water Doctrine: Khawb Pas Dej vs Txhub Pov Tseg)</div>' +
             '<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:8px 0;">' +
               '<div style="background:var(--card-bg); border:1px solid #38BDF8; border-radius:6px; padding:10px;">' +
-                '<strong style="color:#0284C7; font-size:12px;">💧 Tsis Muaj Dej: Puas Ntxiv?</strong>' +
-                '<div style="font-size:11.5px; line-height:1.5; margin-top:4px;">• <strong>Ntxiv:</strong> Yog pem tsev dav >6-8m thiab yog fab txais nyiaj Caij 9 (ntxiv semicircular).<br>• <strong>Txwv:</strong> Yog pem nqaim lossis Roob 9 poob pem, ua <strong>tshav xyoob ntsuab kaj</strong> xwb.</div>' +
+                '<strong style="color:#0284C7; font-size:12px;">💧 Tsis Muaj Dej: Puas Khawb?</strong>' +
+                '<div style="font-size:11.5px; line-height:1.5; margin-top:4px;">• <strong>Khawb:</strong> Yog pem tsev dav >6-8m thiab yog fab txais nyiaj Caij 9 (khawb pas dej semicircular).<br>• <strong>Txwv:</strong> Yog pem nqaim lossis Roob 9 poob pem, ua <strong>tshav xyoob ntsuab kaj</strong> xwb.</div>' +
               '</div>' +
               '<div style="background:var(--card-bg); border:1px solid #DC2626; border-radius:6px; padding:10px;">' +
-                '<strong style="color:#DC2626; font-size:12px;">🚫 Muaj Dej Lawm: Puas Ntsaws?</strong>' +
-                '<div style="font-size:11.5px; line-height:1.5; margin-top:4px;">• <strong>Ntsaws pov tseg:</strong> Yog nyob tom qab (Xuan Wu), plawv tsev (Tai Ji), kaum ntse, lossis dej lwj.<br>• <strong>Khaws cia:</strong> Yog nyob pem tsev puag ncig huv si.</div>' +
+                '<strong style="color:#DC2626; font-size:12px;">🚫 Muaj Dej Lawm: Puas Khaws Cia Lossis Txhub Pov Tseg?</strong>' +
+                '<div style="font-size:11.5px; line-height:1.5; margin-top:4px;">• <strong>Txhub pov tseg:</strong> Yog nyob tom qab (Xuan Wu), plawv tsev (Tai Ji), kaum ntse, lossis dej lwj.<br>• <strong>Khaws cia:</strong> Yog nyob pem tsev puag ncig huv si.</div>' +
               '</div>' +
             '</div>' +
             '<div style="font-size:12.5px; line-height:1.6; margin-top:6px;"><strong>• Cov lus qhia raws thaj av:</strong> ' + item.water + '</div>' +
