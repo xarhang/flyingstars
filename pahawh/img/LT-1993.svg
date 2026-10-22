@@ -1,0 +1,35 @@
+
+<svg width="800" height="480" viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg">
+  
+    <rect width="800" height="480" fill="#F8FAFC"/>
+    
+      <rect y="280" width="800" height="140" fill="#F1F5F9"/>
+      <polygon points="0,420 220,140 350,280 450,80 580,290 800,370 800,420" fill="#475569"/>
+      <line x1="450" y1="80" x2="200" y2="330" stroke="#DC2626" stroke-width="3" stroke-dasharray="8,5"/>
+    
+    
+    <rect x="152" y="330" width="56" height="30" rx="3" fill="#FCA5A5" stroke="#991B1B" stroke-width="1.8"/>
+    <polygon points="144,330 180,310 216,330" fill="#DC2626" stroke="#991B1B" stroke-width="1.8"/>
+    <rect x="173" y="342" width="14" height="18" fill="#1E293B"/>
+    <rect x="146" y="326" width="68" height="38" rx="4" fill="none" stroke="#991B1B" stroke-width="1.2" stroke-dasharray="4,2"/>
+  
+    
+    <rect x="230" y="80" width="399" height="24" rx="6" fill="#FEF2F2" fill-opacity="0.96" stroke="#DC2626" stroke-width="1.3"/>
+    <text x="429.5" y="96" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="11" fill="#B91C1C" text-anchor="middle">𖬌𖬡 Sha 𖬈𖬝𖬵: 𖬂𖬝𖬰 𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖬊𖬲𖬟𖬰 &amp; 𖬗𖬟 𖬍𖬩𖬵</text>
+  
+  
+  
+    <rect x="20" y="10" width="760" height="36" rx="8" fill="#FFFFFF" fill-opacity="0.97" stroke="#DC2626" stroke-width="1.8"/>
+    <text x="35" y="33" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="14" fill="#DC2626">LT-1993</text>
+    <text x="115" y="33" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="12" fill="#1E293B">Bing Shan (𖬌𖬡 𖬅𖬰𖬞𖬰 𖬕𖬰𖬯𖬵)</text>
+    
+    <rect x="625" y="14" width="145" height="28" rx="6" fill="#991B1B"/>
+    <text x="697" y="32" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">✗ 𖬈𖬝𖬵: 𖭑𖭐 / 𖭑𖭐𖭐</text>
+  
+  
+    <rect x="20" y="420" width="760" height="50" rx="6" fill="#FFFFFF" fill-opacity="0.96" stroke="#DC2626" stroke-width="1.2"/>
+    <text x="32" y="438" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#334155"><tspan font-weight="bold" fill="#0F172A">𖬒𖬲𖬯𖬵 𖬋𖬯: </tspan>𖬌𖬡 𖬈𖬝𖬵 𖬂𖬝𖬰 𖬆𖬰𖬞 𖬓𖬥𖬰 Sha 𖬃𖬦𖬵 𖬑𖬧𖬵 𖬖𖬰𖬤𖬰 𖬅𖬡 𖬆𖬰𖬞 𖬉𖬝𖬰 𖬓𖬜𖬰 𖬆𖬰𖬞 𖬄 𖬉𖬰𖬝.</text>
+    <text x="32" y="458" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#334155"><tspan font-weight="bold" fill="#0F172A">𖬉 𖬓𖬰𖬩𖬰: </tspan>𖬋𖬞𖬰 𖬊𖬞𖬰 𖬔𖬲𖬮𖬰 Ba 𖬑𖬠𖬵 convex 𖬊𖬲𖬟𖬰 𖬆𖬰𖬞 𖬌𖬡 𖬈𖬝𖬵, 𖬓𖬯 𖬍𖬩𖬵 𖬆𖬲𖬟𖬰 𖬐𖬶𖬝 𖬐𖬶𖬧𖬵 𖬃𖬩𖬵 𖬊𖬲𖬟𖬰 𖬒𖬶𖬣 𖬑𖬶𖬦 𖬒 𖬃𖬰𖬝𖬰 𖬓𖬰𖬦𖬰...</text>
+  
+</svg>
+  

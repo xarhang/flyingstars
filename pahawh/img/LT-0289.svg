@@ -1,0 +1,41 @@
+
+<svg width="800" height="480" viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg">
+  
+    <rect width="800" height="480" fill="#F0FDF4"/>
+    <rect y="310" width="800" height="110" fill="#DCFCE7"/>
+    
+      <path d="M 0 420 L 0 350 Q 200 320 400 80 Q 600 320 800 350 L 800 420 Z" fill="#64748B" stroke="#334155" stroke-width="2.5"/>
+      <ellipse cx="400" cy="200" rx="150" ry="60" fill="none" stroke="#FDE047" stroke-width="3" opacity="0.8"/>
+    
+    
+      
+    <rect x="372" y="335" width="56" height="30" rx="3" fill="#FEF08A" stroke="#1E40AF" stroke-width="1.8"/>
+    <polygon points="364,335 400,315 436,335" fill="#2563EB" stroke="#1E40AF" stroke-width="1.8"/>
+    <rect x="393" y="347" width="14" height="18" fill="#1E293B"/>
+    <rect x="366" y="331" width="68" height="38" rx="4" fill="none" stroke="#1E40AF" stroke-width="1.2" stroke-dasharray="4,2"/>
+  
+      
+    <rect x="420" y="70" width="309" height="24" rx="6" fill="#FFFFFF" fill-opacity="0.96" stroke="#475569" stroke-width="1.3"/>
+    <text x="574.5" y="86" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="11" fill="#475569" text-anchor="middle">𖬒𖬶𖬤𖬰 𖬀𖬰𖬩𖬰 𖬘𖬰𖬝𖬰 𖬆𖬰 (𖬌𖬡 𖬆𖬰 𖬌𖬡 𖬆𖬰 Wu 𖬇𖬦𖬵 Dome)</text>
+  
+      
+    <rect x="230" y="300" width="331.5" height="24" rx="6" fill="#FFFFFF" fill-opacity="0.96" stroke="#15803D" stroke-width="1.3"/>
+    <text x="395.75" y="316" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="11" fill="#15803D" text-anchor="middle">𖬉𖬝𖬰 𖬒𖬰𖬮𖬵 𖬄𖬲𖬟 𖬖𖬲𖬦𖬵 𖬋𖬰𖬯𖬵 𖬓𖬥𖬰 𖬆𖬰 𖬒𖬬 𖬙𖬝𖬰</text>
+  
+    
+  
+  
+    <rect x="20" y="10" width="760" height="36" rx="8" fill="#FFFFFF" fill-opacity="0.97" stroke="#16A34A" stroke-width="1.8"/>
+    <text x="35" y="33" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="14" fill="#15803D">LT-0289</text>
+    <text x="115" y="33" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="12" fill="#1E293B">𖬌𖬡 𖬆𖬰 (𖬌𖬡 𖬆𖬰 / 𖬌𖬡 𖬆𖬰 Wu 𖬇𖬦𖬵) (𖬌𖬡)</text>
+    
+    <rect x="625" y="14" width="145" height="28" rx="6" fill="#166534"/>
+    <text x="697" y="32" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">✓ 𖬍𖬥𖬰: 𖭙𖭒 / 𖭑𖭐𖭐</text>
+  
+  
+    <rect x="20" y="420" width="760" height="50" rx="6" fill="#FFFFFF" fill-opacity="0.96" stroke="#16A34A" stroke-width="1.2"/>
+    <text x="32" y="438" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#334155"><tspan font-weight="bold" fill="#0F172A">𖬒𖬲𖬯𖬵 𖬋𖬯: </tspan>𖬌𖬡 𖬀𖬰𖬩𖬰 𖬑𖬶𖬪𖬵 𖬃𖬲𖬤𖬰 𖬍𖬥𖬰 𖬃𖬞 𖬆𖬰𖬞 𖬘𖬰𖬝𖬰 𖬓𖬲𖬞 𖬃𖬰𖬤𖬵 𖬆𖬰𖬞 𖬄𖬶𖬞 𖬄𖬰 𖬂𖬟𖬰 𖬒𖬶𖬡 𖬖𖬲𖬦𖬵. 𖬌𖬡 𖬓𖬪𖬵 𖬌 (𖬋𖬧𖬵 𖬇𖬥𖬰 Shan - Ancest...</text>
+    <text x="32" y="458" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#334155"><tspan font-weight="bold" fill="#0F172A">𖬉 𖬓𖬰𖬩𖬰: </tspan>𖬂𖬝𖬰 𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖬒𖬰𖬪𖬵 𖬈𖬰𖬥𖬰 𖬒𖬰𖬪𖬵 𖬈𖬰𖬥𖬰 𖬊𖬲𖬟𖬰 𖬖𖬲𖬤𖬵 𖬑𖬲𖬮𖬰 𖬆𖬰𖬞 𖬌𖬡 𖬃𖬰𖬝𖬰 𖬄𖬟, 𖬔𖬟𖬰 𖬓𖬯 𖬍𖬩𖬵 𖬐𖬶𖬝 𖬎𖬦𖬰 𖬆𖬰𖬞 𖬓𖬥𖬰.</text>
+  
+</svg>
+  

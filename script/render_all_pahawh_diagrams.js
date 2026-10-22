@@ -44,6 +44,90 @@ const DIAGRAM_TRANSLATIONS = [
   [/Dao Ba Tu/gi, 'Thaj Av Tus Chij'],
   [/Huan Bao He Wan Tu/gi, 'Thaj Av Dej Qhwv'],
 
+  // Nine Mountain Peaks & Forms
+  [/Tan Lang Wood Peak/gi, 'Roob Ntoo Tan Lang'],
+  [/Tan Lang/gi, 'Roob Ntoo Tan Lang'],
+  [/Ju Men Earth/gi, 'Roob Av Ju Men'],
+  [/Ju Men/gi, 'Roob Av Ju Men'],
+  [/Lu Cun/gi, 'Roob Lu Cun'],
+  [/Wen Qu Water/gi, 'Roob Dej Wen Qu'],
+  [/Wen Qu/gi, 'Roob Dej Wen Qu'],
+  [/Lian Zhen Fire/gi, 'Roob Hluav Taws Lian Zhen'],
+  [/Lian Zhen/gi, 'Roob Hluav Taws Lian Zhen'],
+  [/Wu Qu Metal/gi, 'Roob Kub Wu Qu'],
+  [/Wu Qu/gi, 'Roob Kub Wu Qu'],
+  [/Po Jun/gi, 'Roob Pob Zeb Po Jun'],
+  [/Zuo Fu/gi, 'Roob Pab Zuo Fu'],
+  [/You Bi/gi, 'Roob Pab You Bi'],
+  [/Mu Shan/gi, 'Roob Ntoo'],
+  [/Tu Shan/gi, 'Roob Av'],
+  [/Huo Shan/gi, 'Roob Hluav Taws'],
+  [/Jin Shan/gi, 'Roob Kub'],
+  [/Shui Shan/gi, 'Roob Dej'],
+  [/Wood Peak/gi, 'Roob Ntoo'],
+  [/Fire Peak/gi, 'Roob Hluav Taws'],
+  [/Earth Mesa/gi, 'Roob Av'],
+  [/Metal Dome/gi, 'Roob Kub'],
+  [/Water Ridge/gi, 'Roob Dej'],
+  [/Ancestral/gi, 'Pog Koob'],
+  [/Peak/gi, 'Ncov Roob'],
+
+  // Technical Labels
+  [/Physics:\s*/gi, 'Txoj Cai: '],
+  [/Remedy:\s*/gi, 'Kev Kho: '],
+  [/Impact:\s*/gi, 'Qhov Raug: '],
+  [/Taboo:\s*/gi, 'Lus Txwv: '],
+  [/Taboos:\s*/gi, 'Cov Lus Txwv: '],
+  [/Score:\s*/gi, 'Khab Nias: '],
+
+  // Boundary Archetypes English Terms
+  [/Island Plot \/ Roundabout/gi, 'Thaj Av Nruab Kev'],
+  [/Roundabout Plot/gi, 'Thaj Av Nruab Kev'],
+  [/Roundabout/gi, 'Kev Voj Kheej'],
+  [/Right-of-Way \/ Easement Plot/gi, 'Thaj Av Txoj Kev Nkag'],
+  [/Right-of-Way/gi, 'Txoj Kev Nkag'],
+  [/Easement Plot/gi, 'Thaj Av Txoj Kev Nkag'],
+  [/Single Road Frontage/gi, 'Kev Pem Hauv Ntej Ib Sab'],
+  [/Corner Plot \/ Double Frontage/gi, 'Thaj Av Ces Kaum Kev'],
+  [/Double Frontage/gi, 'Kev Ob Sab'],
+  [/Corner Plot/gi, 'Thaj Av Ces Kaum Kev'],
+  [/Front & Rear Through Plot/gi, 'Kev Hla Pem Hauv Ntej &amp; Qaum'],
+  [/Through Plot/gi, 'Thaj Av Kev Hla'],
+  [/Flanked Road \/ Scissors Fork/gi, 'Kev Tshuam Rab Txiab'],
+  [/Flanked Road/gi, 'Kev Ob Sab'],
+  [/Front Jade Belt River Only/gi, 'Dej Siv Tawv Kub Pem Tsev'],
+  [/Dual Water & Road with Bridge/gi, 'Dej &amp; Kev Muaj Choj'],
+  [/Curved Jade Belt Road Only/gi, 'Kev Siv Tawv Kub'],
+  [/Front Reverse Bow River Only/gi, 'Dej Hneev Rov Qab'],
+  [/Dual Water & Road Reverse Bow/gi, 'Dej &amp; Kev Hneev Rov Qab'],
+  [/Reverse Bow Road Only/gi, 'Kev Hneev Rov Qab'],
+  [/Rear Water \/ Xuan Wu Drowning/gi, 'Dej Tom Qab Tsev'],
+  [/Flank Water Stream/gi, 'Dej Raws Ciam Av'],
+  [/Rear Mountain & Forest Sanctuary/gi, 'Roob &amp; Hav Ntoo Tom Qab'],
+  [/Cliff Edge \/ Landslide Hazard/gi, 'Pob Ntxhab &amp; Av Liam'],
+  [/Overgrown Forest \/ Yin Sha/gi, 'Hav Ntoo Tuab &amp; Zog Yeeb'],
+  [/Overlooked by High-Rise \/ Qiao Sha/gi, 'Tsev Siab Tsoo'],
+  [/High-Rise/gi, 'Tsev Siab'],
+  [/Sky Crack \/ Tian Zhan Sha/gi, 'Cua Ntsawj Nruab Tsev'],
+  [/Sky Crack/gi, 'Cua Ntsawj Nruab Tsev'],
+  [/Inner Enclosed \/ Enclave Plot/gi, 'Thaj Av Tsev Kaw'],
+  [/Enclave Plot/gi, 'Thaj Av Tsev Kaw'],
+  [/Blind Boundary Wall/gi, 'Phab Ntsa Tuab'],
+  [/Special Structural Sha/gi, 'Zog Sha Qhov Chaw Tshwj Xeeb'],
+  [/High-Voltage Electric Pylon & Transformer/gi, 'Ncej Hluav Taws Xob &amp; Tshuab'],
+  [/High-Voltage/gi, 'Hluav Taws Xob Siab'],
+  [/Transformer/gi, 'Tshuab Hluav Taws Xob'],
+  [/Electric Pylon/gi, 'Ncej Hluav Taws Xob'],
+  [/Electric/gi, 'Hluav Taws Xob'],
+  [/Pylon/gi, 'Ncej Hluav Taws Xob'],
+  [/Cliff, Crags & Steep Slope Sha/gi, 'Pob Ntxhab &amp; Pob Zeb Ntse'],
+  [/Cliff Edge/gi, 'Pob Ntxhab'],
+  [/Crags/gi, 'Pob Zeb Ntse'],
+  [/Steep Slope/gi, 'Toj Ntxhab'],
+  [/Water Systems \(Inside vs Outside\)/gi, 'Cov Dej: Sab Hauv vs Sab Nraud'],
+  [/Water Systems/gi, 'Cov Dej'],
+  [/Inside vs Outside/gi, 'Sab Hauv vs Sab Nraud'],
+
   // Special terms
   [/Tai Shan/gi, 'Pob Zeb Thaiv'],
   [/Qu Ze You Qing/gi, 'Kev Nkhaus Muaj Siab Zoo'],
@@ -137,8 +221,12 @@ function transliterateWithPreserve(text) {
 function convertHmongSvgToPahawh(svgContent) {
   // 1. Substitute font family
   let pahawhSvg = svgContent.replace(
-    /font-family=\"[^\"]*\"/g,
+    /font-family=(["'])[^"']*\1/g,
     'font-family="\'Noto Sans Pahawh Hmong\', sans-serif"'
+  );
+  pahawhSvg = pahawhSvg.replace(
+    /font-family:\s*[^;}"']+/g,
+    "font-family: 'Noto Sans Pahawh Hmong', sans-serif"
   );
 
   // 2. Transliterate all text inside <text> tags
@@ -151,7 +239,9 @@ function convertHmongSvgToPahawh(svgContent) {
     
     // Transliterate content while preserving inner tags (like <tspan>) and emojis
     const converted = content.replace(/(>|^)([^<]+)(<|$)/g, (m, prefix, txt, suffix) => {
-      return prefix + transliterateWithPreserve(txt) + suffix;
+      let t = transliterateWithPreserve(txt);
+      t = t.replace(/&(?!(amp|lt|gt|quot|apos);)/g, '&amp;');
+      return prefix + t + suffix;
     });
 
     return `<text${attrs}>${converted}</text>`;

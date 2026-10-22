@@ -1,0 +1,42 @@
+
+<svg width="800" height="480" viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg">
+  
+    <rect width="800" height="480" fill="#F8FAFC"/>
+    
+        <rect y="200" width="800" height="220" fill="#DCFCE7"/>
+        <path d="M -20 250 C 180 250 150 380 400 380 C 650 380 620 250 820 250" stroke="#0284C7" stroke-width="44" fill="none" stroke-linecap="round"/>
+        <path d="M 0 250 C 180 250 160 380 400 380 C 640 380 620 250 800 250" stroke="#E0F2FE" stroke-width="4.5" stroke-dasharray="20,10" fill="none"/>
+        <ellipse cx="400" cy="305" rx="110" ry="45" fill="#BBF7D0"/>
+      
+    
+    <rect x="372" y="285" width="56" height="30" rx="3" fill="#FEF08A" stroke="#1E40AF" stroke-width="1.8"/>
+    <polygon points="364,285 400,265 436,285" fill="#2563EB" stroke="#1E40AF" stroke-width="1.8"/>
+    <rect x="393" y="297" width="14" height="18" fill="#1E293B"/>
+    <rect x="366" y="281" width="68" height="38" rx="4" fill="none" stroke="#1E40AF" stroke-width="1.2" stroke-dasharray="4,2"/>
+  
+    
+        
+    <rect x="160" y="200" width="440" height="24" rx="6" fill="#FFFFFF" fill-opacity="0.96" stroke="#15803D" stroke-width="1.3"/>
+    <text x="380" y="216" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="11" fill="#15803D" text-anchor="middle">𖬉𖬝𖬰 𖬒𖬰𖬮𖬵 𖬖𖬲𖬤𖬵 𖬄𖬲𖬟 𖬆𖬰𖬞 𖬒𖬲𖬜 𖬅𖬰𖬫𖬵 (Inner Concave Bank) - Safe &amp; Rich</text>
+  
+        
+    <rect x="220" y="385" width="399" height="24" rx="6" fill="#FFFFFF" fill-opacity="0.96" stroke="#0284C7" stroke-width="1.3"/>
+    <text x="419.5" y="401" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="11" fill="#0284C7" text-anchor="middle">𖬈𖬲𖬞𖬰 𖬅𖬰𖬫𖬵 𖬙𖬣 𖬉𖬝𖬰 𖬍𖬥𖬰 𖬃𖬞 𖬒𖬲𖬯𖬵 𖬂𖬶𖬤𖬵 𖬎𖬶𖬧𖬵 (𖬇𖬤 𖬋𖬞𖬰)</text>
+  
+      
+  
+  
+    <rect x="20" y="10" width="760" height="36" rx="8" fill="#FFFFFF" fill-opacity="0.97" stroke="#16A34A" stroke-width="1.8"/>
+    <text x="35" y="33" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="14" fill="#15803D">LT-0865</text>
+    <text x="115" y="33" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="12" fill="#1E293B">𖬇𖬤 𖬋𖬞𖬰 Shui (𖬈𖬲𖬞𖬰 𖬅𖬰𖬫𖬵 𖬙𖬣 𖬉𖬝𖬰)</text>
+    
+    <rect x="625" y="14" width="145" height="28" rx="6" fill="#166534"/>
+    <text x="697" y="32" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">✓ 𖬍𖬥𖬰: 𖭙𖭖 / 𖭑𖭐𖭐</text>
+  
+  
+    <rect x="20" y="420" width="760" height="50" rx="6" fill="#FFFFFF" fill-opacity="0.96" stroke="#16A34A" stroke-width="1.2"/>
+    <text x="32" y="438" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#334155"><tspan font-weight="bold" fill="#0F172A">𖬒𖬲𖬯𖬵 𖬋𖬯: </tspan>𖬈𖬲𖬞𖬰 𖬙𖬲𖬩𖬵 𖬓𖬲𖬦 𖬑𖬶𖬦 𖬅𖬰𖬫𖬵 𖬑𖬶𖬪𖬵 𖬃𖬲𖬤𖬰 𖬆𖬰𖬞 𖬉𖬝𖬰 𖬍𖬥𖬰 𖬃𖬞 𖬒𖬲𖬯𖬵 𖬂𖬶𖬤𖬵 𖬎𖬶𖬧𖬵 𖬙𖬣 𖬐𖬲𖬞𖬰. 𖬈𖬲𖬞𖬰 𖬎𖬰𖬜𖬰 𖭐.𖭖 m/s (𖬓𖬲𖬦 𖬑𖬶𖬦).</text>
+    <text x="32" y="458" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#334155"><tspan font-weight="bold" fill="#0F172A">𖬉 𖬓𖬰𖬩𖬰: </tspan>𖬏𖬰𖬩𖬰 𖬕𖬯 𖬒 𖬈𖬲𖬞𖬰 𖬔𖬯𖬰 𖬆𖬲𖬟 𖬃𖬰𖬝𖬰 𖬒𖬰𖬦𖬰 𖬐𖬶𖬦 𖬂𖬲𖬩𖬰 𖬔𖬮𖬵 𖬒𖬶𖬪𖬵 𖬅𖬡 𖬄𖬲𖬟.</text>
+  
+</svg>
+  

@@ -30,7 +30,7 @@ function sanitizeSvgText(text) {
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&amp;/g, '&')
-    .replace(/s+/g, ' ')
+    .replace(/\s+/g, ' ')
     .trim();
 }
 
@@ -1429,6 +1429,7 @@ for (let i = 0; i < laoData.length; i++) {
   const itemLao = laoData[i];
   const itemHmong = hmongData[i];
 
+  if (['ENV-0001', 'ENV-0002', 'ENV-0003', 'ENV-0004'].some(p => itemLao.id.startsWith(p))) { continue; }
   console.log(`\nProcessing ${itemLao.id}: ${itemLao.baseName}...`);
 
   // Render Lao
@@ -1440,6 +1441,10 @@ for (let i = 0; i < laoData.length; i++) {
   const svgHmong = renderBoundarySvg(itemHmong, 'hmong');
   const resvgH = new Resvg(svgHmong, resvgOpts);
   const pngHmong = resvgH.render().asPng();
+
+  // Save SVG vector files
+  fs.writeFileSync(`lao/img/${itemLao.id}.svg`, svgLao, 'utf8');
+  fs.writeFileSync(`hmong/img/${itemLao.id}.svg`, svgHmong, 'utf8');
 
   // Save to directories
   fs.writeFileSync(`lao/img/${itemLao.id}.png`, pngLao);

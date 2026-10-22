@@ -23,19 +23,19 @@
   
   <!-- ID Badge -->
   <rect x="18" y="9" width="70" height="24" rx="4" fill="#DC2626"/>
-  <text x="53" y="25" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">LP-0008</text>
+  <text x="53" y="25" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">LP-0008</text>
   
   <!-- Name -->
   <!-- Dynamic Title to prevent collision -->
-  <text x="96" y="26" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="10" fill="#F8FAFC">Dao 𖬖𖬰𖬟𖬰 𖬗𖬮𖬰 𖬈𖬰𖬪𖬵 𖬖𖬲𖬜𖬵 (𖬖𖬰𖬟𖬰 𖬗𖬮𖬰 𖬈𖬰𖬪𖬵 𖬖𖬲𖬜𖬵 𖬀𖬲𖬢𖬰 - Inverted Triangle)</text>
+  <text x="96" y="26" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#F8FAFC">Dao 𖬖𖬰𖬟𖬰 𖬗𖬮𖬰 𖬈𖬰𖬪𖬵 𖬖𖬲𖬜𖬵 (𖬖𖬰𖬟𖬰 𖬗𖬮𖬰 𖬈𖬰𖬪𖬵 𖬖𖬲𖬜𖬵 𖬀𖬲𖬢𖬰 - Inverted Triangle)</text>
   
   <!-- Element Badge -->
   <rect x="495" y="9" width="165" height="24" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
-  <text x="577" y="25" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="10" fill="#38BDF8" text-anchor="middle">𖬓𖬥𖬰 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 (𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 𖬒𖬶𖬡 𖬖𖬲𖬦𖬵)</text>
+  <text x="577" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#38BDF8" text-anchor="middle">𖬓𖬥𖬰 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 (𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 𖬒𖬶𖬡 𖬖𖬲𖬦𖬵)</text>
 
   <!-- Score Badge -->
   <rect x="670" y="9" width="112" height="24" rx="4" fill="#991B1B"/>
-  <text x="726" y="25" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="10.5" fill="#FEF2F2" text-anchor="middle">𖬈𖬝𖬵: 𖭒𖭒 / 𖭑𖭐𖭐</text>
+  <text x="726" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#FEF2F2" text-anchor="middle">𖬈𖬝𖬵: 𖭒𖭒 / 𖭑𖭐𖭐</text>
 
   <!-- ========================================================================= -->
   <!-- LEFT COLUMN: CARDS (X=18 to 182) -->
@@ -44,31 +44,31 @@
   <!-- Top-Left Card: Entrance & Driveway (Y=48 to 200) -->
   <rect x="12" y="48" width="174" height="152" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.2" filter="url(#shadow)"/>
   <rect x="12" y="48" width="174" height="24" rx="6" fill="#16A34A"/>
-  <text x="100" y="64" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">𖬒𖬶𖬣 𖬌𖬲𖬡 &amp; 𖬖𖬰𖬟𖬰 𖬗𖬪𖬰</text>
-  <text x="20" y="88" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#14532D">• 𖬒𖬶𖬣 𖬌𖬲𖬡 𖬗𖬶𖬜: 𖬈𖬪𖬵 𖬗𖬞𖬰 𖬖𖬲𖬤𖬵 𖬖𖬰𖬥𖬰 𖬐𖬶𖬝</text>
-  <text x="20" y="108" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#14532D">• 𖬉 𖬈𖬰𖬪𖬰: 𖬅𖬰𖬫𖬵 𖬓𖬲𖬦 𖬑𖬶𖬦 (𖬉 𖬅𖬰𖬫𖬵 𖬓𖬲𖬦), 𖬙𖬯𖬵 𖬖𖬰𖬤𖬰 𖬑𖬧𖬵</text>
-  <text x="20" y="128" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#14532D">• 𖬃𖬰𖬝𖬰 𖬐𖬰𖬦 𖬈𖬲𖬞𖬰: 𖬗𖬪𖬰 𖬌𖬧𖬰 𖬐𖬶𖬝 𖬖𖬰 𖬅𖬤𖬵 𖬓𖬥𖬰</text>
-  <text x="20" y="148" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#14532D">• 𖬓𖬤 𖬐𖬰𖬦 𖬈𖬲𖬞𖬰: 𖬈𖬲𖬞𖬰 𖬔𖬯𖬰 𖬑𖬶𖬪𖬵 𖬃𖬲𖬤𖬰 𖬒𖬲𖬜 𖬀𖬰𖬩𖬰</text>
+  <text x="100" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">𖬒𖬶𖬣 𖬌𖬲𖬡 &amp; 𖬖𖬰𖬟𖬰 𖬗𖬪𖬰</text>
+  <text x="20" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• 𖬒𖬶𖬣 𖬌𖬲𖬡 𖬗𖬶𖬜: 𖬈𖬪𖬵 𖬗𖬞𖬰 𖬖𖬲𖬤𖬵 𖬖𖬰𖬥𖬰 𖬐𖬶𖬝</text>
+  <text x="20" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• 𖬉 𖬈𖬰𖬪𖬰: 𖬅𖬰𖬫𖬵 𖬓𖬲𖬦 𖬑𖬶𖬦 (𖬉 𖬅𖬰𖬫𖬵 𖬓𖬲𖬦), 𖬙𖬯𖬵 𖬖𖬰𖬤𖬰 𖬑𖬧𖬵</text>
+  <text x="20" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• 𖬃𖬰𖬝𖬰 𖬐𖬰𖬦 𖬈𖬲𖬞𖬰: 𖬗𖬪𖬰 𖬌𖬧𖬰 𖬐𖬶𖬝 𖬖𖬰 𖬅𖬤𖬵 𖬓𖬥𖬰</text>
+  <text x="20" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• 𖬓𖬤 𖬐𖬰𖬦 𖬈𖬲𖬞𖬰: 𖬈𖬲𖬞𖬰 𖬔𖬯𖬰 𖬑𖬶𖬪𖬵 𖬃𖬲𖬤𖬰 𖬒𖬲𖬜 𖬀𖬰𖬩𖬰</text>
   
   <rect x="18" y="158" width="162" height="34" rx="4" fill="#DCFCE7"/>
-  <text x="100" y="171" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">𖬖𖬰𖬟𖬰 𖬗𖬪𖬰 𖬖𖬰: 𖬆𖬲𖬟 𖬃𖬤𖬵 𖬅𖬤𖬵 𖬅𖬩𖬵 𖬆𖬰𖬞 𖬓𖬥𖬰</text>
-  <text x="100" y="184" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7" fill="#166534" text-anchor="middle">✓ 𖬉 𖬅𖬰𖬫𖬵 𖬐𖬰𖬦 𖬔𖬤𖬵 𖬍𖬥𖬰 (𖬉 𖬅𖬰𖬫𖬵 𖬐𖬰𖬦 𖬔𖬤𖬵 𖬍𖬥𖬰)</text>
+  <text x="100" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">𖬖𖬰𖬟𖬰 𖬗𖬪𖬰 𖬖𖬰: 𖬆𖬲𖬟 𖬃𖬤𖬵 𖬅𖬤𖬵 𖬅𖬩𖬵 𖬆𖬰𖬞 𖬓𖬥𖬰</text>
+  <text x="100" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#166534" text-anchor="middle">✓ 𖬉 𖬅𖬰𖬫𖬵 𖬐𖬰𖬦 𖬔𖬤𖬵 𖬍𖬥𖬰 (𖬉 𖬅𖬰𖬫𖬵 𖬐𖬰𖬦 𖬔𖬤𖬵 𖬍𖬥𖬰)</text>
 
   <!-- Bottom-Left Card: Gua & Compatibility (Y=206 to 442) -->
   <rect x="12" y="206" width="174" height="236" rx="6" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.2" filter="url(#shadow)"/>
   <rect x="12" y="206" width="174" height="24" rx="6" fill="#D97706"/>
-  <text x="100" y="222" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">𖬓𖬥𖬰 𖭘 𖬖𖬲𖬜𖬵 &amp; 𖬁𖬲𖬬 𖬄𖬟</text>
-  <text x="20" y="246" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#78350F">• 𖬓𖬥𖬰 𖬖𖬰𖬟𖬰 𖬗𖬮𖬰: 𖬓𖬥𖬰 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 𖬉𖬰𖬝</text>
-  <text x="20" y="266" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#78350F">• ✗ 𖬃𖬰𖬝𖬰 𖬄𖬟: 𖬁𖬲𖬬 𖬓𖬥𖬰 𖬗𖬮𖬰 &amp; 𖬍𖬩𖬵</text>
-  <text x="20" y="286" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#78350F">(𖬑𖬠𖬵 𖭒, 𖭘, 𖭓, 𖭔) 𖬅𖬲𖬡 nstab 𖬄𖬦𖬵</text>
-  <text x="20" y="306" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#78350F">• 𖬃𖬰𖬝𖬰 𖬐𖬰𖬦 𖬁𖬲𖬬 𖬖𖬲𖬪𖬵 𖬎𖬦𖬰 𖬓𖬥𖬰</text>
-  <text x="20" y="326" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#78350F">• 𖬃𖬰𖬝𖬰 𖬄𖬟 𖬅𖬡 𖬉𖬝𖬰 𖬁𖬲𖬬 𖬒𖬰𖬮𖬵</text>
+  <text x="100" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">𖬓𖬥𖬰 𖭘 𖬖𖬲𖬜𖬵 &amp; 𖬁𖬲𖬬 𖬄𖬟</text>
+  <text x="20" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• 𖬓𖬥𖬰 𖬖𖬰𖬟𖬰 𖬗𖬮𖬰: 𖬓𖬥𖬰 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 𖬉𖬰𖬝</text>
+  <text x="20" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ✗ 𖬃𖬰𖬝𖬰 𖬄𖬟: 𖬁𖬲𖬬 𖬓𖬥𖬰 𖬗𖬮𖬰 &amp; 𖬍𖬩𖬵</text>
+  <text x="20" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">(𖬑𖬠𖬵 𖭒, 𖭘, 𖭓, 𖭔) 𖬅𖬲𖬡 nstab 𖬄𖬦𖬵</text>
+  <text x="20" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• 𖬃𖬰𖬝𖬰 𖬐𖬰𖬦 𖬁𖬲𖬬 𖬖𖬲𖬪𖬵 𖬎𖬦𖬰 𖬓𖬥𖬰</text>
+  <text x="20" y="326" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• 𖬃𖬰𖬝𖬰 𖬄𖬟 𖬅𖬡 𖬉𖬝𖬰 𖬁𖬲𖬬 𖬒𖬰𖬮𖬵</text>
   
   <rect x="18" y="346" width="162" height="86" rx="4" fill="#FEF3C7"/>
-  <text x="100" y="364" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="8" fill="#92400E" text-anchor="middle">𖬈𖬲𖬧𖬵 𖬉 𖬒𖬯𖬵 𖬈𖬮𖬵 (Impact)</text>
-  <text x="100" y="382" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.5" fill="#78350F" text-anchor="middle">𖬅𖬲𖬡 𖬀𖬲𖬢𖬰 𖬔𖬤𖬵, 𖬒𖬰𖬦 𖬄𖬰𖬜𖬰 𖬄𖬦𖬵</text>
-  <text x="100" y="402" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">𖬂𖬲𖬝𖬰 𖬖𖬤 𖬓𖬥𖬰 &amp; 𖭘 𖬖𖬲𖬜𖬵 𖭘 𖬖𖬲𖬜𖬵</text>
-  <text x="100" y="418" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7" fill="#D97706" text-anchor="middle">✓ 𖬐𖬶𖬟 𖬑𖬯 𖬂𖬲𖬤𖬵 𖬅𖬲𖬨𖬵 𖬍𖬥𖬰</text>
+  <text x="100" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#92400E" text-anchor="middle">𖬈𖬲𖬧𖬵 𖬉 𖬒𖬯𖬵 𖬈𖬮𖬵 (Impact)</text>
+  <text x="100" y="382" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#78350F" text-anchor="middle">𖬅𖬲𖬡 𖬀𖬲𖬢𖬰 𖬔𖬤𖬵, 𖬒𖬰𖬦 𖬄𖬰𖬜𖬰 𖬄𖬦𖬵</text>
+  <text x="100" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">𖬂𖬲𖬝𖬰 𖬖𖬤 𖬓𖬥𖬰 &amp; 𖭘 𖬖𖬲𖬜𖬵 𖭘 𖬖𖬲𖬜𖬵</text>
+  <text x="100" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#D97706" text-anchor="middle">✓ 𖬐𖬶𖬟 𖬑𖬯 𖬂𖬲𖬤𖬵 𖬅𖬲𖬨𖬵 𖬍𖬥𖬰</text>
 
   <!-- ========================================================================= -->
   <!-- RIGHT COLUMN: CARDS (X=618 to 782) -->
@@ -77,31 +77,31 @@
   <!-- Top-Right Card: House Positioning & Facing (Y=48 to 200) -->
   <rect x="614" y="48" width="174" height="152" rx="6" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.2" filter="url(#shadow)"/>
   <rect x="614" y="48" width="174" height="24" rx="6" fill="#0284C7"/>
-  <text x="700" y="64" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">𖬏𖬧 𖬓𖬰𖬝𖬰 𖬉𖬝𖬰 &amp; 𖬗𖬪𖬰</text>
-  <text x="622" y="88" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#0369A1">• 𖬏𖬧: 𖬓𖬰𖬝𖬰 𖬄𖬲𖬟 𖬎𖬶𖬟𖬵 𖬉𖬰𖬥𖬰 𖬈𖬪𖬵 𖬗𖬞𖬰</text>
-  <text x="622" y="108" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#0369A1">• 𖬙𖬯𖬵 𖬃𖬰𖬝𖬰 𖬓𖬰𖬝𖬰 𖬉𖬰𖬥𖬰 𖬄 𖬉𖬰𖬝 𖬄𖬦𖬵</text>
-  <text x="622" y="128" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#0369A1">• 𖬕𖬝 (𖬕𖬝): 𖬕𖬝 𖬈𖬪𖬵 𖬗𖬞𖬰</text>
-  <text x="622" y="148" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#0369A1">• 𖬄𖬥𖬰 (𖬄𖬥𖬰): 𖬄𖬥𖬰 𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖬓𖬰𖬩𖬰</text>
+  <text x="700" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">𖬏𖬧 𖬓𖬰𖬝𖬰 𖬉𖬝𖬰 &amp; 𖬗𖬪𖬰</text>
+  <text x="622" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• 𖬏𖬧: 𖬓𖬰𖬝𖬰 𖬄𖬲𖬟 𖬎𖬶𖬟𖬵 𖬉𖬰𖬥𖬰 𖬈𖬪𖬵 𖬗𖬞𖬰</text>
+  <text x="622" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• 𖬙𖬯𖬵 𖬃𖬰𖬝𖬰 𖬓𖬰𖬝𖬰 𖬉𖬰𖬥𖬰 𖬄 𖬉𖬰𖬝 𖬄𖬦𖬵</text>
+  <text x="622" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• 𖬕𖬝 (𖬕𖬝): 𖬕𖬝 𖬈𖬪𖬵 𖬗𖬞𖬰</text>
+  <text x="622" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• 𖬄𖬥𖬰 (𖬄𖬥𖬰): 𖬄𖬥𖬰 𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖬓𖬰𖬩𖬰</text>
   
   <rect x="620" y="158" width="162" height="34" rx="4" fill="#E0F2FE"/>
-  <text x="700" y="171" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">𖬄𖬰𖬧𖬵 𖬅𖬟 𖬙𖬰𖬪𖬵: 𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖬎𖬶𖬟𖬵 𖬉𖬝𖬰</text>
-  <text x="700" y="184" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖬐𖬶𖬧𖬵 𖬃𖬰𖬝𖬰 𖬖𖬰𖬤𖬰 𖬒𖬶𖬣 𖬋𖬡</text>
+  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">𖬄𖬰𖬧𖬵 𖬅𖬟 𖬙𖬰𖬪𖬵: 𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖬎𖬶𖬟𖬵 𖬉𖬝𖬰</text>
+  <text x="700" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖬐𖬶𖬧𖬵 𖬃𖬰𖬝𖬰 𖬖𖬰𖬤𖬰 𖬒𖬶𖬣 𖬋𖬡</text>
 
   <!-- Bottom-Right Card: Remedies & Taboos (Y=206 to 442) -->
   <rect x="614" y="206" width="174" height="236" rx="6" fill="#FDF4FF" stroke="#A855F7" stroke-width="1.2" filter="url(#shadow)"/>
   <rect x="614" y="206" width="174" height="24" rx="6" fill="#9333EA"/>
-  <text x="700" y="222" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">𖬉 𖬓𖬰𖬩𖬰 𖭔 𖬄𖬶 𖬐𖬡</text>
-  <text x="622" y="246" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#6B21A8">𖭑. 𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖭒.𖭒m 𖬔𖬲𖬯𖬵 𖬄 𖬄𖬦𖬵</text>
-  <text x="622" y="266" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#6B21A8">𖭒. 𖬓𖬯 𖬍𖬩𖬵 𖬆𖬲𖬟𖬰 𖭗 𖬒𖬰𖬝𖬰 𖬑𖬮𖬰 𖬌𖬡</text>
-  <text x="622" y="286" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#6B21A8">𖭓. 𖬒𖬰𖬪𖬵 𖬈𖬰𖬥𖬰 𖬒𖬰𖬪𖬵 𖬈𖬰𖬥𖬰 𖬊𖬲𖬟𖬰 𖬒𖬶𖬤𖬰 𖬄𖬦𖬵</text>
-  <text x="622" y="306" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#6B21A8">𖭔. 𖬑𖬮𖬰 𖬖𖬰𖬜 𖬖𖬰𖬪𖬵 𖬐𖬶𖬝 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵</text>
+  <text x="700" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">𖬉 𖬓𖬰𖬩𖬰 𖭔 𖬄𖬶 𖬐𖬡</text>
+  <text x="622" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">𖭑. 𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖭒.𖭒m 𖬔𖬲𖬯𖬵 𖬄 𖬄𖬦𖬵</text>
+  <text x="622" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">𖭒. 𖬓𖬯 𖬍𖬩𖬵 𖬆𖬲𖬟𖬰 𖭗 𖬒𖬰𖬝𖬰 𖬑𖬮𖬰 𖬌𖬡</text>
+  <text x="622" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">𖭓. 𖬒𖬰𖬪𖬵 𖬈𖬰𖬥𖬰 𖬒𖬰𖬪𖬵 𖬈𖬰𖬥𖬰 𖬊𖬲𖬟𖬰 𖬒𖬶𖬤𖬰 𖬄𖬦𖬵</text>
+  <text x="622" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">𖭔. 𖬑𖬮𖬰 𖬖𖬰𖬜 𖬖𖬰𖬪𖬵 𖬐𖬶𖬝 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵</text>
 
   <rect x="620" y="326" width="162" height="106" rx="4" fill="#F3E8FF"/>
-  <text x="700" y="342" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="8" fill="#7E22CE" text-anchor="middle">𖬒𖬶𖬯 𖬇𖬰𖬞 𖬙𖬯𖬵 (𖬒𖬶𖬯 𖬇𖬰𖬞 𖬙𖬯𖬵)</text>
-  <text x="626" y="360" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.5" fill="#9333EA">• 𖬙𖬯𖬵 𖬃𖬰𖬝𖬰 𖬓𖬰𖬝𖬰 𖬗𖬧 𖬙𖬰𖬪𖬵 𖬄 𖬄𖬦𖬵</text>
-  <text x="626" y="377" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.5" fill="#9333EA">• 𖬙𖬯𖬵 𖬃𖬰𖬝𖬰 𖬎𖬩𖬰 𖬗𖬲𖬪𖬵 𖬈𖬲𖬞𖬰 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵</text>
-  <text x="626" y="394" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.5" fill="#9333EA">• 𖬙𖬯𖬵 𖬃𖬰𖬝𖬰 𖬂𖬲𖬣 𖬒𖬶𖬣 𖬌𖬲𖬡 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵</text>
-  <text x="700" y="418" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ 𖬆𖬲𖬟 𖬃𖬤𖬵 &amp; 𖬀𖬶𖬧𖬵 𖬒𖬪𖬵 𖬉 𖬍𖬥𖬰</text>
+  <text x="700" y="342" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#7E22CE" text-anchor="middle">𖬒𖬶𖬯 𖬇𖬰𖬞 𖬙𖬯𖬵 (𖬒𖬶𖬯 𖬇𖬰𖬞 𖬙𖬯𖬵)</text>
+  <text x="626" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• 𖬙𖬯𖬵 𖬃𖬰𖬝𖬰 𖬓𖬰𖬝𖬰 𖬗𖬧 𖬙𖬰𖬪𖬵 𖬄 𖬄𖬦𖬵</text>
+  <text x="626" y="377" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• 𖬙𖬯𖬵 𖬃𖬰𖬝𖬰 𖬎𖬩𖬰 𖬗𖬲𖬪𖬵 𖬈𖬲𖬞𖬰 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵</text>
+  <text x="626" y="394" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• 𖬙𖬯𖬵 𖬃𖬰𖬝𖬰 𖬂𖬲𖬣 𖬒𖬶𖬣 𖬌𖬲𖬡 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵</text>
+  <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ 𖬆𖬲𖬟 𖬃𖬤𖬵 &amp; 𖬀𖬶𖬧𖬵 𖬒𖬪𖬵 𖬉 𖬍𖬥𖬰</text>
 
   <!-- ========================================================================= -->
   
@@ -110,7 +110,7 @@
   <rect x="190" y="355" width="420" height="85" fill="url(#roadGrad)" rx="3"/>
   <line x1="190" y1="395" x2="610" y2="395" stroke="#FDE047" stroke-width="2" stroke-dasharray="14,8"/>
   <line x1="190" y1="360" x2="610" y2="360" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4"/>
-  <text x="400" y="420" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="9.5" fill="#F8FAFC" text-anchor="middle">&#10140; 𖬉 𖬒𖬲𖬞 𖬈𖬪𖬵 𖬄𖬲𖬟 𖬈𖬲𖬩𖬵 (𖬉 𖬒𖬲𖬞) &#10140;</text>
+  <text x="400" y="420" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#F8FAFC" text-anchor="middle">&amp;#10140; 𖬉 𖬒𖬲𖬞 𖬈𖬪𖬵 𖬄𖬲𖬟 𖬈𖬲𖬩𖬵 (𖬉 𖬒𖬲𖬞) &amp;#10140;</text>
   
 
   <!-- ========================================================================= -->
@@ -119,7 +119,7 @@
   <g>
     
         <!-- Surrounding Neighbor Property Labels -->
-        <text x="400" y="76" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">𖬔𖬰𖬯 𖬗𖬮𖬰 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵</text>
+        <text x="400" y="76" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">𖬔𖬰𖬯 𖬗𖬮𖬰 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵</text>
 
         <!-- Triangle Plot Perimeter Polygon (Apex in Rear Y=85, Wide Base at Front Y=355) -->
         <polygon points="400,85 560,355 240,355" fill="#FEF2F2" stroke="#DC2626" stroke-width="3"/>
@@ -138,34 +138,34 @@
         <!-- Left Room: Bedroom -->
         <rect x="348" y="121" width="32" height="22" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1"/>
         <rect x="348" y="121" width="32" height="5.5" fill="#0284C7"/>
-        <text x="364" y="135" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">𖬄𖬰𖬧𖬵 𖬅𖬟</text>
-        <text x="364" y="155" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">𖬏𖬧 𖬙𖬰𖬪𖬵</text>
+        <text x="364" y="135" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">𖬄𖬰𖬧𖬵 𖬅𖬟</text>
+        <text x="364" y="155" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">𖬏𖬧 𖬙𖬰𖬪𖬵</text>
 
         <!-- Right Room: Main Living Hall -->
-        <text x="424" y="139" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="10.5" fill="#1E293B" text-anchor="middle">𖬆𖬰𖬞 𖬉𖬝𖬰</text>
-        <text x="424" y="155" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.8" fill="#475569" text-anchor="middle">𖬏𖬧 𖬋𖬰𖬯𖬵 𖬑𖬣</text>
+        <text x="424" y="139" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#1E293B" text-anchor="middle">𖬆𖬰𖬞 𖬉𖬝𖬰</text>
+        <text x="424" y="155" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#475569" text-anchor="middle">𖬏𖬧 𖬋𖬰𖬯𖬵 𖬑𖬣</text>
         
         <!-- Front Main Entrance Door / Porch (Clear Buffer Zone) -->
         <rect x="416" y="167" width="16" height="5" fill="#1E293B"/>
-        <text x="424" y="183" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">𖬌𖬲𖬡 𖬒𖬲𖬞</text>
+        <text x="424" y="183" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">𖬌𖬲𖬡 𖬒𖬲𖬞</text>
 
         <!-- Compass Axis Badge (X=470..510) -->
         <g transform="translate(470, 115)">
           <rect x="0" y="0" width="38" height="52" rx="3" fill="#FFFFFF" fill-opacity="0.92" stroke="#0284C7" stroke-width="1.2"/>
-          <text x="19" y="13" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">𖬄𖬥𖬰 ⬆</text>
+          <text x="19" y="13" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">𖬄𖬥𖬰 ⬆</text>
           <line x1="19" y1="17" x2="19" y2="35" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
           <polygon points="19,37 16,31 22,31" fill="#0284C7"/>
-          <text x="19" y="47" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">𖬕𖬝 ⬇</text>
+          <text x="19" y="47" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">𖬕𖬝 ⬇</text>
         </g>
 
         <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
         <rect x="305" y="205" width="190" height="68" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-        <text x="400" y="220" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">𖬖𖬰𖬟𖬰 𖬗𖬪𖬰 𖬖𖬰 (𖬗𖬪𖬰 𖬖𖬰)</text>
-        <text x="400" y="234" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">• 𖬃𖬰𖬝𖬰 𖬐𖬰𖬦 𖬈𖬲𖬞𖬰: 𖬗𖬪𖬰 𖬌𖬧𖬰 𖬐𖬶𖬝 𖬖𖬰</text>
-        <text x="400" y="247" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="6.2" fill="#0369A1" text-anchor="middle">• 𖬓𖬤 𖬐𖬰𖬦 𖬈𖬲𖬞𖬰: 𖬈𖬲𖬞𖬰 𖬔𖬯𖬰 𖬑𖬶𖬪𖬵 𖬃𖬲𖬤𖬰</text>
+        <text x="400" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">𖬖𖬰𖬟𖬰 𖬗𖬪𖬰 𖬖𖬰 (𖬗𖬪𖬰 𖬖𖬰)</text>
+        <text x="400" y="234" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">• 𖬃𖬰𖬝𖬰 𖬐𖬰𖬦 𖬈𖬲𖬞𖬰: 𖬗𖬪𖬰 𖬌𖬧𖬰 𖬐𖬶𖬝 𖬖𖬰</text>
+        <text x="400" y="247" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#0369A1" text-anchor="middle">• 𖬓𖬤 𖬐𖬰𖬦 𖬈𖬲𖬞𖬰: 𖬈𖬲𖬞𖬰 𖬔𖬯𖬰 𖬑𖬶𖬪𖬵 𖬃𖬲𖬤𖬰</text>
         <!-- Optional Water Feature Badge -->
         <path d="M 440 261 A 16 8 0 0 0 472 261 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
-        <text x="456" y="258" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">[𖬗𖬲𖬪𖬵 𖬈𖬲𖬞𖬰]</text>
+        <text x="456" y="258" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">[𖬗𖬲𖬪𖬵 𖬈𖬲𖬞𖬰]</text>
 
         <!-- ARCHITECTURAL FRONT BASE FENCE WITH GATE OPENING ON DRAGON SIDE -->
         <line x1="240" y1="355" x2="295" y2="355" stroke="#334155" stroke-width="3.5"/>
@@ -181,12 +181,12 @@
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
         <path d="M 320 395 L 320 355 C 320 310 350 285 385 245 C 405 215 424 195 424 172" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
-        <text x="355" y="322" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle">⟿ 𖬉 𖬅𖬰𖬫𖬵 𖬍𖬥𖬰 𖬔𖬤𖬵</text>
+        <text x="355" y="322" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle">⟿ 𖬉 𖬅𖬰𖬫𖬵 𖬍𖬥𖬰 𖬔𖬤𖬵</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE -->
         <g transform="translate(195, 350)">
           <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
-          <text x="45" y="12" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">✓ 𖬌𖬲𖬡 𖬗𖬶𖬜 𖬒𖬲𖬞</text>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">✓ 𖬌𖬲𖬡 𖬗𖬶𖬜 𖬒𖬲𖬞</text>
           <line x1="90" y1="9" x2="108" y2="0" stroke="#15803D" stroke-width="1.8"/>
           <circle cx="108" cy="0" r="2" fill="#15803D"/>
         </g>
@@ -194,7 +194,7 @@
         <!-- [✗] FORBIDDEN GATE BADGE (ANCHORED TO ACUTE REAR APEX) -->
         <g transform="translate(435, 90)">
           <rect x="0" y="0" width="88" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
-          <text x="44" y="12" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">✗ 𖬙𖬯𖬵 𖬌𖬲𖬡 𖬗𖬶𖬜</text>
+          <text x="44" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">✗ 𖬙𖬯𖬵 𖬌𖬲𖬡 𖬗𖬶𖬜</text>
           <line x1="0" y1="9" x2="-25" y2="5" stroke="#DC2626" stroke-width="1.8"/>
           <circle cx="-25" cy="5" r="2" fill="#DC2626"/>
         </g>
@@ -204,6 +204,6 @@
   
   <!-- Bottom Doctrinal Summary -->
   <rect x="12" y="445" width="776" height="29" rx="5" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
-  <text x="400" y="457" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">𖬙𖬝𖬰 𖬂𖬤: 𖬖𖬰𖬟𖬰 𖬗𖬮𖬰 𖬈𖬰𖬪𖬵 𖬖𖬲𖬜𖬵 𖬀𖬲𖬢𖬰, 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵 𖬉𖬰𖬝 𖬍𖬥𖬰</text>
-  <text x="400" y="469" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.5" fill="#CBD5E1" text-anchor="middle">𖬃𖬞 𖬖𖬲𖬡 𖬆𖬲𖬣𖬵, 𖬃𖬰𖬝𖬰 𖬐𖬰𖬦 𖬏𖬧 nstais, 𖬐𖬲𖬤 𖬆𖬝𖬰 𖬓𖬰𖬩𖬰.</text>
+  <text x="400" y="457" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">𖬙𖬝𖬰 𖬂𖬤: 𖬖𖬰𖬟𖬰 𖬗𖬮𖬰 𖬈𖬰𖬪𖬵 𖬖𖬲𖬜𖬵 𖬀𖬲𖬢𖬰, 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵 𖬉𖬰𖬝 𖬍𖬥𖬰</text>
+  <text x="400" y="469" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#CBD5E1" text-anchor="middle">𖬃𖬞 𖬖𖬲𖬡 𖬆𖬲𖬣𖬵, 𖬃𖬰𖬝𖬰 𖬐𖬰𖬦 𖬏𖬧 nstais, 𖬐𖬲𖬤 𖬆𖬝𖬰 𖬓𖬰𖬩𖬰.</text>
 </svg>

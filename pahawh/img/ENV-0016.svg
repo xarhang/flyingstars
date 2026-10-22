@@ -1,0 +1,198 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EDF2F7"/>
+    </linearGradient>
+    <linearGradient id="roadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#bgGrad)"/>
+
+  <!-- ========================================================================= -->
+  <!-- TOP HUD BAR (Y=0 to 42) -->
+  <!-- ========================================================================= -->
+  <rect x="0" y="0" width="800" height="42" fill="#0F172A"/>
+  
+  <!-- ID Badge -->
+  <rect x="18" y="9" width="75" height="24" rx="4" fill="#16A34A"/>
+  <text x="55" y="25" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#FFFFFF" text-anchor="middle">ENV-0016</text>
+  
+  <!-- Name -->
+  <!-- Dynamic Title to prevent collision -->
+  <text x="96" y="26" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#F8FAFC">𖬖𖬰𖬟𖬰 𖬗𖬮𖬰 𖬅𖬲𖬡 𖬉𖬝𖬰 𖭓 𖬖𖬲𖬤𖬵 𖬃𖬲𖬤𖬰 (Inner Enclosed Plot)</text>
+  
+  <!-- Road Type Badge -->
+  <rect x="495" y="9" width="165" height="24" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="577" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#38BDF8" text-anchor="middle">𖬔𖬰𖬯 𖬉𖬝𖬰 𖭓 𖬖𖬲𖬤𖬵 (𖬈𖬪𖬵 𖬔𖬰𖬯 𖬉)</text>
+
+  <!-- Score Badge -->
+  <rect x="670" y="9" width="112" height="24" rx="4" fill="#14532D"/>
+  <text x="726" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#FEF2F2" text-anchor="middle">𖬍𖬥𖬰: 𖭖𖭐 / 𖭑𖭐𖭐</text>
+
+  <!-- ========================================================================= -->
+  <!-- LEFT COLUMN: CARDS (X=18 to 182) -->
+  <!-- ========================================================================= -->
+
+  <!-- Top-Left Card: Entrance &amp; Driveway (Y=48 to 200) -->
+  <rect x="12" y="48" width="174" height="152" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="48" width="174" height="24" rx="6" fill="#16A34A"/>
+  <text x="100" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">𖬒𖬶𖬣 𖬌𖬲𖬡 &amp; 𖬉 𖬈𖬰𖬪𖬰</text>
+  <text x="20" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• 𖬒𖬶𖬣 𖬌𖬲𖬡 𖬗𖬶𖬜: 𖬒𖬶𖬣 𖬌𖬲𖬡 𖬗𖬶𖬜 𖬒𖬲𖬞 𖬒𖬰𖬮𖬵 p</text>
+  <text x="20" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• 𖬀𖬲𖬯 𖬘𖬮: 𖬈𖬰𖬞𖬰 𖬄 𖬗𖬮𖬰 𖭓m</text>
+  <text x="20" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• 𖬉 𖬈𖬰𖬪𖬰: 𖬅𖬰𖬫𖬵 𖬓𖬲𖬦 𖬑𖬶𖬦</text>
+  <text x="20" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• 𖬖𖬲𖬮𖬵 𖬀𖬶𖬮: 𖬖𖬥𖬰 𖬉 𖬐𖬪𖬰</text>
+  
+  <rect x="18" y="156" width="162" height="38" rx="3" fill="#DCFCE7"/>
+  <text x="100" y="170" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">𖬄𖬲𖬦𖬵 𖬔𖬰𖬯: 𖬔𖬰𖬯 𖬉𖬝𖬰 𖭓 𖬖𖬲𖬤𖬵 (𖬈𖬪𖬵</text>
+  <text x="100" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#166534" text-anchor="middle">✓ 𖬋𖬰𖬯𖬵 𖬓𖬥𖬰 Sheng 𖬃𖬦𖬵</text>
+
+  <!-- Bottom-Left Card: Gua &amp; Compatibility (Y=206 to 442) -->
+  <rect x="12" y="206" width="174" height="236" rx="6" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="206" width="174" height="24" rx="6" fill="#D97706"/>
+  <text x="100" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">𖬓𖬥𖬰 𖭘 𖬖𖬲𖬜𖬵 &amp; 𖬁𖬲𖬬 𖬄𖬟</text>
+  <text x="20" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• 𖬓𖬥𖬰 𖬖𖬰𖬟𖬰 𖬗𖬮𖬰: 𖬓𖬥𖬰 𖬗𖬮𖬰 𖬃𖬲𖬤𖬰 (Enclosed</text>
+  <text x="20" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ✓ 𖬄𖬟: 𖬄𖬟 𖬅𖬡 𖬁𖬲𖬬 𖬗𖬮 𖬒𖬰𖬮𖬵 n</text>
+  <text x="20" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">𖬕𖬲𖬧𖬵 𖬇𖬲𖬧𖬵, 𖬉𖬝𖬰 𖬁𖬲𖬬 𖬗𖬮 𖬗𖬰𖬧𖬵</text>
+  <text x="20" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ✗ 𖬃𖬰𖬝𖬰 𖬄𖬟: 𖬁𖬲𖬬 𖬓𖬥𖬰 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 (𖭙)</text>
+  <text x="20" y="326" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">𖬓𖬤 𖬉𖬝𖬰 𖬃𖬰𖬝𖬰 𖬐𖬰𖬦 𖬑𖬯 𖬃𖬤𖬰</text>
+  
+  <rect x="18" y="346" width="162" height="86" rx="4" fill="#FEF3C7"/>
+  <text x="100" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#92400E" text-anchor="middle">𖬂𖬲𖬝𖬰 𖬖𖬤 𖬓𖬥𖬰 &amp; 𖭘 𖬖𖬲𖬜𖬵 𖭘 𖬖𖬲𖬝𖬵</text>
+  <text x="100" y="382" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#78350F" text-anchor="middle">✓ 𖬂𖬲𖬤𖬵 𖬅𖬲𖬨𖬵 𖬓𖬥𖬰 𖬐𖬶𖬟 𖬑𖬯</text>
+  <text x="100" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">ກົດເກນ 𖭕 ທາດ ແລະ ເຂັມທິດ 𖭘 ທິດ</text>
+  <text x="100" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#D97706" text-anchor="middle">✓ ສົມດຸນພະລັງງານທຳມະຊາດ</text>
+
+  <!-- ========================================================================= -->
+  <!-- RIGHT COLUMN: CARDS (X=618 to 782) -->
+  <!-- ========================================================================= -->
+
+  <!-- Top-Right Card: House Positioning &amp; Facing (Y=48 to 200) -->
+  <rect x="614" y="48" width="174" height="152" rx="6" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="48" width="174" height="24" rx="6" fill="#0284C7"/>
+  <text x="700" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">𖬓𖬰𖬝𖬰 𖬉𖬝𖬰 &amp; 𖬗𖬪𖬰</text>
+  <text x="622" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• 𖬏𖬧: 𖬓𖬰𖬝𖬰 𖬆𖬰𖬞 𖬉𖬝𖬰 𖬅𖬡 𖬎𖬶𖬟𖬵 𖬗𖬰𖬮𖬰</text>
+  <text x="622" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• 𖬒𖬶𖬣 𖬈𖬰𖬞𖬰: v, 𖬓𖬰𖬝𖬰 𖬏𖬧 𖬌𖬩𖬰 𖬃𖬲𖬤𖬰 𖬉𖬰𖬝𖬰</text>
+  <text x="622" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• 𖬕𖬝 (𖬕𖬝): 𖬕𖬝 𖬉 𖬈𖬪𖬵</text>
+  <text x="622" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• 𖬄𖬥𖬰 (𖬄𖬥𖬰): 𖬄𖬥𖬰 𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖬄𖬦𖬵</text>
+  
+  <rect x="620" y="158" width="162" height="34" rx="3" fill="#E0F2FE"/>
+  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">ທິດຫົວຕຽງ: 𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖬐𖬶𖬧𖬵.</text>
+  <text x="700" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖬐𖬶𖬧𖬵 𖬃𖬰𖬝𖬰 𖬖𖬰𖬤𖬰 𖬒𖬶𖬣 𖬋𖬡</text>
+
+  <!-- Bottom-Right Card: Remedies &amp; Taboos (Y=206 to 442) -->
+  <rect x="614" y="206" width="174" height="236" rx="6" fill="#FDF4FF" stroke="#A855F7" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="206" width="174" height="24" rx="6" fill="#9333EA"/>
+  <text x="700" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">𖬉 𖬓𖬰𖬩𖬰 𖭔 𖬄𖬶 𖬐𖬡</text>
+  <text x="622" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">𖭑. 𖬑𖬮𖬰 𖬗𖬪𖬰 𖬐𖬶𖬜𖬰 𖬖𖬲𖬜𖬰 𖬉𖬝𖬰</text>
+  <text x="622" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">𖭒. 𖬖𖬰𖬜 𖬍𖬩𖬵 𖬃𖬲𖬤𖬰 𖬉𖬝𖬰</text>
+  <text x="622" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">𖭓. 𖬂𖬶 𖬑𖬯 𖬐𖬶𖬪𖬰</text>
+  <text x="622" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">𖭔. 𖬗𖬲𖬪𖬵 𖬈𖬲𖬞𖬰.</text>
+
+  <rect x="620" y="326" width="162" height="106" rx="4" fill="#F3E8FF"/>
+  <text x="700" y="342" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#7E22CE" text-anchor="middle">ຂໍ້ຫ້າມເດັດຂາດ (𖬒𖬶𖬯 𖬇𖬰𖬞 𖬙𖬯𖬵)</text>
+  <text x="628" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• • 𖬙𖬯𖬵 𖬃𖬰𖬝𖬰 𖬂𖬝𖬰 𖬉𖬝𖬰 𖬆𖬲𖬪𖬵 nk</text>
+  <text x="628" y="376" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• • 𖬙𖬯𖬵 𖬃𖬰𖬝𖬰 𖬏 𖬎𖬶𖬟𖬵 𖬉𖬝𖬰 t</text>
+  <text x="628" y="392" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• • 𖬙𖬯𖬵 𖬃𖬰𖬝𖬰 𖬑𖬮𖬰 𖬖𖬰𖬞 𖬖𖬲 𖬔𖬤𖬵</text>
+  <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ ຮັກສາຄວາມສະອາດ &amp; ແສງສະຫວ່າງ</text>
+
+  <!-- ========================================================================= -->
+  
+  <!-- MAIN ROADWAY AT BOTTOM (Y=355 to 440, bounded in Central Zone X=190..610) -->
+  <!-- Placed before centerSvg so fence gates and badges paint clearly on top! -->
+  <rect x="190" y="355" width="420" height="85" fill="url(#roadGrad)" rx="3"/>
+  <line x1="190" y1="395" x2="610" y2="395" stroke="#FDE047" stroke-width="2" stroke-dasharray="14,8"/>
+  <line x1="190" y1="360" x2="610" y2="360" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4"/>
+  <text x="400" y="420" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#F8FAFC" text-anchor="middle">&amp;#10140; 𖬉 𖬒𖬲𖬞 𖬈𖬪𖬵 𖬄𖬲𖬟 𖬈𖬲𖬩𖬵 &amp;#10140;</text>
+  
+
+  <!-- ========================================================================= -->
+  <!-- CENTER: ARCHITECTURAL BOUNDARY DRAWING (X=195 to 605, Y=48 to 384) -->
+  <!-- ========================================================================= -->
+  <g>
+    
+        <!-- Plot Ground -->
+        <rect x="260" y="95" width="250" height="260" fill="#DCFCE7" rx="3"/>
+        <line x1="260" y1="95" x2="505" y2="95" stroke="#15803D" stroke-width="4"/>
+        <line x1="260" y1="95" x2="260" y2="355" stroke="#334155" stroke-width="3"/>
+        <line x1="505" y1="95" x2="505" y2="355" stroke="#334155" stroke-width="3"/>
+        <text x="382" y="85" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">𖬔𖬰𖬯 𖬗𖬮𖬰 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵</text>
+        <text x="240" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-90 240 220)">𖬉𖬝𖬰 𖬖𖬲𖬤𖬵 𖬅𖬲𖬞</text>
+
+        
+    <!-- House Structure & Interior -->
+    <rect x="335" y="115" width="130" height="65" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
+    <polygon points="325,115 400,90 475,115" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+    <line x1="392" y1="115" x2="392" y2="180" stroke="#B45309" stroke-width="1.2" stroke-dasharray="3,2"/>
+    
+      <!-- Master Bedroom -->
+      <rect x="341" y="121" width="28" height="20" fill="#FFFFFF" stroke="#0284C7" stroke-width="1" rx="2"/>
+      <rect x="341" y="121" width="28" height="5" fill="#0284C7" rx="1"/>
+      <text x="355" y="131" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#0369A1" text-anchor="middle">𖬄𖬰𖬧𖬵 𖬅𖬟</text>
+      <text x="355" y="168" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">𖬏𖬧 𖬙𖬰𖬪𖬵 𖬒𖬲𖬞</text>
+    
+    
+      <!-- Living Hall -->
+      <text x="428.5" y="135" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#1E293B" text-anchor="middle">𖬆𖬰𖬞 𖬉𖬝𖬰</text>
+      <text x="428.5" y="150" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">𖬏𖬧 𖬋𖬰𖬯𖬵</text>
+    
+    
+        <!-- Front Main Door Step & Prominent Label -->
+        <rect x="418.5" y="180" width="20" height="5" fill="#1E293B"/>
+        <text x="428.5" y="194" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">𖬌𖬲𖬡 𖬒𖬲𖬞</text>
+      
+  
+
+        <!-- REAL FISH POND / RETENTION BASIN ON RIGHT FLANK (x=515 to 585) -->
+        <ellipse cx="550" cy="225" rx="38" ry="85" fill="#38BDF8" stroke="#0284C7" stroke-width="2.5"/>
+        <ellipse cx="550" cy="225" rx="30" ry="70" fill="#0284C7" opacity="0.3"/>
+        <!-- Fish ripples -->
+        <circle cx="545" cy="185" r="6" fill="none" stroke="#FFFFFF" stroke-width="1.2"/>
+        <circle cx="555" cy="245" r="9" fill="none" stroke="#FFFFFF" stroke-width="1.2"/>
+        <text x="550" y="228" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#0C4A6E" text-anchor="middle" transform="rotate(90 550 228)">𖬗𖬲𖬪𖬵 𖬉𖬲𖬝 / 𖬗𖬲𖬪𖬵 𖬈𖬲𖬞𖬰</text>
+
+        <!-- PHYSICAL FRONT FENCE WITH GATE OPENING FAR FROM POND -->
+        <line x1="260" y1="355" x2="295" y2="355" stroke="#334155" stroke-width="3.5"/>
+        <line x1="345" y1="355" x2="505" y2="355" stroke="#334155" stroke-width="3.5"/>
+
+        <!-- GATE POSTS ON FRONT FENCE LINE -->
+        <rect x="291" y="350" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="341" y="350" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+
+        <!-- SWINGING GATE DOORS (Open Inward) -->
+        <line x1="295" y1="355" x2="305" y2="344" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="345" y1="355" x2="335" y2="344" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (UNOBSTRUCTED) -->
+        <path d="M 320 395 L 320 355 C 320 310 335 270 355 220" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+
+        <!-- [✓] RECOMMENDED GATE BADGE (OFFSET LEFT TO CLEAR DRIVEWAY) -->
+        <g transform="translate(195, 350)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">✓ 𖬌𖬲𖬡 𖬗𖬶𖬜 𖬒𖬲𖬞</text>
+          <line x1="88" y1="9" x2="100" y2="5" stroke="#15803D" stroke-width="1.8"/>
+          <circle cx="100" cy="5" r="2.2" fill="#15803D"/>
+        </g>
+
+        <!-- [✗] FORBIDDEN GATE BADGE (ANCHORED NEAR POND SLUMP ZONE) -->
+        <g transform="translate(425, 363)">
+          <rect x="0" y="0" width="80" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="40" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">✗ 𖬙𖬯𖬵 𖬌𖬲𖬡 𖬗𖬶𖬜</text>
+          <line x1="40" y1="0" x2="40" y2="-6" stroke="#DC2626" stroke-width="1.8"/>
+          <circle cx="40" cy="-6" r="2" fill="#DC2626"/>
+        </g>
+      
+  </g>
+
+  <!-- BOTTOM DOCTRINAL SUMMARY CARD (Y=448 to 474) -->
+  <!-- ========================================================================= -->
+  <rect x="18" y="448" width="764" height="26" rx="5" fill="#1E293B"/>
+  <text x="400" y="465" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="9" fill="#F8FAFC" text-anchor="middle">𖬅𖬲𖬡 𖬉𖬝𖬰 𖬃𖬲𖬤𖬰 𖭓 𖬖𖬲𖬤𖬵, 𖬑𖬯 𖬗𖬶𖬢 𖬅𖬧𖬵 𖬈𖬪𖬵 𖬘𖬰𖬮, 𖬓𖬤 𖬃𖬰𖬝𖬰 𖬐𖬰𖬦 𖬒𖬶𖬣 𖬗𖬪𖬰 𖬄𖬲𖬟 𖬉𖬝𖬰 𖬐𖬶𖬟 𖬑𖬯 𖬐𖬲𖬤 𖬏𖬰𖬦𖬰.</text>
+</svg>

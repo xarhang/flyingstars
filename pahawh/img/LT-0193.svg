@@ -1,0 +1,41 @@
+
+<svg width="800" height="480" viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg">
+  
+    <rect width="800" height="480" fill="#F0FDF4"/>
+    <rect y="310" width="800" height="110" fill="#DCFCE7"/>
+    
+      <path d="M 0 420 L 0 350 L 180 320 L 250 110 L 550 110 L 620 320 L 800 350 L 800 420 Z" fill="#B45309" stroke="#78350F" stroke-width="2.5"/>
+      <rect x="250" y="105" width="300" height="16" fill="#FDE047" stroke="#CA8A04"/>
+    
+    
+      
+    <rect x="372" y="335" width="56" height="30" rx="3" fill="#FEF08A" stroke="#1E40AF" stroke-width="1.8"/>
+    <polygon points="364,335 400,315 436,335" fill="#2563EB" stroke="#1E40AF" stroke-width="1.8"/>
+    <rect x="393" y="347" width="14" height="18" fill="#1E293B"/>
+    <rect x="366" y="331" width="68" height="38" rx="4" fill="none" stroke="#1E40AF" stroke-width="1.2" stroke-dasharray="4,2"/>
+  
+      
+    <rect x="410" y="80" width="279" height="24" rx="6" fill="#FFFFFF" fill-opacity="0.96" stroke="#B45309" stroke-width="1.3"/>
+    <text x="549.5" y="96" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="11" fill="#B45309" text-anchor="middle">𖬌𖬡 𖬔𖬶𖬧𖬵 𖬌𖬲𖬡 (𖬌𖬡 𖬗𖬮𖬰 𖬌𖬡 𖬗𖬮𖬰 Ju Men Mesa)</text>
+  
+      
+    <rect x="230" y="300" width="354" height="24" rx="6" fill="#FFFFFF" fill-opacity="0.96" stroke="#15803D" stroke-width="1.3"/>
+    <text x="407" y="316" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="11" fill="#15803D" text-anchor="middle">𖬉𖬝𖬰 𖬒𖬰𖬮𖬵 𖬈𖬪𖬵 𖬄𖬲𖬟 𖬈𖬲𖬩𖬵 𖬐𖬰𖬡 𖬒𖬶𖬩𖬰 𖬔𖬶𖬮𖬵 𖬅𖬩𖬵</text>
+  
+    
+  
+  
+    <rect x="20" y="10" width="760" height="36" rx="8" fill="#FFFFFF" fill-opacity="0.97" stroke="#16A34A" stroke-width="1.8"/>
+    <text x="35" y="33" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="14" fill="#15803D">LT-0193</text>
+    <text x="115" y="33" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="12" fill="#1E293B">𖬌𖬡 𖬗𖬮𖬰 (𖬌𖬡 𖬗𖬮𖬰 / 𖬌𖬡 𖬗𖬮𖬰 Ju Men) (𖬌𖬡)</text>
+    
+    <rect x="625" y="14" width="145" height="28" rx="6" fill="#166534"/>
+    <text x="697" y="32" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">✓ 𖬍𖬥𖬰: 𖭙𖭒 / 𖭑𖭐𖭐</text>
+  
+  
+    <rect x="20" y="420" width="760" height="50" rx="6" fill="#FFFFFF" fill-opacity="0.96" stroke="#16A34A" stroke-width="1.2"/>
+    <text x="32" y="438" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#334155"><tspan font-weight="bold" fill="#0F172A">𖬒𖬲𖬯𖬵 𖬋𖬯: </tspan>𖬌𖬡 𖬔𖬶𖬧𖬵 𖬄𖬤𖬵 𖬄𖬰𖬧𖬵 𖬅𖬟 𖬍𖬥𖬰 𖬃𖬞 𖬆𖬰𖬞 𖬌𖬲𖬡 𖬓𖬲𖬞 𖬃𖬰𖬤𖬵 𖬆𖬰𖬞 𖬖𖬰𖬯𖬵 𖬙𖬰𖬪𖬵. 𖬌𖬡 𖬓𖬪𖬵 𖬌 (𖬋𖬧𖬵 𖬇𖬥𖬰 Shan - 𖬓𖬪𖬵 𖬌 𖬒𖬶𖬤𖬰 𖬌𖬡). L...</text>
+    <text x="32" y="458" font-family="'Phetsarath OT', 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#334155"><tspan font-weight="bold" fill="#0F172A">𖬉 𖬓𖬰𖬩𖬰: </tspan>𖬂𖬝𖬰 𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖬒𖬰𖬪𖬵 𖬈𖬰𖬥𖬰 𖬒𖬰𖬪𖬵 𖬈𖬰𖬥𖬰 𖬊𖬲𖬟𖬰 𖬖𖬲𖬤𖬵 𖬑𖬲𖬮𖬰 𖬆𖬰𖬞 𖬌𖬡 𖬃𖬰𖬝𖬰 𖬄𖬟, 𖬔𖬟𖬰 𖬓𖬯 𖬍𖬩𖬵 𖬐𖬶𖬝 𖬎𖬦𖬰 𖬆𖬰𖬞 𖬓𖬥𖬰.</text>
+  
+</svg>
+  
