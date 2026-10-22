@@ -12612,6 +12612,10 @@ function updateCompassTransform(deltaAngle = null) {
         }
 
         function updateGuaDisplay(syncInput = true) {
+            const isMale = currentGender === 'male';
+            if (typeof bornBeforeLichun !== 'undefined' && bornBeforeLichun) {
+                isBornBeforeLichun = bornBeforeLichun.checked;
+            }
             let val = parseInt(birthYearInput.value, 10);
             if (isNaN(val)) {
                 val = parseInt(birthYearSelect.value, 10) || 1990;
@@ -12636,10 +12640,7 @@ function updateCompassTransform(deltaAngle = null) {
                 birthYearSelect.value = val;
             }
 
-            isBornBeforeLichun = bornBeforeLichun.checked;
-            const isMale = currentGender === 'male';
-
-            const calc = calculateGua(currentBirthYear, isMale, isBornBeforeLichun);
+                        const calc = calculateGua(currentBirthYear, isMale, isBornBeforeLichun);
             currentGuaData = calc.guaData;
             currentYearInfo = calc.yearInfo;
 
