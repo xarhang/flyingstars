@@ -28,6 +28,8 @@
 !/lao/**
 
 # Whitelist /script specific files
+!/script/
+/script/*
 !/script/data_boundary*
 !/script/render_all_boundary_plots.js
 !/script/enrich_boundary_doctrine.js
@@ -35,6 +37,12 @@
 !/script/build_master_atlas_encyclopedia_docx.js
 !/script/build_hmong_web_portal.js
 !/script/build_lao_web_portal.js
+!/script/build_pahawh_web_portal.js
+!/script/rpa_to_pahawh_converter.js
+
+# Whitelist /pahawh web app
+!/pahawh/
+!/pahawh/**
 
 
 
