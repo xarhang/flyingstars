@@ -289,6 +289,9 @@ function rpaToPahawh(text, options = {}) {
       if (lowWord === 'tshajplaws') {
         return '\u{16B16}\u{16B30}\u{16B2A}\u{16B30} \u{16B0F}\u{16B30}\u{16B1F}\u{16B35}'; // 𖬖𖬰𖬪𖬰 𖬏𖬰𖬟𖬵 (tshaj plaws)
       }
+      if (lowWord === 'lossis') {
+        return rpaSyllableToPahawh('los') + ' ' + rpaSyllableToPahawh('sis');
+      }
 
       // Check if word can be directly mapped as a single syllable
       const singleSyl = rpaSyllableToPahawh(word);

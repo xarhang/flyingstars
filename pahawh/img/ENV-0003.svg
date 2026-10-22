@@ -1,0 +1,141 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EDF2F7"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#bgGrad)"/>
+
+  <!-- TOP TITLE HUD BAR -->
+  <rect x="0" y="0" width="800" height="42" fill="#0F172A"/>
+  <rect x="18" y="9" width="80" height="24" rx="4" fill="#EA580C"/>
+  <text x="58" y="25" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">ENV-0003</text>
+  <text x="108" y="26" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="11" fill="#F8FAFC">𖬈𖬲𖬤𖬰 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 𖬒𖬰𖬮 &amp; Transformer: 𖬓𖬥𖬰 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 Sha (Electric Sha)</text>
+  <rect x="580" y="9" width="105" height="24" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="632" y="25" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="10" fill="#F97316" text-anchor="middle">𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 Sha</text>
+  <rect x="692" y="9" width="90" height="24" rx="4" fill="#991B1B"/>
+  <text x="737" y="25" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="10.5" fill="#FEF2F2" text-anchor="middle">𖬀𖬶𖬯 𖬖𖬰𖬞</text>
+
+  <!-- LEFT COLUMN CARDS -->
+  <rect x="12" y="48" width="174" height="185" rx="6" fill="#FFF7ED" stroke="#F97316" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="48" width="174" height="24" rx="6" fill="#EA580C"/>
+  <text x="100" y="64" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">⚡ 𖬈𖬲𖬤𖬰 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 𖬒𖬰𖬮</text>
+  <text x="20" y="86" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.8" fill="#9A3412">• 𖬓𖬤 𖬓𖬥𖬰 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 𖬆𖬰</text>
+  <text x="20" y="103" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.8" fill="#9A3412">• 𖬘𖬪𖬰 𖬓𖬥𖬰 electromagnetic</text>
+  <text x="20" y="120" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.8" fill="#9A3412">• 𖬅𖬲𖬡 𖬆𖬰𖬞 𖬔𖬤𖬵, 𖬂𖬧 𖬀𖬲𖬯</text>
+  <rect x="18" y="132" width="162" height="42" rx="4" fill="#FFEDD5"/>
+  <text x="99" y="146" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7" fill="#C2410C" text-anchor="middle">𖬒𖬶𖬣 𖬈𖬰𖬞𖬰 𖬖𖬲𖬮𖬵 𖬀𖬶𖬮:</text>
+  <text x="99" y="162" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="6.8" fill="#9A3412" text-anchor="middle">𖬈𖬰𖬞𖬰 >𖭓𖭐-𖭕𖭐m 𖬄𖬲𖬤𖬵</text>
+
+  <rect x="12" y="240" width="174" height="202" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="240" width="174" height="24" rx="6" fill="#15803D"/>
+  <text x="100" y="256" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">🛡️ 𖬒𖬲𖬯𖬵 𖬋𖬯 𖬂𖬟𖬰 𖬉𖬝𖬰</text>
+  <text x="20" y="278" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.8" fill="#14532D">𖭑. 𖬂𖬟𖬰 𖬆𖬰𖬞 𖬉𖬝𖬰 𖬅𖬡 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵</text>
+  <text x="20" y="295" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.8" fill="#14532D">𖭒. 𖬑𖬮𖬰 𖬖𖬰𖬜 𖬖𖬰𖬪𖬵 𖬈𖬪𖬵 𖬄𖬲𖬟 𖬈𖬲𖬩𖬵</text>
+  <text x="20" y="312" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.8" fill="#14532D">𖭓. 𖬗𖬧 𖬙𖬰𖬪𖬵 𖬒𖬰𖬮𖬵 𖬈𖬰𖬞𖬰 𖬈𖬲𖬤𖬰</text>
+  <rect x="18" y="328" width="162" height="45" rx="3" fill="#DCFCE7"/>
+  <text x="99" y="343" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7" fill="#166534" text-anchor="middle">𖬗𖬮𖬰 𖬏𖬰𖬞𖬰 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵</text>
+  <text x="99" y="357" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="6.5" fill="#14532D" text-anchor="middle">𖬖𖬲𖬝𖬵 𖬗𖬰𖬝 𖬗𖬮𖬰/𖬈𖬰𖬥𖬰 + 𖬗𖬲𖬪𖬵 𖬈𖬲𖬞𖬰</text>
+
+  <!-- CENTER SITE PLAN -->
+  <g id="centerSite">
+    <rect x="200" y="48" width="400" height="280" fill="#F0FDF4" stroke="#16A34A" stroke-width="2"/>
+
+    <!-- SAFE HOUSE IN REAR -->
+    <polygon points="340,90 400,70 460,90" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+    <rect x="345" y="90" width="110" height="55" fill="#FEF08A" stroke="#854D0E" stroke-width="1.8" rx="3"/>
+    <text x="400" y="115" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="9.5" fill="#1E293B" text-anchor="middle">𖬆𖬰𖬞 𖬉𖬝𖬰</text>
+    <text x="400" y="128" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7" fill="#475569" text-anchor="middle">𖬂𖬟𖬰 𖬈𖬰𖬞𖬰 >𖭒𖭕m</text>
+
+    <!-- Ming Tang Lawn -->
+    <rect x="250" y="160" width="300" height="70" rx="5" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="400" y="180" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">𖬖𖬰𖬟𖬰 𖬗𖬪𖬰 𖬖𖬰: 𖬂𖬞 𖬓𖬥𖬰 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵</text>
+    <text x="400" y="196" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="6.8" fill="#166534" text-anchor="middle">✓ 𖬓𖬯 𖬌𖬧𖬰 𖬐𖬶𖬝 𖬂𖬞 𖬓𖬥𖬰 𖬆𖬰</text>
+
+    <!-- Water Basin Cure (Water cools Fire) -->
+    <circle cx="340" cy="205" r="12" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.2"/>
+    <ellipse cx="340" cy="205" rx="8" ry="4" fill="none" stroke="#38BDF8" stroke-width="0.8"/>
+    <circle cx="340" cy="205" r="2" fill="#0284C7"/>
+    <text x="340" y="228" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="5.8" fill="#0284C7" text-anchor="middle">𖬗𖬲𖬪𖬵 𖬈𖬲𖬞𖬰 𖬕𖬰𖬯𖬵</text>
+
+    <!-- Defensive Screen Wall & Hedge (Y=245 to 260) -->
+    <rect x="200" y="245" width="400" height="5" fill="#334155"/>
+    <circle cx="220" cy="255" r="6" fill="#14532D"/>
+    <circle cx="245" cy="255" r="6" fill="#166534"/>
+    <circle cx="270" cy="255" r="6" fill="#14532D"/>
+    <circle cx="295" cy="255" r="6" fill="#166534"/>
+    <circle cx="320" cy="255" r="6" fill="#14532D"/>
+    <circle cx="345" cy="255" r="6" fill="#166534"/>
+    <rect x="375" y="246" width="50" height="15" rx="2" fill="#1E293B" stroke="#94A3B8" stroke-width="1"/>
+    <text x="400" y="257" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7" fill="#F8FAFC" text-anchor="middle">𖬒𖬰𖬪𖬵 𖬈𖬰𖬥𖬰 𖬊𖬲𖬟𖬰</text>
+    <circle cx="455" cy="255" r="6" fill="#14532D"/>
+    <circle cx="480" cy="255" r="6" fill="#166534"/>
+    <circle cx="505" cy="255" r="6" fill="#14532D"/>
+    <circle cx="530" cy="255" r="6" fill="#166534"/>
+    <circle cx="555" cy="255" r="6" fill="#14532D"/>
+    <circle cx="580" cy="255" r="6" fill="#166534"/>
+
+    <!-- FRONT ROAD WITH HIGH VOLTAGE PYLON (Y=330 to 425) -->
+    <rect x="200" y="330" width="400" height="95" fill="#334155"/>
+    <line x1="200" y1="375" x2="600" y2="375" stroke="#FBBF24" stroke-width="2" stroke-dasharray="8,6"/>
+    <text x="400" y="395" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7.5" fill="#FFFFFF" text-anchor="middle">𖬉 𖬒𖬲𖬞</text>
+
+    <!-- HIGH VOLTAGE PYLON DRAWING (Right Roadside X=520, Y=340) -->
+    <g transform="translate(490, 335)">
+      <!-- Steel Pylon Frame -->
+      <polygon points="25,10 5,75 45,75" fill="none" stroke="#EA580C" stroke-width="2.2"/>
+      <line x1="12" y1="50" x2="38" y2="50" stroke="#EA580C" stroke-width="1.8"/>
+      <line x1="18" y1="30" x2="32" y2="30" stroke="#EA580C" stroke-width="1.8"/>
+      <line x1="5" y1="75" x2="32" y2="30" stroke="#EA580C" stroke-width="1.2"/>
+      <line x1="45" y1="75" x2="18" y2="30" stroke="#EA580C" stroke-width="1.2"/>
+      <!-- Cross Arms -->
+      <line x1="0" y1="25" x2="50" y2="25" stroke="#EA580C" stroke-width="2"/>
+      <line x1="5" y1="45" x2="45" y2="45" stroke="#EA580C" stroke-width="2"/>
+      <!-- Sparks / Fire Sha Vectors -->
+      <path d="M 0 25 C -20 20 -40 10 -60 0" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <polygon points="-62,-2 -55,4 -58,-5" fill="#EF4444"/>
+      <path d="M 5 45 C -20 40 -50 35 -75 25" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <polygon points="-78,23 -70,28 -74,20" fill="#EF4444"/>
+      <rect x="-10" y="78" width="70" height="15" rx="2" fill="#DC2626"/>
+      <text x="25" y="89" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="6.2" fill="#FFFFFF" text-anchor="middle">⚡ 𖬈𖬲𖬤𖬰 𖬐𖬲𖬥</text>
+    </g>
+
+    <!-- Gate Positioned Away from Pylon (Left Flank X=260) -->
+    <rect x="250" y="326" width="35" height="8" rx="1.5" fill="#15803D"/>
+    <text x="267" y="332" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="5.5" fill="#FFFFFF" text-anchor="middle">𖬌𖬲𖬡 𖬗𖬶𖬜</text>
+  </g>
+
+  <!-- RIGHT COLUMN CARDS -->
+  <rect x="614" y="48" width="174" height="185" rx="6" fill="#F8FAFC" stroke="#EA580C" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="48" width="174" height="24" rx="6" fill="#EA580C"/>
+  <text x="701" y="64" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">🛡️ 𖭔 𖬒𖬲𖬯𖬵 𖬉 𖬓𖬰𖬩𖬰 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵</text>
+  <text x="622" y="86" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.5" fill="#9A3412">𖭑. 𖬓𖬰𖬝𖬰 𖬌𖬲𖬡 𖬗𖬶𖬜 𖬈𖬰𖬞𖬰 𖬈𖬲𖬤𖬰</text>
+  <text x="622" y="103" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.5" fill="#9A3412">𖭒. 𖬓𖬯 𖬍𖬩𖬵 𖬐𖬶𖬧𖬵 𖬊𖬲𖬟𖬰 𖬒𖬶𖬣 𖬑𖬶𖬦</text>
+  <text x="622" y="120" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.5" fill="#9A3412">𖭓. 𖬂𖬝𖬰 𖬗𖬲𖬪𖬵 𖬈𖬲𖬞𖬰 (𖬈𖬲𖬞𖬰 𖬏𖬰𖬞𖬰 𖬐𖬲𖬥)</text>
+  <text x="622" y="137" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.5" fill="#9A3412">𖭔. 𖬒𖬰𖬪𖬵 𖬈𖬰𖬥𖬰 𖬒𖬰𖬪𖬵 𖬈𖬰𖬥𖬰 𖬊𖬲𖬟𖬰 𖬊𖬲𖬟𖬰</text>
+  <rect x="620" y="148" width="162" height="30" rx="3" fill="#FFEDD5"/>
+  <text x="701" y="161" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="6.8" fill="#C2410C" text-anchor="middle">𖬙𖬯𖬵 𖬃𖬰𖬝𖬰 𖬓𖬰𖬝𖬰 𖬌𖬲𖬡 𖬗𖬶𖬜 𖬖𖬰𖬤𖬰 𖬈𖬲𖬤𖬰</text>
+  <text x="701" y="172" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="6.2" fill="#9A3412" text-anchor="middle">𖬖𖬰𖬤𖬰 𖬈𖬲𖬤𖬰 = 𖬓𖬰𖬩 𖬆𖬰𖬞 𖬔𖬤𖬵</text>
+
+  <rect x="614" y="240" width="174" height="202" rx="6" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="240" width="174" height="24" rx="6" fill="#DC2626"/>
+  <text x="701" y="256" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">🚫 𖬒𖬶𖬯 𖬇𖬰𖬞 𖬙𖬯𖬵</text>
+  <text x="622" y="278" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.5" fill="#991B1B">• 𖬙𖬯𖬵 𖬗𖬧 𖬙𖬰𖬪𖬵 𖬉𖬰𖬥𖬰 𖬈𖬲𖬤𖬰</text>
+  <text x="622" y="295" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.5" fill="#991B1B">• 𖬙𖬯𖬵 𖬄𖬰𖬧𖬵 𖬅𖬟 𖬙𖬰𖬪𖬵 𖬕𖬝 𖬈𖬲𖬤𖬰</text>
+  <text x="622" y="312" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="7.5" fill="#991B1B">• 𖬙𖬯𖬵 𖬂𖬲𖬣 𖬒𖬶𖬣 𖬋𖬡 𖬖𖬰𖬤𖬰 𖬈𖬲𖬤𖬰</text>
+  <rect x="620" y="325" width="162" height="48" rx="3" fill="#FEE2E2"/>
+  <text x="701" y="340" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7" fill="#B91C1C" text-anchor="middle">𖬓𖬰𖬩𖬰 𖬒𖬶𖬣 𖬋𖬡:</text>
+  <text x="701" y="353" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="6.5" fill="#991B1B" text-anchor="middle">𖬒𖬶𖬡 𖬄𖬰𖬩𖬵 𖬐𖬶𖬧𖬵 + film 𖬊𖬲𖬟𖬰</text>
+  <text x="701" y="365" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="6.2" fill="#7F1D1D" text-anchor="middle">𖬊𖬞𖬰 𖬔𖬲𖬮𖬰 convex 𖭘 𖬖𖬲𖬜𖬵</text>
+
+  <!-- BOTTOM SUMMARY BAR -->
+  <rect x="0" y="445" width="800" height="35" fill="#0F172A"/>
+  <text x="400" y="460" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">𖬙𖬝𖬰 𖬂𖬤: 𖬈𖬲𖬤𖬰 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 𖬒𖬰𖬮 𖬓𖬤 𖬐𖬲𖬥 𖬏𖬰𖬧𖬵 Sha. 𖬂𖬟𖬰 𖬉𖬝𖬰 𖬈𖬰𖬞𖬰 >𖭒𖭕-𖭓𖭐m, 𖬓𖬰𖬝𖬰 𖬌𖬲𖬡 𖬗𖬶𖬜 𖬈𖬰𖬞𖬰 𖬈𖬲𖬤𖬰.</text>
+  <text x="400" y="472" font-family="'Noto Sans Pahawh Hmong', sans-serif" font-size="6.8" fill="#94A3B8" text-anchor="middle">𖬓𖬰𖬩𖬰 𖬓𖬜𖬰 𖬍𖬩𖬵 𖬐𖬶𖬧𖬵, 𖬗𖬲𖬪𖬵 𖬈𖬲𖬞𖬰 𖬕𖬰𖬯𖬵, 𖬒𖬰𖬪𖬵 𖬈𖬰𖬥𖬰 𖬒𖬰𖬪𖬵 𖬈𖬰𖬥𖬰 𖬊𖬲𖬟𖬰, 𖬔𖬟𖬰 𖬙𖬯𖬵 𖬗𖬧 𖬙𖬰𖬪𖬵 𖬒𖬰𖬮𖬵 𖬉𖬰𖬥𖬰 𖬈𖬲𖬤𖬰.</text>
+</svg>
