@@ -1082,7 +1082,7 @@ const html = `<!DOCTYPE html>
       </div>
       <div class="modal-content">
         <div class="modal-img-wrap">
-          <img id="modalDetailImg" class="modal-img" src="" alt="" title="Nyem rau qhov loj Ultra-HD 2400x1440">
+          <img id="modalDetailImg" class="modal-img" src="" alt="">
           <a id="modalDetailImgZoomBtn" href="#" target="_blank" class="modal-zoom-pill" title="Saib Duab Loj Ultra-HD 2400x1440">
             🔍 Saib Duab Loj Ultra-HD (2400x1440)
           </a>

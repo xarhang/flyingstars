@@ -877,19 +877,29 @@ function renderCenterDrawing(id, lang) {
         
         <!-- Retaining Wall & Cliff Drop-off -->
         <line x1="260" y1="305" x2="540" y2="305" stroke="#991B1B" stroke-width="6" stroke-dasharray="8,4"/>
-        <rect x="260" y="308" width="280" height="45" fill="#7F1D1D"/>
-        <text x="400" y="330" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#FEF2F2" text-anchor="middle">${isLao ? '[X] ແຄມໜ້າຜາຊັນ (Cliff Drop-off - ຫ້າມສ້າງອາຄານ)' : '[X] Ntug Tsua Siab (Txwv Tsis Tso Tsev)'}</text>
+        <rect x="260" y="306" width="280" height="58" fill="#7F1D1D"/>
+        
+        <!-- Cliff Warning Text at Top of Cliff Drop-Off (y=322) - Completely Clear -->
+        <text x="400" y="322" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FEF2F2" text-anchor="middle">${isLao ? '[X] ແຄມໜ້າຜາຊັນ (Cliff Drop-off - ຫ້າມສ້າງອາຄານ)' : '[X] Ntug Tsua Siab (Txwv Tsis Tso Tsev)'}</text>
         
         <!-- Retaining Wall Label -->
-        <rect x="315" y="285" width="170" height="15" rx="3" fill="#475569"/>
-        <text x="400" y="296" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FFFFFF" text-anchor="middle">${isLao ? 'ກຳແພງກັນດິນ &amp; ເສົາເຂັມເລິກ' : 'Phab Ntsa Thaiv Av Ruaj'}</text>
+        <rect x="315" y="284" width="170" height="16" rx="3" fill="#475569"/>
+        <text x="400" y="295" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FFFFFF" text-anchor="middle">${isLao ? 'ກຳແພງກັນດິນ &amp; ເສົາເຂັມເລິກ' : 'Phab Ntsa Thaiv Av Ruaj'}</text>
 
-        ${renderBoundaryHouse(335, 115, 130, 60, '325,115 400,90 475,115', isLao, houseText, isLao ? 'ຖອຍຫ່າງໜ້າຜາ 15 ແມັດ' : 'Deb Ntug Tsua 15m')}
+        ${renderBoundaryHouse(335, 115, 130, 60, '325,115 400,90 475,115', isLao, houseText, isLao ? 'ຖອຍຫ່າງໜ້າຜາ 15 ແມັດ' : 'Deb Ntug Tsua 15m', { hasDoor: false })}
 
         <!-- PHYSICAL INLAND GATE ON SOLID ROAD (Y=95) -->
         <rect x="296" y="90" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
         <rect x="346" y="90" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
         <path d="M 325 55 L 325 95 C 325 105 340 115 365 125" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
+
+        <!-- Front Main Door on Inland Facing Side (Connects with Driveway) -->
+        <rect x="355" y="113" width="20" height="4" fill="#1E293B"/>
+        <text x="365" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">${isLao ? 'ປະຕູໃຫຍ່' : 'Rooj Loj'}</text>
+
+        <!-- Solid Rear Wall facing Cliff Drop-off (No Door Allowed) -->
+        <line x1="335" y1="175" x2="465" y2="175" stroke="#334155" stroke-width="3"/>
+        <text x="400" y="186" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#64748B" text-anchor="middle">${isLao ? '✓ ຝາທຶບດ້ານຜາ (ຫ້າມເປີດປະຕູ)' : '✓ Phab Ntsa Tuab'}</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET LEFT TO CLEAR TOP DRIVEWAY) -->
         <g transform="translate(195, 65)">
@@ -899,10 +909,10 @@ function renderCenterDrawing(id, lang) {
           <circle cx="105" cy="15" r="2.2" fill="#15803D"/>
         </g>
 
-        <!-- [✗] FORBIDDEN GATE BADGE (ANCHORED TO CLIFF PRECIPICE) -->
-        <g transform="translate(360, 312)">
-          <rect x="0" y="0" width="80" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
-          <text x="40" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#FFFFFF" text-anchor="middle">${gateNoText}</text>
+        <!-- [✗] FORBIDDEN GATE BADGE (AT CLIFF BOTTOM, CLEAR OF TEXT AT Y=322) -->
+        <g transform="translate(355, 334)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${gateNoText}</text>
         </g>
       `;
 
