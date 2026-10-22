@@ -215,7 +215,7 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>𖬖𖬰𖬝𖬵 𖬄𖬶𖬟 𖬌𖬣𖬵 • 𖬌𖬲𖬞 𖬈𖬦 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬗𖬰𖬤 (ມົ້ງ)</title>
+  <title>𖬖𖬰𖬝𖬵 𖬄𖬶𖬟 𖬌𖬣𖬵 • 𖬌𖬲𖬞 𖬈𖬦 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬗𖬰𖬤 (𖬌𖬣𖬵)</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%237f1d1d' stroke='%23f59e0b' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='26' fill='%230f172a' stroke='%23fbbf24' stroke-width='1.5'/%3E%3Cpath d='M32,8 A24,24 0 0,1 32,56 A12,12 0 0,1 32,32 A12,12 0 0,0 32,8 Z' fill='%23f8fafc'/%3E%3Cpath d='M32,8 A24,24 0 0,0 32,56 A12,12 0 0,0 32,32 A12,12 0 0,1 32,8 Z' fill='%230f172a'/%3E%3Ccircle cx='32' cy='20' r='3.5' fill='%230f172a'/%3E%3Ccircle cx='32' cy='44' r='3.5' fill='%23f8fafc'/%3E%3C/svg%3E">
 
   <!-- GOOGLE FONTS & LOCAL NOTO SANS PAHAWH HMONG FONT STACK -->
@@ -1002,7 +1002,7 @@ const html = `<!DOCTYPE html>
         <div class="brand-logo">𖬌𖬣𖬵</div>
         <div class="brand-text">
           <h1 class="pahawh-glyph">𖬖𖬰𖬝𖬵 𖬄𖬶𖬟 𖬌𖬣𖬵 • 𖬌𖬲𖬞 𖬈𖬦 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬗𖬰𖬤</h1>
-          <span>𖬌𖬣𖬵 (ມົ້ງ)</span>
+          <span>𖬌𖬣𖬵</span>
         </div>
       </a>
 
@@ -1029,13 +1029,13 @@ const html = `<!DOCTYPE html>
       <!-- LANGUAGE SWITCHER & TOOLS -->
       <div class="nav-actions">
         <a href="../lao/index.html" class="lang-btn" title="ໄປຫາເວັບໄຊສະບັບພາສາລາວ">
-          <span>🇱🇦 ລາວ</span>
+          <span>ລາວ</span>
         </a>
-        <a href="../hmong/index.html" class="lang-btn" title="Mus rau Hmoob RPA">
-          <span>📖 RPA</span>
+        <a href="../hmong/index.html" class="lang-btn" title="Mus rau Hmoob">
+          <span>Hmoob</span>
         </a>
-        <span class="lang-btn active" title="ພາສາມົ້ງ">
-          <span class="pahawh-glyph">𖬌𖬣𖬵 ມົ້ງ</span>
+        <span class="lang-btn active" title="𖬌𖬣𖬵">
+          <span class="pahawh-glyph">𖬌𖬣𖬵</span>
         </span>
         <a href="../index.html" class="compass-btn" title="Kev Ntsuas Luopan">
           <span>🧭 Luopan</span>

@@ -921,10 +921,10 @@ const html = `<!DOCTYPE html>
 
       <div class="nav-actions">
         <a href="../lao/index.html" class="lao-btn" title="ໄປຫາເວັບໄຊສະບັບພາສາລາວ">
-          <span>🇱🇦 ລາວ (/lao/)</span>
+          <span>ລາວ</span>
         </a>
-        <a href="../pahawh/index.html" class="lao-btn" style="background: rgba(212,175,55,0.2); border-color: var(--gold);" title="Mus rau Ntawv Hmoob">
-          <span>𖬌𖬣𖬵 Hmoob</span>
+        <a href="../pahawh/index.html" class="lao-btn" style="background: rgba(212,175,55,0.2); border-color: var(--gold);" title="Mus rau 𖬌𖬣𖬵">
+          <span>𖬌𖬣𖬵</span>
         </a>
         <a href="../index.html" class="lao-btn" title="ກັບຄືນໜ້າຈານເຂັມທິດ">
           <span>🧭 ຈານເຂັມທິດ</span>
