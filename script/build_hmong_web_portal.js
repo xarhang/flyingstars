@@ -923,8 +923,8 @@ const html = `<!DOCTYPE html>
         <a href="../lao/index.html" class="lao-btn" title="ໄປຫາເວັບໄຊສະບັບພາສາລາວ">
           <span>🇱🇦 ລາວ (/lao/)</span>
         </a>
-        <a href="../pahawh/index.html" class="lao-btn" style="background: rgba(212,175,55,0.2); border-color: var(--gold);" title="Mus rau Phajhauj Hmoob Version 3">
-          <span>𖬖𖬰𖬝𖬵 Pahawh v3</span>
+        <a href="../pahawh/index.html" class="lao-btn" style="background: rgba(212,175,55,0.2); border-color: var(--gold);" title="Mus rau Phajhauj Hmoob">
+          <span>𖬖𖬰𖬝𖬵 𖬄𖬶𖬟 (Phajhauj)</span>
         </a>
         <a href="../index.html" class="lao-btn" title="ກັບຄືນໜ້າຈານເຂັມທິດ">
           <span>🧭 ຈານເຂັມທິດ</span>

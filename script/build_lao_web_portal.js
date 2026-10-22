@@ -808,8 +808,8 @@ const html = `<!DOCTYPE html>
         <a href="../hmong/index.html" class="hmong-btn" title="ໄປຫາເວັບໄຊສະບັບພາສາມົ້ງ RPA">
           <span>📖 Hmoob RPA</span>
         </a>
-        <a href="../pahawh/index.html" class="hmong-btn" style="background: #7F1D1D; border: 1px solid #D4AF37;" title="ໄປຫາເວັບໄຊສະບັບພາສາມົ້ງ ຕົວໜັງສື Pahawh Version 3">
-          <span>𖬖𖬰𖬝𖬵 Pahawh v3</span>
+        <a href="../pahawh/index.html" class="hmong-btn" style="background: #7F1D1D; border: 1px solid #D4AF37;" title="ໄປຫາເວັບໄຊສະບັບພາສາມົ້ງພາເຮົ່າ">
+          <span>𖬖𖬰𖬝𖬵 ມົ້ງພາເຮົ່າ</span>
         </a>
         <a href="../index.html" class="compass-btn" title="ກັບຄືນໜ້າຈານເຂັມທິດຫຼັກ">
           <span>🧭 ຈານເຂັມທິດ</span>
