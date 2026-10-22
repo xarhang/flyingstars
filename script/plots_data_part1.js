@@ -1612,8 +1612,8 @@ module.exports = [
     hasFrontRoad: true,
     nameLao: 'ຕອນດິນສາມຫຼ່ຽມ ຫົວແຫຼມຕຳທາງໜ້າ ຫຼັງກວ້າງ (Triangle Plot - Front Apex Facing Road)',
     nameHmong: 'San Jiao Tu: Kaum Ntse Pem (Thaj Av Peb Fab Kaum Ntse Ntsib Kev)',
-    elementLao: 'ທາດໄຟແຫຼມຕຳທາງໜ້າ Front Sharp Fire / ',
-    elementHmong: 'Zog Hluav Ntse Pem Front Fire Sha / ',
+    elementLao: 'ທາດໄຟແຫຼມຕຳທາງໜ້າ Front Sharp Fire / ທາດໄຟ',
+    elementHmong: 'Zog Hluav Ntse Pem Front Fire Sha / Zog Hluav',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສາມຫຼ່ຽມຫົວແຫຼມຕຳທາງໜ້າ ເປັນພະລັງພິສທາດໄຟ (Fire Sha). ຕ້ອງສ້າງກຳແພງຕັດມຸມປ່ຽນເປັນຄາງໝູ, ວາງເຮືອນຢູ່ຫຼັງກວ້າງ ແລະ ເຮັດທາງລົດໂຄ້ງ S-Curve.',
     summaryHmong: 'Tswv Yim: Thaj av peb fab kaum ntse ntsib kev yog zog Hluav Taws Sha. Yuav tsum tsim phab ntsa txiav kaum ua trapezoid, tso tsev rau sab nraub qaum dav thiab ua kev nkhaus S-Curve.',
 
@@ -1662,8 +1662,8 @@ module.exports = [
       l1: '• ຕຳແໜ່ງ: ວາງອາຄານຫຼັກໃນເຂດຫຼັງກວ້າງ 1/3',
       l2: '• ໄລຍະຖອຍ: ຖອຍຫ່າງຈາກມຸມແຫຼມໜ້າ >15-20m',
       l3: '• ຮູບຊົງເຮືອນ: ສີ່ຫຼ່ຽມຜືນຜ້າຕັ້ງສາກ 90° ເຕັມຫຼັງ',
-      l4: '• ທິດຫົວຕຽງ: ພິງຝາທຶບດ້ານຫຼັງກວ້າງ',
-      bed: 'ຫົວຕຽງພິງກຳແພງຫຼັງທີ່ໜັກແໜ້ນ',
+      l4: '• ທິດພິງຫຼັງ: ພິງກຳແພງຫຼັງກວ້າງທີ່ໜັກແໜ້ນ',
+      bed: 'ຫົວຕຽງ: ພິງຝາທຶບ ຫ້າມຫັນຫົວໄປຫາມຸມແຫຼມ',
       bedSub: 'ຫ້າມວາງຕຽງນອນ ຫຼື ເຕົາໄຟໃນເຂດມຸມແຫຼມ'
     },
     houseHmong: {
@@ -1671,7 +1671,7 @@ module.exports = [
       l1: '• Chaw Tso Tsev: Tso rau sab nraub qaum dav 1/3',
       l2: '• Qhov Nrug: Thim deb ntawm kaum ntse pem >15-20m',
       l3: '• Duab Tsev: Rectangle ncaj ncees 90° puv nkaus',
-      l4: '• Taub Hau Pw: Phab ntsa sab nraub qaum dav',
+      l4: '• Zaum (Zuo): Zaum nraub qaum dav ruaj khov',
       bed: 'Taub Hau Pw: Phab ntsa nraub qaum ruaj khov',
       bedSub: 'Txwv tsis tso txaj pw lossis qhov cub kaum ntse'
     },
@@ -1701,30 +1701,48 @@ module.exports = [
       const isLao = lang === 'lao';
       const houseText = isLao ? 'ອາຄານຫຼັກ' : 'Lub Tsev';
       const houseSub = isLao ? 'ຕັ້ງຢູ່ເຂດປອດໄພດ້ານຫຼັງ' : 'Nyob Sab Nraub Qaum';
-      const apexHazardText = isLao ? '⚠️ ຈຸດແຫຼມຕຳທາງ (Scissors Apex)' : '⚠️ Kaum Ntse Ntsib Kev';
+      const apexHazardText = isLao ? '⚠️ ຕັດມຸມແຫຼມທາດໄຟ (Truncated Fire Apex)' : '⚠️ Txiav Kaum Ntse Hluav Taws';
 
       return `
         <!-- Surrounding Neighbor Property Labels -->
         <text x="400" y="74" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">${isLao ? 'ດິນເພື່ອນບ້ານຫຼັງ (Rear Neighbor)' : 'Ciam Av Tom Qab'}</text>
+        <text x="260" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-65 260 220)">${isLao ? 'ເພື່ອນບ້ານຊ້າຍ' : 'Tsev Sab Laug'}</text>
+        <text x="540" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(65 540 220)">${isLao ? 'ເພື່ອນບ້ານຂວາ' : 'Tsev Sab Xis'}</text>
 
-        <!-- Acute Triangle: Base at Rear Y=85 (X=240..560), Sharp Apex at Front Road Y=355 (X=400) -->
-        <polygon points="240,85 560,85 400,355" fill="#FEF2F2" stroke="#DC2626" stroke-width="3"/>
-        <polygon points="248,90 552,90 400,348" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="6,4"/>
+        <!-- Truncated Triangle Plot: Wide Rear Base Y=85 (X=250..550), Front Road Frontage Y=355 (X=365..435) -->
+        <polygon points="250,85 550,85 435,355 365,355" fill="#FEF2F2" stroke="#DC2626" stroke-width="3"/>
+        <polygon points="258,90 542,90 430,350 370,350" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="6,4"/>
 
-        <!-- Rear Solid Wall across Wide Base (X=240..560, Y=85) -->
-        <line x1="240" y1="85" x2="560" y2="85" stroke="#991B1B" stroke-width="4.5"/>
-        <line x1="240" y1="85" x2="400" y2="355" stroke="#334155" stroke-width="3"/>
-        <line x1="560" y1="85" x2="400" y2="355" stroke="#334155" stroke-width="3"/>
+        <!-- Rear Solid Wall across Wide Base (X=250..550, Y=85) -->
+        <line x1="250" y1="85" x2="550" y2="85" stroke="#991B1B" stroke-width="4.5"/>
+        <!-- Side Fences -->
+        <line x1="250" y1="85" x2="365" y2="355" stroke="#334155" stroke-width="3"/>
+        <line x1="550" y1="85" x2="435" y2="355" stroke="#334155" stroke-width="3"/>
+
+        <!-- Virtual Acute Fire Apex (Truncated into Road Zone Y=355..385) -->
+        <polygon points="365,355 400,385 435,355" fill="#FEE2E2" fill-opacity="0.6" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <text x="400" y="375" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.2" fill="#DC2626" text-anchor="middle">${apexHazardText}</text>
 
         <!-- Main House in Safe Rear Wide Zone (X=340..460, Y=112..164) -->
         <polygon points="330,112 400,90 470,112" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
         <rect x="340" y="112" width="120" height="52" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
-        <text x="400" y="136" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#1E293B" text-anchor="middle">${escapeXml(houseText)}</text>
-        <text x="400" y="152" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">${escapeXml(houseSub)}</text>
+
+        <!-- Architectural Room Partition Line -->
+        <line x1="388" y1="112" x2="388" y2="164" stroke="#CA8A04" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+        <!-- Left Room: Bedroom -->
+        <rect x="348" y="118" width="32" height="22" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1"/>
+        <rect x="348" y="118" width="32" height="5.5" fill="#0284C7"/>
+        <text x="364" y="132" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ຫົວຕຽງ' : 'Taub Hau'}</text>
+        <text x="364" y="152" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">${isLao ? 'ຫ້ອງນອນ' : 'Chaw Pw'}</text>
+
+        <!-- Right Room: Main Living Hall -->
+        <text x="424" y="136" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#1E293B" text-anchor="middle">${escapeXml(houseText)}</text>
+        <text x="424" y="152" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">${escapeXml(houseSub)}</text>
         
         <!-- Front Main Entrance Door / Porch -->
-        <rect x="392" y="164" width="16" height="5" fill="#1E293B"/>
-        <text x="400" y="180" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">${isLao ? 'ປະຕູໃຫຍ່' : 'Rooj Loj'}</text>
+        <rect x="416" y="164" width="16" height="5" fill="#1E293B"/>
+        <text x="424" y="180" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">${isLao ? 'ປະຕູໃຫຍ່' : 'Rooj Loj'}</text>
 
         <!-- Compass Axis Badge on House Right -->
         <g transform="translate(475, 112)">
@@ -1741,27 +1759,31 @@ module.exports = [
         <text x="400" y="226" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
         <text x="400" y="239" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ອ່າງນ້ຳພຸມົນ 10-15%' : '• Yog muaj: Pas dej 10-15%'}</text>
 
-        <!-- Defensive Granite Buffer Wall cutting off Acute Apex Tip -->
-        <line x1="360" y1="310" x2="440" y2="310" stroke="#15803D" stroke-width="4.5"/>
-        <circle cx="375" cy="330" r="8" fill="#16A34A"/>
-        <circle cx="400" cy="336" r="10" fill="#15803D"/>
-        <circle cx="425" cy="330" r="8" fill="#16A34A"/>
-        <text x="400" y="302" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? 'ກຳແພງ 2.2m ຕັດມຸມ &amp; ແນວຕົ້ນໄມ້ກັນຊົນ' : 'Phab Ntsa 2.2m &amp; Ntoo Thaiv'}</text>
+        <!-- Defensive Granite Buffer Wall cutting off Front Rush -->
+        <line x1="365" y1="295" x2="435" y2="295" stroke="#15803D" stroke-width="4"/>
+        <circle cx="375" cy="285" r="7" fill="#16A34A"/>
+        <circle cx="400" cy="282" r="9" fill="#15803D"/>
+        <circle cx="425" cy="285" r="7" fill="#16A34A"/>
+        <text x="400" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#166534" text-anchor="middle">${isLao ? 'ກຳແພງ 2.2m &amp; ແນວຕົ້ນໄມ້ກັນຊົນ' : 'Phab Ntsa 2.2m &amp; Ntoo Thaiv'}</text>
 
-        <!-- Safe Controlled Side Driveway -->
-        <path d="M 335 395 L 335 355 C 335 320 365 285 392 175" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,3"/>
-        <text x="345" y="275" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ' : '⟿ Kev Nkhaus Zoo Siab'}</text>
+        <!-- Front Fence and Gate on Road Frontage Y=355 -->
+        <line x1="365" y1="355" x2="385" y2="355" stroke="#334155" stroke-width="3.5"/>
+        <line x1="415" y1="355" x2="435" y2="355" stroke="#334155" stroke-width="3.5"/>
+        <rect x="381" y="350" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="411" y="350" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <line x1="385" y1="355" x2="395" y2="344" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="415" y1="355" x2="405" y2="344" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
 
-        <!-- Y-Fork Scissors Roads Meeting Outside Apex at (400, 355) -->
-        <line x1="220" y1="395" x2="400" y2="355" stroke="#94A3B8" stroke-width="14"/>
-        <line x1="580" y1="395" x2="400" y2="355" stroke="#94A3B8" stroke-width="14"/>
-        <line x1="220" y1="395" x2="400" y2="355" stroke="#FDE047" stroke-width="1.8" stroke-dasharray="8,6"/>
-        <line x1="580" y1="395" x2="400" y2="355" stroke="#FDE047" stroke-width="1.8" stroke-dasharray="8,6"/>
-        
-        <!-- Scissors Sha Attack Vector Warning Badge below Apex -->
-        <g transform="translate(345, 362)">
-          <rect x="0" y="0" width="110" height="20" rx="3" fill="#DC2626"/>
-          <text x="55" y="13" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${apexHazardText}</text>
+        <!-- Driveway Entering Cleanly through Gate (S-Curve around Buffer Wall) -->
+        <path d="M 400 395 L 400 355 C 400 335 372 325 372 290 C 372 250 405 215 424 169" fill="none" stroke="#F59E0B" stroke-width="3.2" stroke-dasharray="5,4"/>
+        <text x="350" y="270" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle">${isLao ? '⟿ ທາງລົດໂຄ້ງ S-Curve' : '⟿ Kev Nkhaus S-Curve'}</text>
+
+        <!-- Recommended Gate Badge -->
+        <g transform="translate(265, 350)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູຮົ້ວໃຫຍ່' : '✓ Rooj Vag Loj'}</text>
+          <line x1="90" y1="9" x2="116" y2="5" stroke="#15803D" stroke-width="1.8"/>
+          <circle cx="116" cy="5" r="2" fill="#15803D"/>
         </g>
       `;
     }
