@@ -80,8 +80,8 @@
   <text x="700" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">ຕຳແໜ່ງເຮືອນ &amp; ທິດຫັນໜ້າ</text>
   <text x="622" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ຕຳແໜ່ງ: ວາງຂ້ອນໄປທາງຫຼັງກວ້າງ</text>
   <text x="622" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ຫຼີກລ່ຽງເຂດມຸມແຫຼມ &gt;15m</text>
-  <text x="622" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ທິດໜ້າ (向): ຫັນສູ່ຖະໜົນຊ້າຍ</text>
-  <text x="622" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ທິດພິງ (坐): ພິງດ້ານເພື່ອນບ້ານ</text>
+  <text x="622" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ທິດໜ້າເຮືອນ (Facing): ຫັນສູ່ຖະໜົນຊ້າຍ</text>
+  <text x="622" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ທິດພິງຫຼັງ (Sitting): ພິງດ້ານເພື່ອນບ້ານ</text>
   
   <rect x="620" y="158" width="162" height="34" rx="4" fill="#E0F2FE"/>
   <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">ທິດຫົວຕຽງ: ຫົວຕຽງ: ພິງຝາທຶບດ້ານເພື່ອນບ້ານ</text>
@@ -111,46 +111,71 @@
   <!-- ========================================================================= -->
   <g>
     
-        <!-- Left Wedge Plot Fill -->
-        <polygon points="120,60 380,240 180,360" fill="#FEF2F2" stroke="#DC2626" stroke-width="2"/>
-        
-        <!-- House Footprint Located Away from Apex (Architectural Layout) -->
-        <polygon points="320,236 400,214 480,236" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
-        <rect x="330" y="236" width="140" height="52" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
-        <text x="400" y="260" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#1E293B" text-anchor="middle">ອາຄານຫຼັກ (ຖອຍຫ່າງຈາກມຸມແຫຼມ)</text>
-        <text x="400" y="276" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">ຫ້ອງໂຖງ &amp; ຫ້ອງນອນ</text>
-        
-        <!-- Front Main Entrance Door / Porch -->
-        <rect x="392" y="288" width="16" height="5" fill="#1E293B"/>
-        <text x="400" y="304" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">ປະຕູໃຫຍ່</text>
+        <!-- Left Vertical Road (X=205..245, Y=65..430) -->
+        <rect x="205" y="65" width="40" height="365" fill="url(#roadGrad)" rx="3"/>
+        <line x1="225" y1="65" x2="225" y2="430" stroke="#FDE047" stroke-width="1.8" stroke-dasharray="10,6"/>
+        <text x="217" y="240" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#F8FAFC" text-anchor="middle" transform="rotate(-90 217 240)">&#10140; ຖະໜົນດ້ານຊ້າຍ (Left Road) &#10140;</text>
 
-        <!-- Defensive Tree Buffer / Hedge at Intersection Apex -->
-        <path d="M 370 230 C 375 225 385 225 390 230 C 395 235 390 245 380 245 Z" fill="#15803D"/>
-        <circle cx="370" cy="225" r="8" fill="#16A34A"/>
-        <circle cx="382" cy="218" r="9" fill="#22C55E"/>
-        <circle cx="395" cy="225" r="8" fill="#16A34A"/>
-        <text x="385" y="208" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">ປ່າໄມ້ກັນຊົນ / ຕົ້ນໄມ້ບັງສາຍຕາ</text>
+        <!-- Surrounding Neighbor Property Labels -->
+        <text x="400" y="74" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">ດິນເພື່ອນບ້ານຫຼັງ (Rear Neighbor)</text>
+        <text x="575" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(90 575 220)">ດິນເພື່ອນບ້ານຂວາ (Right Neighbor)</text>
 
-        <!-- Ming Tang Bright Hall (In Front of House Y=150..205) -->
-        <rect x="325" y="150" width="150" height="52" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="3,2"/>
-        <text x="400" y="168" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">ລານໝິງຖາງ (Bright Hall)</text>
-        <text x="400" y="182" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າໂລ່ງ</text>
-        <text x="400" y="195" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#0369A1" text-anchor="middle">• ຫາກມີບໍ່ນ້ຳ: ອ່າງນ້ຳພຸມົນ 10-15%</text>
+        <!-- Right-Angled Wedge Plot (Bounded strictly X=250..560, Y=85..365) -->
+        <!-- Left vertical along road: (250, 85) to (250, 365) -->
+        <!-- Bottom horizontal: (250, 365) to (560, 365) -->
+        <!-- Hypotenuse: (560, 365) to (250, 85) -->
+        <polygon points="250,85 560,365 250,365" fill="#FEF2F2" stroke="#DC2626" stroke-width="3"/>
+        <polygon points="255,95 550,360 255,360" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="5,4"/>
 
-        <!-- Driveway Entering from Safe Side Road -->
-        <path d="M 230 360 C 260 340 320 330 392 293" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,3"/>
-        <text x="295" y="325" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle">⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ</text>
+        <!-- Top Apex Remedy Wall (Cutting off acute corner at 250, 85) -->
+        <line x1="250" y1="125" x2="295" y2="125" stroke="#15803D" stroke-width="3.5"/>
+        <circle cx="265" cy="105" r="7" fill="#16A34A"/>
+        <circle cx="280" cy="112" r="8" fill="#15803D"/>
+        <text x="275" y="98" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">ກຳແພງຕັດມຸມ</text>
 
-        <!-- Intersection Road Lines -->
-        <line x1="80" y1="40" x2="390" y2="245" stroke="#94A3B8" stroke-width="14"/>
-        <line x1="80" y1="40" x2="390" y2="245" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="5,5"/>
-        <line x1="140" y1="380" x2="390" y2="245" stroke="#94A3B8" stroke-width="14"/>
-        <line x1="140" y1="380" x2="390" y2="245" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="5,5"/>
+        <!-- Main House in Safe Wide Bottom-Right Zone (X=330..450, Y=255..305) -->
+        <polygon points="320,255 385,235 450,255" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+        <rect x="330" y="255" width="110" height="50" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
+        <text x="385" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#1E293B" text-anchor="middle">ອາຄານຫຼັກ</text>
+        <text x="385" y="294" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">ຫ້ອງໂຖງ &amp;amp; ຫ້ອງນອນ</text>
 
-        <!-- Scissors Sha Attack Vector Badge -->
-        <g transform="translate(415, 230)">
-          <rect x="0" y="0" width="85" height="22" rx="3" fill="#DC2626"/>
-          <text x="42" y="14" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">⚠️ ຈຸດແຫຼມມີດຕັດ</text>
+        <!-- Front Main Door / Porch facing Left Road -->
+        <rect x="325" y="275" width="5" height="15" fill="#1E293B"/>
+
+        <!-- Compass Axis Badge on House Top -->
+        <g transform="translate(455, 255)">
+          <rect x="0" y="0" width="34" height="48" rx="3" fill="#FFFFFF" fill-opacity="0.92" stroke="#0284C7" stroke-width="1.2"/>
+          <text x="17" y="12" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">ທິດພິງ ⬆</text>
+          <line x1="17" y1="16" x2="17" y2="32" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
+          <polygon points="17,34 14,28 20,28" fill="#0284C7"/>
+          <text x="17" y="43" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">ທິດໜ້າ ⬇</text>
+        </g>
+
+        <!-- Ming Tang Bright Hall (Between House and Road, X=265..320, Y=250..315) -->
+        <rect x="260" y="245" width="60" height="70" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="290" y="275" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#15803D" text-anchor="middle">ລານໝິງຖາງ</text>
+        <text x="290" y="288" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.8" fill="#166534" text-anchor="middle">ໂລ່ງແຈ້ງ</text>
+
+        <!-- Front Gate on Left Road (X=250, Y=330..355) -->
+        <rect x="246" y="330" width="8" height="8" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="246" y="352" width="8" height="8" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <line x1="250" y1="334" x2="260" y2="340" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="250" y1="352" x2="260" y2="346" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round"/>
+
+        <!-- Driveway from Left Gate to House -->
+        <path d="M 225 342 L 250 342 C 275 342 300 330 325 295" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,3"/>
+        <text x="295" y="336" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle">⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ</text>
+
+        <!-- [✓] Recommended Gate Badge -->
+        <g transform="translate(255, 375)">
+          <rect x="0" y="0" width="88" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="44" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">✓ ປະຕູຮົ້ວໃຫຍ່</text>
+        </g>
+
+        <!-- Apex Warning Badge -->
+        <g transform="translate(305, 95)">
+          <rect x="0" y="0" width="95" height="18" rx="3" fill="#DC2626"/>
+          <text x="47" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#FFFFFF" text-anchor="middle">⚠️ ມຸມແຫຼມທາດໄຟ (Fire Sha)</text>
         </g>
       
   </g>

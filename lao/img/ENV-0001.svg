@@ -136,7 +136,7 @@
   <text x="622" y="137" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">4. ຕັ້ງສີລາ Tai Shan ສະກັດກັ້ນ</text>
   <rect x="620" y="148" width="162" height="30" rx="3" fill="#DCFCE7"/>
   <text x="701" y="161" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#166534" text-anchor="middle">ກົດຫຼັກ: ຕັດສາຍຕາບໍ່ໃຫ້ເຫັນ</text>
-  <text x="701" y="172" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#14532D" text-anchor="middle">ບໍ່ເຫັນ = ບໍ່ເກີດຊ່າ (眼不见不为煞)</text>
+  <text x="701" y="172" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#14532D" text-anchor="middle">ບໍ່ເຫັນ = ບໍ່ເກີດຊ່າ (ຕາບໍ່ເຫັນບໍ່ເປັນພະລັງພິສ)</text>
 
   <rect x="614" y="240" width="174" height="202" rx="6" fill="#FAF5FF" stroke="#9333EA" stroke-width="1.2" filter="url(#shadow)"/>
   <rect x="614" y="240" width="174" height="24" rx="6" fill="#7E22CE"/>

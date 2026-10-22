@@ -31,7 +31,7 @@
   
   <!-- Element Badge -->
   <rect x="495" y="9" width="165" height="24" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
-  <text x="577" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#38BDF8" text-anchor="middle">Zog Dej/Kub Water/Metal / ທາດນ້ຳ金</text>
+  <text x="577" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#38BDF8" text-anchor="middle">Zog Dej/Kub Water/Metal / ທາດນ້ຳ</text>
 
   <!-- Score Badge -->
   <rect x="670" y="9" width="112" height="24" rx="4" fill="#14532D"/>

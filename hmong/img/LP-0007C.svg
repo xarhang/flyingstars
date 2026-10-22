@@ -111,46 +111,71 @@
   <!-- ========================================================================= -->
   <g>
     
-        <!-- Right Wedge Plot Fill -->
-        <polygon points="680,60 420,240 620,360" fill="#FEF2F2" stroke="#DC2626" stroke-width="2"/>
-        
-        <!-- House Footprint Located Away from Apex (Architectural Layout) -->
-        <polygon points="320,236 400,214 480,236" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
-        <rect x="330" y="236" width="140" height="52" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
-        <text x="400" y="260" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#1E293B" text-anchor="middle">Lub Tsev (Nyob Deb Ntawm Hniav)</text>
-        <text x="400" y="276" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">Chaw Txais Qhua &amp; Chaw Pw</text>
-        
-        <!-- Front Main Entrance Door / Porch -->
-        <rect x="392" y="288" width="16" height="5" fill="#1E293B"/>
-        <text x="400" y="304" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">Rooj Loj</text>
+        <!-- Right Vertical Road (X=555..595, Y=65..430) -->
+        <rect x="555" y="65" width="40" height="365" fill="url(#roadGrad)" rx="3"/>
+        <line x1="575" y1="65" x2="575" y2="430" stroke="#FDE047" stroke-width="1.8" stroke-dasharray="10,6"/>
+        <text x="583" y="240" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#F8FAFC" text-anchor="middle" transform="rotate(90 583 240)">&#10140; Txoj Kev Sab Xis &#10140;</text>
 
-        <!-- Defensive Tree Buffer / Hedge at Intersection Apex -->
-        <path d="M 410 230 C 405 225 395 225 390 230 C 385 235 390 245 400 245 Z" fill="#15803D"/>
-        <circle cx="430" cy="225" r="8" fill="#16A34A"/>
-        <circle cx="418" cy="218" r="9" fill="#22C55E"/>
-        <circle cx="405" cy="225" r="8" fill="#16A34A"/>
-        <text x="415" y="208" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">Ntoo Thaiv Hniav Txiab</text>
+        <!-- Surrounding Neighbor Property Labels -->
+        <text x="400" y="74" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">Ciam Av Tom Qab</text>
+        <text x="225" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-90 225 220)">Ciam Av Sab Laug</text>
 
-        <!-- Ming Tang Bright Hall (In Front of House Y=150..205) -->
-        <rect x="325" y="150" width="150" height="52" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="3,2"/>
-        <text x="400" y="168" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">Thaj Tshav Kaj (Ming Tang)</text>
-        <text x="400" y="182" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">• Tsis muaj dej: Tshav kaj</text>
-        <text x="400" y="195" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#0369A1" text-anchor="middle">• Yog muaj: Pas dej 10-15%</text>
+        <!-- Right-Angled Wedge Plot (Bounded strictly X=240..550, Y=85..365) -->
+        <!-- Right vertical along road: (550, 85) to (550, 365) -->
+        <!-- Bottom horizontal: (240, 365) to (550, 365) -->
+        <!-- Hypotenuse: (240, 365) to (550, 85) -->
+        <polygon points="550,85 550,365 240,365" fill="#FEF2F2" stroke="#DC2626" stroke-width="3"/>
+        <polygon points="545,95 545,360 250,360" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="5,4"/>
 
-        <!-- Driveway Entering from Safe Side Road -->
-        <path d="M 570 360 C 540 340 480 330 408 293" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,3"/>
-        <text x="495" y="325" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle">⟿ Kev Nkhaus Zoo Siab</text>
+        <!-- Top Apex Remedy Wall (Cutting off acute corner at 550, 85) -->
+        <line x1="505" y1="125" x2="550" y2="125" stroke="#15803D" stroke-width="3.5"/>
+        <circle cx="535" cy="105" r="7" fill="#16A34A"/>
+        <circle cx="520" cy="112" r="8" fill="#15803D"/>
+        <text x="525" y="98" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">Phab Ntsa Txiav</text>
 
-        <!-- Intersection Road Lines -->
-        <line x1="720" y1="40" x2="410" y2="245" stroke="#94A3B8" stroke-width="14"/>
-        <line x1="720" y1="40" x2="410" y2="245" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="5,5"/>
-        <line x1="660" y1="380" x2="410" y2="245" stroke="#94A3B8" stroke-width="14"/>
-        <line x1="660" y1="380" x2="410" y2="245" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="5,5"/>
+        <!-- Main House in Safe Wide Bottom-Left Zone (X=350..470, Y=255..305) -->
+        <polygon points="350,255 415,235 480,255" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+        <rect x="360" y="255" width="110" height="50" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
+        <text x="415" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#1E293B" text-anchor="middle">Lub Tsev</text>
+        <text x="415" y="294" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">Chaw Txais Qhua</text>
 
-        <!-- Scissors Sha Attack Vector Badge -->
-        <g transform="translate(300, 230)">
-          <rect x="0" y="0" width="85" height="22" rx="3" fill="#DC2626"/>
-          <text x="42" y="14" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">⚠️ Hniav Txiab Tua</text>
+        <!-- Front Main Door / Porch facing Right Road -->
+        <rect x="470" y="275" width="5" height="15" fill="#1E293B"/>
+
+        <!-- Compass Axis Badge on House Left -->
+        <g transform="translate(310, 255)">
+          <rect x="0" y="0" width="34" height="48" rx="3" fill="#FFFFFF" fill-opacity="0.92" stroke="#0284C7" stroke-width="1.2"/>
+          <text x="17" y="12" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Zaum ⬆</text>
+          <line x1="17" y1="16" x2="17" y2="32" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
+          <polygon points="17,34 14,28 20,28" fill="#0284C7"/>
+          <text x="17" y="43" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">Ntsia ⬇</text>
+        </g>
+
+        <!-- Ming Tang Bright Hall (Between House and Road, X=475..535, Y=250..315) -->
+        <rect x="475" y="245" width="60" height="70" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="505" y="275" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#15803D" text-anchor="middle">Tshav Kaj</text>
+        <text x="505" y="288" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.8" fill="#166534" text-anchor="middle">Dav Kaj</text>
+
+        <!-- Front Gate on Right Road (X=550, Y=330..355) -->
+        <rect x="546" y="330" width="8" height="8" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="546" y="352" width="8" height="8" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <line x1="550" y1="334" x2="540" y2="340" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="550" y1="352" x2="540" y2="346" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round"/>
+
+        <!-- Driveway from Right Gate to House -->
+        <path d="M 575 342 L 550 342 C 525 342 500 330 475 295" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,3"/>
+        <text x="505" y="336" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle">⟿ Kev Nkhaus</text>
+
+        <!-- [✓] Recommended Gate Badge -->
+        <g transform="translate(455, 375)">
+          <rect x="0" y="0" width="88" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="44" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">✓ Rooj Vag Loj</text>
+        </g>
+
+        <!-- Apex Warning Badge -->
+        <g transform="translate(395, 95)">
+          <rect x="0" y="0" width="95" height="18" rx="3" fill="#DC2626"/>
+          <text x="47" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#FFFFFF" text-anchor="middle">⚠️ Kaum Ntse Hluav Taws</text>
         </g>
       
   </g>
