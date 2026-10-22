@@ -18,9 +18,9 @@
 
   <!-- TOP TITLE HUD BAR -->
   <rect x="0" y="0" width="800" height="42" fill="#0F172A"/>
-  <rect x="18" y="9" width="80" height="24" rx="4" fill="#DC2626"/>
-  <text x="58" y="25" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">ENV-0001</text>
-  <text x="108" y="26" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#F8FAFC">Tshav Ntxa: Nyob Sab Nraud vs Sab Hauv Thaj Av (Cemetery Feng Shui)</text>
+  <rect x="18" y="9" width="95" height="24" rx="4" fill="#DC2626"/>
+  <text x="65" y="25" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">ENV-0001-C</text>
+  <text x="122" y="26" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.8" fill="#F8FAFC">Qauv 3: Tshav Ntxa Sab Qaum Tsev (Vaub Kib Xuan Wu) - Tsis Muaj Zog Zaum &amp; Npau Suav Phem</text>
   <rect x="580" y="9" width="105" height="24" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
   <text x="632" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#38BDF8" text-anchor="middle">Zog Yeeb Sha</text>
   <rect x="692" y="9" width="90" height="24" rx="4" fill="#991B1B"/>
@@ -29,93 +29,98 @@
   <!-- LEFT COLUMN CARDS -->
   <rect x="12" y="48" width="174" height="185" rx="6" fill="#F8FAFC" stroke="#64748B" stroke-width="1.2" filter="url(#shadow)"/>
   <rect x="12" y="48" width="174" height="24" rx="6" fill="#475569"/>
-  <text x="100" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">⚰️ Tshav Ntxa Sab Nraud</text>
-  <text x="20" y="86" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#1E293B">• Qhov deb zoo: >150-200m</text>
-  <text x="20" y="103" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#1E293B">• Yog ze &lt;50-100m: Zog yeeb txias</text>
-  <text x="20" y="120" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#1E293B">• Raug mob, npau suav phem</text>
-  <rect x="18" y="132" width="162" height="42" rx="4" fill="#F1F5F9" stroke="#CBD5E1"/>
-  <text x="99" y="146" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#0F172A" text-anchor="middle">Phab ntsa 2.2m + Ntoo thuv</text>
-  <text x="99" y="162" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#475569" text-anchor="middle">Tsis pub pom qhov muag</text>
+  <text x="100" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">🐢 Tshav Ntxa Sab Vaub Kib</text>
+  <text x="20" y="86" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#1E293B">• Ntxa nyob tom qab tsev</text>
+  <text x="20" y="103" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#1E293B">• Sab Vaub Kib: Xav tau roob zaum</text>
+  <text x="20" y="120" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#1E293B">• Zaum ntxa: Zaum zog yeeb txias</text>
+  <text x="20" y="137" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• Tsis muaj neeg pab, npau suav phem</text>
+  <rect x="18" y="148" width="162" height="42" rx="4" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <text x="99" y="162" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#0F172A" text-anchor="middle">Qhov ze ceeb laj &lt;50-100m</text>
+  <text x="99" y="178" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#475569" text-anchor="middle">Yuav tsum tsim 'roob cuav' thaiv</text>
 
   <rect x="12" y="240" width="174" height="202" rx="6" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.2" filter="url(#shadow)"/>
   <rect x="12" y="240" width="174" height="24" rx="6" fill="#DC2626"/>
-  <text x="100" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">🚫 Ntxa Hauv Thaj Av</text>
-  <text x="20" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• Zog yeeb hnyav heev</text>
-  <text x="20" y="295" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• Txwv tsis tsim tsev saum ntxa</text>
-  <text x="20" y="312" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• Poob peev, mob tsis zoo</text>
+  <text x="100" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">🚫 Cov Lus Txwv Tom Qab</text>
+  <text x="20" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• Txwv qhib rooj nram qab ntsia ntxa</text>
+  <text x="20" y="295" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• Txwv qhov rai iav loj tom qab</text>
+  <text x="20" y="312" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• Txwv taub hau pw ntsia tom ntxa</text>
   <rect x="18" y="325" width="162" height="48" rx="4" fill="#FEE2E2"/>
-  <text x="99" y="340" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#B91C1C" text-anchor="middle">3 Kauj ruam kho:</text>
-  <text x="24" y="354" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#7F1D1D">1. Tsiv pob txha tawm</text>
-  <text x="24" y="366" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#7F1D1D">2. Khawb av 1.5m tshav 49 hnub</text>
+  <text x="99" y="340" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#B91C1C" text-anchor="middle">Tswv Yim Sab Vaub Kib:</text>
+  <text x="24" y="354" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#7F1D1D">• Sab qaum yuav tsum 'ruaj-tuab'</text>
+  <text x="24" y="366" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#7F1D1D">• Thaiv tom qab kom ruaj li roob</text>
 
   <!-- CENTER SITE PLAN (X=195 to 605, Y=48 to 442) -->
   <g id="centerSite">
-    <rect x="195" y="48" width="410" height="95" fill="url(#cemeteryGrad)" stroke="#94A3B8" stroke-width="1"/>
-    <text x="400" y="65" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#475569" text-anchor="middle">Tshav Ntxa Sab Nraud</text>
+    <!-- Rear External Cemetery Ground (Neighbor Land) -->
+    <rect x="195" y="48" width="410" height="92" fill="url(#cemeteryGrad)" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="400" y="65" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#475569" text-anchor="middle">Tshav Ntxa Sab Nraud Tom Qab Tsev</text>
+    <text x="400" y="78" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#DC2626" text-anchor="middle">Luag Av (⛔ Txwv Tsis Kov)</text>
     
-    <path d="M 230 115 A 20 16 0 0 1 270 115 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
-    <rect x="246" y="90" width="8" height="14" fill="#64748B" rx="1"/>
-    <path d="M 330 115 A 22 18 0 0 1 374 115 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
-    <rect x="348" y="88" width="8" height="15" fill="#64748B" rx="1"/>
-    <path d="M 430 115 A 22 18 0 0 1 474 115 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
-    <rect x="448" y="88" width="8" height="15" fill="#64748B" rx="1"/>
-    <path d="M 530 115 A 20 16 0 0 1 570 115 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
-    <rect x="546" y="90" width="8" height="14" fill="#64748B" rx="1"/>
+    <!-- Tombs across rear -->
+    <path d="M 225 110 A 18 14 0 0 1 261 110 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
+    <rect x="238" y="90" width="8" height="14" fill="#64748B" rx="1"/>
+    <path d="M 310 110 A 18 14 0 0 1 346 110 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
+    <rect x="323" y="90" width="8" height="14" fill="#64748B" rx="1"/>
+    <path d="M 390 110 A 20 16 0 0 1 430 110 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
+    <rect x="405" y="88" width="8" height="15" fill="#64748B" rx="1"/>
+    <path d="M 470 110 A 18 14 0 0 1 506 110 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
+    <rect x="483" y="90" width="8" height="14" fill="#64748B" rx="1"/>
+    <path d="M 545 110 A 18 14 0 0 1 581 110 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
+    <rect x="558" y="90" width="8" height="14" fill="#64748B" rx="1"/>
 
-    <path d="M 250 120 L 250 138" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3,2"/>
+    <!-- Cold Yin arrows pointing down into our boundary -->
+    <path d="M 250 118 L 250 138" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3,2"/>
     <polygon points="250,142 247,136 253,136" fill="#38BDF8"/>
-    <path d="M 400 120 L 400 138" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3,2"/>
+    <path d="M 400 118 L 400 138" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3,2"/>
     <polygon points="400,142 397,136 403,136" fill="#38BDF8"/>
-    <path d="M 550 120 L 550 138" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3,2"/>
+    <path d="M 550 118 L 550 138" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3,2"/>
     <polygon points="550,142 547,136 553,136" fill="#38BDF8"/>
-    <text x="400" y="132" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">⬇ Zog Yeeb Txias</text>
+    <text x="400" y="132" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">⬇ Zog Yeeb Txias Los Tom Qab</text>
 
-    <!-- Defensive Boundary -->
-    <rect x="200" y="143" width="400" height="6" fill="#334155" stroke="#0F172A" stroke-width="1"/>
-    <circle cx="215" cy="155" r="7" fill="#14532D"/>
-    <circle cx="240" cy="155" r="7" fill="#166534"/>
-    <circle cx="265" cy="155" r="7" fill="#14532D"/>
-    <circle cx="290" cy="155" r="7" fill="#166534"/>
-    <circle cx="315" cy="155" r="7" fill="#14532D"/>
-    <rect x="375" y="145" width="50" height="15" rx="2" fill="#1E293B" stroke="#94A3B8" stroke-width="1"/>
-    <text x="400" y="156" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#F8FAFC" text-anchor="middle">TAI SHAN</text>
-    <circle cx="485" cy="155" r="7" fill="#14532D"/>
-    <circle cx="510" cy="155" r="7" fill="#166534"/>
-    <circle cx="535" cy="155" r="7" fill="#14532D"/>
-    <circle cx="560" cy="155" r="7" fill="#166534"/>
-    <circle cx="585" cy="155" r="7" fill="#14532D"/>
-    <circle cx="350" cy="146" r="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1"/>
-    <circle cx="450" cy="146" r="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1"/>
-    <text x="400" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#166534" text-anchor="middle">✓ Phab ntsa + Ntoo thuv + Pob zeb Tai Shan</text>
+    <!-- Defensive Rear Boundary Wall (Extra-Tall 2.5m Solid Masonry) -->
+    <rect x="200" y="142" width="400" height="7" fill="#334155" stroke="#0F172A" stroke-width="1"/>
+    
+    <!-- 5 Pines Guard (ຫ້າຕົ້ນສົນປົກປ້ອງເຕົ່າດຳ) -->
+    <circle cx="235" cy="158" r="8.5" fill="#14532D"/>
+    <circle cx="295" cy="158" r="8.5" fill="#166534"/>
+    <circle cx="355" cy="158" r="8.5" fill="#14532D"/>
+    <circle cx="445" cy="158" r="8.5" fill="#166534"/>
+    <circle cx="505" cy="158" r="8.5" fill="#14532D"/>
+    <circle cx="565" cy="158" r="8.5" fill="#166534"/>
+
+    <!-- Centered Tai Shan Stone Plaque -->
+    <rect x="375" y="145" width="50" height="16" rx="2" fill="#1E293B" stroke="#94A3B8" stroke-width="1"/>
+    <text x="400" y="157" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#F8FAFC" text-anchor="middle">TAI SHAN</text>
+
+    <!-- Warm Spotlight Lanterns on Rear Wall -->
+    <circle cx="265" cy="146" r="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1"/>
+    <circle cx="335" cy="146" r="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1"/>
+    <circle cx="465" cy="146" r="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1"/>
+    <circle cx="535" cy="146" r="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1"/>
+    <text x="400" y="174" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#166534" text-anchor="middle">✓ Phab ntsa 2.5m + 5 tsob ntoo thuv + Teeb ci + Pob zeb Tai Shan</text>
 
     <!-- Residential Ground -->
-    <rect x="200" y="175" width="400" height="225" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+    <rect x="200" y="178" width="400" height="218" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
 
-    <!-- Safe House -->
-    <polygon points="340,210 400,190 460,210" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
-    <rect x="345" y="210" width="110" height="55" fill="#FEF08A" stroke="#854D0E" stroke-width="1.8" rx="3"/>
-    <text x="400" y="235" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#1E293B" text-anchor="middle">Tsev Nyob (Yang Zhai)</text>
-    <text x="400" y="248" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">Nyab xeeb los ntawm phab ntsa</text>
-    <rect x="392" y="262" width="16" height="5" fill="#1E293B"/>
+    <!-- Setback Distance Indicator -->
+    <line x1="400" y1="180" x2="400" y2="210" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <polygon points="400,180 397,185 403,185" fill="#0284C7"/>
+    <polygon points="400,210 397,205 403,205" fill="#0284C7"/>
+    <text x="440" y="196" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0284C7">Thim deb >10-15m</text>
 
-    <!-- Taboo Grave Zone Inside -->
-    <g transform="translate(225, 275)">
-      <rect x="0" y="0" width="95" height="75" rx="4" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <path d="M 25 35 A 14 10 0 0 1 55 35 Z" fill="#94A3B8" stroke="#DC2626" stroke-width="1"/>
-      <line x1="20" y1="18" x2="60" y2="52" stroke="#DC2626" stroke-width="2.5"/>
-      <line x1="60" y1="18" x2="20" y2="52" stroke="#DC2626" stroke-width="2.5"/>
-      <text x="47" y="14" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#DC2626" text-anchor="middle">🚫 Qub Ntxa Hauv Av</text>
-      <text x="47" y="66" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#991B1B" text-anchor="middle">Txwv tsis tsim chav pw</text>
-    </g>
-    <path d="M 272 352 C 272 375 285 385 305 385" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-dasharray="3,2"/>
-    <polygon points="310,385 303,381 303,389" fill="#16A34A"/>
-    <text x="272" y="375" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#15803D">Kho ua vaj paj</text>
+    <!-- Safe Main House Seated Solidly -->
+    <polygon points="290,210 400,185 510,210" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+    <rect x="295" y="210" width="210" height="70" fill="#FEF08A" stroke="#854D0E" stroke-width="1.8" rx="3"/>
+    <text x="400" y="232" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#1E293B" text-anchor="middle">Tsev Nyob (Yang Zhai) - Sab Qaum Tuab</text>
+    <text x="400" y="247" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#15803D" text-anchor="middle">✓ Taub hau pw phab ntsa tuab / Tsis qhib qhov rai tom qab</text>
+    <text x="400" y="260" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#475569" text-anchor="middle">Ua roob cuav tiv thaiv tom qab kho npau suav phem</text>
+    <rect x="392" y="275" width="16" height="5" fill="#1E293B"/>
 
-    <!-- Ming Tang Lawn -->
-    <rect x="340" y="285" width="220" height="60" rx="4" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-    <text x="450" y="302" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.8" fill="#15803D" text-anchor="middle">Thaj Tshav Kaj (Ming Tang)</text>
-    <text x="450" y="316" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">✓ Tshav xyoob ntsuab kaj txais zog Yang</text>
-    <text x="450" y="330" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#0284C7" text-anchor="middle">• Pas dej 10-15% sab zaj</text>
+    <!-- Ming Tang Lawn In Front -->
+    <rect x="260" y="295" width="280" height="75" rx="5" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="400" y="315" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">Thaj Tshav Kaj Pem Hauv Ntej (Ming Tang)</text>
+    <text x="400" y="332" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#166534" text-anchor="middle">✓ Txais teeb tshav ntuj &amp; zog Yang</text>
+    <text x="400" y="347" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0284C7" text-anchor="middle">• Sau zog Sheng Qi thiab nyiaj txiag</text>
 
     <!-- Front Road -->
     <rect x="200" y="400" width="400" height="25" fill="#334155"/>
@@ -129,28 +134,28 @@
   <!-- RIGHT COLUMN CARDS -->
   <rect x="614" y="48" width="174" height="185" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.2" filter="url(#shadow)"/>
   <rect x="614" y="48" width="174" height="24" rx="6" fill="#15803D"/>
-  <text x="701" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">🛡️ 4 Txoj Kev Kho Sab Nraud</text>
-  <text x="622" y="86" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">1. Phab ntsa tuab 2.0-2.2m</text>
-  <text x="622" y="103" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">2. Cog ntoo thuv/xyoob tuab</text>
-  <text x="622" y="120" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">3. Teeb ci daj Warm Yang</text>
-  <text x="622" y="137" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">4. Pob zeb Tai Shan thaiv</text>
+  <text x="701" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">🛡️ 4 Txoj Kev Kho Sab Qaum</text>
+  <text x="622" y="86" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">1. Phab ntsa tuab 2.2-2.5m sab qaum</text>
+  <text x="622" y="103" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">2. Cog 5 tsob ntoo thuv ua roob</text>
+  <text x="622" y="120" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">3. Pob zeb Tai Shan plawv phab ntsa</text>
+  <text x="622" y="137" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">4. Teeb daj Warm Yang ci tom qab</text>
   <rect x="620" y="148" width="162" height="30" rx="3" fill="#DCFCE7"/>
-  <text x="701" y="161" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#166534" text-anchor="middle">Txoj cai: Tsis pub pom ntxa</text>
-  <text x="701" y="172" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#14532D" text-anchor="middle">Tsis pom = Tsis muaj Sha</text>
+  <text x="701" y="161" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#166534" text-anchor="middle">Txoj cai: Thaiv sab qaum kom ruaj</text>
+  <text x="701" y="172" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#14532D" text-anchor="middle">Phab ntsa + Ntoo thuv = Roob Vaub Kib</text>
 
   <rect x="614" y="240" width="174" height="202" rx="6" fill="#FAF5FF" stroke="#9333EA" stroke-width="1.2" filter="url(#shadow)"/>
   <rect x="614" y="240" width="174" height="24" rx="6" fill="#7E22CE"/>
-  <text x="701" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">🛠️ 3 Kauj Ruam Kho Hauv Av</text>
-  <text x="622" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#581C87">1. Tsiv pob txha tawm kom zoo</text>
-  <text x="622" y="295" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#581C87">2. Khawb 1.5m tshav 49 hnub</text>
-  <text x="622" y="312" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#581C87">3. Ntsaws av tshiab + cog xyoob</text>
+  <text x="701" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">📐 Kev Teeb Lub Tsev</text>
+  <text x="622" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#581C87">• Phab ntsa tsev tom qab tuab</text>
+  <text x="622" y="295" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#581C87">• Taub hau pw phab ntsa tuab</text>
+  <text x="622" y="312" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#581C87">• Thim tsev deb ciam av tom qab</text>
   <rect x="620" y="325" width="162" height="48" rx="3" fill="#F3E8FF"/>
-  <text x="701" y="339" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#6B21A8" text-anchor="middle">Lus Txwv Loj Tshaj:</text>
-  <text x="701" y="352" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#581C87" text-anchor="middle">Txwv tsis tsim chav pw rau saum</text>
-  <text x="701" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#7E22CE" text-anchor="middle">Ua vaj paj lossis chaw nres tsheb</text>
+  <text x="701" y="339" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#6B21A8" text-anchor="middle">Kho Npau Suav Phem:</text>
+  <text x="701" y="352" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#581C87" text-anchor="middle">Tsis pub pom ntxa kiag li</text>
+  <text x="701" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#7E22CE" text-anchor="middle">Tso teeb daj ci tom qab tsev</text>
 
   <!-- BOTTOM SUMMARY BAR -->
   <rect x="0" y="445" width="800" height="35" fill="#0F172A"/>
-  <text x="400" y="460" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">Tswv Yim: Tsev nyob yog Yang Zhai xav tau zog kaj. Ntxa sab nraud kho nrog phab ntsa 2.2m + ntoo thuv + teeb ci.</text>
-  <text x="400" y="472" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#94A3B8" text-anchor="middle">Ntxa hauv av yog Yeeb Sha hnyav: Tsiv pob txha, tshav av 49 hnub, thiab txwv tsis tsim chav pw rau saum.</text>
+  <text x="400" y="460" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">Tswv Yim: Tsev zaum zog yeeb tsis muaj roob txhawb, ua rau npau suav phem thiab mob nraub qaum.</text>
+  <text x="400" y="472" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#94A3B8" text-anchor="middle">Kev Kho: Phab ntsa tuab 2.5m + 5 tsob ntoo thuv loj ua roob cuav + pob zeb Tai Shan + taub hau pw rau phab ntsa tuab hauv tsev.</text>
 </svg>
