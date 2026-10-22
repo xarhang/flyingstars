@@ -349,40 +349,61 @@
             </div>
         </div>
 
-        <!-- SECTION 4: ຄຳນວນປີເກີດ ແລະ ຄ່າທາດ (ມິ່ງກວ້າ) -->
+        <!-- SECTION 4: ຂໍ້ມູນວັນເກີດ & ຄຳນວນດວງຊາຕາ (ມິ່ງກວ້າ & ປາຈື) -->
         <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex flex-col gap-2.5 shadow-sm">
             <div class="flex items-center justify-between">
                 <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
-                    <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ຄຳນວນປີເກີດ & ຄ່າທາດ (ມິ່ງກວ້າ)
+                    <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <span>ຄຳນວນດວງຊາຕາ (ມິ່ງກວ້າ &amp; ປາຈື)</span>
                 </span>
                 <span id="currentYearAge" class="text-[10px] text-slate-400 font-mono"></span>
             </div>
 
-            <!-- Form: Birth Year + Gender -->
+            <!-- Unified Form: ວັນ (1..31), ເດືອນ (ມັງກອນ..ທັນວາ), ປີ, ຍາມ, ເພດ -->
             <div class="flex flex-col gap-2">
-                <div class="flex flex-col gap-1">
-                    <label for="birthYearInput" class="text-[11px] text-slate-300 font-medium flex justify-between">
-                        <span>ປີເກີດ (ພິມປ້ອນ ຫຼື ເລືອກໄດ້):</span>
-                        <span class="text-amber-400/80 text-[10px]">ຄ.ສ. / ພ.ສ.</span>
-                    </label>
-                    <div class="flex gap-1.5">
-                        <input id="birthYearInput" type="number" min="1900" max="2050" value="1990" placeholder="ເຊັ່ນ: 1990"
-                               class="w-24 bg-slate-950 border border-slate-700 text-amber-300 font-bold text-xs rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-amber-400 text-center shadow-inner"
-                               title="ພິມປີເກີດ ຄ.ສ. (ເຊັ່ນ 1990) ຫຼື ພ.ສ. (ເຊັ່ນ 2533)">
-                        <select id="birthYearSelect" class="flex-1 min-w-0 bg-slate-950 border border-slate-700 text-amber-300 text-xs rounded-lg px-2 py-1.5 font-semibold focus:outline-none focus:border-amber-400 transition cursor-pointer">
+                <!-- Row 1: ວັນ - ເດືອນ - ປີ (DD / MM / YYYY) -->
+                <div class="grid grid-cols-12 gap-1.5 items-center">
+                    <div class="col-span-3">
+                        <span class="text-[10px] text-slate-300 block mb-0.5 font-medium">📅 ວັນ:</span>
+                        <select id="dtBirthDaySelect" onchange="setUserBirthProfile(null, null, this.value, null, null)" class="w-full bg-slate-950 border border-slate-700 text-amber-300 font-bold text-xs rounded-lg px-1 py-1.5 focus:outline-none focus:border-amber-400 cursor-pointer text-center shadow-inner">
                         </select>
+                    </div>
+                    <div class="col-span-5">
+                        <span class="text-[10px] text-slate-300 block mb-0.5 font-medium">🗓️ ເດືອນ:</span>
+                        <select id="dtBirthMonthSelect" onchange="setUserBirthProfile(null, this.value, null, null, null)" class="w-full bg-slate-950 border border-slate-700 text-amber-300 font-bold text-xs rounded-lg px-1.5 py-1.5 focus:outline-none focus:border-amber-400 cursor-pointer shadow-inner">
+                        </select>
+                    </div>
+                    <div class="col-span-4">
+                        <span class="text-[10px] text-slate-300 block mb-0.5 font-medium">🚩 ປີ (ຄ.ສ./ພ.ສ.):</span>
+                        <input id="birthYearInput" type="number" min="1924" max="2050" value="1992" placeholder="1992"
+                               class="w-full bg-slate-950 border border-slate-700 text-amber-300 font-bold text-xs rounded-lg px-1.5 py-1.5 focus:outline-none focus:border-amber-400 text-center font-mono shadow-inner"
+                               title="ພິມປີເກີດ ຄ.ສ. (ເຊັ່ນ 1992) ຫຼື ພ.ສ. (ເຊັ່ນ 2535)">
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-1">
-                    <label class="text-[11px] text-slate-300 font-medium">ເພດ:</label>
-                    <div class="grid grid-cols-2 gap-1.5 bg-slate-950 p-1 rounded-lg border border-slate-800">
-                        <button type="button" id="genderMaleBtn" class="py-1 px-2 text-xs font-bold rounded transition bg-amber-500 text-slate-950 shadow">
-                            <svg class="w-3.5 h-3.5 inline-block mr-1 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="5"/><line x1="19" y1="5" x2="13.6" y2="10.4"/><polyline points="19 9 19 5 15 5"/></svg>ຊາຍ
-                        </button>
-                        <button type="button" id="genderFemaleBtn" class="py-1 px-2 text-xs font-bold rounded transition text-slate-300 hover:text-white hover:bg-slate-800">
-                            <svg class="w-3.5 h-3.5 inline-block mr-1 text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><line x1="12" y1="14" x2="12" y2="21"/><line x1="9" y1="18" x2="15" y2="18"/></svg>ຍິງ
-                        </button>
+                <!-- Row 1.5: Quick Zodiac Year Select Dropdown -->
+                <div class="flex flex-col gap-0.5">
+                    <select id="birthYearSelect" class="w-full bg-slate-950 border border-slate-700 text-amber-300 text-xs rounded-lg px-2 py-1 font-semibold focus:outline-none focus:border-amber-400 transition cursor-pointer">
+                    </select>
+                </div>
+
+                <!-- Row 2: ຍາມເກີດ + ເພດ -->
+                <div class="grid grid-cols-12 gap-1.5 items-center">
+                    <div class="col-span-7">
+                        <span class="text-[10px] text-slate-300 block mb-0.5 font-medium">⏰ ຍາມເກີດ:</span>
+                        <select id="dtBirthHourSelect" onchange="setUserBirthProfile(null, null, null, this.value, null)" class="w-full bg-slate-950 border border-slate-700 text-white text-[11px] font-bold rounded-lg px-2 py-1.5 focus:outline-none focus:border-amber-400 cursor-pointer shadow-inner">
+                        </select>
+                    </div>
+                    <div class="col-span-5">
+                        <span class="text-[10px] text-slate-300 block mb-0.5 font-medium">👤 ເພດ:</span>
+                        <div class="grid grid-cols-2 gap-1 bg-slate-950 p-0.5 rounded-lg border border-slate-800">
+                            <button type="button" id="genderMaleBtn" onclick="setUserBirthProfile(null, null, null, null, 'male')" class="py-1 px-1.5 text-xs font-bold rounded transition bg-amber-500 text-slate-950 shadow">
+                                ຊາຍ 👨
+                            </button>
+                            <button type="button" id="genderFemaleBtn" onclick="setUserBirthProfile(null, null, null, null, 'female')" class="py-1 px-1.5 text-xs font-bold rounded transition text-slate-300 hover:text-white hover:bg-slate-800">
+                                ຍິງ 👩
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -397,38 +418,49 @@
             <div id="guaResultCard" class="bg-slate-950/90 border border-amber-500/30 rounded-xl p-2.5 flex flex-col gap-2">
                 <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
                     <div>
-                        <div id="resZodiac" class="text-xs font-bold text-amber-300">ປີມະເມຍ (ມ້າ)</div>
-                        <div id="resGanzhi" class="text-[11px] text-slate-400">庚午 (ແກງມະເມຍ) • ພ.ສ. 2533</div>
+                        <div id="resZodiac" class="text-xs font-bold text-amber-300">ປີວອກ (ລີງ)</div>
+                        <div id="resGanzhi" class="text-[11px] text-slate-400">壬申 (ແກງວອກ) • ພ.ສ. 2535</div>
                     </div>
                     <div class="flex flex-col items-end gap-0.5">
                         <span class="text-[9px] text-slate-400 font-medium">🪙 ທາດປີເກີດ (Year Element):</span>
                         <span id="resElementBadge" class="bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-bold px-2.5 py-0.5 rounded-lg shadow-inner">
-                            ທາດດິນ
+                            ທາດທອງ
                         </span>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-2 text-xs">
                     <div>
-                        <span class="text-slate-400 text-[10px] block">ດາວປະຈຳຕົວ (ມິ່ງກວ້າ):</span>
-                        <span id="resGuaName" class="font-bold text-amber-400 text-xs">ກວ້າ 1 (ຄຳ)</span>
+                        <span class="text-slate-400 text-[10px] block font-medium">🧭 ທາດຮວງຈຸ້ຍ (ມິ່ງກວ້າ):</span>
+                        <span id="resGuaName" class="font-bold text-amber-400 text-xs">ກວ້າ 8 (ເກິ່ນ) • ທາດດິນ</span>
                     </div>
                     <div>
-                        <span class="text-slate-400 text-[10px] block">ກຸ່ມພະລັງງານຊີວິດ:</span>
-                        <span id="resGroup" class="font-bold text-emerald-400 text-xs">ກຸ່ມຕາເວັນອອກ</span>
+                        <span class="text-slate-400 text-[10px] block font-medium">ກຸ່ມພະລັງງານຊີວິດ:</span>
+                        <span id="resGroup" class="font-bold text-emerald-400 text-xs">ກຸ່ມຕາເວັນຕົກ</span>
                     </div>
                 </div>
 
                 <div class="text-xs border-t border-slate-800/80 pt-1.5 flex justify-between items-center">
                     <span class="text-slate-400 text-[10px]">ທາດນາຢິນ (60 ດອກໄມ້):</span>
-                    <span id="resNayin" class="font-semibold text-slate-200 text-[11px]">ດິນແຄມທາງ</span>
+                    <span id="resNayin" class="font-semibold text-slate-200 text-[11px]">ທອງປາຍດາບ</span>
+                </div>
+
+                <!-- BaZi 4 Pillars Synergy in Unified Card -->
+                <div id="resBaziPill" class="bg-purple-950/40 border border-purple-500/30 rounded-lg p-2 flex flex-col gap-0.5 text-xs">
+                    <div class="flex items-center justify-between text-[10px]">
+                        <span class="text-purple-300 font-bold">📜 ທາດດວງຊາຕາ (ປາຈື):</span>
+                        <span id="resBaziDayMaster" class="text-amber-200 font-bold font-mono"></span>
+                    </div>
+                    <div class="text-[10px] text-slate-300">
+                        • ທາດເສີມດວງ (ຍົງສິ່ນ): <b id="resBaziYongShen" class="text-emerald-300"></b> | ຫຼີກລ່ຽງ: <b id="resBaziAvoid" class="text-rose-300"></b>
+                    </div>
                 </div>
 
                 <!-- 4 Auspicious & 4 Inauspicious Directions Grid -->
                 <div class="border-t border-slate-800/80 pt-1.5 flex flex-col gap-1.5">
                     <div class="bg-emerald-950/40 border border-emerald-500/30 rounded-lg p-2 flex flex-col gap-1">
                         <span class="text-emerald-400 font-bold text-[10px] flex items-center gap-1">
-                            <span class="text-emerald-400 flex items-center gap-1 font-bold"><svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 4 ທິດມຸງຄຸນ (ທິດດີ):</span>
+                            <svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 4 ທິດມຸງຄຸນ (ທິດດີ):
                         </span>
                         <div id="resAuspiciousList" class="grid grid-cols-2 gap-1 text-[10px] text-slate-200">
                         </div>
@@ -436,7 +468,7 @@
 
                     <div class="bg-rose-950/40 border border-rose-500/30 rounded-lg p-2 flex flex-col gap-1">
                         <span class="text-rose-400 font-bold text-[10px] flex items-center gap-1">
-                            <span class="text-rose-400 flex items-center gap-1 font-bold"><svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> 4 ທິດອັບປະມຸງຄຸນ (ທິດຮ້າຍ):</span>
+                            <svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> 4 ທິດອັບປະມຸງຄຸນ (ທິດຮ້າຍ):
                         </span>
                         <div id="resInauspiciousList" class="grid grid-cols-2 gap-1 text-[10px] text-slate-200">
                         </div>
@@ -455,7 +487,7 @@
         <div class="hidden md:flex bg-slate-900/80 p-3 rounded-xl border border-purple-500/30 flex-col gap-2.5 shadow-sm">
             <div class="flex items-center justify-between">
                 <span class="text-xs font-bold text-purple-300 flex items-center gap-1.5">
-                    <svg class="w-4 h-4 inline-block text-purple-300 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ບົດທຳນາຍດາວເຫີນ & ແປດທິດ
+                    <svg class="w-4 h-4 inline-block text-purple-300 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ບົດທຳນາຍດາວເຫີນ &amp; ແປດທິດ
                 </span>
                 <!-- Period Selector -->
                 <div class="flex items-center gap-1">
@@ -471,55 +503,6 @@
                         <option value="2">ຍຸກ 2 (1884-03)</option>
                         <option value="1">ຍຸກ 1 (1864-83)</option>
                     </select>
-                </div>
-            </div>
-
-            <!-- User Birth Profile Widget on Desktop -->
-            <div id="desktopBirthProfileWidget" class="bg-slate-950 p-2.5 rounded-xl border border-purple-500/30 flex flex-col gap-2 shadow-sm">
-                <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-purple-300 flex items-center gap-1.5">
-                        <svg class="w-3.5 h-3.5 text-purple-400 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                        <span>ວັນເດືອນປີເກີດ (ດວງຊາຕາ &amp; ປາຈື):</span>
-                    </span>
-                    <span class="text-[10px] text-purple-400/80 font-mono">DD / MM / YYYY</span>
-                </div>
-
-                <!-- Inputs: ວັນທີ - ເດືອນ - ປີເກີດ (DD/MM/YYYY) No jumping, seamless typing -->
-                <div class="grid grid-cols-12 gap-1.5 items-center">
-                    <div class="col-span-3">
-                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">📅 ວັນທີ:</span>
-                        <select id="dtBirthDaySelect" onchange="setUserBirthProfile(null, null, this.value, null, null)" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-1.5 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 cursor-pointer text-center">
-                        </select>
-                    </div>
-                    <div class="col-span-5">
-                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">🗓️ ເດືອນ:</span>
-                        <select id="dtBirthMonthSelect" onchange="setUserBirthProfile(null, this.value, null, null, null)" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-1.5 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
-                        </select>
-                    </div>
-                    <div class="col-span-4">
-                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">🚩 ປີ (ຄ.ສ./ພ.ສ.):</span>
-                        <input type="number" id="dtBirthYearInput" min="1924" max="2050" placeholder="1992" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-1 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 text-center font-mono">
-                    </div>
-                </div>
-
-                <!-- Row 2: ຍາມເກີດ + ເພດ -->
-                <div class="grid grid-cols-12 gap-1.5 items-center">
-                    <div class="col-span-7">
-                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">⏰ ຍາມເກີດ:</span>
-                        <select id="dtBirthHourSelect" onchange="setUserBirthProfile(null, null, null, this.value, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded-lg px-2 py-1 text-white text-[11px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
-                        </select>
-                    </div>
-                    <div class="col-span-5">
-                        <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">👤 ເພດ:</span>
-                        <div class="flex items-center gap-1">
-                            <button type="button" id="dtBtnGenderMale" onclick="setUserBirthProfile(null, null, null, null, 'male')" class="flex-1 py-1 rounded text-[10px] font-bold transition bg-blue-600 text-white shadow-sm">ຊາຍ 👨</button>
-                            <button type="button" id="dtBtnGenderFemale" onclick="setUserBirthProfile(null, null, null, null, 'female')" class="flex-1 py-1 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white">ຍິງ 👩</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Natal Summary Pill -->
-                <div id="dtBirthSummaryPill" class="bg-purple-950/40 p-2 rounded-lg border border-purple-500/20 text-[10px] text-slate-300 flex flex-col gap-0.5">
                 </div>
             </div>
 
@@ -845,7 +828,7 @@
             <!-- Inputs: ວັນທີ - ເດືອນ - ປີເກີດ (DD/MM/YYYY) -->
             <div class="grid grid-cols-12 gap-1.5 items-center">
                 <div class="col-span-3">
-                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">📅 ວັນທີ:</span>
+                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">📅 ວັນ:</span>
                     <select id="mobBirthDaySelect" onchange="setUserBirthProfile(null, null, this.value, null, null)" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-1 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 cursor-pointer text-center">
                     </select>
                 </div>
@@ -2211,7 +2194,7 @@
 
             // Update Year inputs (DO NOT overwrite if user is actively typing in it)
             if (syncYearInput) {
-                const yearEls = [document.getElementById('mobBirthYearInput'), document.getElementById('dtBirthYearInput')];
+                const yearEls = [document.getElementById('mobBirthYearInput'), document.getElementById('birthYearInput')];
                 yearEls.forEach(el => {
                     if (el && document.activeElement !== el && parseInt(el.value, 10) !== selectedBaziYear) {
                         el.value = selectedBaziYear;
@@ -2225,29 +2208,47 @@
                 if (el) el.value = Math.floor(selectedBaziHour / 2) * 2;
             });
 
-            // Gender styling
-            const maleBtns = [document.getElementById('mobBtnGenderMale'), document.getElementById('dtBtnGenderMale')];
-            const femaleBtns = [document.getElementById('mobBtnGenderFemale'), document.getElementById('dtBtnGenderFemale')];
+            // Section 4 Gender styling
+            const gMaleBtn = document.getElementById('genderMaleBtn');
+            const gFemaleBtn = document.getElementById('genderFemaleBtn');
+            if (gMaleBtn && gFemaleBtn) {
+                if (userGender === 'male') {
+                    gMaleBtn.className = "py-1 px-1.5 text-xs font-bold rounded transition bg-amber-500 text-slate-950 shadow";
+                    gFemaleBtn.className = "py-1 px-1.5 text-xs font-bold rounded transition text-slate-300 hover:text-white hover:bg-slate-800";
+                } else {
+                    gFemaleBtn.className = "py-1 px-1.5 text-xs font-bold rounded transition bg-amber-500 text-slate-950 shadow";
+                    gMaleBtn.className = "py-1 px-1.5 text-xs font-bold rounded transition text-slate-300 hover:text-white hover:bg-slate-800";
+                }
+            }
 
-            maleBtns.forEach(btn => {
-                if (!btn) return;
-                btn.className = (userGender === 'male')
+            // Mobile Gender styling
+            const mobMaleBtn = document.getElementById('mobBtnGenderMale');
+            const mobFemaleBtn = document.getElementById('mobBtnGenderFemale');
+            if (mobMaleBtn) {
+                mobMaleBtn.className = (userGender === 'male')
                     ? 'flex-1 py-1 rounded text-[10px] font-bold transition bg-blue-600 text-white shadow-sm ring-1 ring-blue-300'
                     : 'flex-1 py-1 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white';
-            });
-
-            femaleBtns.forEach(btn => {
-                if (!btn) return;
-                btn.className = (userGender === 'female')
+            }
+            if (mobFemaleBtn) {
+                mobFemaleBtn.className = (userGender === 'female')
                     ? 'flex-1 py-1 rounded text-[10px] font-bold transition bg-pink-600 text-white shadow-sm ring-1 ring-pink-300'
                     : 'flex-1 py-1 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white';
-            });
+            }
 
             // Compute Ming Gua & BaZi
             if (typeof calculateMingGua === 'function' && typeof calculateBaZi4Pillars === 'function') {
                 const gua = calculateMingGua(userBirthYear, userGender);
                 const bazi = calculateBaZi4Pillars(selectedBaziYear, selectedBaziMonth, selectedBaziDay, selectedBaziHour);
 
+                // Update Section 4 BaZi pill
+                const dmEl = document.getElementById('resBaziDayMaster');
+                const ysEl = document.getElementById('resBaziYongShen');
+                const avEl = document.getElementById('resBaziAvoid');
+                if (dmEl) dmEl.textContent = 'ດິດຖີ ' + bazi.dayMaster;
+                if (ysEl) ysEl.textContent = bazi.yongShen;
+                if (avEl) avEl.textContent = bazi.avoidElement;
+
+                // Mobile summary pill
                 const summaryHtml =
                     '<div class="flex items-center justify-between text-[10px] leading-tight pb-1 border-b border-purple-500/20">' +
                         '<div><span class="text-amber-300 font-bold">🧭 ທາດຮວງຈຸ້ຍ (ມິ່ງກວ້າ):</span> <b class="text-white">' + gua.elem + '</b> (' + gua.name + ' · <span class="text-emerald-300">' + gua.groupName + '</span>)</div>' +
@@ -2260,27 +2261,25 @@
                         '🧭 4 ທິດມຸງຄຸນ: ໂຊກລາບ <b class="text-amber-300">' + gua.shengQi + '</b> · ສຸຂະພາບ <b class="text-teal-300">' + gua.tianYi + '</b> · ຄວາມຮັກ <b class="text-blue-300">' + gua.yanNian + '</b> · ສະຕິປັນຍາ <b class="text-purple-300">' + gua.fuWei + '</b>' +
                     '</div>';
 
-                const pillEls = [document.getElementById('mobBirthSummaryPill'), document.getElementById('dtBirthSummaryPill')];
-                pillEls.forEach(el => {
-                    if (el) el.innerHTML = summaryHtml;
-                });
+                const mobPill = document.getElementById('mobBirthSummaryPill');
+                if (mobPill) mobPill.innerHTML = summaryHtml;
             }
         }
 
         function initBirthProfileWidgets() {
-            // Populate Days 1 to 31
+            // Populate Days 1 to 31 (Pure numbers 1..31, NO "ວັນທີ")
             let dayHtml = '';
             for (let d = 1; d <= 31; d++) {
-                dayHtml += '<option value="' + d + '">ວັນທີ ' + d + '</option>';
+                dayHtml += '<option value="' + d + '">' + d + '</option>';
             }
             const dayEls = [document.getElementById('mobBirthDaySelect'), document.getElementById('dtBirthDaySelect')];
             dayEls.forEach(el => { if (el) el.innerHTML = dayHtml; });
 
-            // Populate Months 1 to 12 in Lao
+            // Populate Months 1 to 12 in Lao (NO word "ເດືອນ", pure month names)
             const monthsLao = [
-                '1. ມັງກອນ (Jan)', '2. ກຸມພາ (Feb)', '3. ມີນາ (Mar)', '4. ເມສາ (Apr)',
-                '5. ພຶດສະພາ (May)', '6. ມິຖຸນາ (Jun)', '7. ກໍລະກົດ (Jul)', '8. ສິງຫາ (Aug)',
-                '9. ກັນຍາ (Sep)', '10. ຕຸລາ (Oct)', '11. ພະຈິກ (Nov)', '12. ທັນວາ (Dec)'
+                '1. ມັງກອນ', '2. ກຸມພາ', '3. ມີນາ', '4. ເມສາ',
+                '5. ພຶດສະພາ', '6. ມິຖຸນາ', '7. ກໍລະກົດ', '8. ສິງຫາ',
+                '9. ກັນຍາ', '10. ຕຸລາ', '11. ພະຈິກ', '12. ທັນວາ'
             ];
             let monthHtml = '';
             monthsLao.forEach((mName, idx) => {
@@ -2289,11 +2288,10 @@
             const monthEls = [document.getElementById('mobBirthMonthSelect'), document.getElementById('dtBirthMonthSelect')];
             monthEls.forEach(el => { if (el) el.innerHTML = monthHtml; });
 
-            // Year Inputs event listeners
-            const yearEls = [document.getElementById('mobBirthYearInput'), document.getElementById('dtBirthYearInput')];
-            yearEls.forEach(inputEl => {
-                if (!inputEl) return;
-                inputEl.addEventListener('input', (e) => {
+            // Mobile Year input event listeners
+            const mobYearInput = document.getElementById('mobBirthYearInput');
+            if (mobYearInput) {
+                mobYearInput.addEventListener('input', (e) => {
                     let val = parseInt(e.target.value, 10);
                     if (isNaN(val)) return;
                     if (val >= 2400 && val <= 2600) val -= 543;
@@ -2301,7 +2299,7 @@
                         setUserBirthProfile(val, null, null, null, null, false);
                     }
                 });
-                inputEl.addEventListener('change', (e) => {
+                mobYearInput.addEventListener('change', (e) => {
                     let val = parseInt(e.target.value, 10);
                     if (isNaN(val)) val = 1990;
                     if (val >= 2400 && val <= 2600) val -= 543;
@@ -2310,7 +2308,7 @@
                     e.target.value = val;
                     setUserBirthProfile(val, null, null, null, null, true);
                 });
-            });
+            }
 
             // Hour options (12 Chinese double hours)
             let hourHtml = '';
