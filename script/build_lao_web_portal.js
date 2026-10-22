@@ -798,8 +798,8 @@ const html = `<!DOCTYPE html>
       </a>
 
       <div class="nav-tabs">
-        <button class="nav-tab-btn active" data-tab="tabAtlas">🗺️ ສາລະນຸກົມ 109 ຮູບແບບ</button>
-        <button class="nav-tab-btn" data-tab="tabPlots">📐 ສະຕູດີໂອ 34 ຕອນດິນ</button>
+        <button class="nav-tab-btn active" data-tab="tabAtlas">🗺️ ສາລະນຸກົມ 101 ຮູບແບບ</button>
+        <button class="nav-tab-btn" data-tab="tabPlots">📐 ສະຕູດີໂອ 42 ຕອນດິນ</button>
         <button class="nav-tab-btn" data-tab="tabBook">📖 ຕຳລາຫຼັກ 24 ບົດຮຽນ</button>
         <button class="nav-tab-btn" data-tab="tabCalc">🧭 ຄິດໄລ່ດາວ 81 ຄູ່</button>
       </div>
@@ -822,8 +822,8 @@ const html = `<!DOCTYPE html>
     <!-- TAB 1: MASTER ATLAS 93 ARCHETYPES -->
     <div id="tabAtlas" class="tab-view active">
       <div class="atlas-hero">
-        <h2>🗺️ ສາລະນຸກົມຮວງຈຸ້ຍ 103 ຮູບແບບ ພູເຂົາ, ສາຍນ້ຳ, ຕອນດິນ &amp; ສະພາບແວດລ້ອມຕິດແປະ</h2>
-        <p>ຄັງຄວາມຮູ້ຮວງຈຸ້ຍຫຼວນໂຖວ (Luan Tou), ຜັງຕອນດິນ ແລະ ສະພາບແວດລ້ອມຕິດແປະ 103 ຮູບແບບ: ວິເຄາະພະລັງງານຊີ່, ຫຼັກການວາງປະຕູ, ໜອງນ້ຳ ແລະ ວິທີແກ້ໄຂຮວງຈຸ້ຍຢ່າງລະອຽດ.</p>
+        <h2>🗺️ ສາລະນຸກົມຮວງຈຸ້ຍ 101 ຮູບແບບ ພູເຂົາ, ສາຍນ້ຳ, ຕອນດິນ &amp; ສະພາບແວດລ້ອມຕິດແປະ</h2>
+        <p>ຄັງຄວາມຮູ້ຮວງຈຸ້ຍຫຼວນໂຖວ (Luan Tou), ຜັງຕອນດິນ ແລະ ສະພາບແວດລ້ອມຕິດແປະ 101 ຮູບແບບ: ວິເຄາະພະລັງງານຊີ່, ຫຼັກການວາງປະຕູ, ໜອງນ້ຳ ແລະ ວິທີແກ້ໄຂຮວງຈຸ້ຍຢ່າງລະອຽດ.</p>
       </div>
 
       <div class="search-box">
@@ -831,9 +831,9 @@ const html = `<!DOCTYPE html>
       </div>
 
       <div class="filter-pills" id="atlasFilters">
-        <button class="filter-btn active" data-cat="all">ທັງໝົດ (103)</button>
-        <button class="filter-btn" data-cat="env">🏞️ 18 ສະພາບແວດລ້ອມຕິດແປະ (Boundaries)</button>
-        <button class="filter-btn" data-cat="plots">📐 16 ຮູບຊົງຕອນດິນ (Land Plots)</button>
+        <button class="filter-btn active" data-cat="all">ທັງໝົດ (101)</button>
+        <button class="filter-btn" data-cat="env">🏞️ 22 ສະພາບແວດລ້ອມຕິດແປະ (Boundaries)</button>
+        <button class="filter-btn" data-cat="plots">📐 20 ຮູບຊົງຕອນດິນ (Land Plots)</button>
         <button class="filter-btn" data-cat="shas">⛰️ 35 ພູເຂົາພິສ (Mountain Sha)</button>
         <button class="filter-btn" data-cat="waters">🌊 16 ສາຍນ້ຳ (Water Courses)</button>
         <button class="filter-btn" data-cat="peaks">⭐ 5 ພູເຂົາ 5 ທາດ (Five Peaks)</button>
@@ -846,8 +846,8 @@ const html = `<!DOCTYPE html>
     <!-- TAB 2: 34 LAND PLOTS & BOUNDARIES STUDIO -->
     <div id="tabPlots" class="tab-view">
       <div class="plots-studio-header">
-        <h2>📐 ສະຕູດີໂອປຽບທຽບ 34 ຮູບແບບຕອນດິນ & ສະພາບແວດລ້ອມຕິດແປະ</h2>
-        <p>ປຽບທຽບຜັງຕອນດິນ 34 ແບບ: 16 ຮູບຊົງເລຂາຄະນິດ (ຈະຕຸລັດ, ຜືນຜ້າ, ຖົງເງິນ, ນ້ຳເຕົ້າ, ສາມຫຼ່ຽມ, ໂຕແອວ...) + 18 ສະພາບແວດລ້ອມຕິດແປະ (ຕິດທາງດ້ານດຽວ, ສອງດ້ານ, ສາມ-ສີ່ດ້ານ, ທາງຈົ່ງ, ຕິດໜອງ, ຕິດປ່າ, ຕິດເພື່ອນບ້ານ, ຕິດກຳແພງ...) ພ້ອມຫຼັກການ 360 ອົງສາ.</p>
+        <h2>📐 ສະຕູດີໂອປຽບທຽບ 42 ຮູບແບບຕອນດິນ & ສະພາບແວດລ້ອມຕິດແປະ</h2>
+        <p>ປຽບທຽບຜັງຕອນດິນ 42 ແບບ: 20 ຮູບຊົງເລຂາຄະນິດ (ຈະຕຸລັດ, ຜືນຜ້າ, ຖົງເງິນ, ນ້ຳເຕົ້າ, ສາມຫຼ່ຽມ, ໂຕແອວ...) + 22 ສະພາບແວດລ້ອມຕິດແປະ (ຕິດທາງດ້ານດຽວ, ສອງດ້ານ, ສາມ-ສີ່ດ້ານ, ທາງຈົ່ງ, ຕິດໜອງ, ຕິດປ່າ, ຕິດເພື່ອນບ້ານ, ຕິດກຳແພງ...) ພ້ອມຫຼັກການ 360 ອົງສາ.</p>
       </div>
       <div class="atlas-grid" id="plotsGrid"></div>
     </div>

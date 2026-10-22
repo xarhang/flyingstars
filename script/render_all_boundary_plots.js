@@ -461,6 +461,7 @@ function renderCenterDrawing(id, lang) {
         </g>
       `;
 
+    case 'ENV-0007':
     case 'ENV-0007-A': // Front Jade Belt Water Only (No Road)
       return `
         <!-- Jade Belt River Gracefully Hugging Front -->
@@ -537,7 +538,6 @@ function renderCenterDrawing(id, lang) {
         </g>
       `;
 
-    case 'ENV-0007':
     case 'ENV-0007-C': // Front Dual Jade Belt Water & Road with Solid Bridge
       return `
         <!-- Main Asphalt Roadway at Bottom (Y=380 to 445) -->
@@ -583,6 +583,7 @@ function renderCenterDrawing(id, lang) {
         </g>
       `;
 
+    case 'ENV-0008':
     case 'ENV-0008-A': // Front Reverse Bow Water Only (No Road)
       return `
         <!-- Reverse Bow River Blasting Toward Front Boundary (No Road Collision) -->
@@ -680,7 +681,6 @@ function renderCenterDrawing(id, lang) {
         </g>
       `;
 
-    case 'ENV-0008':
     case 'ENV-0008-C': // Front Dual Reverse Bow (Both Water & Road)
       return `
         <!-- Reverse Bow Roadway at Bottom (Y=385 to 445) -->

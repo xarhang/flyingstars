@@ -913,8 +913,8 @@ const html = `<!DOCTYPE html>
       </a>
 
       <div class="nav-tabs">
-        <button class="nav-tab-btn active" data-tab="tabAtlas">🗺️ 103 Qauv Atlas</button>
-        <button class="nav-tab-btn" data-tab="tabPlots">📐 34 Thaj Av Site Plans</button>
+        <button class="nav-tab-btn active" data-tab="tabAtlas">🗺️ 101 Qauv Atlas</button>
+        <button class="nav-tab-btn" data-tab="tabPlots">📐 42 Thaj Av Site Plans</button>
         <button class="nav-tab-btn" data-tab="tabBook">📖 Phau 1: 24 Tshooj</button>
         <button class="nav-tab-btn" data-tab="tabCalc">🧭 81 Hnub Qub & Lus Txhais</button>
       </div>
@@ -937,8 +937,8 @@ const html = `<!DOCTYPE html>
     <!-- TAB 1: MASTER ATLAS 93 ARCHETYPES -->
     <div id="tabAtlas" class="tab-view active">
       <div class="atlas-hero">
-        <h2>🗺️ PHAU NTAWV QHIA TAG NRHO 103 QAUV ROOB THIAB THAJ AV</h2>
-        <p>Tshawb nrhiav cov qauv roob, kwj deg, 16 thaj av thiab 18 ciam av nrog rau physics huab cua, kev teeb qhov rooj, pas dej thiab tswv yim kho kom haum Looj Mem.</p>
+        <h2>🗺️ PHAU NTAWV QHIA TAG NRHO 101 QAUV ROOB THIAB THAJ AV</h2>
+        <p>Tshawb nrhiav cov qauv roob, kwj deg, 20 thaj av thiab 22 ciam av nrog rau physics huab cua, kev teeb qhov rooj, pas dej thiab tswv yim kho kom haum Looj Mem.</p>
       </div>
 
       <div class="search-box">
@@ -946,9 +946,9 @@ const html = `<!DOCTYPE html>
       </div>
 
       <div class="filter-row" id="atlasFilters">
-        <button class="filter-btn active" data-cat="all">Tag Nrho (103)</button>
-        <button class="filter-btn" data-cat="env">🏞️ 18 Ciam Av (Boundaries)</button>
-        <button class="filter-btn" data-cat="plot">16 Thaj Av (Land Plots)</button>
+        <button class="filter-btn active" data-cat="all">Tag Nrho (101)</button>
+        <button class="filter-btn" data-cat="env">🏞️ 22 Ciam Av (Boundaries)</button>
+        <button class="filter-btn" data-cat="plot">20 Thaj Av (Land Plots)</button>
         <button class="filter-btn" data-cat="sha">35 Roob Sha</button>
         <button class="filter-btn" data-cat="water">16 Dej Ntws</button>
         <button class="filter-btn" data-cat="element">5 Roob 5 Thas</button>
@@ -963,8 +963,8 @@ const html = `<!DOCTYPE html>
     <!-- TAB 2: 34 LAND PLOTS & BOUNDARIES STUDIO -->
     <div id="tabPlots" class="tab-view">
       <div class="plots-studio-head">
-        <h2>📐 34 THAJ AV & CIAM AV KHO KOM HAUM LOOJ MEM (SITE PLANS STUDIO)</h2>
-        <p>Kev tshuaj xyuas 34 hom thaj av tiag tiag: 16 qauv duab thaj av + 18 qauv ciam av (ciam kev 1 sab, ciam kev 2 sab kaum, ciam kev 3-4 sab, kev nkag driveway, ciam pas dej, ciam hav zoov, ciam phab ntsa...) raws li txoj cai 360°.</p>
+        <h2>📐 42 THAJ AV & CIAM AV KHO KOM HAUM LOOJ MEM (SITE PLANS STUDIO)</h2>
+        <p>Kev tshuaj xyuas 42 hom thaj av tiag tiag: 20 qauv duab thaj av + 22 qauv ciam av (ciam kev 1 sab, ciam kev 2 sab kaum, ciam kev 3-4 sab, kev nkag driveway, ciam pas dej, ciam hav zoov, ciam phab ntsa...) raws li txoj cai 360°.</p>
       </div>
       <div class="items-grid" id="plotsGrid"></div>
     </div>
@@ -1212,7 +1212,7 @@ const html = `<!DOCTYPE html>
             '<span class="card-score-pill ' + sClass + '">' + sText + '</span>' +
           '</div>' +
           '<div class="card-body">' +
-            '<div class="card-cat">' + (it.type === 'boundary' ? '18 CIAM AV & KEV NKAG' : '16 QAUV THAJ AV') + '</div>' +
+            '<div class="card-cat">' + (it.type === 'boundary' ? '22 CIAM AV & KEV NKAG' : '20 QAUV THAJ AV') + '</div>' +
             '<div class="card-title">' + it.name + '</div>' +
             '<div class="card-desc">' + it.physics + '</div>' +
             '<div class="card-footer">' +
