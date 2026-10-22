@@ -118,40 +118,49 @@
   <!-- ========================================================================= -->
   <g>
     
-        <!-- Central Acute Wedge Plot -->
-        <polygon points="400,60 280,360 520,360" fill="#FEF2F2" stroke="#DC2626" stroke-width="2.5"/>
+        <!-- Surrounding Neighbor Property Labels -->
+        <text x="400" y="74" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">ດິນເພື່ອນບ້ານຫຼັງ (Rear Neighbor)</text>
 
-        <!-- Main House in Rear Upper Safe Zone -->
-        <polygon points="320,118 400,96 480,118" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
-        <rect x="330" y="118" width="140" height="52" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
-        <text x="400" y="142" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#1E293B" text-anchor="middle">ອາຄານຫຼັກ (ຕັ້ງຢູ່ເຂດປອດໄພດ້ານຫຼັງ)</text>
-        <text x="400" y="158" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">ຫ້ອງໂຖງ &amp; ຫ້ອງນອນ</text>
+        <!-- Acute Triangle: Base at Rear Y=85 (X=260..540), Sharp Apex at Front Road Y=355 (X=400) -->
+        <polygon points="260,85 540,85 400,355" fill="#FEF2F2" stroke="#DC2626" stroke-width="2.5"/>
+
+        <!-- Rear Solid Wall across Wide Base -->
+        <line x1="260" y1="85" x2="540" y2="85" stroke="#991B1B" stroke-width="4.5"/>
+        <line x1="260" y1="85" x2="400" y2="355" stroke="#334155" stroke-width="3"/>
+        <line x1="540" y1="85" x2="400" y2="355" stroke="#334155" stroke-width="3"/>
+
+        <!-- Main House in Safe Rear Wide Zone -->
+        <polygon points="330,112 400,90 470,112" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+        <rect x="340" y="112" width="120" height="52" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
+        <text x="400" y="136" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#1E293B" text-anchor="middle">ອາຄານຫຼັກ (ຕັ້ງຢູ່ເຂດປອດໄພດ້ານຫຼັງ)</text>
+        <text x="400" y="152" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">ຫ້ອງໂຖງ &amp; ຫ້ອງນອນ</text>
         
-        <!-- Front Main Entrance Door / Porch (Clear Buffer Zone) -->
-        <rect x="392" y="170" width="16" height="5" fill="#1E293B"/>
-        <text x="400" y="186" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">ປະຕູໃຫຍ່</text>
+        <!-- Front Main Entrance Door / Porch -->
+        <rect x="392" y="164" width="16" height="5" fill="#1E293B"/>
+        <text x="400" y="180" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">ປະຕູໃຫຍ່</text>
 
-        <!-- Ming Tang Bright Hall (Center of Plot Y=202..260) -->
-        <rect x="335" y="202" width="130" height="54" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="3,2"/>
-        <text x="400" y="218" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">ລານໝິງຖາງ (Bright Hall)</text>
-        <text x="400" y="231" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າໂລ່ງ</text>
-        <text x="400" y="244" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#0369A1" text-anchor="middle">• ຫາກມີບໍ່ນ້ຳ: ອ່າງນ້ຳພຸມົນ 10-15%</text>
+        <!-- Ming Tang Bright Hall (Center of Plot Y=195..250) -->
+        <rect x="335" y="195" width="130" height="54" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="400" y="210" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">ລານໝິງຖາງ (Bright Hall)</text>
+        <text x="400" y="223" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າໂລ່ງ</text>
+        <text x="400" y="236" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#0369A1" text-anchor="middle">• ຫາກມີບໍ່ນ້ຳ: ອ່າງນ້ຳພຸມົນ 10-15%</text>
 
-        <!-- Defensive Tree Buffer / Hedge at Acute Tip Y=320..350 -->
-        <circle cx="370" cy="335" r="9" fill="#16A34A"/>
-        <circle cx="400" cy="342" r="11" fill="#15803D"/>
-        <circle cx="430" cy="335" r="9" fill="#16A34A"/>
-        <text x="400" y="325" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">ແນວຕົ້ນໄມ້ປ້ອງກັນ / ກຳແພງກັນແຫຼມ</text>
+        <!-- Defensive Tree Buffer / Granite Wall cutting off Acute Apex Tip -->
+        <line x1="365" y1="315" x2="435" y2="315" stroke="#15803D" stroke-width="4"/>
+        <circle cx="375" cy="335" r="8" fill="#16A34A"/>
+        <circle cx="400" cy="340" r="10" fill="#15803D"/>
+        <circle cx="425" cy="335" r="8" fill="#16A34A"/>
+        <text x="400" y="308" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">ກຳແພງຕັດມຸມ &amp; ແນວຕົ້ນໄມ້ກັນຊົນ</text>
 
         <!-- Driveway Entering Safely from Side -->
-        <path d="M 310 360 C 330 320 370 290 392 175" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,3"/>
-        <text x="350" y="280" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle">⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ</text>
+        <path d="M 330 365 C 330 330 365 290 392 175" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,3"/>
+        <text x="345" y="275" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle">⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ</text>
 
-        <!-- Road Intersections Crossing Outside Apex -->
+        <!-- Road Intersections Crossing Outside Apex at (400, 355) -->
         <line x1="220" y1="390" x2="400" y2="355" stroke="#94A3B8" stroke-width="12"/>
         <line x1="580" y1="390" x2="400" y2="355" stroke="#94A3B8" stroke-width="12"/>
         
-        <!-- Scissors Sha Attack Vector Badge -->
+        <!-- Scissors Sha Attack Vector Badge at Apex -->
         <g transform="translate(355, 362)">
           <rect x="0" y="0" width="90" height="20" rx="3" fill="#DC2626"/>
           <text x="45" y="13" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">⚠️ ຈຸດຕັດຄົມມີດ</text>
