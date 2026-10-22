@@ -7072,13 +7072,29 @@ function setYangTab(tabName) {
 
 function setSelectedRoom(roomKey) {
             selectedRoomType = roomKey;
-            const mobSel = document.querySelector('#mobActiveTabBody #roomSelectorContainer');
-            const pcSel = document.querySelector('#pcActiveTabBody #roomSelectorContainer');
-            if (mobSel || pcSel) {
-                const sHtml = renderRoomSelectorHtml();
-                if (mobSel) mobSel.innerHTML = sHtml;
-                if (pcSel) pcSel.innerHTML = sHtml;
+
+            // Direct in-place DOM update: highlight selected button without destroying DOM or resetting scroll!
+            const allBtns = document.querySelectorAll('[data-room-key]');
+            if (allBtns && allBtns.length > 0) {
+                allBtns.forEach(btn => {
+                    const isSelected = btn.getAttribute('data-room-key') === roomKey;
+                    if (isSelected) {
+                        btn.className = 'py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 bg-amber-500 text-slate-950 shadow-md font-black ring-1 ring-amber-300';
+                    } else {
+                        btn.className = 'py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 text-slate-300 hover:bg-slate-900';
+                    }
+                });
+            } else {
+                const mobSel = document.querySelector('#mobActiveTabBody #roomSelectorContainer');
+                const pcSel = document.querySelector('#pcActiveTabBody #roomSelectorContainer');
+                if (mobSel || pcSel) {
+                    const sHtml = renderRoomSelectorHtml();
+                    if (mobSel) mobSel.innerHTML = sHtml;
+                    if (pcSel) pcSel.innerHTML = sHtml;
+                }
             }
+
+            // Update only verdict container (zero interference with buttons or scroll position)
             const normRot = ((currentRotation % 360) + 360) % 360;
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
             const mobVerdict = document.querySelector('#mobActiveTabBody #roomVerdictContainer');
@@ -7092,33 +7108,62 @@ function setSelectedRoom(roomKey) {
 
         function setSelectedRoomCategory(catKey) {
             selectedRoomCategory = catKey;
-            const mobSel = document.querySelector('#mobActiveTabBody #roomSelectorContainer');
-            const pcSel = document.querySelector('#pcActiveTabBody #roomSelectorContainer');
-            if (mobSel || pcSel) {
-                const sHtml = renderRoomSelectorHtml();
-                if (mobSel) mobSel.innerHTML = sHtml;
-                if (pcSel) pcSel.innerHTML = sHtml;
-            }
-            const normRot = ((currentRotation % 360) + 360) % 360;
-            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
-            const mobVerdict = document.querySelector('#mobActiveTabBody #roomVerdictContainer');
-            const pcVerdict = document.querySelector('#pcActiveTabBody #roomVerdictContainer');
-            if (mobVerdict || pcVerdict) {
-                updateLivePrediction(topCompassDeg, false);
+
+            const catBtns = document.querySelectorAll('[data-room-cat-btn]');
+            const roomBtns = document.querySelectorAll('[data-room-key]');
+
+            if (catBtns && catBtns.length > 0 && roomBtns && roomBtns.length > 0) {
+                // In-place category toggle
+                catBtns.forEach(btn => {
+                    const isMatch = btn.getAttribute('data-room-cat-btn') === catKey;
+                    btn.className = 'px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
+                        (isMatch
+                            ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
+                            : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800');
+                });
+
+                // Filter buttons with style.display without destroying container DOM
+                roomBtns.forEach(btn => {
+                    const rCat = btn.getAttribute('data-room-cat');
+                    const show = (catKey === 'all' || rCat === catKey);
+                    btn.style.display = show ? 'flex' : 'none';
+                });
             } else {
-                updateLivePrediction(topCompassDeg, true);
+                const mobSel = document.querySelector('#mobActiveTabBody #roomSelectorContainer');
+                const pcSel = document.querySelector('#pcActiveTabBody #roomSelectorContainer');
+                if (mobSel || pcSel) {
+                    const sHtml = renderRoomSelectorHtml();
+                    if (mobSel) mobSel.innerHTML = sHtml;
+                    if (pcSel) pcSel.innerHTML = sHtml;
+                }
             }
         }
 
         function setSelectedLuantou(key) {
             selectedLuantouType = key;
-            const mobSel = document.querySelector('#mobActiveTabBody #luantouSelectorContainer');
-            const pcSel = document.querySelector('#pcActiveTabBody #luantouSelectorContainer');
-            if (mobSel || pcSel) {
-                const sHtml = renderLuantouSelectorHtml();
-                if (mobSel) mobSel.innerHTML = sHtml;
-                if (pcSel) pcSel.innerHTML = sHtml;
+
+            // Direct in-place DOM update: highlight selected button without destroying DOM or resetting scroll!
+            const allBtns = document.querySelectorAll('[data-luantou-key]');
+            if (allBtns && allBtns.length > 0) {
+                allBtns.forEach(btn => {
+                    const isSelected = btn.getAttribute('data-luantou-key') === key;
+                    if (isSelected) {
+                        btn.className = 'py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 bg-amber-500 text-slate-950 shadow-md font-black ring-1 ring-amber-300';
+                    } else {
+                        btn.className = 'py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 text-slate-300 hover:bg-slate-900';
+                    }
+                });
+            } else {
+                const mobSel = document.querySelector('#mobActiveTabBody #luantouSelectorContainer');
+                const pcSel = document.querySelector('#pcActiveTabBody #luantouSelectorContainer');
+                if (mobSel || pcSel) {
+                    const sHtml = renderLuantouSelectorHtml();
+                    if (mobSel) mobSel.innerHTML = sHtml;
+                    if (pcSel) pcSel.innerHTML = sHtml;
+                }
             }
+
+            // Update only verdict container (zero interference with buttons or scroll position)
             const normRot = ((currentRotation % 360) + 360) % 360;
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
             const mobVerdict = document.querySelector('#mobActiveTabBody #luantouVerdictContainer');
@@ -7132,21 +7177,34 @@ function setSelectedRoom(roomKey) {
 
         function setSelectedLuantouCategory(catKey) {
             selectedLuantouCategory = catKey;
-            const mobSel = document.querySelector('#mobActiveTabBody #luantouSelectorContainer');
-            const pcSel = document.querySelector('#pcActiveTabBody #luantouSelectorContainer');
-            if (mobSel || pcSel) {
-                const sHtml = renderLuantouSelectorHtml();
-                if (mobSel) mobSel.innerHTML = sHtml;
-                if (pcSel) pcSel.innerHTML = sHtml;
-            }
-            const normRot = ((currentRotation % 360) + 360) % 360;
-            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
-            const mobVerdict = document.querySelector('#mobActiveTabBody #luantouVerdictContainer');
-            const pcVerdict = document.querySelector('#pcActiveTabBody #luantouVerdictContainer');
-            if (mobVerdict || pcVerdict) {
-                updateLivePrediction(topCompassDeg, false);
+
+            const catBtns = document.querySelectorAll('[data-luantou-cat-btn]');
+            const luantouBtns = document.querySelectorAll('[data-luantou-key]');
+
+            if (catBtns && catBtns.length > 0 && luantouBtns && luantouBtns.length > 0) {
+                // In-place category toggle
+                catBtns.forEach(btn => {
+                    const isMatch = btn.getAttribute('data-luantou-cat-btn') === catKey;
+                    btn.className = 'px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
+                        (isMatch
+                            ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
+                            : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800');
+                });
+
+                // Filter buttons with style.display without destroying container DOM
+                luantouBtns.forEach(btn => {
+                    const rCat = btn.getAttribute('data-luantou-cat');
+                    const show = (catKey === 'all' || rCat === catKey);
+                    btn.style.display = show ? 'flex' : 'none';
+                });
             } else {
-                updateLivePrediction(topCompassDeg, true);
+                const mobSel = document.querySelector('#mobActiveTabBody #luantouSelectorContainer');
+                const pcSel = document.querySelector('#pcActiveTabBody #luantouSelectorContainer');
+                if (mobSel || pcSel) {
+                    const sHtml = renderLuantouSelectorHtml();
+                    if (mobSel) mobSel.innerHTML = sHtml;
+                    if (pcSel) pcSel.innerHTML = sHtml;
+                }
             }
         }
 
@@ -7284,14 +7342,10 @@ function setSelectedRoom(roomKey) {
                     ];
 
         function renderRoomSelectorHtml() {
-            const activeRooms = selectedRoomCategory === 'all'
-                ? ALL_ROOMS
-                : ALL_ROOMS.filter(r => r.cat === selectedRoomCategory);
-
             const catBar =
                 '<div class="flex items-center gap-1 overflow-x-auto pb-1 mb-1.5 scrollbar-thin select-none">' +
                     ROOM_CATEGORIES.map(c =>
-                        '<button type="button" onclick="setSelectedRoomCategory(\'' + c.key + '\')" class="px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
+                        '<button type="button" data-room-cat-btn="' + c.key + '" onclick="setSelectedRoomCategory(\'' + c.key + '\')" class="px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
                             (selectedRoomCategory === c.key
                                 ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
                                 : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800') + '">' +
@@ -7302,15 +7356,17 @@ function setSelectedRoom(roomKey) {
 
             const roomPills =
                 catBar +
-                '<div class="grid grid-cols-3 gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 mb-2 max-h-48 overflow-y-auto">' +
-                    activeRooms.map(r =>
-                        '<button type="button" onclick="setSelectedRoom(\'' + r.key + '\')" class="py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 ' +
-                            (selectedRoomType === r.key
+                '<div id="roomButtonsGrid" class="grid grid-cols-3 gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 mb-2 max-h-48 overflow-y-auto">' +
+                    ALL_ROOMS.map(r => {
+                        const isVisible = (selectedRoomCategory === 'all' || r.cat === selectedRoomCategory);
+                        const isSelected = (selectedRoomType === r.key);
+                        return '<button type="button" data-room-key="' + r.key + '" data-room-cat="' + r.cat + '" onclick="setSelectedRoom(\'' + r.key + '\')" style="display: ' + (isVisible ? 'flex' : 'none') + ';" class="py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 ' +
+                            (isSelected
                                 ? 'bg-amber-500 text-slate-950 shadow-md font-black ring-1 ring-amber-300'
                                 : 'text-slate-300 hover:bg-slate-900') + '">' +
                             '<span class="text-xs">' + r.icon + '</span><span class="truncate max-w-full">' + r.name + '</span>' +
-                        '</button>'
-                    ).join('') +
+                        '</button>';
+                    }).join('') +
                 '</div>';
 
             return roomPills;
@@ -8380,14 +8436,10 @@ function setSelectedRoom(roomKey) {
                     ];
 
         function renderLuantouSelectorHtml() {
-            const activeLuantou = selectedLuantouCategory === 'all'
-                ? ALL_LUANTOU
-                : ALL_LUANTOU.filter(r => r.cat === selectedLuantouCategory);
-
             const catBar =
                 '<div class="flex items-center gap-1 overflow-x-auto pb-1 mb-1.5 scrollbar-thin select-none">' +
                     LUANTOU_CATEGORIES.map(c =>
-                        '<button type="button" onclick="setSelectedLuantouCategory(\'' + c.key + '\')" class="px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
+                        '<button type="button" data-luantou-cat-btn="' + c.key + '" onclick="setSelectedLuantouCategory(\'' + c.key + '\')" class="px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
                             (selectedLuantouCategory === c.key
                                 ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
                                 : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800') + '">' +
@@ -8398,15 +8450,17 @@ function setSelectedRoom(roomKey) {
 
             const luantouPills =
                 catBar +
-                '<div class="grid grid-cols-3 gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 mb-2 max-h-48 overflow-y-auto">' +
-                    activeLuantou.map(r =>
-                        '<button type="button" onclick="setSelectedLuantou(\'' + r.key + '\')" class="py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 ' +
-                            (selectedLuantouType === r.key
+                '<div id="luantouButtonsGrid" class="grid grid-cols-3 gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 mb-2 max-h-48 overflow-y-auto">' +
+                    ALL_LUANTOU.map(r => {
+                        const isVisible = (selectedLuantouCategory === 'all' || r.cat === selectedLuantouCategory);
+                        const isSelected = (selectedLuantouType === r.key);
+                        return '<button type="button" data-luantou-key="' + r.key + '" data-luantou-cat="' + r.cat + '" onclick="setSelectedLuantou(\'' + r.key + '\')" style="display: ' + (isVisible ? 'flex' : 'none') + ';" class="py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 ' +
+                            (isSelected
                                 ? 'bg-amber-500 text-slate-950 shadow-md font-black ring-1 ring-amber-300'
                                 : 'text-slate-300 hover:bg-slate-900') + '">' +
                             '<span class="text-xs">' + r.icon + '</span><span class="truncate max-w-full">' + r.name + '</span>' +
-                        '</button>'
-                    ).join('') +
+                        '</button>';
+                    }).join('') +
                 '</div>';
 
             return luantouPills;
