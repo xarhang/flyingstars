@@ -67,8 +67,8 @@
   <rect x="18" y="346" width="162" height="86" rx="4" fill="#FEF3C7"/>
   <text x="100" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#92400E" text-anchor="middle">Kev Txom Nyem: Cua ntsawj qhov nqaim</text>
   <text x="100" y="382" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#78350F" text-anchor="middle">Nyiaj nkag nyuaj, nyob kho siab</text>
-  <text x="100" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">ກົດເກນ 5 ທາດ ແລະ ເຂັມທິດ 8 ທິດ</text>
-  <text x="100" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#D97706" text-anchor="middle">✓ ສົມດຸນພະລັງງານທຳມະຊາດ</text>
+  <text x="100" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">Tsib Yam Zog &amp; 8 Fab Bagua</text>
+  <text x="100" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#D97706" text-anchor="middle">✓ Huab Cua Sib Npaug Zoo</text>
 
   <!-- ========================================================================= -->
   <!-- RIGHT COLUMN: CARDS (X=618 to 782) -->
@@ -84,7 +84,7 @@
   <text x="622" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• Zaum (Zuo): Zaum phab nraub qaum chij</text>
   
   <rect x="620" y="158" width="162" height="34" rx="4" fill="#E0F2FE"/>
-  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">Taub Hau Pw: Taub Hau Pw: Phab ntsa daim chij</text>
+  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">Taub Hau Pw: Phab ntsa daim chij</text>
   <text x="700" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">Phab ntsa tuab tsis ncaj qhov rai</text>
 
   <!-- Bottom-Right Card: Remedies & Taboos (Y=206 to 442) -->
@@ -101,7 +101,7 @@
   <text x="626" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• Txwv tsis tso qhov rooj tsev ncaj kev</text>
   <text x="626" y="377" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• Txwv tsis cia kev nkag tsaus ntuj</text>
   <text x="626" y="394" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• Txwv tsis khawb pas dej qhov ncauj</text>
-  <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ ຮັກສາຄວາມສະອາດ &amp; ແສງສະຫວ່າງ</text>
+  <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ Huv Si &amp; Teeb Pom Kev Zoo</text>
 
   <!-- ========================================================================= -->
   

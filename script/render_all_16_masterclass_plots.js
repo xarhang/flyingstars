@@ -166,7 +166,7 @@ function renderScissorsShaSvg(lang = 'lao') {
     dragonSub1: '• Yog muaj dej: Dej ntshiab puag ncig semicircular',
     dragonSub2: '✓ Kev Nkhaus Muaj Siab Zoo (Qu Ze You Qing)',
     tigerTitle: 'Zog Tsib Yam & Neeg Haum',
-    tigerLine1: '• Zog thaj av: Hluav Taws (ທາດໄຟ)',
+    tigerLine1: '• Zog thaj av: Hluav Taws (Fire)',
     tigerLine2: '• Ciam av: Riam hlais, Huo Sha',
     tigerLine3: '• ✗ Tsis haum: Neeg Kub & Ntoo',
     tigerLine4: '• Txwv tsis haum: Gua 6, 7, 3, 4',
@@ -457,6 +457,7 @@ function renderMasterPlotSvg(plot, lang = 'lao') {
   const tabooHeader = isLao ? 'ຂໍ້ຫ້າມເດັດຂາດ (Taboos)' : 'Cov Lus Txwv (Taboos)';
   const bedHeadLabel = isLao ? 'ທິດຫົວຕຽງ:' : 'Taub Hau Pw:';
   const bedHeadSub = isLao ? 'ພິງຝາທຶບ ຫຼີກລ່ຽງກົງປ່ອງຢ້ຽມ' : 'Phab ntsa tuab tsis ncaj qhov rai';
+  const cleanBed = hse.bed ? hse.bed.replace(/^(ທິດຫົວຕຽງ|ຫົວຕຽງ|Taub Hau Pw)\s*:\s*/i, '') : '';
 
   const centerSvg = plot.renderCenter ? plot.renderCenter(lang, escapeXml) : '';
 
@@ -529,8 +530,8 @@ function renderMasterPlotSvg(plot, lang = 'lao') {
   <rect x="18" y="346" width="162" height="86" rx="4" fill="#FEF3C7"/>
   <text x="100" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#92400E" text-anchor="middle">${gua.sub1}</text>
   <text x="100" y="382" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#78350F" text-anchor="middle">${gua.sub2}</text>
-  <text x="100" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">ກົດເກນ 5 ທາດ ແລະ ເຂັມທິດ 8 ທິດ</text>
-  <text x="100" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#D97706" text-anchor="middle">✓ ສົມດຸນພະລັງງານທຳມະຊາດ</text>
+  <text x="100" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">${isLao ? 'ກົດເກນ 5 ທາດ ແລະ ເຂັມທິດ 8 ທິດ' : 'Tsib Yam Zog &amp; 8 Fab Bagua'}</text>
+  <text x="100" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#D97706" text-anchor="middle">${isLao ? '✓ ສົມດຸນພະລັງງານທຳມະຊາດ' : '✓ Huab Cua Sib Npaug Zoo'}</text>
 
   <!-- ========================================================================= -->
   <!-- RIGHT COLUMN: CARDS (X=618 to 782) -->
@@ -546,7 +547,7 @@ function renderMasterPlotSvg(plot, lang = 'lao') {
   <text x="622" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">${hse.l4}</text>
   
   <rect x="620" y="158" width="162" height="34" rx="4" fill="#E0F2FE"/>
-  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">${bedHeadLabel} ${hse.bed}</text>
+  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">${bedHeadLabel} ${cleanBed}</text>
   <text x="700" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">${bedHeadSub}</text>
 
   <!-- Bottom-Right Card: Remedies & Taboos (Y=206 to 442) -->
@@ -563,7 +564,7 @@ function renderMasterPlotSvg(plot, lang = 'lao') {
   <text x="626" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">${rem.t1}</text>
   <text x="626" y="377" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">${rem.t2}</text>
   <text x="626" y="394" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">${rem.t3}</text>
-  <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ ຮັກສາຄວາມສະອາດ &amp; ແສງສະຫວ່າງ</text>
+  <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">${isLao ? '✓ ຮັກສາຄວາມສະອາດ &amp; ແສງສະຫວ່າງ' : '✓ Huv Si &amp; Teeb Pom Kev Zoo'}</text>
 
   <!-- ========================================================================= -->
   ${plot.hasFrontRoad !== false ? `

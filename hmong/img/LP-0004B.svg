@@ -31,7 +31,7 @@
   
   <!-- Element Badge -->
   <rect x="495" y="9" width="165" height="24" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
-  <text x="577" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#38BDF8" text-anchor="middle">Zog Kub/Dej Metal/Water / ທາດທອງທາດນ້ຳ</text>
+  <text x="577" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#38BDF8" text-anchor="middle">Zog Kub/Dej (Metal/Water)</text>
 
   <!-- Score Badge -->
   <rect x="670" y="9" width="112" height="24" rx="4" fill="#14532D"/>
@@ -60,15 +60,15 @@
   <text x="100" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">ZOG BAGUA &amp; NEEG HAUM</text>
   <text x="20" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• Zog Thaj Av: Zog Kub &amp; Dej</text>
   <text x="20" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ✓ Haum: Neeg ua lag luam, tsev neeg loj</text>
-  <text x="20" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">(Gua 1 (ທາດນ້ຳ), 6 (ທາດທອງ), 7 (ທາດທອງ), 8 (ທາດດິນ))</text>
-  <text x="20" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ✗ Neeg Zog Hluav (Gua 9 (ທາດໄຟ))</text>
+  <text x="20" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">(Gua 1 (Zog Dej), 6 (Zog Kub), 7 (Zog Kub), 8 (Zog Av))</text>
+  <text x="20" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ✗ Neeg Zog Hluav (Gua 9 (Zog Hluav))</text>
   <text x="20" y="326" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• Cog paj daj &amp; dawb kho kom haum</text>
   
   <rect x="18" y="346" width="162" height="86" rx="4" fill="#FEF3C7"/>
   <text x="100" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#92400E" text-anchor="middle">Tsib Yam Zog: Kub yug Dej</text>
   <text x="100" y="382" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#78350F" text-anchor="middle">Rua nyiaj txiag, noj qab nyob zoo</text>
-  <text x="100" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">ກົດເກນ 5 ທາດ ແລະ ເຂັມທິດ 8 ທິດ</text>
-  <text x="100" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#D97706" text-anchor="middle">✓ ສົມດຸນພະລັງງານທຳມະຊາດ</text>
+  <text x="100" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">Tsib Yam Zog &amp; 8 Fab Bagua</text>
+  <text x="100" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#D97706" text-anchor="middle">✓ Huab Cua Sib Npaug Zoo</text>
 
   <!-- ========================================================================= -->
   <!-- RIGHT COLUMN: CARDS (X=618 to 782) -->
@@ -84,7 +84,7 @@
   <text x="622" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• Zaum (Zuo): Zaum nraub qaum hu lu ruaj khov</text>
   
   <rect x="620" y="158" width="162" height="34" rx="4" fill="#E0F2FE"/>
-  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">Taub Hau Pw: Taub Hau Pw: Thaj Tian Yi los Yan Nian</text>
+  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">Taub Hau Pw: Thaj Tian Yi los Yan Nian</text>
   <text x="700" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">Phab ntsa tuab tsis ncaj qhov rai</text>
 
   <!-- Bottom-Right Card: Remedies & Taboos (Y=206 to 442) -->
@@ -101,7 +101,7 @@
   <text x="626" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• Txwv tsis pub txiav rooj qab tawm</text>
   <text x="626" y="377" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• Txwv tso qhov cub rau caj dab</text>
   <text x="626" y="394" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• Txwv tsis pub caj dab nqaim dhau</text>
-  <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ ຮັກສາຄວາມສະອາດ &amp; ແສງສະຫວ່າງ</text>
+  <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ Huv Si &amp; Teeb Pom Kev Zoo</text>
 
   <!-- ========================================================================= -->
   

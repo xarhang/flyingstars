@@ -290,13 +290,13 @@
     "housePositioning": "Tsim tsev ua ob lub tsev plaub fab sib cais lossis ua tsev plaub fab rau ib sab xwb.",
     "entrancePlacement": "Qhov rooj vag nyob ntawm sab dav, txwv tsis qhib qhov rooj ntawm kaum phom.",
     "orientationFacing": "Ntsia sab dav, zaum phab ntsa ruaj.",
-    "comprehensiveRemedy": "1. Ua phab ntsa lossis cog ntoo txiav kom rov ua ob lub plaub fab; 2. Tso teeb pom kev zoo rau kaum uas poob; 3. Pas dej pem tsev.",
-    "physics": "Thaj av duab tus phom (L-Shape), poob ib lub kaum loj (Missing Sector), cua ntsawj ntxhov siab.",
+    "comprehensiveRemedy": "1. Faib thaj av hauv tsev ua ob lub plaub fab (feem tsev & feem vaj); 2. Cog hav ntoo ntsuab raws ciam av sab hauv thaiv kaum nkhaus; 3. Tso teeb vaj rau saum ncej ciam av hauv tsev; 4. Tso pob zeb Tai Shan granite (txwv tsis kov luag av 100%).",
+    "physics": "Thaj av duab tus phom (L-Shape), poob kaum Bagua thiab muaj kaum nkhaus hauv tsev. Kho hauv yus thaj av xwb 100%.",
     "entrance": "Qhov rooj loj nyob ntawm sab loj.",
     "water": "Pas dej pem hauv ntej lub tsev loj.",
-    "bagua": "Poob ib lub kaum Bagua, yuav tsum kho nrog teeb lossis ntoo.",
-    "remedy": "1. Txiav ua ob lub plaub fab; 2. Teeb pom kev kaum; 3. Ntoo ntsuab.",
-    "taboos": "• Txwv tsim tsev L-shape raws av\n• Txwv qhib qhov rooj ntawm kaum ntse"
+    "bagua": "Poob kaum Bagua, yuav tsum kho hauv tsev nrog teeb vaj & ntoo thaiv kaum.",
+    "remedy": "1. Faib ua 2 feem plaub fab; 2. Hav ntoo thaiv kaum nkhaus; 3. Teeb vaj hauv tsev; 4. Pob zeb Tai Shan (txwv kov luag av).",
+    "taboos": "• Txwv tsis kov lossis tsim kho rau thaj av luag lwm tus (kho hauv tsev 100%)\n• Txwv tsim tsev L-shape raws av\n• Txwv qhib qhov rooj ntawm kaum ntse"
   },
   {
     "id": "LP-0010",

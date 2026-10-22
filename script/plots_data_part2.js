@@ -12,8 +12,8 @@ module.exports = [
     nameHmong: 'Qiang Xing Tu (Thaj Av Tus Phom - L-Shape Plot)',
     elementLao: 'ທາດທອງຫັກ & ມຸມຂາດ (Broken Metal & Missing Sector Sha)',
     elementHmong: 'Zog Kub Txiav & Poob Kaum (Broken Metal)',
-    summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນຮູບປືນ/ໂຕແອວຂາດມຸມເກີນ 30% ສ້າງພະລັງພິສເລັງໃສ່ບໍລິເວນມຸມຫັກ ຕ້ອງເຕັມມຸມຂາດດ້ວຍແນວໄມ້ ແລະ ເສົາໄຟ.',
-    summaryHmong: 'Tswv Yim: Thaj av tus phom poob kaum tshaj 30% tsim zog phem ntsia plawv kaum txiav yuav tsum kho nrog hav ntoo & ncej fais (ncej hluav taws xob).',
+    summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນຮູບໂຕ L (ຮູບປືນ) ມີມຸມຂາດປາກວ້າ ແລະ ເກີດມຸມຫັກສອກພາຍໃນ. ການແກ້ໄຂຕ້ອງເຮັດພາຍໃນຕອນດິນເຮົາ 100%: ແບ່ງພາຍໃນເປັນ 2 ໂຊນສີ່ຫຼ່ຽມ ແລະ ປູກໄມ້ບັງມຸມຫັກສອກ (ຫ້າມລ່ວງລ້ຳດິນຂ້າງບ້ານ).',
+    summaryHmong: 'Tswv Yim: Thaj av tus L (phom tua) poob kaum Bagua thiab muaj kaum nkhaus hauv tsev. Yuav tsum kho hauv yus thaj av xwb 100%: faib ua 2 feem 4 fab thiab cog ntoo thaiv kaum nkhaus (txwv tsis kov luag av).',
 
     entranceLao: {
       title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
@@ -48,8 +48,8 @@ module.exports = [
       title: '☯️ ZOG BAGUA & NEEG HAUM',
       l1: '• Zog Thaj Av: Kub Txiav & Poob Kaum',
       l2: '• ✗ Tsis haum: Txhua tus neeg',
-      l3: '• Poob NW raug leej txiv (Gua 6 (ທາດທອງ))',
-      l4: '• Poob SW raug leej niam (Gua 2 (ທາດດິນ))',
+      l3: '• Poob NW raug leej txiv (Gua 6 Zog Kub)',
+      l4: '• Poob SW raug leej niam (Gua 2 Zog Av)',
       l5: '• Poob Sab Hnub Tuaj raug tub hlob',
       sub1: 'Kev Txom Nyem: Poob kaum Bagua',
       sub2: 'Mob nkeeg, poob nyiaj txiag'
@@ -73,34 +73,38 @@ module.exports = [
     },
 
     remedyLao: {
-      title: '🛡️ ວິທີແກ້ໄຂດ່ວນ 4 ຂັ້ນຕອນ',
-      l1: '1. ປູກແນວໄມ້ພຸ່ມເຕັມມຸມຂາດໃຫ້ເປັນ 4 ຫຼ່ຽມ',
-      l2: '2. ຕັ້ງເສົາໄຟສະຫວ່າງສູງທີ່ມຸມຕັດທີ່ຂາດ',
-      l3: '3. ປັບມຸມຂາດເປັນສວນດອກໄມ້/ສາລາ',
-      l4: '4. ແຍກສ່ວນດິນເປັນ 2 ໂຊນຈະແຈ້ງ',
-      t1: '• ຫ້າມສ້າງຫ້ອງນອນກົງມຸມຫັກໂຕ L',
-      t2: '• ຫ້າມເປີດປະຕູກົງມຸມແຫຼມພາຍໃນ',
-      t3: '• ຫ້າມຂຸດໜອງນ້ຳກົງມຸມຕັດ'
+      title: '🛡️ ວິທີແກ້ໄຂໃນດິນເຮົາ 4 ຂັ້ນຕອນ',
+      l1: '1. ແບ່ງດິນພາຍໃນເປັນ 2 ໂຊນສີ່ຫຼ່ຽມ (ແຍກເຂດເຮືອນ & ສວນ)',
+      l2: '2. ປູກແນວໄມ້ພຸ່ມຕາມແນວຮົ້ວໃນດິນເຮົາ ບັງມຸມຫັກສອກ',
+      l3: '3. ຕັ້ງໂຄມໄຟສວນ/ໂຊລາເຊວ ເທິງຫົວເສົາຮົ້ວໃນດິນເຮົາ',
+      l4: '4. ຕັ້ງສີລາໄທຊານ (ຫີນແກຣນິດມົນ) ໃນສວນດິນເຮົາ',
+      t1: '• ຫ້າມລ່ວງລ້ຳ ຫຼື ດັດແປງດິນຂ້າງບ້ານ (ແກ້ໃນດິນເຮົາ 100%)',
+      t2: '• ຫ້າມວາງຫ້ອງນອນ ຫຼື ປະຕູໃຫຍ່ກົງກັບມຸມຫັກສອກໂຕ L',
+      t3: '• ຫ້າມຂຸດໜອງນ້ຳກົງມຸມຫັກສອກພາຍໃນ'
     },
     remedyHmong: {
-      title: '🛡️ KEV KHO 4 KAUJ RUAM',
-      l1: '1. Cog hav ntoo sau puv kaum poob',
-      l2: '2. Tso ncej fais (hluav taws xob) kaum nraud',
-      l3: '3. Ua vaj paj / tsev so kaum poob',
-      l4: '4. Faib thaj av ua 2 feem meej',
-      t1: '• Txwv tsis tso chav pw kaum txiav',
-      t2: '• Txwv tsis qhib qhov rooj kaum L',
-      t3: '• Txwv tsis khawb pas dej kaum txiav'
+      title: '🛡️ KHO HAUV CIAM AV 4 KAUJ RUAM',
+      l1: '1. Faib thaj av hauv tsev ua 2 feem 4 fab (tsev & vaj)',
+      l2: '2. Cog hav ntoo raws ciam av sab hauv thaiv kaum nkhaus',
+      l3: '3. Tso teeb vaj/hnub ci rau ncej ciam av hauv tsev',
+      l4: '4. Tso pob zeb Tai Shan granite hauv kaum nkhaus tsev',
+      t1: '• Txwv tsis kov lossis kho luag av (kho hauv tsev 100%)',
+      t2: '• Txwv tsis tso chav pw/qhov rooj ncaj kaum nkhaus L',
+      t3: '• Txwv tsis khawb pas dej ntawm kaum nkhaus sab hauv'
     },
 
-        renderCenter(lang, escapeXml) {
+    renderCenter(lang, escapeXml) {
       const isLao = lang === 'lao';
       const houseText = isLao ? 'ອາຄານຫຼັກ' : 'Lub Tsev';
       const houseSub = isLao ? 'ຫ້ອງໂຖງໃຫຍ່' : 'Chaw Txais Qhua';
-      const waterText = isLao ? '✓ ໜອງນ້ຳໜ້າເຮືອນ' : '✓ Pas Dej Pem';
-      const missingText = isLao ? '⚠️ ມຸມທີ່ຂາດຫາຍ (Missing Sector)' : '⚠️ Kaum Poob (Missing Sector)';
-      const hedgeText = isLao ? '🌲 ແນວໄມ້ເຕັມມຸມຂາດ' : '🌲 Hav Ntoo Kho Kaum';
-      const lightText = isLao ? '💡 ເສົາໄຟແສງສະຫວ່າງ' : '💡 Ncej Fais (Hluav Taws Xob)';
+      const neighborText = isLao ? 'ດິນຂ້າງບ້ານ / ດິນຄົນອື່ນ' : 'Ciam Av Luag Lwm Tus';
+      const neighborSub = isLao ? '⛔ ຫ້າມລ່ວງລ້ຳ / ດັດແປງ' : '⛔ Luag Av - Txwv Tsis Kov';
+      const privateText = isLao ? '(Private Property / Luag Av)' : '(Private Neighbor Property)';
+      const divBadgeText = isLao ? '⟵ ແບ່ງ 2 ໂຊນພາຍໃນດິນເຮົາ ⟶' : '⟵ Faib 2 Feem Hauv Ciam Av ⟶';
+      const hedgeText = isLao ? '🌲 ແນວໄມ້ບັງມຸມຫັກສອກ' : '🌲 Hav Ntoo Thaiv Kaum';
+      const lightText = isLao ? '💡 ໂຄມໄຟສວນ (ໃນດິນເຮົາ)' : '💡 Teeb Vaj (Hauv Ciam Av)';
+      const stoneText = isLao ? '🪨 ສີລາໄທຊານ ດັບມຸມຫັກ' : '🪨 Pob Zeb Tai Shan';
+      const sealText = isLao ? '✓ ແກ້ໄຂໃນດິນເຮົາ 100%' : '✓ Kho Hauv Ciam Av 100%';
 
       return `
         <!-- Surrounding Neighbor Property Labels -->
@@ -108,42 +112,35 @@ module.exports = [
         <text x="235" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-90 235 220)">${isLao ? 'ເພື່ອນບ້ານຊ້າຍ' : 'Tsev Sab Laug'}</text>
         <text x="565" y="290" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(90 565 290)">${isLao ? 'ເພື່ອນບ້ານຂວາ' : 'Tsev Sab Xis'}</text>
 
-        <!-- Missing Sector (Yellow hatched fill) -->
-        <rect x="420" y="95" width="125" height="135" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2" stroke-dasharray="6,4"/>
-        <text x="482" y="155" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#B45309" text-anchor="middle">${escapeXml(missingText)}</text>
-        <line x1="420" y1="95" x2="545" y2="230" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3,3"/>
-        <line x1="545" y1="95" x2="420" y2="230" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3,3"/>
+        <!-- Neighbor's Private Property (Missing Quadrant - DO NOT TRESPASS) -->
+        <rect x="420" y="95" width="125" height="135" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <g transform="translate(482, 136)">
+          <rect x="-32" y="-22" width="64" height="38" rx="4" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.2"/>
+          <polygon points="-36,-22 0,-38 36,-22" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.2"/>
+          <circle cx="0" cy="-2" r="7" fill="#94A3B8"/>
+          <text x="0" y="2" font-family="'Segoe UI', sans-serif" font-size="8" fill="#FFFFFF" text-anchor="middle">🏡</text>
+          <text x="0" y="32" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#475569" text-anchor="middle">${escapeXml(neighborText)}</text>
+          <text x="0" y="46" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#DC2626" text-anchor="middle">${escapeXml(neighborSub)}</text>
+          <text x="0" y="58" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#64748B" text-anchor="middle">${escapeXml(privateText)}</text>
+        </g>
 
-        <!-- Light Pole at outer missing corner (x=545, y=95) -->
-        <circle cx="545" cy="95" r="9" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
-        <text x="545" y="98" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#FFFFFF" text-anchor="middle">💡</text>
-        <rect x="460" y="78" width="85" height="14" rx="3" fill="#B45309"/>
-        <text x="502" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${escapeXml(lightText)}</text>
-
-        <!-- Living Plot L-Shape Boundary Ground -->
+        <!-- Living Plot L-Shape Boundary Ground (OUR LAND) -->
         <path d="M 255 95 L 420 95 L 420 230 L 545 230 L 545 355 L 255 355 Z" fill="#FEE2E2"/>
         <path d="M 260 100 L 415 100 L 415 235 L 540 235 L 540 350 L 260 350 Z" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="5,4"/>
 
-        <!-- Perimeter Fences -->
-        <line x1="255" y1="95" x2="420" y2="95" stroke="#15803D" stroke-width="4"/>
-        <line x1="255" y1="95" x2="255" y2="355" stroke="#334155" stroke-width="3"/>
+        <!-- Perimeter Fences of OUR Land -->
+        <line x1="255" y1="95" x2="420" y2="95" stroke="#334155" stroke-width="3.5"/>
+        <line x1="255" y1="95" x2="255" y2="355" stroke="#334155" stroke-width="3.5"/>
         <line x1="420" y1="95" x2="420" y2="230" stroke="#DC2626" stroke-width="3"/>
         <line x1="420" y1="230" x2="545" y2="230" stroke="#DC2626" stroke-width="3"/>
-        <line x1="545" y1="230" x2="545" y2="355" stroke="#334155" stroke-width="3"/>
+        <line x1="545" y1="230" x2="545" y2="355" stroke="#334155" stroke-width="3.5"/>
 
-        <!-- Buffer Hedge filling the missing sector boundary -->
-        <line x1="420" y1="95" x2="545" y2="95" stroke="#15803D" stroke-width="5" stroke-dasharray="6,4"/>
-        <line x1="545" y1="95" x2="545" y2="230" stroke="#15803D" stroke-width="5" stroke-dasharray="6,4"/>
-        <circle cx="445" cy="95" r="6" fill="#16A34A"/>
-        <circle cx="485" cy="95" r="6" fill="#16A34A"/>
-        <circle cx="525" cy="95" r="6" fill="#16A34A"/>
-        <circle cx="545" cy="130" r="6" fill="#16A34A"/>
-        <circle cx="545" cy="170" r="6" fill="#16A34A"/>
-        <circle cx="545" cy="210" r="6" fill="#16A34A"/>
-        <rect x="430" y="105" width="95" height="14" rx="3" fill="#15803D"/>
-        <text x="477" y="115" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${escapeXml(hedgeText)}</text>
+        <!-- INTERNAL REGULARIZATION LINE (DIVIDING OUR LAND INTO 2 PURE RECTANGLES) -->
+        <line x1="255" y1="202" x2="420" y2="202" stroke="#059669" stroke-width="2" stroke-dasharray="6,4"/>
+        <rect x="268" y="194" width="138" height="15" rx="3" fill="#ECFDF5" stroke="#10B981" stroke-width="1"/>
+        <text x="337" y="204.5" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#047857" text-anchor="middle">${escapeXml(divBadgeText)}</text>
 
-        <!-- House seated inside the large rectangular wing (Architectural Layout) -->
+        <!-- ZONE A: MAIN HOUSE SEATED IN THE UPPER RECTANGLE -->
         <polygon points="270,112 337,90 405,112" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
         <rect x="280" y="112" width="115" height="52" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
         
@@ -160,7 +157,7 @@ module.exports = [
         <text x="358" y="136" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#1E293B" text-anchor="middle">${escapeXml(houseText)}</text>
         <text x="358" y="152" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#475569" text-anchor="middle">${escapeXml(houseSub)}</text>
         
-        <!-- Front Main Entrance Door / Porch (Clear Buffer Zone) -->
+        <!-- Front Main Entrance Door / Porch -->
         <rect x="350" y="164" width="15" height="5" fill="#1E293B"/>
         <text x="358" y="180" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">${isLao ? 'ປະຕູໃຫຍ່' : 'Rooj Loj'}</text>
 
@@ -173,14 +170,46 @@ module.exports = [
           <text x="17" y="46" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດໜ້າ ⬇' : 'Ntsia ⬇'}</text>
         </g>
 
-        <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
-        <rect x="270" y="200" width="145" height="66" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-        <text x="342" y="214" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall / ເຕົ້າໂຮມພະລັງງານ)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
-        <text x="342" y="228" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">${isLao ? '• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tsis muaj dej: Tshav xyoob ntsuab kaj'}</text>
-        <text x="342" y="241" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ຕ້ອງໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Dej ntshiab puag ncig'}</text>
+        <!-- ZONE B: MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+        <rect x="268" y="218" width="140" height="58" rx="5" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="338" y="232" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall)' : 'Thaj Tshav Kaj (Ming Tang)'}</text>
+        <text x="338" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">${isLao ? '• ລານຫຍ້າຂຽວໂລ່ງສະອາດ ຮັບແສງ-ລົມ' : '• Tshav xyoob ntsuab kaj sau zog'}</text>
+        <text x="338" y="259" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#0369A1" text-anchor="middle">${isLao ? '• ຫາກມີບໍ່ນ້ຳ: ໂອບອຸ້ມເຄິ່ງວົງ' : '• Yog muaj dej: Pas dej semicircular'}</text>
         <!-- Optional Water Feature Badge -->
-        <path d="M 380 255 A 16 8 0 0 0 412 255 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
-        <text x="396" y="252" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ(ຖ້າມີ)]' : '[Pas Dej]'}</text>
+        <path d="M 378 268 A 14 7 0 0 0 406 268 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="392" y="265" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ]' : '[Pas Dej]'}</text>
+
+        <!-- INNER RE-ENTRANT CORNER REMEDY (100% INSIDE OUR BOUNDARY) -->
+        <!-- Dense Protective Hedge screening inner corner on our side of fence -->
+        <circle cx="413" cy="155" r="5" fill="#15803D"/>
+        <circle cx="413" cy="175" r="5.5" fill="#16A34A"/>
+        <circle cx="413" cy="195" r="6" fill="#15803D"/>
+        <circle cx="413" cy="215" r="6" fill="#16A34A"/>
+        <circle cx="427" cy="237" r="6" fill="#15803D"/>
+        <circle cx="447" cy="237" r="6" fill="#16A34A"/>
+        <circle cx="467" cy="237" r="5.5" fill="#15803D"/>
+        <circle cx="487" cy="237" r="5" fill="#16A34A"/>
+
+        <!-- Hedge Label Pill -->
+        <rect x="424" y="246" width="96" height="15" rx="3" fill="#15803D"/>
+        <text x="472" y="257" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${escapeXml(hedgeText)}</text>
+
+        <!-- Post Light on our fence corner (illuminating our garden) -->
+        <circle cx="413" cy="231" r="7.5" fill="#F59E0B" stroke="#B45309" stroke-width="1.5"/>
+        <text x="413" y="234" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#FFFFFF" text-anchor="middle">💡</text>
+        <rect x="350" y="280" width="98" height="15" rx="3" fill="#B45309"/>
+        <text x="399" y="291" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${escapeXml(lightText)}</text>
+        <line x1="399" y1="280" x2="410" y2="240" stroke="#B45309" stroke-width="1.2" stroke-dasharray="2,2"/>
+
+        <!-- Tai Shan Granite Stone inside our corner garden -->
+        <ellipse cx="438" cy="275" rx="9" ry="6" fill="#64748B" stroke="#334155" stroke-width="1.5"/>
+        <text x="438" y="278" font-family="'Segoe UI', sans-serif" font-size="6.5" fill="#FFFFFF" text-anchor="middle">🪨</text>
+        <rect x="452" y="268" width="88" height="14" rx="3" fill="#334155"/>
+        <text x="496" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.2" fill="#FFFFFF" text-anchor="middle">${escapeXml(stoneText)}</text>
+
+        <!-- 100% Internal Remedy Seal Badge -->
+        <rect x="426" y="298" width="114" height="20" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+        <text x="483" y="311" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">${escapeXml(sealText)}</text>
 
         <!-- PHYSICAL FRONT FENCE WITH GATE OPENING ON DRAGON SIDE -->
         <line x1="255" y1="355" x2="285" y2="355" stroke="#334155" stroke-width="3.5"/>
@@ -195,30 +224,28 @@ module.exports = [
         <line x1="335" y1="355" x2="325" y2="344" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
-        <path d="M 310 395 L 310 355 C 310 305 330 275 350 240 C 358 210 358 190 358 169" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
-        <text x="340" y="318" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
+        <path d="M 310 395 L 310 355 C 310 320 325 295 345 250 C 356 220 358 190 358 169" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="340" y="332" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)' : '⟿ Kev Nkhaus Zoo Siab'}</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO LEFT CLEAR OF DRIVEWAY) -->
         <g transform="translate(195, 350)">
           <rect x="0" y="0" width="88" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
           <text x="44" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູຮົ້ວໃຫຍ່' : '✓ Rooj Vag Loj'}</text>
-          <!-- Pointer Line to Gate Post -->
           <line x1="88" y1="9" x2="103" y2="0" stroke="#15803D" stroke-width="1.8"/>
           <circle cx="103" cy="0" r="2" fill="#15803D"/>
         </g>
         
-        <!-- [✗] FORBIDDEN GATE BADGE (ANCHORED TO MISSING SECTOR NOTCH) -->
-        <g transform="translate(425, 240)">
-          <rect x="0" y="0" width="82" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
-          <text x="41" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">${isLao ? '✗ ຫ້າມຕັ້ງປະຕູ' : '✗ Txwv Rooj Vag'}</text>
-          <line x1="0" y1="9" x2="-5" y2="-5" stroke="#DC2626" stroke-width="1.8"/>
-          <circle cx="-5" cy="-5" r="2" fill="#DC2626"/>
+        <!-- [✗] FORBIDDEN GATE BADGE (ANCHORED TO INNER CORNER) -->
+        <g transform="translate(435, 212)">
+          <rect x="0" y="0" width="90" height="16" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="11" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#FFFFFF" text-anchor="middle">${isLao ? '✗ ຫ້າມຕັ້ງປະຕູກົງມຸມ' : '✗ Txwv Rooj Vag Kaum'}</text>
+          <line x1="0" y1="8" x2="-12" y2="18" stroke="#DC2626" stroke-width="1.5"/>
+          <circle cx="-12" cy="18" r="2" fill="#DC2626"/>
         </g>
 
         <!-- Trees in lower wing courtyard -->
-        <circle cx="480" cy="280" r="10" fill="#16A34A"/>
         <circle cx="510" cy="300" r="8" fill="#CA8A04"/>
-        <circle cx="450" cy="320" r="7" fill="#16A34A"/>
+        <circle cx="450" cy="330" r="7" fill="#16A34A"/>
       `;
     }
   },
@@ -639,7 +666,7 @@ module.exports = [
     nameLao: 'ຕອນດິນເຄິ່ງວົງມົນ ທາດທອງ (Ban Yuan Tu - Semicircular Metal Plot)',
     nameHmong: 'Ban Yuan Tu (Thaj Av Voj Kheej Ntoos - Semicircular Metal)',
     elementLao: 'ທາດທອງ Metal / ທາດທອງ (Wu Qu Star)',
-    elementHmong: 'Zog Kub Voj (Metal Gold / ທາດທອງ)',
+    elementHmong: 'Zog Kub Voj (Metal Gold)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນເຄິ່ງວົງມົນທາດທອງ ຫຼັງໂຄ້ງໂອບອຸ້ມຄືອ້ອມແຂນມັງກອນ ໜ້າຮາບພຽງຮັບຊັບ ເປັນມຸງຄຸນສູງສົ່ງເສີມອຳນາດບາຣະມີ.',
     summaryHmong: 'Tswv Yim: Thaj av voj kheej zog Kub tom qab nkhaus qhwv tsev zoo li npab zaj pem tiaj txais nyiaj txiag muaj hwj chim loj.',
 
@@ -676,7 +703,7 @@ module.exports = [
       title: '☯️ ZOG BAGUA & NEEG HAUM',
       l1: '• Zog Thaj Av: Zog Kub (Metal )',
       l2: '• ✓ Haum: Neeg Zog Kub & Dej',
-      l3: '  (Gua 6 (ທາດທອງ), 7 (ທາດທອງ), 1 (ທາດນ້ຳ))',
+      l3: '  (Gua 6 (Zog Kub), 7 (Zog Kub), 1 (Zog Dej))',
       l4: '• Voj nkhaus yug Kub: Muaj hwj chim loj',
       l5: '• Neeg Zog Ntoo (3, 4) tso pas dej txuas zog',
       sub1: 'Tsib Yam Zog: Kub yug Dej',
@@ -831,7 +858,7 @@ module.exports = [
     nameLao: 'ຕອນດິນເນີນເຂົາ ຂັ້ນໄດ (Shan Yao Tu - Hillside Terrace Plot)',
     nameHmong: 'Shan Yao Tu (Thaj Av Qis Siab Hauv Toj - Hillside Terrace)',
     elementLao: 'ທາດດິນພູເຂົາ Mountain Earth / ທາດດິນ (Gen Gua ທາດດິນ)',
-    elementHmong: 'Zog Toj Roob (Mountain Earth / ທາດດິນ )',
+    elementHmong: 'Zog Toj Roob (Mountain Earth)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນເນີນເຂົາຫຼັງສູງໜ້າຕ່ຳຕ້ອງແບ່ງເປັນ 3 ຂັ້ນໄດພ້ອມກຳແພງກັນດິນ ເຮືອນວາງໃນຂັ້ນກາງ ຫຼັງພິງພູໜ້າຊົມວິວ.',
     summaryHmong: 'Tswv Yim: Thaj av toj roob nraub qaum siab pem qis yuav tsum faib ua 3 theem theem nruab nrab tso tsev tom qab zaum roob.',
 
@@ -866,9 +893,9 @@ module.exports = [
     },
     guaHmong: {
       title: '☯️ ZOG BAGUA & NEEG HAUM',
-      l1: '• Zog Thaj Av: Toj Roob (Mountain ທາດດິນ)',
+      l1: '• Zog Thaj Av: Toj Roob (Mountain Earth)',
       l2: '• ✓ Haum: Neeg Zog Av & Kub',
-      l3: '  (Gua 8 (ທາດດິນ), 2 (ທາດດິນ), 6 (ທາດທອງ), 7 (ທາດທອງ))',
+      l3: '  (Gua 8 (Zog Av), 2 (Zog Av), 6 (Zog Kub), 7 (Zog Kub))',
       l4: '• Zaum roob: Noj qab nyob zoo, lub neej ntev',
       l5: '• Neeg Zog Dej (1) ceev faj dej liam av',
       sub1: 'Tsib Yam Zog: Roob yug Kub',
@@ -1226,7 +1253,7 @@ module.exports = [
     nameLao: 'ຕອນດິນແຫຼມແມ່ນ້ຳ ຫົວສາຍແອວຫົກ (Jade Belt Peninsula)',
     nameHmong: 'Huan Bao He Wan Tu (Thaj Av Dej Nkhaus Qhwv Tsev - Jade Belt)',
     elementLao: 'ທາດນ້ຳໂອບອຸ້ມ Water Wealth / ທາດນ້ຳ (Jade Belt)',
-    elementHmong: 'Zog Dej Jade Belt (Water Wealth / ທາດນ້ຳ)',
+    elementHmong: 'Zog Dej Jade Belt (Water Wealth)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນແຫຼມແມ່ນ້ຳໂອບອຸ້ມຄືສາຍແອວຫຍົກ ເປັນສຸດຍອດຕອນດິນຮັບຊັບ ສາຍນ້ຳໂອບອຸ້ມນຳພາໂຊກລາບມະຫາສານ.',
     summaryHmong: 'Tswv Yim: Thaj av dej nkhaus qhwv tsev zoo li siv tawv kub yog thaj av zoo tshaj plaws dej qhwv nqa nyiaj txiag ntau heev.',
 
@@ -1263,7 +1290,7 @@ module.exports = [
       title: '☯️ ZOG BAGUA & NEEG HAUM',
       l1: '• Zog Thaj Av: Dej Jade Belt (Water 水)',
       l2: '• ✓ Haum: Neeg Zog Dej & Ntoo',
-      l3: '  (Gua 1 (ທາດນ້ຳ), 3 (ທາດໄມ້), 4 (ທາດໄມ້))',
+      l3: '  (Gua 1 (Zog Dej), 3 (Zog Ntoo), 4 (Zog Ntoo))',
       l4: '• Dej qhwv tsev: Neeg nplua mias, lag luam loj',
       l5: '• Neeg Zog Hluav Taws (9) cog ntoo thaiv dej',
       sub1: 'Tsib Yam Zog: Dej yug Ntoo',

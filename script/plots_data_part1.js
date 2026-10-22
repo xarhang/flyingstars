@@ -11,9 +11,9 @@ module.exports = [
     nameLao: 'ຕອນດິນສີ່ຫຼ່ຽມຈະຕຸລັດ (Zheng Fang Tu - Square Plot)',
     nameHmong: 'Zheng Fang Tu (Thaj Av 4 Fab Sib Npaug - Square Plot)',
     elementLao: 'ທາດດິນ Earth / ທາດດິນ',
-    elementHmong: 'Zog Av Earth / ທາດດິນ',
+    elementHmong: 'Zog Av (Earth)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສີ່ຫຼ່ຽມຈະຕຸລັດເປັນທາດດິນ (ທາດດິນ) ມຸມ 90° ສົມບູນ ພະລັງງານໝູນວຽນສົມດຸນ ເປັນມຸງຄຸນສູງສຸດ.',
-    summaryHmong: 'Tswv Yim: Thaj av plaub fab sib npaug yog zog Av (ທາດດິນ) 4 ces kaum 90° huab cua ncig sib npaug zoo tshaj plaws.',
+    summaryHmong: 'Tswv Yim: Thaj av plaub fab sib npaug yog zog Av 4 ces kaum 90° huab cua ncig sib npaug zoo tshaj plaws.',
     
     entranceLao: {
       title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
@@ -48,7 +48,7 @@ module.exports = [
       title: '☯️ ZOG BAGUA & NEEG HAUM',
       l1: '• Zog Thaj Av: Zog Av (Earth)',
       l2: '• ✓ Haum: Neeg Zog Av & Kub',
-      l3: '  (Gua 2 (ທາດດິນ), 8 (ທາດດິນ), 6 (ທາດທອງ), 7 (ທາດທອງ))',
+      l3: '  (Gua 2 (Zog Av), 8 (Zog Av), 6 (Zog Kub), 7 (Zog Kub))',
       l4: '• ✗ Tsis ntsib kev tsis zoo',
       l5: '• Neeg Zog Dej (Gua 1) tso pas dej',
       sub1: 'Tsib Yam Zog: Av yug Kub',
@@ -206,9 +206,9 @@ module.exports = [
     nameLao: 'ຕອນດິນສີ່ຫຼ່ຽມຜືນຜ້າ ຄຳ (Chang Fang Tu - Golden Rectangle Plot)',
     nameHmong: 'Chang Fang Tu (Thaj Av 4 Fab Ntev - Golden Rectangle Plot)',
     elementLao: 'ທາດໄມ້ Wood / ທາດໄມ້',
-    elementHmong: 'Zog Ntoo Wood / ທາດໄມ້',
+    elementHmong: 'Zog Ntoo (Wood)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສີ່ຫຼ່ຽມຜືນຜ້າເປັນທາດໄມ້ (ທາດໄມ້) ຮັກສາພະລັງງານໄດ້ເລິກ ເສີມການສຶກສາ ແລະ ທຸລະກິດຍາວນານ.',
-    summaryHmong: 'Tswv Yim: Thaj av plaub fab ntev yog zog Ntoo (ທາດໄມ້) khaws zog tob txhawb kev kawm ntawv & lag luam ntev.',
+    summaryHmong: 'Tswv Yim: Thaj av plaub fab ntev yog zog Ntoo khaws zog tob txhawb kev kawm ntawv & lag luam ntev.',
 
     entranceLao: {
       title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
@@ -243,7 +243,7 @@ module.exports = [
       title: '☯️ ZOG BAGUA & NEEG HAUM',
       l1: '• Zog Thaj Av: Zog Ntoo (Wood)',
       l2: '• ✓ Haum: Neeg Zog Ntoo & Hluav',
-      l3: '  (Gua 3 (ທາດໄມ້), 4 (ທາດໄມ້), 9 (ທາດໄຟ))',
+      l3: '  (Gua 3 (Zog Ntoo), 4 (Zog Ntoo), 9 (Zog Hluav))',
       l4: '• ✗ Neeg Zog Av (Gua 2, 8) ceev faj',
       l5: '• Siv teeb ci kub & xim cream kho',
       sub1: 'Tsib Yam Zog: Ntoo yug Hluav',
@@ -384,7 +384,7 @@ module.exports = [
     nameLao: 'ຕອນດິນຖົງເງິນຖົງຄຳ (Jin Dai Dou - Money Bag Plot)',
     nameHmong: 'Jin Dai Dou (Thaj Av Hnab Nyiaj - Money Bag Plot)',
     elementLao: 'ທາດທອງ/ດິນ Metal/Earth / ທາດທອງ',
-    elementHmong: 'Zog Kub/Av Metal/Earth / ທາດທອງ',
+    elementHmong: 'Zog Kub/Av (Metal/Earth)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນຖົງເງິນຖົງຄຳ ໜ້າແຄບຫຼັງກວ້າງໃຫຍ່ ກັກເກັບຊັບສົມບັດ ມະຫາເສດຖີອັນດັບ 1.',
     summaryHmong: 'Tswv Yim: Thaj av hnab nyiaj pem nqaim tom qab dav loj, nyiaj nkag yooj yim khaws cia zoo tshaj plaws.',
 
@@ -557,7 +557,7 @@ module.exports = [
     nameLao: 'ຕອນດິນຮູບນ້ຳເຕົ້າ ອາຍຸຍືນ (Hu Lu Tu - Gourd Longevity Plot)',
     nameHmong: 'Hu Lu Tu (Thaj Av Hu Lu - Gourd Longevity Plot)',
     elementLao: 'ທາດນ້ຳ/ທອງ Water/Metal / ທາດນ້ຳ',
-    elementHmong: 'Zog Dej/Kub Water/Metal / ທາດນ້ຳ',
+    elementHmong: 'Zog Dej/Kub (Water/Metal)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນຮູບນ້ຳເຕົ້າ 2 ຫ້ອງໂອບອຸ້ມ ກັ່ນຕອງພະລັງງານຊີວິດ ອາຍຸຍືນຍາວ ປິ່ນປົວໂລກາ.',
     summaryHmong: 'Tswv Yim: Thaj av hu lu 2 chav voj kheej, lim huab cua kom huv, noj qab nyob zoo ntev xyoo.',
 
@@ -594,8 +594,8 @@ module.exports = [
       title: '☯️ ZOG BAGUA & NEEG HAUM',
       l1: '• Zog Thaj Av: Zog Dej & Kub',
       l2: '• ✓ Haum: Neeg laus, kws kho mob',
-      l3: '  (Gua 1 (ທາດນ້ຳ), 6 (ທາດທອງ), 7 (ທາດທອງ))',
-      l4: '• ✗ Neeg Zog Hluav (Gua 9 (ທາດໄຟ))',
+      l3: '  (Gua 1 (Zog Dej), 6 (Zog Kub), 7 (Zog Kub))',
+      l4: '• ✗ Neeg Zog Hluav (Gua 9 (Zog Hluav))',
       l5: '• Cog paj liab & teeb ci kho',
       sub1: 'Tsib Yam Zog: Kub yug Dej',
       sub2: 'Noj qab nyob zoo, tsis mob'
@@ -725,7 +725,7 @@ module.exports = [
     nameLao: 'ຕອນດິນຮູບນ້ຳເຕົ້າປີ້ນດ້ານ ໜ້ານ້ອຍຫຼັງໃຫຍ່ ເກັບຊັບ (Hu Lu Tu: Narrow Front, Wide Rear)',
     nameHmong: 'Hu Lu Tu Ntxeev: Ncauj Me Nram Loj Ceev Nyiaj (Inverted Gourd Plot)',
     elementLao: 'ທາດທອງ/ນ້ຳ Metal/Water / ທາດທອງທາດນ້ຳ',
-    elementHmong: 'Zog Kub/Dej Metal/Water / ທາດທອງທາດນ້ຳ',
+    elementHmong: 'Zog Kub/Dej (Metal/Water)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນຮູບນ້ຳເຕົ້າປີ້ນດ້ານ (ປາກແຄບດ້ານໜ້າ ຫຼັງກວ້າງໃຫຍ່) ເປັນມຸງຄຸນສູງສຸດ ປຽບເໝືອນໂຖດູດຊັບ: ດູດພະລັງໂຊກລາບຜ່ານປາກແຄບ ແລ້ວສະສົມກັກເກັບໄວ້ໃນທ້ອງໃຫຍ່ດ້ານຫຼັງ ບໍ່ໃຫ້ຮົ່ວໄຫຼ.',
     summaryHmong: 'Tswv Yim: Thaj av hu lu ntxeev (ncauj me pem hauv ntej, nram qab loj puag ncig) yog thaj av muaj hmoov loj tshaj plaws ceev nyiaj txiag thiab koob hmoov, tsis pub zog xau tawm.',
 
@@ -762,8 +762,8 @@ module.exports = [
       title: '☯️ ZOG BAGUA & NEEG HAUM',
       l1: '• Zog Thaj Av: Zog Kub & Dej',
       l2: '• ✓ Haum: Neeg ua lag luam, tsev neeg loj',
-      l3: '  (Gua 1 (ທາດນ້ຳ), 6 (ທາດທອງ), 7 (ທາດທອງ), 8 (ທາດດິນ))',
-      l4: '• ✗ Neeg Zog Hluav (Gua 9 (ທາດໄຟ))',
+      l3: '  (Gua 1 (Zog Dej), 6 (Zog Kub), 7 (Zog Kub), 8 (Zog Av))',
+      l4: '• ✗ Neeg Zog Hluav (Gua 9 (Zog Hluav))',
       l5: '• Cog paj daj & dawb kho kom haum',
       sub1: 'Tsib Yam Zog: Kub yug Dej',
       sub2: 'Rua nyiaj txiag, noj qab nyob zoo'
@@ -897,7 +897,7 @@ module.exports = [
     nameLao: 'ຕອນດິນຄາງໝູ ໜ້າແຄບຫຼັງກວ້າງ (Ti Xing: Qian Zhai Hou Kuan)',
     nameHmong: 'Ti Xing Tu: Qian Zhai Hou Kuan (Pem Nqaim Tom Qab Dav)',
     elementLao: 'ທາດດິນ/ທອງ Earth/Metal / ທາດດິນທາດທອງ',
-    elementHmong: 'Zog Av/Kub Earth/Metal / ທາດດິນທາດທອງ',
+    elementHmong: 'Zog Av/Kub (Earth/Metal)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນຄາງໝູໜ້າແຄບຫຼັງກວ້າງ ກະແສລົມບີບເຂົ້າແລ້ວຜາຍອອກພາຍໃນ ສະສົມຊັບສິນ.',
     summaryHmong: 'Tswv Yim: Thaj av pem nqaim tom qab dav, huab cua nkag los nthuav dav khaws nyiaj txiag.',
 
@@ -934,7 +934,7 @@ module.exports = [
       title: '☯️ ZOG BAGUA & NEEG HAUM',
       l1: '• Zog Thaj Av: Zog Av & Kub',
       l2: '• ✓ Haum: Neeg pib tsim lag luam',
-      l3: '  (Gua 8 (ທາດດິນ), 2 (ທາດດິນ), 6 (ທາດທອງ), 7 (ທາດທອງ))',
+      l3: '  (Gua 8 (Zog Av), 2 (Zog Av), 6 (Zog Kub), 7 (Zog Kub))',
       l4: '• ✗ Tsis ntsib kev tsis zoo',
       l5: '• Txhua tus nyob tau zoo heev',
       sub1: 'Tsib Yam Zog: Av yug Kub',
@@ -1070,7 +1070,7 @@ module.exports = [
     nameLao: 'ຕອນດິນຄາງໝູ ໜ້າກວ້າງຫຼັງແຄບ ຊັບຮົ່ວໄຫຼ (Qian Kuan Hou Zhai)',
     nameHmong: 'Ti Xing Tu: Qian Kuan Hou Zhai (Pem Dav Tom Qab Nqaim)',
     elementLao: 'ທາດໄຟພິສ Fire Sha / ໄຟພິສ',
-    elementHmong: 'Zog Hluav Taws Fire Sha / ໄຟພິສ',
+    elementHmong: 'Zog Hluav Taws (Fire Sha)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນຄາງໝູໜ້າກວ້າງຫຼັງແຄບ ລົມພັດກວາດອອກຫຼັງໄວ ຊັບຮົ່ວໄຫຼ ຕ້ອງສ້າງກຳແພງຕັນຫຼັງ.',
     summaryHmong: 'Tswv Yim: Thaj av pem dav tom qab nqaim cua ntsawj tawm ceev, nyiaj txiag khiav tawm, yuav tsum kho.',
 
@@ -1106,8 +1106,8 @@ module.exports = [
     guaHmong: {
       title: '☯️ ZOG BAGUA & NEEG HAUM',
       l1: '• Zog Thaj Av: Zog Hluav Taws Sha',
-      l2: '• ✗ Tsis haum: Txiv tsev (Gua 6 (ທາດທອງ))',
-      l3: '  thiab Niam tsev (Gua 2 (ທາດດິນ))',
+      l2: '• ✗ Tsis haum: Txiv tsev (Gua 6 (Zog Kub))',
+      l3: '  thiab Niam tsev (Gua 2 (Zog Av))',
       l4: '• Tsis haum rau tsev neeg nyob',
       l5: '• Siv tau rau chaw muag khoom xwb',
       sub1: 'Tej Kev Txom Nyem (Impact)',
@@ -1259,7 +1259,7 @@ module.exports = [
     nameLao: 'ຕອນດິນສາມຫຼ່ຽມ ຄົມມີດຕັດ ທາງສາມແພ່ງ (Scissors Sha / ມີດຕັດສາມແພ່ງ)',
     nameHmong: 'San Jiao Tu: Dui Jiao Chong (Thaj Av Peb Fab Ntse Scissors Sha)',
     elementLao: 'ທາດໄຟຮ້ອນ Sharp Fire / ທາດໄຟ',
-    elementHmong: 'Zog Hluav Taws Sharp Fire / ທາດໄຟ',
+    elementHmong: 'Zog Hluav Taws (Sharp Fire)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສາມຫຼ່ຽມເປັນທາດໄຟ (ທາດໄຟ) ຖືກທາງຕັດຄືມີດຕັດ ຕ້ອງສ້າງກຳແພງຕັດມຸມປ່ຽນຮູບຊົງໃຫ້ເປັນຄາງໝູ/ສີ່ຫຼ່ຽມ.',
     summaryHmong: 'Tswv Yim: Thaj av peb fab hluav taws raug kev txiav zoo li txiab, yuav tsum tsim phab ntsa txiav kaum kom ua 4 fab.',
     isCustomScissors: true
@@ -1274,7 +1274,7 @@ module.exports = [
     nameLao: 'ຕອນດິນສາມຫຼ່ຽມ ທາງຕິດດ້ານຊ້າຍເບື້ອງດຽວ (Triangle Plot - Left Road Only)',
     nameHmong: 'San Jiao Tu: Kev Sab Laug (Thaj Av Peb Fab Kev Sab Laug)',
     elementLao: 'ທາດໄຟ/ລົມ Fire/Wind Sha / ທາດໄຟ',
-    elementHmong: 'Zog Hluav/Cua Fire/Wind Sha / ທາດໄຟ',
+    elementHmong: 'Zog Hluav/Cua (Fire/Wind Sha)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສາມຫຼ່ຽມຕິດຖະໜົນດ້ານຊ້າຍ (ຝັ່ງມັງກອນ) ເບື້ອງດຽວ, ດ້ານຂວາຕິດເພື່ອນບ້ານ. ມຸມແຫຼມຍັງເປັນທາດໄຟ, ຕ້ອງຕັດມຸມສ້າງກຳແພງແກ້ໄຂ.',
     summaryHmong: 'Tswv Yim: Thaj av peb fab muaj kev sab laug (Dragon), sab xis yog vaj tse luag lwm tus. Kaum ntse yog hluav taws, yuav tsum txiav kaum tsim phab ntsa kho.',
 
@@ -1444,7 +1444,7 @@ module.exports = [
     nameLao: 'ຕອນດິນສາມຫຼ່ຽມ ທາງຕິດດ້ານຂວາເບື້ອງດຽວ (Triangle Plot - Right Road Only)',
     nameHmong: 'San Jiao Tu: Kev Sab Xis (Thaj Av Peb Fab Kev Sab Xis)',
     elementLao: 'ທາດໄຟ/ເສືອຂາວ Fire/Tiger Sha / ທາດໄຟ',
-    elementHmong: 'Zog Hluav/Tsov Fire/Tiger Sha / ທາດໄຟ',
+    elementHmong: 'Zog Hluav/Tsov (Fire/Tiger Sha)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສາມຫຼ່ຽມຕິດຖະໜົນດ້ານຂວາ (ຝັ່ງເສືອຂາວ) ເບື້ອງດຽວ, ດ້ານຊ້າຍຕິດເພື່ອນບ້ານ. ເສືອຂາວເຄື່ອນໄຫວແຮງ ຕ້ອງຕັດມຸມແຫຼມ ແລະ ປູກແນວໄມ້ບັງ.',
     summaryHmong: 'Tswv Yim: Thaj av peb fab muaj kev sab xis (White Tiger), sab laug yog tsev luag. Tsov Dawb txav zog heev, yuav tsum txiav kaum ntse thiab cog ntoo thaiv.',
 
@@ -1633,7 +1633,7 @@ module.exports = [
       l3: '• Tsis Muaj Dej: Tshav xyoob ntsuab (txwv ntxiv kaum ntse)',
       l4: '• Yog Muaj Dej: Ntsaws kaum ntse pov tseg! Khaws pem tsev',
       sub1: 'Thaj Tshav Kaj: Huv si sau ntau lub zog',
-      sub2: '✓ Kev nkhaus zoo siab (ເສັ້ນໂຄ້ງມີເມດຕາ) tiv thaiv sha'
+      sub2: '✓ Kev nkhaus mos muag zoo siab tiv thaiv sha'
     },
 
     guaLao: {
@@ -1797,7 +1797,7 @@ module.exports = [
     nameLao: 'ຕອນດິນສາມຫຼ່ຽມຫົວສ້ຽມປີ້ນກັບ (Dao San Jiao Tu)',
     nameHmong: 'Dao San Jiao Tu (Thaj Av Peb Fab Ntxeev - Inverted Triangle)',
     elementLao: 'ທາດໄຟແຫຼມ Reverse Fire / ທາດໄຟ',
-    elementHmong: 'Zog Hluav Taws Reverse Fire / ທາດໄຟ',
+    elementHmong: 'Zog Hluav Taws (Reverse Fire)',
     summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນສາມຫຼ່ຽມຫົວສ້ຽມປີ້ນກັບ ຫຼັງແຫຼມຄືຫອກແທງ ໄຮ້ບາຣະມີ ຕ້ອງສ້າງກຳແພງຕັດມຸມຫຼັງ.',
     summaryHmong: 'Tswv Yim: Thaj av peb fab ntxeev, tom qab ntse zoo li rab hmuv, tsis muaj chaw nstais, yuav tsum kho.',
 

@@ -60,15 +60,15 @@
   <text x="100" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">ZOG BAGUA &amp; NEEG HAUM</text>
   <text x="20" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• Zog Thaj Av: Kub Txiav &amp; Poob Kaum</text>
   <text x="20" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ✗ Tsis haum: Txhua tus neeg</text>
-  <text x="20" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• Poob NW raug leej txiv (Gua 6 (ທາດທອງ))</text>
-  <text x="20" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• Poob SW raug leej niam (Gua 2 (ທາດດິນ))</text>
+  <text x="20" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• Poob NW raug leej txiv (Gua 6 Zog Kub)</text>
+  <text x="20" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• Poob SW raug leej niam (Gua 2 Zog Av)</text>
   <text x="20" y="326" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• Poob Sab Hnub Tuaj raug tub hlob</text>
   
   <rect x="18" y="346" width="162" height="86" rx="4" fill="#FEF3C7"/>
   <text x="100" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#92400E" text-anchor="middle">Kev Txom Nyem: Poob kaum Bagua</text>
   <text x="100" y="382" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#78350F" text-anchor="middle">Mob nkeeg, poob nyiaj txiag</text>
-  <text x="100" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">ກົດເກນ 5 ທາດ ແລະ ເຂັມທິດ 8 ທິດ</text>
-  <text x="100" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#D97706" text-anchor="middle">✓ ສົມດຸນພະລັງງານທຳມະຊາດ</text>
+  <text x="100" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">Tsib Yam Zog &amp; 8 Fab Bagua</text>
+  <text x="100" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#D97706" text-anchor="middle">✓ Huab Cua Sib Npaug Zoo</text>
 
   <!-- ========================================================================= -->
   <!-- RIGHT COLUMN: CARDS (X=618 to 782) -->
@@ -84,24 +84,24 @@
   <text x="622" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• Zaum (Zuo): Zaum phab tis loj</text>
   
   <rect x="620" y="158" width="162" height="34" rx="4" fill="#E0F2FE"/>
-  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">Taub Hau Pw: Taub Hau Pw: Phab ntsa tis loj</text>
+  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">Taub Hau Pw: Phab ntsa tis loj</text>
   <text x="700" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">Phab ntsa tuab tsis ncaj qhov rai</text>
 
   <!-- Bottom-Right Card: Remedies & Taboos (Y=206 to 442) -->
   <rect x="614" y="206" width="174" height="236" rx="6" fill="#FDF4FF" stroke="#A855F7" stroke-width="1.2" filter="url(#shadow)"/>
   <rect x="614" y="206" width="174" height="24" rx="6" fill="#9333EA"/>
-  <text x="700" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">KEV KHO 4 KAUJ RUAM</text>
-  <text x="622" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">1. Cog hav ntoo sau puv kaum poob</text>
-  <text x="622" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">2. Tso ncej fais (hluav taws xob) kaum nraud</text>
-  <text x="622" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">3. Ua vaj paj / tsev so kaum poob</text>
-  <text x="622" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">4. Faib thaj av ua 2 feem meej</text>
+  <text x="700" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">KHO HAUV CIAM AV 4 KAUJ RUAM</text>
+  <text x="622" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">1. Faib thaj av hauv tsev ua 2 feem 4 fab (tsev &amp; vaj)</text>
+  <text x="622" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">2. Cog hav ntoo raws ciam av sab hauv thaiv kaum nkhaus</text>
+  <text x="622" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">3. Tso teeb vaj/hnub ci rau ncej ciam av hauv tsev</text>
+  <text x="622" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">4. Tso pob zeb Tai Shan granite hauv kaum nkhaus tsev</text>
 
   <rect x="620" y="326" width="162" height="106" rx="4" fill="#F3E8FF"/>
   <text x="700" y="342" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#7E22CE" text-anchor="middle">Cov Lus Txwv (Taboos)</text>
-  <text x="626" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• Txwv tsis tso chav pw kaum txiav</text>
-  <text x="626" y="377" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• Txwv tsis qhib qhov rooj kaum L</text>
-  <text x="626" y="394" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• Txwv tsis khawb pas dej kaum txiav</text>
-  <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ ຮັກສາຄວາມສະອາດ &amp; ແສງສະຫວ່າງ</text>
+  <text x="626" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• Txwv tsis kov lossis kho luag av (kho hauv tsev 100%)</text>
+  <text x="626" y="377" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• Txwv tsis tso chav pw/qhov rooj ncaj kaum nkhaus L</text>
+  <text x="626" y="394" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• Txwv tsis khawb pas dej ntawm kaum nkhaus sab hauv</text>
+  <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ Huv Si &amp; Teeb Pom Kev Zoo</text>
 
   <!-- ========================================================================= -->
   
@@ -123,42 +123,35 @@
         <text x="235" y="220" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-90 235 220)">Tsev Sab Laug</text>
         <text x="565" y="290" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(90 565 290)">Tsev Sab Xis</text>
 
-        <!-- Missing Sector (Yellow hatched fill) -->
-        <rect x="420" y="95" width="125" height="135" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2" stroke-dasharray="6,4"/>
-        <text x="482" y="155" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#B45309" text-anchor="middle">! Kaum Poob (Missing Sector)</text>
-        <line x1="420" y1="95" x2="545" y2="230" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3,3"/>
-        <line x1="545" y1="95" x2="420" y2="230" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3,3"/>
+        <!-- Neighbor's Private Property (Missing Quadrant - DO NOT TRESPASS) -->
+        <rect x="420" y="95" width="125" height="135" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <g transform="translate(482, 136)">
+          <rect x="-32" y="-22" width="64" height="38" rx="4" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.2"/>
+          <polygon points="-36,-22 0,-38 36,-22" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.2"/>
+          <circle cx="0" cy="-2" r="7" fill="#94A3B8"/>
+          <text x="0" y="2" font-family="'Segoe UI', sans-serif" font-size="8" fill="#FFFFFF" text-anchor="middle">🏡</text>
+          <text x="0" y="32" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#475569" text-anchor="middle">Ciam Av Luag Lwm Tus</text>
+          <text x="0" y="46" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#DC2626" text-anchor="middle">[X] Luag Av - Txwv Tsis Kov</text>
+          <text x="0" y="58" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#64748B" text-anchor="middle">(Private Neighbor Property)</text>
+        </g>
 
-        <!-- Light Pole at outer missing corner (x=545, y=95) -->
-        <circle cx="545" cy="95" r="9" fill="#F59E0B" stroke="#B45309" stroke-width="2"/>
-        <text x="545" y="98" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#FFFFFF" text-anchor="middle">💡</text>
-        <rect x="460" y="78" width="85" height="14" rx="3" fill="#B45309"/>
-        <text x="502" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">Ncej Fais (Hluav Taws Xob)</text>
-
-        <!-- Living Plot L-Shape Boundary Ground -->
+        <!-- Living Plot L-Shape Boundary Ground (OUR LAND) -->
         <path d="M 255 95 L 420 95 L 420 230 L 545 230 L 545 355 L 255 355 Z" fill="#FEE2E2"/>
         <path d="M 260 100 L 415 100 L 415 235 L 540 235 L 540 350 L 260 350 Z" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="5,4"/>
 
-        <!-- Perimeter Fences -->
-        <line x1="255" y1="95" x2="420" y2="95" stroke="#15803D" stroke-width="4"/>
-        <line x1="255" y1="95" x2="255" y2="355" stroke="#334155" stroke-width="3"/>
+        <!-- Perimeter Fences of OUR Land -->
+        <line x1="255" y1="95" x2="420" y2="95" stroke="#334155" stroke-width="3.5"/>
+        <line x1="255" y1="95" x2="255" y2="355" stroke="#334155" stroke-width="3.5"/>
         <line x1="420" y1="95" x2="420" y2="230" stroke="#DC2626" stroke-width="3"/>
         <line x1="420" y1="230" x2="545" y2="230" stroke="#DC2626" stroke-width="3"/>
-        <line x1="545" y1="230" x2="545" y2="355" stroke="#334155" stroke-width="3"/>
+        <line x1="545" y1="230" x2="545" y2="355" stroke="#334155" stroke-width="3.5"/>
 
-        <!-- Buffer Hedge filling the missing sector boundary -->
-        <line x1="420" y1="95" x2="545" y2="95" stroke="#15803D" stroke-width="5" stroke-dasharray="6,4"/>
-        <line x1="545" y1="95" x2="545" y2="230" stroke="#15803D" stroke-width="5" stroke-dasharray="6,4"/>
-        <circle cx="445" cy="95" r="6" fill="#16A34A"/>
-        <circle cx="485" cy="95" r="6" fill="#16A34A"/>
-        <circle cx="525" cy="95" r="6" fill="#16A34A"/>
-        <circle cx="545" cy="130" r="6" fill="#16A34A"/>
-        <circle cx="545" cy="170" r="6" fill="#16A34A"/>
-        <circle cx="545" cy="210" r="6" fill="#16A34A"/>
-        <rect x="430" y="105" width="95" height="14" rx="3" fill="#15803D"/>
-        <text x="477" y="115" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">Hav Ntoo Kho Kaum</text>
+        <!-- INTERNAL REGULARIZATION LINE (DIVIDING OUR LAND INTO 2 PURE RECTANGLES) -->
+        <line x1="255" y1="202" x2="420" y2="202" stroke="#059669" stroke-width="2" stroke-dasharray="6,4"/>
+        <rect x="268" y="194" width="138" height="15" rx="3" fill="#ECFDF5" stroke="#10B981" stroke-width="1"/>
+        <text x="337" y="204.5" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#047857" text-anchor="middle">⟵ Faib 2 Feem Hauv Ciam Av ⟶</text>
 
-        <!-- House seated inside the large rectangular wing (Architectural Layout) -->
+        <!-- ZONE A: MAIN HOUSE SEATED IN THE UPPER RECTANGLE -->
         <polygon points="270,112 337,90 405,112" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
         <rect x="280" y="112" width="115" height="52" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
         
@@ -175,7 +168,7 @@
         <text x="358" y="136" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#1E293B" text-anchor="middle">Lub Tsev</text>
         <text x="358" y="152" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#475569" text-anchor="middle">Chaw Txais Qhua</text>
         
-        <!-- Front Main Entrance Door / Porch (Clear Buffer Zone) -->
+        <!-- Front Main Entrance Door / Porch -->
         <rect x="350" y="164" width="15" height="5" fill="#1E293B"/>
         <text x="358" y="180" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">Rooj Loj</text>
 
@@ -188,14 +181,46 @@
           <text x="17" y="46" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">Ntsia ⬇</text>
         </g>
 
-        <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
-        <rect x="270" y="200" width="145" height="66" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
-        <text x="342" y="214" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">Thaj Tshav Kaj (Ming Tang)</text>
-        <text x="342" y="228" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">• Tsis muaj dej: Tshav xyoob ntsuab kaj</text>
-        <text x="342" y="241" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#0369A1" text-anchor="middle">• Yog muaj dej: Dej ntshiab puag ncig</text>
+        <!-- ZONE B: MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+        <rect x="268" y="218" width="140" height="58" rx="5" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="338" y="232" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">Thaj Tshav Kaj (Ming Tang)</text>
+        <text x="338" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">• Tshav xyoob ntsuab kaj sau zog</text>
+        <text x="338" y="259" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#0369A1" text-anchor="middle">• Yog muaj dej: Pas dej semicircular</text>
         <!-- Optional Water Feature Badge -->
-        <path d="M 380 255 A 16 8 0 0 0 412 255 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
-        <text x="396" y="252" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#0284C7" text-anchor="middle">[Pas Dej]</text>
+        <path d="M 378 268 A 14 7 0 0 0 406 268 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="392" y="265" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5" fill="#0284C7" text-anchor="middle">[Pas Dej]</text>
+
+        <!-- INNER RE-ENTRANT CORNER REMEDY (100% INSIDE OUR BOUNDARY) -->
+        <!-- Dense Protective Hedge screening inner corner on our side of fence -->
+        <circle cx="413" cy="155" r="5" fill="#15803D"/>
+        <circle cx="413" cy="175" r="5.5" fill="#16A34A"/>
+        <circle cx="413" cy="195" r="6" fill="#15803D"/>
+        <circle cx="413" cy="215" r="6" fill="#16A34A"/>
+        <circle cx="427" cy="237" r="6" fill="#15803D"/>
+        <circle cx="447" cy="237" r="6" fill="#16A34A"/>
+        <circle cx="467" cy="237" r="5.5" fill="#15803D"/>
+        <circle cx="487" cy="237" r="5" fill="#16A34A"/>
+
+        <!-- Hedge Label Pill -->
+        <rect x="424" y="246" width="96" height="15" rx="3" fill="#15803D"/>
+        <text x="472" y="257" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">Hav Ntoo Thaiv Kaum</text>
+
+        <!-- Post Light on our fence corner (illuminating our garden) -->
+        <circle cx="413" cy="231" r="7.5" fill="#F59E0B" stroke="#B45309" stroke-width="1.5"/>
+        <text x="413" y="234" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#FFFFFF" text-anchor="middle">💡</text>
+        <rect x="350" y="280" width="98" height="15" rx="3" fill="#B45309"/>
+        <text x="399" y="291" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">Teeb Vaj (Hauv Ciam Av)</text>
+        <line x1="399" y1="280" x2="410" y2="240" stroke="#B45309" stroke-width="1.2" stroke-dasharray="2,2"/>
+
+        <!-- Tai Shan Granite Stone inside our corner garden -->
+        <ellipse cx="438" cy="275" rx="9" ry="6" fill="#64748B" stroke="#334155" stroke-width="1.5"/>
+        <text x="438" y="278" font-family="'Segoe UI', sans-serif" font-size="6.5" fill="#FFFFFF" text-anchor="middle">🪨</text>
+        <rect x="452" y="268" width="88" height="14" rx="3" fill="#334155"/>
+        <text x="496" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.2" fill="#FFFFFF" text-anchor="middle">� Pob Zeb Tai Shan</text>
+
+        <!-- 100% Internal Remedy Seal Badge -->
+        <rect x="426" y="298" width="114" height="20" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+        <text x="483" y="311" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">✓ Kho Hauv Ciam Av 100%</text>
 
         <!-- PHYSICAL FRONT FENCE WITH GATE OPENING ON DRAGON SIDE -->
         <line x1="255" y1="355" x2="285" y2="355" stroke="#334155" stroke-width="3.5"/>
@@ -210,36 +235,34 @@
         <line x1="335" y1="355" x2="325" y2="344" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
 
         <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
-        <path d="M 310 395 L 310 355 C 310 305 330 275 350 240 C 358 210 358 190 358 169" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
-        <text x="340" y="318" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle">⟿ Kev Nkhaus Zoo Siab</text>
+        <path d="M 310 395 L 310 355 C 310 320 325 295 345 250 C 356 220 358 190 358 169" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="340" y="332" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle">⟿ Kev Nkhaus Zoo Siab</text>
 
         <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO LEFT CLEAR OF DRIVEWAY) -->
         <g transform="translate(195, 350)">
           <rect x="0" y="0" width="88" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
           <text x="44" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">✓ Rooj Vag Loj</text>
-          <!-- Pointer Line to Gate Post -->
           <line x1="88" y1="9" x2="103" y2="0" stroke="#15803D" stroke-width="1.8"/>
           <circle cx="103" cy="0" r="2" fill="#15803D"/>
         </g>
         
-        <!-- [✗] FORBIDDEN GATE BADGE (ANCHORED TO MISSING SECTOR NOTCH) -->
-        <g transform="translate(425, 240)">
-          <rect x="0" y="0" width="82" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
-          <text x="41" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">✗ Txwv Rooj Vag</text>
-          <line x1="0" y1="9" x2="-5" y2="-5" stroke="#DC2626" stroke-width="1.8"/>
-          <circle cx="-5" cy="-5" r="2" fill="#DC2626"/>
+        <!-- [✗] FORBIDDEN GATE BADGE (ANCHORED TO INNER CORNER) -->
+        <g transform="translate(435, 212)">
+          <rect x="0" y="0" width="90" height="16" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="11" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#FFFFFF" text-anchor="middle">✗ Txwv Rooj Vag Kaum</text>
+          <line x1="0" y1="8" x2="-12" y2="18" stroke="#DC2626" stroke-width="1.5"/>
+          <circle cx="-12" cy="18" r="2" fill="#DC2626"/>
         </g>
 
         <!-- Trees in lower wing courtyard -->
-        <circle cx="480" cy="280" r="10" fill="#16A34A"/>
         <circle cx="510" cy="300" r="8" fill="#CA8A04"/>
-        <circle cx="450" cy="320" r="7" fill="#16A34A"/>
+        <circle cx="450" cy="330" r="7" fill="#16A34A"/>
       
   </g>
 
   
   <!-- Bottom Doctrinal Summary -->
   <rect x="12" y="445" width="776" height="29" rx="5" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
-  <text x="400" y="457" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">Tswv Yim: Thaj av tus phom poob kaum tshaj 30% tsim zog phem ntsia plawv kaum</text>
-  <text x="400" y="469" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#CBD5E1" text-anchor="middle">txiav yuav tsum kho nrog hav ntoo &amp; ncej fais (ncej hluav taws xob).</text>
+  <text x="400" y="457" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">Tswv Yim: Thaj av tus L (phom tua) poob kaum Bagua thiab muaj kaum nkhaus hauv tsev. Yuav tsum kho hauv</text>
+  <text x="400" y="469" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#CBD5E1" text-anchor="middle">yus thaj av xwb 100%: faib ua 2 feem 4 fab thiab cog ntoo thaiv kaum nkhaus (txwv tsis kov luag av).</text>
 </svg>

@@ -84,7 +84,7 @@
   <text x="622" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ທິດພິງຫຼັງ (Sitting): ພິງຫຼັງທີ່ກວ້າງຂວາງ</text>
   
   <rect x="620" y="158" width="162" height="34" rx="4" fill="#E0F2FE"/>
-  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">ທິດຫົວຕຽງ: ຫົວຕຽງ: ພິງຝາທຶບກົ້ນຖົງ</text>
+  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">ທິດຫົວຕຽງ: ພິງຝາທຶບກົ້ນຖົງ</text>
   <text x="700" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">ພິງຝາທຶບ ຫຼີກລ່ຽງກົງປ່ອງຢ້ຽມ</text>
 
   <!-- Bottom-Right Card: Remedies & Taboos (Y=206 to 442) -->
