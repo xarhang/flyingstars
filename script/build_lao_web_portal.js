@@ -35,17 +35,17 @@ lpData.forEach(lp => {
     isGood: score >= 60,
     img: `img/${lp.id}.png`,
     physics: lp.geometryPhysics || '',
-    entranceRules: lp.entranceAnalysis || '',
-    waterRules: lp.waterAnalysis || '',
+    entranceRules: lp.entranceRules || lp.entranceAnalysis || '',
+    waterRules: lp.waterRules || lp.waterAnalysis || '',
     baguaSectors: lp.baguaSectors || '',
-    remedy: lp.remedy || '',
+    remedy: lp.comprehensiveRemedy || lp.remedy || '',
     housePositioning: lp.housePositioning || '',
     entrancePlacement: lp.entrancePlacement || '',
     orientationFacing: lp.orientationFacing || '',
     elementGua: lp.elementGua || '',
     favorablePeople: lp.favorablePeople || '',
     clashingPeople: lp.clashingPeople || '',
-    comprehensiveRemedy: lp.comprehensiveRemedy || '',
+    comprehensiveRemedy: lp.comprehensiveRemedy || lp.remedy || '',
     taboos: lp.taboos || ''
   });
 });
@@ -1188,20 +1188,20 @@ const html = `<!DOCTYPE html>
     // MODAL
     function formatMasterclass(raw) {
       if (!raw || raw === '-') return '-';
-      const text = raw.replace(/\\n/g, '\n').replace(/\\r/g, '');
-      const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-      let html = '';
-      lines.forEach(line => {
-        let isBullet = false;
-        let t = line;
-        if (t.startsWith('•') || t.startsWith('-')) {
+      var text = String(raw).replace(/\\\\n/g, String.fromCharCode(10)).replace(/\\\\r/g, '');
+      var lines = text.split(String.fromCharCode(10)).map(function(l) { return l.trim(); }).filter(function(l) { return l.length > 0; });
+      var html = '';
+      lines.forEach(function(line) {
+        var isBullet = false;
+        var t = line;
+        if (t.indexOf('•') === 0 || t.indexOf('-') === 0) {
           isBullet = true;
           t = t.substring(1).trim();
         }
-        const colonIdx = t.indexOf(':');
+        var colonIdx = t.indexOf(':');
         if (colonIdx > 0 && colonIdx < 80) {
-          const heading = t.substring(0, colonIdx).trim();
-          const body = t.substring(colonIdx + 1).trim();
+          var heading = t.substring(0, colonIdx).trim();
+          var body = t.substring(colonIdx + 1).trim();
           html += '<div class="mc-bullet-card">' +
             '<div class="mc-bullet-title"><span class="mc-bullet-dot">◆</span> ' + heading + '</div>' +
             '<div class="mc-bullet-body">' + body + '</div>' +

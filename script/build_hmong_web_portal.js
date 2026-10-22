@@ -32,17 +32,17 @@ lpData.forEach(lp => {
     isGood: score >= 60,
     img: `img/${lp.id}.png`,
     physics: lp.geometryPhysics || lp.shapePhysics || lp.physics || '',
-    entrance: lp.entranceAnalysis || lp.entranceRules || lp.entrance || '',
-    water: lp.waterAnalysis || lp.waterRules || lp.water || '',
+    entrance: lp.entranceRules || lp.entranceAnalysis || lp.entrance || '',
+    water: lp.waterRules || lp.waterAnalysis || lp.water || '',
     bagua: lp.baguaSectors || lp.baguaRules || lp.bagua || '',
-    remedy: lp.remedy || lp.remediationProtocol || '',
+    remedy: lp.comprehensiveRemedy || lp.remedy || lp.remediationProtocol || '',
     housePositioning: lp.housePositioning || '',
     entrancePlacement: lp.entrancePlacement || '',
     orientationFacing: lp.orientationFacing || '',
     elementGua: lp.elementGua || '',
     favorablePeople: lp.favorablePeople || '',
     clashingPeople: lp.clashingPeople || '',
-    comprehensiveRemedy: lp.comprehensiveRemedy || '',
+    comprehensiveRemedy: lp.comprehensiveRemedy || lp.remedy || '',
     taboos: lp.taboos || ''
   });
 });
@@ -1281,8 +1281,8 @@ const html = `<!DOCTYPE html>
     // MODAL HANDLER
     function formatMasterclassHmong(raw) {
       if (!raw || raw === '-') return '-';
-      var text = raw.replace(/\\n/g, '\n').replace(/\\r/g, '');
-      var lines = text.split('\n').map(function(l) { return l.trim(); }).filter(function(l) { return l.length > 0; });
+      var text = String(raw).replace(/\\\\n/g, String.fromCharCode(10)).replace(/\\\\r/g, '');
+      var lines = text.split(String.fromCharCode(10)).map(function(l) { return l.trim(); }).filter(function(l) { return l.length > 0; });
       var html = '';
       lines.forEach(function(line) {
         var isBullet = false;

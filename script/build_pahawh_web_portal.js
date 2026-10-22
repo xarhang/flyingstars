@@ -1382,8 +1382,8 @@ const html = `<!DOCTYPE html>
     // DETAIL MODAL HANDLER
     function formatMasterclassPahawh(raw) {
       if (!raw || raw === '-') return '-';
-      var text = raw.replace(/\\n/g, '\n').replace(/\\r/g, '');
-      var lines = text.split('\n').map(function(l) { return l.trim(); }).filter(function(l) { return l.length > 0; });
+      var text = String(raw).replace(/\\\\n/g, String.fromCharCode(10)).replace(/\\\\r/g, '');
+      var lines = text.split(String.fromCharCode(10)).map(function(l) { return l.trim(); }).filter(function(l) { return l.length > 0; });
       var html = '';
       lines.forEach(function(line) {
         var isBullet = false;
