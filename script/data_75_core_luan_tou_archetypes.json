@@ -1,0 +1,592 @@
+[
+  {
+    "id": "LT-0001",
+    "baseName": "Roob Ntoo (Mu Shan / Tan Lang) (Roob)",
+    "category": "Roob 5 Thas & Cov Theem Roob",
+    "physics": "Roob siab ntsug zoo li tus ncej ntoo ntsuab, ncov roob me ntsis kheej. Roob Pog Koob (Tai Zu Shan - Ancestral Peak). Lub zog Ntoo nthuav tawm los ntawm txoj leeg roob.",
+    "impact": "Txhawb nqa koob meej, kev noj qab nyob zoo, thiab kev tiv thaiv ruaj khov tiv thaiv cua txias.",
+    "remedy": "Tsim phab ntsa pob zeb granite thaiv sab uas lub roob tsis haum, thiab cog ntoo ntsuab txhawb lub zog.",
+    "score": 92,
+    "img": "LT-0001.png"
+  },
+  {
+    "id": "LT-0097",
+    "baseName": "Roob Hluav Taws (Huo Shan / Lian Zhen) (Roob)",
+    "category": "Roob 5 Thas & Cov Theem Roob",
+    "physics": "Roob ntse zoo li nplaim taws liab, pob zeb ntse heev. Roob Pog Koob (Tai Zu Shan - Ancestral Peak). Lub zog Hluav Taws nthuav tawm los ntawm txoj leeg roob.",
+    "impact": "Lub zog Hluav Taws lossis Dej kub dhau heev, yuav tsum tswj kom muaj kev sib npaug 5 Thas.",
+    "remedy": "Tsim phab ntsa pob zeb granite thaiv sab uas lub roob tsis haum, thiab cog ntoo ntsuab txhawb lub zog.",
+    "score": 68,
+    "img": "LT-0097.png"
+  },
+  {
+    "id": "LT-0193",
+    "baseName": "Roob Av (Tu Shan / Ju Men) (Roob)",
+    "category": "Roob 5 Thas & Cov Theem Roob",
+    "physics": "Roob tiaj saum taub hau zoo li lub rooj lossis lub txaj pw. Roob Pog Koob (Tai Zu Shan - Ancestral Peak). Lub zog Av nthuav tawm los ntawm txoj leeg roob.",
+    "impact": "Txhawb nqa koob meej, kev noj qab nyob zoo, thiab kev tiv thaiv ruaj khov tiv thaiv cua txias.",
+    "remedy": "Tsim phab ntsa pob zeb granite thaiv sab uas lub roob tsis haum, thiab cog ntoo ntsuab txhawb lub zog.",
+    "score": 92,
+    "img": "LT-0193.png"
+  },
+  {
+    "id": "LT-0289",
+    "baseName": "Roob Kub (Jin Shan / Wu Qu) (Roob)",
+    "category": "Roob 5 Thas & Cov Theem Roob",
+    "physics": "Roob kheej puag ncig zoo li lub tswb lossis lub lauj kaub thim rov qab. Roob Pog Koob (Tai Zu Shan - Ancestral Peak). Lub zog Kub nthuav tawm los ntawm txoj leeg roob.",
+    "impact": "Txhawb nqa koob meej, kev noj qab nyob zoo, thiab kev tiv thaiv ruaj khov tiv thaiv cua txias.",
+    "remedy": "Tsim phab ntsa pob zeb granite thaiv sab uas lub roob tsis haum, thiab cog ntoo ntsuab txhawb lub zog.",
+    "score": 92,
+    "img": "LT-0289.png"
+  },
+  {
+    "id": "LT-0385",
+    "baseName": "Roob Dej (Shui Shan / Wen Qu) (Roob)",
+    "category": "Roob 5 Thas & Cov Theem Roob",
+    "physics": "Roob nthwv dej nkhaus nqes nkhaus nce zoo li zaj luam dej. Roob Pog Koob (Tai Zu Shan - Ancestral Peak). Lub zog Dej nthuav tawm los ntawm txoj leeg roob.",
+    "impact": "Lub zog Hluav Taws lossis Dej kub dhau heev, yuav tsum tswj kom muaj kev sib npaug 5 Thas.",
+    "remedy": "Tsim phab ntsa pob zeb granite thaiv sab uas lub roob tsis haum, thiab cog ntoo ntsuab txhawb lub zog.",
+    "score": 68,
+    "img": "LT-0385.png"
+  },
+  {
+    "id": "LT-0481",
+    "baseName": "Feng Chui Sha (Cua Ntsawj Hav Tiaj Tus / Open Plain Wind Dispersal)",
+    "category": "Huab Cua & Kev Ceev Cua Zang Feng",
+    "physics": "Thaj chaw tiaj tus dav uas tsis muaj roob puag ncig thaiv cua. Cua ntsawj nrawm ntawm 3.5 txog 6.5 m/s ua rau lub zog Qi tawg paj (Feng Chui Ze San).",
+    "impact": "Lub zog Qi tsis tuaj yeem sib sau ua ke tau, nyiaj txiag khiav taw sai, tsev neeg khwv tau ntau los tsis tshuav dab tsi.",
+    "score": 38,
+    "img": "LT-0481.png",
+    "remedy": "Cog hav ntoo thuv ntsuab tuab puag ncig vaj tsev ua phab ntsa thaiv cua (Windbreak shelterbelt), tsim phab ntsa pob zeb granite 2.2m nyob pem hauv ntej, thiab khaws lub tshav Ming Tang kom muaj pas dej ncig zais cua."
+  },
+  {
+    "id": "LT-0505",
+    "baseName": "Ao Feng Sha (Cua Ntsawj Qhov Roob Txiav / Mountain Saddle Jet Wind)",
+    "category": "Huab Cua & Kev Ceev Cua Zang Feng",
+    "physics": "Cua txias raug nias nqes los ntawm qhov roob txiav nruab nrab (Mountain Saddle Gap) zoo li lub tshuab nqus cua Venturi effect, cua ntsawj ceev txog 7.5 m/s+ tsoo ncaj rau vaj tsev.",
+    "impact": "Cua txias tshuab ntsawj ua rau mob stroke, mob taub hau ntev, mob pob txha, thiab ua rau tsev neeg poob peev sai heev.",
+    "score": 15,
+    "img": "LT-0505.png",
+    "remedy": "Tsim phab ntsa pob zeb granite 2.5m thaiv sab qhov roob txiav kiag, cog hav ntoo thuv tuab 3 txheej tiv thaiv cua Venturi, thiab tso lub pob zeb Tai Shan Shi Gan Dang loj tig ntsej muag rau qhov roob txiav."
+  },
+  {
+    "id": "LT-0517",
+    "baseName": "Zang Feng Ju Qi (Cua Ntsiag To Hauv Hav Roob / Classical Harmonious Bowl Wind)",
+    "category": "Huab Cua & Kev Ceev Cua Zang Feng",
+    "physics": "Toj roob puag ncig zoo li lub phiab (Armchair Mountain Bowl), cua ntsawj mos mos ntawm 1.0 txog 2.0 m/s, huab cua noo noo, tiv thaiv cua txias qaum teb zoo tag nrho.",
+    "impact": "Lub zog Sheng Qi sib sau ua ke tsis tawg paj (Zang Feng Ju Qi), tsev neeg noj qab nyob zoo, nyiaj txiag nplua miag, thiab muaj koob meej.",
+    "score": 96,
+    "img": "LT-0517.png",
+    "remedy": "Khaws cia cov hav ntoo puag ncig kom ntsuab xiab, tsis txhob txiav ntoo lossis rhuav cov roob me, tsim kom muaj lub pas dej puag ncig hauv Ming Tang kom lub zog Sheng Qi nyob ruaj khov mus ntev."
+  },
+  {
+    "id": "LT-0865",
+    "baseName": "Yu Dai Shui (Dej Nkhaus Qhwv Tsev)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej ntws mos muag nkhaus puag ncig lub tsev zoo li txoj siv tawv qhwv duav. Dej nrawm 0.6 m/s (Mos Muag).",
+    "impact": "Dej coj nyiaj txiag loj nkag tsis tu ncua, lag luam vam meej, tsev neeg muaj kev thaj yeeb nyab xeeb.",
+    "remedy": "Khaws cia kom dej ntshiab huv tsis txhob muab khib nyiab pov rau hauv.",
+    "score": 96,
+    "img": "LT-0865.png"
+  },
+  {
+    "id": "LT-0897",
+    "baseName": "Fan Gong Shui (Dej Nkhaus Ntxeev Hlais)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej ntws nrawm tsoo sab nkhaus tawm, av nqes hav thiab phab ntsa tawg. Dej nrawm 3.8 m/s (Tsoo Nrawm).",
+    "impact": "Dej tsoo ntug av lossis hlais lub tsev ua rau raug dag nyiaj, poob peev, thiab niam txiv sib nrauj.",
+    "remedy": "Tsim phab ntsa pob zeb granite thaiv ntug dej kom tsis txhob tawg nqes hav, tso pob zeb loj hloov txoj kev dej ntws.",
+    "score": 10,
+    "img": "LT-0897.png"
+  },
+  {
+    "id": "LT-0929",
+    "baseName": "Jiu Qu Shui (Dej Nkhaus 9 Tig)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej nkhaus zais mus zais los ua ntej nkag mus rau qhov rooj dej. Dej nrawm 0.6 m/s (Mos Muag).",
+    "impact": "Dej coj nyiaj txiag loj nkag tsis tu ncua, lag luam vam meej, tsev neeg muaj kev thaj yeeb nyab xeeb.",
+    "remedy": "Khaws cia kom dej ntshiab huv tsis txhob muab khib nyiab pov rau hauv.",
+    "score": 93,
+    "img": "LT-0929.png"
+  },
+  {
+    "id": "LT-0961",
+    "baseName": "Zhi Chong Shui (Dej Tshuam Ncaj)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej ntws ncaj nraim zoo li rab hneev tsoo lub plawv tsev. Dej nrawm 3.8 m/s (Tsoo Nrawm).",
+    "impact": "Dej tsoo ntug av lossis hlais lub tsev ua rau raug dag nyiaj, poob peev, thiab niam txiv sib nrauj.",
+    "remedy": "Tsim phab ntsa pob zeb granite thaiv ntug dej kom tsis txhob tawg nqes hav, tso pob zeb loj hloov txoj kev dej ntws.",
+    "score": 16,
+    "img": "LT-0961.png"
+  },
+  {
+    "id": "LT-0993",
+    "baseName": "San Cha Shui (Dej Peb Ceg Sib Koom)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Peb ceg dej sib ntsib ua kom lub zog Qi nplua nuj sib sau ua ke. Dej nrawm 0.6 m/s (Mos Muag).",
+    "impact": "Dej coj nyiaj txiag loj nkag tsis tu ncua, lag luam vam meej, tsev neeg muaj kev thaj yeeb nyab xeeb.",
+    "remedy": "Khaws cia kom dej ntshiab huv tsis txhob muab khib nyiab pov rau hauv.",
+    "score": 83,
+    "img": "LT-0993.png"
+  },
+  {
+    "id": "LT-1025",
+    "baseName": "Shi Zi Shui (Dej Plaub Ceg Tshuam)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej plaub ceg tshuam ua plaub ces kaum hauv nroog. Dej nrawm 3.8 m/s (Tsoo Nrawm).",
+    "impact": "Dej tsoo ntug av lossis hlais lub tsev ua rau raug dag nyiaj, poob peev, thiab niam txiv sib nrauj.",
+    "remedy": "Tsim phab ntsa pob zeb granite thaiv ntug dej kom tsis txhob tawg nqes hav, tso pob zeb loj hloov txoj kev dej ntws.",
+    "score": 58,
+    "img": "LT-1025.png"
+  },
+  {
+    "id": "LT-1057",
+    "baseName": "Lin Shui Sha (Dej Xau Ntws Ze Ze)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej ntws ze dhau ua rau av ntub thiab tsis ruaj khov. Dej nrawm 3.8 m/s (Tsoo Nrawm).",
+    "impact": "Dej tsoo ntug av lossis hlais lub tsev ua rau raug dag nyiaj, poob peev, thiab niam txiv sib nrauj.",
+    "remedy": "Tsim phab ntsa pob zeb granite thaiv ntug dej kom tsis txhob tawg nqes hav, tso pob zeb loj hloov txoj kev dej ntws.",
+    "score": 33,
+    "img": "LT-1057.png"
+  },
+  {
+    "id": "LT-1089",
+    "baseName": "Ge Jiao Shui (Dej Hlais Pob Tawb)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej hlais ntawm taws pob zeb ua kom cov neeg mob ceg tawv. Dej nrawm 3.8 m/s (Tsoo Nrawm).",
+    "impact": "Dej tsoo ntug av lossis hlais lub tsev ua rau raug dag nyiaj, poob peev, thiab niam txiv sib nrauj.",
+    "remedy": "Tsim phab ntsa pob zeb granite thaiv ntug dej kom tsis txhob tawg nqes hav, tso pob zeb loj hloov txoj kev dej ntws.",
+    "score": 20,
+    "img": "LT-1089.png"
+  },
+  {
+    "id": "LT-1121",
+    "baseName": "Sheng Sha Shui (Dej Nrov Nrov)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej ntws poob pob zeb nrov zoo li xob quaj, tsim kev ntshai. Dej nrawm 3.8 m/s (Tsoo Nrawm).",
+    "impact": "Dej tsoo ntug av lossis hlais lub tsev ua rau raug dag nyiaj, poob peev, thiab niam txiv sib nrauj.",
+    "remedy": "Tsim phab ntsa pob zeb granite thaiv ntug dej kom tsis txhob tawg nqes hav, tso pob zeb loj hloov txoj kev dej ntws.",
+    "score": 18,
+    "img": "LT-1121.png"
+  },
+  {
+    "id": "LT-1153",
+    "baseName": "Qian Shui (Dej Zais Hauv Av)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej ntws hauv qab av tsis pom dej tab sis av muaj dej noo zoo. Dej nrawm 0.6 m/s (Mos Muag).",
+    "impact": "Dej coj nyiaj txiag loj nkag tsis tu ncua, lag luam vam meej, tsev neeg muaj kev thaj yeeb nyab xeeb.",
+    "remedy": "Khaws cia kom dej ntshiab huv tsis txhob muab khib nyiab pov rau hauv.",
+    "score": 86,
+    "img": "LT-1153.png"
+  },
+  {
+    "id": "LT-1185",
+    "baseName": "Huo Shui (Dej Muaj Zog Sia)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej ntshiab huv muaj ntses luam thiab nroj tsuag ntsuab. Dej nrawm 0.6 m/s (Mos Muag).",
+    "impact": "Dej coj nyiaj txiag loj nkag tsis tu ncua, lag luam vam meej, tsev neeg muaj kev thaj yeeb nyab xeeb.",
+    "remedy": "Khaws cia kom dej ntshiab huv tsis txhob muab khib nyiab pov rau hauv.",
+    "score": 90,
+    "img": "LT-1185.png"
+  },
+  {
+    "id": "LT-1217",
+    "baseName": "Si Shui (Dej Tuag Tsis Txav)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej dub qias neeg tsw phem tsis ntws mus qhov twg. Dej nrawm 3.8 m/s (Tsoo Nrawm).",
+    "impact": "Dej tsoo ntug av lossis hlais lub tsev ua rau raug dag nyiaj, poob peev, thiab niam txiv sib nrauj.",
+    "remedy": "Tsim phab ntsa pob zeb granite thaiv ntug dej kom tsis txhob tawg nqes hav, tso pob zeb loj hloov txoj kev dej ntws.",
+    "score": 13,
+    "img": "LT-1217.png"
+  },
+  {
+    "id": "LT-1249",
+    "baseName": "Dang Mian Shui (Dej Ntsia Ntsoov)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej ntsiag to pem hauv ntej ntsia ncaj rau lub qhov rooj loj. Dej nrawm 0.6 m/s (Mos Muag).",
+    "impact": "Dej coj nyiaj txiag loj nkag tsis tu ncua, lag luam vam meej, tsev neeg muaj kev thaj yeeb nyab xeeb.",
+    "remedy": "Khaws cia kom dej ntshiab huv tsis txhob muab khib nyiab pov rau hauv.",
+    "score": 76,
+    "img": "LT-1249.png"
+  },
+  {
+    "id": "LT-1281",
+    "baseName": "Ju Shui (Pas Dej Sib Sau)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Pas dej loj ntsiag to pem hauv ntej Ming Tang sau nyiaj txiag. Dej nrawm 0.6 m/s (Mos Muag).",
+    "impact": "Dej coj nyiaj txiag loj nkag tsis tu ncua, lag luam vam meej, tsev neeg muaj kev thaj yeeb nyab xeeb.",
+    "remedy": "Khaws cia kom dej ntshiab huv tsis txhob muab khib nyiab pov rau hauv.",
+    "score": 94,
+    "img": "LT-1281.png"
+  },
+  {
+    "id": "LT-1313",
+    "baseName": "Xie Shui (Dej Nqes Hav Nrawm)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej nqes hav nrawm dhau heev ua rau nyiaj txiag khiav sai. Dej nrawm 3.8 m/s (Tsoo Nrawm).",
+    "impact": "Dej tsoo ntug av lossis hlais lub tsev ua rau raug dag nyiaj, poob peev, thiab niam txiv sib nrauj.",
+    "remedy": "Tsim phab ntsa pob zeb granite thaiv ntug dej kom tsis txhob tawg nqes hav, tso pob zeb loj hloov txoj kev dej ntws.",
+    "score": 23,
+    "img": "LT-1313.png"
+  },
+  {
+    "id": "LT-1345",
+    "baseName": "Ni Shui (Dej Ntws Nce Siab)",
+    "category": "Dej & Kev Nkhaus NtawmTus Dej",
+    "physics": "Dej ntws rov qab los ntsia lub tsev ua ntej nkag mus rau lwm sab. Dej nrawm 0.6 m/s (Mos Muag).",
+    "impact": "Dej coj nyiaj txiag loj nkag tsis tu ncua, lag luam vam meej, tsev neeg muaj kev thaj yeeb nyab xeeb.",
+    "remedy": "Khaws cia kom dej ntshiab huv tsis txhob muab khib nyiab pov rau hauv.",
+    "score": 92,
+    "img": "LT-1345.png"
+  },
+  {
+    "id": "LT-1761",
+    "baseName": "Tan Tou Shan (Roob Tub Sab Soj Xyuas)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 16,
+    "img": "LT-1761.png"
+  },
+  {
+    "id": "LT-1769",
+    "baseName": "Fan Bei Shan (Roob Ntxeev Siab Tig Nraub Qaum)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 22,
+    "img": "LT-1769.png"
+  },
+  {
+    "id": "LT-1777",
+    "baseName": "Po Mian Shan (Roob Pob Zeb Tawg Liab Ploog)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 13,
+    "img": "LT-1777.png"
+  },
+  {
+    "id": "LT-1785",
+    "baseName": "Bi Dao Shan (Roob Phab Ntsa Hlais)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 19,
+    "img": "LT-1785.png"
+  },
+  {
+    "id": "LT-1793",
+    "baseName": "Du Feng Shan (Roob Siab Doed Duelo)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 10,
+    "img": "LT-1793.png"
+  },
+  {
+    "id": "LT-1801",
+    "baseName": "Ya Ding Shan (Roob Siab Nias Saum Taub Hau)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 16,
+    "img": "LT-1801.png"
+  },
+  {
+    "id": "LT-1809",
+    "baseName": "Ku Gu Shan (Roob Pob Txha Qhuav Tuag)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 22,
+    "img": "LT-1809.png"
+  },
+  {
+    "id": "LT-1817",
+    "baseName": "Dao Fu Shan (Roob Rab Riam Hlais)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 13,
+    "img": "LT-1817.png"
+  },
+  {
+    "id": "LT-1825",
+    "baseName": "Jian Feng Shan (Roob Ntse Zoo Li Hmuv)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 19,
+    "img": "LT-1825.png"
+  },
+  {
+    "id": "LT-1833",
+    "baseName": "Shi Tou Shan (Roob Pob Zeb Ntxhib Tsoo)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 10,
+    "img": "LT-1833.png"
+  },
+  {
+    "id": "LT-1841",
+    "baseName": "Beng Ta Shan (Roob Av Nqes Hav)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 16,
+    "img": "LT-1841.png"
+  },
+  {
+    "id": "LT-1849",
+    "baseName": "Kua Shan (Roob Poob Pob Zeb)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 22,
+    "img": "LT-1849.png"
+  },
+  {
+    "id": "LT-1857",
+    "baseName": "Chong Tian Shan (Roob Ntsia Saum Ntuj)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 13,
+    "img": "LT-1857.png"
+  },
+  {
+    "id": "LT-1865",
+    "baseName": "Chui Tou Shan (Roob Khoov Taub Hau)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 19,
+    "img": "LT-1865.png"
+  },
+  {
+    "id": "LT-1873",
+    "baseName": "Jiao Ya Shan (Roob Hniav Ntse Tsoo)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 10,
+    "img": "LT-1873.png"
+  },
+  {
+    "id": "LT-1881",
+    "baseName": "Qian Hu Shan (Roob Tsov Nqes Hav)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 16,
+    "img": "LT-1881.png"
+  },
+  {
+    "id": "LT-1889",
+    "baseName": "Xie Shan (Roob Nqes Hav Nrawm)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 22,
+    "img": "LT-1889.png"
+  },
+  {
+    "id": "LT-1897",
+    "baseName": "Duan Shan (Roob Txiav Nruab Nrab)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 13,
+    "img": "LT-1897.png"
+  },
+  {
+    "id": "LT-1905",
+    "baseName": "Gu Shan (Roob Doed Doed Tsis Muaj Ntoo)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 19,
+    "img": "LT-1905.png"
+  },
+  {
+    "id": "LT-1913",
+    "baseName": "Yin An Shan (Roob Tsaus Nti)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 10,
+    "img": "LT-1913.png"
+  },
+  {
+    "id": "LT-1921",
+    "baseName": "Lie Shan (Roob Tawg Nthuav)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 16,
+    "img": "LT-1921.png"
+  },
+  {
+    "id": "LT-1929",
+    "baseName": "Mo Shan (Roob Zoo Li Pob Zeb Sib Tsoo)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 22,
+    "img": "LT-1929.png"
+  },
+  {
+    "id": "LT-1937",
+    "baseName": "Lei Shan (Roob Xob Nrov)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 13,
+    "img": "LT-1937.png"
+  },
+  {
+    "id": "LT-1945",
+    "baseName": "Can Shan (Roob Ntsuab Tuag)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 19,
+    "img": "LT-1945.png"
+  },
+  {
+    "id": "LT-1953",
+    "baseName": "Que Shan (Roob Ploj Ib Sab)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 10,
+    "img": "LT-1953.png"
+  },
+  {
+    "id": "LT-1961",
+    "baseName": "Wa Shan (Roob Qhov Taub)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 16,
+    "img": "LT-1961.png"
+  },
+  {
+    "id": "LT-1969",
+    "baseName": "Pao Shan (Roob Pob Zeb Pob)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 22,
+    "img": "LT-1969.png"
+  },
+  {
+    "id": "LT-1977",
+    "baseName": "Dao Shan (Roob Dao Hlais)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 13,
+    "img": "LT-1977.png"
+  },
+  {
+    "id": "LT-1985",
+    "baseName": "Huo Xing Shan (Roob Hluav Taws Ntse)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 19,
+    "img": "LT-1985.png"
+  },
+  {
+    "id": "LT-1993",
+    "baseName": "Bing Shan (Roob Daus Txias)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 10,
+    "img": "LT-1993.png"
+  },
+  {
+    "id": "LT-2001",
+    "baseName": "Feng Shan (Roob Cua Tshuab Ntsawj)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 16,
+    "img": "LT-2001.png"
+  },
+  {
+    "id": "LT-2009",
+    "baseName": "Sha Shan (Roob Xuab Zeb Qhuav)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 22,
+    "img": "LT-2009.png"
+  },
+  {
+    "id": "LT-2017",
+    "baseName": "Lou Shan (Roob Xau Dej)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 13,
+    "img": "LT-2017.png"
+  },
+  {
+    "id": "LT-2025",
+    "baseName": "Can Feng Shan (Roob Noog Nqes)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 19,
+    "img": "LT-2025.png"
+  },
+  {
+    "id": "LT-2033",
+    "baseName": "Po Tou Shan (Roob Taub Hau Tawg)",
+    "category": "35 Qauv Roob Sha Phem",
+    "physics": "Roob phem tsim lub zog Sha Qi tua ncaj rau lub tsev nrog lub kaum ntse.",
+    "impact": "Ua rau cov neeg nyob raug phais mob, raug tub sab nyiag khoom, mob qhov muag, lossis poob hauj lwm.",
+    "remedy": "Dai daim iav Ba Gua convex thaiv lub roob phem, cog ntoo thuv ntsuab tuab nti thaiv qhov muag kom tsis txhob pom lub roob phem ntawd.",
+    "score": 10,
+    "img": "LT-2033.png"
+  }
+]

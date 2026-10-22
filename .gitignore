@@ -31,6 +31,8 @@
 !/script/
 /script/*
 !/script/data_boundary*
+!/script/data_16_core_land_plot*
+!/script/data_75_core_luan_tou*
 !/script/render_all_boundary_plots.js
 !/script/enrich_boundary_doctrine.js
 !/script/atlas_encyclopedia_content.js

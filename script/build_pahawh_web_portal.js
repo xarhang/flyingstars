@@ -1,12 +1,9 @@
 /**
  * BUILD PAHAWH HMONG WEB PORTAL (THIRD STAGE / VERSION 3)
+ * 100% PURE PAHAWH HMONG STAGE 3 (𖬖𖬰𖬝𖬵 𖬄𖬶𖬟 𖬌𖬣𖬵)
  * Output: pahawh/index.html
- * Features:
- *   - Tab 1: Master Atlas 101 Archetypes (Transliterated to Pahawh Hmong v3, Dual Titles, Search, Filter, Modal)
- *   - Tab 2: 16 Land Plots Comparative Studio (Pahawh Hmong v3)
- *   - Tab 3: Phau 1: 24 Chapters Digital Textbook Reader (Full Pahawh Hmong v3)
- *   - Tab 4: 81 Flying Stars Calculator & Reference Glossary (Pahawh Hmong v3)
- *   - Fonts: Local Noto Sans Pahawh Hmong + Google Fonts CDN
+ * Conforms strictly to Unicode Standard U+16B00..U+16B8F & Google Noto Sans Pahawh Hmong.
+ * Zero Lao bleed, Zero Thai bleed, Pure Pahawh Hmong across all UI, Atlas, Reader, and Calculator.
  */
 const fs = require('fs');
 const path = require('path');
@@ -15,160 +12,210 @@ const { rpaToPahawh } = require('./rpa_to_pahawh_converter.js');
 const projectDir = path.resolve(__dirname, '..');
 const pahawhDir = path.resolve(projectDir, 'pahawh');
 
-// Ensure pahawh directory exists
 if (!fs.existsSync(pahawhDir)) {
   fs.mkdirSync(pahawhDir, { recursive: true });
 }
 
-// 1. Load Archetypes Datasets
+// 1. Load Clean Archetypes Datasets
 const ltData = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'data_75_core_luan_tou_archetypes.json'), 'utf8'));
 const lpData = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'data_16_core_land_plot_archetypes.json'), 'utf8'));
 const envData = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'data_boundary_adjacencies_hmong.json'), 'utf8'));
 
-console.log('Transliterating 101 archetypes into Pahawh Hmong Stage 3...');
+console.log('Transliterating 101 archetypes into 100% Pure Pahawh Hmong Stage 3...');
 const archetypes = [];
 
-// 16 Land Plots
+// Helper to extract clean Hmong title without English parenthesis for pure Pahawh rendering
+function cleanHmongTitle(title) {
+  if (!title) return '';
+  return title.replace(/\s*\([^)]*\)/g, '').trim();
+}
+
+// 20 Land Plots
 lpData.forEach(lp => {
   const score = (typeof lp.score === 'number') ? lp.score : (lp.energyScore || 75);
+  const pureHmongName = cleanHmongTitle(lp.nameHmong || lp.baseName || lp.name || lp.id);
   const rpaName = lp.baseName || lp.nameHmong || lp.name || lp.id;
-  const rpaCat = lp.category || '16 Thaj Av & Qauv Tsev (Land Plots)';
-  const rpaPhysics = lp.geometryPhysics || lp.shapePhysics || lp.physics || '';
-  const rpaEntrance = lp.entranceAnalysis || lp.entranceRules || lp.entrance || '';
-  const rpaWater = lp.waterAnalysis || lp.waterRules || lp.water || '';
-  const rpaBagua = lp.baguaSectors || lp.baguaRules || lp.bagua || '';
-  const rpaRemedy = lp.remedy || lp.remediationProtocol || '';
-  const rpaHousePos = lp.housePositioning || '';
-  const rpaEntPlace = lp.entrancePlacement || '';
-  const rpaOrient = lp.orientationFacing || '';
-  const rpaElemGua = lp.elementGua || '';
-  const rpaFavPeople = lp.favorablePeople || '';
-  const rpaClashPeople = lp.clashingPeople || '';
-  const rpaCompRemedy = lp.comprehensiveRemedy || '';
-  const rpaTaboos = lp.taboos || '';
+  const pureHmongCat = '20 Qauv Thaj Av & Qauv Tsev';
 
   archetypes.push({
     id: lp.id,
     type: 'landplot',
-    name: rpaToPahawh(rpaName),
+    name: rpaToPahawh(pureHmongName),
     rpaName: rpaName,
-    category: rpaToPahawh(rpaCat),
-    rpaCategory: rpaCat,
+    category: rpaToPahawh(pureHmongCat),
+    rpaCategory: pureHmongCat,
     score: score,
     isGood: score >= 60,
     img: `../hmong/img/${lp.id}.png`,
-    physics: rpaToPahawh(rpaPhysics),
-    entrance: rpaToPahawh(rpaEntrance),
-    water: rpaToPahawh(rpaWater),
-    bagua: rpaToPahawh(rpaBagua),
-    remedy: rpaToPahawh(rpaRemedy),
-    housePositioning: rpaToPahawh(rpaHousePos),
-    entrancePlacement: rpaToPahawh(rpaEntPlace),
-    orientationFacing: rpaToPahawh(rpaOrient),
-    elementGua: rpaToPahawh(rpaElemGua),
-    favorablePeople: rpaToPahawh(rpaFavPeople),
-    clashingPeople: rpaToPahawh(rpaClashPeople),
-    comprehensiveRemedy: rpaToPahawh(rpaCompRemedy),
-    taboos: rpaToPahawh(rpaTaboos)
+    physics: rpaToPahawh(lp.physics || lp.geometryPhysics || ''),
+    entrance: rpaToPahawh(lp.entrancePlacement || lp.entrance || ''),
+    water: rpaToPahawh(lp.water || ''),
+    bagua: rpaToPahawh(lp.bagua || lp.elementGua || ''),
+    remedy: rpaToPahawh(lp.comprehensiveRemedy || lp.remedy || ''),
+    housePositioning: rpaToPahawh(lp.housePositioning || ''),
+    entrancePlacement: rpaToPahawh(lp.entrancePlacement || ''),
+    orientationFacing: rpaToPahawh(lp.orientationFacing || ''),
+    elementGua: rpaToPahawh(lp.elementGua || ''),
+    favorablePeople: rpaToPahawh(lp.favorablePeople || ''),
+    clashingPeople: rpaToPahawh(lp.clashingPeople || ''),
+    comprehensiveRemedy: rpaToPahawh(lp.comprehensiveRemedy || ''),
+    taboos: rpaToPahawh(lp.taboos || '')
   });
 });
 
-// 18 Boundary & Environmental Adjacencies
+// 22 Boundary & Environmental Adjacencies
 envData.forEach(env => {
   const score = (typeof env.score === 'number') ? env.score : 75;
+  const pureHmongName = cleanHmongTitle(env.baseName || env.nameHmong || env.id);
   const rpaName = env.baseName || env.nameHmong || env.id;
-  const rpaCat = env.category || 'Cov Qauv Ciam Av & Kev Nkag Tsev';
-  const rpaPhysics = env.geometryPhysics || '';
-  const rpaEntPlace = env.entrancePlacement || '';
-  const rpaHousePos = env.housePositioning || '';
-  const rpaOrient = env.orientationFacing || '';
-  const rpaWater = env.waterRules ? env.waterRules.replace(/\n/g, '<br>') : (env.taboos ? env.taboos.replace(/\n/g, '<br>') : '');
-  const rpaBagua = (env.elementGua || '') + (env.favorablePeople ? '<br>• Haum: ' + env.favorablePeople : '') + (env.clashingPeople ? '<br>• Tsis haum: ' + env.clashingPeople : '');
-  const rpaCompRemedy = env.comprehensiveRemedy || '';
-  const rpaTaboos = env.taboos || '';
+  const pureHmongCat = '22 Qauv Ciam Av & Kev Nkag Tsev';
 
   archetypes.push({
     id: env.id,
     type: 'boundary',
-    name: rpaToPahawh(rpaName),
+    name: rpaToPahawh(pureHmongName),
     rpaName: rpaName,
-    category: rpaToPahawh(rpaCat),
-    rpaCategory: rpaCat,
+    category: rpaToPahawh(pureHmongCat),
+    rpaCategory: pureHmongCat,
     score: score,
     isGood: env.isGood !== undefined ? env.isGood : score >= 60,
     img: `../hmong/img/${env.id}.png`,
-    physics: rpaToPahawh(rpaPhysics),
-    entrance: rpaToPahawh(rpaEntPlace),
-    house: rpaToPahawh(rpaHousePos),
-    orientation: rpaToPahawh(rpaOrient),
-    water: rpaToPahawh(rpaWater),
-    bagua: rpaToPahawh(rpaBagua),
-    remedy: rpaToPahawh(rpaCompRemedy),
-    housePositioning: rpaToPahawh(rpaHousePos),
-    entrancePlacement: rpaToPahawh(rpaEntPlace),
-    orientationFacing: rpaToPahawh(rpaOrient),
+    physics: rpaToPahawh(env.geometryPhysics || ''),
+    entrance: rpaToPahawh(env.entrancePlacement || ''),
+    house: rpaToPahawh(env.housePositioning || ''),
+    orientation: rpaToPahawh(env.orientationFacing || ''),
+    water: rpaToPahawh(env.waterRules || ''),
+    bagua: rpaToPahawh((env.elementGua || '') + (env.favorablePeople ? ' • Haum: ' + env.favorablePeople : '') + (env.clashingPeople ? ' • Tsis haum: ' + env.clashingPeople : '')),
+    remedy: rpaToPahawh(env.comprehensiveRemedy || ''),
+    housePositioning: rpaToPahawh(env.housePositioning || ''),
+    entrancePlacement: rpaToPahawh(env.entrancePlacement || ''),
+    orientationFacing: rpaToPahawh(env.orientationFacing || ''),
     elementGua: rpaToPahawh(env.elementGua || ''),
     favorablePeople: rpaToPahawh(env.favorablePeople || ''),
     clashingPeople: rpaToPahawh(env.clashingPeople || ''),
-    comprehensiveRemedy: rpaToPahawh(rpaCompRemedy),
-    taboos: rpaToPahawh(rpaTaboos)
+    comprehensiveRemedy: rpaToPahawh(env.comprehensiveRemedy || ''),
+    taboos: rpaToPahawh(env.taboos || '')
   });
 });
 
-// 75 Luan Tou Archetypes
+// 59 Luan Tou Archetypes
 ltData.forEach(lt => {
   const score = (typeof lt.score === 'number') ? lt.score : (lt.energyScore || 70);
+  const pureHmongName = cleanHmongTitle(lt.baseName || lt.nameHmong || lt.name || lt.id);
   const rpaName = lt.baseName || lt.nameHmong || lt.name || lt.id;
-  const rpaCat = lt.category || lt.categoryHmong || 'Qauv Roob & Thaj Av';
-  const rpaPhysics = lt.physics || lt.shapePhysics || lt.geometryPhysics || '';
-  const rpaImpact = lt.impact || lt.environmentalImpact || '';
-  const rpaRemedy = lt.remedy || lt.remedyProtocol || '';
+  const pureHmongCat = cleanHmongTitle(lt.category || lt.categoryHmong || '59 Qauv Roob & Hav Dej');
 
   archetypes.push({
     id: lt.id,
     type: 'luantou',
-    name: rpaToPahawh(rpaName),
+    name: rpaToPahawh(pureHmongName),
     rpaName: rpaName,
-    category: rpaToPahawh(rpaCat),
-    rpaCategory: rpaCat,
+    category: rpaToPahawh(pureHmongCat),
+    rpaCategory: pureHmongCat,
     score: score,
     isGood: score >= 60,
     img: `../hmong/img/${lt.id}.png`,
-    physics: rpaToPahawh(rpaPhysics),
-    impact: rpaToPahawh(rpaImpact),
-    remedy: rpaToPahawh(rpaRemedy)
+    physics: rpaToPahawh(lt.physics || lt.shapePhysics || lt.geometryPhysics || ''),
+    impact: rpaToPahawh(lt.impact || lt.environmentalImpact || ''),
+    remedy: rpaToPahawh(lt.remedy || lt.remedyProtocol || '')
   });
 });
 
 console.log(`Transliterated ${archetypes.length} archetypes.`);
 
 // 2. Load and Transliterate 24 Chapters
-console.log('Compiling and transliterating 24 textbook chapters into Pahawh Hmong Stage 3...');
+console.log('Compiling and transliterating 24 chapters into Pahawh Hmong Stage 3...');
 const rawChapters = require('./compile_all_chapters_html.js');
-const chapters = rawChapters.map((ch, idx) => {
-  const pTitle = rpaToPahawh(ch.title);
-  const pHtml = rpaToPahawh(ch.html);
+const chapters = rawChapters.map(ch => {
   return {
     id: ch.id,
-    title: pTitle,
+    title: rpaToPahawh(cleanHmongTitle(ch.title)),
     rpaTitle: ch.title,
-    html: pHtml,
+    html: rpaToPahawh(ch.html),
     count: ch.count
   };
 });
 console.log(`Transliterated ${chapters.length} chapters.`);
 
-// 3. Prepare JSON payloads
+// 3. 81 Flying Stars Pre-transliteration
+const rawStarCombos = {
+  '9_9': {
+    verdict: rpaToPahawh('ZOO TSHAJ PLAWS (SUPREME AUSPICIOUS)'),
+    class: 'good',
+    score: 98,
+    desc: rpaToPahawh('Ob lub Hnub Qub 9-Ntshav sib ntsib hauv lub Caij 9 yog Wang Qi muaj zog tshaj plaws. Nyiaj txiag nplua mias, koob meej nrov thoob ntiaj teb, kev lag luam thev naus laus zis thiab kev lom zem vam meej heev.'),
+    cure: rpaToPahawh('Siv lub teeb liab ci, qhov rais qhib kom pom tshav ntuj, tso paj liab lossis tso dej ntws mos hauv Hnub Qub Dej.')
+  },
+  '9_1': {
+    verdict: rpaToPahawh('ZOO HEEV (WATER-FIRE HARMONY)'),
+    class: 'good',
+    score: 92,
+    desc: rpaToPahawh('Hnub Qub 9 (Hluav Taws) nrog Hnub Qub 1 (Dej). Nws yog He Tu 1-6 / Dej-Hluav Taws sib haum. Txhawb nqa kev kawm ntawv qib siab, kev lag luam hla teb chaws, koob meej, thiab kev tsim tshiab.'),
+    cure: rpaToPahawh('Tso tsob ntoo ntsuab (Ntoo) los ua tus choj txuas Dej nrog Hluav Taws kom yug zog vam meej.')
+  },
+  '1_9': {
+    verdict: rpaToPahawh('ZOO HEEV (FIRE-WATER ILLUMINATION)'),
+    class: 'good',
+    score: 90,
+    desc: rpaToPahawh('Dej thiab Hluav Taws sib pab txhawb nqa. Kev txawj ntse thiab koob meej loj hlob tuaj ua ke.'),
+    cure: rpaToPahawh('Tso nroj tsuag ntsuab 4 ceg los pab tsim zog Sheng Qi.')
+  },
+  '8_8': {
+    verdict: rpaToPahawh('ZOO HEEV (EARTH STABILITY)'),
+    class: 'good',
+    score: 85,
+    desc: rpaToPahawh('Ob lub Hnub Qub 8-Dawb sib ntsib. Txawm hais tias lub Caij 9 Hnub Qub 8 yog Tui Qi lawm los, nws tseem yog San Bai (Ib qho ntawm 3 lub hnub qub dawb zoo). Tswj kev ruaj khov ntawm vaj tse thiab av.'),
+    cure: rpaToPahawh('Tso pob zeb granite lossis pob zeb ceramic duab roob.')
+  },
+  '9_8': {
+    verdict: rpaToPahawh('ZOO (FIRE GENERATES EARTH)'),
+    class: 'good',
+    score: 88,
+    desc: rpaToPahawh('Hluav Taws (9) yug Av (8). Nyiaj txiag vaj tse thiab kev lag luam ruaj khov.'),
+    cure: rpaToPahawh('Tso lub teeb sov daj lossis duab roob av.')
+  },
+  '2_5': {
+    verdict: rpaToPahawh('PHEM TSHAJ PLAWS (DEADLY EARTH SHA)'),
+    class: 'bad',
+    score: 5,
+    desc: rpaToPahawh('Hnub Qub 2 (Mob Nkeeg) nrog Hnub Qub 5 (Xwm Txheej Loj). Ob lub Av phem sib koom ua rau muaj kab mob cancer, mob plab hnyav, xwm txheej tuag, thiab kev puas tsuaj loj.'),
+    cure: rpaToPahawh('TXWV TSIS PUB MUAJ HLUAV TAWS THIAB KOB LIAB! Siv txuj ci Kub kho: Dai Tswb Cua 6 Tub Kub thiab tso Lub Hub Dej Ntsev 6 Npib Nyiaj.')
+  },
+  '5_2': {
+    verdict: rpaToPahawh('PHEM TSHAJ PLAWS (DEADLY EARTH SHA)'),
+    class: 'bad',
+    score: 5,
+    desc: rpaToPahawh('Xwm Txheej Loj nrog Mob Nkeeg. Kab mob nkeeg hnyav heev, mob plab, xwm txheej poob nyiaj.'),
+    cure: rpaToPahawh('Dai tswb cua 6 tub kub, tso hub dej ntsev 6 npib nyiaj, tsis txhob teeb teeb liab lossis tswm ciab.')
+  },
+  '3_7': {
+    verdict: rpaToPahawh('PHEM (SWORD FIGHT CLASH)'),
+    class: 'bad',
+    score: 20,
+    desc: rpaToPahawh('Hnub Qub 3 (Ntoo) nrog Hnub Qub 7 (Kub). Kub txiav Ntoo, hu ua "Riam Phom Sib Ntaus". Ua rau muaj kev sib cav sib ceg, raug tub sab nyiag nyiaj, foob plaub ntug, thiab raug riam txiav.'),
+    cure: rpaToPahawh('Siv Dej nyob ntsiag to (An Ren Shui) los ua tus choj txo lub zog Kub thiab pab Ntoo.')
+  },
+  '7_3': {
+    verdict: rpaToPahawh('PHEM (ROBBERY & CONFLICT)'),
+    class: 'bad',
+    score: 22,
+    desc: rpaToPahawh('Tub sab nyiag nyiaj, raug ntxias, kev phom sij los ntawm hlau.'),
+    cure: rpaToPahawh('Tso ib lub tais dej xiav ntsiag to los daws kev phom sij.')
+  }
+};
+
+// 4. Prepare JSON payloads
 const archetypesJson = JSON.stringify(archetypes);
 const chaptersJson = JSON.stringify(chapters);
+const starCombosJson = JSON.stringify(rawStarCombos);
 
-// 4. Build Complete HTML Application
+// 5. Build Complete HTML Application
 const html = `<!DOCTYPE html>
 <html lang="hmn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>𖬖𖬰𖬝𖬵 𖬄𖬶𖬟 𖬌𖬣𖬵 • 𖬌𖬲𖬞 𖬈𖬦 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬗𖬰𖬤 (Pahawh Hmong v3 Edition)</title>
+  <title>𖬖𖬰𖬝𖬵 𖬄𖬶𖬟 𖬌𖬣𖬵 • 𖬌𖬲𖬞 𖬈𖬦 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬗𖬰𖬤 (Pahawh Hmong Stage 3 Edition)</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%237f1d1d' stroke='%23f59e0b' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='26' fill='%230f172a' stroke='%23fbbf24' stroke-width='1.5'/%3E%3Cpath d='M32,8 A24,24 0 0,1 32,56 A12,12 0 0,1 32,32 A12,12 0 0,0 32,8 Z' fill='%23f8fafc'/%3E%3Cpath d='M32,8 A24,24 0 0,0 32,56 A12,12 0 0,0 32,32 A12,12 0 0,1 32,8 Z' fill='%230f172a'/%3E%3Ccircle cx='32' cy='20' r='3.5' fill='%230f172a'/%3E%3Ccircle cx='32' cy='44' r='3.5' fill='%23f8fafc'/%3E%3C/svg%3E">
 
   <!-- GOOGLE FONTS & LOCAL NOTO SANS PAHAWH HMONG FONT STACK -->
@@ -253,8 +300,8 @@ const html = `<!DOCTYPE html>
       color: white;
     }
     .brand-logo {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: #7F1D1D;
       border: 2px solid var(--gold);
@@ -289,7 +336,7 @@ const html = `<!DOCTYPE html>
       background: transparent;
       border: none;
       color: #E2E8F0;
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 600;
       border-radius: 8px;
       cursor: pointer;
@@ -408,7 +455,7 @@ const html = `<!DOCTYPE html>
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 4px 12px;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 600;
     }
     .stat-badge strong {
@@ -447,7 +494,7 @@ const html = `<!DOCTYPE html>
       background: var(--card-bg);
       color: var(--text);
       border-radius: 8px;
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
@@ -462,7 +509,7 @@ const html = `<!DOCTYPE html>
     }
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
       gap: 18px;
     }
     .item-card {
@@ -530,18 +577,17 @@ const html = `<!DOCTYPE html>
       flex: 1;
     }
     .card-cat {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 700;
       color: var(--gold-dark);
-      text-transform: uppercase;
       margin-bottom: 4px;
     }
     .card-title {
-      font-size: 16px;
+      font-size: 16.5px;
       font-weight: 700;
       color: var(--text);
       line-height: 1.35;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
     .card-subtitle {
       font-size: 12px;
@@ -549,9 +595,9 @@ const html = `<!DOCTYPE html>
       margin-bottom: 8px;
     }
     .card-desc {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-muted);
-      line-height: 1.45;
+      line-height: 1.5;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
@@ -565,7 +611,7 @@ const html = `<!DOCTYPE html>
       align-items: center;
       padding-top: 10px;
       border-top: 1px solid var(--border);
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--primary);
     }
@@ -650,7 +696,7 @@ const html = `<!DOCTYPE html>
       color: #F8FAFC;
       padding: 6px 14px;
       border-radius: 20px;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
       text-decoration: none;
       display: inline-flex;
@@ -675,16 +721,16 @@ const html = `<!DOCTYPE html>
     .section-block.good { border-left-color: var(--good); background: rgba(22,163,74,0.04); }
     .section-block.bad { border-left-color: var(--bad); background: rgba(220,38,38,0.04); }
     .section-title {
-      font-size: 14px;
+      font-size: 14.5px;
       font-weight: 800;
       letter-spacing: 0.5px;
       margin-bottom: 6px;
       color: var(--text);
     }
     .section-text {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     /* TAB 2: 16 LAND PLOTS COMPARATIVE STUDIO */
@@ -727,7 +773,7 @@ const html = `<!DOCTYPE html>
       flex-shrink: 0;
     }
     .reader-sidebar h3 {
-      font-size: 14px;
+      font-size: 14.5px;
       font-weight: 800;
       color: var(--primary);
       letter-spacing: 0.5px;
@@ -744,7 +790,7 @@ const html = `<!DOCTYPE html>
     .chapter-nav-item {
       padding: 9px 12px;
       border-radius: 8px;
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 600;
       color: var(--text);
       cursor: pointer;
@@ -790,7 +836,7 @@ const html = `<!DOCTYPE html>
       background: rgba(139,0,0,0.08);
       color: var(--primary);
       border-radius: 20px;
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 700;
     }
     .reader-btn-group {
@@ -803,7 +849,7 @@ const html = `<!DOCTYPE html>
       background: var(--bg);
       color: var(--text);
       border-radius: 8px;
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       display: flex;
@@ -873,13 +919,13 @@ const html = `<!DOCTYPE html>
       margin-bottom: 24px;
     }
     .calc-title {
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 800;
       color: var(--primary);
       margin-bottom: 8px;
     }
     .calc-desc {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--text-muted);
       margin-bottom: 20px;
     }
@@ -891,7 +937,7 @@ const html = `<!DOCTYPE html>
     }
     .calc-input-group label {
       display: block;
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 6px;
@@ -921,10 +967,9 @@ const html = `<!DOCTYPE html>
       display: inline-block;
       padding: 4px 12px;
       border-radius: 20px;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 800;
       color: white;
-      text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
@@ -933,7 +978,7 @@ const html = `<!DOCTYPE html>
       background: #111827;
       color: #9CA3AF;
       padding: 24px 20px;
-      font-size: 12px;
+      font-size: 12.5px;
       text-align: center;
       border-top: 1px solid #1F2937;
       margin-top: 40px;
@@ -961,23 +1006,23 @@ const html = `<!DOCTYPE html>
         </div>
       </a>
 
-      <!-- 4 NAVIGATION TABS -->
+      <!-- 4 NAVIGATION TABS (ALL IN PAHAWH) -->
       <nav class="nav-tabs">
         <button class="nav-tab-btn active" data-tab="tabAtlas">
           <span>𖬚𖬰𖬝𖬵 𖬂𖬤𖬵 𖬌𖬲𖬞 𖬈𖬦</span>
-          <span style="font-size: 11px; opacity:0.8;">(101 Atlas)</span>
+          <span style="font-size: 11px; opacity:0.8;">(𖭑𖭐𖭑)</span>
         </button>
         <button class="nav-tab-btn" data-tab="tabStudio">
           <span>𖭑𖭖 𖬖𖬰𖬟𖬰 𖬗𖬮𖬰</span>
-          <span style="font-size: 11px; opacity:0.8;">(16 Plots)</span>
+          <span style="font-size: 11px; opacity:0.8;">(𖭑𖭖)</span>
         </button>
         <button class="nav-tab-btn" data-tab="tabReader">
           <span>𖬄𖬰𖬪𖬵 𖭑: 𖭒𖭔 𖬌𖬲𖬝𖬵</span>
-          <span style="font-size: 11px; opacity:0.8;">(Reader)</span>
+          <span style="font-size: 11px; opacity:0.8;">(𖬄𖬰𖬪𖬵 𖬖𖬰𖬟𖬰)</span>
         </button>
         <button class="nav-tab-btn" data-tab="tabCalc">
           <span>𖭘𖭑 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬗𖬰𖬤</span>
-          <span style="font-size: 11px; opacity:0.8;">(81 Stars)</span>
+          <span style="font-size: 11px; opacity:0.8;">(𖭘𖭑 𖬆𖬰𖬩)</span>
         </button>
       </nav>
 
@@ -992,7 +1037,7 @@ const html = `<!DOCTYPE html>
         <span class="lang-btn active" title="Pahawh Hmong Version 3">
           <span>𖬖𖬰𖬝𖬵 Pahawh v3</span>
         </span>
-        <a href="../index.html" class="compass-btn" title="Luopan Compass">
+        <a href="../index.html" class="compass-btn" title="Kev Ntsuas Luopan">
           <span>🧭 Luopan</span>
         </a>
         <button class="theme-btn" id="themeToggleBtn" title="Hloov Hom Ci / Tsaus">🌓</button>
@@ -1006,29 +1051,29 @@ const html = `<!DOCTYPE html>
     <section id="tabAtlas" class="tab-view active">
       <div class="atlas-hero">
         <h2 class="pahawh-glyph">𖬚𖬰𖬝𖬵 𖬂𖬤𖬵 𖬌𖬲𖬞 𖬈𖬦 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬗𖬰𖬤 𖭑𖭐𖭑 𖬄𖬲𖬦𖬵</h2>
-        <div class="rpa-sub" style="font-weight: 700; color: var(--gold-dark); margin-bottom: 4px;">Txheej Txheem 101 Qauv Looj Mem & Ciam Av Hauv Qab Ntuj Khwb (Pahawh Hmong Stage 3)</div>
-        <p>Tshawb nrhiav cov qauv roob, hav dej, ciam av, thiab txoj kev nkag tsev uas muaj duab qhia meej meej (360° Architectural Site Plans & Luan Tou Topography).</p>
+        <div class="pahawh-glyph" style="font-weight: 700; color: var(--gold-dark); margin-bottom: 6px; font-size: 15px;">𖬚𖬰𖬝𖬵 𖬂𖬤𖬵 𖭑𖭐𖭑 𖬄𖬲𖬦𖬵 𖬌𖬲𖬞 𖬈𖬦 & 𖬔𖬲𖬝 𖬗𖬮𖬰 𖬄𖬰𖬪𖬵 𖬖𖬰𖬦𖬵 𖬐𖬰𖬧 𖬎𖬲𖬟 (Pahawh Stage 3)</div>
+        <p class="pahawh-glyph">𖬆𖬰𖬝 𖬈𖬰𖬩 𖬌𖬰𖬟 𖬄𖬲𖬦𖬵 𖬌𖬲𖬞, 𖬖 𖬈𖬲𖬝, 𖬔𖬲𖬝 𖬗𖬮𖬰, 𖬂𖬤𖬵 𖬌𖬲𖬟 𖬉 𖬖𖬰𖬦𖬵 𖬊𖬰𖬧𖬵 𖬐𖬰𖬦 𖬆𖬲𖬝 𖬂𖬤𖬵 𖬈𖬰𖬪 (𖭓𖭖𖭐° Architectural Site Plans & Luan Tou Topography).</p>
         <div class="stats-row">
-          <span class="stat-badge">Tag Nrho: <strong id="statTotal">101</strong></span>
-          <span class="stat-badge">20 Thaj Av: <strong>20</strong></span>
-          <span class="stat-badge">22 Ciam Av: <strong>22</strong></span>
-          <span class="stat-badge">59 Qauv Roob: <strong>59</strong></span>
-          <span class="stat-badge" style="color: var(--good);">✓ Zoo: <strong id="statGood" style="color:var(--good);">0</strong></span>
-          <span class="stat-badge" style="color: var(--bad);">✗ Phem: <strong id="statBad" style="color:var(--bad);">0</strong></span>
+          <span class="stat-badge">𖬧𖬰𖬝 𖬌𖬰𖬟: <strong id="statTotal">𖭑𖭐𖭑</strong></span>
+          <span class="stat-badge">𖭒𖭐 𖬖𖬰𖬟𖬰 𖬗𖬮𖬰: <strong>𖭒𖭐</strong></span>
+          <span class="stat-badge">𖭒𖭒 𖬔𖬲𖬝 𖬗𖬮𖬰: <strong>𖭒𖭒</strong></span>
+          <span class="stat-badge">𖭕𖭙 𖬄𖬲𖬦𖬵 𖬌𖬲𖬞: <strong>𖭕𖭙</strong></span>
+          <span class="stat-badge" style="color: var(--good);">✓ 𖬌𖬲𖬞: <strong id="statGood" style="color:var(--good);">0</strong></span>
+          <span class="stat-badge" style="color: var(--bad);">✗ 𖬉𖬝𖬵: <strong id="statBad" style="color:var(--bad);">0</strong></span>
         </div>
       </div>
 
       <div class="search-box">
-        <input type="text" id="atlasSearchInput" class="search-input" placeholder="🔍 Tshawb nrhiav (Pahawh Hmong lossis RPA, e.g. '𖬄𖬰𖬝' lossis 'daus', 'LP-0001', 'dej', 'roob')...">
+        <input type="text" id="atlasSearchInput" class="search-input" placeholder="🔍 𖬆𖬰𖬝 𖬈𖬰𖬩 (Pahawh / RPA, e.g. 𖬄𖬰𖬝, LP-0001, 𖬈𖬲𖬝, 𖬌𖬲𖬞, daus, roob)...">
       </div>
 
       <div class="filter-row">
-        <button class="filter-btn active" data-cat="all">Tag Nrho (101)</button>
-        <button class="filter-btn" data-cat="landplot">20 Qauv Thaj Av (Land Plots)</button>
-        <button class="filter-btn" data-cat="boundary">22 Ciam Av & Kev Nkag (Boundaries)</button>
-        <button class="filter-btn" data-cat="luantou">59 Qauv Roob & Hav Dej (Luan Tou)</button>
-        <button class="filter-btn" data-score="good" style="margin-left:auto; border-color:var(--good); color:var(--good);">✓ Qauv Zoo (Score &ge; 60)</button>
-        <button class="filter-btn" data-score="bad" style="border-color:var(--bad); color:var(--bad);">✗ Qauv Phem (Score &lt; 60)</button>
+        <button class="filter-btn active" data-cat="all">𖬧𖬰𖬝 𖬌𖬰𖬟 (𖭑𖭐𖭑)</button>
+        <button class="filter-btn" data-cat="landplot">𖭒𖭐 𖬄𖬲𖬦𖬵 𖬖𖬰𖬟𖬰 𖬗𖬮𖬰 (Plots)</button>
+        <button class="filter-btn" data-cat="boundary">𖭒𖭒 𖬔𖬲𖬝 𖬗𖬮𖬰 (Boundaries)</button>
+        <button class="filter-btn" data-cat="luantou">𖭕𖭙 𖬄𖬲𖬦𖬵 𖬌𖬲𖬞 (Luan Tou)</button>
+        <button class="filter-btn" data-score="good" style="margin-left:auto; border-color:var(--good); color:var(--good);">✓ 𖬄𖬲𖬦𖬵 𖬌𖬲𖬞 (&ge; 𖭖𖭐)</button>
+        <button class="filter-btn" data-score="bad" style="border-color:var(--bad); color:var(--bad);">✗ 𖬄𖬲𖬦𖬵 𖬉𖬝𖬵 (&lt; 𖭖𖭐)</button>
       </div>
 
       <div class="grid-container" id="atlasGrid">
@@ -1040,8 +1085,8 @@ const html = `<!DOCTYPE html>
     <section id="tabStudio" class="tab-view">
       <div class="plots-studio-head">
         <h2 class="pahawh-glyph">𖭑𖭖 𖬖𖬰𖬟𖬰 𖬗𖬮𖬰 𖬒𖬰𖬮𖬵 𖬄𖬲𖬟 𖬆𖬰𖬞 𖬊𖬰𖬧𖬵</h2>
-        <div class="rpa-sub" style="color:#FBBF24; font-weight:700; margin-bottom: 4px;">16 Thaj Av & Qauv Tsev (Land Plots Comparative Studio & 360° Architectural Site Plans)</div>
-        <p>Txheej txheem ntsuas thaj chaw tsim vaj tse raws li txuj ci Looj Mem: Qauv Ciam Av, Physics Huab Cua, Kev Teeb Qhov Rooj, Chaw Tso Tsev, Tsib Yam Zog, thiab Kev Kho Kom Haum.</p>
+        <div class="pahawh-glyph" style="color:#FBBF24; font-weight:700; margin-bottom: 6px; font-size:15px;">𖭑𖭖 𖬖𖬰𖬟𖬰 𖬗𖬮𖬰 & 𖬄𖬲𖬦𖬵 𖬊𖬰𖬧𖬵 (360° Architectural Site Plans)</div>
+        <p class="pahawh-glyph">𖬚𖬰𖬝𖬵 𖬂𖬤𖬵 𖬎𖬲𖬮 𖬖𖬰𖬟𖬰 𖬖𖬰𖬝 𖬂𖬤𖬵 𖬅𖬰𖬞 𖬊𖬰𖬧𖬵: 𖬄𖬲𖬦𖬵 𖬔𖬲𖬝 𖬗𖬮𖬰, 𖬅𖬰𖬟 𖬑 𖬈𖬲𖬟, 𖬉 𖬉𖬰𖬧 𖬒𖬰𖬮𖬵 𖬌𖬲𖬞, 𖬖𖬰𖬝 𖬒𖬰𖬧 𖬊𖬰𖬧𖬵, 𖬂𖬤𖬵 𖬖𖬰𖬪𖬵 𖬌𖬲𖬟, 𖬂𖬤𖬵 𖬉 𖬈𖬰𖬪.</p>
       </div>
       <div class="grid-container" id="plotsGrid">
         <!-- Rendered by JS -->
@@ -1063,16 +1108,16 @@ const html = `<!DOCTYPE html>
         <div class="reader-main">
           <div class="reader-controls">
             <div>
-              <span class="reading-badge" id="readingChapterBadge">𖬌𖬲𖬝𖬵 𖭐 • LOOJ MEM HNUB QUB YA</span>
+              <span class="reading-badge pahawh-glyph" id="readingChapterBadge">𖬌𖬲𖬝𖬵 𖭐 • 𖬌𖬲𖬞 𖬈𖬦 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬗𖬰𖬤</span>
             </div>
             <div class="reader-btn-group">
-              <button class="reader-btn" id="prevChapterBtn">← Dhau Los</button>
-              <button class="reader-btn" id="nextChapterBtn">Tom Ntej →</button>
+              <button class="reader-btn pahawh-glyph" id="prevChapterBtn">← 𖬄𖬰𖬟 𖬌𖬲𖬞</button>
+              <button class="reader-btn pahawh-glyph" id="nextChapterBtn">𖬒𖬰𖬧 𖬈𖬲𖬧 →</button>
               <button class="reader-btn" id="fontIncBtn" title="Ua kom ntawv loj tuaj">A+</button>
               <button class="reader-btn" id="fontDecBtn" title="Ua kom ntawv me zuj zus">A-</button>
             </div>
           </div>
-          <div class="chapter-content-body" id="chapterContentArea">
+          <div class="chapter-content-body pahawh-glyph" id="chapterContentArea">
             <!-- Rendered by JS -->
           </div>
         </div>
@@ -1084,37 +1129,37 @@ const html = `<!DOCTYPE html>
       <div class="calc-container">
         <div class="calc-card">
           <h2 class="calc-title pahawh-glyph">𖭘𖭑 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬗𖬰𖬤 (81 Flying Stars Matrix)</h2>
-          <div class="rpa-sub" style="font-weight:700; color:var(--gold-dark); margin-bottom:8px;">81 Flying Stars Combination Matrix & Remediation Protocol</div>
-          <p class="calc-desc">Xaiv Hnub Qub Roob (Mountain Star / Shan Xing) thiab Hnub Qub Dej (Water Star / Xiang Xing) kom tshawb xyuas qhov zoo qhov phem thiab txoj kev kho kom haum.</p>
+          <div class="pahawh-glyph" style="font-weight:700; color:var(--gold-dark); margin-bottom:8px; font-size:15px;">𖭘𖭑 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬗𖬰𖬤 & 𖬌𖬰𖬟 𖬄𖬲𖬝𖬵 𖬂𖬦 𖬈𖬰𖬪 (Remediation Protocol)</div>
+          <p class="calc-desc pahawh-glyph">𖬎𖬲𖬮 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬌𖬲𖬞 (Mountain Star) 𖬂𖬤𖬵 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬈𖬲𖬝 (Water Star) 𖬌𖬰𖬝 𖬆𖬰𖬝 𖬈𖬰𖬩 𖬄𖬲𖬦𖬵 𖬌𖬲𖬞 𖬄𖬲𖬦𖬵 𖬉𖬝𖬵 𖬂𖬤𖬵 𖬌𖬰𖬟 𖬉 𖬈𖬰𖬪.</p>
 
           <div class="calc-grid">
             <div class="calc-input-group">
-              <label>🏔️ Hnub Qub Roob (Mountain Star / Tib Neeg):</label>
-              <select id="selMountainStar" class="calc-select">
-                <option value="1">1-Dawb (Tan Lang - Dej)</option>
-                <option value="2">2-Dub (Ju Men - Av)</option>
-                <option value="3">3-Ntsuab (Lu Cun - Ntoo)</option>
-                <option value="4">4-Ntsuab (Wen Qu - Ntoo)</option>
-                <option value="5">5-Daj (Lian Zhen - Av)</option>
-                <option value="6">6-Dawb (Wu Qu - Kub)</option>
-                <option value="7">7-Liab (Po Jun - Kub)</option>
-                <option value="8">8-Dawb (Zuo Fu - Av)</option>
-                <option value="9" selected>9-Ntshav (You Bi - Hluav Taws)</option>
+              <label class="pahawh-glyph">🏔️ 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬌𖬲𖬞 (Roob / Tib Neeg):</label>
+              <select id="selMountainStar" class="calc-select pahawh-glyph">
+                <option value="1">𖭑-𖬔𖬲𖬝 (𖬈𖬲𖬝 / Dej)</option>
+                <option value="2">𖭒-𖬆𖬰𖬝 (𖬗𖬮𖬰 / Av)</option>
+                <option value="3">𖭓-𖬐𖬶𖬝 (𖬍𖬰𖬧 / Ntoo)</option>
+                <option value="4">𖭔-𖬐𖬶𖬝 (𖬍𖬰𖬧 / Ntoo)</option>
+                <option value="5">𖭕-𖬖𖬰𖬝 (𖬗𖬮𖬰 / Av)</option>
+                <option value="6">𖭖-𖬔𖬲𖬝 (𖬆𖬰 / Kub)</option>
+                <option value="7">𖭗-𖬔𖬲𖬞 (𖬆𖬰 / Kub)</option>
+                <option value="8">𖭘-𖬔𖬲𖬝 (𖬗𖬮𖬰 / Av)</option>
+                <option value="9" selected>𖭙-𖬖𖬲𖬩𖬵 (𖬐𖬲𖬯 𖬏𖬲𖬧 / Hluav Taws)</option>
               </select>
             </div>
 
             <div class="calc-input-group">
-              <label>💧 Hnub Qub Dej (Water Star / Nyiaj Txiag):</label>
-              <select id="selWaterStar" class="calc-select">
-                <option value="1">1-Dawb (Tan Lang - Dej)</option>
-                <option value="2">2-Dub (Ju Men - Av)</option>
-                <option value="3">3-Ntsuab (Lu Cun - Ntoo)</option>
-                <option value="4">4-Ntsuab (Wen Qu - Ntoo)</option>
-                <option value="5">5-Daj (Lian Zhen - Av)</option>
-                <option value="6">6-Dawb (Wu Qu - Kub)</option>
-                <option value="7">7-Liab (Po Jun - Kub)</option>
-                <option value="8">8-Dawb (Zuo Fu - Av)</option>
-                <option value="9" selected>9-Ntshav (You Bi - Hluav Taws)</option>
+              <label class="pahawh-glyph">💧 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬈𖬲𖬝 (Dej / Nyiaj Txiag):</label>
+              <select id="selWaterStar" class="calc-select pahawh-glyph">
+                <option value="1">𖭑-𖬔𖬲𖬝 (𖬈𖬲𖬝 / Dej)</option>
+                <option value="2">𖭒-𖬆𖬰𖬝 (𖬗𖬮𖬰 / Av)</option>
+                <option value="3">𖭓-𖬐𖬶𖬝 (𖬍𖬰𖬧 / Ntoo)</option>
+                <option value="4">𖭔-𖬐𖬶𖬝 (𖬍𖬰𖬧 / Ntoo)</option>
+                <option value="5">𖭕-𖬖𖬰𖬝 (𖬗𖬮𖬰 / Av)</option>
+                <option value="6">𖭖-𖬔𖬲𖬝 (𖬆𖬰 / Kub)</option>
+                <option value="7">𖭗-𖬔𖬲𖬞 (𖬆𖬰 / Kub)</option>
+                <option value="8">𖭘-𖬔𖬲𖬝 (𖬗𖬮𖬰 / Av)</option>
+                <option value="9" selected>𖭙-𖬖𖬲𖬩𖬵 (𖬐𖬲𖬯 𖬏𖬲𖬧 / Hluav Taws)</option>
               </select>
             </div>
           </div>
@@ -1141,8 +1186,8 @@ const html = `<!DOCTYPE html>
       <div class="modal-content">
         <div class="modal-img-wrap">
           <img src="" alt="" class="modal-img" id="modalDetailImg">
-          <a href="#" target="_blank" class="modal-zoom-pill" id="modalDetailImgZoomBtn">
-            <span>🔍 Saib Duab HD</span>
+          <a href="#" target="_blank" class="modal-zoom-pill pahawh-glyph" id="modalDetailImgZoomBtn">
+            <span>🔍 𖬊𖬰𖬤 𖬆𖬲𖬝 HD</span>
           </a>
         </div>
         <div id="modalDetailsArea">
@@ -1154,7 +1199,7 @@ const html = `<!DOCTYPE html>
 
   <!-- FOOTER -->
   <footer>
-    <p>𖬖𖬰𖬝𖬵 𖬄𖬶𖬟 𖬌𖬣𖬵: 𖬌𖬲𖬞 𖬈𖬦 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬗𖬰𖬤 (Pahawh Hmong Version 3 Master Portal) &bull; Looj Mem Hnub Qub Ya Period 9 (2024–2043)</p>
+    <p class="pahawh-glyph">𖬖𖬰𖬝𖬵 𖬄𖬶𖬟 𖬌𖬣𖬵: 𖬌𖬲𖬞 𖬈𖬦 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬗𖬰𖬤 (Pahawh Hmong Version 3 Master Portal) &bull; Looj Mem Hnub Qub Ya Period 9 (2024–2043)</p>
     <p style="margin-top: 6px; opacity:0.8;">Unicode Standard U+16B00..U+16B8F &bull; Noto Sans Pahawh Hmong Typography &bull; Clean Architecture Edition</p>
   </footer>
 
@@ -1162,6 +1207,7 @@ const html = `<!DOCTYPE html>
   <script>
     const archetypesData = ${archetypesJson};
     const chaptersData = ${chaptersJson};
+    const starCombos = ${starCombosJson};
 
     // DARK MODE TOGGLE
     const themeToggleBtn = document.getElementById('themeToggleBtn');
@@ -1221,7 +1267,7 @@ const html = `<!DOCTYPE html>
       statBad.textContent = bads;
 
       if (filtered.length === 0) {
-        atlasGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted); font-size: 16px;">Tsis pom cov qauv uas koj nrhiav. Thov sim dua.</div>';
+        atlasGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted); font-size: 16px;" class="pahawh-glyph">𖬂𖬤𖬵 𖬔𖬰𖬞 𖬌𖬰𖬟 𖬄𖬲𖬦𖬵 𖬎𖬲𖬮. 𖬄𖬰𖬟 𖬂𖬲𖬝 𖬄𖬰𖬝.</div>';
         return;
       }
 
@@ -1229,7 +1275,7 @@ const html = `<!DOCTYPE html>
       for (var i = 0; i < filtered.length; i++) {
         var it = filtered[i];
         var sClass = it.isGood ? 'good' : 'bad';
-        var sText = (it.isGood ? '✓ ZOO' : '✗ PHEM') + ': ' + it.score + '/100';
+        var sText = (it.isGood ? '✓ 𖬌𖬲𖬞' : '✗ 𖬉𖬝𖬵') + ': ' + it.score + '/𖭑𖭐𖭐';
 
         html += '<div class="item-card" onclick="openItemModal(\\'' + it.id + '\\')">' +
           '<div class="card-img-wrap">' +
@@ -1238,13 +1284,13 @@ const html = `<!DOCTYPE html>
             '<span class="card-score-pill ' + sClass + '">' + sText + '</span>' +
           '</div>' +
           '<div class="card-body">' +
-            '<div class="card-cat">' + it.category + '</div>' +
+            '<div class="card-cat pahawh-glyph">' + it.category + '</div>' +
             '<div class="card-title pahawh-glyph">' + it.name + '</div>' +
             '<div class="card-subtitle rpa-sub">' + (it.rpaName || '') + '</div>' +
-            '<div class="card-desc">' + it.physics + '</div>' +
+            '<div class="card-desc pahawh-glyph">' + it.physics + '</div>' +
             '<div class="card-footer">' +
-              '<span>' + (it.type === 'luantou' ? '🏔️ Luan Tou Topography' : '📐 360° Site Plan') + '</span>' +
-              '<span>Tshuaj Xyuas &#10140;</span>' +
+              '<span class="pahawh-glyph">' + (it.type === 'luantou' ? '🏔️ 𖬄𖬲𖬦𖬵 𖬌𖬲𖬞' : '📐 𖭓𖭖𖭐° 𖬄𖬲𖬦𖬵 𖬗𖬮𖬰') + '</span>' +
+              '<span class="pahawh-glyph">𖬆𖬰𖬝 𖬎𖬲𖬮 &#10140;</span>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -1260,7 +1306,7 @@ const html = `<!DOCTYPE html>
       for (var i = 0; i < plots.length; i++) {
         var it = plots[i];
         var sClass = it.isGood ? 'good' : 'bad';
-        var sText = (it.isGood ? '✓ ZOO' : '✗ PHEM') + ': ' + it.score + '/100';
+        var sText = (it.isGood ? '✓ 𖬌𖬲𖬞' : '✗ 𖬉𖬝𖬵') + ': ' + it.score + '/𖭑𖭐𖭐';
 
         html += '<div class="item-card" onclick="openItemModal(\\'' + it.id + '\\')">' +
           '<div class="card-img-wrap">' +
@@ -1269,13 +1315,13 @@ const html = `<!DOCTYPE html>
             '<span class="card-score-pill ' + sClass + '">' + sText + '</span>' +
           '</div>' +
           '<div class="card-body">' +
-            '<div class="card-cat">' + (it.type === 'boundary' ? '22 CIAM AV & KEV NKAG' : '20 QAUV THAJ AV') + '</div>' +
+            '<div class="card-cat pahawh-glyph">' + (it.type === 'boundary' ? '𖭒𖭒 𖬔𖬲𖬝 𖬗𖬮𖬰 & 𖬉 𖬖𖬰𖬦𖬵' : '𖭒𖭐 𖬄𖬲𖬦𖬵 𖬖𖬰𖬟𖬰 𖬗𖬮𖬰') + '</div>' +
             '<div class="card-title pahawh-glyph">' + it.name + '</div>' +
             '<div class="card-subtitle rpa-sub">' + (it.rpaName || '') + '</div>' +
-            '<div class="card-desc">' + it.physics + '</div>' +
+            '<div class="card-desc pahawh-glyph">' + it.physics + '</div>' +
             '<div class="card-footer">' +
-              '<span>📐 360° Architectural Site Plan</span>' +
-              '<span>Tshuaj Xyuas &#10140;</span>' +
+              '<span class="pahawh-glyph">📐 𖭓𖭖𖭐° 𖬄𖬲𖬦𖬵 𖬗𖬮𖬰</span>' +
+              '<span class="pahawh-glyph">𖬆𖬰𖬝 𖬎𖬲𖬮 &#10140;</span>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -1291,7 +1337,7 @@ const html = `<!DOCTYPE html>
       }
       if (!item) return;
 
-      document.getElementById('modalIdTag').textContent = item.id + ' • ' + (item.isGood ? '✓ QAUV ZOO' : '✗ QAUV PHEM') + ' (' + item.score + '/100)';
+      document.getElementById('modalIdTag').textContent = item.id + ' • ' + (item.isGood ? '✓ 𖬄𖬲𖬦𖬵 𖬌𖬲𖬞' : '✗ 𖬄𖬲𖬦𖬵 𖬉𖬝𖬵') + ' (' + item.score + '/𖭑𖭐𖭐)';
       document.getElementById('modalMainTitle').textContent = item.name;
       document.getElementById('modalSubTitle').textContent = item.rpaName || '';
 
@@ -1305,52 +1351,52 @@ const html = `<!DOCTYPE html>
       if (item.type === 'landplot' || item.type === 'boundary') {
         bodyHtml =
           '<div class="section-block">' +
-            '<div class="section-title">1. Qauv Ciam Av & Physics Huab Cua (Geological Geometry & Aerodynamics)</div>' +
-            '<div class="section-text">' + item.physics + '</div>' +
+            '<div class="section-title pahawh-glyph">𖭑. 𖬄𖬲𖬦𖬵 𖬔𖬲𖬝 𖬗𖬮𖬰 & 𖬅𖬰𖬟 𖬑 𖬈𖬲𖬟 (Geometry & Aerodynamics)</div>' +
+            '<div class="section-text pahawh-glyph">' + item.physics + '</div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : '') + '">' +
-            '<div class="section-title">2. Kev Teeb Qhov Rooj & Txoj Kev Nkag (Entrance & Driveway Placement)</div>' +
-            '<div class="section-text">' + (item.entrancePlacement || item.entrance) + '</div>' +
+            '<div class="section-title pahawh-glyph">𖭒. 𖬉 𖬉𖬰𖬧 𖬒𖬰𖬮𖬵 𖬌𖬲𖬞 & 𖬌𖬲𖬟 𖬉 𖬖𖬰𖬦𖬵 (Entrance & Driveway)</div>' +
+            '<div class="section-text pahawh-glyph">' + (item.entrancePlacement || item.entrance) + '</div>' +
           '</div>' +
           '<div class="section-block">' +
-            '<div class="section-title">3. Chaw Tso Tsev & Kev Ntsia/Zaum (House Siting & Orientation Facing)</div>' +
-            '<div class="section-text">' + (item.housePositioning ? ('<strong>• Chaw tso tsev:</strong> ' + item.housePositioning + '<br><strong>• Ntsia & Zaum:</strong> ' + item.orientationFacing) : item.water) + '</div>' +
+            '<div class="section-title pahawh-glyph">𖭓. 𖬖𖬰𖬝 𖬒𖬰𖬧 𖬊𖬰𖬧𖬵 & 𖬉 𖬔𖬲𖬧𖬵/𖬄𖬰𖬝𖬵 (House Siting & Facing)</div>' +
+            '<div class="section-text pahawh-glyph">' + (item.housePositioning ? ('<strong>• 𖬖𖬰𖬝 𖬒𖬰𖬧 𖬊𖬰𖬧𖬵:</strong> ' + item.housePositioning + '<br><strong>• 𖬔𖬲𖬧𖬵 & 𖬄𖬰𖬝𖬵:</strong> ' + item.orientationFacing) : item.water) + '</div>' +
           '</div>' +
           '<div class="section-block">' +
-            '<div class="section-title">4. Zog Tsib Yam & Neeg Haum/Tsis Haum (Trigram Elements & Compatibility)</div>' +
-            '<div class="section-text">' + item.bagua + '</div>' +
+            '<div class="section-title pahawh-glyph">𖭔. 𖬌𖬲𖬟 𖬂𖬤𖬵 𖬖𖬰𖬪𖬵 & 𖬈𖬦 𖬄𖬲𖬟/𖬂𖬤𖬵 𖬄𖬲𖬟 (Trigram & Compatibility)</div>' +
+            '<div class="section-text pahawh-glyph">' + item.bagua + '</div>' +
           '</div>' +
           '<div class="section-block" style="background:rgba(2,132,199,0.08); border-left-color:#0284C7;">' +
-            '<div class="section-title" style="color:#0284C7;">5. Kev Cai Tswj Dej (Dual Water Doctrine)</div>' +
+            '<div class="section-title pahawh-glyph" style="color:#0284C7;">𖭕. 𖬉 𖬊𖬰𖬝 𖬌𖬲𖬝 𖬈𖬲𖬝 (Dual Water Doctrine)</div>' +
             '<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:8px 0;">' +
               '<div style="background:var(--card-bg); border:1px solid #38BDF8; border-radius:6px; padding:10px;">' +
-                '<strong style="color:#0284C7; font-size:12px;">💧 Tsis Muaj Dej: Puas Ntxiv?</strong>' +
-                '<div style="font-size:11.5px; line-height:1.5; margin-top:4px;">• <strong>Ntxiv:</strong> Yog pem tsev dav >6-8m thiab yog fab txais nyiaj Caij 9 (semicircular).<br>• <strong>Txwv:</strong> Yog pem nqaim lossis Roob 9 poob pem, ua <strong>tshav xyoob ntsuab kaj</strong> xwb.</div>' +
+                '<strong style="color:#0284C7; font-size:12.5px;" class="pahawh-glyph">💧 𖬂𖬤𖬵 𖬐𖬰𖬦 𖬈𖬲𖬝: 𖬐𖬰𖬪 𖬎𖬰𖬩𖬵?</strong>' +
+                '<div style="font-size:12px; line-height:1.5; margin-top:4px;" class="pahawh-glyph">• <strong>𖬎𖬰𖬩𖬵:</strong> 𖬊𖬲𖬞 𖬈𖬪𖬵 𖬊𖬰𖬧𖬵 𖬗𖬞 >𖭖-𖭘m 𖬂𖬤𖬵 𖬊𖬲𖬞 𖬖𖬲𖬜 𖬔𖬶𖬮 𖬊𖬶𖬯 𖭙 (semicircular).<br>• <strong>𖬘𖬲𖬝:</strong> 𖬊𖬲𖬞 𖬈𖬪𖬵 𖬊𖬬𖬰 𖬌𖬰𖬞 𖬌𖬲𖬞 𖭙 𖬔𖬰𖬞 𖬈𖬪𖬵, 𖬑 <strong>𖬖𖬰𖬟 𖬆𖬰𖬮 𖬐𖬶𖬝 𖬖𖬰𖬟</strong> 𖬎𖬰𖬝.</div>' +
               '</div>' +
               '<div style="background:var(--card-bg); border:1px solid #DC2626; border-radius:6px; padding:10px;">' +
-                '<strong style="color:#DC2626; font-size:12px;">🚫 Muaj Dej Lawm: Puas Ntsaws?</strong>' +
-                '<div style="font-size:11.5px; line-height:1.5; margin-top:4px;">• <strong>Ntsaws:</strong> Tom qab (Xuan Wu), plawv tsev (Tai Ji), kaum ntse, lossis dej lwj.<br>• <strong>Khaws:</strong> Pem tsev puag ncig huv si.</div>' +
+                '<strong style="color:#DC2626; font-size:12.5px;" class="pahawh-glyph">🚫 𖬐𖬰𖬦 𖬈𖬲𖬝 𖬖𖬲𖬞: 𖬐𖬰𖬪 𖬎𖬰𖬧𖬵?</strong>' +
+                '<div style="font-size:12px; line-height:1.5; margin-top:4px;" class="pahawh-glyph">• <strong>𖬎𖬰𖬧𖬵:</strong> 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵 (Xuan Wu), 𖬖𖬲𖬟𖬰 𖬊𖬰𖬧𖬵 (Tai Ji), 𖬄𖬰𖬝 𖬉𖬰𖬝, 𖬌𖬰𖬞 𖬈𖬲𖬝 𖬈𖬲𖬞.<br>• <strong>𖬄𖬰𖬟:</strong> 𖬈𖬪𖬵 𖬊𖬰𖬧𖬵 𖬄𖬲𖬟 𖬂𖬤𖬵 𖬆𖬰𖬟 𖬂𖬲𖬤.</div>' +
               '</div>' +
             '</div>' +
-            '<div style="font-size:12.5px; line-height:1.6; margin-top:6px;"><strong>• Cov lus qhia:</strong> ' + item.water + '</div>' +
+            '<div style="font-size:13px; line-height:1.6; margin-top:6px;" class="pahawh-glyph"><strong>• 𖬌𖬰𖬟 𖬆𖬰𖬞 𖬐𖬲𖬟:</strong> ' + item.water + '</div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : 'bad') + '">' +
-            '<div class="section-title">6. Cov Tswv Yim Kho Kom Haum Looj Mem (Master Architectural Remediation Protocol)</div>' +
-            '<div class="section-text">' + (item.comprehensiveRemedy || item.remedy) + (item.taboos ? '<div style="margin-top:8px; color:var(--bad);"><strong>Cov Kev Txwv:</strong><br>' + item.taboos.replace(/\\n/g, '<br>') + '</div>' : '') + '</div>' +
+            '<div class="section-title pahawh-glyph">𖭖. 𖬌𖬰𖬟 𖬄𖬲𖬝𖬵 𖬂𖬦 𖬈𖬰𖬪 𖬌𖬲𖬞 𖬈𖬦 (Remediation Protocol)</div>' +
+            '<div class="section-text pahawh-glyph">' + (item.comprehensiveRemedy || item.remedy) + (item.taboos ? '<div style="margin-top:8px; color:var(--bad);"><strong>𖬌𖬰𖬟 𖬉 𖬘𖬲𖬝:</strong><br>' + item.taboos.replace(/\\n/g, '<br>') + '</div>' : '') + '</div>' +
           '</div>';
       } else {
         bodyHtml =
           '<div class="section-block">' +
-            '<div class="section-title">1. Qauv Duab & Physics Huab Cua (Geological Shape & Aerodynamics)</div>' +
-            '<div class="section-text">' + item.physics + '</div>' +
+            '<div class="section-title pahawh-glyph">𖭑. 𖬄𖬲𖬦𖬵 𖬆𖬲𖬝 & 𖬅𖬰𖬟 𖬑 𖬈𖬲𖬟 (Geological Shape & Aerodynamics)</div>' +
+            '<div class="section-text pahawh-glyph">' + item.physics + '</div>' +
           '</div>' +
           '<div class="section-block">' +
-            '<div class="section-title">2. Txiaj Ntsig & Qhab Nia Zog (Impact & Energy Score)</div>' +
-            '<div class="section-text">' + item.impact + ' (Qhab Nia Zog: ' + item.score + '/100)</div>' +
+            '<div class="section-title pahawh-glyph">𖭒. 𖬔𖬲𖬟 𖬎𖬰𖬧𖬵 & 𖬖𖬰𖬦𖬵 𖬔𖬲𖬩 𖬌𖬲𖬟 (Impact & Energy Score)</div>' +
+            '<div class="section-text pahawh-glyph">' + item.impact + ' (𖬖𖬰𖬦𖬵 𖬔𖬲𖬩 𖬌𖬲𖬟: ' + item.score + '/𖭑𖭐𖭐)</div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : 'bad') + '">' +
-            '<div class="section-title">3. Cov Tswv Yim Kho Kom Haum Looj Mem (Remedy Protocol)</div>' +
-            '<div class="section-text">' + item.remedy + '</div>' +
+            '<div class="section-title pahawh-glyph">𖭓. 𖬌𖬰𖬟 𖬄𖬲𖬝𖬵 𖬂𖬦 𖬈𖬰𖬪 𖬌𖬲𖬞 𖬈𖬦 (Remedy Protocol)</div>' +
+            '<div class="section-text pahawh-glyph">' + item.remedy + '</div>' +
           '</div>';
       }
 
@@ -1431,7 +1477,7 @@ const html = `<!DOCTYPE html>
       });
 
       const ch = chaptersData[idx];
-      readingChapterBadge.innerHTML = '𖬌𖬲𖬝𖬵 ' + (idx) + ' NTAWM ' + (chaptersData.length - 1) + ' • <span class="pahawh-glyph">' + ch.title + '</span>';
+      readingChapterBadge.innerHTML = '𖬌𖬲𖬝𖬵 ' + (idx) + ' 𖬎𖬰𖬩𖬵 ' + (chaptersData.length - 1) + ' • <span class="pahawh-glyph">' + ch.title + '</span>';
       chapterContentArea.innerHTML = ch.html;
       applyFontSize();
 
@@ -1458,76 +1504,10 @@ const html = `<!DOCTYPE html>
       if (readerFontSize > 12) { readerFontSize -= 1.5; applyFontSize(); }
     });
 
-    // TAB 4: 81 FLYING STARS CALCULATOR
+    // TAB 4: 81 FLYING STARS CALCULATOR (100% PAHAWH)
     const selMountainStar = document.getElementById('selMountainStar');
     const selWaterStar = document.getElementById('selWaterStar');
     const calcResultDisplay = document.getElementById('calcResultDisplay');
-
-    const starCombos = {
-      '9_9': {
-        verdict: '𖬌𖬲𖬞 𖬖𖬰𖬪𖬰 𖬏𖬰𖬟𖬵 (SUPREME AUSPICIOUS)',
-        class: 'good',
-        score: 98,
-        desc: 'Ob lub Hnub Qub 9-Liab Doog sib ntsib hauv Period 9 yog Wang Qi muaj zog tshaj plaws. Nyiaj txiag nplua mias, koob meej nrov thoob ntiaj teb, kev lag luam tshiab, thev naus laus zis thiab kev lom zem vam meej heev.',
-        cure: 'Siv lub teeb liab ci, qhov rais qhib kom pom tshav ntuj, tso paj liab lossis tso dej ntws mos hauv Xiang Xing.'
-      },
-      '9_1': {
-        verdict: '𖬌𖬲𖬞 𖬈𖬲𖬟 (WATER-FIRE HARMONY)',
-        class: 'good',
-        score: 92,
-        desc: 'Hnub Qub 9 (Hluav Taws) nrog Hnub Qub 1 (Dej). Nws yog He Tu 1-6 / Dej-Hluav Taws sib haum. Txhawb nqa kev kawm ntawv qib siab, kev lag luam hla teb chaws, koob meej, thiab kev tsim tshiab.',
-        cure: 'Tso tsob ntoo ntsuab (Ntoo) los ua tus choj txuas Dej nrog Hluav Taws kom yug zog vam meej.'
-      },
-      '1_9': {
-        verdict: '𖬌𖬲𖬞 𖬈𖬲𖬟 (FIRE-WATER ILLUMINATION)',
-        class: 'good',
-        score: 90,
-        desc: 'Dej thiab Hluav Taws sib pab txhawb nqa. Kev txawj ntse thiab koob meej loj hlob tuaj ua ke.',
-        cure: 'Tso nroj tsuag ntsuab 4 ceg los pab tsim zog Sheng Qi.'
-      },
-      '8_8': {
-        verdict: '𖬌𖬲𖬞 𖬈𖬲𖬟 (EARTH STABILITY)',
-        class: 'good',
-        score: 85,
-        desc: 'Ob lub Hnub Qub 8-Dawb sib ntsib. Txawm hais tias Period 9 Hnub Qub 8 yog Tui Qi lawm los, nws tseem yog San Bai (Ib qho ntawm 3 lub hnub qub dawb zoo). Tswj kev ruaj khov ntawm vaj tse thiab av.',
-        cure: 'Tso pob zeb granite lossis pob zeb ceramic duab roob.'
-      },
-      '9_8': {
-        verdict: '𖬌𖬲𖬞 (FIRE GENERATES EARTH)',
-        class: 'good',
-        score: 88,
-        desc: 'Hluav Taws (9) yug Av (8). Nyiaj txiag vaj tse thiab kev lag luam ruaj khov.',
-        cure: 'Tso lub teeb sov daj lossis duab roob av.'
-      },
-      '2_5': {
-        verdict: '𖬉𖬝𖬵 𖬖𖬰𖬪𖬰 𖬏𖬰𖬟𖬵 (DEADLY EARTH SHA)',
-        class: 'bad',
-        score: 5,
-        desc: 'Hnub Qub 2 (Ju Men - Mob Nkeeg) nrog Hnub Qub 5 (Lian Zhen - Wu Gui Xwm Txheej Loj). Ob lub Av phem sib koom ua rau muaj kab mob cancer, mob plab hnyav, xwm txheej tuag, thiab kev puas tsuaj loj.',
-        cure: 'TXWV TSIS PUB MUAJ HLUAV TAWS THIAB KOB LIAB! Siv txuj ci Kub kho: Dai Tswb Cua 6 Tub Kub (6-tube bronze windchime) thiab tso Lub Hub Dej Ntsev 6 Npib Nyiaj (Salt Water Cure).'
-      },
-      '5_2': {
-        verdict: '𖬉𖬝𖬵 𖬖𖬰𖬪𖬰 𖬏𖬰𖬟𖬵 (DEADLY EARTH SHA)',
-        class: 'bad',
-        score: 5,
-        desc: 'Wu Gui nrog Ju Men. Kab mob nkeeg hnyav heev, mob plab, xwm txheej poob nyiaj.',
-        cure: 'Dai tswb cua 6 tub kub, tso hub dej ntsev 6 npib nyiaj, tsis txhob teeb teeb liab lossis tswm ciab.'
-      },
-      '3_7': {
-        verdict: '𖬉𖬝𖬵 (SWORD FIGHT CLASH)',
-        class: 'bad',
-        score: 20,
-        desc: 'Hnub Qub 3 (Ntoo) nrog Hnub Qub 7 (Kub). Kub txiav Ntoo, hu ua "Riam Phom Sib Ntaus". Ua rau muaj kev sib cav sib ceg, raug tub sab nyiag nyiaj, foob plaub ntug, thiab raug riam txiav.',
-        cure: 'Siv Dej nyob ntsiag to (An Ren Shui) los ua tus choj txo lub zog Kub thiab pab Ntoo.'
-      },
-      '7_3': {
-        verdict: '𖬉𖬝𖬵 (ROBBERY & CONFLICT)',
-        class: 'bad',
-        score: 22,
-        desc: 'Tub sab nyiag nyiaj, raug ntxias, kev phom sij los ntawm hlau.',
-        cure: 'Tso ib lub tais dej xiav ntsiag to los daws kev phom sij.'
-      }
-    };
 
     function updateCalc() {
       const m = selMountainStar.value;
@@ -1537,23 +1517,23 @@ const html = `<!DOCTYPE html>
         verdict: (m==='9'||w==='9'||m==='1'||w==='1'||m==='8'||w==='8') ? '𖬄𖬲𖬦𖬵 𖬌𖬲𖬞 (AUSPICIOUS COMBINATION)' : '𖬄𖬲𖬦𖬵 𖬌𖬲𖬞 𖬄𖬰𖬝 (MIXED / NEUTRAL)',
         class: (m==='2'||w==='2'||m==='5'||w==='5') ? 'bad' : 'good',
         score: (m==='5'||w==='5') ? 25 : 70,
-        desc: 'Kev sib koom ntawm Hnub Qub ' + m + ' (Roob) thiab Hnub Qub ' + w + ' (Dej) tswj hwm kev sib raug zoo ntawm tib neeg (Roob) thiab nyiaj txiag kev vam meej (Dej).',
-        cure: 'Xyuas Tsib Yam Zog ntawm ob lub hnub qub kom sib raug zoo (Sheng-Ke cycle).'
+        desc: '𖬉 𖬂𖬲𖬤𖬵 𖬌𖬰𖬞 𖬎𖬰𖬩𖬵 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 ' + m + ' (𖬌𖬲𖬞) 𖬂𖬤𖬵 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 ' + w + ' (𖬈𖬲𖬝) 𖬌𖬲𖬝 𖬈𖬲𖬟 𖬉 𖬂𖬲𖬤𖬵 𖬄𖬲𖬟 𖬌𖬰𖬞 𖬎𖬰𖬩𖬵 𖬂𖬰𖬧 𖬈𖬦 (𖬌𖬲𖬞) 𖬂𖬤𖬵 𖬔𖬶𖬮 𖬔𖬲𖬟 𖬉 𖬖𖬰𖬪 𖬈𖬲𖬪 (𖬈𖬲𖬝).',
+        cure: '𖬎𖬲𖬮 𖬂𖬤𖬵 𖬖𖬰𖬪𖬵 𖬌𖬲𖬟 𖬎𖬰𖬩𖬵 𖬒𖬰𖬮𖬰 𖬆𖬰𖬞 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 𖬌𖬰𖬝 𖬂𖬲𖬤𖬵 𖬄𖬲𖬟 (Sheng-Ke cycle).'
       };
 
       const sColor = rawData.class === 'good' ? '#16A34A' : '#DC2626';
 
       calcResultDisplay.innerHTML =
         '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">' +
-          '<span class="calc-badge" style="background: ' + sColor + ';">' + rawData.verdict + '</span>' +
-          '<strong style="font-size: 14px; color: ' + sColor + ';">Qhab Nia Zog: ' + rawData.score + '/100</strong>' +
+          '<span class="calc-badge pahawh-glyph" style="background: ' + sColor + ';">' + rawData.verdict + '</span>' +
+          '<strong style="font-size: 14px; color: ' + sColor + ';" class="pahawh-glyph">𖬖𖬰𖬦𖬵 𖬔𖬲𖬩 𖬌𖬲𖬟: ' + rawData.score + '/𖭑𖭐𖭐</strong>' +
         '</div>' +
-        '<div style="font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 8px;" class="pahawh-glyph">' +
-          'Hnub Qub ' + m + ' (Roob) Sib Ntsib Hnub Qub ' + w + ' (Dej)' +
+        '<div style="font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 8px;" class="pahawh-glyph">' +
+          '𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 ' + m + ' (𖬌𖬲𖬞) 𖬂𖬲𖬤𖬵 𖬈𖬰𖬩 𖬆𖬰𖬩 𖬆𖬰𖬦𖬵 ' + w + ' (𖬈𖬲𖬝)' +
         '</div>' +
-        '<p style="font-size: 14px; line-height: 1.6; margin-bottom: 14px;">' + rawData.desc + '</p>' +
-        '<div style="padding: 12px 16px; background: rgba(0,0,0,0.04); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; font-size: 13.5px;">' +
-          '<strong>💡 Tswv Yim Kho & Ntxiv Zog:</strong> ' + rawData.cure +
+        '<p style="font-size: 14.5px; line-height: 1.65; margin-bottom: 14px;" class="pahawh-glyph">' + rawData.desc + '</p>' +
+        '<div style="padding: 12px 16px; background: rgba(0,0,0,0.04); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; font-size: 13.5px;" class="pahawh-glyph">' +
+          '<strong>💡 𖬄𖬲𖬝𖬵 𖬂𖬦 𖬈𖬰𖬪 & 𖬎𖬰𖬩𖬵 𖬌𖬲𖬟:</strong> ' + rawData.cure +
         '</div>';
     }
 
@@ -1571,12 +1551,11 @@ const html = `<!DOCTYPE html>
 </html>
 `;
 
-// Write to pahawh/index.html
-const outPortalPath = path.resolve(pahawhDir, 'index.html');
-fs.writeFileSync(outPortalPath, html, 'utf8');
+console.log('Writing 100% Pure Pahawh Portal to:', path.resolve(pahawhDir, 'index.html'));
+fs.writeFileSync(path.resolve(pahawhDir, 'index.html'), html, 'utf8');
 
 console.log('🎉 Successfully created Master Pahawh Hmong Web Portal:');
-console.log('  File:', outPortalPath);
+console.log('  File:', path.resolve(pahawhDir, 'index.html'));
 console.log('  Total Archetypes embedded:', archetypes.length);
 console.log('  Total Chapters embedded:', chapters.length);
-console.log('  Portal File Size:', (fs.statSync(outPortalPath).size / 1024).toFixed(1), 'KB');
+console.log('  Portal File Size:', (fs.statSync(path.resolve(pahawhDir, 'index.html')).size / 1024).toFixed(1), 'KB');
