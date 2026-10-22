@@ -822,8 +822,8 @@ const html = `<!DOCTYPE html>
     <!-- TAB 1: MASTER ATLAS 93 ARCHETYPES -->
     <div id="tabAtlas" class="tab-view active">
       <div class="atlas-hero">
-        <h2>🗺️ ສາລະນຸກົມຮວງຈຸ້ຍ 102 ຮູບແບບ ພູເຂົາ, ສາຍນ້ຳ, ຕອນດິນ &amp; ສະພາບແວດລ້ອມຕິດແປະ</h2>
-        <p>ຄັງຄວາມຮູ້ຮວງຈຸ້ຍຫຼວນໂຖວ (Luan Tou), ຜັງຕອນດິນ ແລະ ສະພາບແວດລ້ອມຕິດແປະ 102 ຮູບແບບ: ວິເຄາະພະລັງງານຊີ່, ຫຼັກການວາງປະຕູ, ໜອງນ້ຳ ແລະ ວິທີແກ້ໄຂຮວງຈຸ້ຍຢ່າງລະອຽດ.</p>
+        <h2>🗺️ ສາລະນຸກົມຮວງຈຸ້ຍ 103 ຮູບແບບ ພູເຂົາ, ສາຍນ້ຳ, ຕອນດິນ &amp; ສະພາບແວດລ້ອມຕິດແປະ</h2>
+        <p>ຄັງຄວາມຮູ້ຮວງຈຸ້ຍຫຼວນໂຖວ (Luan Tou), ຜັງຕອນດິນ ແລະ ສະພາບແວດລ້ອມຕິດແປະ 103 ຮູບແບບ: ວິເຄາະພະລັງງານຊີ່, ຫຼັກການວາງປະຕູ, ໜອງນ້ຳ ແລະ ວິທີແກ້ໄຂຮວງຈຸ້ຍຢ່າງລະອຽດ.</p>
       </div>
 
       <div class="search-box">
@@ -831,7 +831,7 @@ const html = `<!DOCTYPE html>
       </div>
 
       <div class="filter-pills" id="atlasFilters">
-        <button class="filter-btn active" data-cat="all">ທັງໝົດ (102)</button>
+        <button class="filter-btn active" data-cat="all">ທັງໝົດ (103)</button>
         <button class="filter-btn" data-cat="env">🏞️ 18 ສະພາບແວດລ້ອມຕິດແປະ (Boundaries)</button>
         <button class="filter-btn" data-cat="plots">📐 16 ຮູບຊົງຕອນດິນ (Land Plots)</button>
         <button class="filter-btn" data-cat="shas">⛰️ 35 ພູເຂົາພິສ (Mountain Sha)</button>

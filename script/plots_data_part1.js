@@ -717,6 +717,178 @@ module.exports = [
     }
   },
 
+  // 4B. LP-0004B: Inverted Gourd Longevity Plot (Narrow Front, Wide Rear)
+  {
+    id: 'LP-0004B',
+    score: 96,
+    isGood: true,
+    nameLao: 'ຕອນດິນຮູບນ້ຳເຕົ້າປີ້ນດ້ານ ໜ້ານ້ອຍຫຼັງໃຫຍ່ ເກັບຊັບ (Hu Lu Tu: Narrow Front, Wide Rear)',
+    nameHmong: 'Hu Lu Tu Ntxeev: Ncauj Me Nram Loj Ceev Nyiaj (Inverted Gourd Plot)',
+    elementLao: 'ທາດທອງ/ນ້ຳ Metal/Water / ທາດທອງທາດນ້ຳ',
+    elementHmong: 'Zog Kub/Dej Metal/Water / ທາດທອງທາດນ້ຳ',
+    summaryLao: 'ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນຮູບນ້ຳເຕົ້າປີ້ນດ້ານ (ປາກແຄບດ້ານໜ້າ ຫຼັງກວ້າງໃຫຍ່) ເປັນມຸງຄຸນສູງສຸດ ປຽບເໝືອນໂຖດູດຊັບ: ດູດພະລັງໂຊກລາບຜ່ານປາກແຄບ ແລ້ວສະສົມກັກເກັບໄວ້ໃນທ້ອງໃຫຍ່ດ້ານຫຼັງ ບໍ່ໃຫ້ຮົ່ວໄຫຼ.',
+    summaryHmong: 'Tswv Yim: Thaj av hu lu ntxeev (ncauj me pem hauv ntej, nram qab loj puag ncig) yog thaj av muaj hmoov loj tshaj plaws ceev nyiaj txiag thiab koob hmoov, tsis pub zog xau tawm.',
+
+    entranceLao: {
+      title: '🚪 ທາງເຂົ້າ & ລານໝິງຖາງ',
+      l1: '• ປະຕູຮົ້ວ: ປາກນ້ຳເຕົ້າດ້ານໜ້າ ຮັບພະລັງຊີ່ເຂົ້າມາ',
+      l2: '• ທາງລົດ: ໂຄ້ງອ່ອນນ້ອມຜ່ານຄອດກາງສູ່ທ້ອງໃຫຍ່',
+      l3: '• ລານໝິງຖາງ: ໂລ່ງແຈ້ງໃນຫ້ອງໜ້າ ກັ່ນຕອງກະແສລົມ',
+      l4: '• ຫາກມີບໍ່ນ້ຳ: ຕັ້ງໜອງນ້ຳເຄິ່ງວົງມົນໂອບຮັບໂຊກລາບ',
+      sub1: 'ປາກນ້ຳເຕົ້າ: ດູດຊັບພະລັງງານ ເຊິ້ງຊີ່ (Sheng Qi)',
+      sub2: '✓ ຄອດກາງລັອກພະລັງ: ປ້ອງກັນຊັບສິນຮົ່ວໄຫຼອອກນອກ'
+    },
+    entranceHmong: {
+      title: '🚪 QHOV ROOJ & THAJ TSHAV',
+      l1: '• Qhov Rooj Vag: Ncauj taub pem ntej sau zog',
+      l2: '• Kev Tsheb: Nkhaus mos muag dhau caj dab rau tom qab',
+      l3: '• Thaj Tshav: Chav pem huv si lim huab cua',
+      l4: '• Pas Dej: Dej ntshiab puag ncig semicircular',
+      sub1: 'Ncauj Hu Lu: Sau koob hmoov Sheng Qi loj',
+      sub2: '✓ Caj Dab Xauv Zog: Tsis pub nyiaj txiag xau'
+    },
+
+    guaLao: {
+      title: '☯️ ທາດກວ້າ & ຄວາມຖືກຊາຕາ',
+      l1: '• ທາດປະຈຳຮູບຊົງ: ທອງ & ນ້ຳ (Metal/Water)',
+      l2: '• ✓ ຖືກກັບ: ຜູ້ປະກອບການ, ຄອບຄົວໃຫຍ່, ຜູ້ຮັກສາຊັບ',
+      l3: '  (ກວ້າ 1 (ທາດນ້ຳ), 6 (ທາດທອງ), 7 (ທາດທອງ), 8 (ທາດດິນ))',
+      l4: '• ✗ ຄົນທາດໄຟຮ້ອນ (ກວ້າ 9 (ທາດໄຟ))',
+      l5: '• ແກ້ໄຂດ້ວຍດອກໄມ້ສີເຫຼືອງ/ຂາວ ແລະ ອ່າງນ້ຳ',
+      sub1: 'ກົດເກນ 5 ທາດ (Five Elements)',
+      sub2: 'ທອງເກີດນ້ຳ, ດິນເກີດທອງ: ຮັ່ງມີ, ສຸຂະພາບແຂງແຮງ'
+    },
+    guaHmong: {
+      title: '☯️ ZOG BAGUA & NEEG HAUM',
+      l1: '• Zog Thaj Av: Zog Kub & Dej',
+      l2: '• ✓ Haum: Neeg ua lag luam, tsev neeg loj',
+      l3: '  (Gua 1 (ທາດນ້ຳ), 6 (ທາດທອງ), 7 (ທາດທອງ), 8 (ທາດດິນ))',
+      l4: '• ✗ Neeg Zog Hluav (Gua 9 (ທາດໄຟ))',
+      l5: '• Cog paj daj & dawb kho kom haum',
+      sub1: 'Tsib Yam Zog: Kub yug Dej',
+      sub2: 'Rua nyiaj txiag, noj qab nyob zoo'
+    },
+
+    houseLao: {
+      title: '🧭 ຕຳແໜ່ງເຮືອນ & ທິດຫັນໜ້າ',
+      l1: '• ຕຳແໜ່ງ: ໃຈກາງທ້ອງໃຫຍ່ດ້ານຫຼັງ (Spacious Rear Belly)',
+      l2: '• ໄລຍະຖອຍຮົ່ນ: ຫ້ອງໜ້າເປັນສວນຮັບແຂກ & ໝິງຖາງ',
+      l3: '• ທິດໜ້າເຮືອນ (Facing): ຫັນຜ່ານຄອດກາງສູ່ທາງໜ້າ',
+      l4: '• ທິດພິງຫຼັງ (Sitting): ພິງທ້າຍນ້ຳເຕົ້າ ໝັ້ນຄົງໜາແໜ້ນ',
+      bed: 'ຫົວຕຽງ: ຫັນສູ່ທິດ Tian Yi (ໝໍເທວະດາ) ຫຼື Yan Nian (ອາຍຸຍືນ)'
+    },
+    houseHmong: {
+      title: '🧭 CHAW TSO TSEV & TSHAV',
+      l1: '• Chaw: Nruab nrab chav tom qab loj',
+      l2: '• Qhov Deb: Chav pem ua vaj txais qhua',
+      l3: '• Ntsia (Xiang): Ntsia dhau caj dab rau pem hauv ntej',
+      l4: '• Zaum (Zuo): Zaum nraub qaum hu lu ruaj khov',
+      bed: 'Taub Hau Pw: Thaj Tian Yi los Yan Nian'
+    },
+
+    remedyLao: {
+      title: '🛡️ ວິທີເສີມພະລັງ & ຂໍ້ຄວນລະວັງ',
+      l1: '1. ປູກແນວໄມ້ດັດໂອບອ້ອມຄອດກາງ',
+      l2: '2. ໜອງນ້ຳຮູບກີບບົວໃນຫ້ອງໜ້າຮັບຊັບ',
+      l3: '3. ຕັ້ງສີລາແກຣນິດ ຫຼື ປູກຕົ້ນສົນໃຫຍ່ຫຼັງເຮືອນ',
+      l4: '4. ຮົ້ວຮອບຂອບຊິດປົກປ້ອງຊັບສິນພາຍໃນ',
+      t1: '• ຫ້າມເຈາະປະຕູຫຼັງທະລຸອອກນອກ',
+      t2: '• ຫ້າມຕັ້ງເຕົາໄຟກົງບໍລິເວນຄອດກາງ',
+      t3: '• ຫ້າມຕັດຄອດກາງໃຫ້ແຄບເກີນໄປ'
+    },
+    remedyHmong: {
+      title: '🛡️ TSWV YIM KHO & TXWV TSIS PUB',
+      l1: '1. Cog tsob ntoo ntsuab puag ncig caj dab',
+      l2: '2. Pas dej semicircular pem hauv ntej',
+      l3: '3. Tso pob zeb granite tom qab tsev',
+      l4: '4. Ua laj kab ruaj khov ceev zog',
+      t1: '• Txwv tsis pub txiav rooj qab tawm',
+      t2: '• Txwv tso qhov cub rau caj dab',
+      t3: '• Txwv tsis pub caj dab nqaim dhau'
+    },
+
+    renderCenter(lang, escapeXml) {
+      const isLao = lang === 'lao';
+      const houseText = isLao ? 'ອາຄານຫຼັກ' : 'Lub Tsev';
+      const houseSub = isLao ? 'ຫ້ອງໂຖງໃຫຍ່' : 'Chaw Txais Qhua';
+
+      return `
+        <!-- Surrounding Neighbor Property Labels -->
+        <text x="400" y="74" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle">${isLao ? 'ດິນເພື່ອນບ້ານຫຼັງ (Rear Neighbor)' : 'Ciam Av Tom Qab'}</text>
+        <text x="245" y="160" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-75 245 160)">${isLao ? 'ເພື່ອນບ້ານຊ້າຍ' : 'Tsev Sab Laug'}</text>
+        <text x="555" y="160" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(75 555 160)">${isLao ? 'ເພື່ອນບ້ານຂວາ' : 'Tsev Sab Xis'}</text>
+
+        <!-- True Inverted 2-Chamber Gourd (Hu Lu) Plot Boundary: Narrow Front, Wide Rear -->
+        <path d="M 400 85 C 470 85 510 115 510 155 C 510 195 445 208 435 220 C 455 235 465 265 465 310 C 465 355 435 355 400 355 C 365 355 335 355 335 310 C 335 265 345 235 365 220 C 355 208 290 195 290 155 C 290 115 330 85 400 85 Z" fill="#DCFCE7" stroke="#16A34A" stroke-width="3"/>
+        <path d="M 400 90 C 465 90 503 118 503 155 C 503 192 440 205 430 221 C 450 236 458 266 458 308 C 458 348 430 348 400 348 C 370 348 342 348 342 308 C 342 266 350 236 370 221 C 360 205 297 192 297 155 C 297 118 335 90 400 90 Z" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-dasharray="5,4"/>
+
+        <!-- Main House in Rear Spacious Belly (Architectural Layout) -->
+        <polygon points="340,118 400,95 460,118" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+        <rect x="350" y="118" width="100" height="52" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
+        
+        <!-- Architectural Room Partition Line -->
+        <line x1="390" y1="118" x2="390" y2="170" stroke="#CA8A04" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+        <!-- Left Room: Bedroom -->
+        <rect x="355" y="123" width="28" height="23" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1"/>
+        <rect x="355" y="123" width="28" height="6" fill="#0284C7"/>
+        <text x="369" y="138" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#0369A1" text-anchor="middle">${isLao ? 'ຫົວຕຽງ' : 'Taub Hau'}</text>
+        <text x="369" y="157" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#475569" text-anchor="middle">${isLao ? 'ຫ້ອງນອນ' : 'Chaw Pw'}</text>
+
+        <!-- Right Room: Main Living Hall -->
+        <text x="420" y="140" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#1E293B" text-anchor="middle">${escapeXml(houseText)}</text>
+        <text x="420" y="157" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">${escapeXml(houseSub)}</text>
+        
+        <!-- Front Main Entrance Door / Porch -->
+        <rect x="416" y="170" width="15" height="5" fill="#1E293B"/>
+        <text x="424" y="186" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">${isLao ? 'ປະຕູໃຫຍ່' : 'Rooj Loj'}</text>
+
+        <!-- Compass Axis Badge -->
+        <g transform="translate(465, 118)">
+          <rect x="0" y="0" width="34" height="48" rx="3" fill="#FFFFFF" fill-opacity="0.92" stroke="#0284C7" stroke-width="1.2"/>
+          <text x="17" y="12" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດພິງ ⬆' : 'Zaum ⬆'}</text>
+          <line x1="17" y1="16" x2="17" y2="32" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
+          <polygon points="17,34 14,28 20,28" fill="#0284C7"/>
+          <text x="17" y="43" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#0369A1" text-anchor="middle">${isLao ? 'ທິດໜ້າ ⬇' : 'Ntsia ⬇'}</text>
+        </g>
+
+        <!-- Waist Lock indicator -->
+        <line x1="365" y1="220" x2="435" y2="220" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="400" y="217" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">${isLao ? 'ຄອດກາງລັອກພະລັງ (Waist Lock)' : 'Caj Dab Xauv Zog'}</text>
+
+        <!-- MING TANG BRIGHT HALL IN FRONT NARROW CHAMBER -->
+        <rect x="345" y="245" width="110" height="58" rx="5" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="400" y="260" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">${isLao ? 'ລານໝິງຖາງ (Bright Hall)' : 'Thaj Tshav Kaj'}</text>
+        <text x="400" y="274" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#166534" text-anchor="middle">${isLao ? 'ປາກນ້ຳເຕົ້າດູດພະລັງໂຊກລາບ' : 'Ncauj taub sau koob hmoov'}</text>
+        <text x="400" y="287" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#0369A1" text-anchor="middle">${isLao ? '• ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ-ລົມ' : '• Tshav xyoob ntsuab kaj'}</text>
+        
+        <!-- Optional Water Feature Badge in Front Chamber -->
+        <path d="M 412 296 A 14 7 0 0 0 438 296 Z" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="425" y="293" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.2" fill="#0284C7" text-anchor="middle">${isLao ? '[ສະນ້ຳ]' : '[Pas Dej]'}</text>
+
+        <!-- Front Fence and Gate -->
+        <line x1="335" y1="355" x2="370" y2="355" stroke="#334155" stroke-width="3.5"/>
+        <line x1="410" y1="355" x2="465" y2="355" stroke="#334155" stroke-width="3.5"/>
+        <rect x="366" y="350" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="406" y="350" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <line x1="370" y1="355" x2="380" y2="344" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="410" y1="355" x2="400" y2="344" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- Driveway curving up through waist -->
+        <path d="M 390 395 L 390 355 C 390 315 395 275 402 245 C 412 215 424 195 424 175" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="350" y="325" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B45309" text-anchor="middle">${isLao ? '⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ' : '⟿ Kev Nkhaus Zoo'}</text>
+
+        <!-- Recommended Gate Badge -->
+        <g transform="translate(230, 350)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#FFFFFF" text-anchor="middle">${isLao ? '✓ ປະຕູຮົ້ວໃຫຍ່' : '✓ Rooj Vag Loj'}</text>
+          <line x1="90" y1="9" x2="101" y2="5" stroke="#15803D" stroke-width="1.8"/>
+          <circle cx="101" cy="5" r="2" fill="#15803D"/>
+        </g>
+      `;
+    }
+  },
+
   // 5. LP-0005
   {
     id: 'LP-0005',

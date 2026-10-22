@@ -80,6 +80,26 @@
     "remedy": "1. ໄມ້ດັດຄອດກາງ: ປູກໄມ້ດັດສອງຂ້າງຄອດກາງ; 2. ໜອງນ້ຳໜ້າ: ສ້າງໜອງບົວ; 3. ກຳແພງຫຼັງ: ກຳແພງທຶບ 2m; 4. ໄຟສວນ: ຕັ້ງໄຟອົບອຸ່ນ."
   },
   {
+    "id": "LP-0004B",
+    "name": "Hu Lu Tu Ntxeev: Ncauj Me Nram Loj Ceev Nyiaj (Inverted Gourd Plot)",
+    "category": "16 Qauv Duab Thaj Av & Kev Tso Vaj Tsev",
+    "score": 96,
+    "isGood": true,
+    "img": "LP-0004B.png",
+    "elementGua": "Zog Kub & Dej (Metal & Water) - Ceev nyiaj txiag, noj qab nyob zoo ntev xyoo",
+    "favorablePeople": "Haum heev rau neeg ua lag luam, tsev neeg loj, ceev nyiaj: Sau zog koob hmoov tsis pub xau tawm.",
+    "clashingPeople": "Neeg zog hluav taws kub: Cog paj daj thiab dawb kho kom haum.",
+    "housePositioning": "Tso lub tsev rau nruab nrab chav tom qab loj puag ncig ruaj khov.",
+    "entrancePlacement": "Rooj vag loj pem ncauj taub hauv ntej sau zog Sheng Qi, kev tsheb nkhaus dhau caj dab mus rau tom qab.",
+    "orientationFacing": "Ntsia: Ntsia dhau caj dab rau pem ncauj taub; Zaum: Zaum nraub qaum hu lu loj; Taub hau pw: Tian Yi los Yan Nian.",
+    "comprehensiveRemedy": "1. Cog tsob ntoo ntsuab puag ncig caj dab; 2. Pas dej semicircular pem hauv ntej; 3. Tso pob zeb granite tom qab; 4. Laj kab ruaj khov.",
+    "physics": "Thaj av hu lu ntxeev: Ncauj me pem hauv ntej, nram qab loj. Huab cua nkag los qeeb thiab nres ntsiag to rau hauv chav loj tom qab.",
+    "entrance": "1. Ncauj taub: ✓ Zoo heev - Rooj vag pem ntej sau zog. 2. Caj dab: ✓ Zoo - Kev nkhaus mos muag. 3. Rooj qab: ✗ Txwv - Txwv txiav rooj qab tawm.",
+    "water": "1. Chav pem: ✓ Zoo - Pas dej semicircular sau koob hmoov. 2. Caj dab: ✓ Zoo - Dej ntws qab choj. 3. Chav qab: ✗ Txwv - Txwv pas dej tom qab tsev.",
+    "bagua": "1. Hu lu ntxeev: Taub sau nyiaj txiag thiab koob hmoov. 2. Qhab nia: 96/100.",
+    "remedy": "1. Tsob ntoo caj dab: Xauv zog; 2. Pas dej pem: Pas dej paj nplooj; 3. Laj kab: Laj kab 2m; 4. Teeb: Teeb pom kev."
+  },
+  {
     "id": "LP-0005",
     "name": "Ti Xing Tu: Qian Zhai Hou Kuan (Pem Nqaim Tom Qab Dav)",
     "category": "16 Qauv Duab Thaj Av & Kev Tso Vaj Tsev",
