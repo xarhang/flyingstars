@@ -1285,15 +1285,15 @@ const html = `<!DOCTYPE html>
         bodyHtml =
           '<div class="section-block">' +
             '<div class="section-title">1. Qauv Duab & Physics Huab Cua (Geological Shape & Aerodynamics)</div>' +
-            '<div class="section-text">' + item.physics + '</div>' +
+            '<div class="section-text" style="line-height: 1.7;">' + (item.physics || '').replace(/\\n/g, '<br>') + '</div>' +
           '</div>' +
           '<div class="section-block">' +
             '<div class="section-title">2. Txiaj Ntsig & Qhab Nia Zog (Impact & Energy Score)</div>' +
-            '<div class="section-text">' + item.impact + ' (Qhab Nia Zog: ' + item.score + '/100)</div>' +
+            '<div class="section-text" style="line-height: 1.7;">' + (item.impact || '').replace(/\\n/g, '<br>') + '<br><strong style="color:var(--gold-dark); margin-top:6px; display:inline-block;">• Qhab Nia Zog Tag Nrho: ' + item.score + '/100</strong></div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : 'bad') + '">' +
-            '<div class="section-title">3. Cov Tswv Yim Kho Kom Haum Looj Mem (Remedy Protocol)</div>' +
-            '<div class="section-text">' + item.remedy + '</div>' +
+            '<div class="section-title">3. Cov Tswv Yim Kho Kom Haum Looj Mem (Master Architectural Remediation Protocol)</div>' +
+            '<div class="section-text" style="line-height: 1.7;">' + (item.remedy || '').replace(/\\n/g, '<br>') + '</div>' +
           '</div>';
       }
 

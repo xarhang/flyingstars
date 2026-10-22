@@ -1388,15 +1388,15 @@ const html = `<!DOCTYPE html>
         bodyHtml =
           '<div class="section-block">' +
             '<div class="section-title pahawh-glyph">𖭑. 𖬄𖬲𖬦𖬵 𖬆𖬲𖬝 & 𖬅𖬰𖬟 𖬑 𖬈𖬲𖬟 (Geological Shape & Aerodynamics)</div>' +
-            '<div class="section-text pahawh-glyph">' + item.physics + '</div>' +
+            '<div class="section-text pahawh-glyph" style="line-height:1.7;">' + (item.physics || '').replace(/\\n/g, '<br>') + '</div>' +
           '</div>' +
           '<div class="section-block">' +
             '<div class="section-title pahawh-glyph">𖭒. 𖬔𖬲𖬟 𖬎𖬰𖬧𖬵 & 𖬖𖬰𖬦𖬵 𖬔𖬲𖬩 𖬌𖬲𖬟 (Impact & Energy Score)</div>' +
-            '<div class="section-text pahawh-glyph">' + item.impact + ' (𖬖𖬰𖬦𖬵 𖬔𖬲𖬩 𖬌𖬲𖬟: ' + item.score + '/𖭑𖭐𖭐)</div>' +
+            '<div class="section-text pahawh-glyph" style="line-height:1.7;">' + (item.impact || '').replace(/\\n/g, '<br>') + '<br><strong style="color:var(--gold-dark); margin-top:6px; display:inline-block;">• 𖬖𖬰𖬦𖬵 𖬔𖬲𖬩 𖬌𖬲𖬟: ' + item.score + '/𖭑𖭐𖭐</strong></div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : 'bad') + '">' +
             '<div class="section-title pahawh-glyph">𖭓. 𖬌𖬰𖬟 𖬄𖬲𖬝𖬵 𖬂𖬦 𖬈𖬰𖬪 𖬌𖬲𖬞 𖬈𖬦 (Remedy Protocol)</div>' +
-            '<div class="section-text pahawh-glyph">' + item.remedy + '</div>' +
+            '<div class="section-text pahawh-glyph" style="line-height:1.7;">' + (item.remedy || '').replace(/\\n/g, '<br>') + '</div>' +
           '</div>';
       }
 

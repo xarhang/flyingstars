@@ -1134,8 +1134,8 @@ const html = `<!DOCTYPE html>
       mImg.onclick = () => window.open(item.img, '_blank');
       const zoomBtn = document.getElementById('mImgZoomBtn');
       if (zoomBtn) zoomBtn.href = item.img;
-      document.getElementById('mPhysics').textContent = item.physics || '-';
-      document.getElementById('mRemedy').textContent = item.remedy || '-';
+      document.getElementById('mPhysics').innerHTML = (item.physics || '-').replace(/\n/g, '<br>');
+      document.getElementById('mRemedy').innerHTML = (item.remedy || '-').replace(/\n/g, '<br>');
 
       const impSec = document.getElementById('mImpactSec');
       const hseSec = document.getElementById('mHouseSec');
@@ -1150,23 +1150,23 @@ const html = `<!DOCTYPE html>
         entSec.style.display = 'block';
         watSec.style.display = 'block';
 
-        document.getElementById('mHousePos').textContent = item.housePositioning || '-';
-        document.getElementById('mOrientation').textContent = item.orientationFacing || '-';
-        document.getElementById('mElementGua').textContent = item.elementGua || '-';
-        document.getElementById('mFavorable').textContent = item.favorablePeople || '-';
-        document.getElementById('mClashing').textContent = item.clashingPeople || '-';
-        document.getElementById('mEntrancePlacement').textContent = item.entrancePlacement || '-';
-        document.getElementById('mEntrance').textContent = item.entranceRules || item.entrancePlacement || '-';
-        document.getElementById('mWater').textContent = item.waterRules || item.taboos || '-';
-        document.getElementById('mRemedy').textContent = item.comprehensiveRemedy || item.remedy || '-';
+        document.getElementById('mHousePos').innerHTML = (item.housePositioning || '-').replace(/\n/g, '<br>');
+        document.getElementById('mOrientation').innerHTML = (item.orientationFacing || '-').replace(/\n/g, '<br>');
+        document.getElementById('mElementGua').innerHTML = (item.elementGua || '-').replace(/\n/g, '<br>');
+        document.getElementById('mFavorable').innerHTML = (item.favorablePeople || '-').replace(/\n/g, '<br>');
+        document.getElementById('mClashing').innerHTML = (item.clashingPeople || '-').replace(/\n/g, '<br>');
+        document.getElementById('mEntrancePlacement').innerHTML = (item.entrancePlacement || '-').replace(/\n/g, '<br>');
+        document.getElementById('mEntrance').innerHTML = (item.entranceRules || item.entrancePlacement || '-').replace(/\n/g, '<br>');
+        document.getElementById('mWater').innerHTML = (item.waterRules || item.taboos || '-').replace(/\n/g, '<br>');
+        document.getElementById('mRemedy').innerHTML = (item.comprehensiveRemedy || item.remedy || '-').replace(/\n/g, '<br>');
       } else {
         impSec.style.display = 'block';
         hseSec.style.display = 'none';
         guaSec.style.display = 'none';
         entSec.style.display = 'none';
         watSec.style.display = 'none';
-        document.getElementById('mImpact').textContent = item.impact || '-';
-        document.getElementById('mRemedy').textContent = item.remedy || '-';
+        document.getElementById('mImpact').innerHTML = (item.impact || '-').replace(/\n/g, '<br>');
+        document.getElementById('mRemedy').innerHTML = (item.remedy || '-').replace(/\n/g, '<br>');
       }
 
       atlasModal.classList.add('open');
