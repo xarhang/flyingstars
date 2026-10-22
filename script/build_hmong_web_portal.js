@@ -913,7 +913,7 @@ const html = `<!DOCTYPE html>
       </a>
 
       <div class="nav-tabs">
-        <button class="nav-tab-btn active" data-tab="tabAtlas">🗺️ 109 Qauv Atlas</button>
+        <button class="nav-tab-btn active" data-tab="tabAtlas">🗺️ 102 Qauv Atlas</button>
         <button class="nav-tab-btn" data-tab="tabPlots">📐 34 Thaj Av Site Plans</button>
         <button class="nav-tab-btn" data-tab="tabBook">📖 Phau 1: 24 Tshooj</button>
         <button class="nav-tab-btn" data-tab="tabCalc">🧭 81 Hnub Qub & Lus Txhais</button>
@@ -934,11 +934,11 @@ const html = `<!DOCTYPE html>
   <!-- MAIN APP CONTAINER -->
   <main>
 
-    <!-- TAB 1: MASTER ATLAS 109 ARCHETYPES -->
+    <!-- TAB 1: MASTER ATLAS 93 ARCHETYPES -->
     <div id="tabAtlas" class="tab-view active">
       <div class="atlas-hero">
-        <h2>🗺️ PHAU NTAWV QHIA TAG NRHO 109 QAUV ROOB THIAB THAJ AV</h2>
-        <p>Tshawb nrhiav cov qauv roob, kwj deg, av xue, 16 thaj av thiab 18 ciam av nrog rau physics huab cua, kev teeb qhov rooj, pas dej thiab tswv yim kho kom haum Looj Mem.</p>
+        <h2>🗺️ PHAU NTAWV QHIA TAG NRHO 102 QAUV ROOB THIAB THAJ AV</h2>
+        <p>Tshawb nrhiav cov qauv roob, kwj deg, 16 thaj av thiab 18 ciam av nrog rau physics huab cua, kev teeb qhov rooj, pas dej thiab tswv yim kho kom haum Looj Mem.</p>
       </div>
 
       <div class="search-box">
@@ -946,12 +946,11 @@ const html = `<!DOCTYPE html>
       </div>
 
       <div class="filter-row" id="atlasFilters">
-        <button class="filter-btn active" data-cat="all">Tag Nrho (109)</button>
+        <button class="filter-btn active" data-cat="all">Tag Nrho (102)</button>
         <button class="filter-btn" data-cat="env">🏞️ 18 Ciam Av (Boundaries)</button>
         <button class="filter-btn" data-cat="plot">16 Thaj Av (Land Plots)</button>
         <button class="filter-btn" data-cat="sha">35 Roob Sha</button>
         <button class="filter-btn" data-cat="water">16 Dej Ntws</button>
-        <button class="filter-btn" data-cat="soil">16 Av Xue</button>
         <button class="filter-btn" data-cat="element">5 Roob 5 Thas</button>
         <button class="filter-btn" data-cat="wind">3 Huab Cua</button>
         <button class="filter-btn good" data-score="good">✓ Zoo (≥60)</button>
@@ -1155,7 +1154,6 @@ const html = `<!DOCTYPE html>
           if (atlasCat === 'plot' && item.type !== 'landplot') return false;
           if (atlasCat === 'sha' && item.category.indexOf('Sha') === -1) return false;
           if (atlasCat === 'water' && item.category.indexOf('Dej') === -1) return false;
-          if (atlasCat === 'soil' && item.category.indexOf('Av &') === -1) return false;
           if (atlasCat === 'element' && item.category.indexOf('5 Thas') === -1) return false;
           if (atlasCat === 'wind' && item.category.indexOf('Huab Cua') === -1) return false;
         }

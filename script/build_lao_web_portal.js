@@ -819,11 +819,11 @@ const html = `<!DOCTYPE html>
   <!-- MAIN APP CONTAINER -->
   <main>
 
-    <!-- TAB 1: MASTER ATLAS 109 ARCHETYPES -->
+    <!-- TAB 1: MASTER ATLAS 93 ARCHETYPES -->
     <div id="tabAtlas" class="tab-view active">
       <div class="atlas-hero">
-        <h2>🗺️ ສາລະນຸກົມຮວງຈຸ້ຍ 109 ຮູບແບບ ພູເຂົາ, ສາຍນ້ຳ, ຕອນດິນ &amp; ສະພາບແວດລ້ອມຕິດແປະ</h2>
-        <p>ຄັງຄວາມຮູ້ຮວງຈຸ້ຍຫຼວນໂຖວ (Luan Tou), ຜັງຕອນດິນ ແລະ ສະພາບແວດລ້ອມຕິດແປະ 109 ຮູບແບບ: ວິເຄາະພະລັງງານຊີ່, ຫຼັກການວາງປະຕູ, ໜອງນ້ຳ ແລະ ວິທີແກ້ໄຂຮວງຈຸ້ຍຢ່າງລະອຽດ.</p>
+        <h2>🗺️ ສາລະນຸກົມຮວງຈຸ້ຍ 102 ຮູບແບບ ພູເຂົາ, ສາຍນ້ຳ, ຕອນດິນ &amp; ສະພາບແວດລ້ອມຕິດແປະ</h2>
+        <p>ຄັງຄວາມຮູ້ຮວງຈຸ້ຍຫຼວນໂຖວ (Luan Tou), ຜັງຕອນດິນ ແລະ ສະພາບແວດລ້ອມຕິດແປະ 102 ຮູບແບບ: ວິເຄາະພະລັງງານຊີ່, ຫຼັກການວາງປະຕູ, ໜອງນ້ຳ ແລະ ວິທີແກ້ໄຂຮວງຈຸ້ຍຢ່າງລະອຽດ.</p>
       </div>
 
       <div class="search-box">
@@ -831,12 +831,11 @@ const html = `<!DOCTYPE html>
       </div>
 
       <div class="filter-pills" id="atlasFilters">
-        <button class="filter-btn active" data-cat="all">ທັງໝົດ (109)</button>
+        <button class="filter-btn active" data-cat="all">ທັງໝົດ (102)</button>
         <button class="filter-btn" data-cat="env">🏞️ 18 ສະພາບແວດລ້ອມຕິດແປະ (Boundaries)</button>
         <button class="filter-btn" data-cat="plots">📐 16 ຮູບຊົງຕອນດິນ (Land Plots)</button>
         <button class="filter-btn" data-cat="shas">⛰️ 35 ພູເຂົາພິສ (Mountain Sha)</button>
         <button class="filter-btn" data-cat="waters">🌊 16 ສາຍນ້ຳ (Water Courses)</button>
-        <button class="filter-btn" data-cat="soils">🌱 16 ດິນມັງກອນ (Sacred Soils)</button>
         <button class="filter-btn" data-cat="peaks">⭐ 5 ພູເຂົາ 5 ທາດ (Five Peaks)</button>
         <button class="filter-btn" data-cat="winds">💨 3 ຮູບແບບລົມ (Winds)</button>
       </div>
@@ -1085,7 +1084,6 @@ const html = `<!DOCTYPE html>
         if (atlasCat === 'peaks' && !item.category.includes('5 ພູເຂົາ')) return false;
         if (atlasCat === 'winds' && !item.category.includes('ລົມ')) return false;
         if (atlasCat === 'waters' && !item.category.includes('ສາຍນ້ຳ')) return false;
-        if (atlasCat === 'soils' && !item.category.includes('ດິນ')) return false;
         if (atlasCat === 'shas' && !item.category.includes('Sha')) return false;
 
         // Keyword
