@@ -1279,7 +1279,7 @@ const html = `<!DOCTYPE html>
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : 'bad') + '">' +
             '<div class="section-title">6. Cov Tswv Yim Kho Kom Haum Looj Mem (Master Architectural Remediation Protocol)</div>' +
-            '<div class="section-text">' + (item.comprehensiveRemedy || item.remedy) + (item.taboos ? '<div style="margin-top:8px; color:var(--bad);"><strong>Cov Kev Txwv:</strong><br>' + item.taboos.replace(/\n/g, '<br>') + '</div>' : '') + '</div>' +
+            '<div class="section-text">' + (item.comprehensiveRemedy || item.remedy) + (item.taboos ? '<div style="margin-top:8px; color:var(--bad);"><strong>Cov Kev Txwv:</strong><br>' + item.taboos.replace(/\\n/g, '<br>') + '</div>' : '') + '</div>' +
           '</div>';
       } else {
         bodyHtml =
