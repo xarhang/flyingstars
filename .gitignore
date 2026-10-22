@@ -27,6 +27,10 @@
 !/lao/
 !/lao/**
 
+# Whitelist /monographs
+!/monographs/
+!/monographs/**
+
 # Whitelist /script specific files
 !/script/
 /script/*
@@ -41,6 +45,7 @@
 !/script/build_lao_web_portal.js
 !/script/build_pahawh_web_portal.js
 !/script/rpa_to_pahawh_converter.js
+!/script/render_monograph_html.js
 
 # Whitelist /pahawh web app
 !/pahawh/

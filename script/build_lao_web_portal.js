@@ -576,6 +576,60 @@ const html = `<!DOCTYPE html>
       gap: 6px;
     }
     .modal-section p { font-size: 13.5px; color: var(--text); line-height: 1.6; }
+    .mc-bullet-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3.5px solid var(--primary);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .mc-bullet-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .mc-bullet-dot {
+      color: #D97706;
+      font-size: 11px;
+    }
+    .mc-bullet-body {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .mc-paragraph {
+      margin-bottom: 8px;
+      line-height: 1.65;
+    }
+    .monograph-btn-wrap {
+      margin: 16px 0 20px 0;
+      text-align: center;
+    }
+    .monograph-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #B45309 0%, #D97706 100%);
+      color: #FFFFFF !important;
+      text-decoration: none;
+      padding: 11px 22px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 13.5px;
+      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35);
+      transition: all 0.25s ease;
+    }
+    .monograph-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(217, 119, 6, 0.5);
+      background: linear-gradient(135deg, #92400E 0%, #B45309 100%);
+    }
 
     /* TAB 2: 16 PLOTS STUDIO */
     .plots-studio-header {
@@ -942,6 +996,11 @@ const html = `<!DOCTYPE html>
             🔍 ເບິ່ງຮູບໃຫຍ່ Ultra-HD 2400x1440
           </a>
         </div>
+        <div id="mMonographSec" class="monograph-btn-wrap" style="display:none;">
+          <a id="mMonographBtn" href="#" target="_blank" class="monograph-btn">
+            📖 ອ່ານມະຫາຕຳລາສະບັບສົມບູນ 10,000+ ຄຳ (Academic Masterclass Monograph)
+          </a>
+        </div>
         <div class="modal-section">
           <h4>🔬 ລັກສະນະທາງກາຍະພາບ (Physics & Geometry)</h4>
           <p id="mPhysics">-</p>
@@ -1127,6 +1186,35 @@ const html = `<!DOCTYPE html>
     });
 
     // MODAL
+    function formatMasterclass(raw) {
+      if (!raw || raw === '-') return '-';
+      const text = raw.replace(/\\n/g, '\n').replace(/\\r/g, '');
+      const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+      let html = '';
+      lines.forEach(line => {
+        let isBullet = false;
+        let t = line;
+        if (t.startsWith('•') || t.startsWith('-')) {
+          isBullet = true;
+          t = t.substring(1).trim();
+        }
+        const colonIdx = t.indexOf(':');
+        if (colonIdx > 0 && colonIdx < 80) {
+          const heading = t.substring(0, colonIdx).trim();
+          const body = t.substring(colonIdx + 1).trim();
+          html += '<div class="mc-bullet-card">' +
+            '<div class="mc-bullet-title"><span class="mc-bullet-dot">◆</span> ' + heading + '</div>' +
+            '<div class="mc-bullet-body">' + body + '</div>' +
+          '</div>';
+        } else {
+          html += '<div class="mc-bullet-card">' +
+            '<div class="mc-bullet-body">' + (isBullet ? '<span class="mc-bullet-dot">◆</span> ' : '') + t + '</div>' +
+          '</div>';
+        }
+      });
+      return html || text;
+    }
+
     function openModal(item) {
       document.getElementById('mTitle').textContent = item.id + ': ' + item.name;
       const mImg = document.getElementById('mImg');
@@ -1134,8 +1222,24 @@ const html = `<!DOCTYPE html>
       mImg.onclick = () => window.open(item.img, '_blank');
       const zoomBtn = document.getElementById('mImgZoomBtn');
       if (zoomBtn) zoomBtn.href = item.img;
-      document.getElementById('mPhysics').innerHTML = (item.physics || '-').replace(/\n/g, '<br>');
-      document.getElementById('mRemedy').innerHTML = (item.remedy || '-').replace(/\n/g, '<br>');
+
+      // Monograph check
+      const AVAILABLE_MONOGRAPHS = ['LT-0001', 'LT-0865', 'LT-1761'];
+      const monoSec = document.getElementById('mMonographSec');
+      const monoBtn = document.getElementById('mMonographBtn');
+      if (monoSec && monoBtn) {
+        if (AVAILABLE_MONOGRAPHS.includes(item.id)) {
+          monoSec.style.display = 'block';
+          const isSubfolder = window.location.pathname.includes('/lao/') || window.location.pathname.includes('/hmong/') || window.location.pathname.includes('/pahawh/');
+          const prefix = isSubfolder ? '../monographs/lao/' : 'monographs/lao/';
+          monoBtn.href = prefix + item.id + '.html';
+        } else {
+          monoSec.style.display = 'none';
+        }
+      }
+
+      document.getElementById('mPhysics').innerHTML = formatMasterclass(item.physics);
+      document.getElementById('mRemedy').innerHTML = formatMasterclass(item.remedy);
 
       const impSec = document.getElementById('mImpactSec');
       const hseSec = document.getElementById('mHouseSec');
@@ -1150,23 +1254,23 @@ const html = `<!DOCTYPE html>
         entSec.style.display = 'block';
         watSec.style.display = 'block';
 
-        document.getElementById('mHousePos').innerHTML = (item.housePositioning || '-').replace(/\n/g, '<br>');
-        document.getElementById('mOrientation').innerHTML = (item.orientationFacing || '-').replace(/\n/g, '<br>');
-        document.getElementById('mElementGua').innerHTML = (item.elementGua || '-').replace(/\n/g, '<br>');
-        document.getElementById('mFavorable').innerHTML = (item.favorablePeople || '-').replace(/\n/g, '<br>');
-        document.getElementById('mClashing').innerHTML = (item.clashingPeople || '-').replace(/\n/g, '<br>');
-        document.getElementById('mEntrancePlacement').innerHTML = (item.entrancePlacement || '-').replace(/\n/g, '<br>');
-        document.getElementById('mEntrance').innerHTML = (item.entranceRules || item.entrancePlacement || '-').replace(/\n/g, '<br>');
-        document.getElementById('mWater').innerHTML = (item.waterRules || item.taboos || '-').replace(/\n/g, '<br>');
-        document.getElementById('mRemedy').innerHTML = (item.comprehensiveRemedy || item.remedy || '-').replace(/\n/g, '<br>');
+        document.getElementById('mHousePos').innerHTML = formatMasterclass(item.housePositioning);
+        document.getElementById('mOrientation').innerHTML = formatMasterclass(item.orientationFacing);
+        document.getElementById('mElementGua').innerHTML = formatMasterclass(item.elementGua);
+        document.getElementById('mFavorable').innerHTML = formatMasterclass(item.favorablePeople);
+        document.getElementById('mClashing').innerHTML = formatMasterclass(item.clashingPeople);
+        document.getElementById('mEntrancePlacement').innerHTML = formatMasterclass(item.entrancePlacement);
+        document.getElementById('mEntrance').innerHTML = formatMasterclass(item.entranceRules || item.entrancePlacement);
+        document.getElementById('mWater').innerHTML = formatMasterclass(item.waterRules || item.taboos);
+        document.getElementById('mRemedy').innerHTML = formatMasterclass(item.comprehensiveRemedy || item.remedy);
       } else {
         impSec.style.display = 'block';
         hseSec.style.display = 'none';
         guaSec.style.display = 'none';
         entSec.style.display = 'none';
         watSec.style.display = 'none';
-        document.getElementById('mImpact').innerHTML = (item.impact || '-').replace(/\n/g, '<br>');
-        document.getElementById('mRemedy').innerHTML = (item.remedy || '-').replace(/\n/g, '<br>');
+        document.getElementById('mImpact').innerHTML = formatMasterclass(item.impact);
+        document.getElementById('mRemedy').innerHTML = formatMasterclass(item.remedy);
       }
 
       atlasModal.classList.add('open');

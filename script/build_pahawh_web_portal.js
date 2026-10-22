@@ -711,6 +711,56 @@ const html = `<!DOCTYPE html>
       color: #FFFFFF;
       transform: translateY(-2px);
     }
+    .mc-bullet-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 3.5px solid var(--primary);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .mc-bullet-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .mc-bullet-dot {
+      color: #D97706;
+      font-size: 11px;
+    }
+    .mc-bullet-body {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .monograph-btn-wrap {
+      margin: 16px 0 20px 0;
+      text-align: center;
+    }
+    .monograph-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #B45309 0%, #D97706 100%);
+      color: #FFFFFF !important;
+      text-decoration: none;
+      padding: 11px 22px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35);
+      transition: all 0.25s ease;
+    }
+    .monograph-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(217, 119, 6, 0.5);
+      background: linear-gradient(135deg, #92400E 0%, #B45309 100%);
+    }
     .section-block {
       margin-bottom: 16px;
       padding: 14px 18px;
@@ -1330,6 +1380,35 @@ const html = `<!DOCTYPE html>
     }
 
     // DETAIL MODAL HANDLER
+    function formatMasterclassPahawh(raw) {
+      if (!raw || raw === '-') return '-';
+      var text = raw.replace(/\\n/g, '\n').replace(/\\r/g, '');
+      var lines = text.split('\n').map(function(l) { return l.trim(); }).filter(function(l) { return l.length > 0; });
+      var html = '';
+      lines.forEach(function(line) {
+        var isBullet = false;
+        var t = line;
+        if (t.indexOf('•') === 0 || t.indexOf('-') === 0) {
+          isBullet = true;
+          t = t.substring(1).trim();
+        }
+        var colonIdx = t.indexOf(':');
+        if (colonIdx > 0 && colonIdx < 80) {
+          var heading = t.substring(0, colonIdx).trim();
+          var body = t.substring(colonIdx + 1).trim();
+          html += '<div class="mc-bullet-card">' +
+            '<div class="mc-bullet-title"><span class="mc-bullet-dot">◆</span> ' + heading + '</div>' +
+            '<div class="mc-bullet-body">' + body + '</div>' +
+          '</div>';
+        } else {
+          html += '<div class="mc-bullet-card">' +
+            '<div class="mc-bullet-body">' + (isBullet ? '<span class="mc-bullet-dot">◆</span> ' : '') + t + '</div>' +
+          '</div>';
+        }
+      });
+      return html || text;
+    }
+
     function openItemModal(id) {
       var item = null;
       for (var i = 0; i < archetypesData.length; i++) {
@@ -1347,24 +1426,31 @@ const html = `<!DOCTYPE html>
       const zoomBtn = document.getElementById('modalDetailImgZoomBtn');
       if (zoomBtn) zoomBtn.href = item.img;
 
-      var bodyHtml = '';
+      var monoHtml = '';
+      if (['LT-0001', 'LT-0865', 'LT-1761'].indexOf(item.id) !== -1) {
+        var isSub = window.location.pathname.indexOf('/pahawh/') !== -1 || window.location.pathname.indexOf('/lao/') !== -1 || window.location.pathname.indexOf('/hmong/') !== -1;
+        var pre = isSub ? '../monographs/lao/' : 'monographs/lao/';
+        monoHtml = '<div class="monograph-btn-wrap"><a href="' + pre + item.id + '.html" target="_blank" class="monograph-btn">📖 𖬎𖬲𖬦𖬵 𖬔𖬲𖬧𖬵 𖬖𖬰𖬝 𖬈𖬰𖬞 𖭑𖭐,𖭐𖭐𖭐+ 𖬌𖬰𖬟 (Academic Masterclass Monograph)</a></div>';
+      }
+
+      var bodyHtml = monoHtml;
       if (item.type === 'landplot' || item.type === 'boundary') {
-        bodyHtml =
+        bodyHtml +=
           '<div class="section-block">' +
             '<div class="section-title pahawh-glyph">𖭑. 𖬄𖬲𖬦𖬵 𖬔𖬲𖬝 𖬗𖬮𖬰 & 𖬅𖬰𖬟 𖬑 𖬈𖬲𖬟 (Geometry & Aerodynamics)</div>' +
-            '<div class="section-text pahawh-glyph">' + item.physics + '</div>' +
+            '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.physics) + '</div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : '') + '">' +
             '<div class="section-title pahawh-glyph">𖭒. 𖬉 𖬉𖬰𖬧 𖬒𖬰𖬮𖬵 𖬌𖬲𖬞 & 𖬌𖬲𖬟 𖬉 𖬖𖬰𖬦𖬵 (Entrance & Driveway)</div>' +
-            '<div class="section-text pahawh-glyph">' + (item.entrancePlacement || item.entrance) + '</div>' +
+            '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.entrancePlacement || item.entrance) + '</div>' +
           '</div>' +
           '<div class="section-block">' +
             '<div class="section-title pahawh-glyph">𖭓. 𖬖𖬰𖬝 𖬒𖬰𖬧 𖬊𖬰𖬧𖬵 & 𖬉 𖬔𖬲𖬧𖬵/𖬄𖬰𖬝𖬵 (House Siting & Facing)</div>' +
-            '<div class="section-text pahawh-glyph">' + (item.housePositioning ? ('<strong>• 𖬖𖬰𖬝 𖬒𖬰𖬧 𖬊𖬰𖬧𖬵:</strong> ' + item.housePositioning + '<br><strong>• 𖬔𖬲𖬧𖬵 & 𖬄𖬰𖬝𖬵:</strong> ' + item.orientationFacing) : item.water) + '</div>' +
+            '<div class="section-text pahawh-glyph">' + (item.housePositioning ? ('<strong>• 𖬖𖬰𖬝 𖬒𖬰𖬧 𖬊𖬰𖬧𖬵:</strong> ' + formatMasterclassPahawh(item.housePositioning) + '<br><strong>• 𖬔𖬲𖬧𖬵 & 𖬄𖬰𖬝𖬵:</strong> ' + formatMasterclassPahawh(item.orientationFacing)) : formatMasterclassPahawh(item.water)) + '</div>' +
           '</div>' +
           '<div class="section-block">' +
             '<div class="section-title pahawh-glyph">𖭔. 𖬌𖬲𖬟 𖬂𖬤𖬵 𖬖𖬰𖬪𖬵 & 𖬈𖬦 𖬄𖬲𖬟/𖬂𖬤𖬵 𖬄𖬲𖬟 (Trigram & Compatibility)</div>' +
-            '<div class="section-text pahawh-glyph">' + item.bagua + '</div>' +
+            '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.bagua) + '</div>' +
           '</div>' +
           '<div class="section-block" style="background:rgba(2,132,199,0.08); border-left-color:#0284C7;">' +
             '<div class="section-title pahawh-glyph" style="color:#0284C7;">𖭕. 𖬉 𖬊𖬰𖬝 𖬌𖬲𖬝 𖬈𖬲𖬝 (Dual Water Doctrine)</div>' +
@@ -1378,25 +1464,25 @@ const html = `<!DOCTYPE html>
                 '<div style="font-size:12px; line-height:1.5; margin-top:4px;" class="pahawh-glyph">• <strong>𖬆𖬰𖬦𖬰 𖬒𖬶𖬪𖬵 𖬉𖬶𖬝𖬰:</strong> 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵 (Xuan Wu), 𖬖𖬲𖬟𖬰 𖬊𖬰𖬧𖬵 (Tai Ji), 𖬄𖬰𖬝 𖬉𖬰𖬝, 𖬌𖬰𖬞 𖬈𖬲𖬝 𖬈𖬲𖬞.<br>• <strong>𖬖𖬰𖬬 𖬋𖬰:</strong> 𖬈𖬪𖬵 𖬊𖬰𖬧𖬵 𖬄𖬲𖬟 𖬂𖬤𖬵 𖬆𖬰𖬟 𖬂𖬲𖬤.</div>' +
               '</div>' +
             '</div>' +
-            '<div style="font-size:13px; line-height:1.6; margin-top:6px;" class="pahawh-glyph"><strong>• 𖬌𖬰𖬟 𖬆𖬰𖬞 𖬐𖬲𖬟:</strong> ' + item.water + '</div>' +
+            '<div style="font-size:13px; line-height:1.6; margin-top:6px;" class="pahawh-glyph"><strong>• 𖬌𖬰𖬟 𖬆𖬰𖬞 𖬐𖬲𖬟:</strong> ' + formatMasterclassPahawh(item.water) + '</div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : 'bad') + '">' +
             '<div class="section-title pahawh-glyph">𖭖. 𖬌𖬰𖬟 𖬄𖬲𖬝𖬵 𖬂𖬦 𖬈𖬰𖬪 𖬌𖬲𖬞 𖬈𖬦 (Remediation Protocol)</div>' +
-            '<div class="section-text pahawh-glyph">' + (item.comprehensiveRemedy || item.remedy) + (item.taboos ? '<div style="margin-top:8px; color:var(--bad);"><strong>𖬌𖬰𖬟 𖬉 𖬘𖬲𖬝:</strong><br>' + item.taboos.replace(/\\n/g, '<br>') + '</div>' : '') + '</div>' +
+            '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.comprehensiveRemedy || item.remedy) + (item.taboos ? '<div style="margin-top:8px; color:var(--bad);"><strong>𖬌𖬰𖬟 𖬉 𖬘𖬲𖬝:</strong><br>' + formatMasterclassPahawh(item.taboos) + '</div>' : '') + '</div>' +
           '</div>';
       } else {
-        bodyHtml =
+        bodyHtml +=
           '<div class="section-block">' +
             '<div class="section-title pahawh-glyph">𖭑. 𖬄𖬲𖬦𖬵 𖬆𖬲𖬝 & 𖬅𖬰𖬟 𖬑 𖬈𖬲𖬟 (Geological Shape & Aerodynamics)</div>' +
-            '<div class="section-text pahawh-glyph" style="line-height:1.7;">' + (item.physics || '').replace(/\\n/g, '<br>') + '</div>' +
+            '<div class="section-text pahawh-glyph" style="line-height:1.7;">' + formatMasterclassPahawh(item.physics) + '</div>' +
           '</div>' +
           '<div class="section-block">' +
             '<div class="section-title pahawh-glyph">𖭒. 𖬔𖬲𖬟 𖬎𖬰𖬧𖬵 & 𖬖𖬰𖬦𖬵 𖬔𖬲𖬩 𖬌𖬲𖬟 (Impact & Energy Score)</div>' +
-            '<div class="section-text pahawh-glyph" style="line-height:1.7;">' + (item.impact || '').replace(/\\n/g, '<br>') + '<br><strong style="color:var(--gold-dark); margin-top:6px; display:inline-block;">• 𖬖𖬰𖬦𖬵 𖬔𖬲𖬩 𖬌𖬲𖬟: ' + item.score + '/𖭑𖭐𖭐</strong></div>' +
+            '<div class="section-text pahawh-glyph" style="line-height:1.7;">' + formatMasterclassPahawh(item.impact) + '<br><strong style="color:var(--gold-dark); margin-top:6px; display:inline-block;">• 𖬖𖬰𖬦𖬵 𖬔𖬲𖬩 𖬌𖬲𖬟: ' + item.score + '/𖭑𖭐𖭐</strong></div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : 'bad') + '">' +
             '<div class="section-title pahawh-glyph">𖭓. 𖬌𖬰𖬟 𖬄𖬲𖬝𖬵 𖬂𖬦 𖬈𖬰𖬪 𖬌𖬲𖬞 𖬈𖬦 (Remedy Protocol)</div>' +
-            '<div class="section-text pahawh-glyph" style="line-height:1.7;">' + (item.remedy || '').replace(/\\n/g, '<br>') + '</div>' +
+            '<div class="section-text pahawh-glyph" style="line-height:1.7;">' + formatMasterclassPahawh(item.remedy) + '</div>' +
           '</div>';
       }
 

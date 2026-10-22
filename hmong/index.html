@@ -459,6 +459,56 @@
       color: #FFFFFF;
       transform: translateY(-2px);
     }
+    .mc-bullet-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 3.5px solid var(--primary);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .mc-bullet-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .mc-bullet-dot {
+      color: #D97706;
+      font-size: 11px;
+    }
+    .mc-bullet-body {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .monograph-btn-wrap {
+      margin: 16px 0 20px 0;
+      text-align: center;
+    }
+    .monograph-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #B45309 0%, #D97706 100%);
+      color: #FFFFFF !important;
+      text-decoration: none;
+      padding: 11px 22px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 13.5px;
+      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35);
+      transition: all 0.25s ease;
+    }
+    .monograph-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(217, 119, 6, 0.5);
+      background: linear-gradient(135deg, #92400E 0%, #B45309 100%);
+    }
     .section-block {
       margin-bottom: 16px;
       padding: 14px 18px;
@@ -1113,6 +1163,37 @@
     }
 
     // MODAL HANDLER
+    function formatMasterclassHmong(raw) {
+      if (!raw || raw === '-') return '-';
+      var text = raw.replace(/\n/g, '
+').replace(/\r/g, '');
+      var lines = text.split('
+').map(function(l) { return l.trim(); }).filter(function(l) { return l.length > 0; });
+      var html = '';
+      lines.forEach(function(line) {
+        var isBullet = false;
+        var t = line;
+        if (t.indexOf('•') === 0 || t.indexOf('-') === 0) {
+          isBullet = true;
+          t = t.substring(1).trim();
+        }
+        var colonIdx = t.indexOf(':');
+        if (colonIdx > 0 && colonIdx < 80) {
+          var heading = t.substring(0, colonIdx).trim();
+          var body = t.substring(colonIdx + 1).trim();
+          html += '<div class="mc-bullet-card">' +
+            '<div class="mc-bullet-title"><span class="mc-bullet-dot">◆</span> ' + heading + '</div>' +
+            '<div class="mc-bullet-body">' + body + '</div>' +
+          '</div>';
+        } else {
+          html += '<div class="mc-bullet-card">' +
+            '<div class="mc-bullet-body">' + (isBullet ? '<span class="mc-bullet-dot">◆</span> ' : '') + t + '</div>' +
+          '</div>';
+        }
+      });
+      return html || text;
+    }
+
     function openItemModal(id) {
       var item = null;
       for (var i = 0; i < archetypesData.length; i++) {
@@ -1128,24 +1209,31 @@
       const zoomBtn = document.getElementById('modalDetailImgZoomBtn');
       if (zoomBtn) zoomBtn.href = item.img;
 
-      var bodyHtml = '';
+      var monoHtml = '';
+      if (['LT-0001', 'LT-0865', 'LT-1761'].indexOf(item.id) !== -1) {
+        var isSub = window.location.pathname.indexOf('/hmong/') !== -1 || window.location.pathname.indexOf('/lao/') !== -1 || window.location.pathname.indexOf('/pahawh/') !== -1;
+        var pre = isSub ? '../monographs/lao/' : 'monographs/lao/';
+        monoHtml = '<div class="monograph-btn-wrap"><a href="' + pre + item.id + '.html" target="_blank" class="monograph-btn">📖 Nyeem Phau Ntawv Qhia Meej 10,000+ Lo Lus (Academic Masterclass Monograph)</a></div>';
+      }
+
+      var bodyHtml = monoHtml;
       if (item.type === 'landplot' || item.type === 'boundary') {
-        bodyHtml =
+        bodyHtml +=
           '<div class="section-block">' +
             '<div class="section-title">1. Qauv Ciam Av & Physics Huab Cua (Geological Geometry & Aerodynamics)</div>' +
-            '<div class="section-text">' + item.physics + '</div>' +
+            '<div class="section-text">' + formatMasterclassHmong(item.physics) + '</div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : '') + '">' +
             '<div class="section-title">2. Kev Teeb Qhov Rooj & Txoj Kev Nkag (Entrance & Driveway Placement)</div>' +
-            '<div class="section-text">' + (item.entrancePlacement || item.entrance) + '</div>' +
+            '<div class="section-text">' + formatMasterclassHmong(item.entrancePlacement || item.entrance) + '</div>' +
           '</div>' +
           '<div class="section-block">' +
             '<div class="section-title">3. Chaw Tso Tsev & Kev Ntsia/Zaum (House Siting & Orientation Facing)</div>' +
-            '<div class="section-text">' + (item.housePositioning ? ('<strong>• Chaw tso tsev:</strong> ' + item.housePositioning + '<br><strong>• Ntsia & Zaum:</strong> ' + item.orientationFacing) : item.water) + '</div>' +
+            '<div class="section-text">' + (item.housePositioning ? ('<strong>• Chaw tso tsev:</strong> ' + formatMasterclassHmong(item.housePositioning) + '<br><strong>• Ntsia & Zaum:</strong> ' + formatMasterclassHmong(item.orientationFacing)) : formatMasterclassHmong(item.water)) + '</div>' +
           '</div>' +
           '<div class="section-block">' +
             '<div class="section-title">4. Zog Tsib Yam & Neeg Haum/Tsis Haum (Trigram Elements & Compatibility)</div>' +
-            '<div class="section-text">' + item.bagua + '</div>' +
+            '<div class="section-text">' + formatMasterclassHmong(item.bagua) + '</div>' +
           '</div>' +
           '<div class="section-block" style="background:rgba(2,132,199,0.08); border-left-color:#0284C7;">' +
             '<div class="section-title" style="color:#0284C7;">5. Kev Cai Tswj Dej (Dual Water Doctrine: Khawb Pas Dej vs Txhub Pov Tseg)</div>' +
@@ -1159,25 +1247,25 @@
                 '<div style="font-size:11.5px; line-height:1.5; margin-top:4px;">• <strong>Txhub pov tseg:</strong> Yog nyob tom qab (Xuan Wu), plawv tsev (Tai Ji), kaum ntse, lossis dej lwj.<br>• <strong>Khaws cia:</strong> Yog nyob pem tsev puag ncig huv si.</div>' +
               '</div>' +
             '</div>' +
-            '<div style="font-size:12.5px; line-height:1.6; margin-top:6px;"><strong>• Cov lus qhia raws thaj av:</strong> ' + item.water + '</div>' +
+            '<div style="font-size:12.5px; line-height:1.6; margin-top:6px;"><strong>• Cov lus qhia raws thaj av:</strong> ' + formatMasterclassHmong(item.water) + '</div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : 'bad') + '">' +
             '<div class="section-title">6. Cov Tswv Yim Kho Kom Haum Looj Mem (Master Architectural Remediation Protocol)</div>' +
-            '<div class="section-text">' + (item.comprehensiveRemedy || item.remedy) + (item.taboos ? '<div style="margin-top:8px; color:var(--bad);"><strong>Cov Kev Txwv:</strong><br>' + item.taboos.replace(/\n/g, '<br>') + '</div>' : '') + '</div>' +
+            '<div class="section-text">' + formatMasterclassHmong(item.comprehensiveRemedy || item.remedy) + (item.taboos ? '<div style="margin-top:8px; color:var(--bad);"><strong>Cov Kev Txwv:</strong><br>' + formatMasterclassHmong(item.taboos) + '</div>' : '') + '</div>' +
           '</div>';
       } else {
-        bodyHtml =
+        bodyHtml +=
           '<div class="section-block">' +
             '<div class="section-title">1. Qauv Duab & Physics Huab Cua (Geological Shape & Aerodynamics)</div>' +
-            '<div class="section-text" style="line-height: 1.7;">' + (item.physics || '').replace(/\n/g, '<br>') + '</div>' +
+            '<div class="section-text" style="line-height: 1.7;">' + formatMasterclassHmong(item.physics) + '</div>' +
           '</div>' +
           '<div class="section-block">' +
             '<div class="section-title">2. Txiaj Ntsig & Qhab Nia Zog (Impact & Energy Score)</div>' +
-            '<div class="section-text" style="line-height: 1.7;">' + (item.impact || '').replace(/\n/g, '<br>') + '<br><strong style="color:var(--gold-dark); margin-top:6px; display:inline-block;">• Qhab Nia Zog Tag Nrho: ' + item.score + '/100</strong></div>' +
+            '<div class="section-text" style="line-height: 1.7;">' + formatMasterclassHmong(item.impact) + '<br><strong style="color:var(--gold-dark); margin-top:6px; display:inline-block;">• Qhab Nia Zog Tag Nrho: ' + item.score + '/100</strong></div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : 'bad') + '">' +
             '<div class="section-title">3. Cov Tswv Yim Kho Kom Haum Looj Mem (Master Architectural Remediation Protocol)</div>' +
-            '<div class="section-text" style="line-height: 1.7;">' + (item.remedy || '').replace(/\n/g, '<br>') + '</div>' +
+            '<div class="section-text" style="line-height: 1.7;">' + formatMasterclassHmong(item.remedy) + '</div>' +
           '</div>';
       }
 
