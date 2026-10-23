@@ -1986,6 +1986,66 @@
             needleGroup.innerHTML = parts.join('');
         }
 
+        
+        function translateRing6Cell(text, lang) {
+            if (!text || lang === 'lo') return text;
+            if (lang === 'hm') {
+                let t = text;
+                t = t.replace('ບ້ານຫຼີ', 'Vaj Li')
+                     .replace('ບ້ານຄຸນ', 'Vaj Kun')
+                     .replace('ບ້ານຕຸ້ຍ', 'Vaj Dui')
+                     .replace(/ບ້ານສຽນ|ບ້ານເສຽນ/, 'Vaj Qian')
+                     .replace(/ບ້ານຄານ|ບ້ານຂ່ານ/, 'Vaj Kan')
+                     .replace(/ບ້ານເກິ່ນ|ບ້ານເກິ້ນ/, 'Vaj Gen')
+                     .replace('ບ້ານເຈິ້ນ', 'Vaj Zhen')
+                     .replace('ບ້ານຊຸ່ນ', 'Vaj Xun');
+                t = t.replace(/ຍຸກ (\d)/g, 'Txheej $1');
+                t = t.replace(/(\d+)ກ\.ພ\.(\d+)-(\d+)ກ\.ພ\.(\d+)/g, '$1/2/$2-$3/2/$4');
+                t = t.replace('ຈະເລີນຮຸ່ງເຮືອງ', 'Sheng Qi')
+                     .replace('ໝໍເທບ', 'Tian Yi')
+                     .replace('ອາຍຸຍືນ', 'Yan Nian')
+                     .replace('ປະທານ', 'Fu Wei')
+                     .replace('ມໍລະນະ', 'Jue Ming')
+                     .replace('ໄພພິບັດ', 'Huo Hai')
+                     .replace('6 ພິຄາດ', '6 Liu Sha')
+                     .replace('ພິຄາດ', 'Liu Sha')
+                     .replace('5ຜີເຫຼືອງ', '5 Wu Gui');
+                t = t.replace('8.5 ຍ', '8.5 Poj')
+                     .replace('5 ຊ/ຍ', '5 Tx/Poj')
+                     .replace('5 ຊ.', '5 Txiv')
+                     .replace('2.5 ຊ.', '2.5 Txiv');
+                return t;
+            }
+            if (lang === 'ph') {
+                let t = text;
+                t = t.replace('ບ້ານຫຼີ', '𖬆𖰝 𖬎𖲞')
+                     .replace('ບ້ານຄຸນ', '𖬆𖰝 𖬐𖰤')
+                     .replace('ບ້ານຕຸ້ຍ', '𖬆𖰝 𖬆𖰤')
+                     .replace(/ບ້ານສຽນ|ບ້ານເສຽນ/, '𖬆𖰝 𖬐𖰝')
+                     .replace(/ບ້ານຄານ|ບ້ານຂ່ານ/, '𖬆𖰝 𖬂𖲝')
+                     .replace(/ບ້ານເກິ່ນ|ບ້ານເກິ້ນ/, '𖬆𖰝 𖬂𖲝')
+                     .replace('ບ້ານເຈິ້ນ', '𖬆𖰝 𖬎𖲝')
+                     .replace('ບ້ານຊຸ່ນ', '𖬆𖰝 𖬘𖲤');
+                t = t.replace(/ຍຸກ (\d)/g, '𖬎𖲤 $1');
+                t = t.replace(/(\d+)ກ\.ພ\.(\d+)-(\d+)ກ\.ພ\.(\d+)/g, '$1/2/$2-$3/2/$4');
+                t = t.replace('ຈະເລີນຮຸ່ງເຮືອງ', '𖬌𖲞')
+                     .replace('ໝໍເທບ', '𖬐𖰞')
+                     .replace('ອາຍຸຍືນ', '𖬎𖲨')
+                     .replace('ປະທານ', '𖬆𖰝')
+                     .replace('ມໍລະນະ', '𖬎𖲨')
+                     .replace('ໄພພິບັດ', '𖬉𖲝')
+                     .replace('6 ພິຄາດ', '𖭒 𖬘𖲞')
+                     .replace('ພິຄາດ', '𖬘𖲞')
+                     .replace('5ຜີເຫຼືອງ', '𖭕');
+                t = t.replace('8.5 ຍ', '8.5 𖬐')
+                     .replace('5 ຊ/ຍ', '5 𖬎/𖬐')
+                     .replace('5 ຊ.', '5 𖬎')
+                     .replace('2.5 ຊ.', '2.5 𖬎');
+                return t;
+            }
+            return text;
+        }
+
         function buildCompassSVG() {
             const disk = document.getElementById('compassDisk');
             const parts = [];
@@ -2054,7 +2114,7 @@
                     parts.push(createRadialText(479, mid, m.hanzi, { fontSize: 13, fontWeight: '900', fill: '#0f172a' }));
                     const animalHmongMap = {
                     'ຊວດ (ໜູ)': 'Nas', 'ສະຫຼູ (ງົວ)': 'Nyuj', 'ຂານ (ເສືອ)': 'Tsov', 'ເຖາະ (ກະຕ່າຍ)': 'Luav',
-                    'ມະໂລງ (ງູໃຫຍ່)': 'Zaj', 'ມະເສັງ (ງູນ້ອຍ)': 'Nab', 'ມະເມີຍ (ມ້າ)': 'Nees', 'ມະແມ (ແບ້)': 'Yแพ',
+                    'ມະໂລງ (ງູໃຫຍ່)': 'Zaj', 'ມະເສັງ (ງູນ້ອຍ)': 'Nab', 'ມະເມີຍ (ມ້າ)': 'Nees', 'ມະແມ (ແບ້)': 'Yaj',
                     'ວອກ (ລີງ)': 'Liab', 'ລະກາ (ໄກ່)': 'Qaib', 'ຈໍ (ໝາ)': 'Aub', 'ກຸນ (ໝູ)': 'Npua'
                 };
                 const animalPahawhMap = {
@@ -2086,7 +2146,22 @@
                             const pOut = polarToCartesian(CX, CY, 508, cStart);
                             parts.push(`<line x1="${pIn.x.toFixed(2)}" y1="${pIn.y.toFixed(2)}" x2="${pOut.x.toFixed(2)}" y2="${pOut.y.toFixed(2)}" stroke="#334155" stroke-width="0.5"/>`);
                         }
-                        parts.push(createRadialText(501.5, cMid, m.headers[cIdx], { fontSize: 5.8, fontWeight: '700' }));
+                        const branchHmongMap = {
+                            'ຊວດ': 'Nas', 'ສະຫຼູ': 'Nyuj', 'ຂານ': 'Tsov', 'ເຖາະ': 'Luav',
+                            'ມະໂລງ': 'Zaj', 'ມະເສັງ': 'Nab', 'ມະເມີຍ': 'Nees', 'ມະແມ': 'Yaj',
+                            'ວອກ': 'Liab', 'ລະກາ': 'Qaib', 'ຈໍ': 'Aub', 'ກຸນ': 'Npua'
+                        };
+                        const branchPahawhMap = {
+                            'ຊວດ': '𖬌𖰟', 'ສະຫຼູ': '𖬐𖰞', 'ຂານ': '𖬎𖲧', 'ເຖາະ': '𖬎𖲞',
+                            'ມະໂລງ': '𖬎𖲤', 'ມະເສັງ': '𖬌𖰞', 'ມະເມີຍ': '𖬐𖰦', 'ມະແມ': '𖬐𖲟',
+                            'ວອກ': '𖬎𖲟', 'ລະກາ': '𖬂𖲟', 'ຈໍ': '𖬈𖲟', 'ກຸນ': '𖬌𖲟'
+                        };
+                        const hText = currentLuopanLang === 'hm'
+                            ? (branchHmongMap[m.headers[cIdx]] || m.headers[cIdx])
+                            : currentLuopanLang === 'ph'
+                            ? (branchPahawhMap[m.headers[cIdx]] || m.headers[cIdx])
+                            : m.headers[cIdx];
+                        parts.push(createRadialText(501.5, cMid, hText, { fontSize: currentLuopanLang === 'ph' ? 6.5 : 5.8, fontWeight: '700' }));
                         parts.push(createRadialText(488.5, cMid, ((cIdx + 2) % 9) + 1, { fontSize: 6, fontWeight: '700', fill: '#1e3a8a' }));
                         parts.push(createRadialText(475.5, cMid, ((cIdx + 5) % 9) + 1, { fontSize: 6, fontWeight: '700', fill: '#991b1b' }));
                         parts.push(createRadialText(462.5, cMid, ((cIdx + 7) % 9) + 1, { fontSize: 6, fontWeight: '700', fill: '#065f46' }));
@@ -2184,16 +2259,21 @@
                         const rTop = rBaguaRows[rIdx];
                         const rBot = rBaguaRows[rIdx + 1];
                         const rMid = (rTop + rBot) / 2;
-                        const label = col.items[rIdx] || '';
+                        const rawLabel = col.items[rIdx] || '';
+                        const label = translateRing6Cell(rawLabel, currentLuopanLang);
 
                         let cellBg = isTransparentMode ? 'rgba(255, 255, 255, 0.15)' : b.lightColor;
                         if (col.isCenter && rIdx === 0) cellBg = isTransparentMode ? 'rgba(220, 38, 38, 0.45)' : b.themeColor;
-                        else if (label.includes('ຈະເລີນ') || label.includes('ອາຍຸຍືນ') || label.includes('ໝໍເທບ') || label.includes('ປະທານ')) cellBg = isTransparentMode ? 'rgba(254, 240, 138, 0.35)' : '#fef08a';
-                        else if (label.includes('ມໍລະນະ') || label.includes('ໄພພິບັດ') || label.includes('ພິຄາດ') || label.includes('5ຜີເຫຼືອງ')) cellBg = isTransparentMode ? 'rgba(254, 202, 202, 0.35)' : '#fecaca';
+                        else if (rawLabel.includes('ຈະເລີນ') || rawLabel.includes('ອາຍຸຍືນ') || rawLabel.includes('ໝໍເທບ') || rawLabel.includes('ປະທານ')) cellBg = isTransparentMode ? 'rgba(254, 240, 138, 0.35)' : '#fef08a';
+                        else if (rawLabel.includes('ມໍລະນະ') || rawLabel.includes('ໄພພິບັດ') || rawLabel.includes('ພິຄາດ') || rawLabel.includes('5ຜີເຫຼືອງ')) cellBg = isTransparentMode ? 'rgba(254, 202, 202, 0.35)' : '#fecaca';
 
                         parts.push(`<path d="${createSectorPath(rBot, rTop, col.s % 360, col.e % 360)}" fill="${cellBg}" stroke="#0f172a" stroke-width="0.75"/>`);
                         const isHeader = col.isCenter && rIdx === 0;
-                        parts.push(createRadialText(rMid, col.mid, label, { fontSize: isHeader ? 8.8 : 6.8, fontWeight: isHeader ? '800' : '700', fill: '#0f172a' }));
+                        parts.push(createRadialText(rMid, col.mid, label, { 
+                            fontSize: isHeader ? (currentLuopanLang === 'ph' ? 8.0 : 8.8) : (currentLuopanLang === 'ph' ? 6.2 : 6.5), 
+                            fontWeight: isHeader ? '800' : '700', 
+                            fill: '#0f172a' 
+                        }));
                     }
                 });
                 parts.push(`<path d="${createSectorPath(198, 304, b.start, b.end)}" fill="none" stroke="#0f172a" stroke-width="1.8"/>`);
@@ -2209,7 +2289,11 @@
                 const luckBg = isGood
                     ? (isTransparentMode ? 'rgba(253, 224, 71, 0.45)' : '#fde047')
                     : (isTransparentMode ? 'rgba(255, 255, 255, 0.15)' : '#ffffff');
-                const luckText = isGood ? 'ດີ' : 'ຮ້າຍ';
+                const luckText = currentLuopanLang === 'hm'
+                    ? (isGood ? 'Zoo' : 'Phem')
+                    : currentLuopanLang === 'ph'
+                    ? (isGood ? '𖬑𖲞' : '𖬂𖰞')
+                    : (isGood ? 'ດີ' : 'ຮ້າຍ');
                 const luckColor = isGood ? '#15803d' : '#b91c1c';
 
                 parts.push(`<path d="${createSectorPath(166, 198, dStart, dEnd)}" fill="${luckBg}" stroke="#0f172a" stroke-width="0.65"/>`);
@@ -2231,12 +2315,18 @@
             // Ring 8: Ba Zhai House Direction Red Ring (With Ming Gua Fortune Tag if enabled)
             const curI18nRing8 = LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo;
             const houseNamesHmong = {
-                'ບ້ານຫຼີ': 'Vaj Li', 'ບ້ານຄຸນ': 'Vaj Kun', 'ບ້ານຕຸ້ຍ': 'Vaj Dui', 'ບ້ານສຽນ': 'Vaj Qian',
-                'ບ້ານຄານ': 'Vaj Kan', 'ບ້ານເກິ່ນ': 'Vaj Gen', 'ບ້ານເຈິ້ນ': 'Vaj Zhen', 'ບ້ານຊຸ່ນ': 'Vaj Xun'
+                'ບ້ານຫຼີ': 'Vaj Li', 'ບ້ານຄຸນ': 'Vaj Kun', 'ບ້ານຕຸ້ຍ': 'Vaj Dui',
+                'ບ້ານສຽນ': 'Vaj Qian', 'ບ້ານເສຽນ': 'Vaj Qian',
+                'ບ້ານຄານ': 'Vaj Kan', 'ບ້ານຂ່ານ': 'Vaj Kan',
+                'ບ້ານເກິ່ນ': 'Vaj Gen', 'ບ້ານເກິ້ນ': 'Vaj Gen',
+                'ບ້ານເຈິ້ນ': 'Vaj Zhen', 'ບ້ານຊຸ່ນ': 'Vaj Xun'
             };
             const houseNamesPahawh = {
-                'ບ້ານຫຼີ': '𖬆𖰝 𖬎𖲞', 'ບ້ານຄຸນ': '𖬆𖰝 𖬐𖰤', 'ບ້ານຕຸ້ຍ': '𖬆𖰝 𖬆𖰤', 'ບ້ານສຽນ': '𖬆𖰝 𖬐𖰝',
-                'ບ້ານຄານ': '𖬆𖰝 𖬂𖲝', 'ບ້ານເກິ່ນ': '𖬆𖰝 𖬂𖲝', 'ບ້ານເຈິ້ນ': '𖬆𖰝 𖬎𖲝', 'ບ້ານຊຸ່ນ': '𖬆𖰝 𖬘𖲤'
+                'ບ້ານຫຼີ': '𖬆𖰝 𖬎𖲞', 'ບ້ານຄຸນ': '𖬆𖰝 𖬐𖰤', 'ບ້ານຕຸ້ຍ': '𖬆𖰝 𖬆𖰤',
+                'ບ້ານສຽນ': '𖬆𖰝 𖬐𖰝', 'ບ້ານເສຽນ': '𖬆𖰝 𖬐𖰝',
+                'ບ້ານຄານ': '𖬆𖰝 𖬂𖲝', 'ບ້ານຂ່ານ': '𖬆𖰝 𖬂𖲝',
+                'ບ້ານເກິ່ນ': '𖬆𖰝 𖬂𖲝', 'ບ້ານເກິ້ນ': '𖬆𖰝 𖬂𖲝',
+                'ບ້ານເຈິ້ນ': '𖬆𖰝 𖬎𖲝', 'ບ້ານຊຸ່ນ': '𖬆𖰝 𖬘𖲤'
             };
             BAGUA_8.forEach(b => {
                 let houseRingBg = isTransparentMode ? 'rgba(220, 38, 38, 0.72)' : '#dc2626';
@@ -2292,27 +2382,28 @@
             parts.push(`<circle cx="${CX + 5.5}" cy="${CY + 95}" r="3.2" fill="#dc2626" stroke="#ffffff" stroke-width="0.8"/>`);
 
             // 4 BOLD, HIGH-CONTRAST CARDINAL DIRECTION BADGES ON THE ROTATING DIAL
+            const curI18nDial = LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo;
             const cardinalBadges = [
-                { deg: 0,   label: 'ທິດເໜືອ', code: '0° N',   color: '#ffffff', bg: '#1d4ed8', border: '#60a5fa', r: 68, rot: 0 },
-                { deg: 180, label: 'ທິດໃຕ້',   code: '180° S', color: '#ffffff', bg: '#b91c1c', border: '#f87171', r: 68, rot: 0 },
-                { deg: 90,  label: 'ຕາເວັນອອກ', code: '90° E',  color: '#ffffff', bg: '#15803d', border: '#4ade80', r: 68, rot: -90 },
-                { deg: 270, label: 'ຕາເວັນຕົກ', code: '270° W', color: '#ffffff', bg: '#1e293b', border: '#94a3b8', r: 68, rot: 90 }
+                { deg: 0,   label: curI18nDial.dirs.N, code: '0° N',   color: '#ffffff', bg: '#1d4ed8', border: '#60a5fa', r: 68, rot: 0 },
+                { deg: 180, label: curI18nDial.dirs.S, code: '180° S', color: '#ffffff', bg: '#b91c1c', border: '#f87171', r: 68, rot: 0 },
+                { deg: 90,  label: curI18nDial.dirs.E, code: '90° E',  color: '#ffffff', bg: '#15803d', border: '#4ade80', r: 68, rot: -90 },
+                { deg: 270, label: curI18nDial.dirs.W, code: '270° W', color: '#ffffff', bg: '#1e293b', border: '#94a3b8', r: 68, rot: 90 }
             ];
             cardinalBadges.forEach(cb => {
                 const pos = polarToCartesian(CX, CY, cb.r, cb.deg);
                 parts.push(`<g transform="translate(${pos.x.toFixed(2)}, ${pos.y.toFixed(2)}) rotate(${cb.rot})">
-                    <rect x="-26" y="-14" width="52" height="28" rx="8" fill="${cb.bg}" stroke="${cb.border}" stroke-width="1.5" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.4))"/>
-                    <text x="0" y="-3" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="900" fill="${cb.color}">${cb.label}</text>
+                    <rect x="-28" y="-14" width="56" height="28" rx="8" fill="${cb.bg}" stroke="${cb.border}" stroke-width="1.5" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.4))"/>
+                    <text x="0" y="-3" text-anchor="middle" dominant-baseline="central" font-size="${currentLuopanLang === 'ph' ? 8.5 : 8.0}" font-weight="900" fill="${cb.color}">${cb.label}</text>
                     <text x="0" y="7" text-anchor="middle" dominant-baseline="central" font-size="7.5" font-weight="800" fill="${cb.color}" opacity="0.95">${cb.code}</text>
                 </g>`);
             });
 
             // 4 Intercardinal Directions in the Heaven Pool
             const intercardinals = [
-                { deg: 45,  label: 'ອອກ-ເໜືອ', fill: '#1e40af' },
-                { deg: 135, label: 'ອອກ-ໃຕ້',  fill: '#166534' },
-                { deg: 225, label: 'ຕົກ-ໃຕ້',  fill: '#854d0e' },
-                { deg: 315, label: 'ຕົກ-ເໜືອ', fill: '#7c2d12' }
+                { deg: 45,  label: curI18nDial.dirsShort.NE, fill: '#1e40af' },
+                { deg: 135, label: curI18nDial.dirsShort.SE, fill: '#166534' },
+                { deg: 225, label: curI18nDial.dirsShort.SW, fill: '#854d0e' },
+                { deg: 315, label: curI18nDial.dirsShort.NW, fill: '#7c2d12' }
             ];
             intercardinals.forEach(ic => {
                 parts.push(createRadialText(90, ic.deg, ic.label, {
@@ -2429,7 +2520,7 @@
                 { name: '癸', lao: 'ກຸ່ຍ', hm: 'Kwi', ph: '𖬐𖰤', yuan: 'ren', pol: -1, start: 7.5, end: 22.5 }
             ]},
             2: { name: 'Kun', lao: 'ຄຸນ', hm: 'Kun (Av)', ph: '𖬐𖰤', dir: 'ທິດຕາເວັນຕົກສ່ຽງໃຕ້', dirHm: 'Sab Hnub Poob Qab Teb', deg: 225, baguaCode: 'SW', mountains: [
-                { name: '未', lao: 'ເວີ່ຍ (ແບ້)', hm: 'Vei (Yแพ)', ph: '𖬖𖰤 (𖬐𖲟)', yuan: 'di', pol: -1, start: 202.5, end: 217.5 },
+                { name: '未', lao: 'ເວີ່ຍ (ແບ້)', hm: 'Vei (Yaj)', ph: '𖬖𖰤 (𖬐𖲟)', yuan: 'di', pol: -1, start: 202.5, end: 217.5 },
                 { name: '坤', lao: 'ຄຸນ', hm: 'Khuv', ph: '𖬐𖰤', yuan: 'tian', pol: 1, start: 217.5, end: 232.5 },
                 { name: '申', lao: 'ເຊີນ (ລີງ)', hm: 'Xas (Liab)', ph: '𖬘𖲝 (𖬎𖲟)', yuan: 'ren', pol: 1, start: 232.5, end: 247.5 }
             ]},
@@ -2675,9 +2766,13 @@
                 if (dist(d, b) <= 1.5) {
                     return {
                         type: 'big',
-                        badgeText: '大空亡 (ມະຫາວ່າງເປົ່າ)',
+                        badgeText: (LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo).kongwangBig || '大空亡 (ແຍກໃຫຍ່)',
                         badgeClass: 'bg-rose-950 text-rose-300 border-rose-500/80 animate-pulse',
-                        desc: 'ເສັ້ນແບ່ງວັງໃຫຍ່ (大空亡): ພະລັງງານສອງທາດປະທະກັນ ຮວງຈຸ້ຍປັ່ນປ່ວນ ຄວນບ່ຽງແກນບ້ານ 2-3 ອົງສາເພື່ອຫຼີກລ່ຽງ'
+                        desc: currentLuopanLang === 'hm' 
+                            ? 'Ciam Loj (Da Kong Wang): Ob lub zog sib tsoo, looj mem tsis khov kho, yuav tsum tau tig me ntsis 2-3 degree.'
+                            : currentLuopanLang === 'ph'
+                            ? '𖬔𖲝 𖬎𖲤 (Da Kong Wang): 𖬎𖲨 𖬐𖰤 𖬖𖰝 𖬂𖲟 𖬐𖰞, 𖬎𖲞 𖭒-𖭓 degree.'
+                            : 'ເສັ້ນແບ່ງວັງໃຫຍ່ (大空亡): ພະລັງງານສອງທາດປະທະກັນ ຮວງຈຸ້ຍປັ່ນປ່ວນ ຄວນບ່ຽງແກນບ້ານ 2-3 ອົງສາເພື່ອຫຼີກລ່ຽງ'
                     };
                 }
             }
@@ -2685,17 +2780,25 @@
                 if (dist(d, b) <= 1.5) {
                     return {
                         type: 'small',
-                        badgeText: '小空亡 (ວ່າງເປົ່າສາຍ)',
+                        badgeText: (LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo).kongwangSmall || '小空亡 (ແຍກນ້ອຍ)',
                         badgeClass: 'bg-amber-950 text-amber-300 border-amber-500/80',
-                        desc: 'ເສັ້ນແບ່ງສອງພູເຂົາ (小空亡): ພະລັງງານຊີ່ສັບສົນ ໂຊກລາບແລະສຸຂະພາບບໍ່ໝັ້ນຄົງ'
+                        desc: currentLuopanLang === 'hm'
+                            ? 'Ciam Me (Xiao Kong Wang): Ciam roob me, lub zog tsis sib haum xeeb.'
+                            : currentLuopanLang === 'ph'
+                            ? '𖬔𖲝 𖬐𖲟 (Xiao Kong Wang): 𖬎𖲨 𖬐𖰤 𖬖𖰝.'
+                            : 'ເສັ້ນແບ່ງສອງພູເຂົາ (小空亡): ພະລັງງານຊີ່ສັບສົນ ໂຊກລາບແລະສຸຂະພາບບໍ່ໝັ້ນຄົງ'
                     };
                 }
             }
             return {
                 type: 'pure',
-                badgeText: '正针 (ທິດກົງ)',
+                badgeText: (LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo).kongwangStraight || '正针 (ກົງ)',
                 badgeClass: 'bg-emerald-950 text-emerald-300 border-emerald-500/60',
-                desc: 'ທິດກົງກາງພູເຂົາ (正针): ພະລັງງານຊີ່ບໍລິສຸດ ມຸງຄຸນສູງສຸດ'
+                desc: currentLuopanLang === 'hm' 
+                    ? 'Ncaj Qha (Zheng Zhen): Lub zog looj mem ntshiab zoo heev.' 
+                    : currentLuopanLang === 'ph' 
+                    ? '𖬐𖰞 𖬄𖲞: 𖬎𖲨 𖬐𖰤 𖬖𖰝 𖬑𖲞.' 
+                    : 'ທິດກົງກາງພູເຂົາ (正针): ພະລັງງານຊີ່ບໍລິສຸດ ມຸງຄຸນສູງສຸດ'
             };
         }
 
@@ -12651,7 +12754,7 @@ function updateCompassTransform(deltaAngle = null) {
             }
             const arCameraDegBadge = document.getElementById('arCameraDegBadge');
             if (arCameraDegBadge) {
-                arCameraDegBadge.textContent = `${effectiveFacingDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})`;
+                arCameraDegBadge.textContent = `${effectiveFacingDeg.toFixed(1)}° ${faceDirName} (${faceInfo.mtn.name}-${mtnFaceLabel})`;
             }
 
             // Real-time Update for the 4 Red Thread Readout Badges on the Outer Base Plate
