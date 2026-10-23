@@ -991,11 +991,11 @@
                 fontSize = 10,
                 fontWeight = '700',
                 fill = '#111827',
-                flipBottom = false
+                flipBottom = false, rotOffset = 0
             } = opts;
 
             const pos = polarToCartesian(CX, CY, r, compassDeg);
-            let rot = compassDeg - 180;
+            let rot = compassDeg - 180 + rotOffset;
             if (flipBottom) {
                 const norm = ((rot % 360) + 360) % 360;
                 if (norm > 95 && norm < 265) {
@@ -2323,7 +2323,7 @@
                 const luckColor = isGood ? '#15803d' : '#b91c1c';
 
                 parts.push(`<path d="${createSectorPath(166, 198, dStart, dEnd)}" fill="${luckBg}" stroke="#0f172a" stroke-width="0.65"/>`);
-                parts.push(createRadialText(182, dMid, luckText, { fontSize: 10, fontWeight: '900', fill: luckColor }));
+                parts.push(createRadialText(182, dMid, luckText, { fontSize: currentLuopanLang === 'hm' ? 8.2 : 9.5, fontWeight: '900', fill: luckColor, rotOffset: -90 }));
 
                 const numBg = isTransparentMode ? 'rgba(254, 240, 138, 0.4)' : '#fef08a';
                 parts.push(`<path d="${createSectorPath(144, 166, dStart, dEnd)}" fill="${numBg}" stroke="#0f172a" stroke-width="0.65"/>`);
