@@ -426,58 +426,68 @@
             </div>
 
             <!-- Result Card -->
-            <div id="guaResultCard" class="bg-slate-950/90 border border-amber-500/30 rounded-xl p-2.5 flex flex-col gap-2">
-                <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
-                    <div>
-                        <div id="resZodiac" class="text-xs font-bold text-amber-300">ປີວອກ (ລີງ)</div>
-                        <div id="resGanzhi" class="text-[11px] text-slate-400">壬申 (ແກງວອກ) • ພ.ສ. 2535</div>
-                    </div>
-                    <div class="flex flex-col items-end gap-0.5">
-                        <span id="lblYearElement" class="text-[9px] text-slate-400 font-medium">🪙 ທາດປີເກີດ (ນາຢິນ):</span>
-                        <span id="resElementBadge" class="bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-bold px-2.5 py-0.5 rounded-lg shadow-inner">
-                            ທາດທອງ
+            <div id="guaResultCard" class="bg-slate-950/95 border border-slate-800 rounded-xl p-2.5 flex flex-col gap-2 text-xs">
+                <!-- 1. 🧭 ທາດຮວງຈຸ້ຍ (ມິ່ງກວ້າ) -> ໃຊ້ຕັ້ງທິດເຮືອນ & ທິດນອນ -->
+                <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-2 flex flex-col gap-1">
+                    <div class="flex items-center justify-between">
+                        <span id="lblMingGua" class="text-amber-400 font-bold text-[11px] flex items-center gap-1">
+                            🧭 1. ທາດຮວງຈຸ້ຍ (ມິ່ງກວ້າ):
                         </span>
+                        <span id="resGuaName" class="font-bold text-amber-300 text-xs font-mono">ກວ້າ 8 (ເກິ່ນ) • ທາດດິນ</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[10px] text-slate-400 border-t border-slate-800/60 pt-1">
+                        <span id="lblEnergyGroup">ກຸ່ມ: <b id="resGroup" class="text-emerald-400">ກຸ່ມຕາເວັນຕົກ</b></span>
+                        <span id="lblMingGuaPurpose" class="text-amber-300/80 text-[9.5px]">🎯 ໃຊ້: ຕັ້ງທິດເຮືອນ, ຫົວນອນ & 4 ທິດມຸງຄຸນ</span>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-2 text-xs">
-                    <div>
-                        <span id="lblMingGua" class="text-slate-400 text-[10px] block font-medium">🧭 ທາດຮວງຈຸ້ຍ (ມິ່ງກວ້າ):</span>
-                        <span id="resGuaName" class="font-bold text-amber-400 text-xs">ກວ້າ 8 (ເກິ່ນ) • ທາດດິນ</span>
-                    </div>
-                    <div>
-                        <span id="lblEnergyGroup" class="text-slate-400 text-[10px] block font-medium">ກຸ່ມພະລັງງານຊີວິດ:</span>
-                        <span id="resGroup" class="font-bold text-emerald-400 text-xs">ກຸ່ມຕາເວັນຕົກ</span>
-                    </div>
-                </div>
-
-                <div class="text-xs border-t border-slate-800/80 pt-1.5 flex justify-between items-center">
-                    <span id="lblNayin" class="text-slate-400 text-[10px]">ທາດນາຢິນ (60 ດອກໄມ້):</span>
-                    <span id="resNayin" class="font-semibold text-slate-200 text-[11px]">ທອງປາຍດາບ</span>
-                </div>
-
-                <!-- BaZi 4 Pillars Synergy in Unified Card (Featured Prominent Card) -->
-                <div id="resBaziPill" class="bg-gradient-to-br from-purple-950/90 via-slate-900/95 to-indigo-950/90 border-2 border-amber-400/80 shadow-lg shadow-purple-950/60 rounded-xl p-3 flex flex-col gap-2 relative overflow-hidden ring-1 ring-amber-300/40">
-                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-amber-500/15 rounded-full blur-xl pointer-events-none"></div>
-                    <div class="flex items-center justify-between gap-2 z-10">
-                        <span id="lblBaziDayMasterTitle" class="text-amber-300 font-extrabold text-xs flex items-center gap-1.5 uppercase tracking-wide">
-                            <span>📜</span> <span id="lblBaziDayMasterText">ຕົວຕົນແທ້ (ດິດຖີປາຈື):</span>
+                <!-- 2. 📜 ຕົວຕົນແທ້ (ດິດຖີປາຈື / Day Master) -> ໃຊ້ເປັນທາດປະຈຳຕົວແທ້ -->
+                <div id="resBaziPill" class="bg-slate-900/90 border border-slate-800 rounded-lg p-2 flex flex-col gap-1">
+                    <div class="flex items-center justify-between">
+                        <span id="lblBaziDayMasterTitle" class="text-purple-300 font-bold text-[11px] flex items-center gap-1">
+                            📜 2. <span id="lblBaziDayMasterText">ຕົວຕົນແທ້ (ດິດຖີປາຈື):</span>
                         </span>
-                        <span id="resBaziDayMaster" class="text-xs sm:text-sm font-black text-amber-200 bg-gradient-to-r from-amber-950/90 to-purple-950/90 border border-amber-400/80 px-2.5 py-1 rounded-lg shadow-sm font-mono tracking-wide"></span>
+                        <span id="resBaziDayMaster" class="text-[11px] font-bold text-purple-200 bg-purple-950/80 border border-purple-500/40 px-2 py-0.5 rounded font-mono"></span>
                     </div>
-                    <div id="lblBaziSynergy" class="grid grid-cols-2 gap-2 pt-1.5 border-t border-purple-500/30 text-xs z-10">
-                        <div class="bg-emerald-950/70 border border-emerald-400/60 rounded-lg p-2 flex flex-col gap-0.5 shadow-sm">
-                            <span id="lblBaziYongShenText" class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-1">
-                                ✨ ທາດເສີມດວງ (ຍົງສິ່ນ)
-                            </span>
-                            <span id="resBaziYongShen" class="text-emerald-200 font-black text-xs"></span>
+                    <div class="text-[9.5px] text-purple-300/80 border-t border-slate-800/60 pt-1" id="lblBaziDayMasterPurpose">
+                        🎯 ໃຊ້: ທາດປະຈຳຕົວແທ້ຈິງ, ອາຊີບ, ວັດສະດຸ & ສີສັນ
+                    </div>
+                </div>
+
+                <!-- 3. ✨ ທາດເສີມດວງ (ຍົງສິ່ນ / Yong Shen) & ຫຼີກລ່ຽງ -> ໃຊ້ດຶງດູດໂຊກລາບ & ແກ້ຮວງຈຸ້ຍ -->
+                <div id="lblBaziSynergy" class="bg-slate-900/90 border border-slate-800 rounded-lg p-2 flex flex-col gap-1">
+                    <div class="flex items-center justify-between text-[11px]">
+                        <span id="lblBaziYongShenText" class="text-emerald-400 font-bold flex items-center gap-1">
+                            ✨ 3. ທາດເສີມດວງ (ຍົງສິ່ນ):
+                        </span>
+                        <b id="resBaziYongShen" class="text-emerald-300 font-mono text-xs"></b>
+                    </div>
+                    <div class="flex items-center justify-between text-[10px] text-slate-400 border-t border-slate-800/60 pt-1">
+                        <span id="lblBaziAvoidText" class="text-rose-400/90 text-[10px]">
+                            ⚠️ ຫຼີກລ່ຽງ: <b id="resBaziAvoid" class="text-rose-300 font-mono"></b>
+                        </span>
+                        <span id="lblBaziYongShenPurpose" class="text-emerald-300/80 text-[9.5px]">🎯 ໃຊ້: ດຶງດູດໂຊກລາບ, ຈັດໂຕະເຮັດວຽກ & ສີຫ້ອງ</span>
+                    </div>
+                </div>
+
+                <!-- 4. 🪙 ທາດປີເກີດ & ນາຢິນ (Year Pillar & Na Yin) -> ໃຊ້ດວງສົມພົງ & ປີຊົງ -->
+                <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-2 flex flex-col gap-1 text-[11px]">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span id="resZodiac" class="font-bold text-amber-300">ປີວອກ (ລີງ)</span>
+                            <span id="resGanzhi" class="text-[10px] text-slate-400 ml-1">壬申 (ແກງວອກ) • 2535</span>
                         </div>
-                        <div class="bg-rose-950/70 border border-rose-400/60 rounded-lg p-2 flex flex-col gap-0.5 shadow-sm">
-                            <span id="lblBaziAvoidText" class="text-[10px] text-rose-400 font-bold uppercase tracking-wider flex items-center gap-1">
-                                ⚠️ ທາດຄວນຫຼີກລ່ຽງ
-                            </span>
-                            <span id="resBaziAvoid" class="text-rose-200 font-black text-xs"></span>
+                        <div class="flex items-center gap-1">
+                            <span id="lblYearElement" class="text-[9.5px] text-slate-400 font-bold">🪙 4. ປີເກີດ:</span>
+                            <span id="resElementBadge" class="bg-slate-800 text-slate-200 border border-slate-700 text-[10px] font-bold px-1.5 py-0.5 rounded">ທາດທອງ</span>
                         </div>
+                    </div>
+                    <div class="flex items-center justify-between text-[10px] text-slate-400 border-t border-slate-800/60 pt-1">
+                        <div>
+                            <span id="lblNayin" class="text-[9.5px] text-slate-400">ນາຢິນ:</span>
+                            <span id="resNayin" class="text-slate-300 font-semibold text-[10px] ml-0.5">ທອງປາຍດາບ</span>
+                        </div>
+                        <span id="lblYearPurpose" class="text-slate-400 text-[9.5px]">🎯 ໃຊ້: ດວງສົມພົງຄູ່ຄອງ, ຮຸ້ນສ່ວນ & ປີຊົງ</span>
                     </div>
                 </div>
 
@@ -1569,10 +1579,11 @@
             if (lblGender) lblGender.textContent = t.genderLabel;
             const lblLichun = document.getElementById('lblLichun');
             if (lblLichun) lblLichun.textContent = t.bornBeforeLichun;
-            const lblYearEl = document.getElementById('lblYearElement');
-            if (lblYearEl) lblYearEl.textContent = t.yearElementTitle;
-            const lblMingGua = document.getElementById('lblMingGua');
-            if (lblMingGua) lblMingGua.textContent = t.mingGuaTitle;
+            const lblMingGuaEl = document.getElementById('lblMingGua');
+            if (lblMingGuaEl) lblMingGuaEl.textContent = (lang === 'hm' ? '🧭 1. Zog Ming Gua (Looj Mem):' : lang === 'ph' ? '🧭 1. 𖬘𖲝 (Ming Gua):' : '🧭 1. ທາດຮວງຈຸ້ຍ (ມິ່ງກວ້າ):');
+            const lblMingGuaPurp = document.getElementById('lblMingGuaPurpose');
+            if (lblMingGuaPurp) lblMingGuaPurp.textContent = (lang === 'hm' ? '🎯 Siv: Teem tsev, chaw pw & 4 fab zoo' : lang === 'ph' ? '🎯 𖬖𖰟 𖬎𖰰𖬟 𖬆𖰞 & 𖬄𖲝' : '🎯 ໃຊ້: ຕັ້ງທິດເຮືອນ, ຫົວນອນ & 4 ທິດມຸງຄຸນ');
+
             const lblEnergy = document.getElementById('lblEnergyGroup');
             if (lblEnergy) lblEnergy.textContent = t.energyGroupTitle;
             const lblNayin = document.getElementById('lblNayin');
@@ -1580,19 +1591,31 @@
             const lblHl = document.getElementById('lblHighlightGua');
             if (lblHl) lblHl.textContent = t.highlightGuaOnDisk;
 
-            // Section 4 BaZi Day Master & Fortunes
+            // Section 4 BaZi Day Master & Fortunes with explicit purpose
             const lblDayMasterText = document.getElementById('lblBaziDayMasterText') || document.getElementById('lblBaziDayMasterTitle');
             if (lblDayMasterText) {
                 if (lblDayMasterText.id === 'lblBaziDayMasterTitle') {
-                    lblDayMasterText.innerHTML = lang === 'hm' ? '<span>📜</span> Tus Kheej Tseeb (Day Master BaZi):' : lang === 'ph' ? '<span>📜</span> 𖬎𖲧 𖬎𖲨 Day Master:' : '<span>📜</span> ຕົວຕົນແທ້ (ດິດຖີປາຈື):';
+                    lblDayMasterText.innerHTML = lang === 'hm' ? '📜 2. Tus Kheej Tseeb (Day Master):' : lang === 'ph' ? '📜 2. 𖬎𖲧 𖬎𖲨 (Day Master):' : '📜 2. ຕົວຕົນແທ້ (ດິດຖີປາຈື):';
                 } else {
-                    lblDayMasterText.textContent = lang === 'hm' ? 'Tus Kheej Tseeb (Day Master BaZi):' : lang === 'ph' ? '𖬎𖲧 𖬎𖲨 Day Master:' : 'ຕົວຕົນແທ້ (ດິດຖີປາຈື):';
+                    lblDayMasterText.textContent = lang === 'hm' ? 'Tus Kheej Tseeb (Day Master):' : lang === 'ph' ? '𖬎𖲧 𖬎𖲨 (Day Master):' : 'ຕົວຕົນແທ້ (ດິດຖີປາຈື):';
                 }
             }
+            const lblDayMasterPurp = document.getElementById('lblBaziDayMasterPurpose');
+            if (lblDayMasterPurp) lblDayMasterPurp.textContent = (lang === 'hm' ? '🎯 Siv: Zog tus kheej, hauj lwm & yam khoom' : lang === 'ph' ? '🎯 𖬎𖲧 𖬎𖲨, 𖬐𖲤 & 𖬄𖰝' : '🎯 ໃຊ້: ທາດປະຈຳຕົວແທ້ຈິງ, ອາຊີບ, ວັດສະດຸ & ສີສັນ');
+
             const lblYs = document.getElementById('lblBaziYongShenText');
-            if (lblYs) lblYs.innerHTML = lang === 'hm' ? '✨ Zog Pab Hmoov (Yong Shen)' : lang === 'ph' ? '✨ 𖬋𖲰𖬩 𖬐𖲱𖬩 (Yong Shen)' : '✨ ທາດເສີມດວງ (ຍົງສິ່ນ)';
+            if (lblYs) lblYs.innerHTML = lang === 'hm' ? '✨ 3. Zog Pab Hmoov (Yong Shen):' : lang === 'ph' ? '✨ 3. 𖬋𖲰𖬩 𖬐𖲱𖬩 (Yong Shen):' : '✨ 3. ທາດເສີມດວງ (ຍົງສິ່ນ):';
+            const lblYsPurp = document.getElementById('lblBaziYongShenPurpose');
+            if (lblYsPurp) lblYsPurp.textContent = (lang === 'hm' ? '🎯 Siv: Ntxiv nyiaj txiag, rooj hauj lwm & kho tsev' : lang === 'ph' ? '🎯 𖬎𖲤 𖬆𖰞, 𖬖𖰟 𖬎𖰰𖬟' : '🎯 ໃຊ້: ດຶງດູດໂຊກລາບ, ຈັດໂຕະເຮັດວຽກ & ສີຫ້ອງ');
+
             const lblAv = document.getElementById('lblBaziAvoidText');
-            if (lblAv) lblAv.innerHTML = lang === 'hm' ? '⚠️ Zog Yuav Tsum Zam' : lang === 'ph' ? '⚠️ 𖬐𖲱𖬩 𖬋𖲰𖬩 𖬌𖲞' : '⚠️ ທາດຄວນຫຼີກລ່ຽງ';
+            if (lblAv) lblAv.innerHTML = (lang === 'hm' ? '⚠️ Zam: <b id="resBaziAvoid" class="text-rose-300 font-mono"></b>' : lang === 'ph' ? '⚠️ 𖬐𖲱𖬩: <b id="resBaziAvoid" class="text-rose-300 font-mono"></b>' : '⚠️ ຫຼີກລ່ຽງ: <b id="resBaziAvoid" class="text-rose-300 font-mono"></b>');
+
+            const lblYearEl = document.getElementById('lblYearElement');
+            if (lblYearEl) lblYearEl.textContent = (lang === 'hm' ? '🪙 4. Xyoo Yug:' : lang === 'ph' ? '🪙 4. 𖬘𖲝:' : '🪙 4. ປີເກີດ:');
+            const lblYearPurp = document.getElementById('lblYearPurpose');
+            if (lblYearPurp) lblYearPurp.textContent = (lang === 'hm' ? '🎯 Siv: Xyuas khub niam txiv, phooj ywg & xyoo tsis haum' : lang === 'ph' ? '🎯 𖬎𖲤 𖬎𖲨, 𖬄𖰝' : '🎯 ໃຊ້: ດວງສົມພົງຄູ່ຄອງ, ຮຸ້ນສ່ວນ & ປີຊົງ');
+
             const lblAuspicious = document.getElementById('lblAuspiciousTitle');
             if (lblAuspicious) {
                 const svg = lblAuspicious.querySelector('svg');
