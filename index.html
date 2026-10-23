@@ -12533,179 +12533,186 @@ function setSelectedRoom(roomKey) {
         }
 
 
+        // Pre-compiled Dictionaries & Regular Expressions for Blazing-Fast Prediction Localization
+        const _HM_PRED_MAP = {
+            // Mode Switcher & Major Headers
+            'ທຳນາຍຕາມທິດ': 'Xam Raws Fab',
+            'ຄັງຄູ່ມື &amp; ຕຳລາ': 'Phau Ntawv &amp; Tswv Yim',
+            'ຄັງຄູ່ມື & ຕຳລາ': 'Phau Ntawv & Tswv Yim',
+            'ເຮືອນຢິນ (ສຸສານ)': 'Tsev Yeeb / Ntxa',
+            'ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ &amp; ແປດທິດ': 'Kev Ntsuas Looj Mem Hnub Qub Ya &amp; 8 Fab',
+            'ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ': 'Kev Ntsuas Looj Mem Hnub Qub Ya & 8 Fab',
+            'ບົດທຳນາຍດາວເຫີນ &amp; ແປດທິດ': 'Kev Ntsuas Hnub Qub Ya &amp; 8 Fab',
+            'ບົດທຳນາຍດາວເຫີນ & ແປດທິດ': 'Kev Ntsuas Hnub Qub Ya & 8 Fab',
+            'ວິເຄາະທິດທີ່ກ້ອງ/ເຂັມທິດກຳລັງສ່ອງໄປແບບສົດໆ': 'Ntsuas fab koob yees duab / luopan tig saib tam sim no',
+            'ເລືອກຍຸກດາວເຫີນ:': 'Xaiv Caij Hnub Qub Ya:',
+
+            // Headings & Card Labels
+            '💡 ວິທີຈັດວາງ/ແກ້ໄຂ:': '💡 Kev Txhim Kho / Kho Kom Haum:',
+            '💡 ວິທີແກ້ໄຂ / ປັບຮວງຈຸ້ຍ:': '💡 Kev Kho Kom Haum Looj Mem:',
+            '💡 ວິທີແກ້ໄຂ:': '💡 Kev Kho Kom Haum:',
+            '<b>ວິທີແກ້:</b>': '<b>Kev Kho:</b>',
+            '<b>ສຸຂະພາບ &amp; ຄົນ:</b>': '<b>Kev Noj Qab Haus Huv:</b>',
+            '<b>ສຸຂະພາບ & ຄົນ:</b>': '<b>Kev Noj Qab Haus Huv:</b>',
+            '<b>ການເງິນ &amp; 12 ນັກສັດ:</b>': '<b>Nyiaj Txiag &amp; 12 Tus Tsiaj:</b>',
+            '<b>ການເງິນ & 12 ນັກສັດ:</b>': '<b>Nyiaj Txiag & 12 Tus Tsiaj:</b>',
+            'ສຸຂະພາບ &amp; ບາຣະມີ': 'Kev Noj Qab Haus Huv &amp; Koob Hmoov',
+            'ສຸຂະພາບ & ບາຣະມີ': 'Kev Noj Qab Haus Huv & Koob Hmoov',
+            'ຄະແນນ:': 'Qhab Nia:',
+            'ທິດທີ່ສ່ອງ:': 'Fab Tig Mus:',
+            'ດາວນ້ຳ': 'Hnub Qub Dej',
+            'ດາວພູ': 'Hnub Qub Roob',
+            'ດາວຍຸກ': 'Hnub Qub Caij',
+            'ຫຼັງພິງ:': 'Tom Qab Zaum:',
+            'ໜ້າບ້ານ:': 'Pem Hauv Ntej:',
+            'ຄູ່ດາວ:': 'Khub Hnub Qub:',
+            'ຄູ່ດາວ': 'Khub Hnub Qub',
+            'ມຸງຄຸນສູງສຸດ': 'Vam Meej Tshaj Plaws',
+            'ມຸງຄຸນຍອດຢ້ຽມ': 'Vam Meej Zoo Heev',
+            'ມຸງຄຸນ': 'Vam Meej Zoo',
+            'ອັບປະມຸງຄຸນ': 'Phem Heev',
+            'ປານກາງ': 'Nruab Nrab',
+            'ທົ່ວໄປ': 'Txheej Txheem',
+            'ຂໍ້ຫ້າມເດັດຂາດ:': 'Yam Txwv Tsis Pub Ua:',
+            'ຈຸດຕ້ອງຫ້າມ:': 'Chaw Txwv Tsis Pub Ua:',
+            'ຫ້າມເຈາະທຸບ': 'Txwv Khawb Rhuav',
+            'ລະວັງສຸຂະພາບ': 'Ceev Faj Kev Noj Qab Haus Huv',
+
+            // Categories & Navigation
+            'ດາວເຫີນ &amp; ພະລັງຍຸກ': 'Hnub Qub Ya &amp; Zog Caij',
+            'ດາວເຫີນ & ພະລັງຍຸກ': 'Hnub Qub Ya & Zog Caij',
+            'ສາຍນ້ຳ &amp; ມັງກອນດິນ': 'Dej Ntws &amp; Zaj Av',
+            'ສາຍນ້ຳ & ມັງກອນດິນ': 'Dej Ntws &amp; Zaj Av',
+            'ເຂັມທິດ &amp; 24 ຂຸນເຂົາ': 'Koob Luopan &amp; 24 Roob',
+            'ເຂັມທິດ & 24 ຂຸນເຂົາ': 'Koob Luopan & 24 Roob',
+            'ທິດພາຍໃນ &amp; ແປດທິດປາໄຈ່': 'Hauv Tsev &amp; Ba Zhai 8 Fab',
+            'ທິດພາຍໃນ & ແປດທິດປາໄຈ່': 'Hauv Tsev & Ba Zhai 8 Fab',
+            'ໂຫລາສາດ &amp; ດວງຊາຕາ': 'BaZi &amp; Xam Hnub Nyoog',
+            'ໂຫລາສາດ & ດວງຊາຕາ': 'BaZi & Xam Hnub Nyoog',
+            '🔍 ຄົ້ນຫາວິຊາ...': '🔍 Nrhiav tswv yim...',
+            'ທັງໝົດ': 'Tag Nrho',
+
+            // Common Rooms
+            'ປະຕູໃຫຍ່ໜ້າບ້ານ': 'Qhov Rooj Loj Pem Tsev',
+            'ປະຕູໃຫຍ່': 'Qhov Rooj Loj',
+            'ປະຕູຫ້ອງນອນ': 'Qhov Rooj Chav Pw',
+            'ຫ້ອງນອນໃຫຍ່': 'Chav Pw Loj',
+            'ຫ້ອງນອນ': 'Chav Pw',
+            'ຫ້ອງຄົວ': 'Chav Ua Noj',
+            'ປະຕູຫ້ອງຄົວ': 'Qhov Rooj Chav Ua Noj',
+            'ຫ້ອງນ້ຳ': 'Chav Dej',
+            'ປະຕູຫ້ອງນ້ຳ': 'Qhov Rooj Chav Dej',
+            'ຫ້ອງຮັບແຂກ': 'Chav Txais Qhua',
+            'ຫ້ອງເຮັດວຽກ': 'Chav Ua Hauj Lwm',
+            'ຫ້ອງພະ / ຫ້ອງບູຊາ': 'Chav Dab Qhuas / Ntuj',
+            'ຫ້ອງພະ': 'Chav Dab Qhuas',
+            'ຫ້ອງເກັບເງິນ': 'Chav Khaws Nyiaj',
+            'ປະຕູລະບຽງ / ປະຕູເລື່ອນ': 'Qhov Rooj Tshav Saum Tsev',
+            'ປະຕູລະບຽງ': 'Qhov Rooj Tshav Saum',
+            'ລະບຽງ / ດາດຟ້າ': 'Tshav Saum Tsev',
+            'ບັນໄດ': 'Vaj Ris',
+            'ໂຮງລົດ': 'Chaw Nres Tsheb',
+            'ສວນດອກໄມ້': 'Vaj Paj Ntsuab',
+            'ໜອງນ້ຳ / ນ້ຳພຸ': 'Pas Dej / Dej Txeej',
+            'ຮົ້ວບ້ານ': 'Phab Ntsa / Ciam Av',
+            'ປ່ອງຢ້ຽມ': 'Qhov Rais',
+
+            // Formations & Special Terms
+            '旺山旺向 (ຮຸ່ງເຮືອງທັງຄົນແລະຊັບ)': 'Wang Shan Wang Xiang (Vam Meej Nyiaj Txiag & Neeg)',
+            '双星到向 (ດາວຄູ່ລວມໜ້າບ້ານ ໂຊກລາບມະຫາສານ)': 'Shuang Xing Dao Xiang (Hnub Qub Khub Pem Tsev)',
+            '双星到座 (ດາວຄູ່ລວມຫຼັງພິງ ບາຣະມີຄົນດີເລີດ)': 'Shuang Xing Dao Zuo (Hnub Qub Khub Tom Qab)',
+            '上山下水 (ຂຶ້ນເຂົາລົງນ້ຳ ລະວັງສູນເສຍ)': 'Shang Shan Xia Shui (Nce Roob Nqes Dej - Ceev Faj)',
+            'ປະຕູເສີມໂຊກ (城门诀)': 'Qhov Rooj Txais Koob Hmoov (Cheng Men)',
+            'ເຈັດດາວປຸ້ນຊັບ (七星打劫)': 'Xya Lub Hnub Qub Yuam Zog (Qi Xing Da Jie)',
+            'ຜັງຕົກຮ່ອງເດີມ (伏吟)': 'Fu Yin (Zog Poob Qhov Qub)',
+            'ຜັງປະທະກັບ (反吟)': 'Fan Yin (Zog Sib Tsoo)',
+
+            // Ba Zhai Stars
+            'ໂຊກລາບຮຸ່ງເຮືອງ': 'Sheng Qi (Nyiaj Txiag Nplua Mias)',
+            'ສຸຂະພາບໝໍເທບ': 'Tian Yi (Noj Qab Haus Huv)',
+            'ຄວາມຮັກອາຍຸຍືນ': 'Yan Nian (Kev Hlub Ntev Luag)',
+            'ສະຕິປັນຍາໝັ້ນຄົງ': 'Fu Wei (Kev Thaj Yeeb Tswv Yim)',
+            'ມະຫາວິບັດຕັດຊີວິດ': 'Jue Ming (Kev Puas Tsuaj Loj)',
+            'ໂຈນໄພຜິດຖຽງ': 'Wu Gui (Tsib Tus Dab Sib Ceeb)',
+            'ຄະດີຄວາມໂຊກຮ້າຍ': 'Liu Sha (Raug Cai / Kev Txom Nyem)',
+            'ອຸປະສັກເສຍຊັບ': 'Huo Hai (Teeb Meem & Poob Nyiaj)',
+
+            // Elements & Palaces
+            'ທາດນ້ຳ': 'Zog Dej',
+            'ທາດໄມ້': 'Zog Ntoo',
+            'ທາດໄຟ': 'Zog Hluav Taws',
+            'ທາດດິນ': 'Zog Av',
+            'ທາດທອງ': 'Zog Kub',
+            'ທິດເໜືອ': 'Qaum Teb',
+            'ທິດໃຕ້': 'Qab Teb',
+            'ທິດຕາເວັນອອກສ່ຽງເໜືອ': 'Hnub Tuaj Qaum Teb',
+            'ທິດຕາເວັນອອກສ່ຽງໃຕ້': 'Hnub Tuaj Qab Teb',
+            'ທິດຕາເວັນຕົກສ່ຽງເໜືອ': 'Hnub Poob Qaum Teb',
+            'ທິດຕາເວັນຕົກສ່ຽງໃຕ້': 'Hnub Poob Qab Teb',
+            'ທິດຕາເວັນອອກ': 'Hnub Tuaj',
+            'ທິດຕາເວັນຕົກ': 'Hnub Poob'
+        };
+
+        const _PH_PRED_MAP = {
+            'ທຳນາຍຕາມທິດ': '𖬐𖬲𖬤 𖬖𖬰𖬟',
+            'ຄັງຄູ່ມື &amp; ຕຳລາ': '📖 𖬎𖬲𖬦𖬵',
+            'ຄັງຄູ່ມື & ຕຳລາ': '📖 𖬎𖬲𖬦𖬵',
+            'ເຮືອນຢິນ (ສຸສານ)': '𖪎 𖬎𖰰𖬟 𖬖𖰝',
+            'ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ &amp; ແປດທິດ': '𖬐𖬲𖬤 𖬎𖲨 𖬐𖰤 &amp; 𖭘 𖬖𖰟',
+            'ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ': '𖬐𖬲𖬤 𖬎𖲨 𖬐𖰤 & 𖭘 𖬖𖰟',
+            'ບົດທຳນາຍດາວເຫີນ &amp; ແປດທິດ': '𖬐𖬲𖬤 𖬎𖲨 𖬐𖰤 &amp; 𖭘 𖬖𖰟',
+            'ບົດທຳນາຍດາວເຫີນ & ແປດທິດ': '𖬐𖬲𖬤 𖬎𖲨 𖬐𖰤 & 𖭘 𖬖𖰟',
+            'ເລືອກຍຸກດາວເຫີນ:': '𖬘𖲝 𖬂𖲟:',
+            '💡 ວິທີຈັດວາງ/ແກ້ໄຂ:': '💡 𖬐𖰞 𖬄𖲞:',
+            '💡 ວິທີແກ້ໄຂ / ປັບຮວງຈຸ້ຍ:': '💡 𖬐𖰞 𖬄𖲞:',
+            '💡 ວິທີແກ້ໄຂ:': '💡 𖬐𖰞 𖬄𖲞:',
+            '<b>ວິທີແກ້:</b>': '<b>𖬐𖰞 𖬄𖲞:</b>',
+            '<b>ສຸຂະພາບ &amp; ຄົນ:</b>': '<b>𖬐𖰞 𖬎𖲤:</b>',
+            '<b>ສຸຂະພາບ & ຄົນ:</b>': '<b>𖬐𖰞 𖬎𖲤:</b>',
+            '<b>ການເງິນ &amp; 12 ນັກສັດ:</b>': '<b>𖬌𖲞 &amp; 𖭑𖭒 𖬎𖲤:</b>',
+            '<b>ການເງິນ & 12 ນັກສັດ:</b>': '<b>𖬌𖲞 & 𖭑𖭒 𖬎𖲤:</b>',
+            'ຄະແນນ:': '𖬂𖲟:',
+            'ທິດທີ່ສ່ອງ:': '𖬖𖰟:',
+            'ດາວນ້ຳ': '𖬆𖰞',
+            'ດາວພູ': '𖬌𖲞',
+            'ດາວຍຸກ': '𖬂𖲟',
+            'ຫຼັງພິງ:': '𖬎𖲦 𖬖𖰟:',
+            'ໜ້າບ້ານ:': '𖬄𖲝 𖬈𖰞:',
+            'ຄູ່ດາວ:': '𖬎𖲨 𖬐𖰤:',
+            'ຄູ່ດາວ': '𖬎𖲨 𖬐𖰤',
+            'ມຸງຄຸນສູງສຸດ': '𖬌𖲞 𖬎𖲤',
+            'ມຸງຄຸນ': '𖬌𖲞',
+            'ອັບປະມຸງຄຸນ': '𖬂𖰞',
+            'ປານກາງ': '𖬆𖰝',
+            'ທິດເໜືອ': '𖬈𖰞 𖬐𖰞',
+            'ທິດໃຕ້': '𖬈𖰞 𖬎𖰞',
+            'ທິດຕາເວັນອອກ': '𖬈𖰞 𖬎𖲤',
+            'ທິດຕາເວັນຕົກ': '𖬈𖰞 𖬉𖲦'
+        };
+
+        function _escapeRegexForPred(str) {
+            return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        }
+
+        const _HM_PRED_REGEX = new RegExp(
+            Object.keys(_HM_PRED_MAP).sort((a, b) => b.length - a.length).map(_escapeRegexForPred).join('|'),
+            'g'
+        );
+
+        const _PH_PRED_REGEX = new RegExp(
+            Object.keys(_PH_PRED_MAP).sort((a, b) => b.length - a.length).map(_escapeRegexForPred).join('|'),
+            'g'
+        );
+
         function localizePredictionHtml(contentHtml, lang) {
             if (!contentHtml || lang === 'lo') return contentHtml;
 
             if (lang === 'hm') {
-                const hmDict = [
-                    // Mode Switcher & Major Headers
-                    ['ທຳນາຍຕາມທິດ', 'Xam Raws Fab'],
-                    ['ຄັງຄູ່ມື &amp; ຕຳລາ', 'Phau Ntawv &amp; Tswv Yim'],
-                    ['ຄັງຄູ່ມື & ຕຳລາ', 'Phau Ntawv & Tswv Yim'],
-                    ['ເຮືອນຢິນ (ສຸສານ)', 'Tsev Yeeb / Ntxa'],
-                    ['ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ &amp; ແປດທິດ', 'Kev Ntsuas Looj Mem Hnub Qub Ya &amp; 8 Fab'],
-                    ['ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ', 'Kev Ntsuas Looj Mem Hnub Qub Ya & 8 Fab'],
-                    ['ບົດທຳນາຍດາວເຫີນ &amp; ແປດທິດ', 'Kev Ntsuas Hnub Qub Ya &amp; 8 Fab'],
-                    ['ບົດທຳນາຍດາວເຫີນ & ແປດທິດ', 'Kev Ntsuas Hnub Qub Ya & 8 Fab'],
-                    ['ວິເຄາະທິດທີ່ກ້ອງ/ເຂັມທິດກຳລັງສ່ອງໄປແບບສົດໆ', 'Ntsuas fab koob yees duab / luopan tig saib tam sim no'],
-                    ['ເລືອກຍຸກດາວເຫີນ:', 'Xaiv Caij Hnub Qub Ya:'],
-
-                    // Headings & Card Labels
-                    ['💡 ວິທີຈັດວາງ/ແກ້ໄຂ:', '💡 Kev Txhim Kho / Kho Kom Haum:'],
-                    ['💡 ວິທີແກ້ໄຂ / ປັບຮວງຈຸ້ຍ:', '💡 Kev Kho Kom Haum Looj Mem:'],
-                    ['💡 ວິທີແກ້ໄຂ:', '💡 Kev Kho Kom Haum:'],
-                    ['<b>ວິທີແກ້:</b>', '<b>Kev Kho:</b>'],
-                    ['<b>ສຸຂະພາບ &amp; ຄົນ:</b>', '<b>Kev Noj Qab Haus Huv:</b>'],
-                    ['<b>ສຸຂະພາບ & ຄົນ:</b>', '<b>Kev Noj Qab Haus Huv:</b>'],
-                    ['<b>ການເງິນ &amp; 12 ນັກສັດ:</b>', '<b>Nyiaj Txiag &amp; 12 Tus Tsiaj:</b>'],
-                    ['<b>ການເງິນ & 12 ນັກສັດ:</b>', '<b>Nyiaj Txiag & 12 Tus Tsiaj:</b>'],
-                    ['ສຸຂະພາບ &amp; ບາຣະມີ', 'Kev Noj Qab Haus Huv &amp; Koob Hmoov'],
-                    ['ສຸຂະພາບ & ບາຣະມີ', 'Kev Noj Qab Haus Huv & Koob Hmoov'],
-                    ['ຄະແນນ:', 'Qhab Nia:'],
-                    ['ທິດທີ່ສ່ອງ:', 'Fab Tig Mus:'],
-                    ['ດາວນ້ຳ', 'Hnub Qub Dej'],
-                    ['ດາວພູ', 'Hnub Qub Roob'],
-                    ['ດາວຍຸກ', 'Hnub Qub Caij'],
-                    ['ຫຼັງພິງ:', 'Tom Qab Zaum:'],
-                    ['ໜ້າບ້ານ:', 'Pem Hauv Ntej:'],
-                    ['ຄູ່ດາວ:', 'Khub Hnub Qub:'],
-                    ['ຄູ່ດາວ', 'Khub Hnub Qub'],
-                    ['ມຸງຄຸນສູງສຸດ', 'Vam Meej Tshaj Plaws'],
-                    ['ມຸງຄຸນຍອດຢ້ຽມ', 'Vam Meej Zoo Heev'],
-                    ['ມຸງຄຸນ', 'Vam Meej Zoo'],
-                    ['ອັບປະມຸງຄຸນ', 'Phem Heev'],
-                    ['ປານກາງ', 'Nruab Nrab'],
-                    ['ທົ່ວໄປ', 'Txheej Txheem'],
-                    ['ຂໍ້ຫ້າມເດັດຂາດ:', 'Yam Txwv Tsis Pub Ua:'],
-                    ['ຈຸດຕ້ອງຫ້າມ:', 'Chaw Txwv Tsis Pub Ua:'],
-                    ['ຫ້າມເຈາະທຸບ', 'Txwv Khawb Rhuav'],
-                    ['ລະວັງສຸຂະພາບ', 'Ceev Faj Kev Noj Qab Haus Huv'],
-
-                    // Categories & Navigation
-                    ['ດາວເຫີນ &amp; ພະລັງຍຸກ', 'Hnub Qub Ya &amp; Zog Caij'],
-                    ['ດາວເຫີນ & ພະລັງຍຸກ', 'Hnub Qub Ya & Zog Caij'],
-                    ['ສາຍນ້ຳ &amp; ມັງກອນດິນ', 'Dej Ntws &amp; Zaj Av'],
-                    ['ສາຍນ້ຳ & ມັງກອນດິນ', 'Dej Ntws & Zaj Av'],
-                    ['ເຂັມທິດ &amp; 24 ຂຸນເຂົາ', 'Koob Luopan &amp; 24 Roob'],
-                    ['ເຂັມທິດ & 24 ຂຸນເຂົາ', 'Koob Luopan & 24 Roob'],
-                    ['ທິດພາຍໃນ &amp; ແປດທິດປາໄຈ່', 'Hauv Tsev &amp; Ba Zhai 8 Fab'],
-                    ['ທິດພາຍໃນ & ແປດທິດປາໄຈ່', 'Hauv Tsev & Ba Zhai 8 Fab'],
-                    ['ໂຫລາສາດ &amp; ດວງຊາຕາ', 'BaZi &amp; Xam Hnub Nyoog'],
-                    ['ໂຫລາສາດ & ດວງຊາຕາ', 'BaZi & Xam Hnub Nyoog'],
-                    ['🔍 ຄົ້ນຫາວິຊາ...', '🔍 Nrhiav tswv yim...'],
-                    ['ທັງໝົດ', 'Tag Nrho'],
-
-                    // Common Rooms
-                    ['ປະຕູໃຫຍ່ໜ້າບ້ານ', 'Qhov Rooj Loj Pem Tsev'],
-                    ['ປະຕູໃຫຍ່', 'Qhov Rooj Loj'],
-                    ['ປະຕູຫ້ອງນອນ', 'Qhov Rooj Chav Pw'],
-                    ['ຫ້ອງນອນໃຫຍ່', 'Chav Pw Loj'],
-                    ['ຫ້ອງນອນ', 'Chav Pw'],
-                    ['ຫ້ອງຄົວ', 'Chav Ua Noj'],
-                    ['ປະຕູຫ້ອງຄົວ', 'Qhov Rooj Chav Ua Noj'],
-                    ['ຫ້ອງນ້ຳ', 'Chav Dej'],
-                    ['ປະຕູຫ້ອງນ້ຳ', 'Qhov Rooj Chav Dej'],
-                    ['ຫ້ອງຮັບແຂກ', 'Chav Txais Qhua'],
-                    ['ຫ້ອງເຮັດວຽກ', 'Chav Ua Hauj Lwm'],
-                    ['ຫ້ອງພະ / ຫ້ອງບູຊາ', 'Chav Dab Qhuas / Ntuj'],
-                    ['ຫ້ອງພະ', 'Chav Dab Qhuas'],
-                    ['ຫ້ອງເກັບເງິນ', 'Chav Khaws Nyiaj'],
-                    ['ປະຕູລະບຽງ / ປະຕູເລື່ອນ', 'Qhov Rooj Tshav Saum Tsev'],
-                    ['ປະຕູລະບຽງ', 'Qhov Rooj Tshav Saum'],
-                    ['ລະບຽງ / ດາດຟ້າ', 'Tshav Saum Tsev'],
-                    ['ບັນໄດ', 'Vaj Ris'],
-                    ['ໂຮງລົດ', 'Chaw Nres Tsheb'],
-                    ['ສວນດອກໄມ້', 'Vaj Paj Ntsuab'],
-                    ['ໜອງນ້ຳ / ນ້ຳພຸ', 'Pas Dej / Dej Txeej'],
-                    ['ຮົ້ວບ້ານ', 'Phab Ntsa / Ciam Av'],
-                    ['ປ່ອງຢ້ຽມ', 'Qhov Rais'],
-
-                    // Formations & Special Terms
-                    ['旺山旺向 (ຮຸ່ງເຮືອງທັງຄົນແລະຊັບ)', 'Wang Shan Wang Xiang (Vam Meej Nyiaj Txiag & Neeg)'],
-                    ['双星到向 (ດາວຄູ່ລວມໜ້າບ້ານ ໂຊກລາບມະຫາສານ)', 'Shuang Xing Dao Xiang (Hnub Qub Khub Pem Tsev)'],
-                    ['双星到座 (ດາວຄູ່ລວມຫຼັງພິງ ບາຣະມີຄົນດີເລີດ)', 'Shuang Xing Dao Zuo (Hnub Qub Khub Tom Qab)'],
-                    ['上山下水 (ຂຶ້ນເຂົາລົງນ້ຳ ລະວັງສູນເສຍ)', 'Shang Shan Xia Shui (Nce Roob Nqes Dej - Ceev Faj)'],
-                    ['ປະຕູເສີມໂຊກ (城门诀)', 'Qhov Rooj Txais Koob Hmoov (Cheng Men)'],
-                    ['ເຈັດດາວປຸ້ນຊັບ (七星打劫)', 'Xya Lub Hnub Qub Yuam Zog (Qi Xing Da Jie)'],
-                    ['ຜັງຕົກຮ່ອງເດີມ (伏吟)', 'Fu Yin (Zog Poob Qhov Qub)'],
-                    ['ຜັງປະທະກັບ (反吟)', 'Fan Yin (Zog Sib Tsoo)'],
-
-                    // Ba Zhai Stars
-                    ['ໂຊກລາບຮຸ່ງເຮືອງ', 'Sheng Qi (Nyiaj Txiag Nplua Mias)'],
-                    ['ສຸຂະພາບໝໍເທບ', 'Tian Yi (Noj Qab Haus Huv)'],
-                    ['ຄວາມຮັກອາຍຸຍືນ', 'Yan Nian (Kev Hlub Ntev Luag)'],
-                    ['ສະຕິປັນຍາໝັ້ນຄົງ', 'Fu Wei (Kev Thaj Yeeb Tswv Yim)'],
-                    ['ມະຫາວິບັດຕັດຊີວິດ', 'Jue Ming (Kev Puas Tsuaj Loj)'],
-                    ['ໂຈນໄພຜິດຖຽງ', 'Wu Gui (Tsib Tus Dab Sib Ceeb)'],
-                    ['ຄະດີຄວາມໂຊກຮ້າຍ', 'Liu Sha (Raug Cai / Kev Txom Nyem)'],
-                    ['ອຸປະສັກເສຍຊັບ', 'Huo Hai (Teeb Meem & Poob Nyiaj)'],
-
-                    // Elements & Palaces
-                    ['ທາດນ້ຳ', 'Zog Dej'],
-                    ['ທາດໄມ້', 'Zog Ntoo'],
-                    ['ທາດໄຟ', 'Zog Hluav Taws'],
-                    ['ທາດດິນ', 'Zog Av'],
-                    ['ທາດທອງ', 'Zog Kub'],
-                    ['ທິດເໜືອ', 'Qaum Teb'],
-                    ['ທິດໃຕ້', 'Qab Teb'],
-                    ['ທິດຕາເວັນອອກສ່ຽງເໜືອ', 'Hnub Tuaj Qaum Teb'],
-                    ['ທິດຕາເວັນອອກສ່ຽງໃຕ້', 'Hnub Tuaj Qab Teb'],
-                    ['ທິດຕາເວັນຕົກສ່ຽງເໜືອ', 'Hnub Poob Qaum Teb'],
-                    ['ທິດຕາເວັນຕົກສ່ຽງໃຕ້', 'Hnub Poob Qab Teb'],
-                    ['ທິດຕາເວັນອອກ', 'Hnub Tuaj'],
-                    ['ທິດຕາເວັນຕົກ', 'Hnub Poob']
-                ];
-
-                let res = contentHtml;
-                for (const [lao, hmong] of hmDict) {
-                    res = res.split(lao).join(hmong);
-                }
-                return res;
+                return contentHtml.replace(_HM_PRED_REGEX, (match) => _HM_PRED_MAP[match] || match);
             }
 
             if (lang === 'ph') {
-                const phDict = [
-                    ['ທຳນາຍຕາມທິດ', '𖬐𖬲𖬤 𖬖𖬰𖬟'],
-                    ['ຄັງຄູ່ມື &amp; ຕຳລາ', '📖 𖬎𖬲𖬦𖬵'],
-                    ['ຄັງຄູ່ມື & ຕຳລາ', '📖 𖬎𖬲𖬦𖬵'],
-                    ['ເຮືອນຢິນ (ສຸສານ)', '𖪎 𖬎𖰰𖬟 𖬖𖰝'],
-                    ['ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ &amp; ແປດທິດ', '𖬐𖬲𖬤 𖬎𖲨 𖬐𖰤 &amp; 𖭘 𖬖𖰟'],
-                    ['ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ', '𖬐𖬲𖬤 𖬎𖲨 𖬐𖰤 & 𖭘 𖬖𖰟'],
-                    ['ບົດທຳນາຍດາວເຫີນ &amp; ແປດທິດ', '𖬐𖬲𖬤 𖬎𖲨 𖬐𖰤 &amp; 𖭘 𖬖𖰟'],
-                    ['ບົດທຳນາຍດາວເຫີນ & ແປດທິດ', '𖬐𖬲𖬤 𖬎𖲨 𖬐𖰤 & 𖭘 𖬖𖰟'],
-                    ['ເລືອກຍຸກດາວເຫີນ:', '𖬘𖲝 𖬂𖲟:'],
-                    ['💡 ວິທີຈັດວາງ/ແກ້ໄຂ:', '💡 𖬐𖰞 𖬄𖲞:'],
-                    ['💡 ວິທີແກ້ໄຂ / ປັບຮວງຈຸ້ຍ:', '💡 𖬐𖰞 𖬄𖲞:'],
-                    ['💡 ວິທີແກ້ໄຂ:', '💡 𖬐𖰞 𖬄𖲞:'],
-                    ['<b>ວິທີແກ້:</b>', '<b>𖬐𖰞 𖬄𖲞:</b>'],
-                    ['<b>ສຸຂະພາບ &amp; ຄົນ:</b>', '<b>𖬐𖰞 𖬎𖲤:</b>'],
-                    ['<b>ສຸຂະພາບ & ຄົນ:</b>', '<b>𖬐𖰞 𖬎𖲤:</b>'],
-                    ['<b>ການເງິນ &amp; 12 ນັກສັດ:</b>', '<b>𖬌𖲞 &amp; 𖭑𖭒 𖬎𖲤:</b>'],
-                    ['<b>ການເງິນ & 12 ນັກສັດ:</b>', '<b>𖬌𖲞 & 𖭑𖭒 𖬎𖲤:</b>'],
-                    ['ຄະແນນ:', '𖬂𖲟:'],
-                    ['ທິດທີ່ສ່ອງ:', '𖬖𖰟:'],
-                    ['ດາວນ້ຳ', '𖬆𖰞'],
-                    ['ດາວພູ', '𖬌𖲞'],
-                    ['ດາວຍຸກ', '𖬂𖲟'],
-                    ['ຫຼັງພິງ:', '𖬎𖲦 𖬖𖰟:'],
-                    ['ໜ້າບ້ານ:', '𖬄𖲝 𖬈𖰞:'],
-                    ['ຄູ່ດາວ:', '𖬎𖲨 𖬐𖰤:'],
-                    ['ຄູ່ດາວ', '𖬎𖲨 𖬐𖰤'],
-                    ['ມຸງຄຸນສູງສຸດ', '𖬌𖲞 𖬎𖲤'],
-                    ['ມຸງຄຸນ', '𖬌𖲞'],
-                    ['ອັບປະມຸງຄຸນ', '𖬂𖰞'],
-                    ['ປານກາງ', '𖬆𖰝'],
-                    ['ທິດເໜືອ', '𖬈𖰞 𖬐𖰞'],
-                    ['ທິດໃຕ້', '𖬈𖰞 𖬎𖰞'],
-                    ['ທິດຕາເວັນອອກ', '𖬈𖰞 𖬎𖲤'],
-                    ['ທິດຕາເວັນຕົກ', '𖬈𖰞 𖬉𖲦']
-                ];
-
-                let res = contentHtml;
-                for (const [lao, ph] of phDict) {
-                    res = res.split(lao).join(ph);
-                }
-                return res;
+                return contentHtml.replace(_PH_PRED_REGEX, (match) => _PH_PRED_MAP[match] || match);
             }
 
             return contentHtml;
@@ -12946,6 +12953,41 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
             if (pcContent) pcContent.innerHTML = localizePredictionHtml(pcHtml, currentLuopanLang);
         }
 
+        // High-Performance Throttled Prediction Scheduler (Ensures 60-120 FPS silky smooth compass rotation)
+        let _lastPredictionUpdateTime = 0;
+        let _pendingPredictionFacingDeg = null;
+        let _predictionThrottleTimer = null;
+
+        function scheduleLivePrediction(faceDeg, immediate = false) {
+            _pendingPredictionFacingDeg = faceDeg;
+            const now = performance.now();
+
+            if (immediate || (now - _lastPredictionUpdateTime >= 90)) {
+                if (_predictionThrottleTimer) {
+                    clearTimeout(_predictionThrottleTimer);
+                    _predictionThrottleTimer = null;
+                }
+                _lastPredictionUpdateTime = now;
+                updateLivePrediction(_pendingPredictionFacingDeg);
+                if (latestFlyingChart) {
+                    renderFloorplanOverlays(latestFlyingChart);
+                }
+            } else {
+                if (!_predictionThrottleTimer) {
+                    _predictionThrottleTimer = setTimeout(() => {
+                        _predictionThrottleTimer = null;
+                        _lastPredictionUpdateTime = performance.now();
+                        if (_pendingPredictionFacingDeg !== null) {
+                            updateLivePrediction(_pendingPredictionFacingDeg);
+                            if (latestFlyingChart) {
+                                renderFloorplanOverlays(latestFlyingChart);
+                            }
+                        }
+                    }, 90);
+                }
+            }
+        }
+
 function updateCompassTransform(deltaAngle = null) {
             const normRot = ((currentRotation % 360) + 360) % 360;
             compassDisk.setAttribute('transform', `rotate(${normRot.toFixed(2)}, ${CX}, ${CY})`);
@@ -13030,11 +13072,8 @@ function updateCompassTransform(deltaAngle = null) {
                 magneticNeedle.setAttribute('transform', `rotate(${currentNeedleBaseAngle.toFixed(2)}, ${CX}, ${CY})`);
             }
 
-            // Real-time Flying Stars & BaZhai Live Prediction Update
-            updateLivePrediction(effectiveFacingDeg);
-            if (latestFlyingChart) {
-                renderFloorplanOverlays(latestFlyingChart);
-            }
+            // Real-time Flying Stars & BaZhai Live Prediction Update (Throttled for 60 FPS rotation)
+            scheduleLivePrediction(effectiveFacingDeg, false);
 
             // Real Magnetic Needle with fluid physics (manual drag mode only)
             if (!liveCompassActive) {
@@ -13394,6 +13433,19 @@ function updateCompassTransform(deltaAngle = null) {
             isRightOrMiddleClickPan = false;
             viewport.style.cursor = dragMode === 'compass' ? 'grab' : 'move';
             try { viewport.releasePointerCapture(e.pointerId); } catch(err) {}
+            if (_pendingPredictionFacingDeg !== null) {
+                scheduleLivePrediction(_pendingPredictionFacingDeg, true);
+            }
+        });
+
+        viewport.addEventListener('pointercancel', (e) => {
+            isDragging = false;
+            isRightOrMiddleClickPan = false;
+            viewport.style.cursor = dragMode === 'compass' ? 'grab' : 'move';
+            try { viewport.releasePointerCapture(e.pointerId); } catch(err) {}
+            if (_pendingPredictionFacingDeg !== null) {
+                scheduleLivePrediction(_pendingPredictionFacingDeg, true);
+            }
         });
 
         viewport.addEventListener('wheel', (e) => {
@@ -13429,6 +13481,12 @@ function updateCompassTransform(deltaAngle = null) {
             currentRotation = parseFloat(e.target.value);
             compassCalibrationOffset = 0;
             updateCompassTransform();
+        });
+
+        rotSlider.addEventListener('change', () => {
+            if (_pendingPredictionFacingDeg !== null) {
+                scheduleLivePrediction(_pendingPredictionFacingDeg, true);
+            }
         });
 
         document.getElementById('resetRotBtn').addEventListener('click', () => {
@@ -14216,6 +14274,9 @@ function updateCompassTransform(deltaAngle = null) {
         viewport.addEventListener('touchend', (e) => {
             if (e.touches.length < 2) {
                 initialPinchDist = null;
+            }
+            if (_pendingPredictionFacingDeg !== null) {
+                scheduleLivePrediction(_pendingPredictionFacingDeg, true);
             }
         }, { passive: true });
 
