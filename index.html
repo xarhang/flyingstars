@@ -1154,7 +1154,7 @@
                 }
             },
             hm: {
-                title: 'Looj Mem (Hnub Qub Ya 9 Caij)',
+                title: 'Looj Mem (Hnub Qub Ya 9 Nyuv)',
                 appTitle: 'Looj Mem',
                 langSelect: 'Xaiv Hom Lus:',
                 facing: 'Pem Hauv Ntej',
@@ -1165,7 +1165,7 @@
                 kongwangBig: 'Ciam Loj (Da Kong Wang)',
                 kongwangSmall: 'Ciam Me (Xiao Kong Wang)',
                 mountainStar: 'Hnub Qub Roob',
-                periodStar: 'Hnub Qub Caij',
+                periodStar: 'Hnub Qub Nyuv',
                 waterStar: 'Hnub Qub Dej',
                 openMobile: 'Qhib Hauv Xov Tooj',
                 glossary: '📖 Phau Txhais Lus',
@@ -1215,7 +1215,7 @@
                 inauspiciousTitle: '4 Fab Phem (Txwv Tsis Zoo):',
                 highlightGuaOnDisk: 'Qhia Fab Zoo Saum Daim Luopan',
                 predSectionTitle: 'Kev Ntsuas Hnub Qub Ya & 8 Fab',
-                periodLabel: 'Caij:',
+                periodLabel: 'Nyuv:',
                 floorplanTitle: 'Tso Daim Duab Tsev Rau Saum',
                 selectFloorplan: 'Xaiv Duab Tsev',
                 clearFloorplan: 'Tshem Duab Tsev',
@@ -1706,22 +1706,22 @@
             const lblMobPer = document.getElementById('lblMobilePeriodSelect');
             if (lblMobPer) {
                 const svg = lblMobPer.querySelector('svg');
-                lblMobPer.innerHTML = (svg ? svg.outerHTML + ' ' : '') + (lang === 'hm' ? 'Xaiv Caij Hnub Qub Ya:' : lang === 'ph' ? '𖬘𖲝 𖬂𖲟:' : 'ເລືອກຍຸກດາວເຫີນ:');
+                lblMobPer.innerHTML = (svg ? svg.outerHTML + ' ' : '') + (lang === 'hm' ? 'Xaiv Nyuv Hnub Qub Ya:' : lang === 'ph' ? '𖬘𖲝 𖬂𖲟:' : 'ເລືອກຍຸກດາວເຫີນ:');
             }
 
             // Period Select Options
             ['desktopPeriodSelect', 'mobilePeriodSelect'].forEach(id => {
                 const sel = document.getElementById(id);
                 if (sel && sel.options.length >= 9) {
-                    sel.options[0].textContent = lang === 'hm' ? 'Caij 9 (2024 - 2043) · Tam Sim No' : lang === 'ph' ? '𖬎𖲤 𖭐 (2024 - 2043)' : 'ຍຸກ 9 (2024 - 2043) · ປັດຈຸບັນ';
-                    sel.options[1].textContent = lang === 'hm' ? 'Caij 8 (2004 - 2023)' : lang === 'ph' ? '𖬎𖲤 𖭏 (2004 - 2023)' : 'ຍຸກ 8 (2004 - 2023)';
-                    sel.options[2].textContent = lang === 'hm' ? 'Caij 7 (1984 - 2003)' : lang === 'ph' ? '𖬎𖲤 𖭎 (1984 - 2003)' : 'ຍຸກ 7 (1984 - 2003)';
-                    sel.options[3].textContent = lang === 'hm' ? 'Caij 6 (1964 - 1983)' : lang === 'ph' ? '𖬎𖲤 𖭍 (1964 - 1983)' : 'ຍຸກ 6 (1964 - 1983)';
-                    sel.options[4].textContent = lang === 'hm' ? 'Caij 5 (1944 - 1963)' : lang === 'ph' ? '𖬎𖲤 𖭌 (1944 - 1963)' : 'ຍຸກ 5 (1944 - 1963)';
-                    sel.options[5].textContent = lang === 'hm' ? 'Caij 4 (1924 - 1943)' : lang === 'ph' ? '𖬎𖲤 𖭋 (1924 - 1943)' : 'ຍຸກ 4 (1924 - 1943)';
-                    sel.options[6].textContent = lang === 'hm' ? 'Caij 3 (1904 - 1923)' : lang === 'ph' ? '𖬎𖲤 𖭊 (1904 - 1923)' : 'ຍຸກ 3 (1904 - 1923)';
-                    sel.options[7].textContent = lang === 'hm' ? 'Caij 2 (1884 - 1903)' : lang === 'ph' ? '𖬎𖲤 𖭉 (1884 - 1903)' : 'ຍຸກ 2 (1884 - 1903)';
-                    sel.options[8].textContent = lang === 'hm' ? 'Caij 1 (1864 - 1883)' : lang === 'ph' ? '𖬎𖲤 𖭈 (1864 - 1883)' : 'ຍຸກ 1 (1864 - 1883)';
+                    sel.options[0].textContent = lang === 'hm' ? 'Nyuv 9 (2024 - 2043) · Tam Sim No' : lang === 'ph' ? '𖬎𖲤 𖭐 (2024 - 2043)' : 'ຍຸກ 9 (2024 - 2043) · ປັດຈຸບັນ';
+                    sel.options[1].textContent = lang === 'hm' ? 'Nyuv 8 (2004 - 2023)' : lang === 'ph' ? '𖬎𖲤 𖭏 (2004 - 2023)' : 'ຍຸກ 8 (2004 - 2023)';
+                    sel.options[2].textContent = lang === 'hm' ? 'Nyuv 7 (1984 - 2003)' : lang === 'ph' ? '𖬎𖲤 𖭎 (1984 - 2003)' : 'ຍຸກ 7 (1984 - 2003)';
+                    sel.options[3].textContent = lang === 'hm' ? 'Nyuv 6 (1964 - 1983)' : lang === 'ph' ? '𖬎𖲤 𖭍 (1964 - 1983)' : 'ຍຸກ 6 (1964 - 1983)';
+                    sel.options[4].textContent = lang === 'hm' ? 'Nyuv 5 (1944 - 1963)' : lang === 'ph' ? '𖬎𖲤 𖭌 (1944 - 1963)' : 'ຍຸກ 5 (1944 - 1963)';
+                    sel.options[5].textContent = lang === 'hm' ? 'Nyuv 4 (1924 - 1943)' : lang === 'ph' ? '𖬎𖲤 𖭋 (1924 - 1943)' : 'ຍຸກ 4 (1924 - 1943)';
+                    sel.options[6].textContent = lang === 'hm' ? 'Nyuv 3 (1904 - 1923)' : lang === 'ph' ? '𖬎𖲤 𖭊 (1904 - 1923)' : 'ຍຸກ 3 (1904 - 1923)';
+                    sel.options[7].textContent = lang === 'hm' ? 'Nyuv 2 (1884 - 1903)' : lang === 'ph' ? '𖬎𖲤 𖭉 (1884 - 1903)' : 'ຍຸກ 2 (1884 - 1903)';
+                    sel.options[8].textContent = lang === 'hm' ? 'Nyuv 1 (1864 - 1883)' : lang === 'ph' ? '𖬎𖲤 𖭈 (1864 - 1883)' : 'ຍຸກ 1 (1864 - 1883)';
                 }
             });
         }
@@ -2179,7 +2179,7 @@
                      .replace(/ບ້ານເກິ່ນ|ບ້ານເກິ້ນ/, 'Vaj Gen')
                      .replace('ບ້ານເຈິ້ນ', 'Vaj Zhen')
                      .replace('ບ້ານຊຸ່ນ', 'Vaj Xun');
-                t = t.replace(/ຍຸກ (\d)/g, 'Txheej $1');
+                t = t.replace(/ຍຸກ (\d)/g, 'Nyuv $1');
                 t = t.replace(/(\d+)ກ\.ພ\.(\d+)-(\d+)ກ\.ພ\.(\d+)/g, '$1/2/$2-$3/2/$4');
                 t = t.replace('ຈະເລີນຮຸ່ງເຮືອງ', 'Sheng Qi')
                      .replace('ໝໍເທບ', 'Tian Yi')
@@ -7802,10 +7802,10 @@ function setYangTab(tabName) {
 
         const PREDICTION_CAT_I18N = {
             cat_flying_stars: {
-                hm: 'Hnub Qub Ya & Zog Caij', ph: '𖬎𖲨 𖬐𖰤 & 𖬔𖲩 𖬂𖲟',
+                hm: 'Hnub Qub Ya & Zog Nyuv', ph: '𖬎𖲨 𖬐𖰤 & 𖬔𖲩 𖬂𖲟',
                 schoolHm: 'Tsev Kawm Xuan Kong Flying Stars', schoolPh: '𖬐𖰞 𖬎𖲨 𖬐𖰤 (Xuan Kong)',
                 canonHm: 'Phau Shen Shi, Zi Bai Jue, Jiu Xing', canonPh: '📜 Shen Shi, Zi Bai Jue',
-                descHm: 'Ntsuas zog 9 caij, 81 khub hnub qub, hnub qub xyoo/hli, hnub nyoog tsev & Zheng Shen-Ling Tang',
+                descHm: 'Ntsuas zog 9 nyuv, 81 khub hnub qub, hnub qub xyoo/hli, hnub nyoog tsev & Zheng Shen-Ling Tang',
                 descPh: '𖬐𖲤 𖭙 𖬂𖲟, 𖭘𖭑 𖬎𖲨 𖬐𖰤, Zheng Shen-Ling Tang',
                 badgeHm: '10 Yam', badgePh: '𖭑𖭐 𖬎𖲤'
             },
@@ -7869,8 +7869,8 @@ function setYangTab(tabName) {
             tab_monthmatrix: { hm: 'Hnub Qub 12 Hli', ph: '𖬎𖲨 𖬐𖰤 𖭑𖭒 𖬎𖲨', canonHm: 'Hli Hnub Qub Ya', canonPh: 'Hli Hnub Qub', descHm: 'Daim Ntawv 12 Hli Hnub Qub', descPh: 'Daim Ntawv 12 Hli' },
             tab_stars: { hm: '81 Khub Hnub Qub', ph: '𖭘𖭑 Khub 𖬎𖲨 𖬐𖰤', canonHm: 'Zi Bai Jue', canonPh: 'Zi Bai Jue', descHm: 'Kev Txhais 81 Khub Roob-Dej', descPh: '81 Khub Roob-Dej' },
             tab_forecast: { hm: 'Daim Ntawv Hnub Qub', ph: 'Daim Ntawv 𖬎𖲨 𖬐𖰤', canonHm: 'Looj Mem Xyoo Hli', canonPh: 'Looj Mem', descHm: 'Hnub Qub Hnub & Sij Hawm Zoo', descPh: 'Hnub Qub Hnub & Sij Hawm' },
-            tab_diyun: { hm: 'Di Yun (Hnub Nyoog Tsev)', ph: 'Di Yun', canonHm: 'Xuan Kong Di Yun', canonPh: 'Di Yun', descHm: 'Zog Caij 20-160 Xyoo', descPh: '20-160 Xyoo' },
-            tab_zhengshen: { hm: 'Zheng Shen-Ling Tang', ph: 'Zheng Shen', canonHm: 'Zheng Shen Ling Tang', canonPh: 'Zheng Shen', descHm: 'Caij 9 Fab Qab/Qaum Teb', descPh: 'Caij 9 Qab/Qaum' },
+            tab_diyun: { hm: 'Di Yun (Hnub Nyoog Tsev)', ph: 'Di Yun', canonHm: 'Xuan Kong Di Yun', canonPh: 'Di Yun', descHm: 'Zog Nyuv 20-160 Xyoo', descPh: '20-160 Xyoo' },
+            tab_zhengshen: { hm: 'Zheng Shen-Ling Tang', ph: 'Zheng Shen', canonHm: 'Zheng Shen Ling Tang', canonPh: 'Zheng Shen', descHm: 'Nyuv 9 Fab Qab/Qaum Teb', descPh: 'Nyuv 9 Qab/Qaum' },
             tab_waterdragon: { hm: 'Dej Zaj Txais Nyiaj', ph: 'Dej Zaj', canonHm: 'Phau Dej Zaj', canonPh: 'Dej Zaj', descHm: 'Dej Nkhaus Txais Nyiaj & Pas Dej', descPh: 'Dej Nkhaus Txais Nyiaj' },
             tab_longmen: { hm: 'Long Men Ba Ju', ph: 'Long Men', canonHm: '8 Vaj Dej Zaj', canonPh: '8 Vaj Dej', descHm: 'Xian Tian & Hou Tian Dej', descPh: 'Xian Tian & Hou Tian' },
             tab_pingyang: { hm: 'Ping Yang Zaj Av', ph: 'Ping Yang', canonHm: 'Ping Yang Long', canonPh: 'Ping Yang', descHm: 'Siab 1 Nti Yog Roob, Qis 1 Nti Yog Dej', descPh: 'Siab Roob, Qis Dej' },
@@ -12825,7 +12825,7 @@ function setYangTab(tabName) {
             'ບົດທຳນາຍດາວເຫີນ &amp; ແປດທິດ': 'Kev Ntsuas Hnub Qub Ya &amp; 8 Fab',
             'ບົດທຳນາຍດາວເຫີນ & ແປດທິດ': 'Kev Ntsuas Hnub Qub Ya & 8 Fab',
             'ວິເຄາະທິດທີ່ກ້ອງ/ເຂັມທິດກຳລັງສ່ອງໄປແບບສົດໆ': 'Ntsuas fab koob yees duab / luopan tig saib tam sim no',
-            'ເລືອກຍຸກດາວເຫີນ:': 'Xaiv Caij Hnub Qub Ya:',
+            'ເລືອກຍຸກດາວເຫີນ:': 'Xaiv Nyuv Hnub Qub Ya:',
 
             // Headings & Card Labels
             '💡 ວິທີຈັດວາງ/ແກ້ໄຂ:': '💡 Kev Txhim Kho / Kho Kom Haum:',
@@ -12842,7 +12842,7 @@ function setYangTab(tabName) {
             'ທິດທີ່ສ່ອງ:': 'Fab Tig Mus:',
             'ດາວນ້ຳ': 'Hnub Qub Dej',
             'ດາວພູ': 'Hnub Qub Roob',
-            'ດາວຍຸກ': 'Hnub Qub Caij',
+            'ດາວຍຸກ': 'Hnub Qub Nyuv',
             'ຫຼັງພິງ:': 'Tom Qab Zaum:',
             'ໜ້າບ້ານ:': 'Pem Hauv Ntej:',
             'ຄູ່ດາວ:': 'Khub Hnub Qub:',
@@ -12859,8 +12859,8 @@ function setYangTab(tabName) {
             'ລະວັງສຸຂະພາບ': 'Ceev Faj Kev Noj Qab Haus Huv',
 
             // Categories & Navigation
-            'ດາວເຫີນ &amp; ພະລັງຍຸກ': 'Hnub Qub Ya &amp; Zog Caij',
-            'ດາວເຫີນ & ພະລັງຍຸກ': 'Hnub Qub Ya & Zog Caij',
+            'ດາວເຫີນ &amp; ພະລັງຍຸກ': 'Hnub Qub Ya &amp; Zog Nyuv',
+            'ດາວເຫີນ & ພະລັງຍຸກ': 'Hnub Qub Ya & Zog Nyuv',
             'ສາຍນ້ຳ &amp; ມັງກອນດິນ': 'Dej Ntws &amp; Zaj Av',
             'ສາຍນ້ຳ & ມັງກອນດິນ': 'Dej Ntws &amp; Zaj Av',
             'ເຂັມທິດ &amp; 24 ຂຸນເຂົາ': 'Koob Luopan &amp; 24 Roob',
@@ -13062,7 +13062,7 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
                 if (mobHudP) mobHudP.innerHTML = '⭐️' + curP;
                 if (mobHudW) mobHudW.innerHTML = '💧' + curW;
                 const lblM = currentLuopanLang === 'hm' ? 'Roob' : currentLuopanLang === 'ph' ? '𖬌𖲞' : 'ພູ';
-                const lblP = currentLuopanLang === 'hm' ? 'Caij' : currentLuopanLang === 'ph' ? '𖬂𖲟' : 'ຍຸກ';
+                const lblP = currentLuopanLang === 'hm' ? 'Nyuv' : currentLuopanLang === 'ph' ? '𖬂𖲟' : 'ຍຸກ';
                 const lblW = currentLuopanLang === 'hm' ? 'Dej' : currentLuopanLang === 'ph' ? '𖬆𖰞' : 'ນ້ຳ';
                 if (hudM) hudM.innerHTML = ICONS.mountain + ' <span>' + lblM + ': ' + curM + '</span>';
                 if (hudP) hudP.innerHTML = ICONS.period + ' <span>' + lblP + ': ' + curP + '</span>';
@@ -13075,7 +13075,7 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
             if (curPal === chart.bestWealthPal) {
                 spotBadgeClass = "flex items-center justify-center gap-1.5 bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 px-2.5 py-0.5 rounded-full text-[9px] font-black shadow-md animate-pulse pointer-events-auto border border-white/60";
                 const wTxt = currentLuopanLang === 'hm'
-                    ? '【Chaw Nyiaj Txiag Zoo Tshaj Caij ' + currentPeriod + '! Hnub Qub Dej ' + curW + '】'
+                    ? '【Chaw Nyiaj Txiag Zoo Tshaj Nyuv ' + currentPeriod + '! Hnub Qub Dej ' + curW + '】'
                     : currentLuopanLang === 'ph'
                     ? '【𖬖𖰰𖬝 𖬌𖲞 𖭙! 𖬆𖰞 ' + curW + '】'
                     : '【ວັງໂຊກລາບສູງສຸດຍຸກ ' + currentPeriod + '! ດາວນ້ຳ ' + curW + '】';
