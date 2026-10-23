@@ -280,23 +280,7 @@
                 </div>
             </div>
 
-            <!-- MAGNETIC DECLINATION & TRUE NORTH (18 ແຂວງໃນລາວ) -->
-            <div class="pt-2 border-t border-slate-800/80 flex flex-col gap-1.5">
-                <div class="flex items-center justify-between text-xs font-semibold">
-                    <span class="text-slate-200 flex items-center gap-1.5">
-                        🧭 ທິດເໜືອແທ້ (True North)
-                    </span>
-                    <label class="flex items-center gap-1.5 cursor-pointer text-[11px] text-amber-300">
-                        <input type="checkbox" id="trueNorthToggle" class="accent-amber-500 rounded cursor-pointer" onchange="toggleTrueNorth(this.checked)">
-                        <span id="trueNorthStatusText">ເໜືອແມ່ເຫຼັກ</span>
-                    </label>
-                </div>
-                <div class="flex items-center gap-1.5">
-                    <select id="provinceSelect" class="flex-1 bg-slate-950 border border-slate-700 text-slate-200 text-[11px] rounded-lg px-2 py-1 outline-none" onchange="handleProvinceChange(this.value)">
-                    </select>
-                    <span id="declinationBadge" class="text-[10px] font-mono font-bold text-cyan-300 bg-cyan-950/80 border border-cyan-800/60 px-2 py-1 rounded shrink-0">-0.55°</span>
-                </div>
-            </div>
+
 
             <!-- LIVE SENSOR COMPASS TOGGLE -->
             <button type="button" id="toggleLiveCompassBtn" class="w-full py-2 px-2.5 text-xs font-bold rounded-lg transition border border-slate-700 bg-slate-950 hover:bg-slate-800 text-amber-300 hover:text-amber-200 flex items-center justify-center gap-1.5 shadow mt-0.5">
@@ -3727,33 +3711,63 @@
         }
 
         // =========================================================================
-        // MASTER SYSTEM 2.6: MAGNETIC DECLINATION (18 ແຂວງໃນລາວ & ທິດເໜືອແທ້)
+        // MASTER SYSTEM 2.6: SMART AUTO MAGNETIC DECLINATION (GPS Auto-Detection & Context-Aware)
         // =========================================================================
-        let useTrueNorth = false;
+        let useTrueNorth = false; // Automatically context-aware
         let selectedProvinceDeclination = -0.55;
+        let isSmartGpsDetected = false;
 
         const LAO_PROVINCES = [
-            { name: 'ນະຄອນຫຼວງວຽງຈັນ (Vientiane)', dec: -0.55 },
-            { name: 'ຫຼວງພະບາງ (Luang Prabang)', dec: -0.42 },
-            { name: 'ຈຳປາສັກ / ປາກເຊ (Champasak)', dec: -0.72 },
-            { name: 'ສະຫວັນນະເຂດ (Savannakhet)', dec: -0.65 },
-            { name: 'ຄຳມ່ວນ / ທ່າແຂກ (Khammouane)', dec: -0.58 },
-            { name: 'ຊຽງຂວາງ / ໂພນສະຫວັນ (Xieng Khouang)', dec: -0.45 },
-            { name: 'ໄຊຍະບູລີ (Xayaboury)', dec: -0.40 },
-            { name: 'ບໍ່ແກ້ວ / ຫ້ວຍຊາຍ (Bokeo)', dec: -0.35 },
-            { name: 'ຫຼວງນ້ຳທາ (Luang Namtha)', dec: -0.32 },
-            { name: 'ຜົ້ງສາລີ (Phongsaly)', dec: -0.28 },
-            { name: 'ອຸດົມໄຊ (Oudomxay)', dec: -0.38 },
-            { name: 'ບໍລິຄຳໄຊ / ປາກຊັນ (Bolikhamxay)', dec: -0.56 },
-            { name: 'ສາລະວັນ (Salavan)', dec: -0.68 },
-            { name: 'ເຊກອງ (Sekong)', dec: -0.75 },
-            { name: 'ອັດຕະປື (Attapeu)', dec: -0.78 },
-            { name: 'ໄຊສົມບູນ (Xaysomboun)', dec: -0.50 },
-            { name: 'ຫົວພັນ / ຊຳເໜືອ (Huaphanh)', dec: -0.40 },
-            { name: 'ແຂວງວຽງຈັນ / ໂພນໂຮງ', dec: -0.52 },
-            { name: 'ບາງກອກ (Bangkok)', dec: -0.60 },
-            { name: 'ຊຽງໃໝ່ (Chiang Mai)', dec: -0.38 }
+            { name: 'ນະຄອນຫຼວງວຽງຈັນ (Vientiane)', dec: -0.55, lat: 17.97, lng: 102.63 },
+            { name: 'ຫຼວງພະບາງ (Luang Prabang)', dec: -0.42, lat: 19.89, lng: 102.14 },
+            { name: 'ຈຳປາສັກ / ປາກເຊ (Champasak)', dec: -0.72, lat: 15.12, lng: 105.78 },
+            { name: 'ສະຫວັນນະເຂດ (Savannakhet)', dec: -0.65, lat: 16.56, lng: 104.75 },
+            { name: 'ຄຳມ່ວນ / ທ່າແຂກ (Khammouane)', dec: -0.58, lat: 17.40, lng: 104.83 },
+            { name: 'ຊຽງຂວາງ / ໂພນສະຫວັນ (Xieng Khouang)', dec: -0.45, lat: 19.45, lng: 103.18 },
+            { name: 'ໄຊຍະບູລີ (Xayaboury)', dec: -0.40, lat: 19.25, lng: 101.75 },
+            { name: 'ບໍ່ແກ້ວ / ຫ້ວຍຊາຍ (Bokeo)', dec: -0.35, lat: 20.27, lng: 100.41 },
+            { name: 'ຫຼວງນ້ຳທາ (Luang Namtha)', dec: -0.32, lat: 20.95, lng: 101.40 },
+            { name: 'ຜົ້ງສາລີ (Phongsaly)', dec: -0.28, lat: 21.68, lng: 102.10 },
+            { name: 'ອຸດົມໄຊ (Oudomxay)', dec: -0.38, lat: 20.68, lng: 101.98 },
+            { name: 'ບໍລິຄຳໄຊ / ປາກຊັນ (Bolikhamxay)', dec: -0.56, lat: 18.38, lng: 103.66 },
+            { name: 'ສາລະວັນ (Salavan)', dec: -0.68, lat: 15.72, lng: 106.42 },
+            { name: 'ເຊກອງ (Sekong)', dec: -0.75, lat: 15.34, lng: 106.72 },
+            { name: 'ອັດຕະປື (Attapeu)', dec: -0.78, lat: 14.81, lng: 106.83 },
+            { name: 'ໄຊສົມບູນ (Xaysomboun)', dec: -0.50, lat: 18.92, lng: 103.09 },
+            { name: 'ຫົວພັນ / ຊຳເໜືອ (Huaphanh)', dec: -0.40, lat: 20.42, lng: 104.05 },
+            { name: 'ແຂວງວຽງຈັນ / ໂພນໂຮງ', dec: -0.52, lat: 18.50, lng: 102.42 },
+            { name: 'ບາງກອກ (Bangkok)', dec: -0.60, lat: 13.75, lng: 100.50 },
+            { name: 'ຊຽງໃໝ່ (Chiang Mai)', dec: -0.38, lat: 18.79, lng: 98.98 }
         ];
+
+        // Smart Geolocation Auto-Calibration (Silent background detection)
+        function initSmartMagneticDeclination() {
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => {
+                        const lat = pos.coords.latitude;
+                        const lng = pos.coords.longitude;
+                        let closest = LAO_PROVINCES[0];
+                        let minDist = Infinity;
+                        LAO_PROVINCES.forEach(p => {
+                            const d = Math.hypot(lat - p.lat, lng - p.lng);
+                            if (d < minDist) {
+                                minDist = d;
+                                closest = p;
+                            }
+                        });
+                        selectedProvinceDeclination = closest.dec;
+                        isSmartGpsDetected = true;
+                        updateCompassTransform();
+                    },
+                    () => {
+                        // Silent default: Laos baseline -0.55°
+                        selectedProvinceDeclination = -0.55;
+                    },
+                    { timeout: 6000, maximumAge: 86400000 }
+                );
+            }
+        }
 
         function setProvinceDeclination(decVal) {
             selectedProvinceDeclination = parseFloat(decVal) || -0.55;
@@ -13227,17 +13241,12 @@ function updateCompassTransform(deltaAngle = null) {
         }
 
         function initProvinceSelect() {
-            const sel = document.getElementById('provinceSelect');
-            if (!sel) return;
-            sel.innerHTML = LAO_PROVINCES.map((p, idx) =>
-                `<option value="${p.dec}" ${idx === 0 ? 'selected' : ''}>${p.name}</option>`
-            ).join('');
+            // Smart auto-detection replaces manual select
+            initSmartMagneticDeclination();
         }
 
         function handleProvinceChange(val) {
             setProvinceDeclination(val);
-            const badge = document.getElementById('declinationBadge');
-            if (badge) badge.textContent = (parseFloat(val) > 0 ? '+' : '') + parseFloat(val).toFixed(2) + '°';
         }
 
         function setDisplayMode(transparent) {
