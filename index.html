@@ -491,7 +491,34 @@
                     </div>
                 </div>
 
-                <!-- 4 Auspicious & 4 Inauspicious Directions Grid -->
+<!-- Educational Deep-Dive Toggle: ປາຈື 8 ຕົວອັກສອນ 4 ເສົາຊີວິດ vs ມິ່ງກວ້າ vs ນາຢິນ -->
+                <details class="group bg-slate-900/60 border border-slate-800 rounded-lg overflow-hidden text-[11px] transition">
+                    <summary class="cursor-pointer select-none px-2.5 py-1.5 flex items-center justify-between text-slate-300 hover:text-amber-300 font-bold text-[10.5px]">
+                        <span class="flex items-center gap-1.5">
+                            <span>📖</span> <span id="lblBaziDeepGuideTitle">ຄວາມຮູ້ເລິກ: ປາຈື (八字) 8 ຕົວອັກສອນ 4 ເສົາຊີວິດ vs ມິ່ງກວ້າ</span>
+                        </span>
+                        <span class="text-xs text-slate-400 group-open:rotate-180 transition">▾</span>
+                    </summary>
+                    <div id="lblBaziDeepGuideBody" class="px-2.5 pb-2 text-[10px] text-slate-300 space-y-1.5 border-t border-slate-800/80 pt-1.5 leading-relaxed">
+                        <div>
+                            <b class="text-amber-300">1. ປາຈື / ໂປຍຍີ່ (八字 - BaZi):</b> ແປຕົງໂຕວ່າ <b>"8 ຕົວອັກສອນ 4 ເສົາຊີວິດ"</b> (ເສົາປີ, ເສົາເດືອນ, ເສົາວັນ, ເສົາເວລາ).
+                        </div>
+                        <div>
+                            • <b>ເສົາວັນ (日柱):</b> ຄື <b>"ດິດຖີຕົວຕົນແທ້ (Day Master)"</b> ເປັນທາດແທ້ຂອງເຈົ້າຊາຕາ 100% ບໍ່ແມ່ນປີເກີດ! (ໃຊ້ເລືອກອາຊີບ, ວັດສະດຸ, ສີສັນ & ຄວາມເປັນຕົວຕົນ).
+                        </div>
+                        <div>
+                            • <b>ເສົາປີ (年柱):</b> ຄື <b>"ທາດປີເກີດ & ນາຢິນ"</b> ເປັນເປືອກນອກ ໃຊ້ເບິ່ງດວງສົມພົງຄູ່ຄອງ ແລະ ປີຊົງ.
+                        </div>
+                        <div>
+                            • <b>ຍົງສິ່ນ (用神):</b> ຄືທາດທີ່ດວງ 4 ເສົາຕ້ອງການທີ່ສຸດເພື່ອສ້າງຄວາມສົມດຸນ ໃຊ້ດຶງດູດໂຊກລາບ ແລະ ແກ້ຮວງຈຸ້ຍ.
+                        </div>
+                        <div>
+                            <b class="text-amber-300">2. ມິ່ງກວ້າ (命卦 - Ming Gua):</b> ມາຈາກສາດປາໄຈ້ (八宅) ໃຊ້ສຳລັບ <b>ຕັ້ງທິດເຮືອນ, ຫົວນອນ ແລະ 4 ທິດມຸງຄຸນ</b> ເພື່ອເຊື່ອມຕໍ່ກັບສະໜາມແມ່ເຫຼັກໂລກ.
+                        </div>
+                    </div>
+                </details>
+
+                                <!-- 4 Auspicious & 4 Inauspicious Directions Grid -->
                 <div class="border-t border-slate-800/80 pt-1.5 flex flex-col gap-1.5">
                     <div class="bg-emerald-950/40 border border-emerald-500/30 rounded-lg p-2 flex flex-col gap-1">
                         <span id="lblAuspiciousTitle" class="text-emerald-400 font-bold text-[10px] flex items-center gap-1">
@@ -1614,6 +1641,30 @@
             const lblYearEl = document.getElementById('lblYearElement');
             if (lblYearEl) lblYearEl.textContent = (lang === 'hm' ? '🪙 4. Xyoo Yug:' : lang === 'ph' ? '🪙 4. 𖬘𖲝:' : '🪙 4. ປີເກີດ:');
             const lblYearPurp = document.getElementById('lblYearPurpose');
+            const lblDeepTitle = document.getElementById('lblBaziDeepGuideTitle');
+            if (lblDeepTitle) lblDeepTitle.textContent = (lang === 'hm' ? 'Kev Kawm Qib Siab: BaZi (八字 8 Tus Tsiaj Ntawv 4 Ncej) vs Ming Gua' : lang === 'ph' ? '𖬎𖲧 𖬎𖲨 BaZi (八字) vs 𖬘𖲝 Ming Gua' : 'ຄວາມຮູ້ເລິກ: ປາຈື (八字) 8 ຕົວອັກສອນ 4 ເສົາຊີວິດ vs ມິ່ງກວ້າ');
+            const lblDeepBody = document.getElementById('lblBaziDeepGuideBody');
+            if (lblDeepBody) {
+                if (lang === 'hm') {
+                    lblDeepBody.innerHTML = '<div><b class="text-amber-300">1. BaZi (八字):</b> Txhais tias <b>"8 Tus Tsiaj Ntawv 4 Tus Ncej Lub Neej"</b> (Xyoo, Hli, Hnub, Sij Hawm).</div>' +
+                        '<div>• <b>Ncej Hnub (Day Pillar):</b> Yog <b>"Tus Kheej Tseeb (Day Master)"</b> - lub zog tiag 100% ntawm tus neeg tsis yog xyoo yug! (Siv rau hauj lwm, khoom siv & yam khoom).</div>' +
+                        '<div>• <b>Ncej Xyoo (Year Pillar):</b> Yog <b>"Zog Xyoo & Na Yin"</b> - siv xyuas khub niam txiv & xyoo tsis haum.</div>' +
+                        '<div>• <b>Yong Shen (用神):</b> Yog lub zog uas 4 tus ncej xav tau tshaj plaws los kho kom sib npaug & ntxiv nyiaj txiag.</div>' +
+                        '<div><b class="text-amber-300">2. Ming Gua (命卦):</b> Los ntawm Pa Kua 8 Fab siv rau <b>Teem Tsev, Chaw Pw & 4 Fab Hmoov Zoo</b> txuas nrog zog hlau nplaum ntiaj teb.</div>';
+                } else if (lang === 'ph') {
+                    lblDeepBody.innerHTML = '<div><b class="text-amber-300">1. BaZi (八字):</b> 𖬎𖲧 𖬎𖲨 (Xyoo, Hli, Hnub, Sij Hawm).</div>' +
+                        '<div>• <b>Ncej Hnub:</b> 𖬎𖲧 𖬎𖲨 Day Master 100%.</div>' +
+                        '<div>• <b>Ncej Xyoo:</b> Na Yin 𖬘𖲝.</div>' +
+                        '<div>• <b>Yong Shen:</b> 𖬋𖲰𖬩 𖬐𖲱𖬩.</div>' +
+                        '<div><b class="text-amber-300">2. Ming Gua:</b> 𖬘𖲝 𖬖𖰟 𖬎𖰰𖬟.</div>';
+                } else {
+                    lblDeepBody.innerHTML = '<div><b class="text-amber-300">1. ປາຈື / ໂປຍຍີ່ (八字 - BaZi):</b> ແປຕົງໂຕວ່າ <b>"8 ຕົວອັກສອນ 4 ເສົາຊີວິດ"</b> (ເສົາປີ, ເສົາເດືອນ, ເສົາວັນ, ເສົາເວລາ).</div>' +
+                        '<div>• <b>ເສົາວັນ (日柱):</b> ຄື <b>"ດິດຖີຕົວຕົນແທ້ (Day Master)"</b> ເປັນທາດແທ້ຂອງເຈົ້າຊາຕາ 100% ບໍ່ແມ່ນປີເກີດ! (ໃຊ້ເລືອກອາຊີບ, ວັດສະດຸ, ສີສັນ & ຄວາມເປັນຕົວຕົນ).</div>' +
+                        '<div>• <b>ເສົາປີ (年柱):</b> ຄື <b>"ທາດປີເກີດ & ນາຢິນ"</b> ເປັນເປືອກນອກ ໃຊ້ເບິ່ງດວງສົມພົງຄູ່ຄອງ ແລະ ປີຊົງ.</div>' +
+                        '<div>• <b>ຍົງສິ່ນ (用神):</b> ຄືທາດທີ່ດວງ 4 ເສົາຕ້ອງການທີ່ສຸດເພື່ອສ້າງຄວາມສົມດຸນ ໃຊ້ດຶງດູດໂຊກລາບ ແລະ ແກ້ຮວງຈຸ້ຍ.</div>' +
+                        '<div><b class="text-amber-300">2. ມິ່ງກວ້າ (命卦 - Ming Gua):</b> ມາຈາກສາດປາໄຈ້ (八宅) ໃຊ້ສຳລັບ <b>ຕັ້ງທິດເຮືອນ, ຫົວນອນ ແລະ 4 ທິດມຸງຄຸນ</b> ເພື່ອເຊື່ອມຕໍ່ກັບສະໜາມແມ່ເຫຼັກໂລກ.</div>';
+                }
+            }
             if (lblYearPurp) lblYearPurp.textContent = (lang === 'hm' ? '🎯 Siv: Xyuas khub niam txiv, phooj ywg & xyoo tsis haum' : lang === 'ph' ? '🎯 𖬎𖲤 𖬎𖲨, 𖬄𖰝' : '🎯 ໃຊ້: ດວງສົມພົງຄູ່ຄອງ, ຮຸ້ນສ່ວນ & ປີຊົງ');
 
             const lblAuspicious = document.getElementById('lblAuspiciousTitle');
