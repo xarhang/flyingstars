@@ -1334,23 +1334,39 @@ const html = `<!DOCTYPE html>
       if (item.type === 'landplot' || item.type === 'boundary') {
         bodyHtml +=
           '<div class="section-block">' +
-            '<div class="section-title">1. Qauv Ciam Av & Physics Huab Cua (Geological Geometry & Aerodynamics)</div>' +
+            '<div class="section-title">1. Qauv Ciam Av & 4 Tus Tsiaj Saum Ntuj (Geological Geometry & 4 Celestial Guardians)</div>' +
             '<div class="section-text">' + formatMasterclassHmong(item.physics) + '</div>' +
           '</div>' +
+          '<div class="section-block">' +
+            '<div class="section-title">2. Kev Tso Tsev & 3 Ntu Looj Mem (House Siting & 3-Tier Functional Zoning)</div>' +
+            '<div class="section-text">' + formatMasterclassHmong(item.housePositioning) + '</div>' +
+          '</div>' +
+          '<div class="section-block">' +
+            '<div class="section-title">3. Kev Ntsia & Hnub Qub Ya Caij 9 (Orientation Facing & Period 9 Stars)</div>' +
+            '<div class="section-text">' + formatMasterclassHmong(item.orientationFacing) + '</div>' +
+          '</div>' +
+          '<div class="section-block">' +
+            '<div class="section-title">4. Tsib Yam Zog & 8 Fab Bagua (Five Elements & Bagua Trigrams)</div>' +
+            '<div class="section-text">' + formatMasterclassHmong(item.elementGua || item.bagua) + '</div>' +
+          '</div>' +
+          '<div class="section-block">' +
+            '<div class="section-title">5. Cov Neeg Haum Zog & Hauj Lwm Vam Meej (Favorable People & Professions)</div>' +
+            '<div class="section-text">' + formatMasterclassHmong(item.favorablePeople) + '</div>' +
+          '</div>' +
+          '<div class="section-block">' +
+            '<div class="section-title">6. Cov Neeg Raug Tsoo & Kev Noj Qab Nyob Zoo (Clashing Demographics & Health Risks)</div>' +
+            '<div class="section-text">' + formatMasterclassHmong(item.clashingPeople) + '</div>' +
+          '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : '') + '">' +
-            '<div class="section-title">2. Kev Teeb Qhov Rooj & Txoj Kev Nkag (Entrance & Driveway Placement)</div>' +
+            '<div class="section-title">7. Qhov Rooj Vag Loj Sab Zaj Ntsuab & Kev Tsheb (Gate Placement & Driveway)</div>' +
             '<div class="section-text">' + formatMasterclassHmong(item.entrancePlacement || item.entrance) + '</div>' +
           '</div>' +
           '<div class="section-block">' +
-            '<div class="section-title">3. Chaw Tso Tsev & Kev Ntsia/Zaum (House Siting & Orientation Facing)</div>' +
-            '<div class="section-text">' + (item.housePositioning ? ('<strong>• Chaw tso tsev:</strong> ' + formatMasterclassHmong(item.housePositioning) + '<br><strong>• Ntsia & Zaum:</strong> ' + formatMasterclassHmong(item.orientationFacing)) : formatMasterclassHmong(item.water)) + '</div>' +
-          '</div>' +
-          '<div class="section-block">' +
-            '<div class="section-title">4. Zog Tsib Yam & Neeg Haum/Tsis Haum (Trigram Elements & Compatibility)</div>' +
-            '<div class="section-text">' + formatMasterclassHmong(item.bagua) + '</div>' +
+            '<div class="section-title">8. Kev Cai Qhov Ncauj Qi & Tshuaj Xuan Guan (Qi Kou Rules & Foyer Partition)</div>' +
+            '<div class="section-text">' + formatMasterclassHmong(item.entranceRules) + '</div>' +
           '</div>' +
           '<div class="section-block" style="background:rgba(2,132,199,0.08); border-left-color:#0284C7;">' +
-            '<div class="section-title" style="color:#0284C7;">5. Kev Cai Tswj Dej (Dual Water Doctrine: Khawb Pas Dej vs Txhub Pov Tseg)</div>' +
+            '<div class="section-title" style="color:#0284C7;">9. Kev Cai Tswj Dej (Dual Water Doctrine: Khawb Pas Dej vs Txhub Pov Tseg)</div>' +
             '<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:8px 0;">' +
               '<div style="background:var(--card-bg); border:1px solid #38BDF8; border-radius:6px; padding:10px;">' +
                 '<strong style="color:#0284C7; font-size:12px;">💧 Tsis Muaj Dej: Puas Khawb?</strong>' +
@@ -1361,10 +1377,10 @@ const html = `<!DOCTYPE html>
                 '<div style="font-size:11.5px; line-height:1.5; margin-top:4px;">• <strong>Txhub pov tseg:</strong> Yog nyob tom qab (Xuan Wu), plawv tsev (Tai Ji), kaum ntse, lossis dej lwj.<br>• <strong>Khaws cia:</strong> Yog nyob pem tsev puag ncig huv si.</div>' +
               '</div>' +
             '</div>' +
-            '<div style="font-size:12.5px; line-height:1.6; margin-top:6px;"><strong>• Cov lus qhia raws thaj av:</strong> ' + formatMasterclassHmong(item.water) + '</div>' +
+            '<div style="font-size:12.5px; line-height:1.6; margin-top:6px;"><strong>• Cov lus qhia raws thaj av:</strong> ' + formatMasterclassHmong(item.waterRules || item.water) + '</div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : 'bad') + '">' +
-            '<div class="section-title">6. Cov Tswv Yim Kho Kom Haum Looj Mem (Master Architectural Remediation Protocol)</div>' +
+            '<div class="section-title">10. 4 Kauj Ruam Kho Kom Haum Looj Mem (Master 4-Step Remediation Protocol)</div>' +
             '<div class="section-text">' + formatMasterclassHmong(item.comprehensiveRemedy || item.remedy) + (item.taboos ? '<div style="margin-top:8px; color:var(--bad);"><strong>Cov Kev Txwv:</strong><br>' + formatMasterclassHmong(item.taboos) + '</div>' : '') + '</div>' +
           '</div>';
       } else {

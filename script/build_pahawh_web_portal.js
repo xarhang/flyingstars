@@ -53,12 +53,14 @@ lpData.forEach(lp => {
     bagua: rpaToPahawh(lp.bagua || lp.elementGua || ''),
     remedy: rpaToPahawh(lp.comprehensiveRemedy || lp.remedy || ''),
     housePositioning: rpaToPahawh(lp.housePositioning || ''),
-    entrancePlacement: rpaToPahawh(lp.entrancePlacement || ''),
+    entrancePlacement: rpaToPahawh(lp.entrancePlacement || lp.entrance || ''),
+    entranceRules: rpaToPahawh(lp.entranceRules || ''),
+    waterRules: rpaToPahawh(lp.waterRules || lp.water || ''),
     orientationFacing: rpaToPahawh(lp.orientationFacing || ''),
     elementGua: rpaToPahawh(lp.elementGua || ''),
     favorablePeople: rpaToPahawh(lp.favorablePeople || ''),
     clashingPeople: rpaToPahawh(lp.clashingPeople || ''),
-    comprehensiveRemedy: rpaToPahawh(lp.comprehensiveRemedy || ''),
+    comprehensiveRemedy: rpaToPahawh(lp.comprehensiveRemedy || lp.remedy || ''),
     taboos: rpaToPahawh(lp.taboos || '')
   });
 });
@@ -1437,23 +1439,39 @@ const html = `<!DOCTYPE html>
       if (item.type === 'landplot' || item.type === 'boundary') {
         bodyHtml +=
           '<div class="section-block">' +
-            '<div class="section-title pahawh-glyph">𖭑. 𖬄𖬲𖬦𖬵 𖬔𖬲𖬝 𖬗𖬮𖬰 & 𖬅𖬰𖬟 𖬑 𖬈𖬲𖬟 (Geometry & Aerodynamics)</div>' +
+            '<div class="section-title pahawh-glyph">𖭑. 𖬄𖬲𖬦𖬵 𖬔𖬲𖬝 𖬗𖬮𖬰 & 𖭔 𖬎𖬲𖬤 𖬎𖬲𖬨 𖬌𖬰𖬞 (Geometry & 4 Celestial Guardians)</div>' +
             '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.physics) + '</div>' +
           '</div>' +
+          '<div class="section-block">' +
+            '<div class="section-title pahawh-glyph">𖭒. 𖬖𖬰𖬝 𖬒𖬰𖬧 𖬊𖬰𖬧𖬵 & 𖭓 𖬎𖬰𖬤 𖬄𖬰𖬟 𖬖𖬰𖬝 (House Siting & 3-Tier Zoning)</div>' +
+            '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.housePositioning) + '</div>' +
+          '</div>' +
+          '<div class="section-block">' +
+            '<div class="section-title pahawh-glyph">𖭓. 𖬉 𖬔𖬲𖬧𖬵 & 𖬈𖬰𖬞 𖬑𖬰𖬨 𖬖𖬲𖬞 𖬊𖬶𖬯 𖭙 (Orientation Facing & Period 9 Stars)</div>' +
+            '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.orientationFacing) + '</div>' +
+          '</div>' +
+          '<div class="section-block">' +
+            '<div class="section-title pahawh-glyph">𖭔. 𖬌𖬲𖬟 𖬂𖬤𖬵 𖬖𖬰𖬪𖬵 & 𖭘 𖬖𖬲𖬜 𖬄𖬲𖬦𖬵 (Five Elements & Bagua Trigrams)</div>' +
+            '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.elementGua || item.bagua) + '</div>' +
+          '</div>' +
+          '<div class="section-block">' +
+            '<div class="section-title pahawh-glyph">𖭕. 𖬌𖬰𖬟 𖬈𖬦 𖬄𖬲𖬟 𖬌𖬲𖬟 & 𖬈𖬰𖬞 𖬖𖬰𖬟 𖬔𖬲𖬞 𖬖𖬲𖬞 (Favorable People & Professions)</div>' +
+            '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.favorablePeople) + '</div>' +
+          '</div>' +
+          '<div class="section-block">' +
+            '<div class="section-title pahawh-glyph">𖭖. 𖬌𖬰𖬟 𖬈𖬦 𖬒𖬰𖬮 𖬒𖬰𖬧 & 𖬉 𖬌𖬲𖬞 𖬑𖬰𖬞 𖬊𖬰𖬝 𖬌𖬲𖬞 (Clashing & Health Risks)</div>' +
+            '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.clashingPeople) + '</div>' +
+          '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : '') + '">' +
-            '<div class="section-title pahawh-glyph">𖭒. 𖬉 𖬉𖬰𖬧 𖬒𖬰𖬮𖬵 𖬌𖬲𖬞 & 𖬌𖬲𖬟 𖬉 𖬖𖬰𖬦𖬵 (Entrance & Driveway)</div>' +
+            '<div class="section-title pahawh-glyph">𖭗. 𖬉 𖬉𖬰𖬧 𖬒𖬰𖬮𖬵 𖬌𖬲𖬞 𖬊𖬲𖬜 𖬖𖬲𖬜 & 𖬌𖬲𖬟 𖬉 𖬖𖬰𖬦𖬵 (Gate Placement & Driveway)</div>' +
             '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.entrancePlacement || item.entrance) + '</div>' +
           '</div>' +
           '<div class="section-block">' +
-            '<div class="section-title pahawh-glyph">𖭓. 𖬖𖬰𖬝 𖬒𖬰𖬧 𖬊𖬰𖬧𖬵 & 𖬉 𖬔𖬲𖬧𖬵/𖬄𖬰𖬝𖬵 (House Siting & Facing)</div>' +
-            '<div class="section-text pahawh-glyph">' + (item.housePositioning ? ('<strong>• 𖬖𖬰𖬝 𖬒𖬰𖬧 𖬊𖬰𖬧𖬵:</strong> ' + formatMasterclassPahawh(item.housePositioning) + '<br><strong>• 𖬔𖬲𖬧𖬵 & 𖬄𖬰𖬝𖬵:</strong> ' + formatMasterclassPahawh(item.orientationFacing)) : formatMasterclassPahawh(item.water)) + '</div>' +
-          '</div>' +
-          '<div class="section-block">' +
-            '<div class="section-title pahawh-glyph">𖭔. 𖬌𖬲𖬟 𖬂𖬤𖬵 𖬖𖬰𖬪𖬵 & 𖬈𖬦 𖬄𖬲𖬟/𖬂𖬤𖬵 𖬄𖬲𖬟 (Trigram & Compatibility)</div>' +
-            '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.bagua) + '</div>' +
+            '<div class="section-title pahawh-glyph">𖭘. 𖬉 𖬊𖬰𖬝 𖬌𖬰𖬟 𖬉𖬰𖬧 𖬅𖬰𖬟 & 𖬎𖬶𖬪 𖬖𖬲𖬜 (Qi Kou Rules & Foyer Screen)</div>' +
+            '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.entranceRules) + '</div>' +
           '</div>' +
           '<div class="section-block" style="background:rgba(2,132,199,0.08); border-left-color:#0284C7;">' +
-            '<div class="section-title pahawh-glyph" style="color:#0284C7;">𖭕. 𖬉 𖬊𖬰𖬝 𖬌𖬲𖬝 𖬈𖬲𖬝 (Dual Water Doctrine)</div>' +
+            '<div class="section-title pahawh-glyph" style="color:#0284C7;">𖭙. 𖬉 𖬊𖬰𖬝 𖬌𖬲𖬝 𖬈𖬲𖬝 (Dual Water Doctrine)</div>' +
             '<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:8px 0;">' +
               '<div style="background:var(--card-bg); border:1px solid #38BDF8; border-radius:6px; padding:10px;">' +
                 '<strong style="color:#0284C7; font-size:12.5px;" class="pahawh-glyph">💧 𖬂𖬤𖬵 𖬐𖬰𖬦 𖬈𖬲𖬝: 𖬑𖬲𖬪𖬵 𖬎𖬩𖬰?</strong>' +
@@ -1464,10 +1482,10 @@ const html = `<!DOCTYPE html>
                 '<div style="font-size:12px; line-height:1.5; margin-top:4px;" class="pahawh-glyph">• <strong>𖬆𖬰𖬦𖬰 𖬒𖬶𖬪𖬵 𖬉𖬶𖬝𖬰:</strong> 𖬒𖬧𖬵 𖬖𖬲𖬦𖬵 (Xuan Wu), 𖬖𖬲𖬟𖬰 𖬊𖬰𖬧𖬵 (Tai Ji), 𖬄𖬰𖬝 𖬉𖬰𖬝, 𖬌𖬰𖬞 𖬈𖬲𖬝 𖬈𖬲𖬞.<br>• <strong>𖬖𖬰𖬬 𖬋𖬰:</strong> 𖬈𖬪𖬵 𖬊𖬰𖬧𖬵 𖬄𖬲𖬟 𖬂𖬤𖬵 𖬆𖬰𖬟 𖬂𖬲𖬤.</div>' +
               '</div>' +
             '</div>' +
-            '<div style="font-size:13px; line-height:1.6; margin-top:6px;" class="pahawh-glyph"><strong>• 𖬌𖬰𖬟 𖬆𖬰𖬞 𖬐𖬲𖬟:</strong> ' + formatMasterclassPahawh(item.water) + '</div>' +
+            '<div style="font-size:13px; line-height:1.6; margin-top:6px;" class="pahawh-glyph"><strong>• 𖬌𖬰𖬟 𖬆𖬰𖬞 𖬐𖬲𖬟:</strong> ' + formatMasterclassPahawh(item.waterRules || item.water) + '</div>' +
           '</div>' +
           '<div class="section-block ' + (item.isGood ? 'good' : 'bad') + '">' +
-            '<div class="section-title pahawh-glyph">𖭖. 𖬌𖬰𖬟 𖬄𖬲𖬝𖬵 𖬂𖬦 𖬈𖬰𖬪 𖬌𖬲𖬞 𖬈𖬦 (Remediation Protocol)</div>' +
+            '<div class="section-title pahawh-glyph">𖭑𖭐. 𖭔 𖬌𖬰𖬟 𖬄𖬲𖬝𖬵 𖬂𖬦 𖬈𖬰𖬪 𖬌𖬲𖬞 𖬈𖬦 (Master 4-Step Remediation Protocol)</div>' +
             '<div class="section-text pahawh-glyph">' + formatMasterclassPahawh(item.comprehensiveRemedy || item.remedy) + (item.taboos ? '<div style="margin-top:8px; color:var(--bad);"><strong>𖬌𖬰𖬟 𖬉 𖬘𖬲𖬝:</strong><br>' + formatMasterclassPahawh(item.taboos) + '</div>' : '') + '</div>' +
           '</div>';
       } else {
