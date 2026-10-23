@@ -1295,6 +1295,28 @@ const html = `<!DOCTYPE html>
     let currentScore = 'all';
     let currentQuery = '';
 
+    function handleImgError(img) {
+      if (!img.dataset.retry) {
+        img.dataset.retry = '1';
+        var src = img.getAttribute('src') || '';
+        var filename = src.split('/').pop();
+        if (src.indexOf('pahawh/img/') === -1 && src.indexOf('../') === -1) {
+          img.src = 'pahawh/img/' + filename;
+          return;
+        } else {
+          img.src = 'img/' + filename;
+          return;
+        }
+      } else if (img.dataset.retry === '1') {
+        img.dataset.retry = '2';
+        var cur = img.src || '';
+        if (cur.endsWith('.png')) {
+          img.src = cur.replace(/\.png$/, '.svg');
+          return;
+        }
+      }
+    }
+
     function renderAtlas() {
       let goods = 0;
       let bads = 0;
@@ -1331,7 +1353,7 @@ const html = `<!DOCTYPE html>
 
         html += '<div class="item-card" onclick="openItemModal(\\'' + it.id + '\\')">' +
           '<div class="card-img-wrap">' +
-            '<img class="card-img" src="' + it.img + '" alt="' + it.name + '" loading="lazy">' +
+            '<img class="card-img" src="' + it.img + '" alt="' + it.name + '" loading="lazy" onerror="handleImgError(this)">' +
             '<span class="card-id-pill">' + it.id + '</span>' +
             '<span class="card-score-pill ' + sClass + '">' + sText + '</span>' +
           '</div>' +
@@ -1362,7 +1384,7 @@ const html = `<!DOCTYPE html>
 
         html += '<div class="item-card" onclick="openItemModal(\\'' + it.id + '\\')">' +
           '<div class="card-img-wrap">' +
-            '<img class="card-img" src="' + it.img + '" alt="' + it.name + '" loading="lazy">' +
+            '<img class="card-img" src="' + it.img + '" alt="' + it.name + '" loading="lazy" onerror="handleImgError(this)">' +
             '<span class="card-id-pill">' + it.id + '</span>' +
             '<span class="card-score-pill ' + sClass + '">' + sText + '</span>' +
           '</div>' +
@@ -1423,6 +1445,7 @@ const html = `<!DOCTYPE html>
       document.getElementById('modalSubTitle').textContent = item.rpaName || '';
 
       const mImg = document.getElementById('modalDetailImg');
+      mImg.onerror = function() { handleImgError(this); };
       mImg.src = item.img;
       mImg.onclick = () => window.open(item.img, '_blank');
       const zoomBtn = document.getElementById('modalDetailImgZoomBtn');

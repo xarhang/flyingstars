@@ -1,0 +1,212 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EDF2F7"/>
+    </linearGradient>
+    <linearGradient id="roadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#bgGrad)"/>
+
+  <!-- ========================================================================= -->
+  <!-- TOP HUD BAR (Y=0 to 42) -->
+  <!-- ========================================================================= -->
+  <rect x="0" y="0" width="800" height="42" fill="#0F172A"/>
+  
+  <!-- ID Badge -->
+  <rect x="18" y="9" width="70" height="24" rx="4" fill="#16A34A"/>
+  <text x="53" y="25" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">LP-0015</text>
+  
+  <!-- Name -->
+  <!-- Dynamic Title to prevent collision -->
+  <text x="96" y="26" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#F8FAFC">ຕອນດິນແຫຼມແມ່ນ້ຳ ຫົວສາຍແອວຫົກ (Jade Belt Peninsula)</text>
+  
+  <!-- Element Badge -->
+  <rect x="495" y="9" width="165" height="24" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="577" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#38BDF8" text-anchor="middle">ທາດນ້ຳໂອບອຸ້ມ Water Wealth / ທາດນ້ຳ (Jade Belt)</text>
+
+  <!-- Score Badge -->
+  <rect x="670" y="9" width="112" height="24" rx="4" fill="#14532D"/>
+  <text x="726" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#FEF2F2" text-anchor="middle">ດີເລີດ: 96 / 100</text>
+
+  <!-- ========================================================================= -->
+  <!-- LEFT COLUMN: CARDS (X=18 to 182) -->
+  <!-- ========================================================================= -->
+
+  <!-- Top-Left Card: Entrance & Driveway (Y=48 to 200) -->
+  <rect x="12" y="48" width="174" height="152" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="48" width="174" height="24" rx="6" fill="#16A34A"/>
+  <text x="100" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">ທາງເຂົ້າ &amp; ລານໝິງຖາງ</text>
+  <text x="20" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• ປະຕູຮົ້ວ: ດ້ານຄໍແຫຼມທິດເໜືອ ຂ້າມຂົວແໜ້ນໜາ</text>
+  <text x="20" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• ທາງລົດ: ໂຄ້ງອ່ອນນ້ອມ ຫ້າມແທງຊື່ຫາເຮືອນ</text>
+  <text x="20" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ-ລົມ</text>
+  <text x="20" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• ຫາກມີບໍ່ນ້ຳ: ນ້ຳໃສສະອາດ ໂອບອຸ້ມເຄິ່ງວົງ</text>
+  
+  <rect x="18" y="158" width="162" height="34" rx="4" fill="#DCFCE7"/>
+  <text x="100" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">ລານໝິງຖາງ: ໂລ່ງແຈ້ງກັກເກັບພະລັງຊີ່ (Ju Qi)</text>
+  <text x="100" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#166534" text-anchor="middle">✓ ທາງໂຄ້ງມີໄມຕີ (ເສັ້ນໂຄ້ງມີເມດຕາ) ຈະເລີນຮຸ່ງເຮືອງ</text>
+
+  <!-- Bottom-Left Card: Gua & Compatibility (Y=206 to 442) -->
+  <rect x="12" y="206" width="174" height="236" rx="6" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="206" width="174" height="24" rx="6" fill="#D97706"/>
+  <text x="100" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">ທາດກວ້າ &amp; ຄວາມຖືກຊາຕາ</text>
+  <text x="20" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ທາດປະຈຳຮູບຊົງ: ທາດນ້ຳໂອບອຸ້ມ (ທາດນ້ຳ)</text>
+  <text x="20" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ✓ ຖືກກັບ: ຄົນທາດນ້ຳ &amp; ທາດໄມ້</text>
+  <text x="20" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">(ກວ້າ 1 (ທາດນ້ຳ), 3 (ທາດໄມ້), 4 (ທາດໄມ້))</text>
+  <text x="20" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ສາຍນ້ຳໂອບອຸ້ມ: ມະຫາເສດຖີ, ທຸລະກິດຍິ່ງໃຫຍ່</text>
+  <text x="20" y="326" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ຄົນທາດໄຟ (9) ຄວນມີແນວໄມ້ປ້ອງກັນນ້ຳພິຊິດ</text>
+  
+  <rect x="18" y="346" width="162" height="86" rx="4" fill="#FEF3C7"/>
+  <text x="100" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#92400E" text-anchor="middle">ກົດເກນ 5 ທາດ (Five Elements)</text>
+  <text x="100" y="382" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#78350F" text-anchor="middle">ນ້ຳເກີດໄມ້: ຮັ່ງມີ, ຊື່ສຽງ, ເງິນທອງໄຫຼມາ</text>
+  <text x="100" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">ກົດເກນ 5 ທາດ ແລະ ເຂັມທິດ 8 ທິດ</text>
+  <text x="100" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#D97706" text-anchor="middle">✓ ສົມດຸນພະລັງງານທຳມະຊາດ</text>
+
+  <!-- ========================================================================= -->
+  <!-- RIGHT COLUMN: CARDS (X=618 to 782) -->
+  <!-- ========================================================================= -->
+
+  <!-- Top-Right Card: House Positioning & Facing (Y=48 to 200) -->
+  <rect x="614" y="48" width="174" height="152" rx="6" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="48" width="174" height="24" rx="6" fill="#0284C7"/>
+  <text x="700" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">ຕຳແໜ່ງເຮືອນ &amp; ທິດຫັນໜ້າ</text>
+  <text x="622" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ຕຳແໜ່ງ: ວາງໃນຈຸດສູງສຸດກາງແຫຼມ</text>
+  <text x="622" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ຍົກພື້ນສູງປ້ອງກັນນ້ຳຖ້ວມ</text>
+  <text x="622" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ທິດໜ້າເຮືອນ (Facing): ຫັນສູ່ສາຍນ້ຳໂອບອຸ້ມ (Jade Belt)</text>
+  <text x="622" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ທິດພິງຫຼັງ (Sitting): ພິງດ້ານຫຼັງແຜ່ນດິນໃຫຍ່</text>
+  
+  <rect x="620" y="158" width="162" height="34" rx="4" fill="#E0F2FE"/>
+  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">ທິດຫົວຕຽງ: ພິງຝາທຶບຫັນໜ້າຮັບນ້ຳ</text>
+  <text x="700" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">ພິງຝາທຶບ ຫຼີກລ່ຽງກົງປ່ອງຢ້ຽມ</text>
+
+  <!-- Bottom-Right Card: Remedies & Taboos (Y=206 to 442) -->
+  <rect x="614" y="206" width="174" height="236" rx="6" fill="#FDF4FF" stroke="#A855F7" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="206" width="174" height="24" rx="6" fill="#9333EA"/>
+  <text x="700" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">ວິທີເສີມພະລັງ &amp; ຂໍ້ຄວນລະວັງ</text>
+  <text x="622" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">1. ສ້າງກຳແພງກັນນ້ຳເຊາະແຄມຕາຝັ່ງ (Seawall)</text>
+  <text x="622" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">2. ປູກຕົ້ນໄມ້ແຄມຝັ່ງຍຶດດິນ ແລະ ບັງລົມ</text>
+  <text x="622" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">3. ຍົກລະດັບພື້ນດິນສູງກວ່າລະດັບນ້ຳ 1.5m</text>
+  <text x="622" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">4. ສ້າງທ່າເຮືອພັກຜ່ອນໂອບຮັບຊັບ</text>
+
+  <rect x="620" y="326" width="162" height="106" rx="4" fill="#F3E8FF"/>
+  <text x="700" y="342" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#7E22CE" text-anchor="middle">ຂໍ້ຫ້າມເດັດຂາດ (Taboos)</text>
+  <text x="626" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• ຫ້າມຢູ່ຝັ່ງກົງກັນຂ້າມ (Reverse Bow Blade)</text>
+  <text x="626" y="377" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• ຫ້າມສ້າງເຮືອນຕິດແຄມນ້ຳເກີນໄປ</text>
+  <text x="626" y="394" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• ຫ້າມປ່ອຍໃຫ້ນ້ຳເຊາະຕາຝັ່ງພັງ</text>
+  <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ ຮັກສາຄວາມສະອາດ &amp; ແສງສະຫວ່າງ</text>
+
+  <!-- ========================================================================= -->
+  
+
+  <!-- ========================================================================= -->
+  <!-- CENTER: THE PLOT ARCHITECTURAL DRAWING (X=195 to 605, Y=48 to 384) -->
+  <!-- ========================================================================= -->
+  <g>
+    
+        <!-- Meandering Jade Belt River curving around Peninsula -->
+        <path d="M 230 75 C 210 200 230 310 380 340 C 490 360 560 300 570 200 C 580 120 540 75 540 75" fill="none" stroke="#BAE6FD" stroke-width="50"/>
+        <path d="M 230 75 C 210 200 230 310 380 340 C 490 360 560 300 570 200 C 580 120 540 75 540 75" fill="none" stroke="#0284C7" stroke-width="3" stroke-dasharray="8,5"/>
+        <text x="390" y="348" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#0369A1" text-anchor="middle">ແມ່ນ້ຳໂອບອຸ້ມ (Jade Belt River)</text>
+
+        <!-- Peninsula Land Plot Ground nestled inside embrace -->
+        <path d="M 270 95 C 255 190 270 280 385 305 C 475 320 525 275 530 190 C 535 125 505 95 505 95 Z" fill="#DCFCE7"/>
+        <path d="M 276 100 C 263 190 276 274 385 298 C 470 312 518 270 523 190 C 528 130 500 100 500 100 Z" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-dasharray="5,4"/>
+
+        <!-- Seawall Barrier along waterfront -->
+        <path d="M 270 240 C 310 295 385 305 460 295" fill="none" stroke="#475569" stroke-width="4"/>
+        <rect x="345" y="306" width="90" height="13" rx="2" fill="#475569"/>
+        <text x="390" y="315" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#F8FAFC" text-anchor="middle">ກຳແພງກັນນ້ຳເຊາະ</text>
+
+        <!-- Main House in Elevated Center (Architectural Layout) -->
+        <polygon points="325,115 400,90 475,115" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+        <rect x="335" y="115" width="130" height="52" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
+        
+        <!-- Architectural Room Partition Line -->
+        <line x1="388" y1="115" x2="388" y2="167" stroke="#CA8A04" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+        <!-- Left Room: Master Bedroom with Bed Head Against Solid Rear Wall -->
+        <rect x="345" y="121" width="30" height="22" rx="2" fill="#FFFFFF" stroke="#0284C7" stroke-width="1"/>
+        <rect x="345" y="121" width="30" height="5.5" fill="#0284C7"/>
+        <text x="360" y="135" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#0369A1" text-anchor="middle">ຫົວຕຽງ</text>
+        <text x="360" y="155" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#475569" text-anchor="middle">ຫ້ອງນອນ</text>
+
+        <!-- Right Room: Main Living Hall -->
+        <text x="424" y="138" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#1E293B" text-anchor="middle">ອາຄານຫຼັກ</text>
+        <text x="424" y="154" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#475569" text-anchor="middle">ຫ້ອງໂຖງໃຫຍ່</text>
+        
+        <!-- Front Main Entrance Door / Porch (Facing south river embrace, Clear Buffer Zone) -->
+        <rect x="416" y="167" width="16" height="5" fill="#1E293B"/>
+        <text x="424" y="183" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">ປະຕູໃຫຍ່</text>
+
+        <!-- MING TANG BRIGHT HALL (ລານໝິງຖາງ / THAJ TSHAV KAJ) -->
+        <rect x="295" y="202" width="190" height="65" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+        <text x="390" y="217" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">ລານໝິງຖາງ (Bright Hall / ເຕົ້າໂຮມພະລັງງານ)</text>
+        <text x="390" y="231" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">• ບໍ່ມີບໍ່ນ້ຳ: ລານຫຍ້າຂຽວໂລ່ງ • ມີແມ່ນ້ຳໂອບອຸ້ມ</text>
+        <text x="390" y="244" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#0369A1" text-anchor="middle">• ສາຍນ້ຳໂອບອຸ້ມທຳມະຊາດ ນຳພາຊັບສົມບັດ</text>
+
+        <!-- Compass Axis Badge on House Right -->
+        <g transform="translate(478, 145)">
+          <rect x="0" y="0" width="38" height="52" rx="3" fill="#FFFFFF" fill-opacity="0.92" stroke="#0284C7" stroke-width="1.2"/>
+          <text x="19" y="13" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">ທິດພິງ ⬆</text>
+          <line x1="19" y1="17" x2="19" y2="35" stroke="#0284C7" stroke-width="1.2" stroke-dasharray="2,2"/>
+          <polygon points="19,37 16,31 22,31" fill="#0284C7"/>
+          <text x="19" y="47" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">ທິດໜ້າ ⬇</text>
+        </g>
+
+        <!-- Access Bridge Label at North Y=45 -->
+        <rect x="255" y="48" width="125" height="15" rx="3" fill="#0F172A" fill-opacity="0.9"/>
+        <text x="317" y="59" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FDE047" text-anchor="middle">� ຂົວຂ້າມນ້ຳເຂົ້າຕອນດິນ</text>
+
+        <!-- PHYSICAL REAR ENTRANCE BRIDGE & GATE (Y=95) -->
+        <line x1="270" y1="95" x2="295" y2="95" stroke="#334155" stroke-width="3.5"/>
+        <line x1="335" y1="95" x2="505" y2="95" stroke="#334155" stroke-width="3.5"/>
+
+        <!-- GATE POSTS ON BRIDGE ENTRANCE -->
+        <rect x="291" y="90" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="331" y="90" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+
+        <!-- SWINGING GATE DOORS (Open Inward to Peninsula) -->
+        <line x1="295" y1="95" x2="305" y2="106" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="335" y1="95" x2="325" y2="106" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- DRIVEWAY PASSING THROUGH GATE TO HOUSE (100% UNOBSTRUCTED) -->
+        <path d="M 315 55 L 315 95 C 315 120 330 140 340 160 C 350 170 380 172 416 172" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <text x="355" y="300" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#B45309" text-anchor="middle">⟿ ທາງລົດໂຄ້ງອ່ອນນ້ອມ (ຫ້າມແທງຊື່)</text>
+
+        <!-- [✓] RECOMMENDED GATE BADGE (OFFSET TO LEFT OF BRIDGE GATE) -->
+        <g transform="translate(195, 85)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FFFFFF" text-anchor="middle">✓ ປະຕູຮົ້ວໃຫຍ່</text>
+          <!-- Pointer Line to Bridge Gate -->
+          <line x1="90" y1="9" x2="96" y2="9" stroke="#15803D" stroke-width="1.8"/>
+          <circle cx="96" cy="9" r="2" fill="#15803D"/>
+        </g>
+        
+        <!-- [✗] FORBIDDEN GATE BADGE (OFFSET CLEAR OF WATERWAY) -->
+        <g transform="translate(450, 318)">
+          <rect x="0" y="0" width="82" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="41" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">✗ ຫ້າມຕັ້ງປະຕູ</text>
+          <line x1="0" y1="9" x2="-6" y2="9" stroke="#DC2626" stroke-width="1.8"/>
+          <circle cx="-6" cy="9" r="2" fill="#DC2626"/>
+        </g>
+
+        <!-- Trees along riverbank -->
+        <circle cx="300" cy="260" r="8" fill="#15803D"/>
+        <circle cx="460" cy="270" r="8" fill="#15803D"/>
+      
+  </g>
+
+  
+  <!-- Bottom Doctrinal Summary -->
+  <rect x="12" y="445" width="776" height="29" rx="5" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
+  <text x="400" y="457" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">ຫຼັກການຮວງຈຸ້ຍ: ຕອນດິນແຫຼມແມ່ນ້ຳໂອບອຸ້ມຄືສາຍແອວຫຍົກ</text>
+  <text x="400" y="469" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#CBD5E1" text-anchor="middle">ເປັນສຸດຍອດຕອນດິນຮັບຊັບ ສາຍນ້ຳໂອບອຸ້ມນຳພາໂຊກລາບມະຫາສານ.</text>
+</svg>

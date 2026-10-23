@@ -1,0 +1,193 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EDF2F7"/>
+    </linearGradient>
+    <linearGradient id="roadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#bgGrad)"/>
+
+  <!-- ========================================================================= -->
+  <!-- TOP HUD BAR (Y=0 to 42) -->
+  <!-- ========================================================================= -->
+  <rect x="0" y="0" width="800" height="42" fill="#0F172A"/>
+  
+  <!-- ID Badge -->
+  <rect x="18" y="9" width="75" height="24" rx="4" fill="#DC2626"/>
+  <text x="55" y="25" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#FFFFFF" text-anchor="middle">ENV-0012</text>
+  
+  <!-- Name -->
+  <!-- Dynamic Title to prevent collision -->
+  <text x="96" y="26" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#F8FAFC">ດິນຕິດໜ້າຜາຊັນ / ດິນເຈື່ອນ (Cliff Edge / Landslide Hazard)</text>
+  
+  <!-- Road Type Badge -->
+  <rect x="495" y="9" width="165" height="24" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="577" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#38BDF8" text-anchor="middle">ຕິດໜ້າຜາຊັນ</text>
+
+  <!-- Score Badge -->
+  <rect x="670" y="9" width="112" height="24" rx="4" fill="#991B1B"/>
+  <text x="726" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#FEF2F2" text-anchor="middle">ອັນຕະລາຍ: 20 / 100</text>
+
+  <!-- ========================================================================= -->
+  <!-- LEFT COLUMN: CARDS (X=18 to 182) -->
+  <!-- ========================================================================= -->
+
+  <!-- Top-Left Card: Entrance &amp; Driveway (Y=48 to 200) -->
+  <rect x="12" y="48" width="174" height="152" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="48" width="174" height="24" rx="6" fill="#16A34A"/>
+  <text x="100" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">ທາງເຂົ້າ &amp; ປະຕູຮົ້ວ</text>
+  <text x="20" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• ປະຕູຮົ້ວ: ປະຕູເຂົ້າຢູ່ດ້ານທີ່ປອດໄພທີ</text>
+  <text x="20" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• ໄລຍະຫ່າງ: ຫ່າງມຸມຮົ້ວ 3 ແມັດ</text>
+  <text x="20" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• ທາງລົດ: ໂຄ້ງຊະລໍຄວາມໄວ</text>
+  <text x="20" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#14532D">• ປອດໄພ: ຫຼີກລ່ຽງທາງສາມແພ່ງ</text>
+  
+  <rect x="18" y="156" width="162" height="38" rx="3" fill="#DCFCE7"/>
+  <text x="100" y="170" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">ຕຳແໜ່ງ: ຕິດໜ້າຜາຊັນ</text>
+  <text x="100" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#166534" text-anchor="middle">✓ ເປີດຮັບພະລັງ Sheng Qi ປອດໄພ</text>
+
+  <!-- Bottom-Left Card: Gua &amp; Compatibility (Y=206 to 442) -->
+  <rect x="12" y="206" width="174" height="236" rx="6" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="206" width="174" height="24" rx="6" fill="#D97706"/>
+  <text x="100" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">ທາດກວ້າ &amp; ຄວາມຖືກຊາຕາ</text>
+  <text x="20" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ທາດປະຈຳ: ທາດດິນພັງທະລາຍ (Earth Co</text>
+  <text x="20" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ✓ ຖືກກັບ: ບໍ່ເໝາະສຳລັບການຢູ່ອາໄສເລ</text>
+  <text x="20" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">ີຍ ຖ້າບໍ່ມີການກໍ່ສ້າງວິສະວະກ</text>
+  <text x="20" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">• ✗ ບໍ່ຖືກກັບ: ຂັດແຍ້ງກັບທຸກຄົນ: ສ່ຽງໄພ</text>
+  <text x="20" y="326" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#78350F">ດິນເຈື່ອນ ແລະ ລົມພັດຕີໜ້າຜາ.</text>
+  
+  <rect x="18" y="346" width="162" height="86" rx="4" fill="#FEF3C7"/>
+  <text x="100" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#92400E" text-anchor="middle">ກົດເກນ 5 ທາດ &amp; ເຂັມທິດ 8 ທິດ</text>
+  <text x="100" y="382" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#78350F" text-anchor="middle">✓ ສົມດຸນພະລັງງານທຳມະຊາດ</text>
+  <text x="100" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#B45309" text-anchor="middle">ກົດເກນ 5 ທາດ ແລະ ເຂັມທິດ 8 ທິດ</text>
+  <text x="100" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#D97706" text-anchor="middle">✓ ສົມດຸນພະລັງງານທຳມະຊາດ</text>
+
+  <!-- ========================================================================= -->
+  <!-- RIGHT COLUMN: CARDS (X=618 to 782) -->
+  <!-- ========================================================================= -->
+
+  <!-- Top-Right Card: House Positioning &amp; Facing (Y=48 to 200) -->
+  <rect x="614" y="48" width="174" height="152" rx="6" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="48" width="174" height="24" rx="6" fill="#0284C7"/>
+  <text x="700" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">ຕຳແໜ່ງເຮືອນ &amp; ທິດຫັນໜ້າ</text>
+  <text x="622" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ຕຳແໜ່ງ: ຖອຍອາຄານຫຼັກຫ່າງຈາກແຄມໜ້</text>
+  <text x="622" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ໄລຍະຖອຍ: າຜາຢ່າງໜ້ອຍ 10-15 ແມັດ.</text>
+  <text x="622" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ທິດໜ້າ: ຫັນໜ້າຕາມແກນປອດໄພ</text>
+  <text x="622" y="148" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#0369A1">• ທິດພິງ: ທິດພິງຫຼັງ: ພິງແຜ່ນດິນແໜ</text>
+  
+  <rect x="620" y="158" width="162" height="34" rx="3" fill="#E0F2FE"/>
+  <text x="700" y="171" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#0369A1" text-anchor="middle">ທິດຫົວຕຽງ: ພິງຝາທຶບ.</text>
+  <text x="700" y="184" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">ພິງຝາທຶບ ຫຼີກລ່ຽງກົງປ່ອງຢ້ຽມ</text>
+
+  <!-- Bottom-Right Card: Remedies &amp; Taboos (Y=206 to 442) -->
+  <rect x="614" y="206" width="174" height="236" rx="6" fill="#FDF4FF" stroke="#A855F7" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="206" width="174" height="24" rx="6" fill="#9333EA"/>
+  <text x="700" y="222" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">ວິທີແກ້ໄຂດ່ວນ 4 ຂັ້ນຕອນ</text>
+  <text x="622" y="246" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">1. ສ້າງກຳແພງກັນດິນຄອນກຣີດເຈາ</text>
+  <text x="622" y="266" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">2. ຂຸດຮ່ອງລະບາຍນ້ຳເທິງໜ້າຜາບ</text>
+  <text x="622" y="286" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">3. ປູກຫຍ້າແຝກຍຶດດິນ</text>
+  <text x="622" y="306" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#6B21A8">4. ຮົ້ວກັ້ນໄພ.</text>
+
+  <rect x="620" y="326" width="162" height="106" rx="4" fill="#F3E8FF"/>
+  <text x="700" y="342" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#7E22CE" text-anchor="middle">ຂໍ້ຫ້າມເດັດຂາດ (Taboos)</text>
+  <text x="628" y="360" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• • ຫ້າມສ້າງເຮືອນຕິດແຄມໜ້າຜາໂດຍ</text>
+  <text x="628" y="376" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• • ຫ້າມຖົມດິນຫຼວມແຄມຜາ</text>
+  <text x="628" y="392" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#9333EA">• • ຫ້າມປ່ອຍໃຫ້ນ້ຳຝົນໄຫຼເຊາະໜ້າ</text>
+  <text x="700" y="418" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#7E22CE" text-anchor="middle">✓ ຮັກສາຄວາມສະອາດ &amp; ແສງສະຫວ່າງ</text>
+
+  <!-- ========================================================================= -->
+  
+  <!-- MAIN ROADWAY AT BOTTOM (Y=355 to 440, bounded in Central Zone X=190..610) -->
+  <!-- Placed before centerSvg so fence gates and badges paint clearly on top! -->
+  <rect x="190" y="355" width="420" height="85" fill="url(#roadGrad)" rx="3"/>
+  <line x1="190" y1="395" x2="610" y2="395" stroke="#FDE047" stroke-width="2" stroke-dasharray="14,8"/>
+  <line x1="190" y1="360" x2="610" y2="360" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="6,4"/>
+  <text x="400" y="420" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#F8FAFC" text-anchor="middle">&#10140; ຖະໜົນສາຍຫຼັກ (Facing Main Road) &#10140;</text>
+  
+
+  <!-- ========================================================================= -->
+  <!-- CENTER: ARCHITECTURAL BOUNDARY DRAWING (X=195 to 605, Y=48 to 384) -->
+  <!-- ========================================================================= -->
+  <g>
+    
+        <!-- Plot on Solid Ground -->
+        <rect x="260" y="95" width="280" height="210" fill="#FEF2F2"/>
+        <line x1="260" y1="95" x2="540" y2="95" stroke="#15803D" stroke-width="4"/>
+        <line x1="260" y1="95" x2="260" y2="305" stroke="#334155" stroke-width="3"/>
+        <line x1="540" y1="95" x2="540" y2="305" stroke="#334155" stroke-width="3"/>
+        <text x="240" y="200" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(-90 240 200)">ເພື່ອນບ້ານຊ້າຍ</text>
+        <text x="560" y="200" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="8" fill="#64748B" text-anchor="middle" transform="rotate(90 560 200)">ເພື່ອນບ້ານຂວາ</text>
+        
+        <!-- Retaining Wall & Cliff Drop-off -->
+        <line x1="260" y1="305" x2="540" y2="305" stroke="#991B1B" stroke-width="6" stroke-dasharray="8,4"/>
+        <rect x="260" y="306" width="280" height="58" fill="#7F1D1D"/>
+        
+        <!-- Cliff Warning Text at Top of Cliff Drop-Off (y=322) - Completely Clear -->
+        <text x="400" y="322" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FEF2F2" text-anchor="middle">[X] ແຄມໜ້າຜາຊັນ (Cliff Drop-off - ຫ້າມສ້າງອາຄານ)</text>
+        
+        <!-- Retaining Wall Label -->
+        <rect x="315" y="284" width="170" height="16" rx="3" fill="#475569"/>
+        <text x="400" y="295" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FFFFFF" text-anchor="middle">ກຳແພງກັນດິນ &amp; ເສົາເຂັມເລິກ</text>
+
+        
+    <!-- House Structure & Interior -->
+    <rect x="335" y="115" width="130" height="60" fill="#FEF08A" stroke="#854D0E" stroke-width="2" rx="4"/>
+    <polygon points="325,115 400,90 475,115" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+    <line x1="392" y1="115" x2="392" y2="175" stroke="#B45309" stroke-width="1.2" stroke-dasharray="3,2"/>
+    
+      <!-- Master Bedroom -->
+      <rect x="341" y="121" width="28" height="20" fill="#FFFFFF" stroke="#0284C7" stroke-width="1" rx="2"/>
+      <rect x="341" y="121" width="28" height="5" fill="#0284C7" rx="1"/>
+      <text x="355" y="131" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#0369A1" text-anchor="middle">ຫົວຕຽງ</text>
+      <text x="355" y="163" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">ຫ້ອງນອນໃຫຍ່</text>
+    
+    
+      <!-- Living Hall -->
+      <text x="428.5" y="135" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#1E293B" text-anchor="middle">ອາຄານຫຼັກ</text>
+      <text x="428.5" y="150" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">ຫ້ອງໂຖງໃຫຍ່</text>
+    
+    
+  
+
+        <!-- PHYSICAL INLAND GATE ON SOLID ROAD (Y=95) -->
+        <rect x="296" y="90" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="346" y="90" width="8" height="10" rx="1.5" fill="#1E293B" stroke="#0F172A" stroke-width="1.2"/>
+        <path d="M 325 55 L 325 95 C 325 105 340 115 365 125" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="5,4"/>
+
+        <!-- Front Main Door on Inland Facing Side (Connects with Driveway) -->
+        <rect x="355" y="113" width="20" height="4" fill="#1E293B"/>
+        <text x="365" y="108" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0F172A" text-anchor="middle">ປະຕູໃຫຍ່</text>
+
+        <!-- Solid Rear Wall facing Cliff Drop-off (No Door Allowed) -->
+        <line x1="335" y1="175" x2="465" y2="175" stroke="#334155" stroke-width="3"/>
+        <text x="400" y="186" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6" fill="#64748B" text-anchor="middle">✓ ຝາທຶບດ້ານຜາ (ຫ້າມເປີດປະຕູ)</text>
+
+        <!-- [✓] RECOMMENDED GATE BADGE (OFFSET LEFT TO CLEAR TOP DRIVEWAY) -->
+        <g transform="translate(195, 65)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#15803D" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#FFFFFF" text-anchor="middle">✓ ປະຕູຮົ້ວໃຫຍ່</text>
+          <line x1="88" y1="9" x2="105" y2="15" stroke="#15803D" stroke-width="1.8"/>
+          <circle cx="105" cy="15" r="2.2" fill="#15803D"/>
+        </g>
+
+        <!-- [✗] FORBIDDEN GATE BADGE (AT CLIFF BOTTOM, CLEAR OF TEXT AT Y=322) -->
+        <g transform="translate(355, 334)">
+          <rect x="0" y="0" width="90" height="18" rx="3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.2"/>
+          <text x="45" y="12" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#FFFFFF" text-anchor="middle">✗ ຫ້າມຕັ້ງປະຕູ</text>
+        </g>
+      
+  </g>
+
+  <!-- BOTTOM DOCTRINAL SUMMARY CARD (Y=448 to 474) -->
+  <!-- ========================================================================= -->
+  <rect x="18" y="448" width="764" height="26" rx="5" fill="#1E293B"/>
+  <text x="400" y="465" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="9" fill="#F8FAFC" text-anchor="middle">ຄວາມຊັນເກີນ 45° ເຮັດໃຫ້ແຮງດຶງດູດໂລກດຶງມວນດິນລົງມາ, ກະແສລົມພັດຂຶ້ນຕາມໜ້າຜາ (Updraft Wind Sha) ສ້າງຄວາມປັ່ນປ່ວນ.</text>
+</svg>

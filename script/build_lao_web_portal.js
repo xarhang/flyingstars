@@ -1107,6 +1107,28 @@ const html = `<!DOCTYPE html>
       themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
     });
 
+    function handleImgError(img) {
+      if (!img.dataset.retry) {
+        img.dataset.retry = '1';
+        const src = img.getAttribute('src') || '';
+        const filename = src.split('/').pop();
+        if (src.indexOf('lao/img/') === -1 && src.indexOf('../') === -1) {
+          img.src = 'lao/img/' + filename;
+          return;
+        } else {
+          img.src = 'img/' + filename;
+          return;
+        }
+      } else if (img.dataset.retry === '1') {
+        img.dataset.retry = '2';
+        const cur = img.src || '';
+        if (cur.endsWith('.png')) {
+          img.src = cur.replace(/\.png$/, '.svg');
+          return;
+        }
+      }
+    }
+
     // RENDER CARD
     function createCard(item) {
       const card = document.createElement('div');
@@ -1116,7 +1138,7 @@ const html = `<!DOCTYPE html>
 
       card.innerHTML = \`
         <div class="card-img-wrap">
-          <img src="\${item.img}" alt="\${item.id}" loading="lazy">
+          <img src="\${item.img}" alt="\${item.id}" loading="lazy" onerror="handleImgError(this)">
           <div class="card-score \${scoreClass}">\${scoreLabel}: \${item.score}/100</div>
         </div>
         <div class="card-body">
@@ -1218,6 +1240,7 @@ const html = `<!DOCTYPE html>
     function openModal(item) {
       document.getElementById('mTitle').textContent = item.id + ': ' + item.name;
       const mImg = document.getElementById('mImg');
+      mImg.onerror = function() { handleImgError(this); };
       mImg.src = item.img;
       mImg.onclick = () => window.open(item.img, '_blank');
       const zoomBtn = document.getElementById('mImgZoomBtn');

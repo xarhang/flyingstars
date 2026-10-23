@@ -1,0 +1,139 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EDF2F7"/>
+    </linearGradient>
+    <linearGradient id="rockGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#64748B"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#bgGrad)"/>
+
+  <!-- TOP TITLE HUD BAR -->
+  <rect x="0" y="0" width="800" height="42" fill="#0F172A"/>
+  <rect x="18" y="9" width="80" height="24" rx="4" fill="#475569"/>
+  <text x="58" y="25" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">ENV-0004</text>
+  <text x="108" y="26" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#F8FAFC">ໜ້າຜາ, ຫີນແຫຼມ &amp; ເນີນເຂົາຊັນ: ພູເຂົາຊ່າ &amp; ວິທີແກ້ໄຂ (Cliff &amp; Crag Sha Remedies)</text>
+  <rect x="580" y="9" width="105" height="24" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="632" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#38BDF8" text-anchor="middle">ພູເຂົາຊ່າ / Mountain Sha</text>
+  <rect x="692" y="9" width="90" height="24" rx="4" fill="#B45309"/>
+  <text x="737" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#FEF2F2" text-anchor="middle">ແກ້ດ້ວຍດິນ-ໄມ້</text>
+
+  <!-- LEFT COLUMN CARDS -->
+  <rect x="12" y="48" width="174" height="185" rx="6" fill="#F8FAFC" stroke="#64748B" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="48" width="174" height="24" rx="6" fill="#475569"/>
+  <text x="100" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">⛰️ ຮູບຊົງພູເຂົາທີ່ເປັນຊ່າ</text>
+  <text x="20" y="86" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#1E293B">• ໜ້າຜາຫັກພັງ (Po Mian Shan):</text>
+  <text x="26" y="99" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#475569">→ ດິນເຈື່ອນ, ບາດເຈັບ, ຜ່າຕັດ</text>
+  <text x="20" y="115" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#1E293B">• ຫີນແຫຼມໂຜ່ມອງ (Tan Tou Shan):</text>
+  <text x="26" y="128" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#475569">→ ໂຈນຂະໂມຍ, ຄົນຫຼັງຫຼອກລວງ</text>
+  <rect x="18" y="140" width="162" height="34" rx="3" fill="#F1F5F9"/>
+  <text x="99" y="154" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#0F172A" text-anchor="middle">ອັນຕະລາຍກາຍະພາບ:</text>
+  <text x="99" y="166" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">ຫີນຕົກ, ດິນເຈື່ອນ, ລົມຫົວຂວັ້ນ</text>
+
+  <rect x="12" y="240" width="174" height="202" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="240" width="174" height="24" rx="6" fill="#15803D"/>
+  <text x="100" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">🛡️ 3 ຂັ້ນຕອນແກ້ໄຂໜ້າຜາ</text>
+  <text x="20" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">1. ສ້າງກຳແພງກັ້ນດິນ (Retaining Wall)</text>
+  <text x="26" y="291" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#166534">ພ້ອມທໍ່ລະບາຍນ້ຳກັນດິນເຈື່ອນ</text>
+  <text x="20" y="307" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">2. ປູກແນວຕົ້ນໄມ້ປ້ອງກັນ (Pine Buffer)</text>
+  <text x="20" y="324" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">3. ເຮັດລານຂັ້ນໄດ (Terrace Slopes)</text>
+  <rect x="18" y="336" width="162" height="46" rx="3" fill="#DCFCE7"/>
+  <text x="99" y="350" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#14532D" text-anchor="middle">ໄລຍະຖອຍຮົ່ນປອດໄພ:</text>
+  <text x="99" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">ຫ່າງຕີນຜາ >10-15 ແມັດຂຶ້ນໄປ</text>
+
+  <!-- CENTER SITE PLAN -->
+  <g id="centerSite">
+    <!-- STEEP JAGGED CLIFF IN REAR (Y=48 to 145) -->
+    <path d="M 195 48 L 195 130 L 230 115 L 260 140 L 300 120 L 340 145 L 390 125 L 430 145 L 480 120 L 520 140 L 560 115 L 605 135 L 605 48 Z" fill="url(#rockGrad)"/>
+    <!-- Craggy Rock Outcrops -->
+    <polygon points="260,110 275,80 290,115" fill="#94A3B8"/>
+    <polygon points="350,115 370,75 390,120" fill="#CBD5E1"/>
+    <polygon points="450,110 470,78 490,115" fill="#94A3B8"/>
+    <text x="400" y="70" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#FEF2F2" text-anchor="middle">⛰️ ໜ້າຜາຊັນ / ຫີນແຫຼມພູເຂົາ (Steep Cliff &amp; Menacing Crags)</text>
+    <text x="400" y="85" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#FCA5A5" text-anchor="middle">ອັນຕະລາຍຫີນຕົກ &amp; ພະລັງງານແຫຼມຄົມ</text>
+
+    <!-- HEAVY DUTY RETAINING WALL AT CLIFF BASE (Y=143 to 155) -->
+    <rect x="200" y="143" width="400" height="12" fill="#475569" stroke="#1E293B" stroke-width="1.5"/>
+    <!-- Weep drainage holes -->
+    <circle cx="230" cy="149" r="2" fill="#0284C7"/>
+    <circle cx="270" cy="149" r="2" fill="#0284C7"/>
+    <circle cx="310" cy="149" r="2" fill="#0284C7"/>
+    <circle cx="350" cy="149" r="2" fill="#0284C7"/>
+    <circle cx="390" cy="149" r="2" fill="#0284C7"/>
+    <circle cx="430" cy="149" r="2" fill="#0284C7"/>
+    <circle cx="470" cy="149" r="2" fill="#0284C7"/>
+    <circle cx="510" cy="149" r="2" fill="#0284C7"/>
+    <circle cx="550" cy="149" r="2" fill="#0284C7"/>
+    <text x="400" y="167" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#15803D" text-anchor="middle">✓ ກຳແພງກັ້ນດິນຄອນກຣີດເສີມເຫຼັກ + ທໍ່ລະບາຍນ້ຳປ້ອງກັນດິນເຈື່ອນ</text>
+
+    <!-- PINE TREE BUFFER BEHIND HOUSE (Y=172 to 195) -->
+    <circle cx="230" cy="185" r="9" fill="#14532D"/>
+    <circle cx="270" cy="185" r="9" fill="#166534"/>
+    <circle cx="310" cy="185" r="9" fill="#14532D"/>
+    <circle cx="350" cy="185" r="9" fill="#166534"/>
+    <circle cx="390" cy="185" r="9" fill="#14532D"/>
+    <circle cx="430" cy="185" r="9" fill="#166534"/>
+    <circle cx="470" cy="185" r="9" fill="#14532D"/>
+    <circle cx="510" cy="185" r="9" fill="#166534"/>
+    <circle cx="550" cy="185" r="9" fill="#14532D"/>
+    <circle cx="580" cy="185" r="9" fill="#166534"/>
+
+    <!-- RESIDENTIAL PLOT GROUND (Y=195 to 400) -->
+    <rect x="200" y="195" width="400" height="205" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+
+    <!-- SAFE HOUSE (SET BACK >15m FROM CLIFF) -->
+    <polygon points="340,225 400,205 460,225" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+    <rect x="345" y="225" width="110" height="55" fill="#FEF08A" stroke="#854D0E" stroke-width="1.8" rx="3"/>
+    <text x="400" y="250" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#1E293B" text-anchor="middle">ເຮືອນພັກອາໄສ</text>
+    <text x="400" y="263" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#475569" text-anchor="middle">ພິງແນວຕົ້ນສົນ &amp; ກຳແພງກັ້ນດິນ (Xuan Wu)</text>
+    <rect x="392" y="277" width="16" height="5" fill="#1E293B"/>
+
+    <!-- Ming Tang Lawn In Front -->
+    <rect x="300" y="300" width="200" height="55" rx="5" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="400" y="318" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">ລານໝິງຖາງໂລ່ງແຈ້ງດ້ານໜ້າ</text>
+    <text x="400" y="332" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">✓ ລານຫຍ້າຂຽວໂລ່ງ ຮັບແສງ &amp; ເຕົ້າໂຮມພະລັງຊີ່</text>
+    <text x="400" y="344" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.0" fill="#0284C7" text-anchor="middle">• ອ່າງນ້ຳພຸຝັ່ງມັງກອນ 10-15% (ຖ້າມີ)</text>
+
+    <!-- Front Road -->
+    <rect x="200" y="400" width="400" height="25" fill="#334155"/>
+    <line x1="200" y1="412" x2="600" y2="412" stroke="#FBBF24" stroke-width="2" stroke-dasharray="8,6"/>
+    <text x="400" y="420" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FFFFFF" text-anchor="middle">ຖະໜົນໃຫຍ່ດ້ານໜ້າ (Main Road)</text>
+    <rect x="385" y="396" width="30" height="8" rx="1.5" fill="#15803D"/>
+  </g>
+
+  <!-- RIGHT COLUMN CARDS -->
+  <rect x="614" y="48" width="174" height="185" rx="6" fill="#F8FAFC" stroke="#475569" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="48" width="174" height="24" rx="6" fill="#334155"/>
+  <text x="701" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">🛡️ ວິສະວະກຳປ້ອງກັນ</text>
+  <text x="622" y="86" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#0F172A">1. ເຈາະທໍ່ລະບາຍນ້ຳກຳແພງ</text>
+  <text x="628" y="99" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#475569">ເພື່ອຫຼຸດແຮງດັນນ້ຳໃຕ້ດິນ</text>
+  <text x="622" y="115" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#0F172A">2. ປູກຫຍ້າແຝກ / ໄມ້ຢຶດໜ້າດິນ</text>
+  <text x="622" y="132" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#0F172A">3. ຕາໜ່າງເຫຼັກກັນຫີນຕົກ (Rock Net)</text>
+  <rect x="620" y="145" width="162" height="32" rx="3" fill="#E2E8F0"/>
+  <text x="701" y="159" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#1E293B" text-anchor="middle">ປ່ຽນພູເຂົາຮ້າຍໃຫ້ກາຍເປັນ Xuan Wu</text>
+  <text x="701" y="170" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#475569" text-anchor="middle">ດ້ວຍແນວຕົ້ນສົນ ແລະ ກຳແພງແໜ້ນ</text>
+
+  <rect x="614" y="240" width="174" height="202" rx="6" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="240" width="174" height="24" rx="6" fill="#DC2626"/>
+  <text x="701" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">🚫 ຂໍ້ຫ້າມເລື່ອງໜ້າຜາ</text>
+  <text x="622" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#991B1B">• ຫ້າມສ້າງເຮືອນຕິດແປະຕີນຜາ</text>
+  <text x="622" y="295" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#991B1B">• ຫ້າມໜ້າເຮືອນປະເຊີນໜ້າຜາຊັນ</text>
+  <text x="622" y="312" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#991B1B">• ຫ້າມຂຸດເຈາະຕັດຕີນຜາຊະຊາຍ</text>
+  <rect x="620" y="325" width="162" height="48" rx="3" fill="#FEE2E2"/>
+  <text x="701" y="340" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#B91C1C" text-anchor="middle">ຫຼັກຄວາມປອດໄພສູງສຸດ:</text>
+  <text x="701" y="353" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#991B1B" text-anchor="middle">ຖອຍຮົ່ນເຮືອນໃຫ້ພົ້ນແນວຫີນຕົກ</text>
+  <text x="701" y="365" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#7F1D1D" text-anchor="middle">ກວດສອບຄວາມແໜ້ນຂອງຫີນສະເໝີ</text>
+
+  <!-- BOTTOM SUMMARY BAR -->
+  <rect x="0" y="445" width="800" height="35" fill="#0F172A"/>
+  <text x="400" y="460" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">ຫຼັກການໜ້າຜາ &amp; ຫີນແຫຼມ: ເປັນພູເຂົາຊ່າ (Mountain Sha) ທີ່ສ່ຽງດິນເຈື່ອນ ແລະ ຫີນຕົກ. ຕ້ອງສ້າງກຳແພງກັ້ນດິນຄອນກຣີດ.</text>
+  <text x="400" y="472" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#94A3B8" text-anchor="middle">ຖອຍຕົວເຮືອນຫ່າງຕີນຜາ >15m, ປູກແນວຕົ້ນສົນໜາດູດຊັບພະລັງງານ, ແລະ ເຈາະທໍ່ລະບາຍນ້ຳກຳແພງຫຼຸດແຮງດັນໃຕ້ດິນ.</text>
+</svg>

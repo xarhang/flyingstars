@@ -1188,6 +1188,28 @@ const html = `<!DOCTYPE html>
       themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
     });
 
+    function handleImgError(img) {
+      if (!img.dataset.retry) {
+        img.dataset.retry = '1';
+        var src = img.getAttribute('src') || '';
+        var filename = src.split('/').pop();
+        if (src.indexOf('hmong/img/') === -1 && src.indexOf('../') === -1) {
+          img.src = 'hmong/img/' + filename;
+          return;
+        } else {
+          img.src = 'img/' + filename;
+          return;
+        }
+      } else if (img.dataset.retry === '1') {
+        img.dataset.retry = '2';
+        var cur = img.src || '';
+        if (cur.endsWith('.png')) {
+          img.src = cur.replace(/\.png$/, '.svg');
+          return;
+        }
+      }
+    }
+
     // RENDER ATLAS GRID
     function renderAtlas() {
       const filtered = archetypesData.filter(item => {
@@ -1231,7 +1253,7 @@ const html = `<!DOCTYPE html>
 
         htmlCards += '<div class="item-card" onclick="openItemModal(\\'' + it.id + '\\')">' +
           '<div class="card-img-wrap">' +
-            '<img class="card-img" src="' + it.img + '" alt="' + it.name + '" loading="lazy">' +
+            '<img class="card-img" src="' + it.img + '" alt="' + it.name + '" loading="lazy" onerror="handleImgError(this)">' +
             '<span class="card-id-pill">' + it.id + '</span>' +
             '<span class="card-score-pill ' + sClass + '">' + sText + '</span>' +
           '</div>' +
@@ -1260,7 +1282,7 @@ const html = `<!DOCTYPE html>
 
         htmlCards += '<div class="item-card" onclick="openItemModal(\\'' + it.id + '\\')">' +
           '<div class="card-img-wrap">' +
-            '<img class="card-img" src="' + it.img + '" alt="' + it.name + '" loading="lazy">' +
+            '<img class="card-img" src="' + it.img + '" alt="' + it.name + '" loading="lazy" onerror="handleImgError(this)">' +
             '<span class="card-id-pill">' + it.id + '</span>' +
             '<span class="card-score-pill ' + sClass + '">' + sText + '</span>' +
           '</div>' +
@@ -1318,6 +1340,7 @@ const html = `<!DOCTYPE html>
       document.getElementById('modalIdTag').textContent = item.id + ' • ' + (item.isGood ? '✓ QAUV ZOO' : '✗ QAUV PHEM') + ' (' + item.score + '/100)';
       document.getElementById('modalMainTitle').textContent = item.name;
       const mImg = document.getElementById('modalDetailImg');
+      mImg.onerror = function() { handleImgError(this); };
       mImg.src = item.img;
       mImg.onclick = () => window.open(item.img, '_blank');
       const zoomBtn = document.getElementById('modalDetailImgZoomBtn');

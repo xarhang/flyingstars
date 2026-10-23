@@ -1,0 +1,161 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EDF2F7"/>
+    </linearGradient>
+    <linearGradient id="cemeteryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#bgGrad)"/>
+
+  <!-- TOP TITLE HUD BAR -->
+  <rect x="0" y="0" width="800" height="42" fill="#0F172A"/>
+  <rect x="18" y="9" width="95" height="24" rx="4" fill="#DC2626"/>
+  <text x="65" y="25" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">ENV-0001-C</text>
+  <text x="122" y="26" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.8" fill="#F8FAFC">ເຄສ 3: ສຸສານດ້ານຫຼັງເຮືອນ (ຕຳແໜ່ງເຕົ່າດຳ Xuan Wu) - ແກ້ໄຂເຮືອນຂາດຫຼັງພິງ &amp; ຝັນຮ້າຍ</text>
+  <rect x="580" y="9" width="105" height="24" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="632" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#38BDF8" text-anchor="middle">ຢິນຊ່າ / Yin Sha</text>
+  <rect x="692" y="9" width="90" height="24" rx="4" fill="#991B1B"/>
+  <text x="737" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#FEF2F2" text-anchor="middle">ລະວັງສູງ</text>
+
+  <!-- LEFT COLUMN CARDS -->
+  <rect x="12" y="48" width="174" height="185" rx="6" fill="#F8FAFC" stroke="#64748B" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="48" width="174" height="24" rx="6" fill="#475569"/>
+  <text x="100" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">🐢 ສຸສານຕຳແໜ່ງເຕົ່າດຳ (ຫຼັງ)</text>
+  <text x="20" y="86" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#1E293B">• ຕຳແໜ່ງ: ສຸສານ/ປ່າຊ້າຢູ່ຫຼັງເຮືອນ</text>
+  <text x="20" y="103" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#1E293B">• ເຕົ່າດຳ: ຕ້ອງການພູເຂົາພິງຫຼັງ</text>
+  <text x="20" y="120" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#1E293B">• ພິງໃສ່ສຸສານ: ເຮືອນພິງໄອຢິນເຢັນ</text>
+  <text x="20" y="137" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• ຂາດຜູ້ອຸປະຖຳ, ຝັນຮ້າຍ, ປວດຫຼັງ</text>
+  <rect x="18" y="148" width="162" height="42" rx="4" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <text x="99" y="162" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#0F172A" text-anchor="middle">ໄລຍະອັນຕະລາຍ &lt;50-100m</text>
+  <text x="99" y="178" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#475569" text-anchor="middle">ຕ້ອງສ້າງ 'ພູເຂົາຈຳລອງ' ປົກປ້ອງ</text>
+
+  <rect x="12" y="240" width="174" height="202" rx="6" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="240" width="174" height="24" rx="6" fill="#DC2626"/>
+  <text x="100" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">🚫 ຂໍ້ຫ້າມດ້ານຫຼັງເຮືອນ</text>
+  <text x="20" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• ຫ້າມເຈາະປະຕູຫຼັງເຮືອນປະເຊີນສຸສານ</text>
+  <text x="20" y="295" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• ຫ້າມເປີດປ່ອງຢ້ຽມແກ້ວໃສຫຼຽວເຫັນ</text>
+  <text x="20" y="312" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• ຫ້າມຫົວຕຽງຫັນໃສ່ສຸສານຫຼັງ</text>
+  <rect x="18" y="325" width="162" height="48" rx="4" fill="#FEE2E2"/>
+  <text x="99" y="340" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#B91C1C" text-anchor="middle">ກົດຫຼັກຮວງຈຸ້ຍເຕົ່າດຳ:</text>
+  <text x="24" y="354" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#7F1D1D">• ດ້ານຫຼັງຕ້ອງ 'ໜັກແໜ້ນ-ທຶບ-ສະຫງົບ'</text>
+  <text x="24" y="366" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#7F1D1D">• ປິດຫຼັງໃຫ້ແໜ້ນໜາຄືພູເຂົາ</text>
+
+  <!-- CENTER SITE PLAN (X=195 to 605, Y=48 to 442) -->
+  <g id="centerSite">
+    <!-- Rear External Cemetery Ground (Neighbor Land) -->
+    <rect x="195" y="48" width="410" height="92" fill="url(#cemeteryGrad)" stroke="#94A3B8" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="400" y="65" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.5" fill="#475569" text-anchor="middle">ສຸສານ / ປ່າຊ້າພາຍນອກດ້ານຫຼັງເຮືອນ (External Cemetery)</text>
+    <text x="400" y="78" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#DC2626" text-anchor="middle">ດິນຄົນອື່ນ (⛔ ຫ້າມລ່ວງລ້ຳ)</text>
+    
+    <!-- Tombs across rear -->
+    <path d="M 225 110 A 18 14 0 0 1 261 110 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
+    <rect x="238" y="90" width="8" height="14" fill="#64748B" rx="1"/>
+    <path d="M 310 110 A 18 14 0 0 1 346 110 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
+    <rect x="323" y="90" width="8" height="14" fill="#64748B" rx="1"/>
+    <path d="M 390 110 A 20 16 0 0 1 430 110 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
+    <rect x="405" y="88" width="8" height="15" fill="#64748B" rx="1"/>
+    <path d="M 470 110 A 18 14 0 0 1 506 110 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
+    <rect x="483" y="90" width="8" height="14" fill="#64748B" rx="1"/>
+    <path d="M 545 110 A 18 14 0 0 1 581 110 Z" fill="#94A3B8" stroke="#475569" stroke-width="1.2"/>
+    <rect x="558" y="90" width="8" height="14" fill="#64748B" rx="1"/>
+
+    <!-- Cold Yin arrows pointing down into our boundary -->
+    <path d="M 250 118 L 250 138" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3,2"/>
+    <polygon points="250,142 247,136 253,136" fill="#38BDF8"/>
+    <path d="M 400 118 L 400 138" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3,2"/>
+    <polygon points="400,142 397,136 403,136" fill="#38BDF8"/>
+    <path d="M 550 118 L 550 138" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3,2"/>
+    <polygon points="550,142 547,136 553,136" fill="#38BDF8"/>
+    <text x="400" y="132" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#0284C7" text-anchor="middle">⬇ ໄອຢິນເຢັນ (Yin Sha) ແຜ່ລົງມາຈາກຫຼັງ</text>
+
+    <!-- Defensive Rear Boundary Wall (Extra-Tall 2.5m Solid Masonry) -->
+    <rect x="200" y="142" width="400" height="7" fill="#334155" stroke="#0F172A" stroke-width="1"/>
+    
+    <!-- 5 Pines Guard (ຫ້າຕົ້ນສົນປົກປ້ອງເຕົ່າດຳ) -->
+    <circle cx="235" cy="158" r="8.5" fill="#14532D"/>
+    <circle cx="295" cy="158" r="8.5" fill="#166534"/>
+    <circle cx="355" cy="158" r="8.5" fill="#14532D"/>
+    <circle cx="445" cy="158" r="8.5" fill="#166534"/>
+    <circle cx="505" cy="158" r="8.5" fill="#14532D"/>
+    <circle cx="565" cy="158" r="8.5" fill="#166534"/>
+
+    <!-- Centered Tai Shan Stone Plaque -->
+    <rect x="375" y="145" width="50" height="16" rx="2" fill="#1E293B" stroke="#94A3B8" stroke-width="1"/>
+    <text x="400" y="157" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#F8FAFC" text-anchor="middle">TAI SHAN</text>
+
+    <!-- Warm Spotlight Lanterns on Rear Wall -->
+    <circle cx="265" cy="146" r="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1"/>
+    <circle cx="335" cy="146" r="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1"/>
+    <circle cx="465" cy="146" r="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1"/>
+    <circle cx="535" cy="146" r="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1"/>
+    <text x="400" y="174" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#166534" text-anchor="middle">✓ ກຳແພງ 2.5m + ແນວ 5 ຕົ້ນສົນສູງປົກປ້ອງເຕົ່າດຳ + ໄຟສີອຸ່ນ + ຫີນ Tai Shan</text>
+
+    <!-- Residential Ground -->
+    <rect x="200" y="178" width="400" height="218" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+
+    <!-- Setback Distance Indicator -->
+    <line x1="400" y1="180" x2="400" y2="210" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <polygon points="400,180 397,185 403,185" fill="#0284C7"/>
+    <polygon points="400,210 397,205 403,205" fill="#0284C7"/>
+    <text x="440" y="196" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#0284C7">ໄລຍະຖອຍ >10-15m</text>
+
+    <!-- Safe Main House Seated Solidly -->
+    <polygon points="290,210 400,185 510,210" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+    <rect x="295" y="210" width="210" height="70" fill="#FEF08A" stroke="#854D0E" stroke-width="1.8" rx="3"/>
+    <text x="400" y="232" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#1E293B" text-anchor="middle">ເຮືອນພັກອາໄສ (Yang Zhai) - ຝາຫຼັງທຶບແໜ້ນໜາ</text>
+    <text x="400" y="247" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7" fill="#15803D" text-anchor="middle">✓ ຫົວຕຽງພິງຝາທຶບພາຍໃນ / ບໍ່ເຈາະປ່ອງຢ້ຽມໃຫຍ່ດ້ານຫຼັງ</text>
+    <text x="400" y="260" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#475569" text-anchor="middle">ສ້າງພູເຂົາຈຳລອງປົກປ້ອງດ້ານຫຼັງ ແກ້ໄຂອາການຝັນຮ້າຍ &amp; ສຸຂະພາບ</text>
+    <rect x="392" y="275" width="16" height="5" fill="#1E293B"/>
+
+    <!-- Ming Tang Lawn In Front -->
+    <rect x="260" y="295" width="280" height="75" rx="5" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="400" y="315" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8" fill="#15803D" text-anchor="middle">ລານໝິງຖາງໂລ່ງແຈ້ງດ້ານໜ້າ (Bright Hall)</text>
+    <text x="400" y="332" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#166534" text-anchor="middle">✓ ຮັບແສງແດດ &amp; ພະລັງຢາງ (Yang Qi) ເຕັມທີ່</text>
+    <text x="400" y="347" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#0284C7" text-anchor="middle">• ເຕົ້າໂຮມພະລັງງານຊີວິດ ແລະ ຄວາມຮັ່ງມີ</text>
+
+    <!-- Front Road -->
+    <rect x="200" y="400" width="400" height="25" fill="#334155"/>
+    <line x1="200" y1="412" x2="600" y2="412" stroke="#FBBF24" stroke-width="2" stroke-dasharray="8,6"/>
+    <text x="400" y="420" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FFFFFF" text-anchor="middle">ຖະໜົນໃຫຍ່ດ້ານໜ້າ (Facing Main Road) ຮັບແສງສະຫວ່າງ</text>
+
+    <rect x="420" y="396" width="30" height="8" rx="1.5" fill="#15803D"/>
+    <text x="435" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="5.5" fill="#FFFFFF" text-anchor="middle">✓ ປະຕູຮົ້ວ</text>
+  </g>
+
+  <!-- RIGHT COLUMN CARDS -->
+  <rect x="614" y="48" width="174" height="185" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="48" width="174" height="24" rx="6" fill="#15803D"/>
+  <text x="701" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">🛡️ 4 ວິທີແກ້ສຸສານດ້ານຫຼັງ</text>
+  <text x="622" y="86" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">1. ກຳແພງທຶບສູງ 2.2-2.5m ດ້ານຫຼັງ</text>
+  <text x="622" y="103" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">2. ປູກ 5 ຕົ້ນສົນໃຫຍ່ປົກປ້ອງເຕົ່າດຳ</text>
+  <text x="622" y="120" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">3. ຕັ້ງສີລາ Tai Shan ໃຈກາງກຳແພງ</text>
+  <text x="622" y="137" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">4. ຕິດໂຄມໄຟ Warm Yang ສ່ອງຫຼັງ</text>
+  <rect x="620" y="148" width="162" height="30" rx="3" fill="#DCFCE7"/>
+  <text x="701" y="161" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#166534" text-anchor="middle">ກົດຫຼັກ: ປິດຫຼັງໃຫ້ແໜ້ນໜາຄືພູເຂົາ</text>
+  <text x="701" y="172" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#14532D" text-anchor="middle">ກຳແພງ + ຕົ້ນສົນ = ພູເຂົາເຕົ່າດຳ</text>
+
+  <rect x="614" y="240" width="174" height="202" rx="6" fill="#FAF5FF" stroke="#9333EA" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="240" width="174" height="24" rx="6" fill="#7E22CE"/>
+  <text x="701" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">📐 ການຈັດວາງຜັງເຮືອນ</text>
+  <text x="622" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#581C87">• ຝາຫຼັງເຮືອນທຶບ ປິດມ່ານໜາ</text>
+  <text x="622" y="295" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#581C87">• ຫົວຕຽງພິງຝາທຶບພາຍໃນເຮືອນ</text>
+  <text x="622" y="312" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#581C87">• ຖອຍຕົວເຮືອນຫ່າງຮົ້ວຫຼັງ >10m</text>
+  <rect x="620" y="325" width="162" height="48" rx="3" fill="#F3E8FF"/>
+  <text x="701" y="339" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#6B21A8" text-anchor="middle">ແກ້ໄຂອາການຝັນຮ້າຍ:</text>
+  <text x="701" y="352" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#581C87" text-anchor="middle">ຕັດສາຍຕາບໍ່ໃຫ້ເຫັນສຸສານ 100%</text>
+  <text x="701" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#7E22CE" text-anchor="middle">ເພີ່ມໄຟແສງສີສົ້ມຫຼັງເຮືອນ</text>
+
+  <!-- BOTTOM SUMMARY BAR -->
+  <rect x="0" y="445" width="800" height="35" fill="#0F172A"/>
+  <text x="400" y="460" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">ຫຼັກຮວງຈຸ້ຍສຸສານດ້ານຫຼັງ (ເຕົ່າດຳ): ເຮືອນພິງໃສ່ໄອຢິນ ຂາດຄວາມໝັ້ນຄົງ ເກີດຝັນຮ້າຍ ແລະ ສຸຂະພາບຊຸດໂຊມ.</text>
+  <text x="400" y="472" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#94A3B8" text-anchor="middle">ວິທີແກ້ໄຂ: ກຳແພງທຶບ 2.5m + ແນວ 5 ຕົ້ນສົນໃຫຍ່ຈຳລອງພູເຂົາ + ສີລາ Tai Shan + ຫົວຕຽງພິງຝາທຶບພາຍໃນ ປິດມ່ານຫຼັງເຮືອນ.</text>
+</svg>

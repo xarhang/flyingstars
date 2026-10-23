@@ -1,0 +1,150 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EDF2F7"/>
+    </linearGradient>
+    <linearGradient id="safeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEFCE8"/>
+      <stop offset="100%" stop-color="#FEF08A"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#bgGrad)"/>
+
+  <!-- TOP TITLE HUD BAR -->
+  <rect x="0" y="0" width="800" height="42" fill="#0F172A"/>
+  <rect x="18" y="9" width="95" height="24" rx="4" fill="#DC2626"/>
+  <text x="65" y="25" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#FFFFFF" text-anchor="middle">ENV-0001-D</text>
+  <text x="122" y="26" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.8" fill="#F8FAFC">ເຄສ 4: ຫຼຸບຝັງສົບເກົ່າຢູ່ໃນຕອນດິນ - ຢິນຊ່າຂັ້ນຮຸນແຮງ ຫຼັກການລອກດິນ &amp; ປັບພື້ນທີ່</text>
+  <rect x="580" y="9" width="105" height="24" rx="4" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="632" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10" fill="#38BDF8" text-anchor="middle">ຢິນຊ່າ / Yin Sha</text>
+  <rect x="692" y="9" width="90" height="24" rx="4" fill="#991B1B"/>
+  <text x="737" y="25" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="10.5" fill="#FEF2F2" text-anchor="middle">ລະວັງສູງ</text>
+
+  <!-- LEFT COLUMN CARDS -->
+  <rect x="12" y="48" width="174" height="185" rx="6" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="48" width="174" height="24" rx="6" fill="#DC2626"/>
+  <text x="100" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">🚫 ຫຼຸບຝັງສົບເກົ່າຢູ່ໃນດິນ</text>
+  <text x="20" y="86" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• ສະພາບ: ພົບຫຼຸບຝັງສົບ/ອັດຖິໃນດິນ</text>
+  <text x="20" y="103" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• ເປັນຢິນຊ່າຂັ້ນຮຸນແຮງ (Extreme Yin)</text>
+  <text x="20" y="120" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• ເຮືອນຄົນເປັນທັບເຮືອນຄົນຕາຍ</text>
+  <text x="20" y="137" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• ຄົນຢູ່ຈະອັບໂຊກ, ປ່ວຍຊຳເຮື້ອ</text>
+  <rect x="18" y="148" width="162" height="42" rx="4" fill="#FEE2E2" stroke="#FCA5A5"/>
+  <text x="99" y="162" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#B91C1C" text-anchor="middle">ຫ້າມປຸກເຮືອນທັບເດັດຂາດ!</text>
+  <text x="99" y="178" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#7F1D1D" text-anchor="middle">ຕ້ອງແກ້ໄຂຕາມພິທີກຳກ່ອນ</text>
+
+  <rect x="12" y="240" width="174" height="202" rx="6" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="12" y="240" width="174" height="24" rx="6" fill="#DC2626"/>
+  <text x="100" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9" fill="#FFFFFF" text-anchor="middle">⚠️ ຂໍ້ຫ້າມສຳຄັນທີ່ສຸດ!</text>
+  <text x="20" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• ຫ້າມປຸກຫ້ອງນອນທັບຈຸດສຸສານ</text>
+  <text x="20" y="295" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• ຫ້າມປຸກຫ້ອງຮັບແຂກ/ຫ້ອງຄົວທັບ</text>
+  <text x="20" y="312" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.8" fill="#991B1B">• ຫ້າມຖົມດິນທັບໂດຍບໍ່ຍ້າຍອັດຖິ</text>
+  <rect x="18" y="325" width="162" height="48" rx="4" fill="#FEE2E2"/>
+  <text x="99" y="340" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.2" fill="#B91C1C" text-anchor="middle">ກົດເດັດຂາດ:</text>
+  <text x="24" y="354" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#7F1D1D">• ດິນສຸສານມີໄອຢິນຝັງເລິກ</text>
+  <text x="24" y="366" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#7F1D1D">• ຕ້ອງຕາກແດດ 49 ວັນດູດຢາງ</text>
+
+  <!-- CENTER SITE PLAN (X=195 to 605, Y=48 to 442) -->
+  <g id="centerSite">
+    <!-- Our Full Property Perimeter -->
+    <rect x="200" y="48" width="400" height="348" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+
+    <!-- LEFT ZONE: OLD GRAVE SITE & REHABILITATION FLOW -->
+    <g transform="translate(210, 60)">
+      <!-- Taboo Box with red dashed outline -->
+      <rect x="0" y="0" width="150" height="95" rx="5" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.8" stroke-dasharray="5,4"/>
+      
+      <!-- Tombstone with Red X -->
+      <path d="M 55 45 A 18 14 0 0 1 95 45 Z" fill="#94A3B8" stroke="#DC2626" stroke-width="1.2"/>
+      <rect x="71" y="25" width="8" height="15" fill="#64748B" rx="1"/>
+      <line x1="45" y1="20" x2="105" y2="60" stroke="#DC2626" stroke-width="2.5"/>
+      <line x1="105" y1="20" x2="45" y2="60" stroke="#DC2626" stroke-width="2.5"/>
+
+      <text x="75" y="15" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#DC2626" text-anchor="middle">🚫 ຈຸດສຸສານເກົ່າໃນດິນ</text>
+      <text x="75" y="76" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#B91C1C" text-anchor="middle">❌ ຫ້າມປຸກເຮືອນທັບເດັດຂາດ!</text>
+      <text x="75" y="88" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.8" fill="#7F1D1D" text-anchor="middle">(ເປັນຢິນຊ່າຮຸນແຮງ Extreme Yin)</text>
+    </g>
+
+    <!-- 4-Step Remediation Flow Arrow -->
+    <path d="M 285 160 L 285 210" stroke="#16A34A" stroke-width="2" stroke-dasharray="3,2"/>
+    <polygon points="285,215 281,208 289,208" fill="#16A34A"/>
+    <rect x="215" y="166" width="140" height="38" rx="3" fill="#DCFCE7" stroke="#16A34A" stroke-width="1"/>
+    <text x="285" y="178" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.2" fill="#15803D" text-anchor="middle">1. ຍ້າຍອັດຖິ ➔ 2. ລອກດິນ 1.5m</text>
+    <text x="285" y="190" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.2" fill="#15803D" text-anchor="middle">3. ຕາກແດດ 49 ວັນ ➔ 4. ຖົມດິນໃໝ່</text>
+    <text x="285" y="200" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="5.5" fill="#166534" text-anchor="middle">ດູດຊັບພະລັງຢາງ (Yang Qi) ປ່ຽນເປັນດີ</text>
+
+    <!-- Transformed Open Sunlit Garden -->
+    <rect x="210" y="222" width="150" height="150" rx="6" fill="#F0FDF4" stroke="#22C55E" stroke-width="1.8"/>
+    <text x="285" y="242" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">🌸 ສວນດອກໄມ້ກາງແຈ້ງ / ບ່ອນຈອດລົດ</text>
+    <text x="285" y="258" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">✓ ປັບເປັນພື້ນທີ່ໂລ່ງແຈ້ງຮັບແສງແດດ</text>
+    
+    <!-- Flower & Sun Decor in Garden -->
+    <circle cx="240" cy="285" r="8" fill="#FEF08A" stroke="#CA8A04" stroke-width="1"/>
+    <circle cx="285" cy="285" r="8" fill="#FBCFE8" stroke="#DB2777" stroke-width="1"/>
+    <circle cx="330" cy="285" r="8" fill="#FEF08A" stroke="#CA8A04" stroke-width="1"/>
+    <text x="285" y="315" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#15803D" text-anchor="middle">ປູກຫຍ້າຂຽວ + ດອກໄມ້ສີສົດໃສ</text>
+    <text x="285" y="330" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#0284C7" text-anchor="middle">ແສງແດດເຕັມທີ່ ລ້າງໄອຢິນ 100%</text>
+    <text x="285" y="355" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.5" fill="#166534" text-anchor="middle">✓ ປ່ຽນພື້ນທີ່ຮ້າຍກາຍເປັນພື້ນທີ່ໂຊກ</text>
+
+    <!-- RIGHT ZONE: SAFE BUILDING ZONE (SAFE HOUSE) -->
+    <rect x="375" y="60" width="215" height="312" rx="6" fill="#FEFCE8" stroke="#CA8A04" stroke-width="1.8" stroke-dasharray="4,3"/>
+    <rect x="385" y="70" width="195" height="22" rx="3" fill="#15803D"/>
+    <text x="482" y="85" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FFFFFF" text-anchor="middle">✓ ເຂດປຸກສ້າງທີ່ປອດໄພ (Safe Living Zone)</text>
+
+    <!-- Safe Main House Inside Safe Zone -->
+    <polygon points="400,135 485,110 570,135" fill="#2563EB" stroke="#1E40AF" stroke-width="2"/>
+    <rect x="405" y="135" width="160" height="90" fill="#FEF08A" stroke="#854D0E" stroke-width="1.8" rx="3"/>
+    <text x="485" y="160" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="9.5" fill="#1E293B" text-anchor="middle">ເຮືອນພັກອາໄສ (Yang Zhai)</text>
+    <text x="485" y="178" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.2" fill="#15803D" text-anchor="middle">✓ ຕັ້ງຢູ່ເຂດດິນບໍລິສຸດ ປອດໄພ 100%</text>
+    <text x="485" y="193" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#475569" text-anchor="middle">ບໍ່ມີໄອຢິນລົບກວນ ສຸຂະພາບແຂງແຮງ</text>
+    <rect x="477" y="220" width="16" height="5" fill="#1E293B"/>
+
+    <!-- Ming Tang Lawn In Front of House -->
+    <rect x="400" y="240" width="170" height="75" rx="4" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1.2" stroke-dasharray="3,2"/>
+    <text x="485" y="260" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#15803D" text-anchor="middle">ລານໝິງຖາງໂລ່ງແຈ້ງ</text>
+    <text x="485" y="275" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#166534" text-anchor="middle">✓ ຮັບໂຊກລາບ &amp; ພະລັງງານຊີວິດ</text>
+    <text x="485" y="290" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#0284C7" text-anchor="middle">• ທາງລົດແລ່ນເຂົ້າສະດວກສະບາຍ</text>
+
+    <!-- Front Road -->
+    <rect x="200" y="400" width="400" height="25" fill="#334155"/>
+    <line x1="200" y1="412" x2="600" y2="412" stroke="#FBBF24" stroke-width="2" stroke-dasharray="8,6"/>
+    <text x="400" y="420" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#FFFFFF" text-anchor="middle">ຖະໜົນໃຫຍ່ດ້ານໜ້າ (Facing Main Road) ຮັບແສງສະຫວ່າງ</text>
+
+    <!-- Entrance Gates -->
+    <rect x="465" y="396" width="35" height="8" rx="1.5" fill="#15803D"/>
+    <text x="482" y="402" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="5.5" fill="#FFFFFF" text-anchor="middle">✓ ປະຕູຮົ້ວ</text>
+  </g>
+
+  <!-- RIGHT COLUMN CARDS -->
+  <rect x="614" y="48" width="174" height="185" rx="6" fill="#FAF5FF" stroke="#9333EA" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="48" width="174" height="24" rx="6" fill="#7E22CE"/>
+  <text x="701" y="64" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">🛠️ 4 ຂັ້ນຕອນແກ້ສຸສານໃນດິນ</text>
+  <text x="622" y="86" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#581C87">1. ຍ້າຍອັດຖິອອກຕາມພິທີກຳ</text>
+  <text x="622" y="103" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#581C87">2. ລອກດິນ 1.5-2m ຕາກແດດ 49 ວັນ</text>
+  <text x="622" y="120" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#581C87">3. ຖົມດິນ 5 ສີ/ດິນດານໃໝ່ສະອາດ</text>
+  <text x="622" y="137" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#581C87">4. ປັບເປັນສວນດອກໄມ້/ບ່ອນຈອດລົດ</text>
+  <rect x="620" y="148" width="162" height="30" rx="3" fill="#F3E8FF"/>
+  <text x="701" y="161" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="6.8" fill="#6B21A8" text-anchor="middle">ກົດຫຼັກ: ຕາກແດດ 49 ວັນດູດຢາງ</text>
+  <text x="701" y="172" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#581C87" text-anchor="middle">ປ່ຽນພື້ນທີ່ຢິນໃຫ້ກາຍເປັນໂລ່ງແຈ້ງ</text>
+
+  <rect x="614" y="240" width="174" height="202" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.2" filter="url(#shadow)"/>
+  <rect x="614" y="240" width="174" height="24" rx="6" fill="#15803D"/>
+  <text x="701" y="256" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="8.8" fill="#FFFFFF" text-anchor="middle">📐 ການຈັດວາງຜັງອາຄານ</text>
+  <text x="622" y="278" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">• ແຍກເຂດສຸສານເກົ່າເປັນສວນດອກໄມ້</text>
+  <text x="622" y="295" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">• ປຸກເຮືອນໃນ 'ເຂດດິນບໍລິສຸດ'</text>
+  <text x="622" y="312" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="7.5" fill="#14532D">• ປູກຫຍ້າຂຽວ + ດອກໄມ້ສີສົດໃສ</text>
+  <rect x="620" y="325" width="162" height="48" rx="3" fill="#DCFCE7"/>
+  <text x="701" y="339" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7" fill="#166534" text-anchor="middle">ຂໍ້ຫ້າມສຳຄັນທີ່ສຸດ:</text>
+  <text x="701" y="352" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.5" fill="#14532D" text-anchor="middle">ຫ້າມສ້າງຫ້ອງນອນ/ຫ້ອງຮັບແຂກທັບ</text>
+  <text x="701" y="364" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.2" fill="#166534" text-anchor="middle">ໃຫ້ຈັດເປັນສວນດອກໄມ້ ຫຼື ບ່ອນຈອດລົດ</text>
+
+  <!-- BOTTOM SUMMARY BAR -->
+  <rect x="0" y="445" width="800" height="35" fill="#0F172A"/>
+  <text x="400" y="460" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-weight="bold" font-size="7.5" fill="#F8FAFC" text-anchor="middle">ຫຼັກຮວງຈຸ້ຍສຸສານໃນດິນ: ເປັນຢິນຊ່າຮຸນແຮງ ຫ້າມປຸກເຮືອນທັບເດັດຂາດ! ຕ້ອງຍ້າຍອັດຖິຕາມພິທີ ແລະ ຂຸດລອກດິນ 1.5m ຕາກແດດ 49 ວັນ.</text>
+  <text x="400" y="472" font-family="'Noto Sans Lao', 'Segoe UI', sans-serif" font-size="6.8" fill="#94A3B8" text-anchor="middle">ການວາງຜັງ: ຖົມດິນໃໝ່ສະອາດ ແລ້ວຈັດຈຸດດັ່ງກ່າວເປັນສວນດອກໄມ້ກາງແຈ້ງ ຫຼື ບ່ອນຈອດລົດ ໃຫ້ປຸກຕົວເຮືອນໃນເຂດດິນບໍລິສຸດເທົ່ານັ້ນ.</text>
+</svg>
