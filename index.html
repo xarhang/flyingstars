@@ -8154,6 +8154,76 @@ function setYangTab(tabName) {
             storage: { hm: 'Chav Khaws Khoom', ph: '𖬎𖰰𖬟 𖬐𖰞' }
         };
 
+        const ROOM_CATEGORIES = [
+            { key: 'all', name: 'ທັງໝົດ (43)' },
+            { key: 'door_win', name: '🚪 ປະຕູ/ປ່ອງຢ້ຽມ (11)' },
+            { key: 'kitchen', name: '🍲 ຄົວ/ອາຫານ (5)' },
+            { key: 'bed', name: '🛏️ ຫ້ອງນອນ (4)' },
+            { key: 'toilet', name: '🚽 ຫ້ອງນ້ຳ/ສຸຂາ (6)' },
+            { key: 'living_work', name: '🛋️ ຮັບແຂກ/ເຮັດວຽກ (5)' },
+            { key: 'structure', name: '🪜 ໂຄງສ້າງ/ທາງຍ່າງ (4)' },
+            { key: 'water_ext', name: '⛲ ນ້ຳ/ສວນ/ພາຍນອກ (8)' }
+        ];
+
+        const ALL_ROOMS = [
+            // 🚪 Doors & Openings (11)
+            { key: 'main_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູໃຫຍ່ໜ້າບ້ານ' },
+            { key: 'gate', cat: 'door_win', icon: '⛩️', name: 'ປະຕູຮົ້ວນອກບ້ານ' },
+            { key: 'side_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຂ້າງບ້ານ' },
+            { key: 'back_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຫຼັງບ້ານ' },
+            { key: 'bedroom_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຫ້ອງນອນ' },
+            { key: 'kitchen_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຄົວ' },
+            { key: 'toilet_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຫ້ອງນ້ຳ' },
+            { key: 'balcony_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູລະບຽງ/ເລື່ອນ' },
+            { key: 'window', cat: 'door_win', icon: '🪟', name: 'ປ່ອງຢ້ຽມໃຫຍ່' },
+            { key: 'bedroom_window', cat: 'door_win', icon: '🪟', name: 'ປ່ອງຢ້ຽມຫ້ອງນອນ' },
+            { key: 'skylight', cat: 'door_win', icon: '☀️', name: 'ຊ່ອງແສງ/ຊ່ອງລົມ' },
+
+            // 🍲 Kitchen & Dining (5)
+            { key: 'kitchen_room', cat: 'kitchen', icon: '🍲', name: 'ຫ້ອງຄົວ (ພື້ນທີ່)' },
+            { key: 'stove', cat: 'kitchen', icon: '🔥', name: 'ເຕົາແກັສ/ເຕົາໄຟ' },
+            { key: 'sink', cat: 'kitchen', icon: '🚰', name: 'ອ່າງລ້າງຈານ/ກ໊ອກ' },
+            { key: 'refrigerator', cat: 'kitchen', icon: '🧊', name: 'ຕູ້ເຢັນ (ຄັງສະບຽງ)' },
+            { key: 'dining', cat: 'kitchen', icon: '🍽️', name: 'ໂຕະກິນເຂົ້າ' },
+
+            // 🛏️ Bedrooms & Resting (4)
+            { key: 'bedroom', cat: 'bed', icon: '🏠', name: 'ຫ້ອງນອນໃຫຍ່' },
+            { key: 'guest_bedroom', cat: 'bed', icon: '🛏️', name: 'ຫ້ອງນອນລູກ/ແຂກ' },
+            { key: 'bed_head', cat: 'bed', icon: '🛌', name: 'ຕຽງ/ຫົວຕຽງນອນ' },
+            { key: 'wardrobe_mirror', cat: 'bed', icon: '🪞', name: 'ຕູ້ເສື້ອຜ້າ/ກະຈົກ' },
+
+            // 🚽 Bath & Sanitation (6)
+            { key: 'toilet_indoor', cat: 'toilet', icon: '🚽', name: 'ຫ້ອງນ້ຳ (ໃນບ້ານ)' },
+            { key: 'toilet_outdoor', cat: 'toilet', icon: '🛖', name: 'ຫ້ອງນ້ຳ (ນອກບ້ານ)' },
+            { key: 'toilet_bowl', cat: 'toilet', icon: '🚽', name: 'ຈຸດຊັກໂຄກ' },
+            { key: 'shower_bath', cat: 'toilet', icon: '🚿', name: 'ໂຊນອາບນ້ຳ/ອ່າງ' },
+            { key: 'laundry', cat: 'toilet', icon: '🧺', name: 'ໂຊນຊັກຜ້າ' },
+            { key: 'septic_drain', cat: 'toilet', icon: '🕳️', name: 'ຖັງເກິ/ທໍ່ນ້ຳເສຍ' },
+
+            // 🛋️ Living, Work & Wealth (5)
+            { key: 'living_room', cat: 'living_work', icon: '🛋️', name: 'ຫ້ອງຮັບແຂກ/ໂຖງ' },
+            { key: 'sofa', cat: 'living_work', icon: '🛋️', name: 'ໂຊຟາຫຼັກ/ປະທານ' },
+            { key: 'desk', cat: 'living_work', icon: '💼', name: 'ໂຕະເຮັດວຽກ/ຮຽນ' },
+            { key: 'altar', cat: 'living_work', icon: '🏮', name: 'ຫິ້ງພຣະ/ສິ່ງສັກສິດ' },
+            { key: 'safe_vault', cat: 'living_work', icon: '🔐', name: 'ຕູ້ເຊບ/ບ່ອນເກັບຊັບ' },
+
+            // 🪜 Structure & Circulation (4)
+            { key: 'stairs', cat: 'structure', icon: '🪜', name: 'ບັນໄດ/ຂັ້ນໄດ' },
+            { key: 'center_palace', cat: 'structure', icon: '☯️', name: 'ໃຈກາງບ້ານ (ຕາກາງ)' },
+            { key: 'corridor', cat: 'structure', icon: '🚶', name: 'ທາງຍ່າງຍາວ/ໂຖງ' },
+            { key: 'pillar_beam', cat: 'structure', icon: '🏛️', name: 'ເສົາລອຍ/ຄານກົດທັບ' },
+
+            // ⛲ Water, Yard & External (8)
+            { key: 'fish', cat: 'water_ext', icon: '🐟', name: 'ຕູ້ປາ (ໃນບ້ານ)' },
+            { key: 'fountain', cat: 'water_ext', icon: '⛲', name: 'ບໍ່ນ້ຳ/ນ້ຳພຸ (ນອກ)' },
+            { key: 'pool', cat: 'water_ext', icon: '🏊', name: 'ສະລອຍນ້ຳ/ໜອງນ້ຳ' },
+            { key: 'front_yard', cat: 'water_ext', icon: '🌿', name: 'ເດີ່ນໜ້າບ້ານ (ໝິງຖັງ)' },
+            { key: 'back_yard', cat: 'water_ext', icon: '🌳', name: 'ສວນຫຼັງບ້ານ (ພູຫຼັງ)' },
+            { key: 'balcony', cat: 'water_ext', icon: '🪴', name: 'ລະບຽງ/ດາດຟ້າ' },
+            { key: 'garage', cat: 'water_ext', icon: '🚗', name: 'ໂຮງຈອດລົດ' },
+            { key: 'storage', cat: 'water_ext', icon: '📦', name: 'ຫ້ອງເກັບເຄື່ອງ/ສາງ' }
+        ];
+
         function renderRoomSelectorHtml() {
             const isHm = (currentLuopanLang === 'hm');
             const isPh = (currentLuopanLang === 'ph');
