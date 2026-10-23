@@ -174,6 +174,24 @@
                 </div>
             </div>
 
+            <!-- LANGUAGE SWITCHER (ປ່ຽນພາສາ / Xaiv Hom Lus) -->
+            <div class="mt-2.5 p-1 bg-slate-950 rounded-xl border border-amber-500/30 flex items-center justify-between gap-1 shadow-inner">
+                <span class="text-[11px] font-bold text-amber-300 pl-1.5 flex items-center gap-1">
+                    🌐 <span id="lblLangSelect">ພາສາ / Lus:</span>
+                </span>
+                <div class="grid grid-cols-3 gap-1">
+                    <button type="button" id="btnLangLo" onclick="setLuopanLanguage('lo')" class="py-1 px-2 text-[11px] font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow border border-amber-400">
+                        🇱🇦 ລາວ
+                    </button>
+                    <button type="button" id="btnLangHm" onclick="setLuopanLanguage('hm')" class="py-1 px-2 text-[11px] font-bold rounded-lg transition text-slate-300 hover:text-white hover:bg-slate-800 border border-transparent">
+                        🇲🇳 Hmoob
+                    </button>
+                    <button type="button" id="btnLangPh" onclick="setLuopanLanguage('ph')" class="py-1 px-2 text-[11px] font-bold rounded-lg transition text-slate-300 hover:text-white hover:bg-slate-800 border border-transparent">
+                        𖬌𖬣𖬵 ພາເຮົາ
+                    </button>
+                </div>
+            </div>
+
             <!-- BUTTONS: OPEN IN MOBILE & 3-LANG GLOSSARY -->
             <div class="grid grid-cols-2 gap-1.5 mt-2.5">
                 <button id="openQrModalBtn" type="button" class="py-1.5 px-2 bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 rounded-xl text-xs font-bold flex items-center justify-center gap-1 transition shadow-sm truncate" title="ເປີດໃນມືຖືດ້ວຍ QR Code">
@@ -363,7 +381,7 @@
             <div class="flex items-center justify-between">
                 <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
                     <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <span>ຄຳນວນດວງຊາຕາ (ມິ່ງກວ້າ &amp; ປາຈື)</span>
+                    <span id="lblBaziTitle">ຄຳນວນດວງຊາຕາ (ມິ່ງກວ້າ &amp; ປາຈື)</span>
                 </span>
                 <span id="currentYearAge" class="text-[10px] text-slate-400 font-mono"></span>
             </div>
@@ -373,17 +391,17 @@
                 <!-- Row 1: ວັນ - ເດືອນ - ປີ (DD / MM / YYYY) -->
                 <div class="grid grid-cols-12 gap-1.5 items-center">
                     <div class="col-span-3">
-                        <span class="text-[10px] text-slate-300 block mb-0.5 font-medium">📅 ວັນ:</span>
+                        <span id="lblDay" class="text-[10px] text-slate-300 block mb-0.5 font-medium">📅 ວັນ:</span>
                         <select id="dtBirthDaySelect" onchange="setUserBirthProfile(null, null, this.value, null, null)" class="w-full bg-slate-950 border border-slate-700 text-amber-300 font-bold text-xs rounded-lg px-1 py-1.5 focus:outline-none focus:border-amber-400 cursor-pointer text-center shadow-inner">
                         </select>
                     </div>
                     <div class="col-span-5">
-                        <span class="text-[10px] text-slate-300 block mb-0.5 font-medium">🗓️ ເດືອນ:</span>
+                        <span id="lblMonth" class="text-[10px] text-slate-300 block mb-0.5 font-medium">🗓️ ເດືອນ:</span>
                         <select id="dtBirthMonthSelect" onchange="setUserBirthProfile(null, this.value, null, null, null)" class="w-full bg-slate-950 border border-slate-700 text-amber-300 font-bold text-xs rounded-lg px-1.5 py-1.5 focus:outline-none focus:border-amber-400 cursor-pointer shadow-inner">
                         </select>
                     </div>
                     <div class="col-span-4">
-                        <span class="text-[10px] text-slate-300 block mb-0.5 font-medium">🚩 ປີ (ຄ.ສ./ພ.ສ.):</span>
+                        <span id="lblYear" class="text-[10px] text-slate-300 block mb-0.5 font-medium">🚩 ປີ (ຄ.ສ./ພ.ສ.):</span>
                         <input id="birthYearInput" type="number" min="1924" max="2050" value="1992" placeholder="1992"
                                class="w-full bg-slate-950 border border-slate-700 text-amber-300 font-bold text-xs rounded-lg px-1.5 py-1.5 focus:outline-none focus:border-amber-400 text-center font-mono shadow-inner"
                                title="ພິມປີເກີດ ຄ.ສ. (ເຊັ່ນ 1992) ຫຼື ພ.ສ. (ເຊັ່ນ 2535)">
@@ -399,12 +417,12 @@
                 <!-- Row 2: ຍາມເກີດ + ເພດ -->
                 <div class="grid grid-cols-12 gap-1.5 items-center">
                     <div class="col-span-7">
-                        <span class="text-[10px] text-slate-300 block mb-0.5 font-medium">⏰ ຍາມເກີດ:</span>
+                        <span id="lblHour" class="text-[10px] text-slate-300 block mb-0.5 font-medium">⏰ ຍາມເກີດ:</span>
                         <select id="dtBirthHourSelect" onchange="setUserBirthProfile(null, null, null, this.value, null)" class="w-full bg-slate-950 border border-slate-700 text-white text-[11px] font-bold rounded-lg px-2 py-1.5 focus:outline-none focus:border-amber-400 cursor-pointer shadow-inner">
                         </select>
                     </div>
                     <div class="col-span-5">
-                        <span class="text-[10px] text-slate-300 block mb-0.5 font-medium">👤 ເພດ:</span>
+                        <span id="lblGender" class="text-[10px] text-slate-300 block mb-0.5 font-medium">👤 ເພດ:</span>
                         <div class="grid grid-cols-2 gap-1 bg-slate-950 p-0.5 rounded-lg border border-slate-800">
                             <button type="button" id="genderMaleBtn" onclick="setUserBirthProfile(null, null, null, null, 'male')" class="py-1 px-1.5 text-xs font-bold rounded transition bg-amber-500 text-slate-950 shadow">
                                 ຊາຍ 👨
@@ -419,7 +437,7 @@
                 <!-- Born before Feb 4 Checkbox -->
                 <label class="flex items-center gap-2 text-[11px] text-slate-400 cursor-pointer hover:text-slate-200">
                     <input id="bornBeforeLichun" type="checkbox" class="w-3.5 h-3.5 accent-amber-500 rounded cursor-pointer">
-                    <span>ເກີດກ່ອນ 4 ກຸມພາ (ວັນຫຼຽບຊຸນ - ນັບເປັນປີເກົ່າ)</span>
+                    <span id="lblLichun">ເກີດກ່ອນ 4 ກຸມພາ (ວັນຫຼຽບຊຸນ - ນັບເປັນປີເກົ່າ)</span>
                 </label>
             </div>
 
@@ -431,7 +449,7 @@
                         <div id="resGanzhi" class="text-[11px] text-slate-400">壬申 (ແກງວອກ) • ພ.ສ. 2535</div>
                     </div>
                     <div class="flex flex-col items-end gap-0.5">
-                        <span class="text-[9px] text-slate-400 font-medium">🪙 ທາດປີເກີດ (Year Element):</span>
+                        <span id="lblYearElement" class="text-[9px] text-slate-400 font-medium">🪙 ທາດປີເກີດ (Year Element):</span>
                         <span id="resElementBadge" class="bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-bold px-2.5 py-0.5 rounded-lg shadow-inner">
                             ທາດທອງ
                         </span>
@@ -440,17 +458,17 @@
 
                 <div class="grid grid-cols-2 gap-2 text-xs">
                     <div>
-                        <span class="text-slate-400 text-[10px] block font-medium">🧭 ທາດຮວງຈຸ້ຍ (ມິ່ງກວ້າ):</span>
+                        <span id="lblMingGua" class="text-slate-400 text-[10px] block font-medium">🧭 ທາດຮວງຈຸ້ຍ (ມິ່ງກວ້າ):</span>
                         <span id="resGuaName" class="font-bold text-amber-400 text-xs">ກວ້າ 8 (ເກິ່ນ) • ທາດດິນ</span>
                     </div>
                     <div>
-                        <span class="text-slate-400 text-[10px] block font-medium">ກຸ່ມພະລັງງານຊີວິດ:</span>
+                        <span id="lblEnergyGroup" class="text-slate-400 text-[10px] block font-medium">ກຸ່ມພະລັງງານຊີວິດ:</span>
                         <span id="resGroup" class="font-bold text-emerald-400 text-xs">ກຸ່ມຕາເວັນຕົກ</span>
                     </div>
                 </div>
 
                 <div class="text-xs border-t border-slate-800/80 pt-1.5 flex justify-between items-center">
-                    <span class="text-slate-400 text-[10px]">ທາດນາຢິນ (60 ດອກໄມ້):</span>
+                    <span id="lblNayin" class="text-slate-400 text-[10px]">ທາດນາຢິນ (60 ດອກໄມ້):</span>
                     <span id="resNayin" class="font-semibold text-slate-200 text-[11px]">ທອງປາຍດາບ</span>
                 </div>
 
@@ -487,7 +505,7 @@
 
             <!-- Checkbox to highlight on Luopan -->
             <label class="flex items-center justify-between text-xs cursor-pointer hover:text-amber-300 transition pt-0.5">
-                <span class="text-slate-300 font-medium">ສະແດງທິດມຸງຄຸນເທິງໜ້າຈານ</span>
+                <span id="lblHighlightGua" class="text-slate-300 font-medium">ສະແດງທິດມຸງຄຸນເທິງໜ້າຈານ</span>
                 <input id="toggleHighlightGua" type="checkbox" checked class="w-4 h-4 accent-amber-500 rounded cursor-pointer">
             </label>
         </div>
@@ -540,7 +558,7 @@
 
                 <div>
                     <div class="flex justify-between text-[11px] font-semibold mb-1">
-                        <span class="text-slate-300">ຂະໜາດແປນບ້ານ</span>
+                        <span id="lblPlanScale" class="text-slate-300">ຂະໜາດແປນບ້ານ</span>
                         <span id="planScaleVal" class="text-amber-400 font-mono">100%</span>
                     </div>
                     <input id="planScaleSlider" type="range" min="40" max="250" step="5" value="100" class="w-full accent-amber-500 cursor-pointer">
@@ -554,11 +572,11 @@
                 <div class="grid grid-cols-2 gap-1.5 pt-1 border-t border-slate-800/80">
                     <label class="flex items-center gap-1.5 text-[10px] text-slate-300 cursor-pointer bg-slate-950 p-1.5 rounded-lg border border-slate-800 hover:border-slate-700 select-none">
                         <input type="checkbox" id="togglePlanGrid" class="accent-red-500 rounded cursor-pointer" onchange="toggleFloorplanOverlay('grid', this.checked)">
-                        <span>⊞ ຕາຕະລາງ 9 ວັງ</span>
+                        <span id="lblGridOverlay">⊞ ຕາຕະລາງ 9 ວັງ</span>
                     </label>
                     <label class="flex items-center gap-1.5 text-[10px] text-slate-300 cursor-pointer bg-slate-950 p-1.5 rounded-lg border border-slate-800 hover:border-slate-700 select-none">
                         <input type="checkbox" id="togglePlanPie" class="accent-amber-500 rounded cursor-pointer" onchange="toggleFloorplanOverlay('pie', this.checked)">
-                        <span>☸ 24 ທິດດາວເຄາະ</span>
+                        <span id="lblPieOverlay">☸ 24 ທິດດາວເຄາະ</span>
                     </label>
                 </div>
             </div>
@@ -583,6 +601,13 @@
                     <span id="mobileKongWangBadge" class="text-[9px] px-1.5 py-0.5 rounded-full font-mono font-bold bg-emerald-950/90 text-emerald-300 border border-emerald-500/50 shrink-0">
                         正针 (ກົງ)
                     </span>
+                </div>
+
+                <!-- Mobile Lang Switcher Pill -->
+                <div class="flex items-center gap-0.5 bg-slate-900 border border-amber-500/40 rounded-full p-0.5 shrink-0 text-[10px] font-bold">
+                    <button type="button" onclick="setLuopanLanguage('lo')" id="mobBtnLangLo" class="px-1.5 py-0.5 rounded-full bg-amber-500 text-slate-950">🇱🇦</button>
+                    <button type="button" onclick="setLuopanLanguage('hm')" id="mobBtnLangHm" class="px-1.5 py-0.5 rounded-full text-slate-300">🇲🇳</button>
+                    <button type="button" onclick="setLuopanLanguage('ph')" id="mobBtnLangPh" class="px-1.5 py-0.5 rounded-full text-slate-300">𖬌</button>
                 </div>
 
                 <!-- Stars Mini-Pill -->
@@ -1002,6 +1027,521 @@
                 transform="rotate(${rot.toFixed(2)}, ${pos.x.toFixed(2)}, ${pos.y.toFixed(2)})">${text}</text>`;
         }
 
+        
+        // =========================================================================
+        // MULTI-LANGUAGE SYSTEM (I18N): LAO, WHITE HMONG RPA, PAHAWH HMONG
+        // =========================================================================
+        let currentLuopanLang = localStorage.getItem('luopan_lang') || 'lo';
+
+        const LUOPAN_I18N = {
+            lo: {
+                title: 'ຮວງຈຸ້ຍ (ດາວເຫີນ 9 ຍຸກ)',
+                appTitle: 'ຮວງຈຸ້ຍ',
+                langSelect: 'ພາສາ / Lus:',
+                facing: 'ໜ້າບ້ານ',
+                sitting: 'ຫຼັງພິງ',
+                cameraFacing: 'ກ້ອງຫັນ',
+                turnDegree: 'ຫັນ',
+                kongwangStraight: '正针 (ກົງ)',
+                kongwangBig: '大空亡 (ແຍກໃຫຍ່)',
+                kongwangSmall: '小空亡 (ແຍກນ້ອຍ)',
+                mountainStar: 'ດາວພູເຂົາ',
+                periodStar: 'ດາວຍຸກ',
+                waterStar: 'ດາວນ້ຳ',
+                openMobile: 'ເປີດໃນມືຖື',
+                glossary: '📖 ວັດຈະນານຸກົມ',
+                modeStandard: 'ຈານມາດຕະຖານ',
+                modeTransparent: 'ໂໝດແຜ່ນໃສວັດແປນ',
+                dragModeLabel: 'ໂໝດການລາກເມົາສ໌ / ສຳຜັດ:',
+                dragRotate: 'ໝຸນຈານ',
+                dragPan: 'ຍັບມຸມມອງ',
+                dragPlan: 'ຍ້າຍແປນ',
+                rotDegree: 'ອົງສາຈານເຂັມທິດ',
+                resetRot: '↺ ຄືນຄ່າເລີ່ມຕົ້ນ (ທິດໃຕ້ຢູ່ເທິງ)',
+                quickS: 'ທິດໃຕ້ (180°)',
+                quickW: 'ທິດຕາເວັນຕົກ (270°)',
+                quickN: 'ທິດເໜືອ (0°)',
+                quickE: 'ທິດຕາເວັນອອກ (90°)',
+                trueNorthLabel: '🧭 ທິດເໜືອແທ້ (True North)',
+                magNorth: 'ເໜືອແມ່ເຫຼັກ',
+                trueNorth: 'ເໜືອແທ້',
+                liveCompassBtn: 'ເຊື່ອມຕໍ່ເຂັມທິດຈິງໃນມືຖື',
+                arCameraBtn: 'ເປີດກ້ອງສ່ອງຈິງ (AR Camera)',
+                zoomLabel: 'ຂະໜາດຊູມເຂັມທິດ',
+                opacityLabel: 'ຄວາມໂປ່ງໃສແຜ່ນເຂັມທິດ',
+                baseStyleLabel: 'ຮູບແບບແຜ່ນຖານ:',
+                baseLacquer: 'ຖານໄມ້ແດງມົງຄົນ ຂອບທອງ',
+                baseAcrylic: 'ແຜ່ນໃສອະຄິລິກໂປ່ງແສງ',
+                baseHidden: 'ເຊື່ອງແຜ່ນຖານ (ສະແດງສະເພາະຈານກົມ)',
+                showNeedle: 'ສະແດງເຂັມທິດແມ່ເຫຼັກ',
+                showCrosshair: 'ສະແດງເສັ້ນກາກະບາດເລັງສູນກາງ',
+                needlePhysics: 'ການແກວ່ງໄຫວເຂັມສະເໝືອນຈິງ',
+                baziSectionTitle: 'ຄຳນວນດວງຊາຕາ (ມິ່ງກວ້າ & ປາຈື)',
+                dayLabel: '📅 ວັນ:',
+                monthLabel: '🗓️ ເດືອນ:',
+                yearLabel: '🚩 ປີ (ຄ.ສ./ພ.ສ.):',
+                hourLabel: '⏰ ຍາມເກີດ:',
+                genderLabel: '👤 ເພດ:',
+                male: 'ຊາຍ 👨',
+                female: 'ຍິງ 👩',
+                bornBeforeLichun: 'ເກີດກ່ອນ 4 ກຸມພາ (ວັນຫຼຽບຊຸນ - ນັບເປັນປີເກົ່າ)',
+                yearElementTitle: '🪙 ທາດປີເກີດ (Year Element):',
+                mingGuaTitle: '🧭 ທາດຮວງຈຸ້ຍ (ມິ່ງກວ້າ):',
+                energyGroupTitle: 'ກຸ່ມພະລັງງານຊີວິດ:',
+                nayinTitle: 'ທາດນາຢິນ (60 ດອກໄມ້):',
+                baziChartTitle: '📜 ທາດດວງຊາຕາ (ປາຈື):',
+                baziYongShen: '• ທາດເສີມດວງ (ຍົງສິ່ນ):',
+                baziAvoid: 'ຫຼີກລ່ຽງ:',
+                auspiciousTitle: '4 ທິດມຸງຄຸນ (ທິດດີ):',
+                inauspiciousTitle: '4 ທິດອັບປະມຸງຄຸນ (ທິດຮ້າຍ):',
+                highlightGuaOnDisk: 'ສະແດງທິດມຸງຄຸນເທິງໜ້າຈານ',
+                predSectionTitle: 'ບົດທຳນາຍດາວເຫີນ & ແປດທິດ',
+                periodLabel: 'ຍຸກ:',
+                floorplanTitle: 'ວາງທັບຮູບແປນບ້ານ',
+                selectFloorplan: 'ເລືອກຮູບແປນບ້ານ',
+                clearFloorplan: 'ລຶບຮູບແປນບ້ານ',
+                planScale: 'ຂະໜາດແປນບ້ານ',
+                resetPlanPos: '↺ ຈັດແປນບ້ານຢູ່ກາງສູນກາງ',
+                gridOverlay: '⊞ ຕາຕະລາງ 9 ວັງ',
+                pieOverlay: '☸ 24 ທິດດາວເຄາະ',
+                downloadSvg: 'ດາວໂຫຼດໄຟລ໌ SVG ຄວາມລະອຽດສູງ',
+                spiritLevel: 'ຍົດນ້ຳທ່ຽງວັດ',
+                plateLeft: 'ຊ້າຍມື:',
+                plateRight: 'ຂວາມື:',
+                predTabDirect: '🧭 ທຳນາຍຕາມທິດ',
+                predTabBook: '📖 ຕຳລາທຳນາຍ',
+                predTabGrid: '🔮 ຜັງດາວ 9 ວັງ',
+                dirs: {
+                    N: 'ທິດເໜືອ',
+                    NE: 'ທິດຕາເວັນອອກສ່ຽງເໜືອ',
+                    E: 'ທິດຕາເວັນອອກ',
+                    SE: 'ທິດຕາເວັນອອກສ່ຽງໃຕ້',
+                    S: 'ທິດໃຕ້',
+                    SW: 'ທິດຕາເວັນຕົກສ່ຽງໃຕ້',
+                    W: 'ທິດຕາເວັນຕົກ',
+                    NW: 'ທິດຕາເວັນຕົກສ່ຽງເໜືອ'
+                },
+                dirsShort: {
+                    N: 'ທິດເໜືອ',
+                    NE: 'ອອກສ່ຽງເໜືອ',
+                    E: 'ຕາເວັນອອກ',
+                    SE: 'ອອກສ່ຽງໃຕ້',
+                    S: 'ທິດໃຕ້',
+                    SW: 'ຕົກສ່ຽງໃຕ້',
+                    W: 'ຕາເວັນຕົກ',
+                    NW: 'ຕົກສ່ຽງເໜືອ'
+                },
+                animals: {
+                    rat: 'ຊວດ (ໜູ)',
+                    ox: 'ສະຫຼູ (ງົວ)',
+                    tiger: 'ຂານ (ເສືອ)',
+                    rabbit: 'ເຖາະ (ກະຕ່າຍ)',
+                    dragon: 'ມະໂລງ (ງູໃຫຍ່)',
+                    snake: 'ມະເສັງ (ງູນ້ອຍ)',
+                    horse: 'ມະເມີຍ (ມ້າ)',
+                    goat: 'ມະແມ (ແບ້)',
+                    monkey: 'ວອກ (ລີງ)',
+                    rooster: 'ລະກາ (ໄກ່)',
+                    dog: 'ຈໍ (ໝາ)',
+                    pig: 'ກຸນ (ໝູ)'
+                },
+                elements: {
+                    metal: 'ທາດທອງ',
+                    wood: 'ທາດໄມ້',
+                    water: 'ທາດນ້ຳ',
+                    fire: 'ທາດໄຟ',
+                    earth: 'ທາດດິນ'
+                },
+                groups: {
+                    east: 'ກຸ່ມຕາເວັນອອກ',
+                    west: 'ກຸ່ມຕາເວັນຕົກ'
+                }
+            },
+            hm: {
+                title: 'Looj Mem (Hnub Qub Ya 9 Caij)',
+                appTitle: 'Looj Mem',
+                langSelect: 'Xaiv Hom Lus:',
+                facing: 'Pem Hauv Ntej',
+                sitting: 'Tom Qab Phem',
+                cameraFacing: 'Koob Yees Duab',
+                turnDegree: 'Tig',
+                kongwangStraight: 'Ncaj Qha (Zheng Zhen)',
+                kongwangBig: 'Ciam Loj (Da Kong Wang)',
+                kongwangSmall: 'Ciam Me (Xiao Kong Wang)',
+                mountainStar: 'Hnub Qub Roob',
+                periodStar: 'Hnub Qub Caij',
+                waterStar: 'Hnub Qub Dej',
+                openMobile: 'Qhib Hauv Xov Tooj',
+                glossary: '📖 Phau Txhais Lus',
+                modeStandard: 'Daim Luopan Txheem',
+                modeTransparent: 'Daim Ntawv Tsom Tsev',
+                dragModeLabel: 'Hom Luag / Kov:',
+                dragRotate: 'Tig Daim Luopan',
+                dragPan: 'Txav Lub Vaj Huam Luam',
+                dragPlan: 'Txav Daim Duab Tsev',
+                rotDegree: 'Qib Ntawm Daim Luopan',
+                resetRot: '↺ Rov Qab Mus Chaw Qub (Qab Teb Nyob Saum)',
+                quickS: 'Qab Teb (180°)',
+                quickW: 'Sab Hnub Poob (270°)',
+                quickN: 'Qaum Teb (0°)',
+                quickE: 'Sab Hnub Tuaj (90°)',
+                trueNorthLabel: '🧭 Qaum Teb Tseeb (True North)',
+                magNorth: 'Qaum Teb Hlau Nplaum',
+                trueNorth: 'Qaum Teb Tseeb',
+                liveCompassBtn: 'Txuas Nrog Koob Taw Qhia Hauv Xov Tooj',
+                arCameraBtn: 'Qhib Koob Yees Duab AR',
+                zoomLabel: 'Qhov Luaj Ntawm Luopan',
+                opacityLabel: 'Kev Pom Tsheej Ntawm Daim Luopan',
+                baseStyleLabel: 'Hom Qauv Pem Hauv Paus:',
+                baseLacquer: 'Ntoo Liab Xim Kub',
+                baseAcrylic: 'Daim Ntawv Ias Pom Tsheej',
+                baseHidden: 'Zais Pem Hauv Paus',
+                showNeedle: 'Qhia Koob Hlau Nplaum',
+                showCrosshair: 'Qhia Kab Khaub Lig Plawv',
+                needlePhysics: 'Kev Co Ntawm Koob Hlau',
+                baziSectionTitle: 'Xam Tus Kheej (Ming Gua & BaZi)',
+                dayLabel: '📅 Hnub:',
+                monthLabel: '🗓️ Hli:',
+                yearLabel: '🚩 Xyoo (C.E./B.E.):',
+                hourLabel: '⏰ Sij Hawm:',
+                genderLabel: '👤 Poj Niam / Txiv Neej:',
+                male: 'Txiv Neej 👨',
+                female: 'Poj Niam 👩',
+                bornBeforeLichun: 'Yug ua ntej 4 Lub Ob Hlis (Li Chun - Xam xyoo qub)',
+                yearElementTitle: '🪙 Xyoo Tsib Yam Zog (Year Element):',
+                mingGuaTitle: '🧭 Looj Mem Ming Gua:',
+                energyGroupTitle: 'Pawg Zog Qi:',
+                nayinTitle: 'Na Yin (60 Paj Ntoo):',
+                baziChartTitle: '📜 Xwm Txheej BaZi 4 Tus Ncej:',
+                baziYongShen: '• Yam Zog Pab (Yong Shen):',
+                baziAvoid: 'Yam Txwv:',
+                auspiciousTitle: '4 Fab Zoo (Koob Hmoov):',
+                inauspiciousTitle: '4 Fab Phem (Txwv Tsis Zoo):',
+                highlightGuaOnDisk: 'Qhia Fab Zoo Saum Daim Luopan',
+                predSectionTitle: 'Kev Ntsuas Hnub Qub Ya & 8 Fab',
+                periodLabel: 'Caij:',
+                floorplanTitle: 'Tso Daim Duab Tsev Rau Saum',
+                selectFloorplan: 'Xaiv Duab Tsev',
+                clearFloorplan: 'Tshem Duab Tsev',
+                planScale: 'Qhov Luaj Ntawm Duab Tsev',
+                resetPlanPos: '↺ Muab Duab Tsev Nyob Plawv',
+                gridOverlay: '⊞ Daim Duab 9 Vaj Loog',
+                pieOverlay: '☸ 24 Lub Roob Vees Xwm',
+                downloadSvg: 'Rub Luas Duab SVG Qib Siab',
+                spiritLevel: 'Kua Ntsuas Xwm',
+                plateLeft: 'Sab Xis:',
+                plateRight: 'Sab Xis:',
+                predTabDirect: '🧭 Xam Raws Fab',
+                predTabBook: '📖 Phau Ntawv Qhia',
+                predTabGrid: '🔮 9 Vaj Loog Hnub Qub',
+                dirs: {
+                    N: 'Qaum Teb',
+                    NE: 'Sab Hnub Tuaj Qaum Teb',
+                    E: 'Sab Hnub Tuaj',
+                    SE: 'Sab Hnub Tuaj Qab Teb',
+                    S: 'Qab Teb',
+                    SW: 'Sab Hnub Poob Qab Teb',
+                    W: 'Sab Hnub Poob',
+                    NW: 'Sab Hnub Poob Qaum Teb'
+                },
+                dirsShort: {
+                    N: 'Qaum Teb',
+                    NE: 'Tuaj Qaum',
+                    E: 'Hnub Tuaj',
+                    SE: 'Tuaj Qab',
+                    S: 'Qab Teb',
+                    SW: 'Poob Qab',
+                    W: 'Hnub Poob',
+                    NW: 'Poob Qaum'
+                },
+                animals: {
+                    rat: 'Nas (Nas Tshuab)',
+                    ox: 'Nyuj',
+                    tiger: 'Tsov',
+                    rabbit: 'Luav',
+                    dragon: 'Zaj (Zaj Loj)',
+                    snake: 'Nab (Nab Me)',
+                    horse: 'Nees',
+                    goat: 'Yแพ (Tshis)',
+                    monkey: 'Liab',
+                    rooster: 'Qaib',
+                    dog: 'Aub (Dev)',
+                    pig: 'Npua'
+                },
+                elements: {
+                    metal: 'Kub (Metal)',
+                    wood: 'Ntoo (Wood)',
+                    water: 'Dej (Water)',
+                    fire: 'Hluav Taws (Fire)',
+                    earth: 'Av (Earth)'
+                },
+                groups: {
+                    east: 'Pawg Sab Hnub Tuaj',
+                    west: 'Pawg Sab Hnub Poob'
+                }
+            },
+            ph: {
+                title: '𖬌𖬲𖬞 𖬈𖬰𖬞 (𖬎𖬲𖬨 𖬐𖬰𖬤 𖬖𖬰𖬝 𖭙 𖬂𖬲𖬟)',
+                appTitle: '𖬌𖬲𖬞 𖬈𖬰𖬞',
+                langSelect: '𖬘𖬲𖬝 𖬌𖬰𖬟:',
+                facing: '𖬄𖬲𖬝 𖬈𖬰𖬞 𖬎𖬲𖬤',
+                sitting: '𖬎𖬲𖬦 𖬖𖬰𖬟 𖬎𖬰𖬧',
+                cameraFacing: '𖬆𖬲𖬝 𖬎𖬲𖬤',
+                turnDegree: '𖬎𖬲𖬞',
+                kongwangStraight: '𖬐𖬰𖬞 𖬄𖬲𖬞',
+                kongwangBig: '𖬔𖬲𖬝 𖬎𖬲𖬤',
+                kongwangSmall: '𖬔𖬲𖬝 𖬐𖬲𖬟',
+                mountainStar: '𖬎𖬲𖬨 𖬐𖬰𖬤 𖬌𖬲𖬞',
+                periodStar: '𖬎𖬲𖬨 𖬐𖬰𖬤 𖬂𖬲𖬟',
+                waterStar: '𖬎𖬲𖬨 𖬐𖬰𖬤 𖬆𖬰𖬞',
+                openMobile: '𖬐𖬰𖬪 𖬈𖬰𖬞 𖬘𖬲𖬦 𖬎𖬲𖬦',
+                glossary: '📖 𖬎𖬲𖬦𖬵 𖬔𖬲𖬧𖬵 𖬖𖬰𖬝',
+                modeStandard: '𖬆𖬰𖬝 𖬌𖬰𖬟 𖬄𖬲𖬦𖬵',
+                modeTransparent: '𖬆𖬰𖬝 𖬎𖬰𖬟 𖬄𖬰𖬝',
+                dragModeLabel: '𖬄𖬲𖬦𖬵 𖬅𖬰𖬟 / 𖬈𖬰𖬪:',
+                dragRotate: '𖬎𖬲𖬞 𖬆𖬰𖬝',
+                dragPan: '𖬎𖬲𖬞 𖬖𖬰𖬟',
+                dragPlan: '𖬎𖬲𖬞 𖬆𖬲𖬝 𖬄𖬰𖬝',
+                rotDegree: '𖬐𖬰𖬤 𖬆𖬰𖬝',
+                resetRot: '↺ 𖬎𖬲𖬞 𖬂𖬲𖬝 𖬌𖬰𖬞',
+                quickS: '𖬖𖬰𖬟 𖬎𖬲𖬤 (𖭑𖭘𖭐°)',
+                quickW: '𖬈𖬰𖬞 𖬉𖬲𖬦 (𖭒𖭗𖭐°)',
+                quickN: '𖬖𖬰𖬟 𖬎𖬰𖬧 (𖭐°)',
+                quickE: '𖬈𖬰𖬞 𖬎𖬲𖬤 (𖭙𖭐°)',
+                trueNorthLabel: '🧭 𖬖𖬰𖬟 𖬎𖬰𖬧 𖬎𖬲𖬞',
+                magNorth: '𖬖𖬰𖬟 𖬎𖬰𖬧 𖬌𖬰𖬤',
+                trueNorth: '𖬖𖬰𖬟 𖬎𖬰𖬧 𖬎𖬲𖬞',
+                liveCompassBtn: '𖬎𖬲𖬞 𖬌𖬰𖬤 𖬈𖬰𖬞 𖬘𖬲𖬦 𖬎𖬲𖬦',
+                arCameraBtn: '𖬐𖬰𖬪 𖬆𖬲𖬝 AR',
+                zoomLabel: '𖬐𖬲𖬤 𖬆𖬰𖬝',
+                opacityLabel: '𖬐𖬰𖬤 𖬎𖬰𖬟',
+                baseStyleLabel: '𖬄𖬲𖬦𖬵 𖬈𖬰𖬞 𖬄𖬲𖬝𖬵:',
+                baseLacquer: '𖬐𖬰𖬞 𖬌𖬰𖬤 𖬆𖬰𖬞',
+                baseAcrylic: '𖬆𖬰𖬝 𖬎𖬰𖬟',
+                baseHidden: '𖬎𖬲𖬞 𖬈𖬰𖬞 𖬄𖬲𖬝𖬵',
+                showNeedle: '𖬐𖬰𖬞 𖬌𖬰𖬤 𖬎𖬲𖬞',
+                showCrosshair: '𖬐𖬰𖬞 𖬌𖬲𖬟 𖬄𖰝',
+                needlePhysics: '𖬐𖬰𖬤 𖬐𖬰𖬞 𖬌𖬰𖬤',
+                baziSectionTitle: '𖬘𖬲𖬝 𖬎𖬲𖬦𖬵 (Ming Gua & BaZi)',
+                dayLabel: '📅 𖬎𖬲𖬤:',
+                monthLabel: '🗓️ 𖬎𖬲𖬨:',
+                yearLabel: '🚩 𖬘𖬲𖬝:',
+                hourLabel: '⏰ 𖬂𖬲𖬝 𖬎𖬲𖬤:',
+                genderLabel: '👤 𖬎𖬲𖬧𖬵 / 𖬎𖬲𖬨:',
+                male: '𖬎𖬲𖬧𖬵 👨',
+                female: '𖬎𖬲𖬨 👩',
+                bornBeforeLichun: '𖬈𖬰𖬞 𖭔 𖬎𖬲𖬨 (Li Chun)',
+                yearElementTitle: '🪙 𖬘𖬲𖬝 𖭕 𖬔𖬲𖬩 𖬌𖬲𖬟:',
+                mingGuaTitle: '🧭 𖬌𖬲𖬞 𖬈𖬰𖬞 Ming Gua:',
+                energyGroupTitle: '𖬔𖬲𖬩 𖬌𖬲𖬟 Qi:',
+                nayinTitle: 'Na Yin (𖭖𖭐 𖬄𖬲𖬟):',
+                baziChartTitle: '📜 𖭔 𖬎𖬲𖬧 BaZi:',
+                baziYongShen: '• 𖬔𖬲𖬩 𖬌𖬲𖬟 𖬄𖰪 (Yong Shen):',
+                baziAvoid: '𖬌𖬰𖬟 𖬘𖬲𖬝:',
+                auspiciousTitle: '𖭔 𖬖𖬰𖬟 𖬌𖬲𖬞 (𖬌𖬲𖬞):',
+                inauspiciousTitle: '𖭔 𖬖𖬰𖬟 𖬉𖬝𖬵 (𖬉𖬝𖬵):',
+                highlightGuaOnDisk: '𖬐𖬰𖬞 𖬖𖬰𖬟 𖬌𖬲𖬞 𖬆𖬰𖬝',
+                predSectionTitle: '𖬐𖬲𖬤 𖬎𖬲𖬨 𖬐𖬰𖬤 & 𖭘 𖬖𖬰𖬟',
+                periodLabel: '𖬂𖬲𖬟:',
+                floorplanTitle: '𖬆𖬲𖬝 𖬄𖰝 𖬆𖬰𖬝',
+                selectFloorplan: '𖬘𖬲𖬝 𖬆𖬲𖬝 𖬄𖰝',
+                clearFloorplan: '𖬎𖬲𖬞 𖬆𖬲𖬝 𖬄𖰝',
+                planScale: '𖬐𖬲𖬤 𖬆𖬲𖬝 𖬄𖰝',
+                resetPlanPos: '↺ 𖬆𖬲𖬝 𖬄𖰝 𖬌𖬰𖬞',
+                gridOverlay: '⊞ 𖭙 𖬆𖬰𖬝',
+                pieOverlay: '☸ 𖭒𖭔 𖬖𖬰𖬟 𖬐𖬰𖬤',
+                downloadSvg: '𖬎𖬲𖬞 SVG',
+                spiritLevel: '𖬆𖬰𖬞 𖬎𖬲𖬞',
+                plateLeft: '𖬎𖬲𖬤:',
+                plateRight: '𖬎𖬲𖬤:',
+                predTabDirect: '🧭 𖬐𖬲𖬤 𖬖𖬰𖬟',
+                predTabBook: '📖 𖬎𖬲𖬦𖬵',
+                predTabGrid: '🔮 𖭙 𖬆𖬰𖬝',
+                dirs: {
+                    N: '𖬖𖬰𖬟 𖬎𖬰𖬧',
+                    NE: '𖬈𖬰𖬞 𖬎𖬲𖬤 𖬖𖬰𖬟 𖬎𖬰𖬧',
+                    E: '𖬈𖬰𖬞 𖬎𖬲𖬤',
+                    SE: '𖬈𖬰𖬞 𖬎𖬲𖬤 𖬖𖬰𖬟 𖬎𖬲𖬤',
+                    S: '𖬖𖬰𖬟 𖬎𖬲𖬤',
+                    SW: '𖬈𖬰𖬞 𖬉𖬲𖬦 𖬖𖬰𖬟 𖬎𖬲𖬤',
+                    W: '𖬈𖬰𖬞 𖬉𖬲𖬦',
+                    NW: '𖬈𖬰𖬞 𖬉𖬲𖬦 𖬖𖬰𖬟 𖬎𖬰𖬧'
+                },
+                dirsShort: {
+                    N: '𖬖𖬰𖬟 𖬎𖬰𖬧',
+                    NE: '𖬎𖬲𖬤 𖬎𖰧',
+                    E: '𖬈𖬰𖬞 𖬎𖬲𖬤',
+                    SE: '𖬎𖬲𖬤 𖬎𖲤',
+                    S: '𖬖𖬰𖬟 𖬎𖲤',
+                    SW: '𖬉𖬲𖬦 𖬎𖲤',
+                    W: '𖬈𖬰𖬞 𖬉𖲦',
+                    NW: '𖬉𖬲𖬦 𖬎𖰧'
+                },
+                animals: {
+                    rat: '𖬌𖰟', ox: '𖬐𖰞', tiger: '𖬎𖲧', rabbit: '𖬎𖲞',
+                    dragon: '𖬎𖲤', snake: '𖬌𖰞', horse: '𖬐𖰦', goat: '𖬐𖲟',
+                    monkey: '𖬎𖲟', rooster: '𖬂𖲟', dog: '𖬈𖲟', pig: '𖬌𖲟'
+                },
+                elements: {
+                    metal: '𖬌𖰤', wood: '𖬐𖰞', water: '𖬆𖰞', fire: '𖬎𖰤', earth: '𖬈𖰞'
+                },
+                groups: {
+                    east: '𖬈𖬰𖬞 𖬎𖬲𖬤',
+                    west: '𖬈𖬰𖬞 𖬉𖬲𖬦'
+                }
+            }
+        };
+
+        function setLuopanLanguage(lang) {
+            if (!LUOPAN_I18N[lang]) lang = 'lo';
+            currentLuopanLang = lang;
+            try { localStorage.setItem('luopan_lang', lang); } catch (e) {}
+
+            // Update Language Switcher Buttons Style
+            const btnLo = document.getElementById('btnLangLo');
+            const btnHm = document.getElementById('btnLangHm');
+            const btnPh = document.getElementById('btnLangPh');
+            const mobLo = document.getElementById('mobBtnLangLo');
+            const mobHm = document.getElementById('mobBtnLangHm');
+            const mobPh = document.getElementById('mobBtnLangPh');
+
+            const activeCls = 'bg-amber-500 text-slate-950 shadow border-amber-400';
+            const inactiveCls = 'text-slate-300 hover:text-white hover:bg-slate-800 border-transparent';
+
+            if (btnLo) btnLo.className = 'py-1 px-2 text-[11px] font-bold rounded-lg transition border ' + (lang === 'lo' ? activeCls : inactiveCls);
+            if (btnHm) btnHm.className = 'py-1 px-2 text-[11px] font-bold rounded-lg transition border ' + (lang === 'hm' ? activeCls : inactiveCls);
+            if (btnPh) btnPh.className = 'py-1 px-2 text-[11px] font-bold rounded-lg transition border ' + (lang === 'ph' ? activeCls : inactiveCls);
+
+            if (mobLo) mobLo.className = 'px-1.5 py-0.5 rounded-full font-bold ' + (lang === 'lo' ? 'bg-amber-500 text-slate-950' : 'text-slate-300');
+            if (mobHm) mobHm.className = 'px-1.5 py-0.5 rounded-full font-bold ' + (lang === 'hm' ? 'bg-amber-500 text-slate-950' : 'text-slate-300');
+            if (mobPh) mobPh.className = 'px-1.5 py-0.5 rounded-full font-bold ' + (lang === 'ph' ? 'bg-amber-500 text-slate-950' : 'text-slate-300');
+
+            applyLuopanLanguageDOM(lang);
+
+            // Re-render components
+            buildOuterBasePlate(currentBaseStyle || 'lacquer');
+            buildCompassSVG();
+            updateCompassTransform();
+            updateGuaDisplay();
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            if (typeof updateLivePrediction === 'function') {
+                updateLivePrediction(topCompassDeg, true);
+            }
+        }
+
+        function applyLuopanLanguageDOM(lang) {
+            const t = LUOPAN_I18N[lang] || LUOPAN_I18N.lo;
+
+            document.title = t.title;
+            const appTitle = document.getElementById('appTitleText');
+            if (appTitle) appTitle.textContent = t.appTitle;
+
+            const lblLang = document.getElementById('lblLangSelect');
+            if (lblLang) lblLang.textContent = t.langSelect;
+
+            const openQr = document.getElementById('openQrModalBtn');
+            if (openQr) {
+                const span = openQr.querySelector('span');
+                if (span) span.textContent = t.openMobile;
+            }
+
+            const openGlossary = document.getElementById('openGlossaryModalBtn');
+            if (openGlossary) {
+                const span = openGlossary.querySelector('span');
+                if (span) span.textContent = t.glossary;
+            }
+
+            const modeStd = document.getElementById('modeStandardBtn');
+            if (modeStd) modeStd.childNodes[modeStd.childNodes.length - 1].textContent = t.modeStandard;
+
+            const modeTrans = document.getElementById('modeTransparentBtn');
+            if (modeTrans) modeTrans.childNodes[modeTrans.childNodes.length - 1].textContent = t.modeTransparent;
+
+            const dragCompass = document.getElementById('dragModeCompassBtn');
+            if (dragCompass) dragCompass.childNodes[dragCompass.childNodes.length - 1].textContent = t.dragRotate;
+
+            const dragPan = document.getElementById('dragModePanBtn');
+            if (dragPan) dragPan.childNodes[dragPan.childNodes.length - 1].textContent = t.dragPan;
+
+            const dragPlan = document.getElementById('dragModePlanBtn');
+            if (dragPlan) dragPlan.childNodes[dragPlan.childNodes.length - 1].textContent = t.dragPlan;
+
+            const resetRot = document.getElementById('resetRotBtn');
+            if (resetRot) resetRot.textContent = t.resetRot;
+
+            const quickBtns = document.querySelectorAll('.quick-rot');
+            quickBtns.forEach(btn => {
+                const rot = btn.getAttribute('data-rot');
+                if (rot === '0') btn.textContent = t.quickS;
+                else if (rot === '270') btn.textContent = t.quickW;
+                else if (rot === '180') btn.textContent = t.quickN;
+                else if (rot === '90') btn.textContent = t.quickE;
+            });
+
+            const liveCompBtn = document.getElementById('toggleLiveCompassBtn');
+            if (liveCompBtn) {
+                const lastNode = liveCompBtn.childNodes[liveCompBtn.childNodes.length - 1];
+                if (lastNode) lastNode.textContent = ' ' + t.liveCompassBtn;
+            }
+
+            const camLabel = document.getElementById('cameraBtnLabel');
+            if (camLabel) camLabel.textContent = t.arCameraBtn;
+
+            const baseStyleSelect = document.getElementById('baseStyleSelect');
+            if (baseStyleSelect && baseStyleSelect.options.length >= 3) {
+                baseStyleSelect.options[0].textContent = t.baseLacquer;
+                baseStyleSelect.options[1].textContent = t.baseAcrylic;
+                baseStyleSelect.options[2].textContent = t.baseHidden;
+            }
+
+            const dlBtn = document.getElementById('downloadSvgBtn');
+            if (dlBtn) dlBtn.childNodes[dlBtn.childNodes.length - 1].textContent = t.downloadSvg;
+
+            const planResetBtn = document.getElementById('resetPlanPosBtn');
+            if (planResetBtn) planResetBtn.textContent = t.resetPlanPos;
+
+            // Section 4 Labels
+            const lblBazi = document.getElementById('lblBaziTitle');
+            if (lblBazi) lblBazi.textContent = t.baziSectionTitle;
+            const lblDay = document.getElementById('lblDay');
+            if (lblDay) lblDay.textContent = t.dayLabel;
+            const lblMonth = document.getElementById('lblMonth');
+            if (lblMonth) lblMonth.textContent = t.monthLabel;
+            const lblYear = document.getElementById('lblYear');
+            if (lblYear) lblYear.textContent = t.yearLabel;
+            const lblHour = document.getElementById('lblHour');
+            if (lblHour) lblHour.textContent = t.hourLabel;
+            const lblGender = document.getElementById('lblGender');
+            if (lblGender) lblGender.textContent = t.genderLabel;
+            const lblLichun = document.getElementById('lblLichun');
+            if (lblLichun) lblLichun.textContent = t.bornBeforeLichun;
+            const lblYearEl = document.getElementById('lblYearElement');
+            if (lblYearEl) lblYearEl.textContent = t.yearElementTitle;
+            const lblMingGua = document.getElementById('lblMingGua');
+            if (lblMingGua) lblMingGua.textContent = t.mingGuaTitle;
+            const lblEnergy = document.getElementById('lblEnergyGroup');
+            if (lblEnergy) lblEnergy.textContent = t.energyGroupTitle;
+            const lblNayin = document.getElementById('lblNayin');
+            if (lblNayin) lblNayin.textContent = t.nayinTitle;
+            const lblHl = document.getElementById('lblHighlightGua');
+            if (lblHl) lblHl.textContent = t.highlightGuaOnDisk;
+
+            // Section 5 Labels
+            const lblPlanScale = document.getElementById('lblPlanScale');
+            if (lblPlanScale) lblPlanScale.textContent = t.planScale;
+            const lblGridOverlay = document.getElementById('lblGridOverlay');
+            if (lblGridOverlay) lblGridOverlay.textContent = t.gridOverlay;
+            const lblPieOverlay = document.getElementById('lblPieOverlay');
+            if (lblPieOverlay) lblPieOverlay.textContent = t.pieOverlay;
+
+            // Gender Buttons
+            const maleBtn = document.getElementById('genderMaleBtn');
+            if (maleBtn) maleBtn.innerHTML = t.male;
+            const femaleBtn = document.getElementById('genderFemaleBtn');
+            if (femaleBtn) femaleBtn.innerHTML = t.female;
+        }
+
         const MOUNTAINS_24 = [
             { code: 'N2',  start: 352.5, end: 7.5,   color: '#2563eb', type: 'zodiac', animal: '🐀', hanzi: '鼠', animalName: 'ຊວດ (ໜູ)',     time: '23.01 - 01.00', num: '11' },
             { code: 'N3',  start: 7.5,   end: 22.5,  color: '#2563eb', type: 'table',  headers: ['ຊວດ','ມະເສັງ','ວອກ','ກຸນ'] },
@@ -1029,16 +1569,7 @@
             { code: 'N1',  start: 337.5, end: 352.5, color: '#2563eb', type: 'table',  headers: ['ຊວດ','ເຖາະ','ມະເມີຍ','ລະກາ'] }
         ];
 
-        const DIR_NAMES_LAO = {
-            'N': 'ທິດເໜືອ',
-            'NE': 'ອອກສ່ຽງເໜືອ',
-            'E': 'ຕາເວັນອອກ',
-            'SE': 'ອອກສ່ຽງໃຕ້',
-            'S': 'ທິດໃຕ້',
-            'SW': 'ຕົກສ່ຽງໃຕ້',
-            'W': 'ຕາເວັນຕົກ',
-            'NW': 'ຕົກສ່ຽງເໜືອ'
-        };
+        const DIR_NAMES_LAO = (LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo).dirsShort;
 
         const BAGUA_8 = [
             {
@@ -1374,11 +1905,12 @@
                 parts.push(`<circle cx="${c.x}" cy="${c.y}" r="6" fill="url(#brassRimGrad)" stroke="#713f12" stroke-width="1"/>`);
             });
 
+            const curI18n = LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo;
             const cardinals = [
-                { id: 'plateFaceBadge',  x: 600, y: -20,  label: 'ໜ້າບ້ານ: 180.0° ທິດໃຕ້ (午-ອູ່)', rot: 0,   bg: isLacquer ? '#7f1d1d' : '#1e293b', text: '#fde047' },
-                { id: 'plateSitBadge',   x: 600, y: 1220, label: 'ຫຼັງພິງ: 0.0° ທິດເໜືອ (子-ຈື)',   rot: 0,   bg: isLacquer ? '#1e3a8a' : '#0f172a', text: '#93c5fd' },
-                { id: 'plateLeftBadge',  x: -20, y: 600,  label: 'ຊ້າຍມື: 90.0° ຕາເວັນອອກ (卯)',   rot: -90, bg: isLacquer ? '#14532d' : '#064e3b', text: '#86efac' },
-                { id: 'plateRightBadge', x: 1220, y: 600, label: 'ຂວາມື: 270.0° ຕາເວັນຕົກ (酉)',   rot: 90,  bg: isLacquer ? '#334155' : '#1e293b', text: '#cbd5e1' }
+                { id: 'plateFaceBadge',  x: 600, y: -20,  label: curI18n.facing + ': 180.0° ' + curI18n.dirsShort.S + ' (午)', rot: 0,   bg: isLacquer ? '#7f1d1d' : '#1e293b', text: '#fde047' },
+                { id: 'plateSitBadge',   x: 600, y: 1220, label: curI18n.sitting + ': 0.0° ' + curI18n.dirsShort.N + ' (子)',   rot: 0,   bg: isLacquer ? '#1e3a8a' : '#0f172a', text: '#93c5fd' },
+                { id: 'plateLeftBadge',  x: -20, y: 600,  label: curI18n.plateLeft + ' 90.0° ' + curI18n.dirsShort.E + ' (卯)',   rot: -90, bg: isLacquer ? '#14532d' : '#064e3b', text: '#86efac' },
+                { id: 'plateRightBadge', x: 1220, y: 600, label: curI18n.plateRight + ' 270.0° ' + curI18n.dirsShort.W + ' (酉)',   rot: 90,  bg: isLacquer ? '#334155' : '#1e293b', text: '#cbd5e1' }
             ];
             cardinals.forEach(cd => {
                 parts.push(`<g transform="translate(${cd.x}, ${cd.y}) rotate(${cd.rot})">
@@ -1399,7 +1931,7 @@
                 <circle cx="1.5" cy="-1.5" r="5.5" fill="#fef08a" fill-opacity="0.85" stroke="#4d7c0f" stroke-width="1"/>
                 <circle cx="0.5" cy="-2.5" r="2" fill="#ffffff" fill-opacity="0.9"/>
                 <path d="M -15,-6 A 17 17 0 0 1 -6,-15" fill="none" stroke="#ffffff" stroke-width="1.8" opacity="0.6" stroke-linecap="round"/>
-                <text x="0" y="38" text-anchor="middle" dominant-baseline="central" font-size="8.5" font-weight="900" fill="${isLacquer ? '#fde047' : '#0f172a'}">ຍົດນ້ຳທ່ຽງວັດ</text>
+                <text x="0" y="38" text-anchor="middle" dominant-baseline="central" font-size="8.5" font-weight="900" fill="${isLacquer ? '#fde047' : '#0f172a'}">${(LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo).spiritLevel}</text>
             </g>`);
 
             parts.push(`<circle cx="${CX}" cy="${CY}" r="600" fill="none" stroke="url(#brassRimGrad)" stroke-width="11"/>`);
@@ -1515,11 +2047,25 @@
                     parts.push(createRadialText(517, endAdj - 3.8, m.time.split('-')[1].trim(), { fontSize: 7.5, fontWeight: '700' }));
                     parts.push(createRadialText(497, mid, m.animal, { fontSize: 21 }));
                     parts.push(createRadialText(479, mid, m.hanzi, { fontSize: 13, fontWeight: '900', fill: '#0f172a' }));
-                    parts.push(createRadialText(466, mid, `ປີ${m.animalName}`, { fontSize: 7.5, fontWeight: '700', fill: '#1e293b' }));
+                    const animalHmongMap = {
+                    'ຊວດ (ໜູ)': 'Nas', 'ສະຫຼູ (ງົວ)': 'Nyuj', 'ຂານ (ເສືອ)': 'Tsov', 'ເຖາະ (ກະຕ່າຍ)': 'Luav',
+                    'ມະໂລງ (ງູໃຫຍ່)': 'Zaj', 'ມະເສັງ (ງູນ້ອຍ)': 'Nab', 'ມະເມີຍ (ມ້າ)': 'Nees', 'ມະແມ (ແບ້)': 'Yแพ',
+                    'ວອກ (ລີງ)': 'Liab', 'ລະກາ (ໄກ່)': 'Qaib', 'ຈໍ (ໝາ)': 'Aub', 'ກຸນ (ໝູ)': 'Npua'
+                };
+                const animalPahawhMap = {
+                    'ຊວດ (ໜູ)': '𖬌𖰟', 'ສະຫຼູ (ງົວ)': '𖬐𖰞', 'ຂານ (ເສືອ)': '𖬎𖲧', 'ເຖາະ (ກະຕ່າຍ)': '𖬎𖲞',
+                    'ມະໂລງ (ງູໃຫຍ່)': '𖬎𖲤', 'ມະເສັງ (ງູນ້ອຍ)': '𖬌𖰞', 'ມະເມີຍ (ມ້າ)': '𖬐𖰦', 'ມະແມ (ແບ້)': '𖬐𖲟',
+                    'ວອກ (ລີງ)': '𖬎𖲟', 'ລະກາ (ໄກ່)': '𖬂𖲟', 'ຈໍ (ໝາ)': '𖬈𖲟', 'ກຸນ (ໝູ)': '𖬌𖲟'
+                };
+                const aHm = animalHmongMap[m.animalName] || m.animalName;
+                const aPh = animalPahawhMap[m.animalName] || m.animalName;
+                const animalDisplay = currentLuopanLang === 'hm' ? ('Xyoo ' + aHm) : currentLuopanLang === 'ph' ? ('𖬘𖲝 ' + aPh) : ('ປີ' + m.animalName);
+                parts.push(createRadialText(466, mid, animalDisplay, { fontSize: currentLuopanLang === 'ph' ? 8.5 : 7.2, fontWeight: '700', fill: '#1e293b' }));
                     parts.push(createRadialText(466, endAdj - 2.2, m.num, { fontSize: 8, fontWeight: '800', fill: '#0f172a' }));
                 } else {
                     parts.push(`<path d="${createSectorPath(508, 524, m.start, m.end)}" fill="${isTransparentMode ? 'rgba(241, 245, 249, 0.35)' : '#f1f5f9'}" stroke="#0f172a" stroke-width="0.7"/>`);
-                    parts.push(createRadialText(516, mid, 'ນັກສັດປະຈຳປີປັດຈຸບັນ', { fontSize: 6.8, fontWeight: '800', fill: '#0f172a' }));
+                    const tblHdrText = currentLuopanLang === 'hm' ? '12 Tus Tsiaj Txheej Xyoo' : currentLuopanLang === 'ph' ? '𖭑𖭒 𖬎𖲤 𖬎𖲨 𖬘𖲝' : 'ນັກສັດປະຈຳປີປັດຈຸບັນ';
+                    parts.push(createRadialText(516, mid, tblHdrText, { fontSize: currentLuopanLang === 'ph' ? 7.5 : 6.8, fontWeight: '800', fill: '#0f172a' }));
                     const rRows = [508, 495, 482, 469, 456];
                     const rowColors = isTransparentMode
                         ? ['rgba(187,247,208,0.3)', 'rgba(254,240,138,0.3)', 'rgba(254,215,170,0.3)', 'rgba(191,219,254,0.3)']
@@ -1678,33 +2224,44 @@
             });
 
             // Ring 8: Ba Zhai House Direction Red Ring (With Ming Gua Fortune Tag if enabled)
-            const DIR_NAMES_LAO = {
-                'N': 'ທິດເໜືອ',
-                'NE': 'ອອກສ່ຽງເໜືອ',
-                'E': 'ຕາເວັນອອກ',
-                'SE': 'ອອກສ່ຽງໃຕ້',
-                'S': 'ທິດໃຕ້',
-                'SW': 'ຕົກສ່ຽງໃຕ້',
-                'W': 'ຕາເວັນຕົກ',
-                'NW': 'ຕົກສ່ຽງເໜືອ'
+            const curI18nRing8 = LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo;
+            const houseNamesHmong = {
+                'ບ້ານຫຼີ': 'Vaj Li', 'ບ້ານຄຸນ': 'Vaj Kun', 'ບ້ານຕຸ້ຍ': 'Vaj Dui', 'ບ້ານສຽນ': 'Vaj Qian',
+                'ບ້ານຄານ': 'Vaj Kan', 'ບ້ານເກິ່ນ': 'Vaj Gen', 'ບ້ານເຈິ້ນ': 'Vaj Zhen', 'ບ້ານຊຸ່ນ': 'Vaj Xun'
+            };
+            const houseNamesPahawh = {
+                'ບ້ານຫຼີ': '𖬆𖰝 𖬎𖲞', 'ບ້ານຄຸນ': '𖬆𖰝 𖬐𖰤', 'ບ້ານຕຸ້ຍ': '𖬆𖰝 𖬆𖰤', 'ບ້ານສຽນ': '𖬆𖰝 𖬐𖰝',
+                'ບ້ານຄານ': '𖬆𖰝 𖬂𖲝', 'ບ້ານເກິ່ນ': '𖬆𖰝 𖬂𖲝', 'ບ້ານເຈິ້ນ': '𖬆𖰝 𖬎𖲝', 'ບ້ານຊຸ່ນ': '𖬆𖰝 𖬘𖲤'
             };
             BAGUA_8.forEach(b => {
                 let houseRingBg = isTransparentMode ? 'rgba(220, 38, 38, 0.72)' : '#dc2626';
-                let label = `${b.name} (${DIR_NAMES_LAO[b.dir] || b.dir})`;
+                const hName = currentLuopanLang === 'hm' ? (houseNamesHmong[b.name] || b.name) : currentLuopanLang === 'ph' ? (houseNamesPahawh[b.name] || b.name) : b.name;
+                const dName = curI18nRing8.dirsShort[b.dir] || b.dir;
+                let label = `${hName} (${dName})`;
                 if (showHighlightGua && currentGuaData && currentGuaData.dirs[b.dir]) {
                     const fort = currentGuaData.dirs[b.dir];
+                    const fortStarHmong = {
+                        'ໂຊກລາບຮຸ່ງເຮືອງ': 'Sheng Qi', 'ສຸຂະພາບໝໍເທບ': 'Tian Yi', 'ຄວາມຮັກອາຍຸຍືນ': 'Yan Nian',
+                        'ສະຕິປັນຍາໝັ້ນຄົງ': 'Fu Wei', 'ອຸປະສັກເສຍຊັບ': 'Huo Hai', 'ຄະດີຄວາມໂຊກຮ້າຍ': 'Liu Sha',
+                        'ໂຈນໄພຜິດຖຽງ': 'Wu Gui', 'ມະຫາວິບັດຕັດຊີວິດ': 'Jue Ming'
+                    };
+                    const fortStarPahawh = {
+                        'ໂຊກລາບຮຸ່ງເຮືອງ': '𖬌𖲞', 'ສຸຂະພາບໝໍເທບ': '𖬐𖰞', 'ຄວາມຮັກອາຍຸຍືນ': '𖬎𖲨',
+                        'ສະຕິປັນຍາໝັ້ນຄົງ': '𖬆𖰝', 'ອຸປະສັກເສຍຊັບ': '𖬉𖲝', 'ຄະດີຄວາມໂຊກຮ້າຍ': '𖬘𖲞',
+                        'ໂຈນໄພຜິດຖຽງ': '𖭕', 'ມະຫາວິບັດຕັດຊີວິດ': '𖬎𖲨'
+                    };
+                    const sStar = currentLuopanLang === 'hm' ? (fortStarHmong[fort.star] || fort.star.split(' ')[0]) : currentLuopanLang === 'ph' ? (fortStarPahawh[fort.star] || fort.star.split(' ')[0]) : fort.star.split(' ')[0];
                     if (fort.type === 'good') {
                         houseRingBg = isTransparentMode ? 'rgba(5, 150, 105, 0.88)' : '#059669';
-                        label = `${b.name.replace('ບ້ານ', '')} • ${fort.star.split(' ')[0]}`;
+                        label = `${hName.replace(/ບ້ານ|Vaj|𖬆𖰝/g, '').trim()} • ${sStar}`;
                     } else {
                         houseRingBg = isTransparentMode ? 'rgba(185, 28, 28, 0.88)' : '#991b1b';
-                        label = `${b.name.replace('ບ້ານ', '')} • ${fort.star.split(' ')[0]}`;
+                        label = `${hName.replace(/ບ້ານ|Vaj|𖬆𖰝/g, '').trim()} • ${sStar}`;
                     }
                 }
                 parts.push(`<path d="${createSectorPath(112, 144, b.start, b.end)}" fill="${houseRingBg}" stroke="#ffffff" stroke-width="1.2"/>`);
-                const endAdj = b.end < b.start ? b.end + 360 : b.end;
-                const mid = (b.start + endAdj) / 2;
-                parts.push(createRadialText(128, mid, label, { fontSize: 8.8, fontWeight: '800', fill: '#ffffff' }));
+                const mid = (b.start + (b.end < b.start ? b.end + 360 : b.end)) / 2;
+                parts.push(createRadialText(128, mid, label, { fontSize: currentLuopanLang === 'ph' ? 8.5 : 7.2, fontWeight: '800', fill: '#ffffff' }));
             });
 
             // Central Heaven Pool (天池) - Fully opaque base with brass rim
@@ -1794,18 +2351,24 @@
         const resetPlanPosBtn = document.getElementById('resetPlanPosBtn');
 
         function getDirectionLabel(deg) {
+            const t = LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo;
             const dirs = [
-                'ທິດເໜືອ',
-                'ທິດຕາເວັນອອກສ່ຽງເໜືອ',
-                'ທິດຕາເວັນອອກ',
-                'ທິດຕາເວັນອອກສ່ຽງໃຕ້',
-                'ທິດໃຕ້',
-                'ທິດຕາເວັນຕົກສ່ຽງໃຕ້',
-                'ທິດຕາເວັນຕົກ',
-                'ທິດຕາເວັນຕົກສ່ຽງເໜືອ'
+                t.dirs.N,
+                t.dirs.NE,
+                t.dirs.E,
+                t.dirs.SE,
+                t.dirs.S,
+                t.dirs.SW,
+                t.dirs.W,
+                t.dirs.NW
             ];
             const idx = Math.round(((deg % 360 + 360) % 360) / 45) % 8;
             return dirs[idx];
+        }
+
+        function getDirectionLabelShort(code) {
+            const t = LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo;
+            return t.dirsShort[code] || code;
         }
 
         let needleSway = 0;
@@ -1855,45 +2418,45 @@
 
         const LO_SHU_FLIGHT_PATH = [5, 6, 7, 8, 9, 1, 2, 3, 4];
         const XUAN_KONG_PALACES = {
-            1: { name: 'Kan', lao: 'ຄານ', dir: 'ທິດເໜືອ', deg: 0, baguaCode: 'N', mountains: [
-                { name: '壬', lao: 'ຍິມ', yuan: 'di', pol: 1, start: 337.5, end: 352.5 },
-                { name: '子', lao: 'ຈື (ໜູ)', yuan: 'tian', pol: -1, start: 352.5, end: 7.5 },
-                { name: '癸', lao: 'ກຸ່ຍ', yuan: 'ren', pol: -1, start: 7.5, end: 22.5 }
+            1: { name: 'Kan', lao: 'ຄານ', hm: 'Kan (Dej)', ph: '𖬂𖲝', dir: 'ທິດເໜືອ', dirHm: 'Qaum Teb', deg: 0, baguaCode: 'N', mountains: [
+                { name: '壬', lao: 'ຍິມ', hm: 'Yim', ph: '𖬖𖰝', yuan: 'di', pol: 1, start: 337.5, end: 352.5 },
+                { name: '子', lao: 'ຈື (ໜູ)', hm: 'Tsw (Nas)', ph: '𖬎𖲞 (𖬌𖰟)', yuan: 'tian', pol: -1, start: 352.5, end: 7.5 },
+                { name: '癸', lao: 'ກຸ່ຍ', hm: 'Kwi', ph: '𖬐𖰤', yuan: 'ren', pol: -1, start: 7.5, end: 22.5 }
             ]},
-            2: { name: 'Kun', lao: 'ຄຸນ', dir: 'ທິດຕາເວັນຕົກສ່ຽງໃຕ້', deg: 225, baguaCode: 'SW', mountains: [
-                { name: '未', lao: 'ເວີ່ຍ (ແບ້)', yuan: 'di', pol: -1, start: 202.5, end: 217.5 },
-                { name: '坤', lao: 'ຄຸນ', yuan: 'tian', pol: 1, start: 217.5, end: 232.5 },
-                { name: '申', lao: 'ເຊີນ (ລີງ)', yuan: 'ren', pol: 1, start: 232.5, end: 247.5 }
+            2: { name: 'Kun', lao: 'ຄຸນ', hm: 'Kun (Av)', ph: '𖬐𖰤', dir: 'ທິດຕາເວັນຕົກສ່ຽງໃຕ້', dirHm: 'Sab Hnub Poob Qab Teb', deg: 225, baguaCode: 'SW', mountains: [
+                { name: '未', lao: 'ເວີ່ຍ (ແບ້)', hm: 'Vei (Yแพ)', ph: '𖬖𖰤 (𖬐𖲟)', yuan: 'di', pol: -1, start: 202.5, end: 217.5 },
+                { name: '坤', lao: 'ຄຸນ', hm: 'Khuv', ph: '𖬐𖰤', yuan: 'tian', pol: 1, start: 217.5, end: 232.5 },
+                { name: '申', lao: 'ເຊີນ (ລີງ)', hm: 'Xas (Liab)', ph: '𖬘𖲝 (𖬎𖲟)', yuan: 'ren', pol: 1, start: 232.5, end: 247.5 }
             ]},
-            3: { name: 'Zhen', lao: 'ເຈິ້ນ', dir: 'ທິດຕາເວັນອອກ', deg: 90, baguaCode: 'E', mountains: [
-                { name: '甲', lao: 'ຈຍ່າ', yuan: 'di', pol: 1, start: 67.5, end: 82.5 },
-                { name: '卯', lao: 'ມາວ (ກະຕ່າຍ)', yuan: 'tian', pol: -1, start: 82.5, end: 97.5 },
-                { name: '乙', lao: 'ອີກ', yuan: 'ren', pol: -1, start: 97.5, end: 112.5 }
+            3: { name: 'Zhen', lao: 'ເຈິ້ນ', hm: 'Zhen (Ntoo)', ph: '𖬎𖲝', dir: 'ທິດຕາເວັນອອກ', dirHm: 'Sab Hnub Tuaj', deg: 90, baguaCode: 'E', mountains: [
+                { name: '甲', lao: 'ຈຍ່າ', hm: 'Chas', ph: '𖬎𖲤', yuan: 'di', pol: 1, start: 67.5, end: 82.5 },
+                { name: '卯', lao: 'ມາວ (ກະຕ່າຍ)', hm: 'Maus (Luav)', ph: '𖬈𖰞 (𖬎𖲞)', yuan: 'tian', pol: -1, start: 82.5, end: 97.5 },
+                { name: '乙', lao: 'ອີກ', hm: 'Yis', ph: '𖬎𖲞', yuan: 'ren', pol: -1, start: 97.5, end: 112.5 }
             ]},
-            4: { name: 'Xun', lao: 'ຊຸ່ນ', dir: 'ທິດຕາເວັນອອກສ່ຽງໃຕ້', deg: 135, baguaCode: 'SE', mountains: [
-                { name: '辰', lao: 'ເສີນ (ມັງກອນ)', yuan: 'di', pol: -1, start: 112.5, end: 127.5 },
-                { name: '巽', lao: 'ຊຸ່ນ', yuan: 'tian', pol: 1, start: 127.5, end: 142.5 },
-                { name: '巳', lao: 'ຊື່ (ງູນ້ອຍ)', yuan: 'ren', pol: 1, start: 142.5, end: 157.5 }
+            4: { name: 'Xun', lao: 'ຊຸ່ນ', hm: 'Xun (Ntoo)', ph: '𖬘𖲤', dir: 'ທິດຕາເວັນອອກສ່ຽງໃຕ້', dirHm: 'Sab Hnub Tuaj Qab Teb', deg: 135, baguaCode: 'SE', mountains: [
+                { name: '辰', lao: 'ເສີນ (ມັງກອນ)', hm: 'Xas (Zaj)', ph: '𖬘𖲝 (𖬎𖲤)', yuan: 'di', pol: -1, start: 112.5, end: 127.5 },
+                { name: '巽', lao: 'ຊຸ່ນ', hm: 'Xus', ph: '𖬘𖲤', yuan: 'tian', pol: 1, start: 127.5, end: 142.5 },
+                { name: '巳', lao: 'ຊື່ (ງູນ້ອຍ)', hm: 'Xis (Nab)', ph: '𖬘𖲞 (𖬌𖰞)', yuan: 'ren', pol: 1, start: 142.5, end: 157.5 }
             ]},
-            6: { name: 'Qian', lao: 'ສຽນ', dir: 'ທິດຕາເວັນຕົກສ່ຽງເໜືອ', deg: 315, baguaCode: 'NW', mountains: [
-                { name: '戌', lao: 'ຊວີ (ໝາ)', yuan: 'di', pol: -1, start: 292.5, end: 307.5 },
-                { name: '乾', lao: 'ສຽນ', yuan: 'tian', pol: 1, start: 307.5, end: 322.5 },
-                { name: '亥', lao: 'ຫາຍ (ໝູ)', yuan: 'ren', pol: 1, start: 322.5, end: 337.5 }
+            6: { name: 'Qian', lao: 'ສຽນ', hm: 'Qian (Kub)', ph: '𖬐𖰝', dir: 'ທິດຕາເວັນຕົກສ່ຽງເໜືອ', dirHm: 'Sab Hnub Poob Qaum Teb', deg: 315, baguaCode: 'NW', mountains: [
+                { name: '戌', lao: 'ຊຸ່ຍ (ໝາ)', hm: 'Xus (Aub)', ph: '𖬘𖲤 (𖬈𖲟)', yuan: 'di', pol: -1, start: 292.5, end: 307.5 },
+                { name: '乾', lao: 'ສຽນ', hm: 'Khen', ph: '𖬐𖰝', yuan: 'tian', pol: 1, start: 307.5, end: 322.5 },
+                { name: '亥', lao: 'ໄຮ່ (ໝູ)', hm: 'Hais (Npua)', ph: '𖬎𖰟 (𖬌𖲟)', yuan: 'ren', pol: 1, start: 322.5, end: 337.5 }
             ]},
-            7: { name: 'Dui', lao: 'ຕຸ້ຍ', dir: 'ທິດຕາເວັນຕົກ', deg: 270, baguaCode: 'W', mountains: [
-                { name: '庚', lao: 'ເກີງ', yuan: 'di', pol: 1, start: 247.5, end: 262.5 },
-                { name: '酉', lao: 'ໂຢ່ວ (ໄກ່)', yuan: 'tian', pol: -1, start: 262.5, end: 277.5 },
-                { name: '辛', lao: 'ຊິນ', yuan: 'ren', pol: -1, start: 277.5, end: 292.5 }
+            7: { name: 'Dui', lao: 'ຕຸ້ຍ', hm: 'Dui (Kub)', ph: '𖬆𖰤', dir: 'ທິດຕາເວັນຕົກ', dirHm: 'Sab Hnub Poob', deg: 270, baguaCode: 'W', mountains: [
+                { name: '庚', lao: 'ເກິງ', hm: 'Kes', ph: '𖬂𖲝', yuan: 'di', pol: 1, start: 247.5, end: 262.5 },
+                { name: '酉', lao: 'ໂຢ່ວ (ໄກ່)', hm: 'Yaus (Qaib)', ph: '𖬎𖰞 (𖬂𖲟)', yuan: 'tian', pol: -1, start: 262.5, end: 277.5 },
+                { name: '辛', lao: 'ຊິນ', hm: 'Xis', ph: '𖬘𖲞', yuan: 'ren', pol: -1, start: 277.5, end: 292.5 }
             ]},
-            8: { name: 'Gen', lao: 'ເກິ້ນ', dir: 'ທິດຕາເວັນອອກສ່ຽງເໜືອ', deg: 45, baguaCode: 'NE', mountains: [
-                { name: '丑', lao: 'ໂສ່ວ (ງົວ)', yuan: 'di', pol: -1, start: 22.5, end: 37.5 },
-                { name: '艮', lao: 'ເກິ້ນ', yuan: 'tian', pol: 1, start: 37.5, end: 52.5 },
-                { name: '寅', lao: 'ອິ໋ນ (ເສືອ)', yuan: 'ren', pol: 1, start: 52.5, end: 67.5 }
+            8: { name: 'Gen', lao: 'ເກິ່ນ', hm: 'Gen (Av)', ph: '𖬂𖲝', dir: 'ທິດຕາເວັນອອກສ່ຽງເໜືອ', dirHm: 'Sab Hnub Tuaj Qaum Teb', deg: 45, baguaCode: 'NE', mountains: [
+                { name: '丑', lao: 'ໂສ່ວ (ງົວ)', hm: 'Tshob (Nyuj)', ph: '𖬎𖰞 (𖬐𖰞)', yuan: 'di', pol: -1, start: 22.5, end: 37.5 },
+                { name: '艮', lao: 'ເກິ່ນ', hm: 'Kes', ph: '𖬂𖲝', yuan: 'tian', pol: 1, start: 37.5, end: 52.5 },
+                { name: '寅', lao: 'ອິ່ນ (ເສືອ)', hm: 'Yis (Tsov)', ph: '𖬎𖲞 (𖬎𖲧)', yuan: 'ren', pol: 1, start: 52.5, end: 67.5 }
             ]},
-            9: { name: 'Li', lao: 'ຫຼີ', dir: 'ທິດໃຕ້', deg: 180, baguaCode: 'S', mountains: [
-                { name: '丙', lao: 'ປິ້ງ', yuan: 'di', pol: 1, start: 157.5, end: 172.5 },
-                { name: '午', lao: 'ອູ່ (ມ້າ)', yuan: 'tian', pol: -1, start: 172.5, end: 187.5 },
-                { name: '丁', lao: 'ຕິງ', yuan: 'ren', pol: -1, start: 187.5, end: 202.5 }
+            9: { name: 'Li', lao: 'ຫຼີ', hm: 'Li (Hluav Taws)', ph: '𖬎𖲞', dir: 'ທິດໃຕ້', dirHm: 'Qab Teb', deg: 180, baguaCode: 'S', mountains: [
+                { name: '丙', lao: 'ປິ່ງ', hm: 'Pim', ph: '𖬉𖲝', yuan: 'di', pol: 1, start: 157.5, end: 172.5 },
+                { name: '午', lao: 'ຫວູ່ (ມ້າ)', hm: 'Vus (Nees)', ph: '𖬖𖰤 (𖬐𖰦)', yuan: 'tian', pol: -1, start: 172.5, end: 187.5 },
+                { name: '丁', lao: 'ຕິງ', hm: 'Tim', ph: '𖬎𖲝', yuan: 'ren', pol: -1, start: 187.5, end: 202.5 }
             ]}
         };
 
@@ -12048,10 +12611,19 @@ function updateCompassTransform(deltaAngle = null) {
             const rightInfo = findMountainInfo(rightCompassDeg);
 
             const tnBadge = useTrueNorth ? ` <span class="text-[9px] text-cyan-300 font-mono">(TN ${selectedProvinceDeclination > 0 ? '+' : ''}${selectedProvinceDeclination.toFixed(2)}°)</span>` : '';
+            const curI18n = LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo;
+            const faceDirName = curI18n.dirs[faceInfo.pal.baguaCode] || faceInfo.pal.dir;
+            const sitDirName = curI18n.dirs[sitInfo.pal.baguaCode] || sitInfo.pal.dir;
+            const leftDirName = curI18n.dirs[leftInfo.pal.baguaCode] || leftInfo.pal.dir;
+            const rightDirName = curI18n.dirs[rightInfo.pal.baguaCode] || rightInfo.pal.dir;
+
+            const mtnFaceLabel = currentLuopanLang === 'hm' ? (faceInfo.mtn.hm || faceInfo.mtn.lao) : currentLuopanLang === 'ph' ? (faceInfo.mtn.ph || faceInfo.mtn.lao) : faceInfo.mtn.lao;
+            const mtnSitLabel = currentLuopanLang === 'hm' ? (sitInfo.mtn.hm || sitInfo.mtn.lao) : currentLuopanLang === 'ph' ? (sitInfo.mtn.ph || sitInfo.mtn.lao) : sitInfo.mtn.lao;
+
             const topText = cameraActive
-                ? `<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-1"></span> ກ້ອງຫັນ: ${effectiveFacingDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name} ${faceInfo.mtn.lao})${tnBadge}`
-                : `ໜ້າບ້ານ: ${effectiveFacingDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name} ${faceInfo.mtn.lao})${tnBadge}`;
-            const sittingText = `ຫຼັງພິງ: ${bottomCompassDeg.toFixed(1)}° ${sitInfo.pal.dir} (${sitInfo.mtn.name} ${sitInfo.mtn.lao})`;
+                ? `<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-1"></span> ${curI18n.cameraFacing}: ${effectiveFacingDeg.toFixed(1)}° ${faceDirName} (${faceInfo.mtn.name} ${mtnFaceLabel})${tnBadge}`
+                : `${curI18n.facing}: ${effectiveFacingDeg.toFixed(1)}° ${faceDirName} (${faceInfo.mtn.name} ${mtnFaceLabel})${tnBadge}`;
+            const sittingText = `${curI18n.sitting}: ${bottomCompassDeg.toFixed(1)}° ${sitDirName} (${sitInfo.mtn.name} ${mtnSitLabel})`;
 
             degreeBadge.innerHTML = topText;
             const sittingBadge = document.getElementById('sittingBadge');
@@ -12060,13 +12632,17 @@ function updateCompassTransform(deltaAngle = null) {
             }
             const mobileDegreeBadge = document.getElementById('mobileDegreeBadge');
             if (mobileDegreeBadge) {
+                const sFace = currentLuopanLang === 'hm' ? 'Pem' : currentLuopanLang === 'ph' ? '𖬄𖲝' : 'ໜ້າ';
+                const sTurn = currentLuopanLang === 'hm' ? 'Tig' : currentLuopanLang === 'ph' ? '𖬎𖲞' : 'ຫັນ';
+                const sShortDir = curI18n.dirsShort[faceInfo.pal.baguaCode] || faceInfo.pal.dir;
                 mobileDegreeBadge.innerHTML = cameraActive
-                    ? `<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-0.5"></span> ຫັນ: ${effectiveFacingDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})${tnBadge}`
-                    : `ໜ້າ: ${effectiveFacingDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})${tnBadge}`;
+                    ? `<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-0.5"></span> ${sTurn}: ${effectiveFacingDeg.toFixed(1)}° ${sShortDir} (${faceInfo.mtn.name}-${mtnFaceLabel})${tnBadge}`
+                    : `${sFace}: ${effectiveFacingDeg.toFixed(1)}° ${sShortDir} (${faceInfo.mtn.name}-${mtnFaceLabel})${tnBadge}`;
             }
             const mobileSittingBadge = document.getElementById('mobileSittingBadge');
             if (mobileSittingBadge) {
-                mobileSittingBadge.textContent = `ຫຼັງພິງ: ${bottomCompassDeg.toFixed(1)}° ${sitInfo.pal.dir} (${sitInfo.mtn.name}-${sitInfo.mtn.lao})`;
+                const sSitShortDir = curI18n.dirsShort[sitInfo.pal.baguaCode] || sitInfo.pal.dir;
+                mobileSittingBadge.textContent = `${curI18n.sitting}: ${bottomCompassDeg.toFixed(1)}° ${sSitShortDir} (${sitInfo.mtn.name}-${mtnSitLabel})`;
             }
             const arCameraDegBadge = document.getElementById('arCameraDegBadge');
             if (arCameraDegBadge) {
@@ -12076,19 +12652,19 @@ function updateCompassTransform(deltaAngle = null) {
             // Real-time Update for the 4 Red Thread Readout Badges on the Outer Base Plate
             const plateFaceBadge = document.getElementById('plateFaceBadge');
             if (plateFaceBadge) {
-                plateFaceBadge.textContent = `ໜ້າບ້ານ: ${effectiveFacingDeg.toFixed(1)}° ${faceInfo.pal.dir} (${faceInfo.mtn.name}-${faceInfo.mtn.lao})`;
+                plateFaceBadge.textContent = `${curI18n.facing}: ${effectiveFacingDeg.toFixed(1)}° ${faceDirName} (${faceInfo.mtn.name}-${mtnFaceLabel})`;
             }
             const plateSitBadge = document.getElementById('plateSitBadge');
             if (plateSitBadge) {
-                plateSitBadge.textContent = `ຫຼັງພິງ: ${bottomCompassDeg.toFixed(1)}° ${sitInfo.pal.dir} (${sitInfo.mtn.name}-${sitInfo.mtn.lao})`;
+                plateSitBadge.textContent = `${curI18n.sitting}: ${bottomCompassDeg.toFixed(1)}° ${sitDirName} (${sitInfo.mtn.name}-${mtnSitLabel})`;
             }
             const plateLeftBadge = document.getElementById('plateLeftBadge');
             if (plateLeftBadge) {
-                plateLeftBadge.textContent = `ຊ້າຍມື: ${leftCompassDeg.toFixed(1)}° ${leftInfo.pal.dir} (${leftInfo.mtn.name}-${leftInfo.mtn.lao})`;
+                plateLeftBadge.textContent = `${curI18n.plateLeft} ${leftCompassDeg.toFixed(1)}° ${leftDirName} (${leftInfo.mtn.name})`;
             }
             const plateRightBadge = document.getElementById('plateRightBadge');
             if (plateRightBadge) {
-                plateRightBadge.textContent = `ຂວາມື: ${rightCompassDeg.toFixed(1)}° ${rightInfo.pal.dir} (${rightInfo.mtn.name}-${rightInfo.mtn.lao})`;
+                plateRightBadge.textContent = `${curI18n.plateRight} ${rightCompassDeg.toFixed(1)}° ${rightDirName} (${rightInfo.mtn.name})`;
             }
 
             // Real Magnetic Needle points to True North (0° / 子)
@@ -12674,48 +13250,59 @@ function updateCompassTransform(deltaAngle = null) {
             birthYearSelect.innerHTML = optionsHtml;
         }
 
-        function updateGuaDisplay(syncInput = true) {
+        function updateGuaDisplay(forceRecompute = true) {
+            let birthYear = parseInt(birthYearInput.value);
+            if (isNaN(birthYear) || birthYear < 1900) {
+                birthYear = 1992;
+            }
+            if (birthYear > 2400) {
+                birthYear -= 543;
+            }
+            const isBornBeforeLichun = bornBeforeLichun.checked;
             const isMale = currentGender === 'male';
-            if (typeof bornBeforeLichun !== 'undefined' && bornBeforeLichun) {
-                isBornBeforeLichun = bornBeforeLichun.checked;
-            }
-            let val = parseInt(birthYearInput.value, 10);
-            if (isNaN(val)) {
-                val = parseInt(birthYearSelect.value, 10) || 1990;
-            }
-            // Auto convert Buddhist Era (e.g. 2533 -> 1990)
-            if (val >= 2400 && val <= 2600) {
-                val = val - 543;
-            }
-            if (val < 1924) val = 1924;
-            if (val > 2035) val = 2035;
 
-            currentBirthYear = val;
-            if (syncInput) {
-                birthYearInput.value = val;
-            }
-            if (typeof selectedBaziYear !== 'undefined' && selectedBaziYear !== val) {
-                if (typeof setUserBirthProfile === 'function') {
-                    setUserBirthProfile(val, null, null, null, isMale ? 'male' : 'female', true);
-                }
-            }
-            if (birthYearSelect.value != val && birthYearSelect.querySelector(`option[value="${val}"]`)) {
-                birthYearSelect.value = val;
-            }
-
-                        const calc = calculateGua(currentBirthYear, isMale, isBornBeforeLichun);
+            const calc = calculateGua(birthYear, isMale, isBornBeforeLichun);
             currentGuaData = calc.guaData;
-            currentYearInfo = calc.yearInfo;
 
-            const thisYear = new Date().getFullYear();
-            const age = thisYear - currentBirthYear;
-            if (currentYearAge) {
-                currentYearAge.textContent = `ອາຍຸປະມານ: ${age} ປີ`;
+            const t = LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo;
+
+            // Animal translation
+            const animalLaoToKey = {
+                'ຊວດ': 'rat', 'ສະຫຼູ': 'ox', 'ຂານ': 'tiger', 'ເຖາະ': 'rabbit',
+                'ມະໂລງ': 'dragon', 'ມະເສັງ': 'snake', 'ມະເມີຍ': 'horse', 'ມະແມ': 'goat',
+                'ວອກ': 'monkey', 'ລະກາ': 'rooster', 'ຈໍ': 'dog', 'ກຸນ': 'pig'
+            };
+            const rawAnimal = (calc.yearInfo.animal || '').split(' ')[0].replace('ປີ', '').trim();
+            const aKey = animalLaoToKey[rawAnimal] || 'rat';
+            const transAnimal = t.animals[aKey] || calc.yearInfo.animal;
+
+            if (currentLuopanLang === 'hm') {
+                resZodiac.textContent = 'Xyoo ' + transAnimal;
+                resGanzhi.textContent = calc.yearInfo.gz + ' • C.E. ' + calc.solarYear + (isBornBeforeLichun ? ' (Xam xyoo Li Chun ' + calc.solarYear + ')' : '');
+            } else if (currentLuopanLang === 'ph') {
+                resZodiac.textContent = '𖬘𖲝 ' + transAnimal;
+                resGanzhi.textContent = calc.yearInfo.gz + ' • ' + calc.solarYear;
+            } else {
+                resZodiac.textContent = `ປີ${calc.yearInfo.animal}`;
+                resGanzhi.textContent = `${calc.yearInfo.gz} • ພ.ສ. ${calc.solarYear + 543}${isBornBeforeLichun ? ' (ນັບປີສຸລິຍະ ' + calc.solarYear + ')' : ''}`;
             }
 
-            resZodiac.textContent = `ປີ${calc.yearInfo.animal}`;
-            resGanzhi.textContent = `${calc.yearInfo.gz} • ພ.ສ. ${calc.solarYear + 543}${isBornBeforeLichun ? ' (ນັບປີສຸລິຍະ ' + calc.solarYear + ')' : ''}`;
-            resElementBadge.textContent = calc.yearInfo.el;
+            // Element Translation
+            let elTrans = calc.yearInfo.el;
+            if (currentLuopanLang === 'hm') {
+                if (elTrans.includes('ໄມ້')) elTrans = 'Ntoo (Wood)';
+                else if (elTrans.includes('ໄຟ')) elTrans = 'Hluav Taws (Fire)';
+                else if (elTrans.includes('ດິນ')) elTrans = 'Av (Earth)';
+                else if (elTrans.includes('ທອງ')) elTrans = 'Kub (Metal)';
+                else elTrans = 'Dej (Water)';
+            } else if (currentLuopanLang === 'ph') {
+                if (elTrans.includes('ໄມ້')) elTrans = '𖬐𖰞 (Ntoo)';
+                else if (elTrans.includes('ໄຟ')) elTrans = '𖬎𖰤 (Hluav Taws)';
+                else if (elTrans.includes('ດິນ')) elTrans = '𖬈𖰞 (Av)';
+                else if (elTrans.includes('ທອງ')) elTrans = '𖬌𖰤 (Kub)';
+                else elTrans = '𖬆𖰞 (Dej)';
+            }
+            resElementBadge.textContent = elTrans;
 
             if (calc.yearInfo.el.includes('ໄມ້')) {
                 resElementBadge.className = "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-inner";
@@ -12729,34 +13316,58 @@ function updateCompassTransform(deltaAngle = null) {
                 resElementBadge.className = "bg-sky-500/20 text-sky-300 border border-sky-500/40 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-inner";
             }
 
-            resGuaName.textContent = `${calc.guaData.name} • ${calc.guaData.elementBadge}`;
-            resGroup.textContent = calc.guaData.group;
+            // Gua Name & Group
+            let guaDisplay = calc.guaData.name;
+            let groupDisplay = calc.guaData.group;
+            if (currentLuopanLang === 'hm') {
+                guaDisplay = guaDisplay.replace('ກວ້າ', 'Pa Kua').replace('ທາດນ້ຳ', 'Dej').replace('ທາດດິນ', 'Av').replace('ທາດໄມ້', 'Ntoo').replace('ທາດທອງ', 'Kub').replace('ທາດໄຟ', 'Hluav Taws');
+                groupDisplay = groupDisplay.includes('ຕາເວັນອອກ') ? 'Pawg Sab Hnub Tuaj' : 'Pawg Sab Hnub Poob';
+            } else if (currentLuopanLang === 'ph') {
+                guaDisplay = guaDisplay.replace('ກວ້າ', '𖬘𖲝').replace('ທາດນ້ຳ', '𖬆𖰞').replace('ທາດດິນ', '𖬈𖰞').replace('ທາດໄມ້', '𖬐𖰞').replace('ທາດທອງ', '𖬌𖰤').replace('ທາດໄຟ', '𖬎𖰤');
+                groupDisplay = groupDisplay.includes('ຕາເວັນອອກ') ? '𖬈𖰞 𖬎𖲤' : '𖬈𖰞 𖬉𖲦';
+            }
+            resGuaName.textContent = guaDisplay;
+            resGroup.textContent = groupDisplay;
             resNayin.textContent = calc.yearInfo.nayin;
 
-            const DIR_NAMES_LAO = {
-                'N': 'ທິດເໜືອ',
-                'NE': 'ອອກສ່ຽງເໜືອ',
-                'E': 'ຕາເວັນອອກ',
-                'SE': 'ອອກສ່ຽງໃຕ້',
-                'S': 'ທິດໃຕ້',
-                'SW': 'ຕົກສ່ຽງໃຕ້',
-                'W': 'ຕາເວັນຕົກ',
-                'NW': 'ຕົກສ່ຽງເໜືອ'
+            // Direction Fortunes List
+            const fortNamesHmong = {
+                'ຣຸ່ງເຮືອງ': 'Sheng Qi (Vam Meej Nyiaj Txiag)',
+                'ສຸຂະພາບ': 'Tian Yi (Kws Kho Ntuj Noj Qab)',
+                'ຄວາມຮັກ': 'Yan Nian (Hnub Nyoog Ntev Kev Hlub)',
+                'ໝັ້ນຄົງ': 'Fu Wei (Lub Rooj Zaum Kaj Siab)',
+                'ຫົວຫ້າຍ': 'Huo Hai (Kev Puas Tsuaj Sib Ceg)',
+                'ລິວຊ່າ': 'Liu Sha (Raug Mob Loj Txim Plaub)',
+                'ອູກຸຍ': 'Wu Gui (Tsib Tus Dab Ntxeev Siab)',
+                'ຈວຽ້ມິ່ງ': 'Jue Ming (Txoj Sia Tu Phem Tshaj)'
+            };
+
+            const fortNamesPahawh = {
+                'ຣຸ່ງເຮືອງ': 'Sheng Qi (𖬌𖲞 𖬘𖲝)',
+                'ສຸຂະພາບ': 'Tian Yi (𖬐𖰞 𖬎𖲞)',
+                'ຄວາມຮັກ': 'Yan Nian (𖬎𖲨 𖬎𖲤)',
+                'ໝັ້ນຄົງ': 'Fu Wei (𖬆𖰝 𖬌𖰞)',
+                'ຫົວຫ້າຍ': 'Huo Hai (𖬉𖲝 𖬘𖲝)',
+                'ລິວຊ່າ': 'Liu Sha (𖬘𖲞 𖬎𖲤)',
+                'ອູກຸຍ': 'Wu Gui (𖭕 𖬎𖲤)',
+                'ຈວຽ້ມິ່ງ': 'Jue Ming (𖬎𖲨 𖬎𖰟)'
             };
 
             let goodHtml = '';
             let badHtml = '';
             for (const [dirKey, dInfo] of Object.entries(calc.guaData.dirs)) {
-                const laoDir = DIR_NAMES_LAO[dirKey] || dirKey;
+                const transDir = t.dirs[dirKey] || dirKey;
+                const fortTitle = currentLuopanLang === 'hm' ? (fortNamesHmong[dInfo.name] || dInfo.name) : currentLuopanLang === 'ph' ? (fortNamesPahawh[dInfo.name] || dInfo.name) : dInfo.name;
+
                 if (dInfo.type === 'good') {
                     goodHtml += `<div class="flex items-center justify-between bg-emerald-950/40 px-1.5 py-0.5 rounded border border-emerald-600/30">
-                        <span class="font-bold text-emerald-300">${laoDir}</span>
-                        <span class="text-slate-300">${dInfo.name}</span>
+                        <span class="font-bold text-emerald-300">${transDir}</span>
+                        <span class="text-slate-300">${fortTitle}</span>
                     </div>`;
                 } else {
                     badHtml += `<div class="flex items-center justify-between bg-rose-950/40 px-1.5 py-0.5 rounded border border-rose-600/30">
-                        <span class="font-bold text-rose-300">${laoDir}</span>
-                        <span class="text-slate-300">${dInfo.name}</span>
+                        <span class="font-bold text-rose-300">${transDir}</span>
+                        <span class="text-slate-300">${fortTitle}</span>
                     </div>`;
                 }
             }
@@ -13529,7 +14140,7 @@ function updateCompassTransform(deltaAngle = null) {
 
         window.onload = function () {
             populateBirthYears();
-            updateGuaDisplay();
+            setLuopanLanguage(currentLuopanLang);
             initBirthProfileWidgets();
             setupLiveCompass();
             buildOuterBasePlate('lacquer');
