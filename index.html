@@ -433,7 +433,7 @@
                         <div id="resGanzhi" class="text-[11px] text-slate-400">壬申 (ແກງວອກ) • ພ.ສ. 2535</div>
                     </div>
                     <div class="flex flex-col items-end gap-0.5">
-                        <span id="lblYearElement" class="text-[9px] text-slate-400 font-medium">🪙 ທາດປີເກີດ (Year Element):</span>
+                        <span id="lblYearElement" class="text-[9px] text-slate-400 font-medium">🪙 ທາດປີເກີດ (ນາຢິນ):</span>
                         <span id="resElementBadge" class="bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[11px] font-bold px-2.5 py-0.5 rounded-lg shadow-inner">
                             ທາດທອງ
                         </span>
@@ -459,7 +459,7 @@
                 <!-- BaZi 4 Pillars Synergy in Unified Card -->
                 <div id="resBaziPill" class="bg-purple-950/40 border border-purple-500/30 rounded-lg p-2 flex flex-col gap-0.5 text-xs">
                     <div class="flex items-center justify-between text-[10px]">
-                        <span class="text-purple-300 font-bold">📜 ທາດດວງຊາຕາ (ປາຈື):</span>
+                        <span class="text-purple-300 font-bold">📜 ຕົວຕົນແທ້ (ດິດຖີປາຈື):</span>
                         <span id="resBaziDayMaster" class="text-amber-200 font-bold font-mono"></span>
                     </div>
                     <div class="text-[10px] text-slate-300">
@@ -3875,16 +3875,16 @@
         // MASTER SYSTEM 2.8: BAZI 4 PILLARS & YONG SHEN HOUSE SYNERGY (八字四柱与喜用神 配合阳宅)
         // =========================================================================
         const BAZI_STEMS = [
-            { char: '甲', pinyin: 'Jiǎ', lao: 'ກາບ', element: 'Wood', polarity: '+', color: 'text-emerald-400' },
-            { char: '乙', pinyin: 'Yǐ', lao: 'ດັບ', element: 'Wood', polarity: '-', color: 'text-emerald-300' },
-            { char: '丙', pinyin: 'Bǐng', lao: 'ຮວາຍ', element: 'Fire', polarity: '+', color: 'text-rose-400' },
-            { char: '丁', pinyin: 'Dīng', lao: 'ເມືອງ', element: 'Fire', polarity: '-', color: 'text-rose-300' },
-            { char: '戊', pinyin: 'Wù', lao: 'ເປິກ', element: 'Earth', polarity: '+', color: 'text-amber-400' },
-            { char: '己', pinyin: 'Jǐ', lao: 'ກັດ', element: 'Earth', polarity: '-', color: 'text-amber-300' },
-            { char: '庚', pinyin: 'Gēng', lao: 'ກົດ', element: 'Metal', polarity: '+', color: 'text-yellow-200' },
-            { char: '辛', pinyin: 'Xīn', lao: 'ຮວ້າຍ', element: 'Metal', polarity: '-', color: 'text-slate-200' },
-            { char: '壬', pinyin: 'Rén', lao: 'ເຕົ່າ', element: 'Water', polarity: '+', color: 'text-blue-400' },
-            { char: '癸', pinyin: 'Guǐ', lao: 'ກ່າ', element: 'Water', polarity: '-', color: 'text-cyan-300' }
+            { char: '甲', pinyin: 'Jiǎ', lao: 'ກາບ', element: 'Wood', polarity: '+', color: 'text-emerald-400', desc: 'ທາດໄມ້ໃຫຍ່ (阳木)' },
+            { char: '乙', pinyin: 'Yǐ', lao: 'ດັບ', element: 'Wood', polarity: '-', color: 'text-emerald-300', desc: 'ທາດໄມ້ນ້ອຍ (阴木)' },
+            { char: '丙', pinyin: 'Bǐng', lao: 'ຮວາຍ', element: 'Fire', polarity: '+', color: 'text-rose-400', desc: 'ທາດໄຟໃຫຍ່ (阳火)' },
+            { char: '丁', pinyin: 'Dīng', lao: 'ເມືອງ', element: 'Fire', polarity: '-', color: 'text-rose-300', desc: 'ທາດໄຟນ້ອຍ (阴火)' },
+            { char: '戊', pinyin: 'Wù', lao: 'ເປິກ', element: 'Earth', polarity: '+', color: 'text-amber-400', desc: 'ທາດດິນໃຫຍ່ (阳土)' },
+            { char: '己', pinyin: 'Jǐ', lao: 'ກັດ', element: 'Earth', polarity: '-', color: 'text-amber-300', desc: 'ທາດດິນນ້ອຍ (阴土)' },
+            { char: '庚', pinyin: 'Gēng', lao: 'ກົດ', element: 'Metal', polarity: '+', color: 'text-yellow-200', desc: 'ທາດທອງໃຫຍ່ (阳金)' },
+            { char: '辛', pinyin: 'Xīn', lao: 'ຮວ້າຍ', element: 'Metal', polarity: '-', color: 'text-slate-200', desc: 'ທາດທອງນ້ອຍ (阴金)' },
+            { char: '壬', pinyin: 'Rén', lao: 'ເຕົ່າ', element: 'Water', polarity: '+', color: 'text-blue-400', desc: 'ທາດນ້ຳໃຫຍ່ (阳水)' },
+            { char: '癸', pinyin: 'Guǐ', lao: 'ກ່າ', element: 'Water', polarity: '-', color: 'text-cyan-300', desc: 'ທາດນ້ຳນ້ອຍ (阴水)' }
         ];
 
         const BAZI_BRANCHES = [
@@ -4009,7 +4009,7 @@
                 monthPillar: monthStem.char + monthBranch.char + ' (' + monthStem.lao + '-' + monthBranch.lao + ')',
                 dayPillar: dayStem.char + dayBranch.char + ' (' + dayStem.lao + '-' + dayBranch.lao + ')',
                 hourPillar: hourStem.char + hourBranch.char + ' (' + hourStem.lao + '-' + hourBranch.lao + ')',
-                dayMaster: dayMaster.char + ' (' + dayMaster.lao + ' - ທາດ' + ELEM_LAO[dmElem] + ')',
+                dayMaster: dayMaster.char + ' (' + dayMaster.lao + ' - ' + (dayMaster.desc || ('ທາດ' + ELEM_LAO[dmElem])) + ')',
                 strength: isStrong ? '身强 (ດວງແຂງ - ພະລັງເຕັມປ່ຽມ)' : '身弱 (ດວງອ່ອນ - ຕ້ອງການພະລັງເສີມ)',
                 yongShen: ELEM_LAO[yongShen] + ' (ທາດໂຊກລາບອັນດັບ 1)',
                 xiShen: ELEM_LAO[xiShen] + ' (ທາດເສີມບາຣະມີອັນດັບ 2)',
@@ -13798,6 +13798,10 @@ function updateCompassTransform(deltaAngle = null) {
             resInauspiciousList.innerHTML = badHtml;
 
             buildCompassSVG();
+            if (typeof userBirthYear !== 'undefined') userBirthYear = birthYear;
+            if (typeof selectedBaziYear !== 'undefined') selectedBaziYear = birthYear;
+            if (typeof userGender !== 'undefined') userGender = currentGender;
+            if (typeof updateBirthProfileUI === 'function') updateBirthProfileUI(false);
         }
 
         function setGender(gender) {
