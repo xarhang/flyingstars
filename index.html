@@ -158,7 +158,7 @@
                 <div class="flex items-center gap-2">
                     <svg class="w-7 h-7 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
                     <div>
-                        <h1 class="text-base font-bold text-amber-400 leading-tight">
+                        <h1 id="appTitleText" class="text-base font-bold text-amber-400 leading-tight">
                             ຮວງຈຸ້ຍ
                         </h1>
                         
@@ -207,7 +207,7 @@
             <a href="lao/" target="_blank" class="mt-2 py-1.5 px-2.5 bg-gradient-to-r from-emerald-950 via-teal-900 to-emerald-950 hover:from-emerald-900 hover:to-teal-800 text-emerald-200 border border-emerald-500/40 rounded-xl text-xs font-bold flex items-center justify-between transition shadow-sm" title="ເປີດຕຳລາໃຫຍ່ ແລະ ສາລະນຸກົມຮວງຈຸ້ຍ 105 ຮູບແບບ ພາສາລາວ (Lao Master Edition)">
                 <div class="flex items-center gap-1.5">
                     <span class="text-base">🇱🇦</span>
-                    <span>ຕຳລາ & ສາລະນຸກົມ 105 ຮູບແບບ (ພາສາລາວ)</span>
+                    <span id="editionLaoText">ຕຳລາ & ສາລະນຸກົມ 105 ຮູບແບບ (ພາສາລາວ)</span>
                 </div>
                 <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">/lao/ ↗</span>
             </a>
@@ -216,7 +216,7 @@
             <a href="hmong/" target="_blank" class="mt-2 py-1.5 px-2.5 bg-gradient-to-r from-red-950 via-red-900 to-amber-950 hover:from-red-900 hover:to-amber-900 text-amber-200 border border-amber-500/40 rounded-xl text-xs font-bold flex items-center justify-between transition shadow-sm" title="ເປີດຕຳລາໃຫຍ່ ແລະ ແຜນທີ່ຮວງຈຸ້ຍ 105 ຮູບແບບ ພາສາມົ້ງ (Hmoob RPA Edition)">
                 <div class="flex items-center gap-1.5">
                     <span class="text-base">📖</span>
-                    <span>ຕຳລາ & ແຜນທີ່ 105 ຮູບແບບ (Hmoob RPA)</span>
+                    <span id="editionHmText">ຕຳລາ & ແຜນທີ່ 105 ຮູບແບບ (Hmoob RPA)</span>
                 </div>
                 <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded font-mono font-bold">/hmong/ ↗</span>
             </a>
@@ -225,7 +225,7 @@
             <a href="pahawh/" target="_blank" class="mt-2 py-1.5 px-2.5 bg-gradient-to-r from-red-950 via-rose-950 to-amber-950 hover:from-rose-900 hover:to-amber-900 text-rose-200 border border-rose-500/40 rounded-xl text-xs font-bold flex items-center justify-between transition shadow-sm" title="ເປີດຕຳລາໃຫຍ່ ແລະ ແຜນທີ່ຮວງຈຸ້ຍ 105 ຮູບແບບ ພາສາມົ້ງ (𖬌𖬣𖬵)">
                 <div class="flex items-center gap-1.5">
                     <span class="text-base">𖬌𖬣𖬵</span>
-                    <span>ຕຳລາ & ແຜນທີ່ 105 ຮູບແບບ (𖬌𖬣𖬵)</span>
+                    <span id="editionPhText">ຕຳລາ & ແຜນທີ່ 105 ຮູບແບບ (𖬌𖬣𖬵)</span>
                 </div>
                 <span class="text-[10px] bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded font-mono font-bold">/pahawh/ ↗</span>
             </a>
@@ -245,7 +245,7 @@
         <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex flex-col gap-2.5 shadow-sm">
             <!-- DRAG MODE TOGGLES -->
             <div>
-                <span class="text-xs font-semibold text-slate-200 flex items-center gap-1.5 mb-1.5">
+                <span id="lblDragMode" class="text-xs font-semibold text-slate-200 flex items-center gap-1.5 mb-1.5">
                     <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg> ໂໝດການລາກເມົາສ໌ / ສຳຜັດ:
                 </span>
                 <div id="dragModeButtonGroup" class="grid grid-cols-2 gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800">
@@ -264,7 +264,7 @@
             <!-- ROTATION SLIDER & CONTROLS -->
             <div class="pt-1.5 border-t border-slate-800/80">
                 <div class="flex items-center justify-between text-xs font-semibold">
-                    <span class="text-slate-200 flex items-center gap-1.5">
+                    <span id="lblRotDegree" class="text-slate-200 flex items-center gap-1.5">
                         <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> ອົງສາຈານເຂັມທິດ
                     </span>
                     <button id="resetRotBtn" class="text-amber-400 hover:text-amber-300 text-[11px] hover:underline font-medium">
@@ -296,21 +296,21 @@
         <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex flex-col gap-2.5 shadow-sm">
             <div>
                 <div class="flex justify-between items-center text-xs font-semibold mb-1">
-                    <span class="text-slate-200 flex items-center gap-1.5">
+                    <span id="lblZoomCompass" class="text-slate-200 flex items-center gap-1.5">
                         <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg> ຂະໜາດຊູມເຂັມທິດ
                     </span>
                     <div class="flex items-center gap-2">
                         <span id="zoomVal" class="text-amber-400 font-mono">100%</span>
                         <button id="cornerPipBtn" type="button" class="text-amber-400 hover:text-amber-300 text-[11px] hover:underline font-medium" title="ຍັບໄວ້ມຸມຈໍ (Mini-Map)">
-                            <svg class="w-3.5 h-3.5 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="13" y="13" width="6" height="6" rx="1"/></svg>ມຸມ
+                            <svg class="w-3.5 h-3.5 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="13" y="13" width="6" height="6" rx="1"/></svg><span id="cornerPipBtnText">ມຸມ</span>
                         </button>
                         <button id="resetViewBtn" type="button" class="text-amber-400 hover:text-amber-300 text-[11px] hover:underline font-medium" title="ຈັດມຸມມອງກາງ (100%)">
-                            ↺ ຈັດກາງ
+                            <span id="resetViewBtnText">↺ ຈັດກາງ</span>
                         </button>
                     </div>
                 </div>
                 <input id="zoomSlider" type="range" min="15" max="900" step="5" value="100" class="w-full accent-amber-500 cursor-pointer">
-                <p class="text-[10px] text-slate-400 mt-1.5 leading-relaxed">
+                <p id="zoomHelpText" class="text-[10px] text-slate-400 mt-1.5 leading-relaxed">
                     <b>ຄອມພິວເຕີ:</b> ເລື່ອນລໍ້ເມົາສ໌ເພື່ອຊູມ (15% - 900%) • ຄລິກຂວາລາກເພື່ອຍັບມຸມມອງ<br>
                     <b>ມືຖື:</b> ໃຊ້ 2 ນິ້ວຖ່າງຊູມໄດ້ເຖິງ 900% ຫຼື ຫຍໍ້ນ້ອຍລົງ 15% ຍັບໄວ້ມຸມ
                 </p>
@@ -318,7 +318,7 @@
 
             <div class="pt-2 border-t border-slate-800/80">
                 <div class="flex justify-between text-xs font-semibold mb-1">
-                    <span class="text-slate-200 flex items-center gap-1.5">
+                    <span id="lblOpacityCompass" class="text-slate-200 flex items-center gap-1.5">
                         <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> ຄວາມໂປ່ງໃສແຜ່ນເຂັມທິດ
                     </span>
                     <span id="opacityVal" class="text-amber-400 font-mono">95%</span>
@@ -331,7 +331,7 @@
         <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex flex-col gap-2.5 shadow-sm">
             <!-- BASE STYLE DROPDOWN (ບໍ່ຕົກແຖວ) -->
             <div class="flex flex-col gap-1.5">
-                <label for="baseStyleSelect" class="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
+                <label id="lblBaseStyle" for="baseStyleSelect" class="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
                     <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> ຮູບແບບແຜ່ນຖານ:
                 </label>
                 <select id="baseStyleSelect" class="w-full bg-slate-950 border border-slate-700 text-amber-300 text-xs rounded-lg px-2.5 py-1.5 font-semibold focus:outline-none focus:border-amber-400 transition">
@@ -344,17 +344,17 @@
             <!-- TOGGLES -->
             <div class="flex flex-col gap-2 pt-1 border-t border-slate-800">
                 <label class="flex items-center justify-between text-xs cursor-pointer hover:text-amber-300 transition">
-                    <span class="text-slate-300 font-medium">ສະແດງເຂັມທິດແມ່ເຫຼັກ</span>
+                    <span id="lblShowNeedle" class="text-slate-300 font-medium">ສະແດງເຂັມທິດແມ່ເຫຼັກ</span>
                     <input id="toggleNeedle" type="checkbox" checked class="w-4 h-4 accent-amber-500 rounded cursor-pointer">
                 </label>
 
                 <label class="flex items-center justify-between text-xs cursor-pointer hover:text-amber-300 transition">
-                    <span class="text-slate-300 font-medium">ສະແດງເສັ້ນກາກະບາດເລັງສູນກາງ</span>
+                    <span id="lblShowCrosshair" class="text-slate-300 font-medium">ສະແດງເສັ້ນກາກະບາດເລັງສູນກາງ</span>
                     <input id="toggleCrosshair" type="checkbox" checked class="w-4 h-4 accent-amber-500 rounded cursor-pointer">
                 </label>
 
                 <label class="flex items-center justify-between text-xs cursor-pointer hover:text-amber-300 transition">
-                    <span class="text-slate-300 font-medium">ການແກວ່ງໄຫວເຂັມສະເໝືອນຈິງ</span>
+                    <span id="lblNeedlePhysics" class="text-slate-300 font-medium">ການແກວ່ງໄຫວເຂັມສະເໝືອນຈິງ</span>
                     <input id="toggleNeedlePhysics" type="checkbox" checked class="w-4 h-4 accent-amber-500 rounded cursor-pointer">
                 </label>
             </div>
@@ -459,10 +459,10 @@
                 <!-- BaZi 4 Pillars Synergy in Unified Card -->
                 <div id="resBaziPill" class="bg-purple-950/40 border border-purple-500/30 rounded-lg p-2 flex flex-col gap-0.5 text-xs">
                     <div class="flex items-center justify-between text-[10px]">
-                        <span class="text-purple-300 font-bold">📜 ຕົວຕົນແທ້ (ດິດຖີປາຈື):</span>
+                        <span id="lblBaziDayMasterTitle" class="text-purple-300 font-bold">📜 ຕົວຕົນແທ້ (ດິດຖີປາຈື):</span>
                         <span id="resBaziDayMaster" class="text-amber-200 font-bold font-mono"></span>
                     </div>
-                    <div class="text-[10px] text-slate-300">
+                    <div id="lblBaziSynergy" class="text-[10px] text-slate-300">
                         • ທາດເສີມດວງ (ຍົງສິ່ນ): <b id="resBaziYongShen" class="text-emerald-300"></b> | ຫຼີກລ່ຽງ: <b id="resBaziAvoid" class="text-rose-300"></b>
                     </div>
                 </div>
@@ -470,7 +470,7 @@
                 <!-- 4 Auspicious & 4 Inauspicious Directions Grid -->
                 <div class="border-t border-slate-800/80 pt-1.5 flex flex-col gap-1.5">
                     <div class="bg-emerald-950/40 border border-emerald-500/30 rounded-lg p-2 flex flex-col gap-1">
-                        <span class="text-emerald-400 font-bold text-[10px] flex items-center gap-1">
+                        <span id="lblAuspiciousTitle" class="text-emerald-400 font-bold text-[10px] flex items-center gap-1">
                             <svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 4 ທິດມຸງຄຸນ (ທິດດີ):
                         </span>
                         <div id="resAuspiciousList" class="grid grid-cols-2 gap-1 text-[10px] text-slate-200">
@@ -478,7 +478,7 @@
                     </div>
 
                     <div class="bg-rose-950/40 border border-rose-500/30 rounded-lg p-2 flex flex-col gap-1">
-                        <span class="text-rose-400 font-bold text-[10px] flex items-center gap-1">
+                        <span id="lblInauspiciousTitle" class="text-rose-400 font-bold text-[10px] flex items-center gap-1">
                             <svg class="w-3.5 h-3.5 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> 4 ທິດອັບປະມຸງຄຸນ (ທິດຮ້າຍ):
                         </span>
                         <div id="resInauspiciousList" class="grid grid-cols-2 gap-1 text-[10px] text-slate-200">
@@ -524,12 +524,12 @@
 
         <!-- SECTION 5: ວາງທັບຮູບແປນບ້ານ -->
         <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex flex-col gap-2 shadow-sm">
-            <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
+            <span id="lblFloorplanSection" class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
                 <svg class="w-4 h-4 inline-block text-amber-400 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> ວາງທັບຮູບແປນບ້ານ
             </span>
 
             <div class="flex gap-1.5">
-                <label class="flex-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs py-2 px-2.5 rounded-lg text-center cursor-pointer transition shadow">
+                <label id="lblSelectFloorplanBtn" class="flex-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs py-2 px-2.5 rounded-lg text-center cursor-pointer transition shadow">
                     <svg class="w-3.5 h-3.5 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>ເລືອກຮູບແປນບ້ານ
                     <input id="floorplanInput" type="file" accept="image/*" class="hidden">
                 </label>
@@ -613,7 +613,7 @@
                     <!-- Reset View Center Button -->
                     <button id="mobileResetViewBtn" type="button" class="h-7 px-2 rounded-lg bg-slate-800/90 hover:bg-slate-700 active:scale-95 text-slate-300 border border-slate-700/60 text-xs font-bold flex items-center gap-1 transition touch-manipulation select-none cursor-pointer" title="ຈັດມຸມມອງກາງ (100%)">
                         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-                        <span>ກາງ</span>
+                        <span id="mobileResetViewText">ກາງ</span>
                     </button>
                     <!-- Mode Toggle between Rotate & Pan on Mobile -->
                     <button id="mobileDragToggleBtn" type="button" class="h-7 px-2 rounded-lg bg-slate-800/90 hover:bg-slate-700 active:scale-95 text-amber-300 border border-slate-700/60 text-xs font-bold flex items-center gap-1 transition touch-manipulation select-none cursor-pointer" title="ສະຫຼັບໂໝດໝຸນ / ຍັບ">
@@ -686,12 +686,12 @@
             <!-- 3. Master Prediction Sheet -->
             <button id="mobilePredictionFab" type="button" class="flex flex-col items-center justify-center gap-1 py-2 px-1 rounded-xl bg-purple-950/70 hover:bg-purple-900 active:scale-95 text-purple-200 border border-purple-500/40 transition shadow-sm touch-manipulation select-none cursor-pointer" title="ເບິ່ງບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ">
                 <svg class="w-5 h-5 text-purple-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                <span class="text-[11px] font-bold tracking-tight">ບົດທຳນາຍ</span>
+                <span id="mobilePredictionText" class="text-[11px] font-bold tracking-tight">ບົດທຳນາຍ</span>
             </button>
             <!-- 4. Settings & Kua Menu -->
             <button id="mobileOpenMenuFab" type="button" class="flex flex-col items-center justify-center gap-1 py-2 px-1 rounded-xl bg-amber-500/90 hover:bg-amber-400 active:scale-95 text-slate-950 font-black border border-amber-400 transition shadow-sm touch-manipulation select-none cursor-pointer" title="ເປີດເມນູຕັ້ງຄ່າ ແລະ ມິ່ງກວ້າ">
                 <svg class="w-5 h-5 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                <span class="text-[11px] font-black tracking-tight">ຕັ້ງຄ່າ</span>
+                <span id="mobileOpenMenuText" class="text-[11px] font-black tracking-tight">ຕັ້ງຄ່າ</span>
             </button>
         </div>
     </div>
@@ -835,7 +835,7 @@
             <div class="flex items-center justify-between">
                 <span class="text-xs font-bold text-purple-300 flex items-center gap-1.5">
                     <svg class="w-3.5 h-3.5 text-purple-400 inline-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    <span>ວັນເດືອນປີເກີດ (ດວງຊາຕາ &amp; ປາຈື):</span>
+                    <span id="mobBirthTitle">ວັນເດືອນປີເກີດ (ດວງຊາຕາ &amp; ປາຈື):</span>
                 </span>
                 <span class="text-[10px] text-purple-400/80 font-mono">DD / MM / YYYY</span>
             </div>
@@ -843,17 +843,17 @@
             <!-- Inputs: ວັນທີ - ເດືອນ - ປີເກີດ (DD/MM/YYYY) -->
             <div class="grid grid-cols-12 gap-1.5 items-center">
                 <div class="col-span-3">
-                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">📅 ວັນ:</span>
+                    <span id="mobLblDay" class="text-[9px] text-slate-400 block mb-0.5 font-medium">📅 ວັນ:</span>
                     <select id="mobBirthDaySelect" onchange="setUserBirthProfile(null, null, this.value, null, null)" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-1 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 cursor-pointer text-center">
                     </select>
                 </div>
                 <div class="col-span-5">
-                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">🗓️ ເດືອນ:</span>
+                    <span id="mobLblMonth" class="text-[9px] text-slate-400 block mb-0.5 font-medium">🗓️ ເດືອນ:</span>
                     <select id="mobBirthMonthSelect" onchange="setUserBirthProfile(null, this.value, null, null, null)" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-1 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
                     </select>
                 </div>
                 <div class="col-span-4">
-                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">🚩 ປີ (ຄ.ສ./ພ.ສ.):</span>
+                    <span id="mobLblYear" class="text-[9px] text-slate-400 block mb-0.5 font-medium">🚩 ປີ (ຄ.ສ./ພ.ສ.):</span>
                     <input type="number" id="mobBirthYearInput" min="1924" max="2050" placeholder="1992" class="w-full bg-slate-900 border border-amber-500/40 rounded-lg px-1 py-1 text-amber-300 text-xs font-bold focus:outline-none focus:border-purple-400 text-center font-mono">
                 </div>
             </div>
@@ -861,12 +861,12 @@
             <!-- Row 2: ຍາມເກີດ + ເພດ -->
             <div class="grid grid-cols-12 gap-1.5 items-center">
                 <div class="col-span-7">
-                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">⏰ ຍາມເກີດ:</span>
+                    <span id="mobLblHour" class="text-[9px] text-slate-400 block mb-0.5 font-medium">⏰ ຍາມເກີດ:</span>
                     <select id="mobBirthHourSelect" onchange="setUserBirthProfile(null, null, null, this.value, null)" class="w-full bg-slate-900 border border-slate-700/80 rounded-lg px-1.5 py-1 text-white text-[10px] font-bold focus:outline-none focus:border-purple-400 cursor-pointer">
                     </select>
                 </div>
                 <div class="col-span-5">
-                    <span class="text-[9px] text-slate-400 block mb-0.5 font-medium">👤 ເພດ:</span>
+                    <span id="mobLblGender" class="text-[9px] text-slate-400 block mb-0.5 font-medium">👤 ເພດ:</span>
                     <div class="flex items-center gap-1">
                         <button type="button" id="mobBtnGenderMale" onclick="setUserBirthProfile(null, null, null, null, 'male')" class="flex-1 py-1 rounded text-[10px] font-bold transition bg-blue-600 text-white shadow-sm">ຊາຍ 👨</button>
                         <button type="button" id="mobBtnGenderFemale" onclick="setUserBirthProfile(null, null, null, null, 'female')" class="flex-1 py-1 rounded text-[10px] font-bold transition bg-slate-800 text-slate-400 hover:text-white">ຍິງ 👩</button>
@@ -892,8 +892,8 @@
 
             <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center mb-3 shadow-inner"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
 
-            <h3 class="text-base font-bold text-amber-400 leading-tight">ເປີດໃຊ້ງານໃນໂທລະສັບມືຖື</h3>
-            <p class="text-xs text-slate-400 mt-1 max-w-[280px]">
+            <h3 id="qrModalTitle" class="text-base font-bold text-amber-400 leading-tight">ເປີດໃຊ້ງານໃນໂທລະສັບມືຖື</h3>
+            <p id="qrModalDesc" class="text-xs text-slate-400 mt-1 max-w-[280px]">
                 ສະແກນ QR Code ນີ້ດ້ວຍກ້ອງມືຖືເພື່ອເປີດຈານເຂັມທິດຮວງຈຸ້ຍ ແລະ ໝຸນຕາມທິດຈິງອັດຕະໂນມັດ
             </p>
 
@@ -916,15 +916,15 @@
             <div class="w-full bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-left text-[11px] text-slate-300 space-y-1.5">
                 <div class="flex items-start gap-2">
                     <span class="text-amber-400 font-bold">1.</span>
-                    <span>ເຊື່ອມຕໍ່ Wi-Fi ດຽວກັນກັບຄອມພິວເຕີນີ້</span>
+                    <span id="qrStep1">ເຊື່ອມຕໍ່ Wi-Fi ດຽວກັນກັບຄອມພິວເຕີນີ້</span>
                 </div>
                 <div class="flex items-start gap-2">
                     <span class="text-amber-400 font-bold">2.</span>
-                    <span>ເປີດກ້ອງມືຖືແລ້ວສ່ອງໃສ່ QR Code ເພື່ອເຂົ້າເວັບ</span>
+                    <span id="qrStep2">ເປີດກ້ອງມືຖືແລ້ວສ່ອງໃສ່ QR Code ເພື່ອເຂົ້າເວັບ</span>
                 </div>
                 <div class="flex items-start gap-2">
                     <span class="text-amber-400 font-bold">3.</span>
-                    <span>ກົດປຸ່ມ <b>"ເຊື່ອມຕໍ່ເຂັມທິດຈິງ"</b> ເພື່ອວັດແທກໜ້າງານ</span>
+                    <span id="qrStep3">ກົດປຸ່ມ <b>"ເຊື່ອມຕໍ່ເຂັມທິດຈິງ"</b> ເພື່ອວັດແທກໜ້າງານ</span>
                 </div>
             </div>
         </div>
@@ -1491,6 +1491,55 @@
             const planResetBtn = document.getElementById('resetPlanPosBtn');
             if (planResetBtn) planResetBtn.textContent = t.resetPlanPos;
 
+            // Section 1 Drag Mode Label & Compass Degree
+            const lblDragMode = document.getElementById('lblDragMode');
+            if (lblDragMode) {
+                const svg = lblDragMode.querySelector('svg');
+                lblDragMode.innerHTML = (svg ? svg.outerHTML + ' ' : '') + (t.dragModeLabel || (lang === 'hm' ? 'Hom Luag / Kov:' : lang === 'ph' ? '𖬄𖲦 𖬅𖰟 / 𖬈𖰪:' : 'ໂໝດການລາກເມົາສ໌ / ສຳຜັດ:'));
+            }
+            const lblRotDegree = document.getElementById('lblRotDegree');
+            if (lblRotDegree) {
+                const svg = lblRotDegree.querySelector('svg');
+                lblRotDegree.innerHTML = (svg ? svg.outerHTML + ' ' : '') + (t.rotDegree || (lang === 'hm' ? 'Qib Ntawm Daim Luopan' : lang === 'ph' ? '𖬐𖰤 𖬆𖰝' : 'ອົງສາຈານເຂັມທິດ'));
+            }
+
+            // Section 2 Zoom & Opacity
+            const lblZoom = document.getElementById('lblZoomCompass');
+            if (lblZoom) {
+                const svg = lblZoom.querySelector('svg');
+                lblZoom.innerHTML = (svg ? svg.outerHTML + ' ' : '') + (t.zoomLabel || (lang === 'hm' ? 'Qhov Luaj Ntawm Luopan' : lang === 'ph' ? '𖬐𖲤 𖬆𖰝' : 'ຂະໜາດຊູມເຂັມທິດ'));
+            }
+            const cornerText = document.getElementById('cornerPipBtnText');
+            if (cornerText) cornerText.textContent = (lang === 'hm' ? 'Kaum' : lang === 'ph' ? '𖬌𖲞' : 'ມຸມ');
+            const resetViewText = document.getElementById('resetViewBtnText');
+            if (resetViewText) resetViewText.textContent = (lang === 'hm' ? '↺ Nyob Plawv' : lang === 'ph' ? '↺ 𖬌𖰞 𖬖𖰟' : '↺ ຈັດກາງ');
+            const zoomHelp = document.getElementById('zoomHelpText');
+            if (zoomHelp) {
+                zoomHelp.innerHTML = lang === 'hm'
+                    ? '<b>Khoos phib tawj:</b> Tig lub log nas mus saib kom loj (15% - 900%) • Nyem sab xis rub mus saib<br><b>Xov tooj:</b> Siv 2 tug ntiv tes rub kom loj txog 900% lossis me txog 15% tso rau ces kaum'
+                    : lang === 'ph'
+                    ? '<b>𖬌𖲞:</b> 𖬎𖲞 𖬆𖰝 (15% - 900%)<br><b>𖬘𖲦:</b> 𖬎𖲞 𖬆𖰝 𖭙𖭐𖭐%'
+                    : '<b>ຄອມພິວເຕີ:</b> ເລື່ອນລໍ້ເມົາສ໌ເພື່ອຊູມ (15% - 900%) • ຄລິກຂວາລາກເພື່ອຍັບມຸມມອງ<br><b>ມືຖື:</b> ໃຊ້ 2 ນິ້ວຖ່າງຊູມໄດ້ເຖິງ 900% ຫຼື ຫຍໍ້ນ້ອຍລົງ 15% ຍັບໄວ້ມຸມ';
+            }
+            const lblOpacity = document.getElementById('lblOpacityCompass');
+            if (lblOpacity) {
+                const svg = lblOpacity.querySelector('svg');
+                lblOpacity.innerHTML = (svg ? svg.outerHTML + ' ' : '') + (t.opacityLabel || (lang === 'hm' ? 'Kev Pom Tsheej Ntawm Daim Luopan' : lang === 'ph' ? '𖬐𖰤 𖬎𖰟' : 'ຄວາມໂປ່ງໃສແຜ່ນເຂັມທິດ'));
+            }
+
+            // Section 3 Base Style & Toggles
+            const lblBaseStyle = document.getElementById('lblBaseStyle');
+            if (lblBaseStyle) {
+                const svg = lblBaseStyle.querySelector('svg');
+                lblBaseStyle.innerHTML = (svg ? svg.outerHTML + ' ' : '') + (t.baseStyleLabel || (lang === 'hm' ? 'Hom Qauv Pem Hauv Paus:' : lang === 'ph' ? '𖬄𖲦 𖬈𖰞 𖬄𖲝:' : 'ຮູບແບບແຜ່ນຖານ:'));
+            }
+            const lblShowNeedle = document.getElementById('lblShowNeedle');
+            if (lblShowNeedle) lblShowNeedle.textContent = (t.showNeedle || (lang === 'hm' ? 'Qhia Koob Hlau Nplaum' : lang === 'ph' ? '𖬐𖰞 𖬌𖰤 𖬎𖲞' : 'ສະແດງເຂັມທິດແມ່ເຫຼັກ'));
+            const lblShowCrosshair = document.getElementById('lblShowCrosshair');
+            if (lblShowCrosshair) lblShowCrosshair.textContent = (t.showCrosshair || (lang === 'hm' ? 'Qhia Kab Khaub Lig Plawv' : lang === 'ph' ? '𖬐𖰞 𖬌𖲟 𖬄𖰝' : 'ສະແດງເສັ້ນກາກະບາດເລັງສູນກາງ'));
+            const lblNeedlePhysics = document.getElementById('lblNeedlePhysics');
+            if (lblNeedlePhysics) lblNeedlePhysics.textContent = (t.needlePhysics || (lang === 'hm' ? 'Kev Co Ntawm Koob Hlau' : lang === 'ph' ? '𖬐𖰤 𖬐𖰞 𖬌𖰤' : 'ການແກວ່ງໄຫວເຂັມສະເໝືອນຈິງ'));
+
             // Section 4 Labels
             const lblBazi = document.getElementById('lblBaziTitle');
             if (lblBazi) lblBazi.textContent = t.baziSectionTitle;
@@ -1517,7 +1566,32 @@
             const lblHl = document.getElementById('lblHighlightGua');
             if (lblHl) lblHl.textContent = t.highlightGuaOnDisk;
 
+            // Section 4 BaZi Day Master & Fortunes
+            const lblDayMaster = document.getElementById('lblBaziDayMasterTitle');
+            if (lblDayMaster) lblDayMaster.textContent = (lang === 'hm' ? '📜 Tus Kheej Tseeb (Day Master BaZi):' : lang === 'ph' ? '📜 𖬎𖲧 𖬎𖲨 Day Master:' : '📜 ຕົວຕົນແທ້ (ດິດຖີປາຈື):');
+            const lblAuspicious = document.getElementById('lblAuspiciousTitle');
+            if (lblAuspicious) {
+                const svg = lblAuspicious.querySelector('svg');
+                lblAuspicious.innerHTML = (svg ? svg.outerHTML + ' ' : '') + t.auspiciousTitle;
+            }
+            const lblInauspicious = document.getElementById('lblInauspiciousTitle');
+            if (lblInauspicious) {
+                const svg = lblInauspicious.querySelector('svg');
+                lblInauspicious.innerHTML = (svg ? svg.outerHTML + ' ' : '') + t.inauspiciousTitle;
+            }
+
             // Section 5 Labels
+            const lblFloorplan = document.getElementById('lblFloorplanSection');
+            if (lblFloorplan) {
+                const svg = lblFloorplan.querySelector('svg');
+                lblFloorplan.innerHTML = (svg ? svg.outerHTML + ' ' : '') + (t.floorplanTitle || (lang === 'hm' ? 'Tso Daim Duab Tsev Rau Saum' : lang === 'ph' ? '𖬆𖲝 𖬄𖰝 𖬆𖰝' : 'ວາງທັບຮູບແປນບ້ານ'));
+            }
+            const lblSelectFp = document.getElementById('lblSelectFloorplanBtn');
+            if (lblSelectFp) {
+                const svg = lblSelectFp.querySelector('svg');
+                const inp = lblSelectFp.querySelector('input');
+                lblSelectFp.innerHTML = (svg ? svg.outerHTML + ' ' : '') + (t.selectFloorplan || (lang === 'hm' ? 'Xaiv Duab Tsev' : lang === 'ph' ? '𖬘𖲝 𖬆𖲝 𖬄𖰝' : 'ເລືອກຮູບແປນບ້ານ')) + (inp ? inp.outerHTML : '');
+            }
             const lblPlanScale = document.getElementById('lblPlanScale');
             if (lblPlanScale) lblPlanScale.textContent = t.planScale;
             const lblGridOverlay = document.getElementById('lblGridOverlay');
@@ -1530,6 +1604,62 @@
             if (maleBtn) maleBtn.innerHTML = t.male;
             const femaleBtn = document.getElementById('genderFemaleBtn');
             if (femaleBtn) femaleBtn.innerHTML = t.female;
+
+            // Edition link descriptions
+            const edLao = document.getElementById('editionLaoText');
+            if (edLao) edLao.textContent = (lang === 'hm' ? 'Phau Ntawv & Tswv Yim 105 Yam (Lus Nplog)' : lang === 'ph' ? '𖬎𖲦 𖭑𖭐𖭕 𖬌𖲟 (Lus Nplog)' : 'ຕຳລາ & ສາລະນຸກົມ 105 ຮູບແບບ (ພາສາລາວ)');
+            const edHm = document.getElementById('editionHmText');
+            if (edHm) edHm.textContent = (lang === 'hm' ? 'Phau Ntawv & Daim Duab 105 Yam (Hmoob RPA)' : lang === 'ph' ? '𖬎𖲦 𖭑𖭐𖭕 𖬌𖲟 (Hmoob RPA)' : 'ຕຳລາ & ແຜນທີ່ 105 ຮູບແບບ (Hmoob RPA)');
+            const edPh = document.getElementById('editionPhText');
+            if (edPh) edPh.textContent = (lang === 'hm' ? 'Phau Ntawv & Daim Duab 105 Yam (𖬌𖬣𖬵)' : lang === 'ph' ? '𖬎𖲦 𖭑𖭐𖭕 𖬌𖲟 (𖬌𖬣𖬵)' : 'ຕຳລາ & ແຜນທີ່ 105 ຮູບແບບ (𖬌𖬣𖬵)');
+
+            // Mobile Top & Dock Buttons
+            const mobResetText = document.getElementById('mobileResetViewText');
+            if (mobResetText) mobResetText.textContent = (lang === 'hm' ? 'Plawv' : lang === 'ph' ? '𖬖𖰟' : 'ກາງ');
+            const mobDragText = document.getElementById('mobileDragText');
+            if (mobDragText) mobDragText.textContent = (lang === 'hm' ? 'Tig' : lang === 'ph' ? '𖬎𖲞' : 'ໝຸນ');
+            const mobCornerText = document.getElementById('mobileCornerText');
+            if (mobCornerText) mobCornerText.textContent = (lang === 'hm' ? 'Kaum' : lang === 'ph' ? '𖬌𖲞' : 'ມຸມ');
+            const mobLiveCompText = document.getElementById('mobileLiveCompassText');
+            if (mobLiveCompText) mobLiveCompText.textContent = (lang === 'hm' ? 'Koob Luopan' : lang === 'ph' ? '𖬌𖰤 𖬎𖲞' : 'ເຂັມທິດຈິງ');
+            const mobCamText = document.getElementById('mobileCameraText');
+            if (mobCamText) mobCamText.textContent = (lang === 'hm' ? 'Yees Duab' : lang === 'ph' ? '𖬆𖲝 AR' : 'ກ້ອງ AR');
+            const mobPredText = document.getElementById('mobilePredictionText');
+            if (mobPredText) mobPredText.textContent = (lang === 'hm' ? 'Kev Ntsuas' : lang === 'ph' ? '𖬐𖲤 𖬖𖰟' : 'ບົດທຳນາຍ');
+            const mobMenuText = document.getElementById('mobileOpenMenuText');
+            if (mobMenuText) mobMenuText.textContent = (lang === 'hm' ? 'Teeb Tsom' : lang === 'ph' ? '𖬘𖲝 𖬎𖲦' : 'ຕັ້ງຄ່າ');
+
+            // Mobile Drawer Profile Labels
+            const mobBirthTitle = document.getElementById('mobBirthTitle');
+            if (mobBirthTitle) mobBirthTitle.textContent = (lang === 'hm' ? 'Hnub Yug (Xwm Txheej & BaZi):' : lang === 'ph' ? '𖬎𖲤 𖬎𖲨 𖬘𖲝 (BaZi):' : 'ວັນເດືອນປີເກີດ (ດວງຊາຕາ & ປາຈື):');
+            const mobLblDay = document.getElementById('mobLblDay');
+            if (mobLblDay) mobLblDay.textContent = t.dayLabel;
+            const mobLblMonth = document.getElementById('mobLblMonth');
+            if (mobLblMonth) mobLblMonth.textContent = t.monthLabel;
+            const mobLblYear = document.getElementById('mobLblYear');
+            if (mobLblYear) mobLblYear.textContent = t.yearLabel;
+            const mobLblHour = document.getElementById('mobLblHour');
+            if (mobLblHour) mobLblHour.textContent = t.hourLabel;
+            const mobLblGender = document.getElementById('mobLblGender');
+            if (mobLblGender) mobLblGender.textContent = t.genderLabel;
+            const mobMaleBtn = document.getElementById('mobBtnGenderMale');
+            if (mobMaleBtn) mobMaleBtn.textContent = t.male;
+            const mobFemaleBtn = document.getElementById('mobBtnGenderFemale');
+            if (mobFemaleBtn) mobFemaleBtn.textContent = t.female;
+
+            // Mobile QR Modal
+            const qrTitle = document.getElementById('qrModalTitle');
+            if (qrTitle) qrTitle.textContent = (lang === 'hm' ? 'Qhib Siv Hauv Xov Tooj' : lang === 'ph' ? '𖬐𖰪 𖬈𖰞 𖬘𖲦' : 'ເປີດໃຊ້ງານໃນໂທລະສັບມືຖື');
+            const qrDesc = document.getElementById('qrModalDesc');
+            if (qrDesc) qrDesc.textContent = (lang === 'hm' ? 'Siv koob yees duab xov tooj thaij tus QR Code no mus qhib daim luopan looj mem thiab tig raws fab tseeb' : lang === 'ph' ? '𖬐𖰪 QR Code 𖬘𖲦 𖬎𖲞 𖬆𖰝' : 'ສະແກນ QR Code ນີ້ດ້ວຍກ້ອງມືຖືເພື່ອເປີດຈານເຂັມທິດຮວງຈຸ້ຍ ແລະ ໝຸນຕາມທິດຈິງອັດຕະໂນມັດ');
+            const copyBtnText = document.getElementById('copyBtnText');
+            if (copyBtnText) copyBtnText.textContent = (lang === 'hm' ? 'Luam' : lang === 'ph' ? '𖬎𖲞' : 'ກັອບປີ້');
+            const qrStep1 = document.getElementById('qrStep1');
+            if (qrStep1) qrStep1.textContent = (lang === 'hm' ? 'Txuas Wi-Fi tib lub nrog lub computer no' : lang === 'ph' ? '𖬎𖲞 Wi-Fi 𖬌𖲞' : 'ເຊື່ອມຕໍ່ Wi-Fi ດຽວກັນກັບຄອມພິວເຕີນີ້');
+            const qrStep2 = document.getElementById('qrStep2');
+            if (qrStep2) qrStep2.textContent = (lang === 'hm' ? 'Qhib koob yees duab tsom QR Code nkag mus rau hauv website' : lang === 'ph' ? '𖬐𖰪 QR Code' : 'ເປີດກ້ອງມືຖືແລ້ວສ່ອງໃສ່ QR Code ເພື່ອເຂົ້າເວັບ');
+            const qrStep3 = document.getElementById('qrStep3');
+            if (qrStep3) qrStep3.textContent = (lang === 'hm' ? 'Nyem "Txuas Nrog Koob Taw Qhia" ntsuas chaw tiag' : lang === 'ph' ? '𖬎𖲞 𖬌𖰤 𖬈𖰞 𖬘𖲦' : 'ກົດປຸ່ມ "ເຊື່ອມຕໍ່ເຂັມທິດຈິງ" ເພື່ອວັດແທກໜ້າງານ');
 
             // Prediction Drawer & Desktop Headers
             const deskPredTitle = document.getElementById('lblDesktopPredTitle');
@@ -12549,6 +12679,120 @@ function setSelectedRoom(roomKey) {
 
         // Pre-compiled Dictionaries & Regular Expressions for Blazing-Fast Prediction Localization
         const _HM_PRED_MAP = {
+            "ຄັງຄູ່ມື, ຕຳລາບູຮານ &amp; ສູດຄຳນວນດວງຊາຕາ (37 ວິຊາ)": "Phau Ntawv, Tswv Yim Qub &amp; Xam Hnub Nyoog (37 Yam)",
+            "ຄັງຄູ່ມື, ຕຳລາບູຮານ & ສູດຄຳນວນດວງຊາຕາ (37 ວິຊາ)": "Phau Ntawv, Tswv Yim Qub & Xam Hnub Nyoog (37 Yam)",
+            "ຄັງຄູ່ມື, ຕຳລາບູຮານ &amp; ສູດຄຳນວນດວງຊາຕາ": "Phau Ntawv, Tswv Yim Qub &amp; Xam Hnub Nyoog",
+            "ຄັງຄູ່ມື, ຕຳລາບູຮານ & ສູດຄຳນວນດວງຊາຕາ": "Phau Ntawv, Tswv Yim Qub & Xam Hnub Nyoog",
+            "ລະບົບ 33 ມະຫາວິຊາຮວງຈຸ້ຍທຳນາຍຕາມທິດ": "Txheej 33 Yam Tswv Yim Looj Mem Ntsuas Raws Fab",
+            "ສຶກສາຕຳລາ, ຄຳນວນດວງ, ໄມ້ບັນທັດຫຼູປານ &amp; ແກ້ອາຖັນ • ປຸ່ມສະຖຽນ ບໍ່ປ່ຽນຕາມເຂັມທິດ": "Kawm ntawv, xam hnub nyoog, pas Lu Ban &amp; kho kom haum • Cov khawm ruaj khov tsis hloov raws koob luopan",
+            "ສຶກສາຕຳລາ, ຄຳນວນດວງ, ໄມ້ບັນທັດຫຼູປານ & ແກ້ອາຖັນ • ປຸ່ມສະຖຽນ ບໍ່ປ່ຽນຕາມເຂັມທິດ": "Kawm ntawv, xam hnub nyoog, pas Lu Ban & kho kom haum • Cov khawm ruaj khov tsis hloov raws koob luopan",
+            "ວິເຄາະຕາມທິດເຂັມທິດ/ກ້ອງ • ປຸ່ມບໍ່ຣີເຟຣຊຕອນໝຸນໂທລະສັບ": "Ntsuas raws koob luopan / koob yees duab • Cov khawm tsis rov refresh thaum tig xov tooj",
+            "📜 ຕຳລາຕົ້ນສະບັບ:": "📜 Phau Ntawv Keeb Kwm:",
+            "💡 ໜ້າທີ່ &amp; ຫຼັກການ:": "💡 Luag Hauj Lwm &amp; Tswv Yim:",
+            "💡 ໜ້າທີ່ & ຫຼັກການ:": "💡 Luag Hauj Lwm & Tswv Yim:",
+            "ໃບລາຍງານ": "Daim Ntawv Qhia",
+            "ໃບຢັ້ງຢືນ": "Daim Ntawv Pov Thawj",
+            "ໃບລາຍງານສຸສານ": "Daim Ntawv Qhia Ntxa",
+            "🔍 ຄົ້ນຫາວິຊາ, ຕຳລາ, ສູດຄຳນວນ...": "🔍 Nrhiav tswv yim, phau ntawv, tswv yim xam...",
+            "ຜົນການຄົ້ນຫາ:": "Cov Nrhiav Tau:",
+            "ລຶບຄຳຄົ້ນ ✕": "Tshem Cov Lus Nrhiav ✕",
+            "ສຳນັກຮວງຈຸ້ຍສຸສານລາຊະສຳນັກ (Imperial Yin House Feng Shui)": "Tsev Kawm Looj Mem Ntxa Huab Tais (Imperial Yin House)",
+            "📜 ຄຳພີຝັງສົບກົວຜູ (Zang Shu), ຫຼົວຜານ 120 ພັນຈິນ, ສານເຫີສຸ່ຍຝາ": "📜 Phau Zang Shu Guo Pu, Luopan 120 Fenjin, San He Shui Fa",
+            "120 ພັນຈິນ": "120 Fenjin",
+            "ຫຼົວຜານ 120 ພັນຈິນ": "Luopan 120 Fenjin",
+            "ມຸມເພັດພອຍ 3° ປ້າຍຫີນ": "Ces Kaum Pob Zeb 3° Ntsa Ntxa",
+            "ສຽນມິ່ງ 60 ກະປົກ": "Xian Ming 60 Xyoo",
+            "ຄຳພີສຽນມິ່ງ": "Phau Ntawv Xian Ming",
+            "ສົມພົງປີເກີດຜູ້ວາຍຊົນ": "Haum Xyoo Yug Tus Tuag",
+            "4 ສັດເທບສຸສານ": "4 Tus Tsiaj Saum Ntuj Ntxa",
+            "ຕຳລາຮູບດິນສຸສານ": "Phau Ntawv Av Ntxa",
+            "ມັງກອນ, ເສືອ, ຫົງ, ເຕົ່າ": "Zaj, Tsov, Noog Liab, Vaub Kib",
+            "8 ຮວງສຽນ": "8 Huang Quan",
+            "ສານເຫີສຸ່ຍຝາ": "San He Shui Fa",
+            "ທິດນ້ຳໄຫຼຕ້ອງຫ້າມຮວງສຽນ": "Fab Dej Txwv Tsis Zoo Huang Quan",
+            "ສາຍນ້ຳ 4 ທາດ": "Dej 4 Yam Zog",
+            "ສານເຫີ 12 ໄລຍະ": "San He 12 Sij Hawm",
+            "ວົງຈອນນ້ຳ 4 ທາດສົ່ງຜົນລູກຫຼານ": "Dej 4 Yam Zog Pab Cov Menyuam",
+            "ລູກຫຼານ 3 ສາຍ": "Cov Menyuam 3 Ceg",
+            "ຕຳລາລູກຫຼານ": "Phau Ntawv Cov Menyuam",
+            "ຜົນກະທົບຕໍ່ລູກຄົນທີ 1, 2, 3": "Kev Cuam Tshuam Rau Tus Menyuam 1, 2, 3",
+            "ປະຕິທິນຢິນ": "Daim Ntawv Hli Yeeb",
+            "ເລືອກມື້ສຸສານ": "Xaiv Hnub Ntxa",
+            "ມື້ຝັງ &amp; ຕັ້ງປ້າຍຫີນມຸງຄຸນ": "Hnub Faas &amp; Teeb Ntsa Pob Zeb",
+            "ມື້ຝັງ & ຕັ້ງປ້າຍຫີນມຸງຄຸນ": "Hnub Faas & Teeb Ntsa Pob Zeb",
+            "64 ຂວຍສຸສານ": "64 Gua Ntxa",
+            "ສຽນຄົງຕ້າກວ້າ": "Xuan Kong Da Gua",
+            "ຂວຍ 64 ພະລັງງານສຸສານ": "64 Gua Zog Ntxa",
+            "ອົງສາປ້າຍຫີນ (碑向):": "Qib Ntawm Ntsa Pob Zeb (Bei Xiang):",
+            "ພູເຂົາ 15°:": "Lub Roob 15°:",
+            "ໄລຍະໃນເຂົາ:": "Kab Hauv Roob:",
+            "ຊ່ອງທີ": "Qhov Chaw",
+            "👤 ປີເກີດຜູ້ລ່ວງລັບ (仙命):": "👤 Xyoo Yug Tus Tuag (Xian Ming):",
+            "ດວງກິ່ງຟ້າ-ກ້ານດິນ:": "Ncej Ntuj & Ncej Av:",
+            "ທາດນາອິມ:": "Na Yin:",
+            "🌟 ສຽນມິ່ງສົມພົງກັບພູຫຼັງພິງ (Auspicious)": "🌟 Xian Ming Haum Nrog Roob Tom Qab (Zoo Heev)",
+            "❌ ສຽນມິ່ງຂັດກັບພູຫຼັງພິງ (Inauspicious)": "❌ Xian Ming Tsis Haum Roob Tom Qab (Phem Heev)",
+            "ເລືອກທິດປາກນ້ຳອອກສຸສານ (水口 4 墓库):": "Xaiv Qhov Dej Tawm Ntxa (Shui Kou 4 Mu Ku):",
+            "ປາກນ້ຳ": "Qhov Dej Tawm",
+            "ນ້ຳໄຫຼເຂົ້າທີ່ເກີດ (生水):": "Dej Ntws Nkag Chaw Yug (Sheng Shui):",
+            "ນ້ຳໄຫຼເຂົ້າທີ່ຮຸ່ງ (旺水):": "Dej Ntws Nkag Chaw Vam (Wang Shui):",
+            "ຈຸດຄວນລະວັງສາຍນ້ຳຮວງສຽນ": "Chaw Ceev Faj Dej Huang Quan",
+            "ປອດໂປ່ງຈາກ 8 ຮວງສຽນ": "พ้น Los Ntawm 8 Huang Quan",
+            "⛰️ ພູເຂົາບາຣະມີມຸງຄຸນ (玄武靠山大吉)": "⛰️ Roob Zaum Tom Qab Vam Meej (Xuan Wu Kao Shan)",
+            "❌ ພູຫີນແຫຼມແຕກຫັກ (廉贞煞)": "❌ Roob Pob Zeb Tawg Ntse (Lian Zhen Sha)",
+            "⚠️ ຂົວຂ້າມທາງ/ຄອງນ້ຳຕັດຜ່ານ (横桥煞)": "⚠️ Choj Txiav Pem Tsev (Heng Qiao Sha)",
+            "❌ ປ່ອງຄວັນໂຮງງານພົ່ນຄວັນ (冲天煞)": "❌ Qhov Tsuas Pa Tshuaj Faim Fab (Chong Tian Sha)",
+            "⚠️ ມີການກໍ່ສ້າງ/ຂຸດດິນ (动土煞)": "⚠️ Muaj Kev Khawb Av / Tsim Kho (Dong Tu Sha)",
+            "❌ ອັນຕະລາຍສູງສຸດ! ຂຸດດິນປຸກດາວ 5 (五黄动土)": "❌ Phem Tshaj Plaws! Khawb Av Tsim Hnub Qub 5 (Wu Huang Dong Tu)",
+            "❌ ໃກ້ປ້ຳນ້ຳມັນ/ສະຖານີໄຟຟ້າ (孤阳煞)": "❌ Nyob Ze Chaw Roj Tsheb / Hluav Taws Xob Loj (Gu Yang Sha)",
+            "❌ ໃກ້ວັດ/ປ່າຊ້າ/ໂຮງໝໍ (阴煞)": "❌ Nyob Ze Tsev Dab / Ntxa / Tsev Kho Mob (Yin Sha)",
+            "❌ ຮ່ອງລະບາຍນ້ຳເສຍເປີດໂລ່ງ (明沟臭水)": "❌ Qhov Dej Qias Qhib Siab (Ming Gou Chou Shui)",
+            "❌ ບວກຕົມ/ໜອງນ້ຳເນົ່າຂັງ (污泥浊水)": "❌ Chaw Dej Qias / Av Nkos (Wu Ni Zhuo Shui)",
+            "❌ ສາຍນ້ຳໄຫຼຊ່ຽວສຽງດັງ (割脚水)": "❌ Dej Ntws Ceev Suab Nrov (Ge Jiao Shui)",
+            "❌ ທາງສາມແພກພຸ່ງຊົນ (路冲煞)": "❌ Kev Peb Ceg Tsoo Tsev (Lu Chong Sha)",
+            "❌ ຖະໜົນຊື່ພຸ່ງຊົນໜ້າບ້ານ (枪煞)": "❌ Txoj Kev Ncaj Ntseeg Pem Tsev (Qiang Sha)",
+            "❌ ຖະໜົນໂຄ້ງຫຼັງຄັນທະນູ (反弓路)": "❌ Kev Nkhaus Li Qws Hneev (Fan Gong Lu)",
+            "❌ ມຸມແຫຼມຕຶກ/ຫຼັງຄາພຸ່ງໃສ່ (尖角冲射)": "❌ Ces Kaum Tsev Ntse Tsoo (Jian Jiao Sha)",
+            "❌ ເສົາໄຟ/ຕົ້ນໄມ້ໃຫຍ່ຂວາງໜ້າປະຕູ (顶心煞)": "❌ Ncej Hluav Taws Xob / Ntoo Loj Ntsia Qhov Rooj (Ding Xin Sha)",
+            "❌ ຊ່ອງລົມພິດລະຫວ່າງຕຶກ (天斩煞)": "❌ Qhov Ceev Cua Nruab Nrab Tsev Loj (Tian Zhan Sha)",
+            "✨ ສິ່ງແວດລ້ອມທົ່ວໄປ (General Environment)": "✨ Ib Cheeb Tsam Nruab Nrab (General Environment)",
+            "ພູມສັນຖານພາຍນອກ": "Thaj Tsam Sab Nraum Tsev",
+            "ເດືອນ 1 (ກຸມພາ)": "Lub Hli 1 (Ob Hlis)",
+            "ເດືອນ 2 (ມີນາ)": "Lub Hli 2 (Peb Hlis)",
+            "ເດືອນ 3 (ເມສາ)": "Lub Hli 3 (Plaub Hlis)",
+            "ເດືອນ 4 (ພຶດສະພາ)": "Lub Hli 4 (Tsib Hlis)",
+            "ເດືອນ 5 (ມິຖຸນາ)": "Lub Hli 5 (Rau Hli)",
+            "ເດືອນ 6 (ກໍລະກົດ)": "Lub Hli 6 (Xya Hli)",
+            "ເດືອນ 7 (ສິງຫາ)": "Lub Hli 7 (Yim Hli)",
+            "ເດືອນ 8 (ກັນຍາ)": "Lub Hli 8 (Cuaj Hli)",
+            "ເດືອນ 9 (ຕຸລາ)": "Lub Hli 9 (Kaum Hli)",
+            "ເດືອນ 10 (ພະຈິກ)": "Lub Hli 10 (Kaum Ib Hlis)",
+            "ເດືອນ 11 (ທັນວາ)": "Lub Hli 11 (Kaum Ob Hlis)",
+            "ເດືອນ 12 (ມັງກອນ)": "Lub Hli 12 (Ib Hlis)",
+            "ຣຸ່ງເຮືອງ": "Sheng Qi (Vam Meej Nyiaj Txiag)",
+            "ສຸຂະພາບ": "Tian Yi (Noj Qab Haus Huv)",
+            "ຄວາມຮັກ": "Yan Nian (Kev Hlub Ntev Luag)",
+            "ໝັ້ນຄົງ": "Fu Wei (Kev Thaj Yeeb)",
+            "ຫົວຫ້າຍ": "Huo Hai (Teeb Meem Sib Ceg)",
+            "ລິວຊ່າ": "Liu Sha (Raug Txim Cai)",
+            "ອູກຸຍ": "Wu Gui (Tsib Tus Dab Ntxeev)",
+            "ຈວຽ້ມິ່ງ": "Jue Ming (Txoj Sia Tu)",
+            "ທອງປາຍດາບ": "Kub Hniav Ntshav (Jian Feng Jin)",
+            "ທອງໃນດິນ": "Kub Hauv Av (Sha Zhong Jin)",
+            "ທອງສີຂາວ": "Kub Xim Dawb (Bai La Jin)",
+            "ໄມ້ຕົ້ນໃຫຍ່": "Ntoo Loj Hauv Hav (Da Lin Mu)",
+            "ໄມ້ປ່າດົງ": "Ntoo Hav Zoov (Song Bai Mu)",
+            "ໄມ້ໄຜ່ລຽບ": "Ntoo Yang Liu Mu",
+            "ນ້ຳມະຫາສະໝຸດ": "Dej Hiav Txwv Loj (Da Hai Shui)",
+            "ນ້ຳສາຍທານ": "Dej Ntws Hav Zoov (Tian He Shui)",
+            "ນ້ຳຕົກຕາດ": "Dej Tsaws Tsag (Quan Zhong Shui)",
+            "ໄຟຟ້າຜ່າ": "Hluav Taws Xob Ntuj (Pi Li Huo)",
+            "ໄຟເຕົາຫຼອມ": "Hluav Taws Cub Luam (Lu Zhong Huo)",
+            "ໄຟແສງຕາເວັນ": "Hluav Taws Hnub Ci (Shan Tou Huo)",
+            "ດິນເທິງກຳແພງ": "Av Phab Ntsa (Cheng Tou Tu)",
+            "ດິນຫຼັງຄາເຮືອນ": "Av Saum Tsev (Wu Shang Tu)",
+            "ດິນກາງທົ່ງ": "Av Nruab Teb (Da Yi Tu)",
+
             // Mode Switcher & Major Headers
             'ທຳນາຍຕາມທິດ': 'Xam Raws Fab',
             'ຄັງຄູ່ມື &amp; ຕຳລາ': 'Phau Ntawv &amp; Tswv Yim',
@@ -12668,6 +12912,27 @@ function setSelectedRoom(roomKey) {
         };
 
         const _PH_PRED_MAP = {
+            "ຄັງຄູ່ມື, ຕຳລາບູຮານ &amp; ສູດຄຳນວນດວງຊາຕາ (37 ວິຊາ)": "𖬎𖲦 𖬎𖲤 (𖭓𖭗)",
+            "ຄັງຄູ່ມື, ຕຳລາບູຮານ & ສູດຄຳນວນດວງຊາຕາ (37 ວິຊາ)": "𖬎𖲦 𖬎𖲤 (𖭓𖭗)",
+            "ລະບົບ 33 ມະຫາວິຊາຮວງຈຸ້ຍທຳນາຍຕາມທິດ": "𖭓𖭓 𖬐𖲤 𖬖𖰟",
+            "📜 ຕຳລາຕົ້ນສະບັບ:": "📜 𖬎𖲦:",
+            "💡 ໜ້າທີ່ &amp; ຫຼັກການ:": "💡 𖬐𖰞 𖬄𖲞:",
+            "💡 ໜ້າທີ່ & ຫຼັກການ:": "💡 𖬐𖰞 𖬄𖲞:",
+            "ໃບລາຍງານ": "𖬎𖲦 𖬐𖰞",
+            "ໃບຢັ້ງຢືນ": "𖬎𖲦 𖬎𖲞",
+            "ໃບລາຍງານສຸສານ": "𖬎𖲦 𖬖𖰝",
+            "🔍 ຄົ້ນຫາວິຊາ, ຕຳລາ, ສູດຄຳນວນ...": "🔍 𖬘𖲝...",
+            "ຜົນການຄົ້ນຫາ:": "𖬘𖲝 𖬐𖰞:",
+            "ລຶບຄຳຄົ້ນ ✕": "𖬎𖲞 ✕",
+            "120 ພັນຈິນ": "120 Fenjin",
+            "8 ຮວງສຽນ": "𖭘 Huang Quan",
+            "ສານເຫີສຸ່ຍຝາ": "San He Shui Fa",
+            "ອົງສາປ້າຍຫີນ (碑向):": "𖬐𖰤 𖬖𖰟:",
+            "ພູເຂົາ 15°:": "𖬌𖲞 15°:",
+            "👤 ປີເກີດຜູ້ລ່ວງລັບ (仙命):": "👤 𖬘𖲝 (Xian Ming):",
+            "ດວງກິ່ງຟ້າ-ກ້ານດິນ:": "𖬎𖲤 & 𖬈𖰞:",
+            "ທາດນາອິມ:": "Na Yin:",
+
             'ທຳນາຍຕາມທິດ': '𖬐𖬲𖬤 𖬖𖬰𖬟',
             'ຄັງຄູ່ມື &amp; ຕຳລາ': '📖 𖬎𖬲𖬦𖬵',
             'ຄັງຄູ່ມື & ຕຳລາ': '📖 𖬎𖬲𖬦𖬵',
@@ -12852,45 +13117,53 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
                 const userGua = calculateMingGua(userBirthYear, userGender);
                 const curBaguaCode = chart.faceInfo.pal.baguaCode;
 
-                let dirName = '祸害 (ຮົວຮ້າຍ)';
+                const isHm = (currentLuopanLang === 'hm');
+                const isPh = (currentLuopanLang === 'ph');
+                let dirName = isHm ? 'Huo Hai' : '祸害 (ຮົວຮ້າຍ)';
                 let dirColor = 'text-slate-400';
                 let dirBg = 'bg-slate-900 border-purple-500/30';
 
                 if (userGua.shengQi === curBaguaCode) {
-                    dirName = '✨ ໂຊກລາບຮຸ່ງເຮືອງ';
+                    dirName = isHm ? '✨ Sheng Qi (Vam Meej Nyiaj Txiag)' : isPh ? '✨ 𖬌𖲞 𖬎𖲤' : '✨ ໂຊກລາບຮຸ່ງເຮືອງ';
                     dirColor = 'text-emerald-300';
                     dirBg = 'bg-emerald-950/90 border-emerald-500/60 shadow-sm';
                 } else if (userGua.tianYi === curBaguaCode) {
-                    dirName = '🏥 ສຸຂະພາບໝໍເທບ';
+                    dirName = isHm ? '🏥 Tian Yi (Noj Qab Haus Huv)' : isPh ? '🏥 𖬐𖰞 𖬎𖲤' : '🏥 ສຸຂະພາບໝໍເທບ';
                     dirColor = 'text-teal-300';
                     dirBg = 'bg-teal-950/90 border-teal-500/60 shadow-sm';
                 } else if (userGua.yanNian === curBaguaCode) {
-                    dirName = '💖 ຄວາມຮັກອາຍຸຍືນ';
+                    dirName = isHm ? '💖 Yan Nian (Kev Hlub Ntev Luag)' : isPh ? '💖 𖬎𖲨 𖬎𖲤' : '💖 ຄວາມຮັກອາຍຸຍືນ';
                     dirColor = 'text-cyan-300';
                     dirBg = 'bg-cyan-950/90 border-cyan-500/60 shadow-sm';
                 } else if (userGua.fuWei === curBaguaCode) {
-                    dirName = '🧘 ສະຕິປັນຍາໝັ້ນຄົງ';
+                    dirName = isHm ? '🧘 Fu Wei (Kev Thaj Yeeb)' : isPh ? '🧘 𖬆𖰝 𖬌𖰞' : '🧘 ສະຕິປັນຍາໝັ້ນຄົງ';
                     dirColor = 'text-blue-300';
                     dirBg = 'bg-blue-950/90 border-blue-500/60 shadow-sm';
                 } else if (userGua.jueMing === curBaguaCode) {
-                    dirName = '⚠️ ມະຫາວິບັດຕັດຊີວິດ';
+                    dirName = isHm ? '⚠️ Jue Ming (Txoj Sia Tu)' : isPh ? '⚠️ 𖬎𖲨 𖬎𖰟' : '⚠️ ມະຫາວິບັດຕັດຊີວິດ';
                     dirColor = 'text-rose-400';
                     dirBg = 'bg-rose-950/90 border-rose-500/60';
                 } else if (userGua.wuGui === curBaguaCode) {
-                    dirName = '🔥 ໂຈນໄພຜິດຖຽງ';
+                    dirName = isHm ? '🔥 Wu Gui (Tsib Tus Dab Ntxeev)' : isPh ? '🔥 𖭕 𖬎𖲤' : '🔥 ໂຈນໄພຜິດຖຽງ';
                     dirColor = 'text-rose-300';
                     dirBg = 'bg-rose-950/80 border-rose-600/50';
                 } else if (userGua.liuSha === curBaguaCode) {
-                    dirName = '⚡ ຄະດີຄວາມໂຊກຮ້າຍ';
+                    dirName = isHm ? '⚡ Liu Sha (Raug Txim Cai)' : isPh ? '⚡ 𖬘𖲞 𖬎𖲤' : '⚡ ຄະດີຄວາມໂຊກຮ້າຍ';
                     dirColor = 'text-amber-300';
                     dirBg = 'bg-amber-950/80 border-amber-600/50';
                 } else {
-                    dirName = '⚠️ ອຸປະສັກເສຍຊັບ';
+                    dirName = isHm ? '⚠️ Huo Hai (Teeb Meem Sib Ceg)' : isPh ? '⚠️ 𖬉𖲝 𖬘𖲝' : '⚠️ ອຸປະສັກເສຍຊັບ';
                     dirColor = 'text-slate-300';
                     dirBg = 'bg-slate-900/90 border-slate-700/60';
                 }
 
-                mobGuaName.innerHTML = '👤 <b>' + userGua.name.split(' ')[0] + ' (' + userGua.trigram + userGua.guaNumber + ')</b> · ' + userGua.groupName.split(' ')[0];
+                const gGroupName = isHm
+                    ? (userGua.groupName.includes('ຕາເວັນອອກ') ? 'Pawg Sab Hnub Tuaj' : 'Pawg Sab Hnub Poob')
+                    : isPh
+                    ? (userGua.groupName.includes('ຕາເວັນອອກ') ? '𖬈𖰞 𖬎𖲤' : '𖬈𖰞 𖬉𖲦')
+                    : userGua.groupName.split(' ')[0];
+
+                mobGuaName.innerHTML = '👤 <b>' + userGua.name.split(' ')[0] + ' (' + userGua.trigram + userGua.guaNumber + ')</b> · ' + gGroupName;
                 mobGuaDirection.className = 'font-bold shrink-0 ml-1 ' + dirColor;
                 mobGuaDirection.textContent = dirName;
                 mobGuaBadge.className = 'flex items-center justify-between text-[9px] font-mono px-2 py-0.5 rounded-lg border transition-all ' + dirBg;
@@ -13751,7 +14024,40 @@ function updateCompassTransform(deltaAngle = null) {
             }
             resGuaName.textContent = guaDisplay;
             resGroup.textContent = groupDisplay;
-            resNayin.textContent = calc.yearInfo.nayin;
+            let nayinDisplay = calc.yearInfo.nayin;
+            if (currentLuopanLang === 'hm') {
+                const nayinHmong = {
+                    'ທອງປາຍດາບ': 'Kub Hniav Ntshav (Jian Feng Jin)',
+                    'ທອງໃນດິນ': 'Kub Hauv Av (Sha Zhong Jin)',
+                    'ທອງສີຂາວ': 'Kub Xim Dawb (Bai La Jin)',
+                    'ທອງໃນຫີນ': 'Kub Hauv Pob Zeb (Hai Zhong Jin)',
+                    'ທອງເຄື່ອງປະດັບ': 'Kub Khoom Zoo Nkauj (Chai Chuan Jin)',
+                    'ໄມ້ຕົ້ນໃຫຍ່': 'Ntoo Loj Hauv Hav (Da Lin Mu)',
+                    'ໄມ້ປ່າດົງ': 'Ntoo Hav Zoov (Song Bai Mu)',
+                    'ໄມ້ໄຜ່ລຽບ': 'Ntoo Yang Liu Mu',
+                    'ໄມ້ທັບທິມ': 'Ntoo Shi Liu Mu',
+                    'ໄມ້ແຄມຮົ້ວ': 'Ntoo Sang Zhe Mu',
+                    'ນ້ຳມະຫາສະໝຸດ': 'Dej Hiav Txwv Loj (Da Hai Shui)',
+                    'ນ້ຳສາຍທານ': 'Dej Ntws Hav Zoov (Tian He Shui)',
+                    'ນ້ຳຕົກຕາດ': 'Dej Tsaws Tsag (Quan Zhong Shui)',
+                    'ນ້ຳລຳທານໃຫຍ່': 'Dej Ntws Hav Hav (Da Xi Shui)',
+                    'ນ້ຳຄ້າງກາງແຈ້ງ': 'Dej Huab Cua (Jian Xia Shui)',
+                    'ໄຟຟ້າຜ່າ': 'Hluav Taws Xob Ntuj (Pi Li Huo)',
+                    'ໄຟເຕົາຫຼອມ': 'Hluav Taws Cub Luam (Lu Zhong Huo)',
+                    'ໄຟແສງຕາເວັນ': 'Hluav Taws Hnub Ci (Shan Tou Huo)',
+                    'ໄຟກອງໄຟ': 'Hluav Taws Qhov Cub (Shan Xia Huo)',
+                    'ໄຟໂຄມໄຟ': 'Hluav Taws Teeb Ci (Fu Deng Huo)',
+                    'ດິນເທິງກຳແພງ': 'Av Phab Ntsa (Cheng Tou Tu)',
+                    'ດິນຫຼັງຄາເຮືອນ': 'Av Saum Tsev (Wu Shang Tu)',
+                    'ດິນກາງທົ່ງ': 'Av Nruab Teb (Da Yi Tu)',
+                    'ດິນແຄມທາງ': 'Av Ntug Kev (Lu Pang Tu)',
+                    'ດິນຊາຍຫາດ': 'Av Xuab Zeb (Sha Zhong Tu)'
+                };
+                nayinDisplay = nayinHmong[nayinDisplay] || nayinDisplay;
+            } else if (currentLuopanLang === 'ph') {
+                nayinDisplay = 'Na Yin (' + calc.yearInfo.gz + ')';
+            }
+            resNayin.textContent = nayinDisplay;
 
             // Direction Fortunes List
             const fortNamesHmong = {
