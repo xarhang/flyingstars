@@ -513,12 +513,11 @@
         <!-- SECTION 4.5: ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ -->
         <div class="hidden md:flex bg-slate-900/80 p-3 rounded-xl border border-purple-500/30 flex-col gap-2.5 shadow-sm">
             <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-purple-300 flex items-center gap-1.5">
-                    <svg class="w-4 h-4 inline-block text-purple-300 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ບົດທຳນາຍດາວເຫີນ &amp; ແປດທິດ
+                <span id="lblDesktopPredTitle" class="text-xs font-bold text-purple-300 flex items-center gap-1.5"><svg class="w-4 h-4 inline-block text-purple-300 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ບົດທຳນາຍດາວເຫີນ &amp; ແປດທິດ
                 </span>
                 <!-- Period Selector -->
                 <div class="flex items-center gap-1">
-                    <span class="text-[10px] text-slate-400 font-medium">ຍຸກ:</span>
+                    <span id="lblDesktopPeriod" class="text-[10px] text-slate-400 font-medium">ຍຸກ:</span>
                     <select id="desktopPeriodSelect" class="bg-slate-950 border border-purple-500/40 text-amber-300 text-xs font-bold rounded-lg px-2 py-0.5 focus:outline-none cursor-pointer">
                         <option value="9" selected>ຍຸກ 9 (2024-43) ປັດຈຸບັນ</option>
                         <option value="8">ຍຸກ 8 (2004-23)</option>
@@ -824,8 +823,8 @@
             <div class="flex items-center gap-2">
                 <svg class="w-5 h-5 text-purple-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 <div>
-                    <h3 class="text-sm font-bold text-purple-300 leading-tight">ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ</h3>
-                    <p class="text-[10px] text-slate-400">ວິເຄາະທິດທີ່ກ້ອງ/ເຂັມທິດກຳລັງສ່ອງໄປແບບສົດໆ</p>
+                    <h3 id="mobPredTitleText" class="text-sm font-bold text-purple-300 leading-tight">ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ</h3>
+                    <p id="mobPredSubtitleText" class="text-[10px] text-slate-400">ວິເຄາະທິດທີ່ກ້ອງ/ເຂັມທິດກຳລັງສ່ອງໄປແບບສົດໆ</p>
                 </div>
             </div>
             <button id="closePredictionDrawerBtn" type="button" class="text-slate-400 hover:text-white bg-slate-800 rounded-lg w-7 h-7 flex items-center justify-center font-bold"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
@@ -833,9 +832,7 @@
 
         <!-- Period Selector Dropdown -->
         <div class="flex items-center justify-between bg-slate-950 p-2 rounded-xl border border-slate-800">
-            <span class="text-xs font-semibold text-amber-400 flex items-center gap-1.5">
-                <svg class="w-3.5 h-3.5 text-amber-400 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ເລືອກຍຸກດາວເຫີນ:
-            </span>
+            <span id="lblMobilePeriodSelect" class="text-xs font-semibold text-amber-400 flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-amber-400 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ເລືອກຍຸກດາວເຫີນ:</span>
             <select id="mobilePeriodSelect" class="bg-slate-900 border border-amber-500/40 text-amber-300 text-xs font-bold rounded-lg px-2.5 py-1 focus:outline-none cursor-pointer">
                 <option value="9" selected>ຍຸກ 9 (2024 - 2043) · ປັດຈຸບັນ</option>
                 <option value="8">ຍຸກ 8 (2004 - 2023)</option>
@@ -1419,6 +1416,11 @@
 
             applyLuopanLanguageDOM(lang);
 
+            // Invalidate prediction caches to force re-evaluating HUD and drawer
+            lastCachedStarKey = '';
+            lastCachedSpotHtml = '';
+            lastCachedKwText = '';
+
             // Re-render components
             const bSelect = document.getElementById('baseStyleSelect');
             const activeStyle = (bSelect && bSelect.value) ? bSelect.value : (currentBaseStyle || 'lacquer');
@@ -1544,6 +1546,46 @@
             if (maleBtn) maleBtn.innerHTML = t.male;
             const femaleBtn = document.getElementById('genderFemaleBtn');
             if (femaleBtn) femaleBtn.innerHTML = t.female;
+
+            // Prediction Drawer & Desktop Headers
+            const deskPredTitle = document.getElementById('lblDesktopPredTitle');
+            if (deskPredTitle) {
+                const svg = deskPredTitle.querySelector('svg');
+                deskPredTitle.innerHTML = (svg ? svg.outerHTML + ' ' : '') + t.predSectionTitle;
+            }
+            const mobPredTitle = document.getElementById('mobPredTitleText');
+            if (mobPredTitle) mobPredTitle.textContent = t.predSectionTitle;
+            const mobPredSubtitle = document.getElementById('mobPredSubtitleText');
+            if (mobPredSubtitle) {
+                mobPredSubtitle.textContent = lang === 'hm'
+                    ? 'Ntsuas fab koob yees duab/luopan tig mus saib tam sim no'
+                    : lang === 'ph'
+                    ? '𖬐𖬲𖬤 𖬖𖬰𖬟 𖬆𖰝 𖬎𖲤'
+                    : 'ວິເຄາະທິດທີ່ກ້ອງ/ເຂັມທິດກຳລັງສ່ອງໄປແບບສົດໆ';
+            }
+            const lblDeskPer = document.getElementById('lblDesktopPeriod');
+            if (lblDeskPer) lblDeskPer.textContent = t.periodLabel;
+            const lblMobPer = document.getElementById('lblMobilePeriodSelect');
+            if (lblMobPer) {
+                const svg = lblMobPer.querySelector('svg');
+                lblMobPer.innerHTML = (svg ? svg.outerHTML + ' ' : '') + (lang === 'hm' ? 'Xaiv Caij Hnub Qub Ya:' : lang === 'ph' ? '𖬘𖲝 𖬂𖲟:' : 'ເລືອກຍຸກດາວເຫີນ:');
+            }
+
+            // Period Select Options
+            ['desktopPeriodSelect', 'mobilePeriodSelect'].forEach(id => {
+                const sel = document.getElementById(id);
+                if (sel && sel.options.length >= 9) {
+                    sel.options[0].textContent = lang === 'hm' ? 'Caij 9 (2024 - 2043) · Tam Sim No' : lang === 'ph' ? '𖬎𖲤 𖭐 (2024 - 2043)' : 'ຍຸກ 9 (2024 - 2043) · ປັດຈຸບັນ';
+                    sel.options[1].textContent = lang === 'hm' ? 'Caij 8 (2004 - 2023)' : lang === 'ph' ? '𖬎𖲤 𖭏 (2004 - 2023)' : 'ຍຸກ 8 (2004 - 2023)';
+                    sel.options[2].textContent = lang === 'hm' ? 'Caij 7 (1984 - 2003)' : lang === 'ph' ? '𖬎𖲤 𖭎 (1984 - 2003)' : 'ຍຸກ 7 (1984 - 2003)';
+                    sel.options[3].textContent = lang === 'hm' ? 'Caij 6 (1964 - 1983)' : lang === 'ph' ? '𖬎𖲤 𖭍 (1964 - 1983)' : 'ຍຸກ 6 (1964 - 1983)';
+                    sel.options[4].textContent = lang === 'hm' ? 'Caij 5 (1944 - 1963)' : lang === 'ph' ? '𖬎𖲤 𖭌 (1944 - 1963)' : 'ຍຸກ 5 (1944 - 1963)';
+                    sel.options[5].textContent = lang === 'hm' ? 'Caij 4 (1924 - 1943)' : lang === 'ph' ? '𖬎𖲤 𖭋 (1924 - 1943)' : 'ຍຸກ 4 (1924 - 1943)';
+                    sel.options[6].textContent = lang === 'hm' ? 'Caij 3 (1904 - 1923)' : lang === 'ph' ? '𖬎𖲤 𖭊 (1904 - 1923)' : 'ຍຸກ 3 (1904 - 1923)';
+                    sel.options[7].textContent = lang === 'hm' ? 'Caij 2 (1884 - 1903)' : lang === 'ph' ? '𖬎𖲤 𖭉 (1884 - 1903)' : 'ຍຸກ 2 (1884 - 1903)';
+                    sel.options[8].textContent = lang === 'hm' ? 'Caij 1 (1864 - 1883)' : lang === 'ph' ? '𖬎𖲤 𖭈 (1864 - 1883)' : 'ຍຸກ 1 (1864 - 1883)';
+                }
+            });
         }
 
         const MOUNTAINS_24 = [
@@ -12490,6 +12532,185 @@ function setSelectedRoom(roomKey) {
             return tabBody;
         }
 
+
+        function localizePredictionHtml(contentHtml, lang) {
+            if (!contentHtml || lang === 'lo') return contentHtml;
+
+            if (lang === 'hm') {
+                const hmDict = [
+                    // Mode Switcher & Major Headers
+                    ['ທຳນາຍຕາມທິດ', 'Xam Raws Fab'],
+                    ['ຄັງຄູ່ມື &amp; ຕຳລາ', 'Phau Ntawv &amp; Tswv Yim'],
+                    ['ຄັງຄູ່ມື & ຕຳລາ', 'Phau Ntawv & Tswv Yim'],
+                    ['ເຮືອນຢິນ (ສຸສານ)', 'Tsev Yeeb / Ntxa'],
+                    ['ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ &amp; ແປດທິດ', 'Kev Ntsuas Looj Mem Hnub Qub Ya &amp; 8 Fab'],
+                    ['ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ', 'Kev Ntsuas Looj Mem Hnub Qub Ya & 8 Fab'],
+                    ['ບົດທຳນາຍດາວເຫີນ &amp; ແປດທິດ', 'Kev Ntsuas Hnub Qub Ya &amp; 8 Fab'],
+                    ['ບົດທຳນາຍດາວເຫີນ & ແປດທິດ', 'Kev Ntsuas Hnub Qub Ya & 8 Fab'],
+                    ['ວິເຄາະທິດທີ່ກ້ອງ/ເຂັມທິດກຳລັງສ່ອງໄປແບບສົດໆ', 'Ntsuas fab koob yees duab / luopan tig saib tam sim no'],
+                    ['ເລືອກຍຸກດາວເຫີນ:', 'Xaiv Caij Hnub Qub Ya:'],
+
+                    // Headings & Card Labels
+                    ['💡 ວິທີຈັດວາງ/ແກ້ໄຂ:', '💡 Kev Txhim Kho / Kho Kom Haum:'],
+                    ['💡 ວິທີແກ້ໄຂ / ປັບຮວງຈຸ້ຍ:', '💡 Kev Kho Kom Haum Looj Mem:'],
+                    ['💡 ວິທີແກ້ໄຂ:', '💡 Kev Kho Kom Haum:'],
+                    ['<b>ວິທີແກ້:</b>', '<b>Kev Kho:</b>'],
+                    ['<b>ສຸຂະພາບ &amp; ຄົນ:</b>', '<b>Kev Noj Qab Haus Huv:</b>'],
+                    ['<b>ສຸຂະພາບ & ຄົນ:</b>', '<b>Kev Noj Qab Haus Huv:</b>'],
+                    ['<b>ການເງິນ &amp; 12 ນັກສັດ:</b>', '<b>Nyiaj Txiag &amp; 12 Tus Tsiaj:</b>'],
+                    ['<b>ການເງິນ & 12 ນັກສັດ:</b>', '<b>Nyiaj Txiag & 12 Tus Tsiaj:</b>'],
+                    ['ສຸຂະພາບ &amp; ບາຣະມີ', 'Kev Noj Qab Haus Huv &amp; Koob Hmoov'],
+                    ['ສຸຂະພາບ & ບາຣະມີ', 'Kev Noj Qab Haus Huv & Koob Hmoov'],
+                    ['ຄະແນນ:', 'Qhab Nia:'],
+                    ['ທິດທີ່ສ່ອງ:', 'Fab Tig Mus:'],
+                    ['ດາວນ້ຳ', 'Hnub Qub Dej'],
+                    ['ດາວພູ', 'Hnub Qub Roob'],
+                    ['ດາວຍຸກ', 'Hnub Qub Caij'],
+                    ['ຫຼັງພິງ:', 'Tom Qab Zaum:'],
+                    ['ໜ້າບ້ານ:', 'Pem Hauv Ntej:'],
+                    ['ຄູ່ດາວ:', 'Khub Hnub Qub:'],
+                    ['ຄູ່ດາວ', 'Khub Hnub Qub'],
+                    ['ມຸງຄຸນສູງສຸດ', 'Vam Meej Tshaj Plaws'],
+                    ['ມຸງຄຸນຍອດຢ້ຽມ', 'Vam Meej Zoo Heev'],
+                    ['ມຸງຄຸນ', 'Vam Meej Zoo'],
+                    ['ອັບປະມຸງຄຸນ', 'Phem Heev'],
+                    ['ປານກາງ', 'Nruab Nrab'],
+                    ['ທົ່ວໄປ', 'Txheej Txheem'],
+                    ['ຂໍ້ຫ້າມເດັດຂາດ:', 'Yam Txwv Tsis Pub Ua:'],
+                    ['ຈຸດຕ້ອງຫ້າມ:', 'Chaw Txwv Tsis Pub Ua:'],
+                    ['ຫ້າມເຈາະທຸບ', 'Txwv Khawb Rhuav'],
+                    ['ລະວັງສຸຂະພາບ', 'Ceev Faj Kev Noj Qab Haus Huv'],
+
+                    // Categories & Navigation
+                    ['ດາວເຫີນ &amp; ພະລັງຍຸກ', 'Hnub Qub Ya &amp; Zog Caij'],
+                    ['ດາວເຫີນ & ພະລັງຍຸກ', 'Hnub Qub Ya & Zog Caij'],
+                    ['ສາຍນ້ຳ &amp; ມັງກອນດິນ', 'Dej Ntws &amp; Zaj Av'],
+                    ['ສາຍນ້ຳ & ມັງກອນດິນ', 'Dej Ntws & Zaj Av'],
+                    ['ເຂັມທິດ &amp; 24 ຂຸນເຂົາ', 'Koob Luopan &amp; 24 Roob'],
+                    ['ເຂັມທິດ & 24 ຂຸນເຂົາ', 'Koob Luopan & 24 Roob'],
+                    ['ທິດພາຍໃນ &amp; ແປດທິດປາໄຈ່', 'Hauv Tsev &amp; Ba Zhai 8 Fab'],
+                    ['ທິດພາຍໃນ & ແປດທິດປາໄຈ່', 'Hauv Tsev & Ba Zhai 8 Fab'],
+                    ['ໂຫລາສາດ &amp; ດວງຊາຕາ', 'BaZi &amp; Xam Hnub Nyoog'],
+                    ['ໂຫລາສາດ & ດວງຊາຕາ', 'BaZi & Xam Hnub Nyoog'],
+                    ['🔍 ຄົ້ນຫາວິຊາ...', '🔍 Nrhiav tswv yim...'],
+                    ['ທັງໝົດ', 'Tag Nrho'],
+
+                    // Common Rooms
+                    ['ປະຕູໃຫຍ່ໜ້າບ້ານ', 'Qhov Rooj Loj Pem Tsev'],
+                    ['ປະຕູໃຫຍ່', 'Qhov Rooj Loj'],
+                    ['ປະຕູຫ້ອງນອນ', 'Qhov Rooj Chav Pw'],
+                    ['ຫ້ອງນອນໃຫຍ່', 'Chav Pw Loj'],
+                    ['ຫ້ອງນອນ', 'Chav Pw'],
+                    ['ຫ້ອງຄົວ', 'Chav Ua Noj'],
+                    ['ປະຕູຫ້ອງຄົວ', 'Qhov Rooj Chav Ua Noj'],
+                    ['ຫ້ອງນ້ຳ', 'Chav Dej'],
+                    ['ປະຕູຫ້ອງນ້ຳ', 'Qhov Rooj Chav Dej'],
+                    ['ຫ້ອງຮັບແຂກ', 'Chav Txais Qhua'],
+                    ['ຫ້ອງເຮັດວຽກ', 'Chav Ua Hauj Lwm'],
+                    ['ຫ້ອງພະ / ຫ້ອງບູຊາ', 'Chav Dab Qhuas / Ntuj'],
+                    ['ຫ້ອງພະ', 'Chav Dab Qhuas'],
+                    ['ຫ້ອງເກັບເງິນ', 'Chav Khaws Nyiaj'],
+                    ['ປະຕູລະບຽງ / ປະຕູເລື່ອນ', 'Qhov Rooj Tshav Saum Tsev'],
+                    ['ປະຕູລະບຽງ', 'Qhov Rooj Tshav Saum'],
+                    ['ລະບຽງ / ດາດຟ້າ', 'Tshav Saum Tsev'],
+                    ['ບັນໄດ', 'Vaj Ris'],
+                    ['ໂຮງລົດ', 'Chaw Nres Tsheb'],
+                    ['ສວນດອກໄມ້', 'Vaj Paj Ntsuab'],
+                    ['ໜອງນ້ຳ / ນ້ຳພຸ', 'Pas Dej / Dej Txeej'],
+                    ['ຮົ້ວບ້ານ', 'Phab Ntsa / Ciam Av'],
+                    ['ປ່ອງຢ້ຽມ', 'Qhov Rais'],
+
+                    // Formations & Special Terms
+                    ['旺山旺向 (ຮຸ່ງເຮືອງທັງຄົນແລະຊັບ)', 'Wang Shan Wang Xiang (Vam Meej Nyiaj Txiag & Neeg)'],
+                    ['双星到向 (ດາວຄູ່ລວມໜ້າບ້ານ ໂຊກລາບມະຫາສານ)', 'Shuang Xing Dao Xiang (Hnub Qub Khub Pem Tsev)'],
+                    ['双星到座 (ດາວຄູ່ລວມຫຼັງພິງ ບາຣະມີຄົນດີເລີດ)', 'Shuang Xing Dao Zuo (Hnub Qub Khub Tom Qab)'],
+                    ['上山下水 (ຂຶ້ນເຂົາລົງນ້ຳ ລະວັງສູນເສຍ)', 'Shang Shan Xia Shui (Nce Roob Nqes Dej - Ceev Faj)'],
+                    ['ປະຕູເສີມໂຊກ (城门诀)', 'Qhov Rooj Txais Koob Hmoov (Cheng Men)'],
+                    ['ເຈັດດາວປຸ້ນຊັບ (七星打劫)', 'Xya Lub Hnub Qub Yuam Zog (Qi Xing Da Jie)'],
+                    ['ຜັງຕົກຮ່ອງເດີມ (伏吟)', 'Fu Yin (Zog Poob Qhov Qub)'],
+                    ['ຜັງປະທະກັບ (反吟)', 'Fan Yin (Zog Sib Tsoo)'],
+
+                    // Ba Zhai Stars
+                    ['ໂຊກລາບຮຸ່ງເຮືອງ', 'Sheng Qi (Nyiaj Txiag Nplua Mias)'],
+                    ['ສຸຂະພາບໝໍເທບ', 'Tian Yi (Noj Qab Haus Huv)'],
+                    ['ຄວາມຮັກອາຍຸຍືນ', 'Yan Nian (Kev Hlub Ntev Luag)'],
+                    ['ສະຕິປັນຍາໝັ້ນຄົງ', 'Fu Wei (Kev Thaj Yeeb Tswv Yim)'],
+                    ['ມະຫາວິບັດຕັດຊີວິດ', 'Jue Ming (Kev Puas Tsuaj Loj)'],
+                    ['ໂຈນໄພຜິດຖຽງ', 'Wu Gui (Tsib Tus Dab Sib Ceeb)'],
+                    ['ຄະດີຄວາມໂຊກຮ້າຍ', 'Liu Sha (Raug Cai / Kev Txom Nyem)'],
+                    ['ອຸປະສັກເສຍຊັບ', 'Huo Hai (Teeb Meem & Poob Nyiaj)'],
+
+                    // Elements & Palaces
+                    ['ທາດນ້ຳ', 'Zog Dej'],
+                    ['ທາດໄມ້', 'Zog Ntoo'],
+                    ['ທາດໄຟ', 'Zog Hluav Taws'],
+                    ['ທາດດິນ', 'Zog Av'],
+                    ['ທາດທອງ', 'Zog Kub'],
+                    ['ທິດເໜືອ', 'Qaum Teb'],
+                    ['ທິດໃຕ້', 'Qab Teb'],
+                    ['ທິດຕາເວັນອອກສ່ຽງເໜືອ', 'Hnub Tuaj Qaum Teb'],
+                    ['ທິດຕາເວັນອອກສ່ຽງໃຕ້', 'Hnub Tuaj Qab Teb'],
+                    ['ທິດຕາເວັນຕົກສ່ຽງເໜືອ', 'Hnub Poob Qaum Teb'],
+                    ['ທິດຕາເວັນຕົກສ່ຽງໃຕ້', 'Hnub Poob Qab Teb'],
+                    ['ທິດຕາເວັນອອກ', 'Hnub Tuaj'],
+                    ['ທິດຕາເວັນຕົກ', 'Hnub Poob']
+                ];
+
+                let res = contentHtml;
+                for (const [lao, hmong] of hmDict) {
+                    res = res.split(lao).join(hmong);
+                }
+                return res;
+            }
+
+            if (lang === 'ph') {
+                const phDict = [
+                    ['ທຳນາຍຕາມທິດ', '𖬐𖬲𖬤 𖬖𖬰𖬟'],
+                    ['ຄັງຄູ່ມື &amp; ຕຳລາ', '📖 𖬎𖬲𖬦𖬵'],
+                    ['ຄັງຄູ່ມື & ຕຳລາ', '📖 𖬎𖬲𖬦𖬵'],
+                    ['ເຮືອນຢິນ (ສຸສານ)', '𖪎 𖬎𖰰𖬟 𖬖𖰝'],
+                    ['ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ &amp; ແປດທິດ', '𖬐𖬲𖬤 𖬎𖲨 𖬐𖰤 &amp; 𖭘 𖬖𖰟'],
+                    ['ບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ & ແປດທິດ', '𖬐𖬲𖬤 𖬎𖲨 𖬐𖰤 & 𖭘 𖬖𖰟'],
+                    ['ບົດທຳນາຍດາວເຫີນ &amp; ແປດທິດ', '𖬐𖬲𖬤 𖬎𖲨 𖬐𖰤 &amp; 𖭘 𖬖𖰟'],
+                    ['ບົດທຳນາຍດາວເຫີນ & ແປດທິດ', '𖬐𖬲𖬤 𖬎𖲨 𖬐𖰤 & 𖭘 𖬖𖰟'],
+                    ['ເລືອກຍຸກດາວເຫີນ:', '𖬘𖲝 𖬂𖲟:'],
+                    ['💡 ວິທີຈັດວາງ/ແກ້ໄຂ:', '💡 𖬐𖰞 𖬄𖲞:'],
+                    ['💡 ວິທີແກ້ໄຂ / ປັບຮວງຈຸ້ຍ:', '💡 𖬐𖰞 𖬄𖲞:'],
+                    ['💡 ວິທີແກ້ໄຂ:', '💡 𖬐𖰞 𖬄𖲞:'],
+                    ['<b>ວິທີແກ້:</b>', '<b>𖬐𖰞 𖬄𖲞:</b>'],
+                    ['<b>ສຸຂະພາບ &amp; ຄົນ:</b>', '<b>𖬐𖰞 𖬎𖲤:</b>'],
+                    ['<b>ສຸຂະພາບ & ຄົນ:</b>', '<b>𖬐𖰞 𖬎𖲤:</b>'],
+                    ['<b>ການເງິນ &amp; 12 ນັກສັດ:</b>', '<b>𖬌𖲞 &amp; 𖭑𖭒 𖬎𖲤:</b>'],
+                    ['<b>ການເງິນ & 12 ນັກສັດ:</b>', '<b>𖬌𖲞 & 𖭑𖭒 𖬎𖲤:</b>'],
+                    ['ຄະແນນ:', '𖬂𖲟:'],
+                    ['ທິດທີ່ສ່ອງ:', '𖬖𖰟:'],
+                    ['ດາວນ້ຳ', '𖬆𖰞'],
+                    ['ດາວພູ', '𖬌𖲞'],
+                    ['ດາວຍຸກ', '𖬂𖲟'],
+                    ['ຫຼັງພິງ:', '𖬎𖲦 𖬖𖰟:'],
+                    ['ໜ້າບ້ານ:', '𖬄𖲝 𖬈𖰞:'],
+                    ['ຄູ່ດາວ:', '𖬎𖲨 𖬐𖰤:'],
+                    ['ຄູ່ດາວ', '𖬎𖲨 𖬐𖰤'],
+                    ['ມຸງຄຸນສູງສຸດ', '𖬌𖲞 𖬎𖲤'],
+                    ['ມຸງຄຸນ', '𖬌𖲞'],
+                    ['ອັບປະມຸງຄຸນ', '𖬂𖰞'],
+                    ['ປານກາງ', '𖬆𖰝'],
+                    ['ທິດເໜືອ', '𖬈𖰞 𖬐𖰞'],
+                    ['ທິດໃຕ້', '𖬈𖰞 𖬎𖰞'],
+                    ['ທິດຕາເວັນອອກ', '𖬈𖰞 𖬎𖲤'],
+                    ['ທິດຕາເວັນຕົກ', '𖬈𖰞 𖬉𖲦']
+                ];
+
+                let res = contentHtml;
+                for (const [lao, ph] of phDict) {
+                    res = res.split(lao).join(ph);
+                }
+                return res;
+            }
+
+            return contentHtml;
+        }
+
 function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
             const actualFacingDegree = ((faceDeg % 360) + 360) % 360;
             const actualSittingDegree = ((faceDeg + 180) % 360 + 360) % 360;
@@ -12532,25 +12753,49 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
                 if (mobHudM) mobHudM.innerHTML = '🏔️' + curM;
                 if (mobHudP) mobHudP.innerHTML = '⭐️' + curP;
                 if (mobHudW) mobHudW.innerHTML = '💧' + curW;
-                if (hudM) hudM.innerHTML = ICONS.mountain + ' <span>ພູ: ' + curM + '</span>';
-                if (hudP) hudP.innerHTML = ICONS.period + ' <span>ຍຸກ: ' + curP + '</span>';
-                if (hudW) hudW.innerHTML = ICONS.water + ' <span>ນ້ຳ: ' + curW + '</span>';
+                const lblM = currentLuopanLang === 'hm' ? 'Roob' : currentLuopanLang === 'ph' ? '𖬌𖲞' : 'ພູ';
+                const lblP = currentLuopanLang === 'hm' ? 'Caij' : currentLuopanLang === 'ph' ? '𖬂𖲟' : 'ຍຸກ';
+                const lblW = currentLuopanLang === 'hm' ? 'Dej' : currentLuopanLang === 'ph' ? '𖬆𖰞' : 'ນ້ຳ';
+                if (hudM) hudM.innerHTML = ICONS.mountain + ' <span>' + lblM + ': ' + curM + '</span>';
+                if (hudP) hudP.innerHTML = ICONS.period + ' <span>' + lblP + ': ' + curP + '</span>';
+                if (hudW) hudW.innerHTML = ICONS.water + ' <span>' + lblW + ': ' + curW + '</span>';
             }
 
             let spotBadgeClass = '';
             let spotBadgeHtml = '';
+            const curI18nPred = LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo;
             if (curPal === chart.bestWealthPal) {
                 spotBadgeClass = "flex items-center justify-center gap-1.5 bg-gradient-to-r from-amber-500 to-emerald-500 text-slate-950 px-2.5 py-0.5 rounded-full text-[9px] font-black shadow-md animate-pulse pointer-events-auto border border-white/60";
-                spotBadgeHtml = ICONS.water + ' <span>【ວັງໂຊກລາບສູງສຸດຍຸກ ' + currentPeriod + '! ດາວນ້ຳ ' + curW + '】</span>';
+                const wTxt = currentLuopanLang === 'hm'
+                    ? '【Chaw Nyiaj Txiag Zoo Tshaj Caij ' + currentPeriod + '! Hnub Qub Dej ' + curW + '】'
+                    : currentLuopanLang === 'ph'
+                    ? '【𖬖𖰰𖬝 𖬌𖲞 𖭙! 𖬆𖰞 ' + curW + '】'
+                    : '【ວັງໂຊກລາບສູງສຸດຍຸກ ' + currentPeriod + '! ດາວນ້ຳ ' + curW + '】';
+                spotBadgeHtml = ICONS.water + ' <span>' + wTxt + '</span>';
             } else if (curPal === chart.bestHealthPal) {
                 spotBadgeClass = "flex items-center justify-center gap-1.5 bg-gradient-to-r from-blue-600 to-teal-400 text-white px-2.5 py-0.5 rounded-full text-[9px] font-black shadow-md animate-pulse pointer-events-auto border border-white/60";
-                spotBadgeHtml = ICONS.mountain + ' <span>【ວັງສຸຂະພາບ & ບາຣະມີສູງສຸດ! ດາວພູ ' + curM + '】</span>';
+                const hTxt = currentLuopanLang === 'hm'
+                    ? '【Chaw Noj Qab Haus Huv & Koob Meej! Hnub Qub Roob ' + curM + '】'
+                    : currentLuopanLang === 'ph'
+                    ? '【𖬖𖰰𖬝 𖬐𖰞! 𖬌𖲞 ' + curM + '】'
+                    : '【ວັງສຸຂະພາບ & ບາຣະມີສູງສຸດ! ດາວພູ ' + curM + '】';
+                spotBadgeHtml = ICONS.mountain + ' <span>' + hTxt + '</span>';
             } else if (curPal === chart.fiveYellowPal) {
                 spotBadgeClass = "flex items-center justify-center gap-1.5 bg-rose-600 text-white px-2.5 py-0.5 rounded-full text-[9px] font-black shadow-md pointer-events-auto border border-rose-300";
-                spotBadgeHtml = ICONS.alert + ' <span>【ຈຸດຕ້ອງຫ້າມ: ດາວ 5 ຫ້າເຫຼືອງ】 ຫ້າມເຈາະທຸບ</span>';
+                const yTxt = currentLuopanLang === 'hm'
+                    ? '【Chaw Txwv Tsis Pub Ua: Hnub Qub 5 Kob Daj】 Txwv Khawb Rhuav'
+                    : currentLuopanLang === 'ph'
+                    ? '【𖬖𖰰𖬝 𖭕】 𖬐𖰞 𖬄𖲞'
+                    : '【ຈຸດຕ້ອງຫ້າມ: ດາວ 5 ຫ້າເຫຼືອງ】 ຫ້າມເຈາະທຸບ';
+                spotBadgeHtml = ICONS.alert + ' <span>' + yTxt + '</span>';
             } else if (curPal === chart.illnessPal) {
                 spotBadgeClass = "flex items-center justify-center gap-1.5 bg-amber-600 text-white px-2.5 py-0.5 rounded-full text-[9px] font-black shadow-md pointer-events-auto border border-amber-300";
-                spotBadgeHtml = ICONS.alert + ' <span>【ຈຸດດາວ 2 ພະຍາດ】 ລະວັງສຸຂະພາບ</span>';
+                const iTxt = currentLuopanLang === 'hm'
+                    ? '【Chaw Hnub Qub 2 Mob Nkeeg】 Ceev Faj Kev Noj Qab Haus Huv'
+                    : currentLuopanLang === 'ph'
+                    ? '【𖬖𖰰𖬝 𖭉】 𖬐𖰞 𖬄𖲞'
+                    : '【ຈຸດດາວ 2 ພະຍາດ】 ລະວັງສຸຂະພາບ';
+                spotBadgeHtml = ICONS.alert + ' <span>' + iTxt + '</span>';
             }
 
             if (spotBadgeHtml !== lastCachedSpotHtml) {
@@ -12652,8 +12897,8 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
                     const pcVerdict = document.querySelector('#pcActiveTabBody #roomVerdictContainer');
                     if (mobVerdict || pcVerdict) {
                         const verdictHtml = renderRoomVerdictHtml(faceDeg, chart, curPal, curM, curW, comboInfo);
-                        if (mobVerdict) mobVerdict.innerHTML = verdictHtml;
-                        if (pcVerdict) pcVerdict.innerHTML = verdictHtml;
+                        if (mobVerdict) mobVerdict.innerHTML = localizePredictionHtml(verdictHtml, currentLuopanLang);
+                        if (pcVerdict) pcVerdict.innerHTML = localizePredictionHtml(verdictHtml, currentLuopanLang);
                         return; // FAST EXIT: ROOM BUTTONS ARE NEVER RE-RENDERED!
                     }
                 }
@@ -12664,8 +12909,8 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
                     const pcLuantou = document.querySelector('#pcActiveTabBody #luantouVerdictContainer');
                     if (mobLuantou || pcLuantou) {
                         const verdictHtml = renderLuantouVerdictHtml(faceDeg, chart, curPal, curM, curW, comboInfo);
-                        if (mobLuantou) mobLuantou.innerHTML = verdictHtml;
-                        if (pcLuantou) pcLuantou.innerHTML = verdictHtml;
+                        if (mobLuantou) mobLuantou.innerHTML = localizePredictionHtml(verdictHtml, currentLuopanLang);
+                        if (pcLuantou) pcLuantou.innerHTML = localizePredictionHtml(verdictHtml, currentLuopanLang);
                         return; // FAST EXIT: LUANTOU BUTTONS ARE NEVER RE-RENDERED!
                     }
                 }
@@ -12674,8 +12919,8 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
                 const pcBody = document.getElementById('pcActiveTabBody');
                 if ((!isDesktop && mobBody) || (isDesktop && pcBody)) {
                     const tabBody = computePredictionBody(faceDeg, chart, kw, sitDeg, curPal, curM, curP, curW, comboInfo);
-                    if (mobBody) mobBody.innerHTML = tabBody;
-                    if (pcBody) pcBody.innerHTML = tabBody;
+                    if (mobBody) mobBody.innerHTML = localizePredictionHtml(tabBody, currentLuopanLang);
+                    if (pcBody) pcBody.innerHTML = localizePredictionHtml(tabBody, currentLuopanLang);
                     return; // FAST EXIT: NAVIGATION BUTTONS ARE NEVER RE-RENDERED!
                 }
             }
@@ -12697,8 +12942,8 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
 
             const mobContent = document.getElementById('mobilePredictionContent');
             const pcContent = document.getElementById('desktopPredictionContent');
-            if (mobContent) mobContent.innerHTML = mobHtml;
-            if (pcContent) pcContent.innerHTML = pcHtml;
+            if (mobContent) mobContent.innerHTML = localizePredictionHtml(mobHtml, currentLuopanLang);
+            if (pcContent) pcContent.innerHTML = localizePredictionHtml(pcHtml, currentLuopanLang);
         }
 
 function updateCompassTransform(deltaAngle = null) {
