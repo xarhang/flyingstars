@@ -456,14 +456,28 @@
                     <span id="resNayin" class="font-semibold text-slate-200 text-[11px]">ທອງປາຍດາບ</span>
                 </div>
 
-                <!-- BaZi 4 Pillars Synergy in Unified Card -->
-                <div id="resBaziPill" class="bg-purple-950/40 border border-purple-500/30 rounded-lg p-2 flex flex-col gap-0.5 text-xs">
-                    <div class="flex items-center justify-between text-[10px]">
-                        <span id="lblBaziDayMasterTitle" class="text-purple-300 font-bold">📜 ຕົວຕົນແທ້ (ດິດຖີປາຈື):</span>
-                        <span id="resBaziDayMaster" class="text-amber-200 font-bold font-mono"></span>
+                <!-- BaZi 4 Pillars Synergy in Unified Card (Featured Prominent Card) -->
+                <div id="resBaziPill" class="bg-gradient-to-br from-purple-950/90 via-slate-900/95 to-indigo-950/90 border-2 border-amber-400/80 shadow-lg shadow-purple-950/60 rounded-xl p-3 flex flex-col gap-2 relative overflow-hidden ring-1 ring-amber-300/40">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-amber-500/15 rounded-full blur-xl pointer-events-none"></div>
+                    <div class="flex items-center justify-between gap-2 z-10">
+                        <span id="lblBaziDayMasterTitle" class="text-amber-300 font-extrabold text-xs flex items-center gap-1.5 uppercase tracking-wide">
+                            <span>📜</span> <span id="lblBaziDayMasterText">ຕົວຕົນແທ້ (ດິດຖີປາຈື):</span>
+                        </span>
+                        <span id="resBaziDayMaster" class="text-xs sm:text-sm font-black text-amber-200 bg-gradient-to-r from-amber-950/90 to-purple-950/90 border border-amber-400/80 px-2.5 py-1 rounded-lg shadow-sm font-mono tracking-wide"></span>
                     </div>
-                    <div id="lblBaziSynergy" class="text-[10px] text-slate-300">
-                        • ທາດເສີມດວງ (ຍົງສິ່ນ): <b id="resBaziYongShen" class="text-emerald-300"></b> | ຫຼີກລ່ຽງ: <b id="resBaziAvoid" class="text-rose-300"></b>
+                    <div id="lblBaziSynergy" class="grid grid-cols-2 gap-2 pt-1.5 border-t border-purple-500/30 text-xs z-10">
+                        <div class="bg-emerald-950/70 border border-emerald-400/60 rounded-lg p-2 flex flex-col gap-0.5 shadow-sm">
+                            <span id="lblBaziYongShenText" class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                                ✨ ທາດເສີມດວງ (ຍົງສິ່ນ)
+                            </span>
+                            <span id="resBaziYongShen" class="text-emerald-200 font-black text-xs"></span>
+                        </div>
+                        <div class="bg-rose-950/70 border border-rose-400/60 rounded-lg p-2 flex flex-col gap-0.5 shadow-sm">
+                            <span id="lblBaziAvoidText" class="text-[10px] text-rose-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                                ⚠️ ທາດຄວນຫຼີກລ່ຽງ
+                            </span>
+                            <span id="resBaziAvoid" class="text-rose-200 font-black text-xs"></span>
+                        </div>
                     </div>
                 </div>
 
@@ -1567,8 +1581,18 @@
             if (lblHl) lblHl.textContent = t.highlightGuaOnDisk;
 
             // Section 4 BaZi Day Master & Fortunes
-            const lblDayMaster = document.getElementById('lblBaziDayMasterTitle');
-            if (lblDayMaster) lblDayMaster.textContent = (lang === 'hm' ? '📜 Tus Kheej Tseeb (Day Master BaZi):' : lang === 'ph' ? '📜 𖬎𖲧 𖬎𖲨 Day Master:' : '📜 ຕົວຕົນແທ້ (ດິດຖີປາຈື):');
+            const lblDayMasterText = document.getElementById('lblBaziDayMasterText') || document.getElementById('lblBaziDayMasterTitle');
+            if (lblDayMasterText) {
+                if (lblDayMasterText.id === 'lblBaziDayMasterTitle') {
+                    lblDayMasterText.innerHTML = lang === 'hm' ? '<span>📜</span> Tus Kheej Tseeb (Day Master BaZi):' : lang === 'ph' ? '<span>📜</span> 𖬎𖲧 𖬎𖲨 Day Master:' : '<span>📜</span> ຕົວຕົນແທ້ (ດິດຖີປາຈື):';
+                } else {
+                    lblDayMasterText.textContent = lang === 'hm' ? 'Tus Kheej Tseeb (Day Master BaZi):' : lang === 'ph' ? '𖬎𖲧 𖬎𖲨 Day Master:' : 'ຕົວຕົນແທ້ (ດິດຖີປາຈື):';
+                }
+            }
+            const lblYs = document.getElementById('lblBaziYongShenText');
+            if (lblYs) lblYs.innerHTML = lang === 'hm' ? '✨ Zog Pab Hmoov (Yong Shen)' : lang === 'ph' ? '✨ 𖬋𖲰𖬩 𖬐𖲱𖬩 (Yong Shen)' : '✨ ທາດເສີມດວງ (ຍົງສິ່ນ)';
+            const lblAv = document.getElementById('lblBaziAvoidText');
+            if (lblAv) lblAv.innerHTML = lang === 'hm' ? '⚠️ Zog Yuav Tsum Zam' : lang === 'ph' ? '⚠️ 𖬐𖲱𖬩 𖬋𖲰𖬩 𖬌𖲞' : '⚠️ ທາດຄວນຫຼີກລ່ຽງ';
             const lblAuspicious = document.getElementById('lblAuspiciousTitle');
             if (lblAuspicious) {
                 const svg = lblAuspicious.querySelector('svg');
@@ -3078,25 +3102,53 @@
                 const gua = calculateMingGua(userBirthYear, userGender);
                 const bazi = calculateBaZi4Pillars(selectedBaziYear, selectedBaziMonth, selectedBaziDay, selectedBaziHour);
 
-                // Update Section 4 BaZi pill
+                // Update Section 4 BaZi pill with full multilingual & prominent display
                 const dmEl = document.getElementById('resBaziDayMaster');
                 const ysEl = document.getElementById('resBaziYongShen');
                 const avEl = document.getElementById('resBaziAvoid');
-                if (dmEl) dmEl.textContent = 'ດິດຖີ ' + bazi.dayMaster;
-                if (ysEl) ysEl.textContent = bazi.yongShen;
-                if (avEl) avEl.textContent = bazi.avoidElement;
+                const lang = (typeof currentLuopanLang !== 'undefined' ? currentLuopanLang : 'lo');
 
-                // Mobile summary pill
+                let dmVal = '';
+                let ysVal = '';
+                let avVal = '';
+
+                if (lang === 'hm') {
+                    dmVal = bazi.dayMasterHm || bazi.dayMaster;
+                    ysVal = bazi.yongShenHm || bazi.yongShen;
+                    avVal = bazi.avoidElementHm || bazi.avoidElement;
+                } else if (lang === 'ph') {
+                    dmVal = bazi.dayMasterPh || bazi.dayMaster;
+                    ysVal = bazi.yongShenPh || bazi.yongShen;
+                    avVal = bazi.avoidElementPh || bazi.avoidElement;
+                } else {
+                    dmVal = 'ດິດຖີ ' + bazi.dayMaster;
+                    ysVal = bazi.yongShen;
+                    avVal = bazi.avoidElement;
+                }
+
+                if (dmEl) dmEl.textContent = dmVal;
+                if (ysEl) ysEl.textContent = ysVal;
+                if (avEl) avEl.textContent = avVal;
+
+                // Mobile summary pill with high prominence
+                const dmTitleMob = lang === 'hm' ? '📜 Tus Kheej Tseeb' : lang === 'ph' ? '📜 𖬎𖲧 𖬎𖲨' : '📜 ຕົວຕົນແທ້ (ດິດຖີ)';
+                const ysLabelMob = lang === 'hm' ? 'Pab Hmoov' : lang === 'ph' ? '𖬋𖲰𖬩' : 'ເສີມດວງ(ຍົງສິ່ນ)';
+                const avLabelMob = lang === 'hm' ? 'Zam' : lang === 'ph' ? '𖬐𖲱𖬩' : 'ຫຼີກລ່ຽງ';
+
                 const summaryHtml =
                     '<div class="flex items-center justify-between text-[10px] leading-tight pb-1 border-b border-purple-500/20">' +
-                        '<div><span class="text-amber-300 font-bold">🧭 ທາດຮວງຈຸ້ຍ (ມິ່ງກວ້າ):</span> <b class="text-white">' + gua.elem + '</b> (' + gua.name + ' · <span class="text-emerald-300">' + gua.groupName + '</span>)</div>' +
-                        '<span class="text-slate-400 font-bold text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800">' + (userGender === 'male' ? '👨 ຊາຍ' : '👩 ຍິງ') + '</span>' +
+                        '<div><span class="text-amber-300 font-bold">🧭 ' + (lang === 'hm' ? 'Zog Looj Mem (Ming Gua):' : lang === 'ph' ? '🧭 𖬌𖲞 (Ming Gua):' : 'ທາດຮວງຈຸ້ຍ (ມິ່ງກວ້າ):') + '</span> <b class="text-white">' + gua.elem + '</b> (' + gua.name + ' · <span class="text-emerald-300">' + gua.groupName + '</span>)</div>' +
+                        '<span class="text-slate-400 font-bold text-[9px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800">' + (userGender === 'male' ? (lang === 'hm' ? '👨 Txiv Neej' : '👨 ຊາຍ') : (lang === 'hm' ? '👩 Poj Niam' : '👩 ຍິງ')) + '</span>' +
                     '</div>' +
-                    '<div class="flex items-center justify-between text-[10px] pt-1">' +
-                        '<div><span class="text-purple-300 font-bold">📜 ທາດດວງຊາຕາ (ປາຈື):</span> ດິດຖີ <b class="text-amber-200">' + bazi.dayMaster + '</b> · ເສີມດວງ(ຍົງສິ່ນ): <b class="text-emerald-300">' + bazi.yongShen + '</b> · ຫຼີກລ່ຽງ: <b class="text-rose-300">' + bazi.avoidElement + '</b></div>' +
+                    '<div class="flex items-center justify-between text-[11px] pt-1.5 pb-0.5">' +
+                        '<div class="flex items-center gap-1.5 flex-wrap"><span class="text-amber-300 font-extrabold">' + dmTitleMob + ':</span> <span class="bg-amber-950/80 border border-amber-400/70 text-amber-200 px-2 py-0.5 rounded font-black text-[10px] font-mono shadow-sm">' + dmVal + '</span></div>' +
                     '</div>' +
-                    '<div class="text-[9px] text-slate-300 pt-0.5 font-mono bg-slate-900/60 p-1 rounded mt-0.5 border border-slate-800/60">' +
-                        '🧭 4 ທິດມຸງຄຸນ: ໂຊກລາບ <b class="text-amber-300">' + gua.shengQi + '</b> · ສຸຂະພາບ <b class="text-teal-300">' + gua.tianYi + '</b> · ຄວາມຮັກ <b class="text-blue-300">' + gua.yanNian + '</b> · ສະຕິປັນຍາ <b class="text-purple-300">' + gua.fuWei + '</b>' +
+                    '<div class="grid grid-cols-2 gap-1.5 pt-1 text-[10px]">' +
+                        '<div class="bg-emerald-950/70 border border-emerald-500/50 p-1 rounded text-emerald-200 font-bold leading-tight">✨ ' + ysLabelMob + ': ' + ysVal + '</div>' +
+                        '<div class="bg-rose-950/70 border border-rose-500/50 p-1 rounded text-rose-200 font-bold leading-tight">⚠️ ' + avLabelMob + ': ' + avVal + '</div>' +
+                    '</div>' +
+                    '<div class="text-[9px] text-slate-300 pt-0.5 font-mono bg-slate-900/60 p-1 rounded mt-1 border border-slate-800/60">' +
+                        '🧭 4 ' + (lang === 'hm' ? 'Hmoov Zoo' : 'ທິດມຸງຄຸນ') + ': ' + (lang === 'hm' ? 'Nyiaj' : 'ໂຊກລາບ') + ' <b class="text-amber-300">' + gua.shengQi + '</b> · ' + (lang === 'hm' ? 'Siav' : 'ສຸຂະພາບ') + ' <b class="text-teal-300">' + gua.tianYi + '</b> · ' + (lang === 'hm' ? 'Koom' : 'ຄວາມຮັກ') + ' <b class="text-blue-300">' + gua.yanNian + '</b> · ' + (lang === 'hm' ? 'Tswv' : 'ສະຕິປັນຍາ') + ' <b class="text-purple-300">' + gua.fuWei + '</b>' +
                     '</div>';
 
                 const mobPill = document.getElementById('mobBirthSummaryPill');
@@ -4005,16 +4057,16 @@
         // MASTER SYSTEM 2.8: BAZI 4 PILLARS & YONG SHEN HOUSE SYNERGY (八字四柱与喜用神 配合阳宅)
         // =========================================================================
         const BAZI_STEMS = [
-            { char: '甲', pinyin: 'Jiǎ', lao: 'ກາບ', element: 'Wood', polarity: '+', color: 'text-emerald-400', desc: 'ທາດໄມ້ໃຫຍ່ (阳木)' },
-            { char: '乙', pinyin: 'Yǐ', lao: 'ດັບ', element: 'Wood', polarity: '-', color: 'text-emerald-300', desc: 'ທາດໄມ້ນ້ອຍ (阴木)' },
-            { char: '丙', pinyin: 'Bǐng', lao: 'ຮວາຍ', element: 'Fire', polarity: '+', color: 'text-rose-400', desc: 'ທາດໄຟໃຫຍ່ (阳火)' },
-            { char: '丁', pinyin: 'Dīng', lao: 'ເມືອງ', element: 'Fire', polarity: '-', color: 'text-rose-300', desc: 'ທາດໄຟນ້ອຍ (阴火)' },
-            { char: '戊', pinyin: 'Wù', lao: 'ເປິກ', element: 'Earth', polarity: '+', color: 'text-amber-400', desc: 'ທາດດິນໃຫຍ່ (阳土)' },
-            { char: '己', pinyin: 'Jǐ', lao: 'ກັດ', element: 'Earth', polarity: '-', color: 'text-amber-300', desc: 'ທາດດິນນ້ອຍ (阴土)' },
-            { char: '庚', pinyin: 'Gēng', lao: 'ກົດ', element: 'Metal', polarity: '+', color: 'text-yellow-200', desc: 'ທາດທອງໃຫຍ່ (阳金)' },
-            { char: '辛', pinyin: 'Xīn', lao: 'ຮວ້າຍ', element: 'Metal', polarity: '-', color: 'text-slate-200', desc: 'ທາດທອງນ້ອຍ (阴金)' },
-            { char: '壬', pinyin: 'Rén', lao: 'ເຕົ່າ', element: 'Water', polarity: '+', color: 'text-blue-400', desc: 'ທາດນ້ຳໃຫຍ່ (阳水)' },
-            { char: '癸', pinyin: 'Guǐ', lao: 'ກ່າ', element: 'Water', polarity: '-', color: 'text-cyan-300', desc: 'ທາດນ້ຳນ້ອຍ (阴水)' }
+            { char: '甲', pinyin: 'Jiǎ', lao: 'ກາບ', hm: 'Jiab', ph: '𖬌𖬰', element: 'Wood', polarity: '+', color: 'text-emerald-400', desc: 'ທາດໄມ້ໃຫຍ່ (阳木)', descHm: 'Jiab - Ntoo Loj (阳木)', descPh: '𖬌𖲞 𖬌𖬰 (阳木)' },
+            { char: '乙', pinyin: 'Yǐ', lao: 'ດັບ', hm: 'Yiv', ph: '𖬍𖬰', element: 'Wood', polarity: '-', color: 'text-emerald-300', desc: 'ທາດໄມ້ນ້ອຍ (阴木)', descHm: 'Yiv - Ntoo Me (阴木)', descPh: '𖬌𖲞 𖬍𖬰 (阴木)' },
+            { char: '丙', pinyin: 'Bǐng', lao: 'ຮວາຍ', hm: 'Peej', ph: '𖬎𖬰', element: 'Fire', polarity: '+', color: 'text-rose-400', desc: 'ທາດໄຟໃຫຍ່ (阳火)', descHm: 'Peej - Hluav Taws Loj (阳火)', descPh: '𖬍𖲞 𖬎𖬰 (阳火)' },
+            { char: '丁', pinyin: 'Dīng', lao: 'ເມືອງ', hm: 'Teev', ph: '𖬏𖬰', element: 'Fire', polarity: '-', color: 'text-rose-300', desc: 'ທາດໄຟນ້ອຍ (阴火)', descHm: 'Teev - Hluav Taws Me (阴火)', descPh: '𖬍𖲞 𖬏𖬰 (阴火)' },
+            { char: '戊', pinyin: 'Wù', lao: 'ເປິກ', hm: 'Vwv', ph: '𖬐𖬰', element: 'Earth', polarity: '+', color: 'text-amber-400', desc: 'ທາດດິນໃຫຍ່ (阳土)', descHm: 'Vwv - Av Loj (阳土)', descPh: '𖬎𖲞 𖬐𖬰 (阳土)' },
+            { char: '己', pinyin: 'Jǐ', lao: 'ກັດ', hm: 'Kiv', ph: '𖬑𖬰', element: 'Earth', polarity: '-', color: 'text-amber-300', desc: 'ທາດດິນນ້ອຍ (阴土)', descHm: 'Kiv - Av Me (阴土)', descPh: '𖬎𖲞 𖬑𖬰 (阴土)' },
+            { char: '庚', pinyin: 'Gēng', lao: 'ກົດ', hm: 'Keej', ph: '𖬒𖬰', element: 'Metal', polarity: '+', color: 'text-yellow-200', desc: 'ທາດທອງໃຫຍ່ (阳金)', descHm: 'Keej - Kub Loj (阳金)', descPh: '𖬏𖲞 𖬒𖬰 (阳金)' },
+            { char: '辛', pinyin: 'Xīn', lao: 'ຮວ້າຍ', hm: 'Xiv', ph: '𖬓𖬰', element: 'Metal', polarity: '-', color: 'text-slate-200', desc: 'ທາດທອງນ້ອຍ (阴金)', descHm: 'Xiv - Kub Me (阴金)', descPh: '𖬏𖲞 𖬓𖬰 (阴金)' },
+            { char: '壬', pinyin: 'Rén', lao: 'ເຕົ່າ', hm: 'Nyeem', ph: '𖬔𖬰', element: 'Water', polarity: '+', color: 'text-blue-400', desc: 'ທາດນ້ຳໃຫຍ່ (阳水)', descHm: 'Nyeem - Dej Loj (阳水)', descPh: '𖬐𖲞 𖬔𖬰 (阳水)' },
+            { char: '癸', pinyin: 'Guǐ', lao: 'ກ່າ', hm: 'Kuav', ph: '𖬕𖬰', element: 'Water', polarity: '-', color: 'text-cyan-300', desc: 'ທາດນ້ຳນ້ອຍ (阴水)', descHm: 'Kuav - Dej Me (阴水)', descPh: '𖬐𖲞 𖬕𖬰 (阴水)' }
         ];
 
         const BAZI_BRANCHES = [
@@ -4126,6 +4178,8 @@
             }
 
             const ELEM_LAO = { Wood: 'ໄມ້', Fire: 'ໄຟ', Earth: 'ດິນ', Metal: 'ທອງ', Water: 'ນ້ຳ' };
+            const ELEM_HM = { Wood: 'Ntoo', Fire: 'Hluav Taws', Earth: 'Av', Metal: 'Kub', Water: 'Dej' };
+            const ELEM_PH = { Wood: '𖬌𖲞 Ntoo', Fire: '𖬍𖲞 Hluav Taws', Earth: '𖬎𖲞 Av', Metal: '𖬏𖲞 Kub', Water: '𖬐𖲞 Dej' };
             const ELEM_PALACE = {
                 Wood: 'ທິດຕາເວັນອອກ (震) & ອາຄະເນ (巽)',
                 Fire: 'ທິດໃຕ້ (离)',
@@ -4140,10 +4194,19 @@
                 dayPillar: dayStem.char + dayBranch.char + ' (' + dayStem.lao + '-' + dayBranch.lao + ')',
                 hourPillar: hourStem.char + hourBranch.char + ' (' + hourStem.lao + '-' + hourBranch.lao + ')',
                 dayMaster: dayMaster.char + ' (' + dayMaster.lao + ' - ' + (dayMaster.desc || ('ທາດ' + ELEM_LAO[dmElem])) + ')',
+                dayMasterHm: dayMaster.char + ' (' + (dayMaster.descHm || (dayMaster.hm + ' - ' + ELEM_HM[dmElem])) + ')',
+                dayMasterPh: dayMaster.char + ' (' + (dayMaster.descPh || (dayMaster.ph + ' - ' + ELEM_PH[dmElem])) + ')',
                 strength: isStrong ? '身强 (ດວງແຂງ - ພະລັງເຕັມປ່ຽມ)' : '身弱 (ດວງອ່ອນ - ຕ້ອງການພະລັງເສີມ)',
+                strengthHm: isStrong ? '身强 (Hmoov Khov Kho)' : '身弱 (Hmoov Nruab Nrab)',
                 yongShen: ELEM_LAO[yongShen] + ' (ທາດໂຊກລາບອັນດັບ 1)',
+                yongShenHm: ELEM_HM[yongShen] + ' (Zog Nyiaj Txiag Qib 1)',
+                yongShenPh: ELEM_PH[yongShen] + ' (Qib 1)',
                 xiShen: ELEM_LAO[xiShen] + ' (ທາດເສີມບາຣະມີອັນດັບ 2)',
+                xiShenHm: ELEM_HM[xiShen] + ' (Zog Koob Meej Qib 2)',
+                xiShenPh: ELEM_PH[xiShen] + ' (Qib 2)',
                 avoidElement: ELEM_LAO[avoidElement] + ' (ທາດທີ່ຄວນຫຼຸດຜ່ອນ)',
+                avoidElementHm: ELEM_HM[avoidElement] + ' (Zog Yuav Tsum Txo)',
+                avoidElementPh: ELEM_PH[avoidElement] + ' (Txo)',
                 bestPalaces: ELEM_PALACE[yongShen],
                 secondPalaces: ELEM_PALACE[xiShen],
                 recommendation: 'ເຈົ້າຂອງບ້ານດວງນີ້ຄວນຈັດຫ້ອງນອນ ຫຼື ໂຕະເຮັດວຽກຢູ່ ' + ELEM_PALACE[yongShen] + ' ເພື່ອດຶງດູດໂຊກລາບ ແລະ ຄວາມຮຸ່ງເຮືອງສູງສຸດ.'
