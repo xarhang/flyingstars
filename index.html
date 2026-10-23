@@ -1183,9 +1183,9 @@
                 rotDegree: 'Qib Ntawm Daim Luopan',
                 resetRot: '↺ Rov Qab Mus Chaw Qub (Qab Teb Nyob Saum)',
                 quickS: 'Qab Teb (180°)',
-                quickW: 'Sab Hnub Poob (270°)',
+                quickW: 'Hnub Poob (270°)',
                 quickN: 'Qaum Teb (0°)',
-                quickE: 'Sab Hnub Tuaj (90°)',
+                quickE: 'Hnub Tuaj (90°)',
                 trueNorthLabel: '🧭 Qaum Teb Tseeb (True North)',
                 magNorth: 'Qaum Teb Hlau Nplaum',
                 trueNorth: 'Qaum Teb Tseeb',
@@ -1238,11 +1238,11 @@
                 dirs: {
                     N: 'Qaum Teb',
                     NE: 'Sab Hnub Tuaj Qaum Teb',
-                    E: 'Sab Hnub Tuaj',
+                    E: 'Hnub Tuaj',
                     SE: 'Sab Hnub Tuaj Qab Teb',
                     S: 'Qab Teb',
                     SW: 'Sab Hnub Poob Qab Teb',
-                    W: 'Sab Hnub Poob',
+                    W: 'Hnub Poob',
                     NW: 'Sab Hnub Poob Qaum Teb'
                 },
                 dirsShort: {
@@ -2383,11 +2383,13 @@
 
             // 4 BOLD, HIGH-CONTRAST CARDINAL DIRECTION BADGES ON THE ROTATING DIAL
             const curI18nDial = LUOPAN_I18N[currentLuopanLang] || LUOPAN_I18N.lo;
+            const wLabel = currentLuopanLang === 'hm' ? 'Hnub Poob' : curI18nDial.dirs.W;
+            const eLabel = currentLuopanLang === 'hm' ? 'Hnub Tuaj' : curI18nDial.dirs.E;
             const cardinalBadges = [
                 { deg: 0,   label: curI18nDial.dirs.N, code: '0° N',   color: '#ffffff', bg: '#1d4ed8', border: '#60a5fa', r: 68, rot: 0 },
                 { deg: 180, label: curI18nDial.dirs.S, code: '180° S', color: '#ffffff', bg: '#b91c1c', border: '#f87171', r: 68, rot: 0 },
-                { deg: 90,  label: curI18nDial.dirs.E, code: '90° E',  color: '#ffffff', bg: '#15803d', border: '#4ade80', r: 68, rot: -90 },
-                { deg: 270, label: curI18nDial.dirs.W, code: '270° W', color: '#ffffff', bg: '#1e293b', border: '#94a3b8', r: 68, rot: 90 }
+                { deg: 90,  label: eLabel, code: '90° E',  color: '#ffffff', bg: '#15803d', border: '#4ade80', r: 68, rot: -90 },
+                { deg: 270, label: wLabel, code: '270° W', color: '#ffffff', bg: '#1e293b', border: '#94a3b8', r: 68, rot: 90 }
             ];
             cardinalBadges.forEach(cb => {
                 const pos = polarToCartesian(CX, CY, cb.r, cb.deg);
@@ -2524,7 +2526,7 @@
                 { name: '坤', lao: 'ຄຸນ', hm: 'Khuv', ph: '𖬐𖰤', yuan: 'tian', pol: 1, start: 217.5, end: 232.5 },
                 { name: '申', lao: 'ເຊີນ (ລີງ)', hm: 'Xas (Liab)', ph: '𖬘𖲝 (𖬎𖲟)', yuan: 'ren', pol: 1, start: 232.5, end: 247.5 }
             ]},
-            3: { name: 'Zhen', lao: 'ເຈິ້ນ', hm: 'Zhen (Ntoo)', ph: '𖬎𖲝', dir: 'ທິດຕາເວັນອອກ', dirHm: 'Sab Hnub Tuaj', deg: 90, baguaCode: 'E', mountains: [
+            3: { name: 'Zhen', lao: 'ເຈິ້ນ', hm: 'Zhen (Ntoo)', ph: '𖬎𖲝', dir: 'ທິດຕາເວັນອອກ', dirHm: 'Hnub Tuaj', deg: 90, baguaCode: 'E', mountains: [
                 { name: '甲', lao: 'ຈຍ່າ', hm: 'Chas', ph: '𖬎𖲤', yuan: 'di', pol: 1, start: 67.5, end: 82.5 },
                 { name: '卯', lao: 'ມາວ (ກະຕ່າຍ)', hm: 'Maus (Luav)', ph: '𖬈𖰞 (𖬎𖲞)', yuan: 'tian', pol: -1, start: 82.5, end: 97.5 },
                 { name: '乙', lao: 'ອີກ', hm: 'Yis', ph: '𖬎𖲞', yuan: 'ren', pol: -1, start: 97.5, end: 112.5 }
@@ -2539,7 +2541,7 @@
                 { name: '乾', lao: 'ສຽນ', hm: 'Khen', ph: '𖬐𖰝', yuan: 'tian', pol: 1, start: 307.5, end: 322.5 },
                 { name: '亥', lao: 'ໄຮ່ (ໝູ)', hm: 'Hais (Npua)', ph: '𖬎𖰟 (𖬌𖲟)', yuan: 'ren', pol: 1, start: 322.5, end: 337.5 }
             ]},
-            7: { name: 'Dui', lao: 'ຕຸ້ຍ', hm: 'Dui (Kub)', ph: '𖬆𖰤', dir: 'ທິດຕາເວັນຕົກ', dirHm: 'Sab Hnub Poob', deg: 270, baguaCode: 'W', mountains: [
+            7: { name: 'Dui', lao: 'ຕຸ້ຍ', hm: 'Dui (Kub)', ph: '𖬆𖰤', dir: 'ທິດຕາເວັນຕົກ', dirHm: 'Hnub Poob', deg: 270, baguaCode: 'W', mountains: [
                 { name: '庚', lao: 'ເກິງ', hm: 'Kes', ph: '𖬂𖲝', yuan: 'di', pol: 1, start: 247.5, end: 262.5 },
                 { name: '酉', lao: 'ໂຢ່ວ (ໄກ່)', hm: 'Yaus (Qaib)', ph: '𖬎𖰞 (𖬂𖲟)', yuan: 'tian', pol: -1, start: 262.5, end: 277.5 },
                 { name: '辛', lao: 'ຊິນ', hm: 'Xis', ph: '𖬘𖲞', yuan: 'ren', pol: -1, start: 277.5, end: 292.5 }
