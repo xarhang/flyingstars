@@ -7707,31 +7707,159 @@ function setYangTab(tabName) {
         }
 
         function renderPredictionModeSwitcher() {
+            const isHm = (currentLuopanLang === 'hm');
+            const isPh = (currentLuopanLang === 'ph');
+            const dirTitle = isHm ? 'Xam Raws Fab' : isPh ? '𖬐𖲤 𖬖𖰟' : 'ທຳນາຍຕາມທິດ';
+            const manTitle = isHm ? 'Phau Ntawv & Tswv Yim' : isPh ? '📖 𖬎𖲦' : 'ຄັງຄູ່ມື & ຕຳລາ';
+            const yinTitle = isHm ? 'Tsev Yeeb (Ntxa)' : isPh ? '𖪎 𖬎𖰰𖬟 8' : 'ເຮືອນຢິນ (ສຸສານ)';
+
             return (
                 '<div class="grid grid-cols-3 gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800 text-xs font-bold mb-2 shadow-inner">' +
                     '<button type="button" onclick="setFengShuiMode(\'yang\')" class="touch-manipulation select-none active:scale-95 py-2 px-1 rounded-lg text-center transition flex flex-col sm:flex-row items-center justify-center gap-1 ' +
                         (fengShuiMode === 'yang'
                             ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md border border-emerald-400/50'
                             : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900') + '">' +
-                        '<span class="text-sm">🧭</span> <span class="leading-tight text-[11px] sm:text-xs">ທຳນາຍຕາມທິດ</span> <span class="text-[9px] opacity-75 font-mono">(33)</span>' +
+                        '<span class="text-sm">🧭</span> <span class="leading-tight text-[11px] sm:text-xs">' + dirTitle + '</span> <span class="text-[9px] opacity-75 font-mono">(33)</span>' +
                     '</button>' +
                     '<button type="button" onclick="setFengShuiMode(\'manuals\')" class="touch-manipulation select-none active:scale-95 py-2 px-1 rounded-lg text-center transition flex flex-col sm:flex-row items-center justify-center gap-1 ' +
                         (fengShuiMode === 'manuals'
                             ? 'bg-gradient-to-r from-amber-600 to-yellow-600 text-slate-950 font-black shadow-md border border-amber-300'
                             : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900') + '">' +
-                        '<span class="text-sm">📖</span> <span class="leading-tight text-[11px] sm:text-xs">ຄັງຄູ່ມື & ຕຳລາ</span> <span class="text-[9px] opacity-75 font-mono">(37)</span>' +
+                        '<span class="text-sm">📖</span> <span class="leading-tight text-[11px] sm:text-xs">' + manTitle + '</span> <span class="text-[9px] opacity-75 font-mono">(37)</span>' +
                     '</button>' +
                     '<button type="button" onclick="setFengShuiMode(\'yin\')" class="touch-manipulation select-none active:scale-95 py-2 px-1 rounded-lg text-center transition flex flex-col sm:flex-row items-center justify-center gap-1 ' +
                         (fengShuiMode === 'yin'
                             ? 'bg-gradient-to-r from-purple-700 to-indigo-700 text-white shadow-md border border-purple-400/50'
                             : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900') + '">' +
-                        '<span class="text-sm">🪦</span> <span class="leading-tight text-[11px] sm:text-xs">ເຮືອນຢິນ (ສຸສານ)</span> <span class="text-[9px] opacity-75 font-mono">(8)</span>' +
+                        '<span class="text-sm">🪦</span> <span class="leading-tight text-[11px] sm:text-xs">' + yinTitle + '</span> <span class="text-[9px] opacity-75 font-mono">(8)</span>' +
                     '</button>' +
                 '</div>'
             );
         }
 
+        const PREDICTION_CAT_I18N = {
+            cat_flying_stars: {
+                hm: 'Hnub Qub Ya & Zog Caij', ph: '𖬎𖲨 𖬐𖰤 & 𖬔𖲩 𖬂𖲟',
+                schoolHm: 'Tsev Kawm Xuan Kong Flying Stars', schoolPh: '𖬐𖰞 𖬎𖲨 𖬐𖰤 (Xuan Kong)',
+                canonHm: 'Phau Shen Shi, Zi Bai Jue, Jiu Xing', canonPh: '📜 Shen Shi, Zi Bai Jue',
+                descHm: 'Ntsuas zog 9 caij, 81 khub hnub qub, hnub qub xyoo/hli, hnub nyoog tsev & Zheng Shen-Ling Tang',
+                descPh: '𖬐𖲤 𖭙 𖬂𖲟, 𖭘𖭑 𖬎𖲨 𖬐𖰤, Zheng Shen-Ling Tang',
+                badgeHm: '10 Yam', badgePh: '𖭑𖭐 𖬎𖲤'
+            },
+            cat_water_land: {
+                hm: 'Dej Ntws & Zaj Av', ph: '𖬆𖰞 𖬎𖰟 & 𖬎𖲤 𖬈𖰞',
+                schoolHm: 'Tsev Kawm Dej Ntws & Zaj Av (Water Dragon & Landform)', schoolPh: '𖬐𖰞 𖬆𖰞 & 𖬎𖲤 𖬈𖰞',
+                canonHm: 'Phau Dej Zaj, San He Shui Fa 12 Sij Hawm, Long Men Ba Ju', canonPh: '📜 San He Shui Fa, Long Men Ba Ju',
+                descHm: 'Ntsuas dej ntws, chaw dej nyiaj txiag, qhov dej tawm 24 lub roob', descPh: '𖬐𖲤 𖬆𖰞 𖬎𖰟, 𖭒𖭔 𖬌𖲞',
+                badgeHm: '7 Yam', badgePh: '𖭗 𖬎𖲤'
+            },
+            cat_compass_mountains: {
+                hm: 'Koob Luopan & 24 Roob', ph: '𖬌𖰤 𖬎𖲞 & 𖭒𖭔 𖬌𖲞',
+                schoolHm: 'Tsev Kawm Luopan 49 Qib (Deep Luopan Rings)', schoolPh: '𖬐𖰞 𖬌𖰤 𖬎𖲞 (Luopan Rings)',
+                canonHm: 'Luopan 49 Qib, Cui Guan Jing, Yang Gong, Xie Zi', canonPh: '📜 Luopan 49 Qib, Cui Guan Jing',
+                descHm: '72 Zaj, 60 Zaj Av, 120 Fenjin, Khaub Lig Ntuj & Tsawg Qib', descPh: '𖭗𖭒 Zaj, 𖭖𖭐 Zaj, 𖭑𖭒𖭐 Fenjin',
+                badgeHm: '7 Yam', badgePh: '𖭗 𖬎𖲤'
+            },
+            cat_directional_internal: {
+                hm: 'Hauv Tsev & Ba Zhai 8 Fab', ph: '𖬈𖰞 𖬎𖰰𖬟 & 𖭘 𖬖𖰟',
+                schoolHm: 'Tsev Kawm 8 Fab & Hauv Tsev (Eight Mansions & Internal)', schoolPh: '𖬐𖰞 𖭘 𖬖𖰟 (Ba Zhai)',
+                canonHm: 'Ba Zhai Ming Jing, Tian Yuan Wu Ge, Xuan Kong Da Gua 64 Gua', canonPh: '📜 Ba Zhai Ming Jing, 64 Gua',
+                descHm: 'Qhov cub, qhov rooj txais nyiaj, 8 hnub qub Ba Zhai, Tai Sui, 64 Gua', descPh: '𖬎𖰰𖬟 𖬐𖰞, 𖭘 𖬎𖲨 𖬐𖰤 Ba Zhai, 𖭖𖭔 Gua',
+                badgeHm: '9 Yam', badgePh: '𖭙 𖬎𖲤'
+            },
+            cat_manual_destiny: {
+                hm: 'BaZi & Xam Hnub Nyoog', ph: '𖬘𖲝 𖬎𖲦 (BaZi)',
+                schoolHm: 'Tsev Kawm Xam Hnub Nyoog Huab Tais (Imperial Astrology)', schoolPh: '𖬐𖰞 𖬘𖲝 𖬎𖲦 (Imperial Astrology)',
+                canonHm: 'BaZi 4 Ncej, Zi Wei Dou Shu, Qi Zheng Si Yu, Yuan Tian Gang', canonPh: '📜 BaZi, Zi Wei Dou Shu',
+                descHm: '8 Tus Tsiaj Ntawv, 12 Vaj Huab Tais, 7 Hnub Qub, 28 Hnub Qub Tsiaj', descPh: '𖭘 Ncej, 𖭑𖭒 Vaj, 𖭗 Hnub Qub, 𖭒𖭘 Tsiaj',
+                badgeHm: '8 Yam', badgePh: '𖭘 𖬎𖲤'
+            },
+            cat_manual_date: {
+                hm: 'Xaiv Hnub & Sij Hawm', ph: '𖬘𖲝 𖬎𖲤 𖬂𖲝',
+                schoolHm: 'Tsev Kawm Xaiv Hnub Huab Tais (Ze Ri Date Selection)', schoolPh: '𖬐𖰞 𖬘𖲝 𖬎𖲤',
+                canonHm: 'Xuan Kong Da Gua Ze Ri, Dong Gong, Wu Bu Liu', canonPh: '📜 Ze Ri, Dong Gong',
+                descHm: 'Xaiv hnub pib tsev, qhib qhov rooj, tso thaj dab qhuas, txav chaw', descPh: '𖬘𖲝 𖬎𖲤 𖬄𖲝, 𖬎𖰰𖬟',
+                badgeHm: '5 Yam', badgePh: '𖭕 𖬎𖲤'
+            },
+            cat_manual_hexagram: {
+                hm: 'Yijing 64 Gua & Qimen', ph: '𖭖𖭔 Gua & Qimen',
+                schoolHm: 'Tsev Kawm 64 Gua & Qi Men Dun Jia (Hexagram & Oracles)', schoolPh: '𖬐𖰞 𖭖𖭔 Gua',
+                canonHm: 'I Ching 64 Gua, Mei Hua Yi Shu, Qi Men Dun Jia, Liu Ren', canonPh: '📜 64 Gua, Qi Men',
+                descHm: 'Xam phau ntawv I Ching, 64 Gua, Qi Men Dun Jia tiv thaiv', descPh: '𖬐𖲤 𖭖𖭔 Gua, Qi Men',
+                badgeHm: '6 Yam', badgePh: '𖭖 𖬎𖲤'
+            },
+            cat_manual_cures_tcm: {
+                hm: 'Kho Looj Mem & Kho Mob', ph: '𖬐𖰞 𖬄𖲞 & 𖬐𖰞 𖬎𖲤',
+                schoolHm: 'Tsev Kawm Kho Looj Mem & Kho Mob (Feng Shui Remedies & TCM)', schoolPh: '𖬐𖰞 𖬄𖲞',
+                canonHm: 'Pas Ntsuas Lu Ban, Huang Di Nei Jing, 9 Roob Silhouettes', canonPh: '📜 Pas Lu Ban, Nei Jing',
+                descHm: 'Pas ntsuas Lu Ban liab/dub, kho 5 kob daj, 9 roob, TCM kho mob', descPh: 'Pas Lu Ban, 9 Roob, TCM',
+                badgeHm: '8 Yam', badgePh: '𖭘 𖬎𖲤'
+            }
+        };
+
+        const PREDICTION_TAB_I18N = {
+            tab_room: { hm: 'Hauv Tsev 43 Chav', ph: '𖬎𖰰𖬟 𖭔𖭓 𖬎𖲤', canonHm: 'Phau Shen Shi', canonPh: 'Shen Shi', descHm: '9 Vaj & 43 Chaw Tseem Ceeb', descPh: '𖭙 Vaj & 𖭔𖭓 Chaw' },
+            tab_luantou: { hm: 'Luan Tou Sab Nraud', ph: 'Luan Tou', canonHm: 'Phau Av Ntxa', canonPh: 'Phau Av', descHm: '36 Yam Ib Cheeb Tsam Nraud', descPh: '𖭓𖭖 Ib Cheeb Tsam' },
+            tab_formations: { hm: '4 Qauv Hnub Qub Ya', ph: '𖭔 Qauv 𖬎𖲨 𖬐𖰤', canonHm: 'Jiu Xing', canonPh: 'Jiu Xing', descHm: '4 Qauv Roob & Dej', descPh: '𖭔 Qauv Roob & Dej' },
+            tab_tigua: { hm: 'Ti Gua (Hloov Qib)', ph: 'Ti Gua', canonHm: 'Phau Ti Gua', canonPh: 'Ti Gua', descHm: 'Hloov Qib Uas Tsis Ncaj 3°', descPh: 'Hloov Qib > 3°' },
+            tab_annual: { hm: 'Hnub Qub Xyoo 2026', ph: '𖬎𖲨 𖬐𖰤 𖬘𖲝', canonHm: 'Xyoo Hnub Qub Ya', canonPh: 'Xyoo Hnub Qub', descHm: '9 Hnub Qub Xyoo & Fab Zoo', descPh: '𖭙 Hnub Qub & Fab Zoo' },
+            tab_monthmatrix: { hm: 'Hnub Qub 12 Hli', ph: '𖬎𖲨 𖬐𖰤 𖭑𖭒 𖬎𖲨', canonHm: 'Hli Hnub Qub Ya', canonPh: 'Hli Hnub Qub', descHm: 'Daim Ntawv 12 Hli Hnub Qub', descPh: 'Daim Ntawv 12 Hli' },
+            tab_stars: { hm: '81 Khub Hnub Qub', ph: '𖭘𖭑 Khub 𖬎𖲨 𖬐𖰤', canonHm: 'Zi Bai Jue', canonPh: 'Zi Bai Jue', descHm: 'Kev Txhais 81 Khub Roob-Dej', descPh: '81 Khub Roob-Dej' },
+            tab_forecast: { hm: 'Daim Ntawv Hnub Qub', ph: 'Daim Ntawv 𖬎𖲨 𖬐𖰤', canonHm: 'Looj Mem Xyoo Hli', canonPh: 'Looj Mem', descHm: 'Hnub Qub Hnub & Sij Hawm Zoo', descPh: 'Hnub Qub Hnub & Sij Hawm' },
+            tab_diyun: { hm: 'Di Yun (Hnub Nyoog Tsev)', ph: 'Di Yun', canonHm: 'Xuan Kong Di Yun', canonPh: 'Di Yun', descHm: 'Zog Caij 20-160 Xyoo', descPh: '20-160 Xyoo' },
+            tab_zhengshen: { hm: 'Zheng Shen-Ling Tang', ph: 'Zheng Shen', canonHm: 'Zheng Shen Ling Tang', canonPh: 'Zheng Shen', descHm: 'Caij 9 Fab Qab/Qaum Teb', descPh: 'Caij 9 Qab/Qaum' },
+            tab_waterdragon: { hm: 'Dej Zaj Txais Nyiaj', ph: 'Dej Zaj', canonHm: 'Phau Dej Zaj', canonPh: 'Dej Zaj', descHm: 'Dej Nkhaus Txais Nyiaj & Pas Dej', descPh: 'Dej Nkhaus Txais Nyiaj' },
+            tab_longmen: { hm: 'Long Men Ba Ju', ph: 'Long Men', canonHm: '8 Vaj Dej Zaj', canonPh: '8 Vaj Dej', descHm: 'Xian Tian & Hou Tian Dej', descPh: 'Xian Tian & Hou Tian' },
+            tab_pingyang: { hm: 'Ping Yang Zaj Av', ph: 'Ping Yang', canonHm: 'Ping Yang Long', canonPh: 'Ping Yang', descHm: 'Siab 1 Nti Yog Roob, Qis 1 Nti Yog Dej', descPh: 'Siab Roob, Qis Dej' },
+            tab_huangquan: { hm: 'Dej Huang Quan', ph: 'Huang Quan', canonHm: '8 Dej Txwv Tsis Zoo', canonPh: '8 Dej Txwv', descHm: 'Xyuas Dej Txwv Tsis Pub Ntws', descPh: 'Xyuas Dej Txwv' },
+            tab_sanhe_water: { hm: 'Dej 3 Tsev Kawm (San He)', ph: 'San He Dej', canonHm: 'San He 12 Sij Hawm', canonPh: 'San He 12 Sij Hawm', descHm: 'Yug, Vam, Ntxa 4 Yam Zog', descPh: '4 Yam Zog' },
+            tab_xiantian_water: { hm: 'Dej Ntuj Ua Ntej & Tom Qab', ph: 'Xian Tian Dej', canonHm: 'Xian Tian-Hou Tian', canonPh: 'Xian Tian', descHm: 'Txuas Zog Ntuj-Av Txais Nyiaj', descPh: 'Txuas Zog Ntuj-Av' },
+            tab_24_shuikou: { hm: 'Qhov Dej Tawm 24 Roob', ph: '24 Roob Qhov Dej', canonHm: 'Shui Kou 24 Roob', canonPh: 'Shui Kou 24', descHm: 'Fab Dej Ntws & Dej Qias Tawm', descPh: 'Fab Dej Ntws & Tawm' },
+            tab_72dragons: { hm: '72 Zaj Av', ph: '72 Zaj', canonHm: 'Yang Gong Luopan', canonPh: 'Yang Gong', descHm: 'Zog Zaj Ib Qhov 5°', descPh: 'Zog Zaj 5°' },
+            tab_toudi: { hm: '60 Zaj Av Hauv Paus', ph: '60 Zaj', canonHm: 'Tou Di 60 Zaj', canonPh: 'Tou Di 60', descHm: 'Zaj Hauv Paus Tsev 60 Xyoo', descPh: 'Zaj Hauv Paus 60' },
+            tab_fenjin: { hm: '120 Fenjin (Kub Qib)', ph: '120 Fenjin', canonHm: 'Luopan Fenjin', canonPh: 'Fenjin', descHm: 'Qib Pob Zeb 3° & Ciam Phem', descPh: '3° & Ciam Phem' },
+            tab_cuiguan: { hm: 'Cui Guan Jing (Thov Yeeb)', ph: 'Cui Guan', canonHm: 'Phau Lai Bu Yi', canonPh: 'Lai Bu Yi', descHm: 'Chaw Roob Thov Yeeb Koob Meej', descPh: 'Roob Thov Yeeb' },
+            tab_tianxin_cross: { hm: 'Khaub Lig Ntuj', ph: 'Khaub Lig Ntuj', canonHm: 'Tian Xin Shi Zi', canonPh: 'Tian Xin', descHm: 'Kab Txiav 90° Plawv Luopan', descPh: 'Kab Txiav 90°' },
+            tab_xiezi: { hm: 'Xie Zi Fa (Tswv Yim Zais)', ph: 'Xie Zi', canonHm: 'Phau Xie Zi Fa', canonPh: 'Xie Zi', descHm: 'Zais Tswv Yim Zaj Txais Nyiaj', descPh: 'Zais Tswv Yim' },
+            tab_shibuxiang: { hm: '10 Lub Roob Txwv', ph: '10 Roob Txwv', canonHm: 'Phau Shi Bu Xiang', canonPh: 'Shi Bu Xiang', descHm: '10 Qauv Roob Phem Tsis Zoo', descPh: '10 Qauv Roob Phem' },
+            tab_tianyuan_internal: { hm: 'Qhov Cub & Vaj Ris', ph: 'Qhov Cub & Vaj Ris', canonHm: 'Tian Yuan Wu Ge', canonPh: 'Tian Yuan', descHm: 'Qhov Cub, Vaj Ris, Chav Dej Hauv Tsev', descPh: 'Qhov Cub, Vaj Ris' },
+            tab_anmen_water: { hm: 'Qhov Rooj Txais Nyiaj', ph: 'Qhov Rooj Txais Nyiaj', canonHm: 'Phau An Men Shui', canonPh: 'An Men', descHm: 'Tso Qhov Rooj Txais Cua-Dej Nyiaj', descPh: 'Qhov Rooj Txais Nyiaj' },
+            tab_annual_affliction: { hm: 'Tai Sui & 3 Sha', ph: 'Tai Sui & 3 Sha', canonHm: 'Phau Hnub Qub Phem Xyoo', canonPh: 'Hnub Qub Phem', descHm: 'Tai Sui, Sui Po, 3 Sha, 5 Kob Daj', descPh: 'Tai Sui, 3 Sha, 5 Daj' },
+            tab_bazhai: { hm: 'Ba Zhai Ming Gua', ph: 'Ba Zhai', canonHm: 'Ba Zhai Ming Jing', canonPh: 'Ba Zhai', descHm: 'Ming Gua, Pawg Tuaj/Poob', descPh: 'Ming Gua, Tuaj/Poob' },
+            tab_you_nian: { hm: '8 Hnub Qub Ba Zhai', ph: '8 Hnub Qub Ba Zhai', canonHm: 'You Nian 8 Hnub Qub', canonPh: 'You Nian', descHm: '8 Hnub Qub Nyob Hauv Tsev', descPh: '8 Hnub Qub Tsev' },
+            tab_jinsuo: { hm: 'Jin Suo Yu Chi (24 Vaj)', ph: 'Jin Suo', canonHm: 'Tus Yuam Sij Kub 24 Vaj', canonPh: 'Yuam Sij Kub', descHm: 'Xyuas Vaj Phem & Vaj Zoo 24 Fab', descPh: 'Vaj Phem & Zoo' },
+            tab_solar: { hm: 'Hnub Ci & Lub Qag', ph: 'Hnub Ci', canonHm: 'Su Li Ya Wei Ti', canonPh: 'Hnub Ci', descHm: 'Fab Hnub Ci Raws Caij Nyoog', descPh: 'Fab Hnub Ci' },
+            tab_celestial_transit: { hm: 'Hnub-Hli Ci Roob', ph: 'Hnub-Hli Ci Roob', canonHm: 'Hnub Qub Saum Ntuj', canonPh: 'Saum Ntuj', descHm: 'Hnub & Hli Ci Rau Lub Roob', descPh: 'Hnub & Hli Ci' },
+            tab_dagua: { hm: 'I Ching 64 Gua', ph: '64 Gua', canonHm: 'Xuan Kong Da Gua', canonPh: 'Da Gua', descHm: '64 Gua Qib, Tsib Yam Zog & Naj Npawb', descPh: '64 Gua' },
+            tab_bazi: { hm: 'BaZi 4 Tus Ncej', ph: 'BaZi 4 Ncej', canonHm: 'BaZi 8 Tus Tsiaj Ntawv', canonPh: 'BaZi 8', descHm: 'Ntsuas 4 Ncej, Day Master, Yong Shen', descPh: '4 Ncej, Day Master' },
+            tab_ziwei: { hm: 'Zi Wei Dou Shu', ph: 'Zi Wei', canonHm: '12 Vaj Huab Tais', canonPh: '12 Vaj', descHm: 'Vaj Nyiaj, Vaj Tsev, Hnub Qub Huab Tais', descPh: '12 Vaj' },
+            tab_qizheng: { hm: '7 Hnub Qub 4 Duab Ntxoo', ph: '7 Hnub Qub 4 Duab', canonHm: 'Qi Zheng Si Yu', canonPh: 'Qi Zheng', descHm: '7 Hnub Qub & 4 Qhov Chaw Ntuj', descPh: '7 Hnub Qub' },
+            tab_qizheng_12palaces: { hm: '12 Vaj Hnub Qub Qi Zheng', ph: '12 Vaj Qi Zheng', canonHm: '12 Vaj Qi Zheng', canonPh: '12 Vaj', descHm: 'Hnub Qub Hauv 12 Lub Zodiac', descPh: '12 Zodiac' },
+            tab_chenggu: { hm: 'Xam Pob Txha Yuan Tian Gang', ph: 'Xam Pob Txha', canonHm: 'Xam Pob Txha Hnub Nyoog', canonPh: 'Pob Txha', descHm: 'Qhov Nyhav Hnub Nyoog & Paj Huam', descPh: 'Nyhav Hnub Nyoog' },
+            tab_yanqin: { hm: '28 Hnub Qub Tsiaj Yan Qin', ph: '28 Hnub Qub Tsiaj', canonHm: 'Yan Qin 28 Hnub Qub', canonPh: 'Yan Qin', descHm: 'Tsiaj Hnub Qub Tiv Thaiv Tsev', descPh: '28 Tsiaj' },
+            tab_guiguzi: { hm: 'Gui Gu Zi 2 Tsiaj Ntawv', ph: 'Gui Gu Zi', canonHm: 'Gui Gu Zi Xib Hwb', canonPh: 'Gui Gu Zi', descHm: '2 Tsiaj Ntawv Qub Hnub Nyoog', descPh: '2 Ntawv Qub' },
+            tab_dagua_couple: { hm: '64 Gua Sib Yuav (Da Gua)', ph: '64 Gua Sib Yuav', canonHm: '64 Gua Haum Luag', canonPh: '64 Gua Haum', descHm: 'Kev Haum Luag Ntawm Niam Txiv / Phooj Ywg', descPh: 'Haum Luag' },
+            tab_dayhour: { hm: 'Hnub & Sij Hawm Zoo', ph: 'Hnub & Sij Hawm', canonHm: 'Xaiv Sij Hawm Suav', canonPh: 'Xaiv Sij Hawm', descHm: '12 Sij Hawm Zoo & Gui Ren', descPh: '12 Sij Hawm' },
+            tab_qimen_travel: { hm: 'Qi Men Dun Jia Tawm Mus', ph: 'Qi Men Tawm', canonHm: 'Qi Men Dun Jia', canonPh: 'Qi Men', descHm: 'Fab Zoo Rau Kev Mus Kev & Lag Luam', descPh: 'Fab Zoo' },
+            tab_wubu_cangxi: { hm: 'Wu Bu Liu & Cang Xi', ph: 'Wu Bu Liu', canonHm: 'Wu Bu Cang Xi', canonPh: 'Wu Bu', descHm: 'Fab Phem 5 Xyoos & Chaw Zais', descPh: 'Fab Phem & Zais' },
+            tab_donggong: { hm: 'Dong Gong Xaiv Hnub', ph: 'Dong Gong', canonHm: 'Dong Gong Ri Zhi', canonPh: 'Dong Gong', descHm: 'Xyuas 12 Tus Tsiaj Ntawv & Dong Gong', descPh: 'Dong Gong' },
+            tab_daliushen: { hm: 'Da Liu Ren Xam Hnub', ph: 'Da Liu Ren', canonHm: 'Da Liu Ren Shen Ke', canonPh: 'Da Liu Ren', descHm: 'Da Liu Ren 12 Tus Ntuj Pab', descPh: 'Da Liu Ren' },
+            tab_64gua_cycle: { hm: 'Voj Voog 64 Gua', ph: '64 Gua Voj Voog', canonHm: 'Shao Yong Yuan Hui Yun Shi', canonPh: 'Shao Yong', descHm: '64 Gua Raws Xyoo, Hli, Hnub', descPh: '64 Gua Xyoo Hli' },
+            tab_meihua: { hm: 'Mei Hua Yi Shu (Paj Txiv Duaj)', ph: 'Mei Hua', canonHm: 'Mei Hua Yi Shu', canonPh: 'Mei Hua', descHm: 'Xam Duab Qub, Naj Npawb & Suab', descPh: 'Mei Hua' },
+            tab_qimen_ju: { hm: 'Qi Men Dun Jia Daim Duab', ph: 'Qi Men Duab', canonHm: 'Qi Men Dun Jia 1080 Ju', canonPh: 'Qi Men 1080', descHm: '9 Lub Hnub Qub, 8 Qhov Rooj, 8 Dab', descPh: '9 Hnub Qub, 8 Rooj' },
+            tab_taiyi: { hm: 'Tai Yi Shen Shu', ph: 'Tai Yi', canonHm: 'Tai Yi Shen Shu', canonPh: 'Tai Yi', descHm: 'Xam Kev Hloov Ntuj & Huab Tais', descPh: 'Tai Yi' },
+            tab_liuren_forecast: { hm: 'Da Liu Ren Xam Xwm Txheej', ph: 'Liu Ren Xam', canonHm: 'Da Liu Ren 720 Ke', canonPh: 'Liu Ren 720', descHm: '4 Lub Ncej & 3 Kev Hloov', descPh: 'Liu Ren' },
+            tab_luban: { hm: 'Pas Ntsuas Lu Ban (Liab/Dub)', ph: 'Pas Lu Ban', canonHm: 'Pas Ntsuas Lu Ban & Ding Lan', canonPh: 'Pas Lu Ban', descHm: 'Ntsuas Qhov Rooj, Txaj, Rooj Ua Hauj Lwm', descPh: 'Ntsuas Qhov Rooj' },
+            tab_wuhuang_cure: { hm: 'Kho 5 Kob Daj & 2 Mob', ph: 'Kho 5 Daj & 2 Mob', canonHm: 'Kev Kho Hnub Qub Phem', canonPh: 'Kho Hnub Qub', descHm: 'Tswv Yim Kho 5 Kob Daj & 2 Mob Nkeeg', descPh: 'Kho 5 Daj' },
+            tab_tcm_elements: { hm: 'TCM Tsib Yam Zog Kho Mob', ph: 'TCM Kho Mob', canonHm: 'Huang Di Nei Jing', canonPh: 'Nei Jing', descHm: 'Kho Mob Raws Tsib Yam Zog & Looj Mem', descPh: 'Kho Mob' },
+            tab_9star_shapes: { hm: '9 Qauv Roob Hnub Qub', ph: '9 Qauv Roob', canonHm: 'Shan Feng 9 Yam Zog', canonPh: '9 Roob', descHm: 'Ntsuas Qauv Roob 9 Hnub Qub', descPh: '9 Roob' },
+            tab_watersim: { hm: 'Xyaum Dej Ntws', ph: 'Xyaum Dej Ntws', canonHm: 'Simulator Dej Ntws', canonPh: 'Simulator Dej', descHm: 'Xyuas Dej Ntws Ncig Tsev', descPh: 'Xyuas Dej Ntws' },
+            tab_sanban_gua: { hm: 'San Ban Gua', ph: 'San Ban Gua', canonHm: 'Hnub Qub 180 Xyoo', canonPh: '180 Xyoo', descHm: 'Khub Hnub Qub Niam Txiv Tsis Phem', descPh: 'Khub Niam Txiv' }
+        };
+
         function renderYangNavHtml() {
+            const isHm = (currentLuopanLang === 'hm');
+            const isPh = (currentLuopanLang === 'ph');
             const isManualMode = (fengShuiMode === 'manuals');
             const currentCatList = isManualMode ? MANUAL_CATEGORIES : DIRECTIONAL_CATEGORIES;
             const currentTabsList = isManualMode
@@ -7762,6 +7890,8 @@ function setYangTab(tabName) {
                 '<div class="flex items-center gap-1.5 overflow-x-auto pb-1.5 scrollbar-thin">' +
                     currentCatList.map(cat => {
                         const isCatActive = (activeYangCategory === cat.id && !yangSearchTerm);
+                        const trCat = PREDICTION_CAT_I18N[cat.id];
+                        const catName = (isHm && trCat) ? trCat.hm : (isPh && trCat) ? trCat.ph : cat.name;
                         return '<button type="button" onclick="setYangCategory(\'' + cat.id + '\')" class="touch-manipulation select-none active:scale-95 whitespace-nowrap px-2.5 py-1.5 rounded-xl font-bold text-xs transition flex items-center gap-1.5 shadow-sm ' +
                             (isCatActive
                                 ? (isManualMode
@@ -7769,7 +7899,7 @@ function setYangTab(tabName) {
                                     : 'bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-black border border-emerald-300 ring-2 ring-emerald-400/40 shadow-emerald-500/20')
                                 : 'bg-slate-900/90 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700') + '">' +
                             '<span>' + cat.icon + '</span>' +
-                            '<span>' + cat.name + '</span>' +
+                            '<span>' + catName + '</span>' +
                             '<span class="text-[10px] px-1.5 py-0.2 rounded-full font-mono ' +
                                 (isCatActive ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-400') + '">' +
                                 cat.tabKeys.length +
@@ -7781,37 +7911,50 @@ function setYangTab(tabName) {
                             ? 'bg-gradient-to-r from-teal-500 to-emerald-600 text-slate-950 font-black border border-teal-300 ring-2 ring-teal-400/40'
                             : 'bg-slate-900/90 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700') + '">' +
                         '<span>🌐</span>' +
-                        '<span>ທັງໝົດ (' + currentTabsList.length + ')</span>' +
+                        '<span>' + (isHm ? ('Tag Nrho (' + currentTabsList.length + ')') : isPh ? ('𖬎𖲦 𖬎𖲤 (' + currentTabsList.length + ')') : ('ທັງໝົດ (' + currentTabsList.length + ')')) + '</span>' +
                     '</button>' +
                 '</div>';
 
             // School Banner
             let schoolBannerHtml = '';
             if (yangSearchTerm) {
+                const searchRes = isHm
+                    ? ('<span>🔍</span> <span>Cov nrhiav tau: "' + yangSearchTerm + '" (pom ' + visibleTabs.length + ' yam)</span>')
+                    : isPh
+                    ? ('<span>🔍</span> <span>𖬘𖲝: "' + yangSearchTerm + '" (𖭑𖭐 ' + visibleTabs.length + ')</span>')
+                    : ('<span>🔍</span> <span>ຜົນການຄົ້ນຫາ: "' + yangSearchTerm + '" (ພົບ ' + visibleTabs.length + ' ວິຊາ)</span>');
+                const clearText = isHm ? 'Tshem cov lus nrhiav ✕' : isPh ? '𖬎𖲞 ✕' : 'ລຶບຄຳຄົ້ນ ✕';
+
                 schoolBannerHtml =
                     '<div class="bg-slate-900/90 p-2.5 rounded-xl border border-amber-500/40 flex items-center justify-between text-xs">' +
-                        '<div class="text-amber-300 font-bold flex items-center gap-1.5">' +
-                            '<span>🔍</span> <span>ຜົນການຄົ້ນຫາ: "' + yangSearchTerm + '" (ພົບ ' + visibleTabs.length + ' ວິຊາ)</span>' +
-                        '</div>' +
-                        '<button type="button" onclick="setYangSearch(\'\')" class="text-xs text-rose-400 hover:text-rose-300 font-bold px-2 py-0.5 rounded bg-rose-950/60 border border-rose-800">ລຶບຄຳຄົ້ນ ✕</button>' +
+                        '<div class="text-amber-300 font-bold flex items-center gap-1.5">' + searchRes + '</div>' +
+                        '<button type="button" onclick="setYangSearch(\'\')" class="text-xs text-rose-400 hover:text-rose-300 font-bold px-2 py-0.5 rounded bg-rose-950/60 border border-rose-800">' + clearText + '</button>' +
                     '</div>';
             } else if (currentCatObj) {
+                const trCat = PREDICTION_CAT_I18N[currentCatObj.id];
+                const catSchool = (isHm && trCat) ? trCat.schoolHm : (isPh && trCat) ? trCat.schoolPh : currentCatObj.school;
+                const catBadge = (isHm && trCat) ? trCat.badgeHm : (isPh && trCat) ? trCat.badgePh : currentCatObj.badge;
+                const catCanon = (isHm && trCat) ? trCat.canonHm : (isPh && trCat) ? trCat.canonPh : currentCatObj.canon;
+                const catDesc = (isHm && trCat) ? trCat.descHm : (isPh && trCat) ? trCat.descPh : currentCatObj.desc;
+                const canonLabel = isHm ? '📜 Phau Ntawv Keeb Kwm:' : isPh ? '📜 𖬎𖲦:' : '📜 ຕຳລາຕົ້ນສະບັບ:';
+                const descLabel = isHm ? '💡 Luag Hauj Lwm & Tswv Yim:' : isPh ? '💡 𖬐𖰞 𖬄𖲞:' : '💡 ໜ້າທີ່ & ຫຼັກການ:';
+
                 schoolBannerHtml =
                     '<div class="bg-gradient-to-r from-slate-900/95 via-slate-900/90 to-amber-950/30 p-2.5 rounded-xl border border-amber-500/30 flex flex-col gap-1 shadow-inner">' +
                         '<div class="flex flex-wrap items-center justify-between gap-1">' +
                             '<div class="flex items-center gap-1.5">' +
                                 '<span class="text-base">' + currentCatObj.icon + '</span>' +
-                                '<span class="font-black text-amber-300 text-xs tracking-wide">' + currentCatObj.school + '</span>' +
+                                '<span class="font-black text-amber-300 text-xs tracking-wide">' + catSchool + '</span>' +
                             '</div>' +
-                            '<span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-200 border border-amber-500/40 font-bold">' + currentCatObj.badge + '</span>' +
+                            '<span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-200 border border-amber-500/40 font-bold">' + catBadge + '</span>' +
                         '</div>' +
                         '<div class="text-[11px] text-slate-300 flex items-baseline gap-1.5">' +
-                            '<span class="text-amber-400 font-bold shrink-0">📜 ຕຳລາຕົ້ນສະບັບ:</span>' +
-                            '<span class="text-slate-300 font-medium">' + currentCatObj.canon + '</span>' +
+                            '<span class="text-amber-400 font-bold shrink-0">' + canonLabel + '</span>' +
+                            '<span class="text-slate-300 font-medium">' + catCanon + '</span>' +
                         '</div>' +
                         '<div class="text-[10px] text-slate-400 flex items-baseline gap-1.5">' +
-                            '<span class="text-teal-400 font-bold shrink-0">💡 ໜ້າທີ່ & ຫຼັກການ:</span>' +
-                            '<span>' + currentCatObj.desc + '</span>' +
+                            '<span class="text-teal-400 font-bold shrink-0">' + descLabel + '</span>' +
+                            '<span>' + catDesc + '</span>' +
                         '</div>' +
                     '</div>';
             }
@@ -7821,6 +7964,11 @@ function setYangTab(tabName) {
                 '<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5">' +
                     visibleTabs.map(t => {
                         const isTabActive = (activeYangTab === t.key);
+                        const trT = PREDICTION_TAB_I18N[t.key];
+                        const tName = (isHm && trT) ? trT.hm : (isPh && trT) ? trT.ph : t.name;
+                        const tCanon = (isHm && trT) ? trT.canonHm : (isPh && trT) ? trT.canonPh : t.canon;
+                        const tDesc = (isHm && trT) ? trT.descHm : (isPh && trT) ? trT.descPh : t.desc;
+
                         return '<button type="button" onclick="setYangTab(\'' + t.key + '\')" class="touch-manipulation select-none p-2 rounded-xl text-left transition flex flex-col gap-0.5 shadow-sm active:scale-98 ' +
                             (isTabActive
                                 ? (isManualMode
@@ -7830,26 +7978,31 @@ function setYangTab(tabName) {
                             '<div class="flex items-center justify-between gap-1">' +
                                 '<span class="text-xs font-bold truncate flex items-center gap-1.5">' +
                                     '<span>' + t.icon + '</span>' +
-                                    '<span>' + t.name + '</span>' +
+                                    '<span>' + tName + '</span>' +
                                 '</span>' +
                                 '<span class="text-[9px] px-1 py-0.2 rounded font-mono shrink-0 ' +
                                     (isTabActive ? 'bg-slate-950/80 text-amber-300' : 'bg-slate-800 text-slate-400') + '">' +
-                                    t.canon +
+                                    tCanon +
                                 '</span>' +
                             '</div>' +
                             '<div class="text-[10px] truncate ' + (isTabActive ? 'text-slate-900 font-medium' : 'text-slate-400') + '">' +
-                                t.desc +
+                                tDesc +
                             '</div>' +
                         '</button>';
                     }).join('') +
                 '</div>';
 
             const headerTitle = isManualMode
-                ? 'ຄັງຄູ່ມື, ຕຳລາບູຮານ & ສູດຄຳນວນດວງຊາຕາ (37 ວິຊາ)'
-                : 'ລະບົບ 33 ມະຫາວິຊາຮວງຈຸ້ຍທຳນາຍຕາມທິດ';
+                ? (isHm ? 'Phau Ntawv, Tswv Yim Qub & Xam Hnub Nyoog (37 Yam)' : isPh ? '𖬎𖲦 𖬎𖲤 (𖭓𖭗)' : 'ຄັງຄູ່ມື, ຕຳລາບູຮານ & ສູດຄຳນວນດວງຊາຕາ (37 ວິຊາ)')
+                : (isHm ? 'Txheej 33 Yam Tswv Yim Looj Mem Ntsuas Raws Fab' : isPh ? '𖭓𖭓 𖬐𖲤 𖬖𖰟' : 'ລະບົບ 33 ມະຫາວິຊາຮວງຈຸ້ຍທຳນາຍຕາມທິດ');
+
             const headerDesc = isManualMode
-                ? 'ສຶກສາຕຳລາ, ຄຳນວນດວງ, ໄມ້ບັນທັດຫຼູປານ & ແກ້ອາຖັນ • ປຸ່ມສະຖຽນ ບໍ່ປ່ຽນຕາມເຂັມທິດ'
-                : 'ວິເຄາະຕາມທິດເຂັມທິດ/ກ້ອງ • ປຸ່ມບໍ່ຣີເຟຣຊຕອນໝຸນໂທລະສັບ';
+                ? (isHm ? 'Kawm ntawv, xam hnub nyoog, pas Lu Ban & kho kom haum • Cov khawm ruaj khov tsis hloov raws koob luopan' : isPh ? '𖬎𖲦 𖬘𖲝, 𖬐𖰞 𖬄𖲞' : 'ສຶກສາຕຳລາ, ຄຳນວນດວງ, ໄມ້ບັນທັດຫຼູປານ & ແກ້ອາຖັນ • ປຸ່ມສະຖຽນ ບໍ່ປ່ຽນຕາມເຂັມທິດ')
+                : (isHm ? 'Ntsuas raws koob luopan / koob yees duab • Cov khawm tsis rov refresh thaum tig xov tooj' : isPh ? '𖬐𖲤 𖬖𖰟 𖬌𖰤 / 𖬆𖲝' : 'ວິເຄາະຕາມທິດເຂັມທິດ/ກ້ອງ • ປຸ່ມບໍ່ຣີເຟຣຊຕອນໝຸນໂທລະສັບ');
+
+            const reportBtnText = isHm ? 'Daim Ntawv Qhia' : isPh ? '𖬎𖲦 𖬐𖰞' : 'ໃບລາຍງານ';
+            const certBtnText = isHm ? 'Daim Ntawv Pov Thawj' : isPh ? '𖬎𖲦 𖬎𖲞' : 'ໃບຢັ້ງຢືນ';
+            const searchPlaceholder = isHm ? '🔍 Nrhiav tswv yim, phau ntawv, tswv yim xam...' : isPh ? '🔍 𖬘𖲝 𖬎𖲦...' : '🔍 ຄົ້ນຫາວິຊາ, ຕຳລາ, ສູດຄຳນວນ...';
 
             return (
                 '<div class="flex flex-col gap-2 p-2 bg-slate-950 rounded-2xl border border-slate-800/90 select-none mb-3 shadow-xl">' +
@@ -7863,10 +8016,10 @@ function setYangTab(tabName) {
                         '</div>' +
                         '<div class="flex items-center gap-1.5">' +
                             '<button type="button" onclick="openAuditReportModal()" class="touch-manipulation py-1 px-2.5 rounded-lg text-center transition flex items-center gap-1 bg-gradient-to-r from-amber-600 to-yellow-500 text-slate-950 font-black text-[10px] shadow-md border border-yellow-300 hover:brightness-110 active:scale-95">' +
-                                '<span>📄</span> <span>ໃບລາຍງານ</span>' +
+                                '<span>📄</span> <span>' + reportBtnText + '</span>' +
                             '</button>' +
                             '<button type="button" onclick="openMasterDossierModal()" class="touch-manipulation py-1 px-2.5 rounded-lg text-center transition flex items-center gap-1 bg-gradient-to-r from-red-700 via-amber-600 to-yellow-500 text-white font-black text-[10px] shadow-md border border-yellow-300 hover:brightness-110 active:scale-95">' +
-                                '<span>🖨️</span> <span>ໃບຢັ້ງຢືນ</span>' +
+                                '<span>🖨️</span> <span>' + certBtnText + '</span>' +
                             '</button>' +
                         '</div>' +
                     '</div>' +
@@ -7874,370 +8027,106 @@ function setYangTab(tabName) {
                     categoryPillsHtml +
 
                     '<div class="relative">' +
-                        '<input type="text" value="' + (yangSearchTerm || '') + '" oninput="setYangSearch(this.value)" placeholder="🔍 ຄົ້ນຫາວິຊາ, ຕຳລາ, ສູດຄຳນວນ..." class="w-full bg-slate-900/90 border border-slate-800 hover:border-slate-700 focus:border-amber-500 rounded-xl px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none transition">' +
+                        '<input type="text" value="' + (yangSearchTerm || '') + '" oninput="setYangSearch(this.value)" placeholder="' + searchPlaceholder + '" class="w-full bg-slate-900/90 border border-slate-800 hover:border-slate-700 focus:border-amber-500 rounded-xl px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none transition">' +
                         (yangSearchTerm ? '<button type="button" onclick="setYangSearch(\'\')" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs">✕</button>' : '') +
                     '</div>' +
-
-                    schoolBannerHtml +
-
-                    tabButtonsHtml +
                 '</div>'
             );
         }
 
-        function renderYinNavHtml() {
-            const yinTabs = [
-                { key: 'tab_fenjin', icon: '🪦', name: '120 ພັນຈິນ', canon: 'ຫຼົວຜານ 120 ພັນຈິນ', desc: 'ມຸມເພັດພອຍ 3° ປ້າຍຫີນ' },
-                { key: 'tab_xianming', icon: '👤', name: 'ສຽນມິ່ງ 60 ກະປົກ', canon: 'ຄຳພີສຽນມິ່ງ', desc: 'ສົມພົງປີເກີດຜູ້ວາຍຊົນ' },
-                { key: 'tab_fourbeasts', icon: '🐉', name: '4 ສັດເທບສຸສານ', canon: 'ຕຳລາຮູບດິນສຸສານ', desc: 'ມັງກອນ, ເສືອ, ຫົງ, ເຕົ່າ' },
-                { key: 'tab_huangquan', icon: '⚡', name: '8 ຮວງສຽນ', canon: 'ສານເຫີສຸ່ຍຝາ', desc: 'ທິດນ້ຳໄຫຼຕ້ອງຫ້າມຮວງສຽນ' },
-                { key: 'tab_sanhewater', icon: '🌊', name: 'ສາຍນ້ຳ 4 ທາດ', canon: 'ສານເຫີ 12 ໄລຍະ', desc: 'ວົງຈອນນ້ຳ 4 ທາດສົ່ງຜົນລູກຫຼານ' },
-                { key: 'tab_lineage', icon: '👨‍👦', name: 'ລູກຫຼານ 3 ສາຍ', canon: 'ຕຳລາລູກຫຼານ', desc: 'ຜົນກະທົບຕໍ່ລູກຄົນທີ 1, 2, 3' },
-                { key: 'tab_yinforecast', icon: '📅', name: 'ປະຕິທິນຢິນ', canon: 'ເລືອກມື້ສຸສານ', desc: 'ມື້ຝັງ & ຕັ້ງປ້າຍຫີນມຸງຄຸນ' },
-                { key: 'tab_dagua_yin', icon: '☯️', name: '64 ຂວຍສຸສານ', canon: 'ສຽນຄົງຕ້າກວ້າ', desc: 'ຂວຍ 64 ພະລັງງານສຸສານ' }
-            ];
+        const PREDICTION_ROOM_CAT_I18N = {
+            all: { hm: 'Tag Nrho (43)', ph: '𖬎𖲦 𖬎𖲤 (𖭔𖭓)' },
+            door_win: { hm: '🚪 Qhov Rooj / Qhov Rais (11)', ph: '🚪 𖬄𖲝/𖬐𖰞 (𖭑𖭑)' },
+            kitchen: { hm: '🍲 Chav Ua Noj (5)', ph: '🍲 𖬎𖰰𖬟 𖬐𖰞 (𖭕)' },
+            bed: { hm: '🛏️ Chav Pw (4)', ph: '🛏️ 𖬎𖰰𖬟 𖬐𖰞 (𖭔)' },
+            toilet: { hm: '🚽 Chav Dej (6)', ph: '🚽 𖬎𖰰𖬟 𖬆𖰞 (𖭖)' },
+            living_work: { hm: '🛋️ Chav Txais Qhua / Ua Hauj Lwm (5)', ph: '🛋️ 𖬎𖰰𖬟 𖬎𖲤 (𖭕)' },
+            structure: { hm: '🪜 Vaj Ris / Kev Taug (4)', ph: '🪜 𖬈𖰞 𖬎𖰟 (𖭔)' },
+            water_ext: { hm: '⛲ Dej / Vaj / Sab Nraud (8)', ph: '⛲ 𖬆𖰞 / 𖬐𖰞 (𖭘)' }
+        };
 
-            return (
-                '<div class="flex flex-col gap-2 p-2 bg-slate-950 rounded-2xl border border-purple-900/60 select-none mb-3 shadow-xl">' +
-                    '<div class="flex flex-wrap items-center justify-between gap-2 border-b border-purple-900/50 pb-2">' +
-                        '<div class="flex items-center gap-2">' +
-                            '<span class="text-purple-400 text-base">🪦</span>' +
-                            '<div>' +
-                                '<div class="text-xs font-black text-purple-300">ສຳນັກຮວງຈຸ້ຍສຸສານລາຊະສຳນັກ (Imperial Yin House Feng Shui)</div>' +
-                                '<div class="text-[10px] text-slate-400">📜 ຄຳພີຝັງສົບກົວຜູ (Zang Shu), ຫຼົວຜານ 120 ພັນຈິນ, ສານເຫີສຸ່ຍຝາ</div>' +
-                            '</div>' +
-                        '</div>' +
-                        '<button type="button" onclick="openAuditReportModal()" class="py-1 px-2.5 rounded-lg text-center transition flex items-center gap-1 bg-gradient-to-r from-purple-700 to-indigo-600 text-white font-black text-[10px] shadow-md border border-purple-300 hover:brightness-110 active:scale-95">' +
-                            '<span>📄</span> <span>ໃບລາຍງານສຸສານ</span>' +
-                        '</button>' +
-                    '</div>' +
-                    '<div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5">' +
-                        yinTabs.map(t => {
-                            const isTabActive = (activeYinTab === t.key);
-                            return '<button type="button" onclick="setYinTab(\'' + t.key + '\')" class="touch-manipulation select-none p-2 rounded-xl text-left transition flex flex-col gap-0.5 shadow-sm active:scale-98 ' +
-                                (isTabActive
-                                    ? 'bg-purple-600 text-white font-black shadow-md border border-purple-300 ring-2 ring-purple-400/50'
-                                    : 'bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700') + '">' +
-                                '<div class="flex items-center justify-between gap-1">' +
-                                    '<span class="text-xs font-bold truncate flex items-center gap-1.5">' +
-                                        '<span>' + t.icon + '</span>' +
-                                        '<span>' + t.name + '</span>' +
-                                    '</span>' +
-                                    '<span class="text-[9px] px-1 py-0.2 rounded font-mono shrink-0 ' +
-                                        (isTabActive ? 'bg-slate-950 text-purple-300' : 'bg-slate-800 text-slate-400') + '">' +
-                                        t.canon +
-                                    '</span>' +
-                                '</div>' +
-                                '<div class="text-[10px] truncate ' + (isTabActive ? 'text-purple-100 font-medium' : 'text-slate-400') + '">' +
-                                    t.desc +
-                                '</div>' +
-                            '</button>';
-                        }).join('') +
-                    '</div>' +
-                '</div>'
-            );
-        }
-
-function setSelectedRoom(roomKey) {
-            selectedRoomType = roomKey;
-
-            // Direct in-place DOM update: highlight selected button without destroying DOM or resetting scroll!
-            const allBtns = document.querySelectorAll('[data-room-key]');
-            if (allBtns && allBtns.length > 0) {
-                allBtns.forEach(btn => {
-                    const isSelected = btn.getAttribute('data-room-key') === roomKey;
-                    if (isSelected) {
-                        btn.className = 'py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 bg-amber-500 text-slate-950 shadow-md font-black ring-1 ring-amber-300';
-                    } else {
-                        btn.className = 'py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 text-slate-300 hover:bg-slate-900';
-                    }
-                });
-            } else {
-                const mobSel = document.querySelector('#mobActiveTabBody #roomSelectorContainer');
-                const pcSel = document.querySelector('#pcActiveTabBody #roomSelectorContainer');
-                if (mobSel || pcSel) {
-                    const sHtml = renderRoomSelectorHtml();
-                    if (mobSel) mobSel.innerHTML = sHtml;
-                    if (pcSel) pcSel.innerHTML = sHtml;
-                }
-            }
-
-            // Update only verdict container (zero interference with buttons or scroll position)
-            const normRot = ((currentRotation % 360) + 360) % 360;
-            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
-            const mobVerdict = document.querySelector('#mobActiveTabBody #roomVerdictContainer');
-            const pcVerdict = document.querySelector('#pcActiveTabBody #roomVerdictContainer');
-            if (mobVerdict || pcVerdict) {
-                updateLivePrediction(topCompassDeg, false);
-            } else {
-                updateLivePrediction(topCompassDeg, true);
-            }
-        }
-
-        function setSelectedRoomCategory(catKey) {
-            selectedRoomCategory = catKey;
-
-            const catBtns = document.querySelectorAll('[data-room-cat-btn]');
-            const roomBtns = document.querySelectorAll('[data-room-key]');
-
-            if (catBtns && catBtns.length > 0 && roomBtns && roomBtns.length > 0) {
-                // In-place category toggle
-                catBtns.forEach(btn => {
-                    const isMatch = btn.getAttribute('data-room-cat-btn') === catKey;
-                    btn.className = 'px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
-                        (isMatch
-                            ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
-                            : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800');
-                });
-
-                // Filter buttons with style.display without destroying container DOM
-                roomBtns.forEach(btn => {
-                    const rCat = btn.getAttribute('data-room-cat');
-                    const show = (catKey === 'all' || rCat === catKey);
-                    btn.style.display = show ? 'flex' : 'none';
-                });
-            } else {
-                const mobSel = document.querySelector('#mobActiveTabBody #roomSelectorContainer');
-                const pcSel = document.querySelector('#pcActiveTabBody #roomSelectorContainer');
-                if (mobSel || pcSel) {
-                    const sHtml = renderRoomSelectorHtml();
-                    if (mobSel) mobSel.innerHTML = sHtml;
-                    if (pcSel) pcSel.innerHTML = sHtml;
-                }
-            }
-        }
-
-        function setSelectedLuantou(key) {
-            selectedLuantouType = key;
-
-            // Direct in-place DOM update: highlight selected button without destroying DOM or resetting scroll!
-            const allBtns = document.querySelectorAll('[data-luantou-key]');
-            if (allBtns && allBtns.length > 0) {
-                allBtns.forEach(btn => {
-                    const isSelected = btn.getAttribute('data-luantou-key') === key;
-                    if (isSelected) {
-                        btn.className = 'py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 bg-amber-500 text-slate-950 shadow-md font-black ring-1 ring-amber-300';
-                    } else {
-                        btn.className = 'py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 text-slate-300 hover:bg-slate-900';
-                    }
-                });
-            } else {
-                const mobSel = document.querySelector('#mobActiveTabBody #luantouSelectorContainer');
-                const pcSel = document.querySelector('#pcActiveTabBody #luantouSelectorContainer');
-                if (mobSel || pcSel) {
-                    const sHtml = renderLuantouSelectorHtml();
-                    if (mobSel) mobSel.innerHTML = sHtml;
-                    if (pcSel) pcSel.innerHTML = sHtml;
-                }
-            }
-
-            // Update only verdict container (zero interference with buttons or scroll position)
-            const normRot = ((currentRotation % 360) + 360) % 360;
-            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
-            const mobVerdict = document.querySelector('#mobActiveTabBody #luantouVerdictContainer');
-            const pcVerdict = document.querySelector('#pcActiveTabBody #luantouVerdictContainer');
-            if (mobVerdict || pcVerdict) {
-                updateLivePrediction(topCompassDeg, false);
-            } else {
-                updateLivePrediction(topCompassDeg, true);
-            }
-        }
-
-        function setSelectedLuantouCategory(catKey) {
-            selectedLuantouCategory = catKey;
-
-            const catBtns = document.querySelectorAll('[data-luantou-cat-btn]');
-            const luantouBtns = document.querySelectorAll('[data-luantou-key]');
-
-            if (catBtns && catBtns.length > 0 && luantouBtns && luantouBtns.length > 0) {
-                // In-place category toggle
-                catBtns.forEach(btn => {
-                    const isMatch = btn.getAttribute('data-luantou-cat-btn') === catKey;
-                    btn.className = 'px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
-                        (isMatch
-                            ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
-                            : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800');
-                });
-
-                // Filter buttons with style.display without destroying container DOM
-                luantouBtns.forEach(btn => {
-                    const rCat = btn.getAttribute('data-luantou-cat');
-                    const show = (catKey === 'all' || rCat === catKey);
-                    btn.style.display = show ? 'flex' : 'none';
-                });
-            } else {
-                const mobSel = document.querySelector('#mobActiveTabBody #luantouSelectorContainer');
-                const pcSel = document.querySelector('#pcActiveTabBody #luantouSelectorContainer');
-                if (mobSel || pcSel) {
-                    const sHtml = renderLuantouSelectorHtml();
-                    if (mobSel) mobSel.innerHTML = sHtml;
-                    if (pcSel) pcSel.innerHTML = sHtml;
-                }
-            }
-        }
-
-        function setSelectedAnnualYear(yr) {
-            selectedAnnualYear = parseInt(yr, 10);
-            const normRot = ((currentRotation % 360) + 360) % 360;
-            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
-            updateLivePrediction(topCompassDeg, true);
-        }
-
-        function setSelectedForecastMonth(m) {
-            selectedForecastMonth = parseInt(m, 10);
-            const normRot = ((currentRotation % 360) + 360) % 360;
-            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
-            updateLivePrediction(topCompassDeg, true);
-        }
-
-        function setPredictionTab(tabName) {
-            if (tabName === 'tab_spots' || tabName === 'tab_remedies' || tabName === 'tab_bazhai') {
-                activeYangTab = 'tab_stars';
-            } else {
-                activeYangTab = tabName;
-            }
-            const normRot = ((currentRotation % 360) + 360) % 360;
-            const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
-            updateLivePrediction(topCompassDeg, true);
-        }
-
-        // Helper: Calculate authentic San Yuan Xuan Kong Monthly Flying Star Center
-        function getMonthlyCenterStar(year, monthIdx) {
-            const branchIdx = (year - 4) % 12;
-            let startStar = 8; // 子午卯酉
-            if ([0, 3, 6, 9].includes(branchIdx)) {
-                startStar = 8;
-            } else if ([1, 4, 7, 10].includes(branchIdx)) {
-                startStar = 5;
-            } else {
-                startStar = 2;
-            }
-            let star = ((startStar - (monthIdx - 1)) % 9 + 9) % 9;
-            if (star === 0) star = 9;
-            return star;
-        }
-
-        const SOLAR_MONTHS_INFO = [
-            { m: 1, name: 'ເດືອນ 1 (ກຸມພາ)', branch: '寅 (ເສືອ)', dates: '4 ກ.ພ - 5 ມີ.ນາ', term: 'ລີ້ຊຸນ (立春)', clash: 'ປີລິງ (申)' },
-            { m: 2, name: 'ເດືອນ 2 (ມີນາ)', branch: '卯 (ກະຕ່າຍ)', dates: '6 ມີ.ນາ - 4 ເມ.ສາ', term: 'ກິ່ງຕິກ (惊蛰)', clash: 'ປີໄກ່ (酉)' },
-            { m: 3, name: 'ເດືອນ 3 (ເມສາ)', branch: '辰 (ມັງກອນ)', dates: '5 ເມ.ສາ - 5 ພ.ພ', term: 'ເຊັງເມ້ງ (清明)', clash: 'ປີໝາ (戌)' },
-            { m: 4, name: 'ເດືອນ 4 (ພຶດສະພາ)', branch: '巳 (ງູ)', dates: '6 ພ.ພ - 5 ມິ.ຖ', term: 'ລີ້ຮ່າ (立夏)', clash: 'ປີໝູ (亥)' },
-            { m: 5, name: 'ເດືອນ 5 (ມິຖຸນາ)', branch: '午 (ມ້າ)', dates: '6 ມິ.ຖ - 6 ກ.ລ', term: 'ມັງຈົ່ງ (芒种)', clash: 'ປີໜູ (子)' },
-            { m: 6, name: 'ເດືອນ 6 (ກໍລະກົດ)', branch: '未 (ແພະ)', dates: '7 ກ.ລ - 6 ສ.ຫ', term: 'ສ່ຽວຊູ່ (小暑)', clash: 'ປີງົວ (丑)' },
-            { m: 7, name: 'ເດືອນ 7 (ສິງຫາ)', branch: '申 (ລິງ)', dates: '7 ສ.ຫ - 6 ກັນ.ຍາ', term: 'ລີ້ຊິວ (立秋)', clash: 'ປີເສືອ (寅)' },
-            { m: 8, name: 'ເດືອນ 8 (ກັນຍາ)', branch: '酉 (ໄກ່)', dates: '7 ກັນ.ຍາ - 7 ຕຸ.ລາ', term: 'ແປ໊ກໂລ້ວ (白露)', clash: 'ປິກະຕ່າຍ (卯)' },
-            { m: 9, name: 'ເດືອນ 9 (ຕຸລາ)', branch: '戌 (ໝາ)', dates: '8 ຕຸ.ລາ - 6 ພະ.ຈິກ', term: 'ຮັ່ນໂລ້ວ (寒露)', clash: 'ປີມັງກອນ (辰)' },
-            { m: 10, name: 'ເດືອນ 10 (ພະຈິກ)', branch: '亥 (ໝູ)', dates: '7 ພະ.ຈິກ - 6 ທັນ.ວາ', term: 'ລີ້ຕົງ (立冬)', clash: 'ປີງູ (巳)' },
-            { m: 11, name: 'ເດືອນ 11 (ທັນວາ)', branch: '子 (ໜູ)', dates: '7 ທັນ.ວາ - 5 ມັງ.ກອນ', term: 'ໄຕ່ເສວ (大雪)', clash: 'ປີມ້າ (午)' },
-            { m: 12, name: 'ເດືອນ 12 (ມັງກອນ)', branch: '丑 (ງົວ)', dates: '6 ມັງ.ກອນ - 3 ກຸມ.ພາ', term: 'ສ່ຽວຮັ່ນ (小寒)', clash: 'ປີແພະ (未)' }
-        ];
-
-        let lastCachedStarKey = '';
-        let lastCachedKwText = '';
-        let lastCachedSpotHtml = '';
-
-        let latestFlyingChart = null;
-
-        
-        const ROOM_CATEGORIES = [
-                        { key: 'all', name: 'ທັງໝົດ (43)' },
-                        { key: 'door_win', name: '🚪 ປະຕູ/ປ່ອງຢ້ຽມ (11)' },
-                        { key: 'kitchen', name: '🍲 ຄົວ/ອາຫານ (5)' },
-                        { key: 'bed', name: '🛏️ ຫ້ອງນອນ (4)' },
-                        { key: 'toilet', name: '🚽 ຫ້ອງນ້ຳ/ສຸຂາ (6)' },
-                        { key: 'living_work', name: '🛋️ ຮັບແຂກ/ເຮັດວຽກ (5)' },
-                        { key: 'structure', name: '🪜 ໂຄງສ້າງ/ທາງຍ່າງ (4)' },
-                        { key: 'water_ext', name: '⛲ ນ້ຳ/ສວນ/ພາຍນອກ (8)' }
-                    ];
-
-        const ALL_ROOMS = [
-                        // 🚪 Doors & Openings (11)
-                        { key: 'main_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູໃຫຍ່ໜ້າບ້ານ' },
-                        { key: 'gate', cat: 'door_win', icon: '⛩️', name: 'ປະຕູຮົ້ວນອກບ້ານ' },
-                        { key: 'side_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຂ້າງບ້ານ' },
-                        { key: 'back_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຫຼັງບ້ານ' },
-                        { key: 'bedroom_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຫ້ອງນອນ' },
-                        { key: 'kitchen_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຄົວ' },
-                        { key: 'toilet_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູຫ້ອງນ້ຳ' },
-                        { key: 'balcony_door', cat: 'door_win', icon: '🚪', name: 'ປະຕູລະບຽງ/ເລື່ອນ' },
-                        { key: 'window', cat: 'door_win', icon: '🪟', name: 'ປ່ອງຢ້ຽມໃຫຍ່' },
-                        { key: 'bedroom_window', cat: 'door_win', icon: '🪟', name: 'ປ່ອງຢ້ຽມຫ້ອງນອນ' },
-                        { key: 'skylight', cat: 'door_win', icon: '☀️', name: 'ຊ່ອງແສງ/ຊ່ອງລົມ' },
-
-                        // 🍲 Kitchen & Dining (5)
-                        { key: 'kitchen_room', cat: 'kitchen', icon: '🍲', name: 'ຫ້ອງຄົວ (ພື້ນທີ່)' },
-                        { key: 'stove', cat: 'kitchen', icon: '🔥', name: 'ເຕົາແກັສ/ເຕົາໄຟ' },
-                        { key: 'sink', cat: 'kitchen', icon: '🚰', name: 'ອ່າງລ້າງຈານ/ກ໊ອກ' },
-                        { key: 'refrigerator', cat: 'kitchen', icon: '🧊', name: 'ຕູ້ເຢັນ (ຄັງສະບຽງ)' },
-                        { key: 'dining', cat: 'kitchen', icon: '🍽️', name: 'ໂຕະກິນເຂົ້າ' },
-
-                        // 🛏️ Bedrooms & Resting (4)
-                        { key: 'bedroom', cat: 'bed', icon: '🏠', name: 'ຫ້ອງນອນໃຫຍ່' },
-                        { key: 'guest_bedroom', cat: 'bed', icon: '🛏️', name: 'ຫ້ອງນອນລູກ/ແຂກ' },
-                        { key: 'bed_head', cat: 'bed', icon: '🛌', name: 'ຕຽງ/ຫົວຕຽງນອນ' },
-                        { key: 'wardrobe_mirror', cat: 'bed', icon: '🪞', name: 'ຕູ້ເສື້ອຜ້າ/ກະຈົກ' },
-
-                        // 🚽 Bath & Sanitation (6)
-                        { key: 'toilet_indoor', cat: 'toilet', icon: '🚽', name: 'ຫ້ອງນ້ຳ (ໃນບ້ານ)' },
-                        { key: 'toilet_outdoor', cat: 'toilet', icon: '🛖', name: 'ຫ້ອງນ້ຳ (ນອກບ້ານ)' },
-                        { key: 'toilet_bowl', cat: 'toilet', icon: '🚽', name: 'ຈຸດຊັກໂຄກ' },
-                        { key: 'shower_bath', cat: 'toilet', icon: '🚿', name: 'ໂຊນອາບນ້ຳ/ອ່າງ' },
-                        { key: 'laundry', cat: 'toilet', icon: '🧺', name: 'ໂຊນຊັກຜ້າ' },
-                        { key: 'septic_drain', cat: 'toilet', icon: '🕳️', name: 'ຖັງເກິ/ທໍ່ນ້ຳເສຍ' },
-
-                        // 🛋️ Living, Work & Wealth (5)
-                        { key: 'living_room', cat: 'living_work', icon: '🛋️', name: 'ຫ້ອງຮັບແຂກ/ໂຖງ' },
-                        { key: 'sofa', cat: 'living_work', icon: '🛋️', name: 'ໂຊຟາຫຼັກ/ປະທານ' },
-                        { key: 'desk', cat: 'living_work', icon: '💼', name: 'ໂຕະເຮັດວຽກ/ຮຽນ' },
-                        { key: 'altar', cat: 'living_work', icon: '🏮', name: 'ຫິ້ງພຣະ/ສິ່ງສັກສິດ' },
-                        { key: 'safe_vault', cat: 'living_work', icon: '🔐', name: 'ຕູ້ເຊບ/ບ່ອນເກັບຊັບ' },
-
-                        // 🪜 Structure & Circulation (4)
-                        { key: 'stairs', cat: 'structure', icon: '🪜', name: 'ບັນໄດ/ຂັ້ນໄດ' },
-                        { key: 'center_palace', cat: 'structure', icon: '☯️', name: 'ໃຈກາງບ້ານ (ຕາກາງ)' },
-                        { key: 'corridor', cat: 'structure', icon: '🚶', name: 'ທາງຍ່າງຍາວ/ໂຖງ' },
-                        { key: 'pillar_beam', cat: 'structure', icon: '🏛️', name: 'ເສົາລອຍ/ຄານກົດທັບ' },
-
-                        // ⛲ Water, Yard & External (8)
-                        { key: 'fish', cat: 'water_ext', icon: '🐟', name: 'ຕູ້ປາ (ໃນບ້ານ)' },
-                        { key: 'fountain', cat: 'water_ext', icon: '⛲', name: 'ບໍ່ນ້ຳ/ນ້ຳພຸ (ນອກ)' },
-                        { key: 'pool', cat: 'water_ext', icon: '🏊', name: 'ສະລອຍນ້ຳ/ໜອງນ້ຳ' },
-                        { key: 'front_yard', cat: 'water_ext', icon: '🌿', name: 'ເດີ່ນໜ້າບ້ານ (ໝິງຖັງ)' },
-                        { key: 'back_yard', cat: 'water_ext', icon: '🌳', name: 'ສວນຫຼັງບ້ານ (ພູຫຼັງ)' },
-                        { key: 'balcony', cat: 'water_ext', icon: '🪴', name: 'ລະບຽງ/ດາດຟ້າ' },
-                        { key: 'garage', cat: 'water_ext', icon: '🚗', name: 'ໂຮງຈອດລົດ' },
-                        { key: 'storage', cat: 'water_ext', icon: '📦', name: 'ຫ້ອງເກັບເຄື່ອງ/ສາງ' }
-                    ];
+        const PREDICTION_ROOM_I18N = {
+            main_door: { hm: 'Qhov Rooj Loj Pem Tsev', ph: '𖬄𖲝 𖬈𖰞 𖬎𖲤' },
+            gate: { hm: 'Qhov Rooj Ciam Av', ph: '𖬄𖲝 𖬈𖰞 𖬖𖰟' },
+            side_door: { hm: 'Qhov Rooj Sab Tsev', ph: '𖬄𖲝 𖬈𖰞 𖬉𖲦' },
+            back_door: { hm: 'Qhov Rooj Tom Qab', ph: '𖬄𖲝 𖬈𖰞 𖬎𖰧' },
+            bedroom_door: { hm: 'Qhov Rooj Chav Pw', ph: '𖬄𖲝 𖬎𖰰𖬟 𖬐𖰞' },
+            kitchen_door: { hm: 'Qhov Rooj Chav Ua Noj', ph: '𖬄𖲝 𖬎𖰰𖬟 𖬐𖰞' },
+            toilet_door: { hm: 'Qhov Rooj Chav Dej', ph: '𖬄𖲝 𖬎𖰰𖬟 𖬆𖰞' },
+            balcony_door: { hm: 'Qhov Rooj Tshav Saum', ph: '𖬄𖲝 𖬎𖰰𖬟 𖬎𖲤' },
+            window: { hm: 'Qhov Rais Loj', ph: '𖬐𖰞 𖬄𖲝 𖬎𖲤' },
+            bedroom_window: { hm: 'Qhov Rais Chav Pw', ph: '𖬐𖰞 𖬄𖲝 𖬐𖰞' },
+            skylight: { hm: 'Qhov Cua / Qhov Ci', ph: '𖬐𖰞 𖬄𖲝 𖬎𖰟' },
+            kitchen_room: { hm: 'Chav Ua Noj (Chaw)', ph: '𖬎𖰰𖬟 𖬐𖰞' },
+            stove: { hm: 'Qhov Cub Roj / Hluav Taws', ph: '𖬎𖰰𖬟 𖬎𖰤' },
+            sink: { hm: 'Chaw Ntxuav Phaj / Dej', ph: '𖬆𖰞 𖬐𖰞' },
+            refrigerator: { hm: 'Lub Tub Yees (Khoom Noj)', ph: '𖬆𖰞 𖬎𖰟' },
+            dining: { hm: 'Rooj Noj Mov', ph: '𖬌𖰞 𖬐𖰞' },
+            bedroom: { hm: 'Chav Pw Loj', ph: '𖬎𖰰𖬟 𖬐𖰞 𖬎𖲤' },
+            guest_bedroom: { hm: 'Chav Pw Qhua / Menyuam', ph: '𖬎𖰰𖬟 𖬐𖰞 𖬎𖲨' },
+            bed_head: { hm: 'Lub Txaj / Taub Txaj', ph: '𖬌𖰞 𖬐𖰞' },
+            wardrobe_mirror: { hm: 'Tub Khaub Ncaws / Daim Ia', ph: '𖬌𖰞 𖬐𖰞 𖬎𖰟' },
+            toilet_indoor: { hm: 'Chav Dej (Hauv Tsev)', ph: '𖬎𖰰𖬟 𖬆𖰞' },
+            toilet_outdoor: { hm: 'Chav Dej (Nraum Zoov)', ph: '𖬎𖰰𖬟 𖬆𖰞 𖬖𖰟' },
+            toilet_bowl: { hm: 'Lub Rooj Tso Quav', ph: '𖬌𖰞 𖬆𖰞' },
+            shower_bath: { hm: 'Chaw Da Dej / Dab Da', ph: '𖬆𖰞 𖬎𖰟' },
+            laundry: { hm: 'Chaw Ntxhua Khaub Ncaws', ph: '𖬎𖰰𖬟 𖬐𖰞' },
+            septic_drain: { hm: 'Qhov Dej Qias / Pas Dej Qias', ph: '𖬆𖰞 𖬄𖰝' },
+            living_room: { hm: 'Chav Txais Qhua Loj', ph: '𖬎𖰰𖬟 𖬎𖲤' },
+            sofa: { hm: 'Lub Rooj Zaum Loj (Sofa)', ph: '𖬌𖰞 𖬎𖲤' },
+            desk: { hm: 'Rooj Ua Hauj Lwm / Kawm Ntawv', ph: '𖬌𖰞 𖬎𖲤' },
+            altar: { hm: 'Lub Thaj Dab Qhuas / Ntuj', ph: '𖬎𖲦 𖬐𖰞' },
+            safe_vault: { hm: 'Lub Tub Khaws Nyiaj', ph: '𖬌𖰞 𖬌𖲞' },
+            stairs: { hm: 'Cov Vaj Ris / Qib Ris', ph: '𖬈𖰞 𖬎𖰟' },
+            center_palace: { hm: 'Plawv Tsev (Tai Ji)', ph: '𖬖𖰟 𖬎𖰰𖬟' },
+            corridor: { hm: 'Txoj Kev Taug Ntev', ph: '𖬎𖰟 𖬎𖰰𖬟' },
+            pillar_beam: { hm: 'Ncej Tsev / Kab Tsev Nias', ph: '𖬐𖰞 𖬈𖰞' },
+            fish: { hm: 'Lub Dab Ntses (Hauv Tsev)', ph: '𖬎𖰰𖬟 𖬆𖰞' },
+            fountain: { hm: 'Dej Txeej / Pas Dej (Nraum)', ph: '𖬆𖰞 𖬖𖰟' },
+            pool: { hm: 'Pas Dej Luam / Pas Dej Loj', ph: '𖬆𖰞 𖬎𖲤' },
+            front_yard: { hm: 'Tshav Pem Tsev (Ming Tang)', ph: '𖬄𖲝 𖬈𖰞' },
+            back_yard: { hm: 'Vaj Tom Qab Tsev (Roob Phem)', ph: '𖬎𖰧 𖬈𖰞' },
+            balcony: { hm: 'Tshav Saum Tsev / Qab Vas', ph: '𖬎𖰰𖬟 𖬎𖲤' },
+            garage: { hm: 'Chaw Nres Tsheb', ph: '𖬎𖰰𖬟 𖬌𖰞' },
+            storage: { hm: 'Chav Khaws Khoom', ph: '𖬎𖰰𖬟 𖬐𖰞' }
+        };
 
         function renderRoomSelectorHtml() {
+            const isHm = (currentLuopanLang === 'hm');
+            const isPh = (currentLuopanLang === 'ph');
+
             const catBar =
                 '<div class="flex items-center gap-1 overflow-x-auto pb-1 mb-1.5 scrollbar-thin select-none">' +
-                    ROOM_CATEGORIES.map(c =>
-                        '<button type="button" data-room-cat-btn="' + c.key + '" onclick="setSelectedRoomCategory(\'' + c.key + '\')" class="px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
+                    ROOM_CATEGORIES.map(c => {
+                        const trC = PREDICTION_ROOM_CAT_I18N[c.key];
+                        const cTitle = (isHm && trC) ? trC.hm : (isPh && trC) ? trC.ph : c.name;
+                        return '<button type="button" data-room-cat-btn="' + c.key + '" onclick="setSelectedRoomCategory(\'' + c.key + '\')" class="px-2 py-0.5 rounded-full text-[9px] font-bold whitespace-nowrap transition ' +
                             (selectedRoomCategory === c.key
                                 ? 'bg-amber-500 text-slate-950 font-black shadow-sm ring-1 ring-amber-300'
                                 : 'bg-slate-900/90 text-slate-400 hover:text-slate-200 border border-slate-800') + '">' +
-                            c.name +
-                        '</button>'
-                    ).join('') +
-                '</div>';
-
-            const roomPills =
-                catBar +
-                '<div id="roomButtonsGrid" class="grid grid-cols-3 gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 mb-2 max-h-48 overflow-y-auto">' +
-                    ALL_ROOMS.map(r => {
-                        const isVisible = (selectedRoomCategory === 'all' || r.cat === selectedRoomCategory);
-                        const isSelected = (selectedRoomType === r.key);
-                        return '<button type="button" data-room-key="' + r.key + '" data-room-cat="' + r.cat + '" onclick="setSelectedRoom(\'' + r.key + '\')" style="display: ' + (isVisible ? 'flex' : 'none') + ';" class="py-1.5 px-0.5 rounded-lg text-center text-[10px] font-bold transition flex flex-col items-center gap-0.5 ' +
-                            (isSelected
-                                ? 'bg-amber-500 text-slate-950 shadow-md font-black ring-1 ring-amber-300'
-                                : 'text-slate-300 hover:bg-slate-900') + '">' +
-                            '<span class="text-xs">' + r.icon + '</span><span class="truncate max-w-full">' + r.name + '</span>' +
+                            cTitle +
                         '</button>';
                     }).join('') +
                 '</div>';
 
-            return roomPills;
+            const filteredRooms = (selectedRoomCategory === 'all')
+                ? ALL_ROOMS
+                : ALL_ROOMS.filter(r => r.cat === selectedRoomCategory);
+
+            const roomBtns = filteredRooms.map(r => {
+                const isSelected = (selectedRoomType === r.key);
+                const trR = PREDICTION_ROOM_I18N[r.key];
+                const rTitle = (isHm && trR) ? trR.hm : (isPh && trR) ? trR.ph : r.name;
+                return '<button type="button" data-room-key="' + r.key + '" onclick="setSelectedRoomType(\'' + r.key + '\')" class="p-2 rounded-xl text-center transition flex flex-col items-center justify-center gap-1 border active:scale-95 ' +
+                    (isSelected
+                        ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 font-black shadow-md border-amber-300 ring-2 ring-amber-400/50'
+                        : 'bg-slate-900/80 hover:bg-slate-800 text-slate-300 border-slate-800 hover:border-slate-700') + '">' +
+                    '<span class="text-lg leading-none">' + r.icon + '</span>' +
+                    '<span class="text-[10px] leading-tight font-bold">' + rTitle + '</span>' +
+                '</button>';
+            }).join('');
+
+            return catBar + '<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-1.5 select-none">' + roomBtns + '</div>';
         }
 
         function renderRoomVerdictHtml(faceDeg, chart, curPal, curM, curW, comboInfo) {
