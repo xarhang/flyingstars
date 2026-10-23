@@ -1032,6 +1032,7 @@
         // MULTI-LANGUAGE SYSTEM (I18N): LAO, WHITE HMONG RPA, PAHAWH HMONG
         // =========================================================================
         let currentLuopanLang = localStorage.getItem('luopan_lang') || 'lo';
+        let currentBaseStyle = 'lacquer';
 
         const LUOPAN_I18N = {
             lo: {
@@ -1419,7 +1420,10 @@
             applyLuopanLanguageDOM(lang);
 
             // Re-render components
-            buildOuterBasePlate(currentBaseStyle || 'lacquer');
+            const bSelect = document.getElementById('baseStyleSelect');
+            const activeStyle = (bSelect && bSelect.value) ? bSelect.value : (currentBaseStyle || 'lacquer');
+            currentBaseStyle = activeStyle;
+            buildOuterBasePlate(activeStyle);
             buildCompassSVG();
             updateCompassTransform();
             updateGuaDisplay();
@@ -1866,6 +1870,7 @@
         }
 
         function buildOuterBasePlate(styleMode = 'lacquer') {
+            currentBaseStyle = styleMode;
             const baseGroup = document.getElementById('outerBasePlate');
             if (styleMode === 'hidden') {
                 baseGroup.innerHTML = '';
@@ -13132,6 +13137,7 @@ function updateCompassTransform(deltaAngle = null) {
         });
 
         baseStyleSelect.addEventListener('change', (e) => {
+            currentBaseStyle = e.target.value;
             buildOuterBasePlate(e.target.value);
         });
 
