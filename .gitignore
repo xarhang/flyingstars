@@ -22,6 +22,8 @@
 !/asset/fonts/*.ttf
 !/asset/vendor/
 !/asset/vendor/**
+!/asset/extracted_pages/
+!/asset/extracted_pages/*
 
 # Whitelist /book 3D flipbook app
 !/book/
