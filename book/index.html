@@ -635,11 +635,11 @@
         }
 
         // ========================================================
-        // 3D REALISTIC MULTI-STRIP CYLINDRICAL PAPER ROLL ENGINE
+        // REALISTIC PAPER FOLD / PEEL ENGINE (geometric fold, GPU-light, no flicker)
         // ========================================================
-        const NUM_MESH_STRIPS = 14;
         let meshStrips = [];
         let activeRollRoot = null;
+        let foldState = null;
         let dragDirection = 0; // 1 = Next, -1 = Prev
         let dragTargetPage = 1;
         let dragStartX = 0;
@@ -648,149 +648,136 @@
         let dragCurrentProgress = 0;
         let dragMode = 'idle'; // 'idle', 'evaluating', 'peeling', 'scrolling'
 
-        function buildCylinderMesh(fromNum, toNum, dir) {
-            const leafContainer = document.getElementById('flipLeafContainer');
-            leafContainer.innerHTML = '';
-            meshStrips = [];
-
-            const fromObj = currentPages[fromNum - 1];
-            const toObj = currentPages[toNum - 1];
-            if (!fromObj || !toObj) return null;
-
-            const rect = bookCanvas.getBoundingClientRect();
-            const stageW = rect.width;
-            const stageH = rect.height;
-            const stripW = stageW / NUM_MESH_STRIPS;
-
-            const root = document.createElement('div');
-            root.className = 'mesh-roll-root';
-            leafContainer.appendChild(root);
-            activeRollRoot = root;
-
-            let parentEl = root;
-            const isNext = dir > 0;
-            // The turning sheet displays the turning page content, eliminating Z-fighting with destination
-            const turningContent = isNext ? fromObj.html : toObj.html;
-
-            for (let i = 0; i < NUM_MESH_STRIPS; i++) {
-                const strip = document.createElement('div');
-                strip.className = 'mesh-strip';
-                strip.style.left = (i === 0) ? '0px' : (stripW + 'px');
-                strip.style.width = stripW + 'px';
-
-                const offsetLeft = -(i * stripW);
-
-                strip.innerHTML = `
-                    <div class="strip-face front">
-                        <div class="strip-inner-content book-page-surface p-4 sm:p-7" style="left: ${offsetLeft}px; width: ${stageW}px; height: ${stageH}px;">
-                            ${turningContent}
-                        </div>
-                        <div class="strip-shade front-shade"></div>
-                    </div>
-                    <div class="strip-face back">
-                        <div class="strip-inner-content p-4 sm:p-7 border-l border-amber-900/20" style="left: ${offsetLeft}px; width: ${stageW}px; height: ${stageH}px; opacity: 0.12; filter: blur(0.4px);">
-                            ${turningContent}
-                        </div>
-                        <div class="strip-shade back-shade"></div>
-                    </div>
-                `;
-
-                parentEl.appendChild(strip);
-                meshStrips.push(strip);
-                parentEl = strip; // Nested strips form continuous cylinder curvature without Z-fighting
-            }
-
-            return root;
+        function applyChromeTo(root, pageObj, pageNum) {
+            const set = (id, txt) => { const el = root.querySelector('#' + id); if (el) el.innerText = txt; };
+            const title = pageObj.chTitle || (currentLang === 'hm' ? 'Looj Mem Hnub Qub Ya' : 'ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ');
+            set('pageHeaderLeft', title);
+            set('pageFooterChapter', pageObj.chTitle || '');
+            set('pageFooterNumber', currentLang === 'hm' ? `Phab ${pageNum}` : `ໜ້າ ${pageNum}`);
+            const body = root.querySelector('#pageBodyContainer');
+            if (body) { body.innerHTML = pageObj.html; body.scrollTop = 0; }
         }
 
-        // Apply authentic continuous cylindrical roll across all 14 nested strips
-        function updatePaperRoll(dir, progress, ry = 0) {
-            if (!activeRollRoot || meshStrips.length === 0) return;
-            const p = Math.max(0, Math.min(1, progress));
-            const curlSpan = 4.2; // Width of the rolling cylinder in strips
-            const castShadow = document.getElementById('pageCastShadow');
+        // Builds the fold overlay. Underlying surface always shows the destination page.
+        function startFold(dir, targetNum) {
+            const holder = document.getElementById('flipLeafContainer');
+            const surface = document.getElementById('activePageSurface');
+            const curObj = currentPages[currentPageNum - 1];
+            const tgtObj = currentPages[targetNum - 1];
+            if (!curObj || !tgtObj) return false;
 
-            if (castShadow) {
-                castShadow.style.opacity = (Math.sin(p * Math.PI) * 0.75).toFixed(2);
-            }
+            const W = surface.offsetWidth;
+            const H = surface.offsetHeight;
+            const BIG = Math.ceil(Math.hypot(W, H)) * 2;
+            holder.innerHTML = '';
 
-            // Diagonal corner curl tilt (corner lifts when pulling from top or bottom)
-            const tiltZ = -4.5 * Math.sin(p * Math.PI) * Math.max(-1, Math.min(1, ry)) * dir;
-            activeRollRoot.style.transform = `translateZ(2px) rotateZ(${tiltZ}deg)`;
+            const origBody = document.getElementById('pageBodyContainer');
+            const keepScroll = origBody.scrollTop;
+
+            const clone = surface.cloneNode(true);
+            ['pageCastShadow', 'cornerNextTab', 'cornerPrevTab'].forEach(id => {
+                const n = clone.querySelector('#' + id);
+                if (n) n.remove();
+            });
+            if (dir < 0) applyChromeTo(clone, tgtObj, targetNum);
+            clone.querySelectorAll('[id]').forEach(n => n.removeAttribute('id'));
+            clone.removeAttribute('id');
+            clone.style.position = 'absolute';
+            clone.style.left = '0px';
+            clone.style.top = '0px';
+            clone.style.width = W + 'px';
+            clone.style.height = H + 'px';
+            clone.style.willChange = 'transform';
+
+            const mk = (css) => { const d = document.createElement('div'); d.style.cssText = css; return d; };
+
+            const stage = mk('position:absolute;inset:0;overflow:hidden;border-radius:16px;pointer-events:none;');
+            const destShadow = mk(`position:absolute;left:0;top:0;width:120px;height:${BIG}px;transform-origin:0 0;background:linear-gradient(to right,rgba(0,0,0,.36),rgba(0,0,0,.13) 35%,rgba(0,0,0,0));`);
+            const frontWrap = mk('position:absolute;inset:0;');
+            const frontShade = mk(`position:absolute;left:0;top:0;width:80px;height:${BIG}px;transform-origin:0 0;background:linear-gradient(to left,rgba(0,0,0,.22),rgba(0,0,0,.07) 40%,rgba(0,0,0,0));`);
+            const flapWrap = mk('position:absolute;inset:0;filter:drop-shadow(-4px 3px 8px rgba(0,0,0,.40));');
+            const flap = mk(`position:absolute;left:0;top:0;width:${W}px;height:${H}px;transform-origin:0 0;background:#efe6d2;`);
+            const flapShade = mk(`position:absolute;left:0;top:0;width:220px;height:${BIG}px;transform-origin:0 0;background:linear-gradient(to right,rgba(0,0,0,.36) 0px,rgba(0,0,0,.10) 9px,rgba(255,255,255,.60) 28px,rgba(255,255,255,.14) 75px,rgba(0,0,0,.05) 140px,rgba(0,0,0,.12) 220px);`);
+
+            frontWrap.appendChild(clone);
+            frontWrap.appendChild(frontShade);
+            flap.appendChild(flapShade);
+            flapWrap.appendChild(flap);
+            stage.appendChild(destShadow);
+            stage.appendChild(frontWrap);
+            stage.appendChild(flapWrap);
+            holder.appendChild(stage);
+
+            const cb = clone.querySelector('.page-content');
+            if (dir > 0 && cb) cb.scrollTop = keepScroll;
+
+            foldState = { W, H, BIG, stage, destShadow, frontWrap, frontShade, flap, flapShade };
+            activeRollRoot = stage;
 
             if (dir > 0) {
-                // NEXT: cylinder rolls from right (strip 13) to left (strip 0)
-                const startApex = NUM_MESH_STRIPS - curlSpan / 2;
-                const endApex = -curlSpan / 2;
-                const apex = startApex + (endApex - startApex) * p;
-
-                let accum = 0;
-                meshStrips.forEach((strip, i) => {
-                    const dist = i - apex;
-                    let relAngle = 0;
-                    if (dist >= -curlSpan / 2 && dist <= curlSpan / 2) {
-                        const t = (dist + curlSpan / 2) / curlSpan;
-                        relAngle = -(180 / curlSpan) * Math.sin(t * Math.PI) * 1.57;
-                    }
-                    strip.style.transform = `rotateY(${relAngle}deg)`;
-                    accum += relAngle;
-
-                    const norm = Math.abs(accum % 360);
-                    const frontShade = strip.querySelector('.front-shade');
-                    const backShade = strip.querySelector('.back-shade');
-                    if (frontShade) {
-                        if (norm > 70 && norm < 110) {
-                            frontShade.style.background = `rgba(255, 255, 255, ${(1 - Math.abs(norm - 90)/20) * 0.75})`;
-                        } else if (norm > 20 && norm < 70) {
-                            frontShade.style.background = `rgba(0, 0, 0, ${Math.sin(norm * Math.PI / 180) * 0.45})`;
-                        } else {
-                            frontShade.style.background = 'transparent';
-                        }
-                    }
-                    if (backShade) {
-                        if (norm > 70 && norm < 110) {
-                            backShade.style.background = `rgba(255, 255, 255, ${(1 - Math.abs(norm - 90)/20) * 0.6})`;
-                        } else {
-                            backShade.style.background = 'transparent';
-                        }
-                    }
-                });
-            } else {
-                // PREV: cylinder rolls from left (strip 0) to right (strip 13)
-                const startApex = -curlSpan / 2;
-                const endApex = NUM_MESH_STRIPS - curlSpan / 2;
-                const apex = startApex + (endApex - startApex) * p;
-
-                let accum = -180;
-                meshStrips.forEach((strip, i) => {
-                    const dist = i - apex;
-                    let relAngle = 0;
-                    if (dist >= -curlSpan / 2 && dist <= curlSpan / 2) {
-                        const t = (dist + curlSpan / 2) / curlSpan;
-                        relAngle = (180 / curlSpan) * Math.sin(t * Math.PI) * 1.57;
-                    }
-                    strip.style.transform = `rotateY(${relAngle}deg)`;
-                    accum += relAngle;
-
-                    const norm = Math.abs(accum % 360);
-                    const frontShade = strip.querySelector('.front-shade');
-                    const backShade = strip.querySelector('.back-shade');
-                    if (frontShade) {
-                        if (norm > 70 && norm < 110) {
-                            frontShade.style.background = `rgba(255, 255, 255, ${(1 - Math.abs(norm - 90)/20) * 0.75})`;
-                        } else {
-                            frontShade.style.background = 'transparent';
-                        }
-                    }
-                    if (backShade) {
-                        if (norm > 70 && norm < 110) {
-                            backShade.style.background = `rgba(255, 255, 255, ${(1 - Math.abs(norm - 90)/20) * 0.6})`;
-                        } else {
-                            backShade.style.background = 'transparent';
-                        }
-                    }
-                });
+                origBody.innerHTML = tgtObj.html;
+                origBody.scrollTop = 0;
+                updateUIHeaderFooter(tgtObj, targetNum);
             }
+            return true;
+        }
+
+        // progress 0..1 = how far the turn has progressed (for both directions)
+        function updatePaperRoll(dir, progress, ry = 0) {
+            const s = foldState;
+            if (!s) return;
+            const p = Math.max(0, Math.min(1, progress));
+            const pn = dir > 0 ? p : 1 - p;
+            const W = s.W, H = s.H;
+            const fx = W * (1 - pn);
+
+            const amp = Math.sin(Math.PI * Math.pow(pn, 0.6));
+            const thetaDeg = -amp * (5 + 7 * Math.max(-1, Math.min(1, ry)));
+            const th = thetaDeg * Math.PI / 180;
+            const t = Math.tan(th);
+            const xTop = fx - (H / 2) * t;
+            const xBot = fx + (H / 2) * t;
+
+            s.frontWrap.style.clipPath = `polygon(0px 0px, ${xTop}px 0px, ${xBot}px ${H}px, 0px ${H}px)`;
+            s.flap.style.clipPath = `polygon(${xTop}px 0px, ${xBot}px ${H}px, ${W}px ${H}px, ${W}px 0px)`;
+
+            const c2 = Math.cos(2 * th), s2 = Math.sin(2 * th);
+            const e = fx - (-c2 * fx + s2 * H / 2);
+            const f = H / 2 - (s2 * fx + c2 * H / 2);
+            s.flap.style.transform = `matrix(${-c2}, ${s2}, ${s2}, ${c2}, ${e}, ${f})`;
+
+            const frame = `translate(${fx}px, ${H / 2}px) rotate(${-thetaDeg}deg) translate(0px, ${-s.BIG / 2}px)`;
+            s.flapShade.style.transform = frame;
+            s.destShadow.style.transform = frame;
+            s.frontShade.style.transform = `${frame} translate(-80px, 0px)`;
+
+            const o = Math.min(1, pn * 10).toFixed(3);
+            s.flapShade.style.opacity = o;
+            s.destShadow.style.opacity = o;
+            s.frontShade.style.opacity = o;
+        }
+
+        function endFold(dir, targetNum, complete) {
+            const holder = document.getElementById('flipLeafContainer');
+            const container = document.getElementById('pageBodyContainer');
+            if (dir > 0) {
+                if (complete) {
+                    currentPageNum = targetNum;
+                } else {
+                    container.innerHTML = currentPages[currentPageNum - 1].html;
+                    container.scrollTop = 0;
+                    updateUIHeaderFooter(currentPages[currentPageNum - 1], currentPageNum);
+                }
+            } else if (complete) {
+                container.innerHTML = currentPages[targetNum - 1].html;
+                container.scrollTop = 0;
+                currentPageNum = targetNum;
+                updateUIHeaderFooter(currentPages[targetNum - 1], targetNum);
+            }
+            holder.innerHTML = '';
+            foldState = null;
+            activeRollRoot = null;
+            isFlipping = false;
         }
 
         function updateUIHeaderFooter(pageObj, pageNum) {
@@ -816,38 +803,22 @@
             isFlipping = true;
             playPageTurnSound();
 
-            const mesh = buildCylinderMesh(currentPageNum, targetNum, dir);
-            if (!mesh) {
+            if (!startFold(dir, targetNum)) {
                 isFlipping = false;
                 return;
             }
+            updatePaperRoll(dir, 0, 0.15);
 
-            const container = document.getElementById('pageBodyContainer');
-            container.innerHTML = currentPages[targetNum - 1].html;
-            container.scrollTop = 0;
-
-            const duration = 580;
-            const startTime = performance.now();
-            const castShadow = document.getElementById('pageCastShadow');
-
+            const duration = 720;
+            const t0 = performance.now();
             function step(now) {
-                const elapsed = now - startTime;
-                const t = Math.min(1, elapsed / duration);
-                const ease = 1 - Math.pow(1 - t, 3);
-
-                updatePaperRoll(dir, ease, 0.1);
-
+                const t = Math.min(1, (now - t0) / duration);
+                const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                updatePaperRoll(dir, e, 0.15);
                 if (t < 1) {
                     requestAnimationFrame(step);
                 } else {
-                    document.getElementById('flipLeafContainer').innerHTML = '';
-                    activeRollRoot = null;
-                    meshStrips = [];
-                    if (castShadow) castShadow.style.opacity = '0';
-                    currentPageNum = targetNum;
-                    const pageObj = currentPages[currentPageNum - 1];
-                    updateUIHeaderFooter(pageObj, currentPageNum);
-                    isFlipping = false;
+                    endFold(dir, targetNum, true);
                 }
             }
             requestAnimationFrame(step);
@@ -1072,17 +1043,11 @@
                     isFlipping = true;
                     playPageTurnSound();
 
-                    const mesh = buildCylinderMesh(currentPageNum, dragTargetPage, dragDirection);
-                    if (!mesh) {
+                    if (!startFold(dragDirection, dragTargetPage)) {
                         dragMode = 'idle';
                         isFlipping = false;
                         return;
                     }
-
-                    // Reveal target page on underlying surface
-                    const container = document.getElementById('pageBodyContainer');
-                    container.innerHTML = currentPages[dragTargetPage - 1].html;
-                    container.scrollTop = 0;
 
                     updatePaperRoll(dragDirection, 0, 0);
                     try { canvasEl.setPointerCapture(e.pointerId); } catch (_) {}
@@ -1093,8 +1058,8 @@
                 if (e.cancelable) e.preventDefault();
                 const rect = canvasEl.getBoundingClientRect();
                 const progress = dragDirection > 0 ? 
-                    (-dx / (rect.width * 0.82)) : 
-                    (dx / (rect.width * 0.82));
+                    (-dx / (rect.width * 0.87)) : 
+                    (dx / (rect.width * 0.87));
                 dragCurrentProgress = Math.max(0, Math.min(1, progress));
 
                 const ry = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
@@ -1132,38 +1097,18 @@
             const target = complete ? 1.0 : 0.0;
             const dir = dragDirection;
             const targetPage = dragTargetPage;
-            const castShadow = document.getElementById('pageCastShadow');
-
             const startP = fromProgress;
-            const duration = Math.max(180, Math.min(360, Math.abs(target - startP) * 360));
+            const duration = Math.max(220, Math.min(480, Math.abs(target - startP) * 520));
             const startTime = performance.now();
 
             function step(now) {
-                const elapsed = now - startTime;
-                const t = Math.min(1, elapsed / duration);
+                const t = Math.min(1, (now - startTime) / duration);
                 const ease = 1 - Math.pow(1 - t, 3);
-                const curP = startP + (target - startP) * ease;
-
-                updatePaperRoll(dir, curP, 0);
-
+                updatePaperRoll(dir, startP + (target - startP) * ease, 0);
                 if (t < 1) {
                     requestAnimationFrame(step);
                 } else {
-                    document.getElementById('flipLeafContainer').innerHTML = '';
-                    activeRollRoot = null;
-                    meshStrips = [];
-                    if (castShadow) castShadow.style.opacity = '0';
-
-                    if (complete) {
-                        currentPageNum = targetPage;
-                        const pageObj = currentPages[currentPageNum - 1];
-                        updateUIHeaderFooter(pageObj, currentPageNum);
-                    } else {
-                        const originalObj = currentPages[currentPageNum - 1];
-                        document.getElementById('pageBodyContainer').innerHTML = originalObj.html;
-                        document.getElementById('pageBodyContainer').scrollTop = 0;
-                    }
-                    isFlipping = false;
+                    endFold(dir, targetPage, complete);
                 }
             }
             requestAnimationFrame(step);
