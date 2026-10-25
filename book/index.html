@@ -2,7 +2,7 @@
 <html lang="lo">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ ສະບັບສົມບູນ (Flying Star Master Codex 3D FlipBook)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -32,226 +32,286 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #1c1917;
+            background-color: #12100e;
             user-select: none;
             -webkit-user-select: none;
         }
 
-        /* 3D Perspective Stage */
+        /* 3D Stage Container with Realistic Perspective */
         .stage-container {
             perspective: 2600px;
             perspective-origin: 50% 50%;
         }
 
-        .book-wrapper {
+        /* Book Canvas (Single-Page Tactile Codex) */
+        .book-canvas {
             position: relative;
             transform-style: preserve-3d;
-            transition: transform 0.5s ease;
-        }
-
-        /* Flip Sheet Styles */
-        .sheet {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            transform-origin: left center;
-            transform-style: preserve-3d;
-            transition: transform 0.75s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.75s ease;
-            cursor: pointer;
-        }
-
-        .sheet.flipped {
-            transform: rotateY(-180deg);
-        }
-
-        .page-side {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-
-        .page-side.back {
-            transform: rotateY(180deg);
+            box-shadow: 
+                -16px 22px 55px rgba(0, 0, 0, 0.8),
+                -3px 0 0 #bfa175,
+                -7px 0 0 #8c7350,
+                -11px 0 0 #5c4728;
+            border-radius: 12px 20px 20px 12px;
+            transition: transform 0.3s ease;
         }
 
         /* Reading Themes */
-        .theme-ivory .page-side {
-            background-color: #fefcf6;
-            color: #292524;
-            box-shadow: inset 0 0 40px rgba(180, 150, 110, 0.15);
+        .theme-ivory .book-page-surface {
+            background-color: #fbf9f2;
+            color: #272320;
+            box-shadow: inset 0 0 50px rgba(180, 150, 110, 0.12);
         }
-        .theme-sepia .page-side {
-            background-color: #f4ecd8;
-            color: #3e2723;
-            box-shadow: inset 0 0 50px rgba(139, 94, 60, 0.22);
+        .theme-sepia .book-page-surface {
+            background-color: #f4ecdc;
+            color: #3b2818;
+            box-shadow: inset 0 0 60px rgba(139, 94, 60, 0.2);
         }
-        .theme-midnight .page-side {
-            background-color: #18181b;
-            color: #f4f4f5;
-            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8);
+        .theme-midnight .book-page-surface {
+            background-color: #1a1817;
+            color: #f3f0e8;
+            box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.85);
         }
-        .theme-white .page-side {
+        .theme-white .book-page-surface {
             background-color: #ffffff;
             color: #111827;
-            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.08);
+            box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.06);
         }
 
-        /* Spine Shadows */
-        .spine-shadow-right {
-            background: linear-gradient(to right, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.08) 5%, transparent 16%);
-        }
-        .spine-shadow-left {
-            background: linear-gradient(to left, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.08) 5%, transparent 16%);
+        /* Left Book Spine Edge Indicator */
+        .spine-edge {
+            background: linear-gradient(to right, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.12) 3%, transparent 14%);
         }
 
-        /* Book Outer Shadow */
-        .book-shadow {
-            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 0, 0, 0.4);
+        /* Right Page Edge Stacking Lines */
+        .page-edge-trim {
+            border-right: 3px solid rgba(160, 130, 90, 0.35);
         }
 
-        /* Dog-ear corner curl */
-        .sheet:not(.flipped):hover .curl-indicator-right {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        .sheet.flipped:hover .curl-indicator-left {
-            opacity: 1;
-            transform: scale(1.1);
+        /* 3D Flipping Leaf Overlay */
+        .flipping-leaf {
+            position: absolute;
+            inset: 0;
+            transform-style: preserve-3d;
+            transform-origin: left center;
+            z-index: 50;
+            pointer-events: none;
+            border-radius: 12px 20px 20px 12px;
         }
 
-        /* Custom Scrollbars inside pages */
+        .leaf-face {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            overflow: hidden;
+            border-radius: 12px 20px 20px 12px;
+            box-sizing: border-box;
+        }
+
+        .leaf-face.back {
+            transform: rotateY(180deg);
+        }
+
+        /* Realistic Dynamic Lighting Shadows for Leaf */
+        .leaf-shadow {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Custom Scrollbar for Long Pages */
         .page-content::-webkit-scrollbar {
-            width: 4px;
+            width: 5px;
+        }
+        .page-content::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.03);
         }
         .page-content::-webkit-scrollbar-thumb {
-            background-color: rgba(180, 83, 9, 0.3);
-            border-radius: 4px;
+            background-color: rgba(180, 83, 9, 0.35);
+            border-radius: 6px;
+        }
+        .page-content::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(180, 83, 9, 0.6);
         }
 
-        /* Single Page view on mobile */
-        @media (max-width: 768px) {
-            .sheet {
-                width: 100%;
-                left: 0;
-            }
+        /* Responsive typography */
+        .doc-h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #78350f;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #fde68a;
+        }
+        .doc-h2 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #92400e;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .doc-lead {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #451a03;
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        .doc-p {
+            margin-bottom: 0.75rem;
+            line-height: 1.65;
+            text-align: justify;
+        }
+        .doc-callout {
+            background-color: rgba(254, 243, 199, 0.65);
+            border-left: 4px solid #d97706;
+            padding: 0.75rem;
+            margin: 0.75rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+        .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.75rem;
+            margin: 0.75rem 0;
+        }
+        .doc-table th {
+            background-color: #78350f;
+            color: #ffffff;
+            padding: 0.45rem 0.55rem;
+            border: 1px solid #d97706;
+            text-align: center;
+        }
+        .doc-table td {
+            padding: 0.4rem 0.55rem;
+            border: 1px solid #e5e7eb;
         }
     </style>
 </head>
 <body class="h-screen w-screen flex flex-col justify-between theme-ivory text-stone-800">
 
-    <!-- Top Header & Controls -->
-    <header class="h-14 bg-stone-900/95 border-b border-stone-800 flex items-center justify-between px-3 md:px-6 text-stone-200 z-50 backdrop-blur-md shadow-md select-none shrink-0">
+    <!-- Top Navigation & Controls Header -->
+    <header class="h-14 bg-stone-900/95 border-b border-stone-800/80 flex items-center justify-between px-3 sm:px-6 text-stone-200 z-50 backdrop-blur-md shadow-md select-none shrink-0">
         <!-- Back to main app & Book Title -->
-        <div class="flex items-center gap-3">
-            <a href="../" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-800/80 hover:bg-amber-600/90 text-amber-200 text-xs font-bold transition shadow" title="ກັບສູ່ໜ້າຫຼັກ">
+        <div class="flex items-center gap-2 sm:gap-3">
+            <a href="../" class="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-stone-800/90 hover:bg-amber-600 text-amber-200 text-xs font-bold transition shadow" title="ກັບສູ່ໜ້າຫຼັກ">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 <span class="hidden sm:inline">ໜ້າຫຼັກ</span>
             </a>
             
             <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
-                <span id="headerBookTitle" class="font-extrabold text-xs md:text-sm text-amber-300 tracking-wide truncate max-w-[200px] sm:max-w-xs md:max-w-md">
+                <span id="headerBookTitle" class="font-extrabold text-xs sm:text-sm text-amber-300 tracking-wide truncate max-w-[170px] sm:max-w-xs md:max-w-md">
                     ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ ສະບັບສົມບູນ
                 </span>
             </div>
         </div>
 
-        <!-- Central Quick Chapter Pill -->
-        <div class="hidden lg:flex items-center gap-2 bg-stone-800/60 border border-stone-700/60 px-3 py-1 rounded-full text-xs text-stone-300">
-            <span class="text-amber-400 font-bold">📖 ຕຳລາ:</span>
+        <!-- Center Current Chapter Badge -->
+        <div class="hidden lg:flex items-center gap-2 bg-stone-800/70 border border-stone-700/60 px-3 py-1 rounded-full text-xs text-stone-300">
+            <span class="text-amber-400 font-bold">📖 ບົດ:</span>
             <span id="currentChapterLabel" class="truncate max-w-xs">ບົດທີ 1: ທິດສະດີຮວງຈຸ້ຍພື້ນຖານ</span>
         </div>
 
         <!-- Right Tool Buttons -->
-        <div class="flex items-center gap-1.5 sm:gap-2">
-            <!-- TOC Drawer Button -->
-            <button onclick="toggleTocModal()" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-stone-800 hover:bg-amber-700/80 text-amber-200 text-xs font-bold transition" title="ສາລະບານ">
+        <div class="flex items-center gap-1 sm:gap-2">
+            <!-- Table of Contents Button -->
+            <button onclick="toggleTocModal()" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-stone-800 hover:bg-amber-700 text-amber-200 text-xs font-bold transition" title="ສາລະບານ">
                 <span>📚</span>
-                <span class="hidden md:inline">ສາລະບານ</span>
+                <span class="hidden sm:inline">ສາລະບານ</span>
             </button>
 
             <!-- Language Switcher -->
             <button onclick="toggleLanguage()" id="langBtn" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-amber-300 text-xs font-bold border border-amber-600/40 transition">
                 <span>🇱🇦</span>
-                <span id="langLabel">ພາສາລາວ</span>
+                <span id="langLabel" class="hidden sm:inline">ພາສາລາວ</span>
             </button>
 
-            <!-- Font Resizer -->
-            <div class="hidden sm:flex items-center bg-stone-800/80 rounded-lg p-0.5 border border-stone-700">
+            <!-- Font Sizing -->
+            <div class="hidden sm:flex items-center bg-stone-800/90 rounded-lg p-0.5 border border-stone-700">
                 <button onclick="changeFontSize(-1)" class="px-2 py-1 hover:text-amber-300 text-xs font-black" title="ຫຼຸດຂະໜາດຕົວໜັງສື">A-</button>
                 <button onclick="changeFontSize(1)" class="px-2 py-1 hover:text-amber-300 text-xs font-black border-l border-stone-700" title="ເພີ່ມຂະໜາດຕົວໜັງສື">A+</button>
             </div>
 
             <!-- Reading Theme Switcher -->
-            <button onclick="cycleTheme()" class="px-2.5 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs transition" title="ປ່ຽນສີພື້ນ">
+            <button onclick="cycleTheme()" class="px-2 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs transition" title="ປ່ຽນສີພື້ນ">
                 🎨
             </button>
 
             <!-- Sound Toggle -->
-            <button onclick="toggleSound()" id="soundBtn" class="px-2.5 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-amber-300 text-xs transition" title="ເປີດ/ປິດ ສຽງປຶ້ມ">
+            <button onclick="toggleSound()" id="soundBtn" class="px-2 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-amber-300 text-xs transition" title="ເປີດ/ປິດ ສຽງປຶ້ມ">
                 🔊
             </button>
 
-            <!-- Fullscreen -->
-            <button onclick="toggleFullscreen()" class="px-2.5 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs transition" title="ເຕັມຈໍ">
+            <!-- Fullscreen Toggle -->
+            <button onclick="toggleFullscreen()" class="px-2 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs transition" title="ເຕັມຈໍ">
                 ⛶
             </button>
         </div>
     </header>
 
-    <!-- Main FlipBook 3D Stage -->
+    <!-- Main Single-Page 3D Stage -->
     <main class="flex-1 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-hidden relative stage-container">
-        <!-- 3D Book Object -->
-        <div id="bookWrapper" class="book-wrapper book-shadow rounded-2xl w-[96vw] max-w-5xl h-[80vh] max-h-[780px] flex">
-            <!-- Left Static Spine / Base -->
-            <div id="leftBasePage" class="w-1/2 h-full rounded-l-2xl overflow-hidden relative border-r border-stone-300/40">
-                <div id="leftPageContent" class="h-full w-full"></div>
-                <div class="absolute inset-y-0 right-0 w-12 spine-shadow-left pointer-events-none"></div>
+        <!-- 3D Book Canvas (Single-Page Layout) -->
+        <div id="bookCanvas" class="book-canvas w-full max-w-[700px] h-[82vh] max-h-[820px] rounded-2xl relative overflow-hidden flex flex-col justify-between">
+            <!-- Underlying Surface (Always visible) -->
+            <div id="activePageSurface" class="book-page-surface w-full h-full rounded-2xl overflow-hidden relative flex flex-col justify-between">
+                <!-- Page Running Header -->
+                <div class="h-9 px-6 pt-3 flex items-center justify-between text-[11px] text-stone-500 border-b border-stone-200/50 select-none shrink-0">
+                    <span id="pageHeaderLeft" class="truncate max-w-[240px] font-medium text-amber-900/80">ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ</span>
+                    <span id="pageHeaderRight" class="text-stone-400 text-[10px] uppercase tracking-wider">XUAN KONG CODEX</span>
+                </div>
+
+                <!-- Page Scrollable Body -->
+                <div id="pageBodyContainer" class="flex-1 p-4 sm:p-6 md:p-7 overflow-y-auto page-content text-xs sm:text-sm">
+                    <!-- Page HTML injected here -->
+                </div>
+
+                <!-- Page Running Footer -->
+                <div class="h-9 px-6 pb-2.5 flex items-center justify-between text-[11px] text-stone-500 border-t border-stone-200/50 select-none shrink-0">
+                    <span id="pageFooterChapter" class="truncate max-w-[200px] text-stone-400">ບົດທີ 1</span>
+                    <span id="pageFooterNumber" class="font-bold text-amber-900">ໜ້າ 1</span>
+                </div>
+
+                <!-- Left Spine Shadow Gradient Overlay -->
+                <div class="absolute inset-y-0 left-0 w-8 sm:w-12 spine-edge pointer-events-none"></div>
+                <!-- Right Page Edge Trim Line -->
+                <div class="absolute inset-y-0 right-0 w-1 page-edge-trim pointer-events-none"></div>
             </div>
 
-            <!-- Right Static Spine / Base -->
-            <div id="rightBasePage" class="w-1/2 h-full rounded-r-2xl overflow-hidden relative">
-                <div id="rightPageContent" class="h-full w-full"></div>
-                <div class="absolute inset-y-0 left-0 w-12 spine-shadow-right pointer-events-none"></div>
-            </div>
-
-            <!-- Sheets for 3D Flipping will be injected dynamically -->
-            <div id="sheetsContainer" class="absolute inset-0 pointer-events-none"></div>
+            <!-- Dynamic Flipping Leaf Container (Injected on flip animation) -->
+            <div id="flipLeafContainer" class="absolute inset-0 pointer-events-none"></div>
         </div>
 
-        <!-- Left Nav Arrow Button -->
-        <button onclick="flipPrev()" aria-label="ໜ້າກ່ອນໜ້າ" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-stone-900/80 hover:bg-amber-600 text-amber-300 hover:text-white flex items-center justify-center shadow-2xl transition border border-amber-500/30 z-40 backdrop-blur-sm">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+        <!-- Left Nav Arrow Button (Prev) - Visible on tablet/desktop -->
+        <button onclick="flipPrev()" aria-label="ໜ້າກ່ອນໜ້າ" class="hidden sm:flex absolute left-2 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-stone-900/80 hover:bg-amber-600 text-amber-300 hover:text-white items-center justify-center shadow-2xl transition border border-amber-500/30 z-40 backdrop-blur-sm cursor-pointer">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
         </button>
 
-        <!-- Right Nav Arrow Button -->
-        <button onclick="flipNext()" aria-label="ໜ້າຖັດໄປ" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-stone-900/80 hover:bg-amber-600 text-amber-300 hover:text-white flex items-center justify-center shadow-2xl transition border border-amber-500/30 z-40 backdrop-blur-sm">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+        <!-- Right Nav Arrow Button (Next) - Visible on tablet/desktop -->
+        <button onclick="flipNext()" aria-label="ໜ້າຖັດໄປ" class="hidden sm:flex absolute right-2 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-stone-900/80 hover:bg-amber-600 text-amber-300 hover:text-white items-center justify-center shadow-2xl transition border border-amber-500/30 z-40 backdrop-blur-sm cursor-pointer">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
         </button>
     </main>
 
     <!-- Bottom Controls & Page Slider -->
-    <footer class="h-14 bg-stone-900/95 border-t border-stone-800 flex items-center justify-between px-3 md:px-6 text-stone-200 z-50 backdrop-blur-md select-none shrink-0">
+    <footer class="h-14 bg-stone-900/95 border-t border-stone-800/80 flex items-center justify-between px-3 sm:px-6 text-stone-200 z-50 backdrop-blur-md select-none shrink-0">
         <!-- Navigation Buttons -->
-        <div class="flex items-center gap-1.5 sm:gap-2">
-            <button onclick="jumpToPage(1)" class="px-2.5 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-bold transition" title="ໜ້າທຳອິດ">
+        <div class="flex items-center gap-1 sm:gap-2">
+            <button onclick="jumpToPage(1)" class="px-2 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-bold transition" title="ໜ້າທຳອິດ">
                 |◀
             </button>
-            <button onclick="flipPrev()" class="px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-amber-600 text-amber-200 text-xs font-bold transition flex items-center gap-1">
+            <button onclick="flipPrev()" class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-amber-600 text-amber-200 text-xs font-bold transition flex items-center gap-1">
                 <span>◀</span> <span class="hidden sm:inline">ກ່ອນໜ້າ</span>
             </button>
-            <button onclick="flipNext()" class="px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-amber-600 text-amber-200 text-xs font-bold transition flex items-center gap-1">
+            <button onclick="flipNext()" class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-amber-600 text-amber-200 text-xs font-bold transition flex items-center gap-1">
                 <span class="hidden sm:inline">ຖັດໄປ</span> <span>▶</span>
             </button>
-            <button onclick="jumpToPage(totalPages)" class="px-2.5 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-bold transition" title="ໜ້າສຸດທ້າຍ">
+            <button onclick="jumpToPage(totalPages)" class="px-2 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-bold transition" title="ໜ້າສຸດທ້າຍ">
                 ▶|
             </button>
             <!-- Auto Play Flip -->
@@ -261,21 +321,21 @@
         </div>
 
         <!-- Slider Bar -->
-        <div class="flex-1 max-w-xs md:max-w-md mx-3 sm:mx-6 flex items-center gap-3">
+        <div class="flex-1 max-w-xs md:max-w-md mx-3 sm:mx-6 flex items-center gap-2">
             <input type="range" id="pageSlider" min="1" max="100" value="1" oninput="onSliderInput(this.value)" class="w-full accent-amber-500 bg-stone-700 h-2 rounded-lg cursor-pointer">
         </div>
 
         <!-- Page Progress Badge -->
         <div class="flex items-center gap-2">
-            <span id="pageProgressBadge" class="bg-amber-500/20 text-amber-300 border border-amber-500/40 px-3 py-1 rounded-full text-xs font-black shadow-sm tracking-wide">
+            <span id="pageProgressBadge" class="bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2.5 sm:px-3 py-1 rounded-full text-xs font-black shadow-sm tracking-wide shrink-0">
                 ໜ້າ 1 / 100
             </span>
         </div>
     </footer>
 
     <!-- Table of Contents Modal Drawer -->
-    <div id="tocModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
-        <div class="bg-stone-900 border border-amber-600/50 rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+    <div id="tocModal" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-[100] hidden items-center justify-center p-3 sm:p-4" onclick="toggleTocModal()">
+        <div class="bg-stone-900 border border-amber-600/50 rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden" onclick="event.stopPropagation()">
             <div class="p-4 border-b border-stone-800 flex items-center justify-between bg-stone-950">
                 <div class="flex items-center gap-2">
                     <span class="text-xl">📚</span>
@@ -283,24 +343,24 @@
                 </div>
                 <button onclick="toggleTocModal()" class="w-8 h-8 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-300 flex items-center justify-center">✕</button>
             </div>
-            <div id="tocListContainer" class="p-4 overflow-y-auto flex-1 space-y-1.5 text-xs md:text-sm">
+            <div id="tocListContainer" class="p-3 sm:p-4 overflow-y-auto flex-1 space-y-1.5 text-xs sm:text-sm">
                 <!-- TOC list injected dynamically -->
             </div>
         </div>
     </div>
 
     <!-- Image Zoom Inspector Lightbox -->
-    <div id="zoomModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[120] hidden flex-col items-center justify-between p-4" onclick="closeZoomInspector()">
-        <div class="w-full flex justify-between items-center text-white px-4 py-2 z-10" onclick="event.stopPropagation()">
-            <span id="zoomCaption" class="text-xs md:text-sm font-semibold text-amber-300 truncate max-w-xl"></span>
-            <div class="flex items-center gap-3">
-                <button onclick="changeZoomScale(0.2)" class="px-3 py-1 bg-stone-800 hover:bg-stone-700 rounded text-xs font-bold">+ Zoom</button>
-                <button onclick="changeZoomScale(-0.2)" class="px-3 py-1 bg-stone-800 hover:bg-stone-700 rounded text-xs font-bold">- Zoom</button>
+    <div id="zoomModal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[120] hidden flex-col items-center justify-between p-3 sm:p-4" onclick="closeZoomInspector()">
+        <div class="w-full flex justify-between items-center text-white px-3 sm:px-4 py-2 z-10" onclick="event.stopPropagation()">
+            <span id="zoomCaption" class="text-xs sm:text-sm font-semibold text-amber-300 truncate max-w-xl"></span>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="changeZoomScale(0.2)" class="px-2.5 py-1 bg-stone-800 hover:bg-stone-700 rounded text-xs font-bold text-amber-200">+ Zoom</button>
+                <button onclick="changeZoomScale(-0.2)" class="px-2.5 py-1 bg-stone-800 hover:bg-stone-700 rounded text-xs font-bold text-amber-200">- Zoom</button>
                 <button onclick="closeZoomInspector()" class="w-8 h-8 bg-stone-800 hover:bg-red-700 rounded-full flex items-center justify-center text-sm font-bold">✕</button>
             </div>
         </div>
-        <div class="flex-1 w-full flex items-center justify-center overflow-auto p-4" onclick="event.stopPropagation()">
-            <img id="zoomImage" src="" alt="Zoom Inspection" class="max-h-[80vh] max-w-[90vw] object-contain rounded-lg shadow-2xl transition-transform duration-200">
+        <div class="flex-1 w-full flex items-center justify-center overflow-auto p-2 sm:p-4" onclick="event.stopPropagation()">
+            <img id="zoomImage" src="" alt="Zoom Inspection" class="max-h-[82vh] max-w-[92vw] object-contain rounded-lg shadow-2xl transition-transform duration-200">
         </div>
     </div>
 
@@ -315,6 +375,7 @@
         let totalPages = currentPages.length;
         let currentPageNum = 1;
 
+        let isFlipping = false;
         let soundEnabled = true;
         let autoFlipInterval = null;
         let currentThemeIndex = 0;
@@ -322,7 +383,7 @@
         let zoomScale = 1.0;
         let baseFontSize = 14;
 
-        // Web Audio API Synthesized Paper Sound
+        // Web Audio API Synthesized Paper Sound (100% Offline)
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
         let audioCtx = null;
         function playPageTurnSound() {
@@ -331,7 +392,7 @@
                 if (!audioCtx) audioCtx = new AudioCtx();
                 if (audioCtx.state === 'suspended') audioCtx.resume();
                 
-                const bufferSize = audioCtx.sampleRate * 0.12;
+                const bufferSize = audioCtx.sampleRate * 0.14;
                 const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
                 const data = buffer.getChannelData(0);
                 for (let i = 0; i < bufferSize; i++) {
@@ -343,12 +404,12 @@
 
                 const filter = audioCtx.createBiquadFilter();
                 filter.type = 'bandpass';
-                filter.frequency.value = 1100;
-                filter.Q.value = 1.5;
+                filter.frequency.value = 1200;
+                filter.Q.value = 1.6;
 
                 const gain = audioCtx.createGain();
-                gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.12);
+                gain.gain.setValueAtTime(0.28, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.14);
 
                 noise.connect(filter);
                 filter.connect(gain);
@@ -359,89 +420,144 @@
             }
         }
 
-        // Initialize and Render Book
+        // Initialize Book
         function initBook() {
             currentPages = (currentLang === 'hm') ? HMONG_DATA.pages : LAO_DATA.pages;
             currentToc = (currentLang === 'hm') ? HMONG_DATA.tocEntries : LAO_DATA.tocEntries;
             totalPages = currentPages.length;
             
-            // Slider bounds
             const slider = document.getElementById('pageSlider');
             slider.max = totalPages;
             slider.value = currentPageNum;
 
-            renderCurrentSpread();
+            renderPage(currentPageNum, false);
             updateTocList();
             updateHeaderLabels();
         }
 
-        function renderCurrentSpread() {
-            const isDesktop = window.innerWidth > 768;
-            const leftBase = document.getElementById('leftBasePage');
-            const rightBase = document.getElementById('rightBasePage');
-            const leftContent = document.getElementById('leftPageContent');
-            const rightContent = document.getElementById('rightPageContent');
+        // Render Page Content
+        function renderPage(pageNum, animate = false, direction = 1) {
+            const pageObj = currentPages[pageNum - 1];
+            if (!pageObj) return;
 
-            if (isDesktop) {
-                leftBase.style.display = 'block';
-                rightBase.style.display = 'block';
-                leftBase.style.width = '50%';
-                rightBase.style.width = '50%';
+            const container = document.getElementById('pageBodyContainer');
+            const headerLeft = document.getElementById('pageHeaderLeft');
+            const footerChapter = document.getElementById('pageFooterChapter');
+            const footerNumber = document.getElementById('pageFooterNumber');
+            const currentChLabel = document.getElementById('currentChapterLabel');
 
-                // Two-page spread: Left is even (or cover right-aligned if page 1)
-                if (currentPageNum === 1) {
-                    leftContent.innerHTML = '<div class="h-full w-full bg-stone-900/40"></div>';
-                    rightContent.innerHTML = currentPages[0].html;
-                } else {
-                    const leftIdx = (currentPageNum % 2 === 0) ? currentPageNum - 1 : currentPageNum - 2;
-                    const rightIdx = leftIdx + 1;
+            if (!animate) {
+                container.innerHTML = pageObj.html;
+                container.scrollTop = 0;
 
-                    leftContent.innerHTML = currentPages[leftIdx] ? currentPages[leftIdx].html : '';
-                    rightContent.innerHTML = currentPages[rightIdx] ? currentPages[rightIdx].html : '';
-                }
+                const title = pageObj.chTitle || (currentLang === 'hm' ? 'Looj Mem Hnub Qub Ya' : 'ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ');
+                headerLeft.innerText = title;
+                footerChapter.innerText = pageObj.chTitle || '';
+                footerNumber.innerText = (currentLang === 'hm') ? `Phab ${pageNum}` : `ໜ້າ ${pageNum}`;
+                currentChLabel.innerText = title;
+
+                document.getElementById('pageSlider').value = pageNum;
+                document.getElementById('pageProgressBadge').innerText = (currentLang === 'hm') ? 
+                    `Phab ${pageNum} / ${totalPages}` : `ໜ້າ ${pageNum} / ${totalPages}`;
+                return;
+            }
+
+            // High-Performance 60fps 3D Flipping Leaf
+            if (isFlipping) return;
+            isFlipping = true;
+            playPageTurnSound();
+
+            const leafContainer = document.getElementById('flipLeafContainer');
+            const prevPageObj = currentPages[currentPageNum - 1];
+
+            // Create Leaf Element
+            const leaf = document.createElement('div');
+            leaf.className = 'flipping-leaf';
+
+            const frontContent = prevPageObj ? prevPageObj.html : '';
+            const backContent = pageObj.html;
+
+            leaf.innerHTML = `
+                <div class="leaf-face front book-page-surface p-4 sm:p-7 overflow-hidden relative">
+                    ${frontContent}
+                    <div class="leaf-shadow" style="background: linear-gradient(to right, rgba(0,0,0,0.4) 0%, transparent 60%); opacity: 0;"></div>
+                </div>
+                <div class="leaf-face back book-page-surface p-4 sm:p-7 overflow-hidden relative">
+                    ${backContent}
+                    <div class="leaf-shadow" style="background: linear-gradient(to left, rgba(0,0,0,0.4) 0%, transparent 60%); opacity: 0.5;"></div>
+                </div>
+            `;
+
+            leafContainer.appendChild(leaf);
+
+            // Apply 3D Transform
+            const duration = 520; // 520ms buttery smooth
+            leaf.style.transition = `transform ${duration}ms cubic-bezier(0.25, 1, 0.5, 1)`;
+
+            if (direction > 0) {
+                // Next: Rotate 0deg -> -180deg
+                leaf.style.transformOrigin = 'left center';
+                leaf.style.transform = 'rotateY(0deg)';
+                const shadowFront = leaf.querySelector('.front .leaf-shadow');
+                const shadowBack = leaf.querySelector('.back .leaf-shadow');
+
+                requestAnimationFrame(() => {
+                    leaf.style.transform = 'rotateY(-180deg)';
+                    if (shadowFront) shadowFront.style.opacity = '0.6';
+                    if (shadowBack) shadowBack.style.opacity = '0';
+                });
             } else {
-                // Mobile single page
-                leftBase.style.display = 'none';
-                rightBase.style.display = 'block';
-                rightBase.style.width = '100%';
-                const p = currentPages[currentPageNum - 1];
-                rightContent.innerHTML = p ? p.html : '';
+                // Prev: Rotate -180deg -> 0deg
+                leaf.style.transformOrigin = 'left center';
+                leaf.style.transform = 'rotateY(-180deg)';
+                const shadowBack = leaf.querySelector('.back .leaf-shadow');
+                const shadowFront = leaf.querySelector('.front .leaf-shadow');
+
+                requestAnimationFrame(() => {
+                    leaf.style.transform = 'rotateY(0deg)';
+                    if (shadowBack) shadowBack.style.opacity = '0.6';
+                    if (shadowFront) shadowFront.style.opacity = '0';
+                });
             }
 
-            // Update Progress & Badges
-            document.getElementById('pageSlider').value = currentPageNum;
-            const progressLabel = (currentLang === 'hm') ? `Phab ${currentPageNum} / ${totalPages}` : `ໜ້າ ${currentPageNum} / ${totalPages}`;
-            document.getElementById('pageProgressBadge').innerText = progressLabel;
+            // Immediately set destination page on underlying canvas
+            container.innerHTML = pageObj.html;
+            container.scrollTop = 0;
 
-            // Update chapter label in header
-            const curPageObj = currentPages[currentPageNum - 1];
-            if (curPageObj && curPageObj.chTitle) {
-                document.getElementById('currentChapterLabel').innerText = curPageObj.chTitle;
-            }
+            const title = pageObj.chTitle || (currentLang === 'hm' ? 'Looj Mem Hnub Qub Ya' : 'ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ');
+            headerLeft.innerText = title;
+            footerChapter.innerText = pageObj.chTitle || '';
+            footerNumber.innerText = (currentLang === 'hm') ? `Phab ${pageNum}` : `ໜ້າ ${pageNum}`;
+            currentChLabel.innerText = title;
+
+            document.getElementById('pageSlider').value = pageNum;
+            document.getElementById('pageProgressBadge').innerText = (currentLang === 'hm') ? 
+                `Phab ${pageNum} / ${totalPages}` : `ໜ້າ ${pageNum} / ${totalPages}`;
+
+            setTimeout(() => {
+                leaf.remove();
+                isFlipping = false;
+            }, duration + 30);
         }
 
         function flipNext() {
-            const step = (window.innerWidth > 768 && currentPageNum > 1) ? 2 : (currentPageNum === 1 ? 1 : 2);
-            if (currentPageNum + step <= totalPages + 1) {
-                playPageTurnSound();
-                currentPageNum = Math.min(totalPages, currentPageNum + step);
-                renderCurrentSpread();
-            }
+            if (isFlipping || currentPageNum >= totalPages) return;
+            currentPageNum++;
+            renderPage(currentPageNum, true, 1);
         }
 
         function flipPrev() {
-            const step = (window.innerWidth > 768 && currentPageNum > 2) ? 2 : 1;
-            if (currentPageNum - step >= 1) {
-                playPageTurnSound();
-                currentPageNum = Math.max(1, currentPageNum - step);
-                renderCurrentSpread();
-            }
+            if (isFlipping || currentPageNum <= 1) return;
+            currentPageNum--;
+            renderPage(currentPageNum, true, -1);
         }
 
         function jumpToPage(num) {
-            currentPageNum = Math.max(1, Math.min(totalPages, parseInt(num, 10)));
-            playPageTurnSound();
-            renderCurrentSpread();
+            const target = Math.max(1, Math.min(totalPages, parseInt(num, 10)));
+            if (target === currentPageNum) return;
+            const dir = target > currentPageNum ? 1 : -1;
+            currentPageNum = target;
+            renderPage(currentPageNum, true, dir);
         }
 
         function onSliderInput(val) {
@@ -478,7 +594,7 @@
             }
         }
 
-        // TOC Modal Logic
+        // Table of Contents Modal
         function toggleTocModal() {
             const modal = document.getElementById('tocModal');
             modal.classList.toggle('hidden');
@@ -493,12 +609,12 @@
             let html = '';
             currentToc.forEach((item, idx) => {
                 html += `
-                    <div class="flex items-center justify-between p-2.5 rounded-lg bg-stone-800/80 hover:bg-amber-600/90 text-stone-200 hover:text-white cursor-pointer transition border border-stone-700/50" onclick="jumpToPage(${item.page}); toggleTocModal();">
+                    <div class="flex items-center justify-between p-2.5 rounded-lg bg-stone-800/80 hover:bg-amber-600 text-stone-200 hover:text-white cursor-pointer transition border border-stone-700/50" onclick="jumpToPage(${item.page}); toggleTocModal();">
                         <div class="flex items-center gap-2 truncate pr-2">
                             <span class="text-amber-400 font-bold">${idx + 1}.</span>
                             <span class="truncate font-semibold">${item.title}</span>
                         </div>
-                        <span class="bg-stone-900/90 text-amber-300 px-2.5 py-0.5 rounded text-xs font-bold border border-amber-500/30">
+                        <span class="bg-stone-900/90 text-amber-300 px-2.5 py-0.5 rounded text-xs font-bold border border-amber-500/30 shrink-0">
                             ${item.page}
                         </span>
                     </div>
@@ -510,9 +626,8 @@
         // Font Resize
         function changeFontSize(delta) {
             baseFontSize = Math.max(11, Math.min(22, baseFontSize + delta));
-            document.querySelectorAll('.chapter-page').forEach(el => {
-                el.style.fontSize = baseFontSize + 'px';
-            });
+            const container = document.getElementById('pageBodyContainer');
+            if (container) container.style.fontSize = baseFontSize + 'px';
         }
 
         // Reading Theme Switcher
@@ -551,7 +666,7 @@
             }
         }
 
-        // Fullscreen
+        // Fullscreen Toggle
         function toggleFullscreen() {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen().catch(() => {});
@@ -560,7 +675,7 @@
             }
         }
 
-        // Image Zoom Inspector
+        // Zoom Inspector Modal
         function openZoomInspector(src, caption) {
             const modal = document.getElementById('zoomModal');
             const img = document.getElementById('zoomImage');
@@ -584,7 +699,33 @@
             document.getElementById('zoomImage').style.transform = `scale(${zoomScale})`;
         }
 
-        // Keyboard navigation
+        // Mobile Touch Gestures (Swipe left = Next, Swipe right = Prev)
+        let touchStartX = 0;
+        let touchStartY = 0;
+        const bookCanvas = document.getElementById('bookCanvas');
+
+        bookCanvas.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        bookCanvas.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const touchEndY = e.changedTouches[0].screenY;
+            const diffX = touchEndX - touchStartX;
+            const diffY = touchEndY - touchStartY;
+
+            // Only horizontal swipe if not scrolling vertically
+            if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+                if (diffX < 0) {
+                    flipNext();
+                } else {
+                    flipPrev();
+                }
+            }
+        }, { passive: true });
+
+        // Keyboard Navigation
         window.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ') {
                 flipNext();
@@ -595,11 +736,6 @@
                 const toc = document.getElementById('tocModal');
                 if (!toc.classList.contains('hidden')) toggleTocModal();
             }
-        });
-
-        // Resize handler
-        window.addEventListener('resize', () => {
-            renderCurrentSpread();
         });
 
         // Initialize on load
