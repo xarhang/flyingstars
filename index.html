@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
     <title>ຮວງຈຸ້ຍ (ດາວເຫີນ 9 ຍຸກ)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%237f1d1d' stroke='%23f59e0b' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='26' fill='%230f172a' stroke='%23fbbf24' stroke-width='1.5'/%3E%3Cpath d='M32,8 A24,24 0 0,1 32,56 A12,12 0 0,1 32,32 A12,12 0 0,0 32,8 Z' fill='%23f8fafc'/%3E%3Cpath d='M32,8 A24,24 0 0,0 32,56 A12,12 0 0,0 32,32 A12,12 0 0,1 32,8 Z' fill='%230f172a'/%3E%3Ccircle cx='32' cy='20' r='3.5' fill='%230f172a'/%3E%3Ccircle cx='32' cy='44' r='3.5' fill='%23f8fafc'/%3E%3C/svg%3E">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
@@ -137,9 +139,6 @@
             -webkit-tap-highlight-color: transparent;
         }
     </style>
-    <!-- LEAFLET MAP & SATELLITE ENGINE -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 h-screen w-screen flex flex-col md:flex-row overflow-hidden relative">
 
@@ -13513,7 +13512,40 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
             window.open(mapsUrl, '_blank');
         }
 
-        function toggleSatelliteMap(forceState) {
+        let leafletLoadingPromise = null;
+        function ensureLeafletLoaded() {
+            if (typeof L !== 'undefined') return Promise.resolve();
+            if (leafletLoadingPromise) return leafletLoadingPromise;
+
+            leafletLoadingPromise = new Promise((resolve) => {
+                if (!document.getElementById('leaflet-css')) {
+                    const link = document.createElement('link');
+                    link.id = 'leaflet-css';
+                    link.rel = 'stylesheet';
+                    link.href = 'asset/vendor/leaflet/leaflet.css';
+                    document.head.appendChild(link);
+                }
+
+                const script = document.createElement('script');
+                script.src = 'asset/vendor/leaflet/leaflet.js';
+                script.onload = () => {
+                    console.log('Local Leaflet loaded successfully.');
+                    resolve();
+                };
+                script.onerror = () => {
+                    console.warn('Local leaflet asset failed, falling back to CDN...');
+                    const fallback = document.createElement('script');
+                    fallback.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+                    fallback.onload = () => resolve();
+                    fallback.onerror = () => resolve();
+                    document.head.appendChild(fallback);
+                };
+                document.head.appendChild(script);
+            });
+            return leafletLoadingPromise;
+        }
+
+        async function toggleSatelliteMap(forceState) {
             satelliteMapActive = (typeof forceState === 'boolean') ? forceState : !satelliteMapActive;
             const container = document.getElementById('satelliteMapContainer');
             const hud = document.getElementById('satelliteMapHud');
@@ -13539,6 +13571,9 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
                     updateCompassOpacity(75);
                 }
 
+                if (typeof L === 'undefined') {
+                    await ensureLeafletLoaded();
+                }
                 initSatelliteLeafletMap();
             } else {
                 if (container) container.classList.add('hidden');
@@ -15299,7 +15334,9 @@ function updateCompassTransform(deltaAngle = null) {
             openGlossaryModalBtn.addEventListener('click', openGlossaryModal);
         }
 
-        window.onload = function () {
+        function bootLuopanApp() {
+            if (window.__luopanBooted) return;
+            window.__luopanBooted = true;
             populateBirthYears();
             setLuopanLanguage(currentLuopanLang);
             initBirthProfileWidgets();
@@ -15311,7 +15348,15 @@ function updateCompassTransform(deltaAngle = null) {
             updateCompassTransform();
             updateZoom();
             initQrCode();
-        };
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', bootLuopanApp);
+        } else {
+            bootLuopanApp();
+        }
+        window.addEventListener('load', bootLuopanApp);
+        window.onload = bootLuopanApp;
     
         function openMasterDossierModal() {
             const modal = document.getElementById('masterDossierModal');

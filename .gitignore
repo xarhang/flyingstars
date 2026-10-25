@@ -11,7 +11,7 @@
 !/img/
 !/img/**
 
-# Whitelist asset/js/qrcode.min.js and asset/fonts/
+# Whitelist asset/js/qrcode.min.js, asset/fonts/, and asset/vendor/
 !/asset/
 /asset/*
 !/asset/js/
@@ -20,6 +20,8 @@
 !/asset/fonts/
 /asset/fonts/*
 !/asset/fonts/*.ttf
+!/asset/vendor/
+!/asset/vendor/**
 
 # Whitelist /hmong web app
 !/hmong/
