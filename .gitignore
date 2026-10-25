@@ -23,6 +23,10 @@
 !/asset/vendor/
 !/asset/vendor/**
 
+# Whitelist /book 3D flipbook app
+!/book/
+!/book/**
+
 # Whitelist /hmong web app
 !/hmong/
 !/hmong/**

@@ -236,6 +236,15 @@
                 <span class="text-[10px] bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded font-mono font-bold">/pahawh/ ↗</span>
             </a>
 
+            <!-- 3D FLIPBOOK CODEX BUTTON -->
+            <a href="book/" target="_blank" class="mt-2 py-2 px-2.5 bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-400 text-stone-950 font-black border border-amber-300 rounded-xl text-xs flex items-center justify-between transition shadow-lg transform hover:scale-[1.02]" title="ເປີດປື້ມອ່ານຕຳລາ 3D FlipBook 24 ບົດຮຽນ ພ້ອມເອບເຟກເປີດໜ້າ">
+                <div class="flex items-center gap-1.5">
+                    <span class="text-base">📕</span>
+                    <span id="editionBook3DText">ປື້ມຕຳລາ 3D FlipBook (24 ບົດ)</span>
+                </div>
+                <span class="text-[10px] bg-stone-950/80 text-amber-300 px-2 py-0.5 rounded font-mono font-bold">/book/ ↗</span>
+            </a>
+
             <!-- MODE SWITCHER TABS -->
             <div class="grid grid-cols-2 gap-1.5 mt-3 bg-slate-950 p-1 rounded-xl border border-slate-800">
                 <button id="modeStandardBtn" class="py-1.5 px-2 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow">
@@ -1846,6 +1855,8 @@
             if (edHm) edHm.textContent = (lang === 'hm' ? 'Phau Ntawv & Daim Duab 105 Yam (Hmoob RPA)' : lang === 'ph' ? '𖬎𖲦 𖭑𖭐𖭕 𖬌𖲟 (Hmoob RPA)' : 'ຕຳລາ & ແຜນທີ່ 105 ຮູບແບບ (Hmoob RPA)');
             const edPh = document.getElementById('editionPhText');
             if (edPh) edPh.textContent = (lang === 'hm' ? 'Phau Ntawv & Daim Duab 105 Yam (𖬌𖬣𖬵)' : lang === 'ph' ? '𖬎𖲦 𖭑𖭐𖭕 𖬌𖲟 (𖬌𖬣𖬵)' : 'ຕຳລາ & ແຜນທີ່ 105 ຮູບແບບ (𖬌𖬣𖬵)');
+            const edBook3D = document.getElementById('editionBook3DText');
+            if (edBook3D) edBook3D.textContent = (lang === 'hm' ? 'Phau Ntawv 3D FlipBook (24 Tshooj)' : lang === 'ph' ? '3D FlipBook (𖭓𖭔)' : 'ປື້ມຕຳລາ 3D FlipBook (24 ບົດ)');
 
             // Mobile Top & Dock Buttons
             const mobResetText = document.getElementById('mobileResetViewText');
