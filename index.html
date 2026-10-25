@@ -323,11 +323,35 @@
                         <span>🎯</span> <span id="lblSidebarJumpText">ເລືອກເມືອງ</span>
                     </button>
                 </div>
-                <button type="button" id="btnLaunchGoogleEarth3D" onclick="openGoogleEarth3D()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black py-2 px-2 rounded-lg shadow-md transition flex items-center justify-center gap-1.5 text-xs">
-                    <span>🌍</span> <span id="lblLaunchEarthText">ເປີດ Google Earth 3D</span>
-                </button>
-                <div class="text-[9.5px] text-slate-400 leading-tight border-t border-slate-800/80 pt-1" id="lblEarthSyncHelp">
-                    • ລະບົບຈະຊິງຄ໌ <b>ອົງສາໜ້າເຂັມທິດ (<span id="lblSyncDegText" class="text-amber-300 font-mono font-bold">180°</span>)</b> ແລະ ມຸມອຽງ 3D (Tilt 60°) ໄປ Google Earth ອັດຕະໂນມັດ ເພື່ອສ່ອງພູເຂົາ ແລະ ສາຍນ້ຳ.
+                <div class="bg-slate-900/90 p-2 rounded-lg border border-slate-800 flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                        <label class="text-[11px] font-bold text-slate-200 flex items-center gap-1.5 cursor-pointer">
+                            <input id="chkSatCompassSync" type="checkbox" onchange="toggleSatCompassSync(this.checked)" class="rounded text-cyan-500 focus:ring-0">
+                            <span id="lblSatCompassSyncText">🔄 ໝຸນແຜນທີ່ຕາມເຂັມທິດ</span>
+                        </label>
+                        <button type="button" onclick="resetSatMapRotation()" class="text-[10px] text-amber-300 hover:underline" id="lblResetNorth">↺ ລັອກທິດເໜືອ (0°)</button>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] text-slate-400 shrink-0" id="lblSatManualRot">ໝຸນອິດສະຫຼະ:</span>
+                        <input id="inputMapRotSlider" type="range" min="0" max="360" value="0" oninput="setSatManualRotation(this.value)" class="flex-1 h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-400">
+                        <span id="satMapRotBadge" class="font-mono text-cyan-300 font-bold text-[11px] w-9 text-right">0°</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-1.5">
+                    <button type="button" id="btnLaunchGoogleEarth3D" onclick="openGoogleEarth3D()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black py-2 px-1.5 rounded-lg shadow-md transition flex items-center justify-center gap-1 text-[11px]">
+                        <span>🌍</span> <span id="lblLaunchEarthText">Google Earth 3D</span>
+                    </button>
+                    <button type="button" id="btnLaunchGoogleMaps3D" onclick="openGoogleMaps3D()" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black py-2 px-1.5 rounded-lg shadow-md transition flex items-center justify-center gap-1 text-[11px]">
+                        <span>🗺️</span> <span id="lblLaunchMapsText">Google Maps 3D</span>
+                    </button>
+                </div>
+
+                <div class="text-[9.5px] text-slate-400 leading-tight border-t border-slate-800/80 pt-1.5 flex flex-col gap-1" id="lblEarthSyncHelp">
+                    <div>• <b>ອົງສາໜ້າເຂັມທິດປັດຈຸບັນ</b>: <span id="lblSyncDegText" class="text-amber-300 font-mono font-bold">180.0°</span> (ຊິງຄ໌ອັດຕະໂນມັດ)</div>
+                    <div>• <b>ວິທີໝຸນໃນ Google Maps / Earth 3D</b>:</div>
+                    <div class="text-slate-300 pl-1.5" id="lblHelpPc">- 💻 <b>ຄອມພິວເຕີ</b>: ກົດປຸ່ມ <b>Shift + ຄລິກຊ້າຍລາກ</b> (ຫຼື ຄລິກຂວາລາກ) ເພື່ອໝຸນ 360°</div>
+                    <div class="text-slate-300 pl-1.5" id="lblHelpMob">- 📱 <b>ມືຖື/ແທັບເລັດ</b>: ໃຊ້ <b>2 ນິ້ວໝຸນບິດ</b> ພ້ອມກັນ ຫຼື ແຕະໄອຄອນເຂັມທິດ</div>
                 </div>
             </div>
         </div>
@@ -809,8 +833,14 @@
             <button id="satSearchBtn" type="button" onclick="promptCitySelection()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-2 py-0.5 rounded-md text-[10.5px] font-bold transition flex items-center gap-1" title="ເລືອກເມືອງ / ປ້ອນພິກັດ">
                 <span>🎯</span> <span id="satSearchBtnText">ເລືອກເມືອງ</span>
             </button>
+            <button id="satRotateSyncBtn" type="button" onclick="toggleSatCompassSync()" class="bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 px-2 py-0.5 rounded-md text-[10.5px] font-bold transition flex items-center gap-1" title="ໝຸນແຜນທີ່ຕາມເຂັມທິດ ຫຼື ລັອກທິດເໜືອ">
+                <span>🔄</span> <span id="satRotateSyncText">ໝຸນຕາມເຂັມ: ປິດ</span>
+            </button>
             <button id="satGoogleEarthBtn" type="button" onclick="openGoogleEarth3D()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black px-2.5 py-0.5 rounded-md text-[10.5px] shadow-sm transition flex items-center gap-1" title="ເປີດ Google Earth 3D ຊິງຄ໌ອົງສາເຂັມທິດ">
-                <span>🌍</span> <span id="satEarthBtnText">Google Earth 3D</span>
+                <span>🌍</span> <span id="satEarthBtnText">Earth 3D</span>
+            </button>
+            <button id="satGoogleMapsBtn" type="button" onclick="openGoogleMaps3D()" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black px-2.5 py-0.5 rounded-md text-[10.5px] shadow-sm transition flex items-center gap-1" title="ເປີດ Google Maps 3D ຊິງຄ໌ອົງສາເຂັມທິດ">
+                <span>🗺️</span> <span id="satMapsBtnText">Maps 3D</span>
             </button>
             <button id="satLayerToggleBtn" type="button" onclick="toggleSatLayerType()" class="bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-2 py-0.5 rounded-md text-[10.5px] font-bold transition" title="ປ່ຽນແບບດາວທຽມ/ພູເຂົາ">
                 <span id="satLayerBtnText">🛰️ ດາວທຽມ</span>
@@ -1540,6 +1570,9 @@
             const degText = topCompassDeg.toFixed(1) + '°';
             const degSyncBadge = document.getElementById('lblSyncDegText');
             if (degSyncBadge) degSyncBadge.textContent = degText;
+            if (satCompassSyncActive && satelliteMapActive) {
+                applySatelliteMapRotation(-currentRotation);
+            }
             if (typeof updateLivePrediction === 'function') {
                 updateLivePrediction(topCompassDeg, true);
             }
@@ -1567,7 +1600,15 @@
             const satCardTitleEl = document.getElementById('lblSatCardTitle');
             if (satCardTitleEl) satCardTitleEl.textContent = (lang === 'hm' ? '🛰️ Daim Duab Satellite & Google Earth 3D' : lang === 'ph' ? '🛰️ 𖬆𖰝 𖬄𖰝 & Earth 3D' : '🛰️ ແຜນທີ່ດາວທຽມ & Google Earth 3D');
             const launchEarthEl = document.getElementById('lblLaunchEarthText');
-            if (launchEarthEl) launchEarthEl.textContent = (lang === 'hm' ? 'Qhib Google Earth 3D (Sync)' : lang === 'ph' ? '𖬐𖰤 Google Earth 3D' : 'ເປີດ Google Earth 3D (Sync Heading)');
+            if (launchEarthEl) launchEarthEl.textContent = (lang === 'hm' ? 'Google Earth 3D' : lang === 'ph' ? 'Earth 3D' : 'Google Earth 3D');
+            const launchMapsEl = document.getElementById('lblLaunchMapsText');
+            if (launchMapsEl) launchMapsEl.textContent = (lang === 'hm' ? 'Google Maps 3D' : lang === 'ph' ? 'Maps 3D' : 'Google Maps 3D');
+            const satSyncTextEl = document.getElementById('lblSatCompassSyncText');
+            if (satSyncTextEl) satSyncTextEl.textContent = (lang === 'hm' ? '🔄 Tig raws koob hmoov' : lang === 'ph' ? '🔄 𖬘𖲝 𖬊𖰝' : '🔄 ໝຸນແຜນທີ່ຕາມເຂັມທິດ');
+            const satResetNorthEl = document.getElementById('lblResetNorth');
+            if (satResetNorthEl) satResetNorthEl.textContent = (lang === 'hm' ? '↺ Sab Qaum Teb (0°)' : lang === 'ph' ? '↺ 𖬎𖰰 (0°)' : '↺ ລັອກທິດເໜືອ (0°)');
+            const satManualRotEl = document.getElementById('lblSatManualRot');
+            if (satManualRotEl) satManualRotEl.textContent = (lang === 'hm' ? 'Tig ywj siab:' : lang === 'ph' ? '𖬘𖲝:' : 'ໝຸນອິດສະຫຼະ:');
 
             const lblLang = document.getElementById('lblLangSelect');
             if (lblLang) lblLang.textContent = t.langSelect;
@@ -13506,10 +13547,59 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
         }
 
         function openGoogleMaps3D() {
+            const heading = getLuopanFacingHeading();
             const lat = currentMapLat || 17.9757;
             const lng = currentMapLng || 102.6331;
-            const mapsUrl = 'https://www.google.com/maps/@' + lat.toFixed(6) + ',' + lng.toFixed(6) + ',500m/data=!3m1!1e3';
+            // Google Maps 3D WebGL mode with heading and 60 degree perspective tilt:
+            const mapsUrl = 'https://www.google.com/maps/@' + lat.toFixed(6) + ',' + lng.toFixed(6) + ',250a,35y,' + heading.toFixed(1) + 'h,60t/data=!3m1!1e3';
             window.open(mapsUrl, '_blank');
+        }
+
+        let satCompassSyncActive = false;
+        let satManualRotationDeg = 0;
+
+        function applySatelliteMapRotation(deg) {
+            const mapEl = document.getElementById('satelliteLeafletMap');
+            if (!mapEl) return;
+            const normDeg = ((deg % 360) + 360) % 360;
+            // Scale by 1.45 to prevent corners from showing background when rotated
+            mapEl.style.transform = 'rotate(' + normDeg.toFixed(1) + 'deg) scale(1.45)';
+            mapEl.style.transformOrigin = 'center center';
+            mapEl.style.transition = 'transform 0.15s ease-out';
+
+            const badge = document.getElementById('satMapRotBadge');
+            if (badge) badge.textContent = normDeg.toFixed(0) + '°';
+            const slider = document.getElementById('inputMapRotSlider');
+            if (slider && document.activeElement !== slider) slider.value = normDeg.toFixed(0);
+        }
+
+        function toggleSatCompassSync(force) {
+            satCompassSyncActive = (typeof force === 'boolean') ? force : !satCompassSyncActive;
+            const btnText = document.getElementById('satRotateSyncText');
+            const syncCheck = document.getElementById('chkSatCompassSync');
+            if (syncCheck) syncCheck.checked = satCompassSyncActive;
+
+            if (satCompassSyncActive) {
+                if (btnText) btnText.textContent = (currentLuopanLang === 'hm' ? 'Tig Compass: Qhib' : currentLuopanLang === 'ph' ? '𖬘𖲝: 𖬐𖰤' : 'ໝຸນຕາມເຂັມ: ເປີດ');
+                applySatelliteMapRotation(-currentRotation);
+            } else {
+                if (btnText) btnText.textContent = (currentLuopanLang === 'hm' ? 'Tig Compass: Kaw' : currentLuopanLang === 'ph' ? '𖬘𖲝: 𖬚𖲣' : 'ໝຸນຕາມເຂັມ: ປິດ');
+                applySatelliteMapRotation(satManualRotationDeg);
+            }
+        }
+
+        function setSatManualRotation(deg) {
+            satManualRotationDeg = parseFloat(deg) || 0;
+            satCompassSyncActive = false;
+            const syncCheck = document.getElementById('chkSatCompassSync');
+            if (syncCheck) syncCheck.checked = false;
+            const btnText = document.getElementById('satRotateSyncText');
+            if (btnText) btnText.textContent = (currentLuopanLang === 'hm' ? 'Tig Compass: Kaw' : currentLuopanLang === 'ph' ? '𖬘𖲝: 𖬚𖲣' : 'ໝຸນຕາມເຂັມ: ປິດ');
+            applySatelliteMapRotation(satManualRotationDeg);
+        }
+
+        function resetSatMapRotation() {
+            setSatManualRotation(0);
         }
 
         let leafletLoadingPromise = null;
