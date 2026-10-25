@@ -137,6 +137,9 @@
             -webkit-tap-highlight-color: transparent;
         }
     </style>
+    <!-- LEAFLET MAP & SATELLITE ENGINE -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 h-screen w-screen flex flex-col md:flex-row overflow-hidden relative">
 
@@ -290,6 +293,44 @@
             <button type="button" id="toggleCameraBtn" class="w-full py-2 px-2.5 text-xs font-bold rounded-lg transition border border-emerald-500/50 bg-emerald-950/40 hover:bg-emerald-900/60 text-emerald-300 hover:text-emerald-200 flex items-center justify-center gap-1.5 shadow mt-1.5">
                 <span id="cameraBtnIcon"><svg class="w-4 h-4 inline-block mr-1 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span> <span id="cameraBtnLabel">ເປີດກ້ອງສ່ອງຈິງ (AR Camera)</span>
             </button>
+            <!-- SATELLITE MAP & GOOGLE EARTH 3D TOGGLE -->
+            <button type="button" id="toggleSatelliteBtn" class="w-full py-2 px-2.5 text-xs font-bold rounded-lg transition border border-cyan-500/50 bg-cyan-950/40 hover:bg-cyan-900/60 text-cyan-300 hover:text-cyan-200 flex items-center justify-center gap-1.5 shadow mt-1.5">
+                <span id="satelliteBtnIcon"><svg class="w-4 h-4 inline-block mr-1 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>
+                <span id="lblSatelliteBtn">🛰️ ແຜນທີ່ດາວທຽມ & Google Earth 3D</span>
+            </button>
+            <!-- SATELLITE & GOOGLE EARTH 3D CONTROLS CARD -->
+            <div id="satelliteControlsCard" class="hidden bg-slate-950/90 p-2.5 rounded-xl border border-cyan-500/40 flex flex-col gap-2 mt-1.5 shadow-sm text-xs">
+                <div class="flex items-center justify-between">
+                    <span id="lblSatCardTitle" class="text-cyan-300 font-bold flex items-center gap-1 text-[11px]">
+                        🛰️ ແຜນທີ່ດາວທຽມ & Google Earth 3D
+                    </span>
+                    <button type="button" onclick="toggleSatelliteMap(false)" class="text-slate-400 hover:text-white text-xs font-bold px-1.5 py-0.5 rounded hover:bg-slate-800">✕</button>
+                </div>
+                <div class="grid grid-cols-2 gap-1.5 text-[10px]">
+                    <div>
+                        <label class="block text-slate-400 mb-0.5" id="lblLatInput">Latitude (ເສັ້ນຂະໜານ):</label>
+                        <input id="inputLat" type="number" step="0.0001" value="17.9757" onchange="onManualCoordinateChange()" class="w-full bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-white text-xs font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 mb-0.5" id="lblLngInput">Longitude (ເສັ້ນແວງ):</label>
+                        <input id="inputLng" type="number" step="0.0001" value="102.6331" onchange="onManualCoordinateChange()" class="w-full bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-white text-xs font-mono">
+                    </div>
+                </div>
+                <div class="flex gap-1.5">
+                    <button type="button" id="btnSidebarGps" onclick="fetchUserGpsLocation()" class="flex-1 bg-cyan-900/60 hover:bg-cyan-800 text-cyan-200 border border-cyan-500/40 py-1.5 px-2 rounded-lg font-bold text-[10.5px] transition flex items-center justify-center gap-1">
+                        <span>📍</span> <span id="lblSidebarGpsText">GPS ຂ້ອຍ</span>
+                    </button>
+                    <button type="button" id="btnSidebarJump" onclick="promptCitySelection()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 py-1.5 px-2 rounded-lg font-bold text-[10.5px] transition flex items-center justify-center gap-1">
+                        <span>🎯</span> <span id="lblSidebarJumpText">ເລືອກເມືອງ</span>
+                    </button>
+                </div>
+                <button type="button" id="btnLaunchGoogleEarth3D" onclick="openGoogleEarth3D()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black py-2 px-2 rounded-lg shadow-md transition flex items-center justify-center gap-1.5 text-xs">
+                    <span>🌍</span> <span id="lblLaunchEarthText">ເປີດ Google Earth 3D</span>
+                </button>
+                <div class="text-[9.5px] text-slate-400 leading-tight border-t border-slate-800/80 pt-1" id="lblEarthSyncHelp">
+                    • ລະບົບຈະຊິງຄ໌ <b>ອົງສາໜ້າເຂັມທິດ (<span id="lblSyncDegText" class="text-amber-300 font-mono font-bold">180°</span>)</b> ແລະ ມຸມອຽງ 3D (Tilt 60°) ໄປ Google Earth ອັດຕະໂນມັດ ເພື່ອສ່ອງພູເຂົາ ແລະ ສາຍນ້ຳ.
+                </div>
+            </div>
         </div>
 
         <!-- SECTION 2: ຂະໜາດ & ຄວາມໂປ່ງໃສ -->
@@ -732,6 +773,11 @@
                 <span id="mobileCameraIcon"><svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
                 <span id="mobileCameraText" class="text-[11px] font-bold tracking-tight">ກ້ອງ AR</span>
             </button>
+            <!-- 2.5 Satellite / Google Earth 3D -->
+            <button id="mobileSatelliteBtn" type="button" onclick="toggleSatelliteMap()" class="flex flex-col items-center justify-center gap-1 py-2 px-1 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-95 text-slate-300 border border-slate-800 transition shadow-sm touch-manipulation select-none cursor-pointer" title="ແຜນທີ່ດາວທຽມ 3D">
+                <svg class="w-5 h-5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                <span id="mobileSatelliteText" class="text-[11px] font-bold tracking-tight">ແຜນທີ່ 3D</span>
+            </button>
             <!-- 3. Master Prediction Sheet -->
             <button id="mobilePredictionFab" type="button" class="flex flex-col items-center justify-center gap-1 py-2 px-1 rounded-xl bg-purple-950/70 hover:bg-purple-900 active:scale-95 text-purple-200 border border-purple-500/40 transition shadow-sm touch-manipulation select-none cursor-pointer" title="ເບິ່ງບົດທຳນາຍຮວງຈຸ້ຍດາວເຫີນ">
                 <svg class="w-5 h-5 text-purple-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -747,6 +793,34 @@
 
     <!-- VIEWPORT MAIN AREA -->
     <main id="viewport" class="relative flex-1 h-full bg-stone-200 flex items-center justify-center overflow-hidden compass-container">
+        <!-- In-App Interactive Satellite & 3D Terrain Layer -->
+        <div id="satelliteMapContainer" class="absolute inset-0 hidden pointer-events-auto z-0 overflow-hidden">
+            <div id="satelliteLeafletMap" class="w-full h-full"></div>
+        </div>
+
+        <!-- Floating Satellite Map HUD Control Bar -->
+        <div id="satelliteMapHud" class="absolute top-24 md:top-3 left-1/2 -translate-x-1/2 z-30 hidden items-center gap-1.5 bg-slate-950/95 border border-cyan-500/60 text-slate-200 text-xs px-3 py-1.5 rounded-full shadow-2xl backdrop-blur-md font-semibold select-none max-w-[96vw] overflow-x-auto">
+            <span class="text-cyan-400 flex items-center gap-1 text-[11px] font-bold">
+                <svg class="w-3.5 h-3.5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                <span id="satHudTitle">ດາວທຽມ</span>
+            </span>
+            <button id="satGpsBtn" type="button" onclick="fetchUserGpsLocation()" class="bg-cyan-900/60 hover:bg-cyan-800 text-cyan-200 border border-cyan-500/40 px-2 py-0.5 rounded-md text-[10.5px] font-bold transition flex items-center gap-1" title="ດຶງຕຳແໜ່ງ GPS ປະຈຸບັນ">
+                <span>📍</span> <span id="satGpsBtnText">GPS ຂ້ອຍ</span>
+            </button>
+            <button id="satSearchBtn" type="button" onclick="promptCitySelection()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-2 py-0.5 rounded-md text-[10.5px] font-bold transition flex items-center gap-1" title="ເລືອກເມືອງ / ປ້ອນພິກັດ">
+                <span>🎯</span> <span id="satSearchBtnText">ເລືອກເມືອງ</span>
+            </button>
+            <button id="satGoogleEarthBtn" type="button" onclick="openGoogleEarth3D()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black px-2.5 py-0.5 rounded-md text-[10.5px] shadow-sm transition flex items-center gap-1" title="ເປີດ Google Earth 3D ຊິງຄ໌ອົງສາເຂັມທິດ">
+                <span>🌍</span> <span id="satEarthBtnText">Google Earth 3D</span>
+            </button>
+            <button id="satLayerToggleBtn" type="button" onclick="toggleSatLayerType()" class="bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 px-2 py-0.5 rounded-md text-[10.5px] font-bold transition" title="ປ່ຽນແບບດາວທຽມ/ພູເຂົາ">
+                <span id="satLayerBtnText">🛰️ ດາວທຽມ</span>
+            </button>
+            <button id="closeSatelliteBtn" type="button" onclick="toggleSatelliteMap(false)" class="text-slate-400 hover:text-white p-0.5 rounded hover:bg-slate-800 ml-1" title="ປິດແຜນທີ່">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+
         <!-- Live AR Camera Video Stream Background -->
         <video id="arVideo" playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" disablepictureinpicture autoplay muted class="absolute inset-0 w-full h-full object-cover hidden pointer-events-none z-0"></video>
 
@@ -1464,6 +1538,9 @@
             updateGuaDisplay();
             const normRot = ((currentRotation % 360) + 360) % 360;
             const topCompassDeg = ((180 - normRot) % 360 + 360) % 360;
+            const degText = topCompassDeg.toFixed(1) + '°';
+            const degSyncBadge = document.getElementById('lblSyncDegText');
+            if (degSyncBadge) degSyncBadge.textContent = degText;
             if (typeof updateLivePrediction === 'function') {
                 updateLivePrediction(topCompassDeg, true);
             }
@@ -1475,6 +1552,23 @@
             document.title = t.title;
             const appTitle = document.getElementById('appTitleText');
             if (appTitle) appTitle.textContent = t.appTitle;
+
+            const lblSatBtn = document.getElementById('lblSatelliteBtn');
+            if (lblSatBtn) lblSatBtn.textContent = (lang === 'hm' ? '🛰️ Daim Duab Satellite & Earth 3D' : lang === 'ph' ? '🛰️ 𖬆𖰝 𖬄𖰝 & Earth 3D' : '🛰️ ແຜນທີ່ດາວທຽມ & Google Earth 3D');
+            const mobSatText = document.getElementById('mobileSatelliteText');
+            if (mobSatText) mobSatText.textContent = (lang === 'hm' ? 'Duab 3D' : lang === 'ph' ? '3D 𖬆𖰝' : 'ແຜນທີ່ 3D');
+            const satHudTitleEl = document.getElementById('satHudTitle');
+            if (satHudTitleEl) satHudTitleEl.textContent = (lang === 'hm' ? 'Satellite' : lang === 'ph' ? '𖬆𖰝' : 'ດາວທຽມ');
+            const satGpsBtnEl = document.getElementById('satGpsBtnText');
+            if (satGpsBtnEl) satGpsBtnEl.textContent = (lang === 'hm' ? 'GPS Chaw' : lang === 'ph' ? 'GPS' : 'GPS ຂ້ອຍ');
+            const satSearchBtnEl = document.getElementById('satSearchBtnText');
+            if (satSearchBtnEl) satSearchBtnEl.textContent = (lang === 'hm' ? 'Xaiv Nroog' : lang === 'ph' ? '𖬘𖲝' : 'ເລືອກເມືອງ');
+            const satEarthBtnEl = document.getElementById('satEarthBtnText');
+            if (satEarthBtnEl) satEarthBtnEl.textContent = (lang === 'hm' ? 'Earth 3D' : lang === 'ph' ? 'Earth 3D' : 'Google Earth 3D');
+            const satCardTitleEl = document.getElementById('lblSatCardTitle');
+            if (satCardTitleEl) satCardTitleEl.textContent = (lang === 'hm' ? '🛰️ Daim Duab Satellite & Google Earth 3D' : lang === 'ph' ? '🛰️ 𖬆𖰝 𖬄𖰝 & Earth 3D' : '🛰️ ແຜນທີ່ດາວທຽມ & Google Earth 3D');
+            const launchEarthEl = document.getElementById('lblLaunchEarthText');
+            if (launchEarthEl) launchEarthEl.textContent = (lang === 'hm' ? 'Qhib Google Earth 3D (Sync)' : lang === 'ph' ? '𖬐𖰤 Google Earth 3D' : 'ເປີດ Google Earth 3D (Sync Heading)');
 
             const lblLang = document.getElementById('lblLangSelect');
             if (lblLang) lblLang.textContent = t.langSelect;
@@ -13369,6 +13463,239 @@ function updateLivePrediction(faceDeg, forceDrawerUpdate = false) {
             }
         }
 
+
+        // =========================================================================
+        // SATELLITE MAP & GOOGLE EARTH 3D ENGINE
+        // =========================================================================
+        let satelliteMapActive = false;
+        let satelliteLeafletMap = null;
+        let satEsriLayer = null;
+        let satTerrainLayer = null;
+        let satCurrentLayerType = 'satellite';
+        let currentMapLat = 17.9757; // Default: Vientiane, Laos
+        let currentMapLng = 102.6331;
+        let currentMapZoom = 17;
+
+        const LAOS_CITIES = [
+            { nameLo: 'ນະຄອນຫຼວງວຽງຈັນ (Vientiane)', nameHm: 'Nroog Vientiane', namePh: 'Vientiane', lat: 17.9757, lng: 102.6331 },
+            { nameLo: 'ຫຼວງພະບາງ (Luang Prabang)', nameHm: 'Luang Prabang', namePh: 'Luang Prabang', lat: 19.8893, lng: 102.1340 },
+            { nameLo: 'ປາກເຊ / ຈຳປາສັກ (Pakse)', nameHm: 'Pakse', namePh: 'Pakse', lat: 15.1214, lng: 105.7820 },
+            { nameLo: 'ສະຫວັນນະເຂດ (Savannakhet)', nameHm: 'Savannakhet', namePh: 'Savannakhet', lat: 16.5562, lng: 104.7525 },
+            { nameLo: 'ວັງວຽງ (Vang Vieng)', nameHm: 'Vang Vieng', namePh: 'Vang Vieng', lat: 18.9248, lng: 102.4475 },
+            { nameLo: 'ໂພນສະຫວັນ / ຊຽງຂວາງ (Xieng Khouang)', nameHm: 'Xieng Khouang', namePh: 'Xieng Khouang', lat: 19.4589, lng: 103.2206 },
+            { nameLo: 'ໄຊຍະບູລີ (Xayaburi)', nameHm: 'Xayaburi', namePh: 'Xayaburi', lat: 19.2576, lng: 101.7548 },
+            { nameLo: 'ຫຼວງນ້ຳທາ (Luang Namtha)', nameHm: 'Luang Namtha', namePh: 'Luang Namtha', lat: 20.9575, lng: 101.4057 },
+            { nameLo: 'ອຸດົມໄຊ (Oudomxay)', nameHm: 'Oudomxay', namePh: 'Oudomxay', lat: 20.6934, lng: 101.9868 },
+            { nameLo: 'ທ່າແຂກ / ຄຳມ່ວນ (Thakhek)', nameHm: 'Thakhek', namePh: 'Thakhek', lat: 17.4042, lng: 104.8306 }
+        ];
+
+        function getLuopanFacingHeading() {
+            const normRot = ((currentRotation % 360) + 360) % 360;
+            return ((180 - normRot) % 360 + 360) % 360;
+        }
+
+        function openGoogleEarth3D() {
+            const heading = getLuopanFacingHeading();
+            const lat = currentMapLat || 17.9757;
+            const lng = currentMapLng || 102.6331;
+            const distance = 650; // In meters, ideal for inspecting Luan Tou mountain embrace & rivers
+            const tilt = 60; // 3D perspective angle
+            
+            // Official Google Earth Web URL schema with GPS, altitude, distance, heading, and tilt:
+            const earthUrl = 'https://earth.google.com/web/@' + lat.toFixed(6) + ',' + lng.toFixed(6) + ',200a,' + distance + 'd,35y,' + heading.toFixed(1) + 'h,' + tilt + 't,0r';
+            window.open(earthUrl, '_blank');
+        }
+
+        function openGoogleMaps3D() {
+            const lat = currentMapLat || 17.9757;
+            const lng = currentMapLng || 102.6331;
+            const mapsUrl = 'https://www.google.com/maps/@' + lat.toFixed(6) + ',' + lng.toFixed(6) + ',500m/data=!3m1!1e3';
+            window.open(mapsUrl, '_blank');
+        }
+
+        function toggleSatelliteMap(forceState) {
+            satelliteMapActive = (typeof forceState === 'boolean') ? forceState : !satelliteMapActive;
+            const container = document.getElementById('satelliteMapContainer');
+            const hud = document.getElementById('satelliteMapHud');
+            const card = document.getElementById('satelliteControlsCard');
+            const btn = document.getElementById('toggleSatelliteBtn');
+
+            if (satelliteMapActive) {
+                if (container) container.classList.remove('hidden');
+                if (hud) {
+                    hud.classList.remove('hidden');
+                    hud.classList.add('flex');
+                }
+                if (card) card.classList.remove('hidden');
+                if (btn) {
+                    btn.classList.add('bg-cyan-600', 'text-white', 'border-cyan-300');
+                    btn.classList.remove('bg-cyan-950/40', 'text-cyan-300');
+                }
+
+                // If opacity slider is at 100%, lower compass opacity slightly to 75% so satellite shines through
+                const opSlider = document.getElementById('opacityCompass');
+                if (opSlider && parseInt(opSlider.value, 10) >= 95) {
+                    opSlider.value = 75;
+                    updateCompassOpacity(75);
+                }
+
+                initSatelliteLeafletMap();
+            } else {
+                if (container) container.classList.add('hidden');
+                if (hud) {
+                    hud.classList.add('hidden');
+                    hud.classList.remove('flex');
+                }
+                if (card) card.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('bg-cyan-600', 'text-white', 'border-cyan-300');
+                    btn.classList.add('bg-cyan-950/40', 'text-cyan-300');
+                }
+            }
+        }
+
+        function initSatelliteLeafletMap() {
+            if (typeof L === 'undefined') {
+                console.warn('Leaflet library is still loading or offline. Google Earth 3D button is fully functional.');
+                return;
+            }
+
+            if (!satelliteLeafletMap) {
+                const mapEl = document.getElementById('satelliteLeafletMap');
+                if (!mapEl) return;
+
+                satelliteLeafletMap = L.map('satelliteLeafletMap', {
+                    center: [currentMapLat, currentMapLng],
+                    zoom: currentMapZoom,
+                    zoomControl: false,
+                    attributionControl: false
+                });
+
+                // High-resolution Esri World Imagery Satellite Tiles
+                satEsriLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                    maxZoom: 19,
+                    maxNativeZoom: 18
+                });
+
+                // OpenTopoMap Elevation & Mountain Contour Tiles
+                satTerrainLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 17
+                });
+
+                satEsriLayer.addTo(satelliteLeafletMap);
+
+                satelliteLeafletMap.on('moveend', () => {
+                    const c = satelliteLeafletMap.getCenter();
+                    currentMapLat = c.lat;
+                    currentMapLng = c.lng;
+                    currentMapZoom = satelliteLeafletMap.getZoom();
+                    updateCoordinateInputs();
+                });
+            }
+
+            setTimeout(() => {
+                if (satelliteLeafletMap) satelliteLeafletMap.invalidateSize();
+            }, 100);
+        }
+
+        function toggleSatLayerType() {
+            if (!satelliteLeafletMap || !satEsriLayer || !satTerrainLayer) return;
+            const btnText = document.getElementById('satLayerBtnText');
+            if (satCurrentLayerType === 'satellite') {
+                satelliteLeafletMap.removeLayer(satEsriLayer);
+                satTerrainLayer.addTo(satelliteLeafletMap);
+                satCurrentLayerType = 'terrain';
+                if (btnText) btnText.textContent = '⛰️ ພູເຂົາ/ສັນດອນ';
+            } else {
+                satelliteLeafletMap.removeLayer(satTerrainLayer);
+                satEsriLayer.addTo(satelliteLeafletMap);
+                satCurrentLayerType = 'satellite';
+                if (btnText) btnText.textContent = '🛰️ ດາວທຽມ';
+            }
+        }
+
+        function updateCoordinateInputs() {
+            const inLat = document.getElementById('inputLat');
+            const inLng = document.getElementById('inputLng');
+            if (inLat && document.activeElement !== inLat) inLat.value = currentMapLat.toFixed(5);
+            if (inLng && document.activeElement !== inLng) inLng.value = currentMapLng.toFixed(5);
+        }
+
+        function onManualCoordinateChange() {
+            const inLat = document.getElementById('inputLat');
+            const inLng = document.getElementById('inputLng');
+            if (!inLat || !inLng) return;
+            const lat = parseFloat(inLat.value);
+            const lng = parseFloat(inLng.value);
+            if (!isNaN(lat) && !isNaN(lng)) {
+                currentMapLat = lat;
+                currentMapLng = lng;
+                if (satelliteLeafletMap) {
+                    satelliteLeafletMap.panTo([lat, lng]);
+                }
+            }
+        }
+
+        function fetchUserGpsLocation() {
+            if (!navigator.geolocation) {
+                alert('Browser ຂອງທ່ານບໍ່ຮອງຮັບ Geolocation');
+                return;
+            }
+            const gpsBtnText = document.getElementById('satGpsBtnText');
+            const origText = gpsBtnText ? gpsBtnText.textContent : 'GPS';
+            if (gpsBtnText) gpsBtnText.textContent = 'ກຳລັງດຶງ GPS...';
+
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    currentMapLat = pos.coords.latitude;
+                    currentMapLng = pos.coords.longitude;
+                    updateCoordinateInputs();
+                    if (gpsBtnText) gpsBtnText.textContent = origText;
+                    if (satelliteLeafletMap) {
+                        satelliteLeafletMap.flyTo([currentMapLat, currentMapLng], 18, { duration: 1.5 });
+                    }
+                },
+                (err) => {
+                    console.warn('GPS Error:', err.message);
+                    if (gpsBtnText) gpsBtnText.textContent = origText;
+                    alert('ບໍ່ສາມາດດຶງ GPS ໄດ້: ' + (err.message || 'ກະລຸນາເປີດອະນຸຍາດ Location'));
+                },
+                { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+            );
+        }
+
+        function promptCitySelection() {
+            let msg = 'ເລືອກຕົວເມືອງທີ່ຕ້ອງການສ່ອງຮວງຈຸ້ຍ:\n';
+            LAOS_CITIES.forEach((c, idx) => {
+                msg += (idx + 1) + '. ' + c.nameLo + '\n';
+            });
+            const choice = prompt(msg + '\nປ້ອນຕົວເລກ (1-' + LAOS_CITIES.length + ') ຫຼື ພິມພິກັດ "Lat, Lng":');
+            if (!choice) return;
+
+            const num = parseInt(choice.trim(), 10);
+            if (!isNaN(num) && num >= 1 && num <= LAOS_CITIES.length) {
+                const target = LAOS_CITIES[num - 1];
+                currentMapLat = target.lat;
+                currentMapLng = target.lng;
+                updateCoordinateInputs();
+                if (satelliteLeafletMap) {
+                    satelliteLeafletMap.flyTo([target.lat, target.lng], 16, { duration: 1.5 });
+                }
+            } else if (choice.includes(',')) {
+                const parts = choice.split(',');
+                const lat = parseFloat(parts[0]);
+                const lng = parseFloat(parts[1]);
+                if (!isNaN(lat) && !isNaN(lng)) {
+                    currentMapLat = lat;
+                    currentMapLng = lng;
+                    updateCoordinateInputs();
+                    if (satelliteLeafletMap) {
+                        satelliteLeafletMap.flyTo([lat, lng], 17, { duration: 1.5 });
+                    }
+                }
+            }
+        }
+
 function updateCompassTransform(deltaAngle = null) {
             const normRot = ((currentRotation % 360) + 360) % 360;
             compassDisk.setAttribute('transform', `rotate(${normRot.toFixed(2)}, ${CX}, ${CY})`);
@@ -14349,6 +14676,10 @@ function updateCompassTransform(deltaAngle = null) {
             const toggleCamBtn = document.getElementById('toggleCameraBtn');
             if (toggleCamBtn) {
                 toggleCamBtn.addEventListener('click', toggleCameraAR);
+            }
+            const toggleSatBtn = document.getElementById('toggleSatelliteBtn');
+            if (toggleSatBtn) {
+                toggleSatBtn.addEventListener('click', () => toggleSatelliteMap());
             }
             const mobCamBtn = document.getElementById('mobileCameraBtn');
             if (mobCamBtn) {
