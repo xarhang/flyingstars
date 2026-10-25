@@ -92,37 +92,208 @@
             border-right: 3px solid rgba(160, 130, 90, 0.35);
         }
 
-        /* 3D Flipping Leaf Overlay */
-        .flipping-leaf {
+        /* 3D Realistic Tactile Paper Flipping Engine */
+        .book-canvas {
+            perspective: 2500px;
+            transform-style: preserve-3d;
+        }
+
+        .paper-curl-leaf {
             position: absolute;
             inset: 0;
             transform-style: preserve-3d;
             transform-origin: left center;
-            z-index: 50;
+            z-index: 60;
             pointer-events: none;
-            border-radius: 12px 20px 20px 12px;
+            border-radius: 10px 20px 20px 10px;
         }
 
-        .leaf-face {
+        .paper-curl-face {
             position: absolute;
             inset: 0;
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             overflow: hidden;
-            border-radius: 12px 20px 20px 12px;
+            border-radius: 10px 20px 20px 10px;
             box-sizing: border-box;
         }
 
-        .leaf-face.back {
+        .paper-curl-face.back {
             transform: rotateY(180deg);
+            background-color: #f7f1e5;
         }
 
-        /* Realistic Dynamic Lighting Shadows for Leaf */
-        .leaf-shadow {
+        /* Specular Ridge Traveling Highlight */
+        .curl-specular-ridge {
             position: absolute;
             inset: 0;
+            background: linear-gradient(108deg,
+                transparent 34%,
+                rgba(255, 255, 255, 0.0) 45%,
+                rgba(255, 255, 255, 0.78) 49%,
+                rgba(255, 255, 255, 0.96) 50.5%,
+                rgba(255, 255, 255, 0.45) 52.5%,
+                transparent 66%
+            );
+            opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.25s ease;
+        }
+
+        /* Crease Valley Traveling Shadow */
+        .curl-crease-shadow {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right,
+                transparent 34%,
+                rgba(0, 0, 0, 0.08) 46%,
+                rgba(0, 0, 0, 0.50) 52%,
+                rgba(0, 0, 0, 0.18) 58%,
+                transparent 70%
+            );
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        /* Paper Rim & Thickness Edge Highlight */
+        .paper-edge-highlight {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 2.5px;
+            background: linear-gradient(to bottom, #ffffff, #fef3c7, #ffffff);
+            box-shadow: 0 0 3px rgba(255,255,255,0.9), 2px 0 6px rgba(0,0,0,0.25);
+        }
+
+        /* Tactile Paper Bending & Curling Keyframes */
+        @keyframes tactileCurlNext {
+            0% {
+                transform: translateZ(0) rotateY(0deg) rotateZ(0deg) skewY(0deg);
+                filter: drop-shadow(0 2px 8px rgba(0,0,0,0.12));
+            }
+            14% {
+                /* Corner lifts up first with diagonal paper curl */
+                transform: translateZ(24px) rotateY(-22deg) rotateZ(-4.5deg) skewY(-2.8deg) scale(0.992);
+                filter: drop-shadow(-10px 14px 22px rgba(0,0,0,0.32));
+            }
+            36% {
+                /* Flexible page arches into a 3D cylindrical curve across the page */
+                transform: translateZ(66px) rotateY(-58deg) rotateZ(-6.8deg) skewY(-4deg) scale(0.982);
+                filter: drop-shadow(-22px 26px 40px rgba(0,0,0,0.44));
+            }
+            50% {
+                /* Apex crest standing vertical with maximum curvature and traveling light ridge */
+                transform: translateZ(82px) rotateY(-90deg) rotateZ(0deg) skewY(0deg) scale(0.98);
+                filter: drop-shadow(0 34px 52px rgba(0,0,0,0.5));
+            }
+            64% {
+                /* Paper rolls down onto left side, relaxing curve */
+                transform: translateZ(66px) rotateY(-122deg) rotateZ(6.8deg) skewY(4deg) scale(0.982);
+                filter: drop-shadow(22px 26px 40px rgba(0,0,0,0.44));
+            }
+            86% {
+                /* Soft descent nearing spine */
+                transform: translateZ(22px) rotateY(-160deg) rotateZ(3.5deg) skewY(2deg) scale(0.992);
+                filter: drop-shadow(8px 12px 20px rgba(0,0,0,0.25));
+            }
+            100% {
+                /* Settled flat on opposite page */
+                transform: translateZ(0) rotateY(-180deg) rotateZ(0deg) skewY(0deg) scale(1);
+                filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+            }
+        }
+
+        @keyframes tactileCurlPrev {
+            0% {
+                transform: translateZ(0) rotateY(-180deg) rotateZ(0deg) skewY(0deg);
+                filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+            }
+            14% {
+                transform: translateZ(24px) rotateY(-158deg) rotateZ(4.5deg) skewY(2.8deg) scale(0.992);
+                filter: drop-shadow(10px 14px 22px rgba(0,0,0,0.32));
+            }
+            36% {
+                transform: translateZ(66px) rotateY(-122deg) rotateZ(6.8deg) skewY(4deg) scale(0.982);
+                filter: drop-shadow(22px 26px 40px rgba(0,0,0,0.44));
+            }
+            50% {
+                transform: translateZ(82px) rotateY(-90deg) rotateZ(0deg) skewY(0deg) scale(0.98);
+                filter: drop-shadow(0 34px 52px rgba(0,0,0,0.5));
+            }
+            64% {
+                transform: translateZ(66px) rotateY(-58deg) rotateZ(-6.8deg) skewY(-4deg) scale(0.982);
+                filter: drop-shadow(-22px 26px 40px rgba(0,0,0,0.44));
+            }
+            86% {
+                transform: translateZ(22px) rotateY(-20deg) rotateZ(-3.5deg) skewY(-2deg) scale(0.992);
+                filter: drop-shadow(-8px 12px 20px rgba(0,0,0,0.25));
+            }
+            100% {
+                transform: translateZ(0) rotateY(0deg) rotateZ(0deg) skewY(0deg) scale(1);
+                filter: drop-shadow(0 2px 8px rgba(0,0,0,0.12));
+            }
+        }
+
+        .curl-anim-next {
+            animation: tactileCurlNext 0.68s cubic-bezier(0.22, 0.88, 0.3, 1) forwards;
+        }
+
+        .curl-anim-prev {
+            animation: tactileCurlPrev 0.68s cubic-bezier(0.22, 0.88, 0.3, 1) forwards;
+        }
+
+        /* Interactive Corner Peeling Dog-Ear Tabs */
+        .corner-curl-tab {
+            position: absolute;
+            bottom: 0;
+            width: 52px;
+            height: 52px;
+            cursor: pointer;
+            z-index: 30;
+            pointer-events: auto;
+            transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+        .corner-next {
+            right: 0;
+        }
+        .corner-prev {
+            left: 0;
+        }
+        .corner-next .corner-fold {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 28px 28px;
+            border-color: transparent transparent rgba(180, 83, 9, 0.28) transparent;
+            filter: drop-shadow(-2px -2px 4px rgba(0,0,0,0.25));
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+        .corner-next:hover .corner-fold {
+            border-width: 0 0 46px 46px;
+            border-color: transparent transparent rgba(217, 119, 6, 0.5) transparent;
+            filter: drop-shadow(-5px -5px 8px rgba(0,0,0,0.38));
+        }
+        .corner-prev .corner-fold {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 28px 0 0 28px;
+            border-color: transparent transparent transparent rgba(180, 83, 9, 0.28);
+            filter: drop-shadow(2px -2px 4px rgba(0,0,0,0.25));
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+        .corner-prev:hover .corner-fold {
+            border-width: 46px 0 0 46px;
+            border-color: transparent transparent transparent rgba(217, 119, 6, 0.5);
+            filter: drop-shadow(5px -5px 8px rgba(0,0,0,0.38));
         }
 
         /* Custom Scrollbar for Long Pages */
@@ -261,7 +432,7 @@
     <!-- Main Single-Page 3D Stage -->
     <main class="flex-1 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-hidden relative stage-container">
         <!-- 3D Book Canvas (Single-Page Layout) -->
-        <div id="bookCanvas" class="book-canvas w-full max-w-[700px] h-[82vh] max-h-[820px] rounded-2xl relative overflow-hidden flex flex-col justify-between">
+        <div id="bookCanvas" class="book-canvas w-full max-w-[700px] h-[82vh] max-h-[820px] rounded-2xl relative flex flex-col justify-between shadow-2xl">
             <!-- Underlying Surface (Always visible) -->
             <div id="activePageSurface" class="book-page-surface w-full h-full rounded-2xl overflow-hidden relative flex flex-col justify-between">
                 <!-- Page Running Header -->
@@ -285,10 +456,21 @@
                 <div class="absolute inset-y-0 left-0 w-8 sm:w-12 spine-edge pointer-events-none"></div>
                 <!-- Right Page Edge Trim Line -->
                 <div class="absolute inset-y-0 right-0 w-1 page-edge-trim pointer-events-none"></div>
+
+                <!-- Dynamic Cast Shadow Beneath Turning Page -->
+                <div id="pageCastShadow" class="absolute inset-0 pointer-events-none transition-opacity duration-300 z-20" style="opacity: 0; background: linear-gradient(to left, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.15) 30%, transparent 65%);"></div>
+
+                <!-- Interactive Tactile Corner Peeling Tabs -->
+                <div id="cornerNextTab" onclick="flipNext()" class="corner-curl-tab corner-next" title="ເປີດໜ້າຖັດໄປ (Next)">
+                    <div class="corner-fold"></div>
+                </div>
+                <div id="cornerPrevTab" onclick="flipPrev()" class="corner-curl-tab corner-prev" title="ໜ້າກ່ອນໜ້າ (Prev)">
+                    <div class="corner-fold"></div>
+                </div>
             </div>
 
             <!-- Dynamic Flipping Leaf Container (Injected on flip animation) -->
-            <div id="flipLeafContainer" class="absolute inset-0 pointer-events-none"></div>
+            <div id="flipLeafContainer" class="absolute inset-0 pointer-events-none z-50" style="perspective: 2500px; transform-style: preserve-3d;"></div>
         </div>
 
         <!-- Left Nav Arrow Button (Prev) - Visible on tablet/desktop -->
@@ -387,7 +569,7 @@
         let zoomScale = 1.0;
         let baseFontSize = 14;
 
-        // Web Audio API Synthesized Paper Sound (100% Offline)
+        // Web Audio API Synthesized Authentic Multi-Phase Parchment Sound (100% Offline)
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
         let audioCtx = null;
         function playPageTurnSound() {
@@ -395,30 +577,58 @@
             try {
                 if (!audioCtx) audioCtx = new AudioCtx();
                 if (audioCtx.state === 'suspended') audioCtx.resume();
-                
-                const bufferSize = audioCtx.sampleRate * 0.14;
-                const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-                const data = buffer.getChannelData(0);
-                for (let i = 0; i < bufferSize; i++) {
-                    data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (audioCtx.sampleRate * 0.04));
+
+                const now = audioCtx.currentTime;
+
+                // Phase 1: High-frequency parchment friction & edge rustle (0 to 160ms)
+                const rustleDuration = 0.16;
+                const rustleBuffer = audioCtx.createBuffer(1, Math.floor(audioCtx.sampleRate * rustleDuration), audioCtx.sampleRate);
+                const rustleData = rustleBuffer.getChannelData(0);
+                for (let i = 0; i < rustleData.length; i++) {
+                    rustleData[i] = (Math.random() * 2 - 1) * Math.exp(-i / (audioCtx.sampleRate * 0.045));
                 }
+                const rustleSource = audioCtx.createBufferSource();
+                rustleSource.buffer = rustleBuffer;
 
-                const noise = audioCtx.createBufferSource();
-                noise.buffer = buffer;
+                const rustleFilter = audioCtx.createBiquadFilter();
+                rustleFilter.type = 'bandpass';
+                rustleFilter.frequency.setValueAtTime(2600, now);
+                rustleFilter.frequency.exponentialRampToValueAtTime(1200, now + rustleDuration);
+                rustleFilter.Q.value = 2.2;
 
-                const filter = audioCtx.createBiquadFilter();
-                filter.type = 'bandpass';
-                filter.frequency.value = 1200;
-                filter.Q.value = 1.6;
+                const rustleGain = audioCtx.createGain();
+                rustleGain.gain.setValueAtTime(0.26, now);
+                rustleGain.gain.exponentialRampToValueAtTime(0.005, now + rustleDuration);
 
-                const gain = audioCtx.createGain();
-                gain.gain.setValueAtTime(0.28, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.14);
+                rustleSource.connect(rustleFilter);
+                rustleFilter.connect(rustleGain);
+                rustleGain.connect(audioCtx.destination);
+                rustleSource.start(now);
 
-                noise.connect(filter);
-                filter.connect(gain);
-                gain.connect(audioCtx.destination);
-                noise.start();
+                // Phase 2: Warm parchment body flutter & landing cushion (90ms to 320ms)
+                const flapDuration = 0.22;
+                const flapBuffer = audioCtx.createBuffer(1, Math.floor(audioCtx.sampleRate * flapDuration), audioCtx.sampleRate);
+                const flapData = flapBuffer.getChannelData(0);
+                for (let i = 0; i < flapData.length; i++) {
+                    flapData[i] = (Math.random() * 2 - 1) * Math.exp(-i / (audioCtx.sampleRate * 0.065));
+                }
+                const flapSource = audioCtx.createBufferSource();
+                flapSource.buffer = flapBuffer;
+
+                const flapFilter = audioCtx.createBiquadFilter();
+                flapFilter.type = 'lowpass';
+                flapFilter.frequency.setValueAtTime(620, now + 0.08);
+                flapFilter.frequency.exponentialRampToValueAtTime(280, now + 0.08 + flapDuration);
+
+                const flapGain = audioCtx.createGain();
+                flapGain.gain.setValueAtTime(0.001, now);
+                flapGain.gain.setValueAtTime(0.19, now + 0.08);
+                flapGain.gain.exponentialRampToValueAtTime(0.005, now + 0.08 + flapDuration);
+
+                flapSource.connect(flapFilter);
+                flapFilter.connect(flapGain);
+                flapGain.connect(audioCtx.destination);
+                flapSource.start(now + 0.08);
             } catch (e) {
                 // Ignore audio policy errors
             }
@@ -439,8 +649,8 @@
             updateHeaderLabels();
         }
 
-        // Render Page Content
-        function renderPage(pageNum, animate = false, direction = 1) {
+        // Render Page Content with Authentic Tactile Paper Flip
+        function renderPage(pageNum, animate = false, direction = 1, fromPageNum = null) {
             const pageObj = currentPages[pageNum - 1];
             if (!pageObj) return;
 
@@ -449,12 +659,14 @@
             const footerChapter = document.getElementById('pageFooterChapter');
             const footerNumber = document.getElementById('pageFooterNumber');
             const currentChLabel = document.getElementById('currentChapterLabel');
+            const castShadow = document.getElementById('pageCastShadow');
+
+            const title = pageObj.chTitle || (currentLang === 'hm' ? 'Looj Mem Hnub Qub Ya' : 'ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ');
 
             if (!animate) {
                 container.innerHTML = pageObj.html;
                 container.scrollTop = 0;
 
-                const title = pageObj.chTitle || (currentLang === 'hm' ? 'Looj Mem Hnub Qub Ya' : 'ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ');
                 headerLeft.innerText = title;
                 footerChapter.innerText = pageObj.chTitle || '';
                 footerNumber.innerText = (currentLang === 'hm') ? `Phab ${pageNum}` : `ໜ້າ ${pageNum}`;
@@ -466,69 +678,54 @@
                 return;
             }
 
-            // High-Performance 60fps 3D Flipping Leaf
             if (isFlipping) return;
             isFlipping = true;
             playPageTurnSound();
 
             const leafContainer = document.getElementById('flipLeafContainer');
-            const prevPageObj = currentPages[currentPageNum - 1];
+            const fromPageObj = (fromPageNum && currentPages[fromPageNum - 1]) ? currentPages[fromPageNum - 1] : pageObj;
 
-            // Create Leaf Element
+            // Build Photorealistic Tactile Flipping Leaf
             const leaf = document.createElement('div');
-            leaf.className = 'flipping-leaf';
+            const isNext = direction > 0;
+            leaf.className = `paper-curl-leaf ${isNext ? 'curl-anim-next' : 'curl-anim-prev'}`;
 
-            const frontContent = prevPageObj ? prevPageObj.html : '';
-            const backContent = pageObj.html;
+            const frontHtml = isNext ? fromPageObj.html : pageObj.html;
+            const backHtml = isNext ? pageObj.html : fromPageObj.html;
 
             leaf.innerHTML = `
-                <div class="leaf-face front book-page-surface p-4 sm:p-7 overflow-hidden relative">
-                    ${frontContent}
-                    <div class="leaf-shadow" style="background: linear-gradient(to right, rgba(0,0,0,0.4) 0%, transparent 60%); opacity: 0;"></div>
+                <div class="paper-curl-face front book-page-surface p-4 sm:p-7 overflow-hidden relative">
+                    ${frontHtml}
+                    <div class="absolute inset-y-0 left-0 w-8 sm:w-12 spine-edge pointer-events-none"></div>
+                    <div class="paper-edge-highlight"></div>
+                    <div class="curl-specular-ridge"></div>
+                    <div class="curl-crease-shadow"></div>
                 </div>
-                <div class="leaf-face back book-page-surface p-4 sm:p-7 overflow-hidden relative">
-                    ${backContent}
-                    <div class="leaf-shadow" style="background: linear-gradient(to left, rgba(0,0,0,0.4) 0%, transparent 60%); opacity: 0.5;"></div>
+                <div class="paper-curl-face back p-4 sm:p-7 overflow-hidden relative border-l border-amber-900/20">
+                    <div class="opacity-20 filter blur-[0.4px]">
+                        ${backHtml}
+                    </div>
+                    <div class="absolute inset-0 bg-amber-950/5 pointer-events-none"></div>
+                    <div class="paper-edge-highlight" style="left: 0; right: auto;"></div>
+                    <div class="curl-specular-ridge"></div>
+                    <div class="curl-crease-shadow"></div>
                 </div>
             `;
 
             leafContainer.appendChild(leaf);
 
-            // Apply 3D Transform
-            const duration = 520; // 520ms buttery smooth
-            leaf.style.transition = `transform ${duration}ms cubic-bezier(0.25, 1, 0.5, 1)`;
-
-            if (direction > 0) {
-                // Next: Rotate 0deg -> -180deg
-                leaf.style.transformOrigin = 'left center';
-                leaf.style.transform = 'rotateY(0deg)';
-                const shadowFront = leaf.querySelector('.front .leaf-shadow');
-                const shadowBack = leaf.querySelector('.back .leaf-shadow');
-
-                requestAnimationFrame(() => {
-                    leaf.style.transform = 'rotateY(-180deg)';
-                    if (shadowFront) shadowFront.style.opacity = '0.6';
-                    if (shadowBack) shadowBack.style.opacity = '0';
-                });
-            } else {
-                // Prev: Rotate -180deg -> 0deg
-                leaf.style.transformOrigin = 'left center';
-                leaf.style.transform = 'rotateY(-180deg)';
-                const shadowBack = leaf.querySelector('.back .leaf-shadow');
-                const shadowFront = leaf.querySelector('.front .leaf-shadow');
-
-                requestAnimationFrame(() => {
-                    leaf.style.transform = 'rotateY(0deg)';
-                    if (shadowBack) shadowBack.style.opacity = '0.6';
-                    if (shadowFront) shadowFront.style.opacity = '0';
-                });
+            // Animate dynamic cast shadow on destination page
+            if (castShadow) {
+                castShadow.style.opacity = '0.75';
+                setTimeout(() => {
+                    castShadow.style.opacity = '0';
+                }, 520);
             }
 
             // Immediately set destination page on underlying canvas
             container.innerHTML = pageObj.html;
             container.scrollTop = 0;
 
-            const title = pageObj.chTitle || (currentLang === 'hm' ? 'Looj Mem Hnub Qub Ya' : 'ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ');
             headerLeft.innerText = title;
             footerChapter.innerText = pageObj.chTitle || '';
             footerNumber.innerText = (currentLang === 'hm') ? `Phab ${pageNum}` : `ໜ້າ ${pageNum}`;
@@ -538,30 +735,35 @@
             document.getElementById('pageProgressBadge').innerText = (currentLang === 'hm') ? 
                 `Phab ${pageNum} / ${totalPages}` : `ໜ້າ ${pageNum} / ${totalPages}`;
 
+            const animDuration = 680;
             setTimeout(() => {
                 leaf.remove();
+                if (castShadow) castShadow.style.opacity = '0';
                 isFlipping = false;
-            }, duration + 30);
+            }, animDuration + 20);
         }
 
         function flipNext() {
             if (isFlipping || currentPageNum >= totalPages) return;
+            const fromPage = currentPageNum;
             currentPageNum++;
-            renderPage(currentPageNum, true, 1);
+            renderPage(currentPageNum, true, 1, fromPage);
         }
 
         function flipPrev() {
             if (isFlipping || currentPageNum <= 1) return;
+            const fromPage = currentPageNum;
             currentPageNum--;
-            renderPage(currentPageNum, true, -1);
+            renderPage(currentPageNum, true, -1, fromPage);
         }
 
         function jumpToPage(num) {
             const target = Math.max(1, Math.min(totalPages, parseInt(num, 10)));
-            if (target === currentPageNum) return;
+            if (target === currentPageNum || isFlipping) return;
             const dir = target > currentPageNum ? 1 : -1;
+            const fromPage = currentPageNum;
             currentPageNum = target;
-            renderPage(currentPageNum, true, dir);
+            renderPage(currentPageNum, true, dir, fromPage);
         }
 
         function onSliderInput(val) {
