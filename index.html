@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache">
     <title>ຮວງຈຸ້ຍ (ດາວເຫີນ 9 ຍຸກ)</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%237f1d1d' stroke='%23f59e0b' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='26' fill='%230f172a' stroke='%23fbbf24' stroke-width='1.5'/%3E%3Cpath d='M32,8 A24,24 0 0,1 32,56 A12,12 0 0,1 32,32 A12,12 0 0,0 32,8 Z' fill='%23f8fafc'/%3E%3Cpath d='M32,8 A24,24 0 0,0 32,56 A12,12 0 0,0 32,32 A12,12 0 0,1 32,8 Z' fill='%230f172a'/%3E%3Ccircle cx='32' cy='20' r='3.5' fill='%230f172a'/%3E%3Ccircle cx='32' cy='44' r='3.5' fill='%23f8fafc'/%3E%3C/svg%3E">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -36,7 +34,6 @@
         };
     </script>
     <script src="asset/js/qrcode.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao+Looped:wght@400;500;600;700&family=Noto+Serif+Lao:wght@400;600;700&family=Noto+Sans+Lao:wght@400;500;600;700&family=Phetsarath:wght@400;700&display=swap" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'Phetsarath OT';
@@ -54,49 +51,56 @@
         }
         @font-face {
             font-family: 'Noto Sans Lao Looped';
-            src: url('asset/fonts/NotoSansLaoLooped-Regular.ttf') format('truetype');
+            src: local('Noto Sans Lao Looped'), local('NotoSansLaoLooped'), url('asset/fonts/NotoSansLaoLooped-Regular.ttf') format('truetype');
             font-weight: 400;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Noto Sans Lao Looped';
-            src: url('asset/fonts/NotoSansLaoLooped-Bold.ttf') format('truetype');
+            src: local('Noto Sans Lao Looped Bold'), local('NotoSansLaoLooped-Bold'), url('asset/fonts/NotoSansLaoLooped-Bold.ttf') format('truetype');
             font-weight: 700;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Noto Serif Lao';
-            src: url('asset/fonts/NotoSerifLao-Regular.ttf') format('truetype');
+            src: local('Noto Serif Lao'), local('NotoSerifLao'), url('asset/fonts/NotoSerifLao-Regular.ttf') format('truetype');
             font-weight: 400;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Noto Serif Lao';
-            src: url('asset/fonts/NotoSerifLao-Bold.ttf') format('truetype');
+            src: local('Noto Serif Lao Bold'), local('NotoSerifLao-Bold'), url('asset/fonts/NotoSerifLao-Bold.ttf') format('truetype');
             font-weight: 700;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Noto Sans Lao';
-            src: url('asset/fonts/NotoSansLao-Regular.ttf') format('truetype');
+            src: local('Noto Sans Lao'), local('NotoSansLao'), url('asset/fonts/NotoSansLao-Regular.ttf') format('truetype');
             font-weight: 400;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Noto Sans Lao';
-            src: url('asset/fonts/NotoSansLao-Bold.ttf') format('truetype');
+            src: local('Noto Sans Lao Bold'), local('NotoSansLao-Bold'), url('asset/fonts/NotoSansLao-Bold.ttf') format('truetype');
             font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Noto Sans Pahawh Hmong';
+            src: local('Noto Sans Pahawh Hmong'), local('NotoSansPahawhHmong'), url('asset/fonts/NotoSansPahawhHmong-Regular.ttf') format('truetype');
+            font-weight: 400;
             font-style: normal;
             font-display: swap;
         }
 
         *, *::before, *::after, html, body, button, input, select, textarea, text {
-            font-family: 'Phetsarath OT', 'Noto Sans Lao Looped', 'Noto Serif Lao', 'Saysettha OT', 'Noto Sans Lao', sans-serif !important;
+            font-family: 'Phetsarath OT', 'Noto Sans Lao Looped', 'Noto Serif Lao', 'Saysettha OT', 'Noto Sans Lao', 'Noto Sans Pahawh Hmong', sans-serif !important;
             letter-spacing: normal !important;
             word-spacing: normal !important;
         }
@@ -106,7 +110,7 @@
             letter-spacing: normal !important;
         }
         svg text, text {
-            font-family: 'Phetsarath OT', 'Noto Sans Lao Looped', 'Noto Serif Lao', 'Saysettha OT', 'Noto Sans Lao', sans-serif !important;
+            font-family: 'Phetsarath OT', 'Noto Sans Lao Looped', 'Noto Serif Lao', 'Saysettha OT', 'Noto Sans Lao', 'Noto Sans Pahawh Hmong', sans-serif !important;
             letter-spacing: 0 !important;
             word-spacing: normal !important;
             font-feature-settings: "liga" 1, "ccmp" 1;
@@ -911,7 +915,7 @@
                 <defs>
                     <style>
                         text {
-                            font-family: 'Phetsarath OT', 'Noto Sans Lao Looped', 'Noto Serif Lao', 'Saysettha OT', 'Noto Sans Lao', sans-serif !important;
+                            font-family: 'Phetsarath OT', 'Noto Sans Lao Looped', 'Noto Serif Lao', 'Saysettha OT', 'Noto Sans Lao', 'Noto Sans Pahawh Hmong', sans-serif !important;
                             letter-spacing: 0 !important;
                             word-spacing: normal !important;
                             font-feature-settings: "liga" 1, "ccmp" 1;
@@ -14443,7 +14447,7 @@ function updateCompassTransform(deltaAngle = null) {
             clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
 
             const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
-            styleEl.textContent = `text { font-family: 'Phetsarath OT', 'Noto Sans Lao Looped', 'Noto Serif Lao', 'Saysettha OT', 'Noto Sans Lao', sans-serif !important; }`;
+            styleEl.textContent = `text { font-family: 'Phetsarath OT', 'Noto Sans Lao Looped', 'Noto Serif Lao', 'Saysettha OT', 'Noto Sans Lao', 'Noto Sans Pahawh Hmong', sans-serif !important; }`;
             clone.prepend(styleEl);
 
             const svgData = new XMLSerializer().serializeToString(clone);
