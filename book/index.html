@@ -92,83 +92,60 @@
             border-right: 3px solid rgba(160, 130, 90, 0.35);
         }
 
-        /* 3D Realistic Tactile Paper Flipping Engine */
+        /* 3D Realistic Cylindrical Paper Rolling Engine */
         .book-canvas {
-            perspective: 2500px;
+            perspective: 2600px;
             transform-style: preserve-3d;
             touch-action: pan-y;
             user-select: none;
             -webkit-user-select: none;
         }
 
-        .paper-curl-leaf {
+        .mesh-roll-root {
             position: absolute;
             inset: 0;
             transform-style: preserve-3d;
-            transform-origin: left center;
-            z-index: 60;
             pointer-events: none;
-            border-radius: 10px 20px 20px 10px;
-            will-change: transform, filter;
+            z-index: 60;
         }
 
-        .paper-curl-face {
+        .mesh-strip {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            transform-style: preserve-3d;
+            transform-origin: left center;
+        }
+
+        .strip-face {
             position: absolute;
             inset: 0;
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             overflow: hidden;
-            border-radius: 10px 20px 20px 10px;
             box-sizing: border-box;
         }
 
-        .paper-curl-face.back {
+        .strip-face.front {
+            background-color: #fbf7ee;
+        }
+
+        .strip-face.back {
+            background-color: #f4ede0;
             transform: rotateY(180deg);
-            background-color: #f7f1e5;
         }
 
-        /* Specular Ridge Traveling Highlight */
-        .curl-specular-ridge {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(108deg,
-                transparent 34%,
-                rgba(255, 255, 255, 0.0) 45%,
-                rgba(255, 255, 255, 0.78) 49%,
-                rgba(255, 255, 255, 0.96) 50.5%,
-                rgba(255, 255, 255, 0.45) 52.5%,
-                transparent 66%
-            );
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.25s ease;
-        }
-
-        /* Crease Valley Traveling Shadow */
-        .curl-crease-shadow {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right,
-                transparent 34%,
-                rgba(0, 0, 0, 0.08) 46%,
-                rgba(0, 0, 0, 0.50) 52%,
-                rgba(0, 0, 0, 0.18) 58%,
-                transparent 70%
-            );
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.25s ease;
-        }
-
-        /* Paper Rim & Thickness Edge Highlight */
-        .paper-edge-highlight {
+        .strip-inner-content {
             position: absolute;
             top: 0;
-            bottom: 0;
-            right: 0;
-            width: 2.5px;
-            background: linear-gradient(to bottom, #ffffff, #fef3c7, #ffffff);
-            box-shadow: 0 0 3px rgba(255,255,255,0.9), 2px 0 6px rgba(0,0,0,0.25);
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .strip-shade {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
         }
 
         /* Tactile Paper Bending & Curling Keyframes */
@@ -654,9 +631,11 @@
         }
 
         // ========================================================
-        // REAL-TIME DIRECT-MANIPULATION TACTILE PAPER PEEL ENGINE
+        // 3D REALISTIC MULTI-STRIP CYLINDRICAL PAPER ROLL ENGINE
         // ========================================================
-        let activeDragLeaf = null;
+        const NUM_MESH_STRIPS = 18;
+        let meshStrips = [];
+        let activeRollRoot = null;
         let dragDirection = 0; // 1 = Next, -1 = Prev
         let dragTargetPage = 1;
         let dragStartX = 0;
@@ -665,81 +644,151 @@
         let dragCurrentProgress = 0;
         let dragMode = 'idle'; // 'idle', 'evaluating', 'peeling', 'scrolling'
 
-        // Physical Paper Curl Geometry & Shading Function
-        function applyRealtimePaperCurl(leaf, direction, progress, ry = 0) {
-            if (!leaf) return;
-            const p = Math.max(0, Math.min(1, progress));
-            const arcLift = Math.sin(p * Math.PI);
-            const castShadow = document.getElementById('pageCastShadow');
-
-            if (direction > 0) {
-                // Peeling Forward (Next): Right edge curls toward left (0deg -> -180deg)
-                const angle = -180 * p;
-                const zDepth = 88 * arcLift;
-                const cornerZ = -9 * arcLift * Math.max(-1, Math.min(1, ry));
-                const skewY = -4.2 * arcLift;
-                const scale = 1 - 0.022 * arcLift;
-
-                leaf.style.transform = `translateZ(${zDepth}px) rotateY(${angle}deg) rotateZ(${cornerZ}deg) skewY(${skewY}deg) scale(${scale})`;
-            } else {
-                // Peeling Backward (Prev): Left edge curls toward right (-180deg -> 0deg)
-                const angle = -180 + (180 * p);
-                const zDepth = 88 * arcLift;
-                const cornerZ = 9 * arcLift * Math.max(-1, Math.min(1, ry));
-                const skewY = 4.2 * arcLift;
-                const scale = 1 - 0.022 * arcLift;
-
-                leaf.style.transform = `translateZ(${zDepth}px) rotateY(${angle}deg) rotateZ(${cornerZ}deg) skewY(${skewY}deg) scale(${scale})`;
-            }
-
-            // Real-Time Dynamic Specular Highlight & Crease Shadows
-            const highlights = leaf.querySelectorAll('.curl-specular-ridge');
-            const shadows = leaf.querySelectorAll('.curl-crease-shadow');
-            const hVal = (arcLift * 0.95).toFixed(2);
-            const sVal = (arcLift * 0.65).toFixed(2);
-            highlights.forEach(el => el.style.opacity = hVal);
-            shadows.forEach(el => el.style.opacity = sVal);
-
-            if (castShadow) {
-                castShadow.style.opacity = (arcLift * 0.75).toFixed(2);
-            }
-        }
-
-        // Helper to Build the 3D Flipping Leaf Element
-        function createPaperLeaf(fromNum, toNum, direction) {
+        function buildCylinderMesh(fromNum, toNum, dir) {
             const leafContainer = document.getElementById('flipLeafContainer');
+            leafContainer.innerHTML = '';
+            meshStrips = [];
+
             const fromObj = currentPages[fromNum - 1];
             const toObj = currentPages[toNum - 1];
             if (!fromObj || !toObj) return null;
 
-            const leaf = document.createElement('div');
-            leaf.className = 'paper-curl-leaf';
+            const rect = bookCanvas.getBoundingClientRect();
+            const stageW = rect.width;
+            const stageH = rect.height;
+            const stripW = stageW / NUM_MESH_STRIPS;
 
-            const isNext = direction > 0;
+            const root = document.createElement('div');
+            root.className = 'mesh-roll-root';
+            leafContainer.appendChild(root);
+            activeRollRoot = root;
+
+            let parentEl = root;
+            const isNext = dir > 0;
             const frontHtml = isNext ? fromObj.html : toObj.html;
             const backHtml = isNext ? toObj.html : fromObj.html;
 
-            leaf.innerHTML = `
-                <div class="paper-curl-face front book-page-surface p-4 sm:p-7 overflow-hidden relative">
-                    ${frontHtml}
-                    <div class="absolute inset-y-0 left-0 w-8 sm:w-12 spine-edge pointer-events-none"></div>
-                    <div class="paper-edge-highlight"></div>
-                    <div class="curl-specular-ridge"></div>
-                    <div class="curl-crease-shadow"></div>
-                </div>
-                <div class="paper-curl-face back p-4 sm:p-7 overflow-hidden relative border-l border-amber-900/20">
-                    <div class="opacity-20 filter blur-[0.4px]">
-                        ${backHtml}
-                    </div>
-                    <div class="absolute inset-0 bg-amber-950/5 pointer-events-none"></div>
-                    <div class="paper-edge-highlight" style="left: 0; right: auto;"></div>
-                    <div class="curl-specular-ridge"></div>
-                    <div class="curl-crease-shadow"></div>
-                </div>
-            `;
+            for (let i = 0; i < NUM_MESH_STRIPS; i++) {
+                const strip = document.createElement('div');
+                strip.className = 'mesh-strip';
+                strip.style.left = (i === 0) ? '0px' : (stripW + 'px');
+                strip.style.width = stripW + 'px';
 
-            leafContainer.appendChild(leaf);
-            return leaf;
+                const offsetLeft = -(i * stripW);
+
+                strip.innerHTML = `
+                    <div class="strip-face front">
+                        <div class="strip-inner-content book-page-surface p-4 sm:p-7" style="left: ${offsetLeft}px; width: ${stageW}px; height: ${stageH}px;">
+                            ${frontHtml}
+                        </div>
+                        <div class="strip-shade front-shade"></div>
+                    </div>
+                    <div class="strip-face back">
+                        <div class="strip-inner-content p-4 sm:p-7 border-l border-amber-900/20" style="left: ${offsetLeft}px; width: ${stageW}px; height: ${stageH}px; transform: scaleX(-1);">
+                            <div class="opacity-20 filter blur-[0.4px]">
+                                ${backHtml}
+                            </div>
+                        </div>
+                        <div class="strip-shade back-shade"></div>
+                    </div>
+                `;
+
+                parentEl.appendChild(strip);
+                meshStrips.push(strip);
+                parentEl = strip; // Nested strips form continuous cylinder curvature!
+            }
+
+            return root;
+        }
+
+        // Apply authentic continuous cylindrical roll across all 18 nested strips
+        function updatePaperRoll(dir, progress, ry = 0) {
+            if (!activeRollRoot || meshStrips.length === 0) return;
+            const p = Math.max(0, Math.min(1, progress));
+            const curlSpan = 4.8; // Width of the rolling cylinder in strips
+            const castShadow = document.getElementById('pageCastShadow');
+
+            if (castShadow) {
+                castShadow.style.opacity = (Math.sin(p * Math.PI) * 0.75).toFixed(2);
+            }
+
+            // Diagonal corner curl tilt (corner lifts when pulling from top or bottom)
+            const tiltZ = -5 * Math.sin(p * Math.PI) * Math.max(-1, Math.min(1, ry)) * dir;
+            activeRollRoot.style.transform = `rotateZ(${tiltZ}deg)`;
+
+            if (dir > 0) {
+                // NEXT: cylinder rolls from right (strip 17) to left (strip 0)
+                const startApex = NUM_MESH_STRIPS - curlSpan / 2;
+                const endApex = -curlSpan / 2;
+                const apex = startApex + (endApex - startApex) * p;
+
+                let accum = 0;
+                meshStrips.forEach((strip, i) => {
+                    const dist = i - apex;
+                    let relAngle = 0;
+                    if (dist >= -curlSpan / 2 && dist <= curlSpan / 2) {
+                        const t = (dist + curlSpan / 2) / curlSpan;
+                        relAngle = -(180 / curlSpan) * Math.sin(t * Math.PI) * 1.57;
+                    }
+                    strip.style.transform = `rotateY(${relAngle}deg)`;
+                    accum += relAngle;
+
+                    const norm = Math.abs(accum % 360);
+                    const frontShade = strip.querySelector('.front-shade');
+                    const backShade = strip.querySelector('.back-shade');
+                    if (frontShade) {
+                        if (norm > 70 && norm < 110) {
+                            frontShade.style.background = `rgba(255, 255, 255, ${(1 - Math.abs(norm - 90)/20) * 0.75})`;
+                        } else if (norm > 20 && norm < 70) {
+                            frontShade.style.background = `rgba(0, 0, 0, ${Math.sin(norm * Math.PI / 180) * 0.45})`;
+                        } else {
+                            frontShade.style.background = 'transparent';
+                        }
+                    }
+                    if (backShade) {
+                        if (norm > 70 && norm < 110) {
+                            backShade.style.background = `rgba(255, 255, 255, ${(1 - Math.abs(norm - 90)/20) * 0.6})`;
+                        } else {
+                            backShade.style.background = 'transparent';
+                        }
+                    }
+                });
+            } else {
+                // PREV: cylinder rolls from left (strip 0) to right (strip 17)
+                const startApex = -curlSpan / 2;
+                const endApex = NUM_MESH_STRIPS - curlSpan / 2;
+                const apex = startApex + (endApex - startApex) * p;
+
+                let accum = -180;
+                meshStrips.forEach((strip, i) => {
+                    const dist = i - apex;
+                    let relAngle = 0;
+                    if (dist >= -curlSpan / 2 && dist <= curlSpan / 2) {
+                        const t = (dist + curlSpan / 2) / curlSpan;
+                        relAngle = (180 / curlSpan) * Math.sin(t * Math.PI) * 1.57;
+                    }
+                    strip.style.transform = `rotateY(${relAngle}deg)`;
+                    accum += relAngle;
+
+                    const norm = Math.abs(accum % 360);
+                    const frontShade = strip.querySelector('.front-shade');
+                    const backShade = strip.querySelector('.back-shade');
+                    if (frontShade) {
+                        if (norm > 70 && norm < 110) {
+                            frontShade.style.background = `rgba(255, 255, 255, ${(1 - Math.abs(norm - 90)/20) * 0.75})`;
+                        } else {
+                            frontShade.style.background = 'transparent';
+                        }
+                    }
+                    if (backShade) {
+                        if (norm > 70 && norm < 110) {
+                            backShade.style.background = `rgba(255, 255, 255, ${(1 - Math.abs(norm - 90)/20) * 0.6})`;
+                        } else {
+                            backShade.style.background = 'transparent';
+                        }
+                    }
+                });
+            }
         }
 
         function updateUIHeaderFooter(pageObj, pageNum) {
@@ -765,8 +814,8 @@
             isFlipping = true;
             playPageTurnSound();
 
-            const leaf = createPaperLeaf(currentPageNum, targetNum, dir);
-            if (!leaf) {
+            const mesh = buildCylinderMesh(currentPageNum, targetNum, dir);
+            if (!mesh) {
                 isFlipping = false;
                 return;
             }
@@ -775,22 +824,23 @@
             container.innerHTML = currentPages[targetNum - 1].html;
             container.scrollTop = 0;
 
-            const duration = 560;
+            const duration = 580;
             const startTime = performance.now();
             const castShadow = document.getElementById('pageCastShadow');
 
             function step(now) {
                 const elapsed = now - startTime;
                 const t = Math.min(1, elapsed / duration);
-                // Organic deceleration curve
                 const ease = 1 - Math.pow(1 - t, 3);
 
-                applyRealtimePaperCurl(leaf, dir, ease, 0.1);
+                updatePaperRoll(dir, ease, 0.1);
 
                 if (t < 1) {
                     requestAnimationFrame(step);
                 } else {
-                    leaf.remove();
+                    document.getElementById('flipLeafContainer').innerHTML = '';
+                    activeRollRoot = null;
+                    meshStrips = [];
                     if (castShadow) castShadow.style.opacity = '0';
                     currentPageNum = targetNum;
                     const pageObj = currentPages[currentPageNum - 1];
@@ -1020,8 +1070,8 @@
                     isFlipping = true;
                     playPageTurnSound();
 
-                    activeDragLeaf = createPaperLeaf(currentPageNum, dragTargetPage, dragDirection);
-                    if (!activeDragLeaf) {
+                    const mesh = buildCylinderMesh(currentPageNum, dragTargetPage, dragDirection);
+                    if (!mesh) {
                         dragMode = 'idle';
                         isFlipping = false;
                         return;
@@ -1032,26 +1082,26 @@
                     container.innerHTML = currentPages[dragTargetPage - 1].html;
                     container.scrollTop = 0;
 
-                    applyRealtimePaperCurl(activeDragLeaf, dragDirection, 0, 0);
+                    updatePaperRoll(dragDirection, 0, 0);
                     try { canvasEl.setPointerCapture(e.pointerId); } catch (_) {}
                 }
             }
 
-            if (dragMode === 'peeling' && activeDragLeaf) {
+            if (dragMode === 'peeling' && activeRollRoot) {
                 if (e.cancelable) e.preventDefault();
                 const rect = canvasEl.getBoundingClientRect();
                 const progress = dragDirection > 0 ? 
-                    (-dx / (rect.width * 0.8)) : 
-                    (dx / (rect.width * 0.8));
+                    (-dx / (rect.width * 0.82)) : 
+                    (dx / (rect.width * 0.82));
                 dragCurrentProgress = Math.max(0, Math.min(1, progress));
 
                 const ry = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
-                applyRealtimePaperCurl(activeDragLeaf, dragDirection, dragCurrentProgress, ry);
+                updatePaperRoll(dragDirection, dragCurrentProgress, ry);
             }
         }, { passive: false });
 
         window.addEventListener('pointerup', (e) => {
-            if (dragMode !== 'peeling' || !activeDragLeaf) {
+            if (dragMode !== 'peeling' || !activeRollRoot) {
                 dragMode = 'idle';
                 return;
             }
@@ -1069,7 +1119,7 @@
         });
 
         window.addEventListener('pointercancel', (e) => {
-            if (dragMode === 'peeling' && activeDragLeaf) {
+            if (dragMode === 'peeling' && activeRollRoot) {
                 try { canvasEl.releasePointerCapture(e.pointerId); } catch (_) {}
                 finishInteractiveFlip(false, dragCurrentProgress);
             }
@@ -1078,7 +1128,6 @@
 
         function finishInteractiveFlip(complete, fromProgress) {
             const target = complete ? 1.0 : 0.0;
-            const leaf = activeDragLeaf;
             const dir = dragDirection;
             const targetPage = dragTargetPage;
             const castShadow = document.getElementById('pageCastShadow');
@@ -1093,13 +1142,14 @@
                 const ease = 1 - Math.pow(1 - t, 3);
                 const curP = startP + (target - startP) * ease;
 
-                applyRealtimePaperCurl(leaf, dir, curP, 0);
+                updatePaperRoll(dir, curP, 0);
 
                 if (t < 1) {
                     requestAnimationFrame(step);
                 } else {
-                    leaf.remove();
-                    activeDragLeaf = null;
+                    document.getElementById('flipLeafContainer').innerHTML = '';
+                    activeRollRoot = null;
+                    meshStrips = [];
                     if (castShadow) castShadow.style.opacity = '0';
 
                     if (complete) {
