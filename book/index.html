@@ -96,6 +96,9 @@
         .book-canvas {
             perspective: 2500px;
             transform-style: preserve-3d;
+            touch-action: pan-y;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .paper-curl-leaf {
@@ -106,6 +109,7 @@
             z-index: 60;
             pointer-events: none;
             border-radius: 10px 20px 20px 10px;
+            will-change: transform, filter;
         }
 
         .paper-curl-face {
@@ -649,49 +653,71 @@
             updateHeaderLabels();
         }
 
-        // Render Page Content with Authentic Tactile Paper Flip
-        function renderPage(pageNum, animate = false, direction = 1, fromPageNum = null) {
-            const pageObj = currentPages[pageNum - 1];
-            if (!pageObj) return;
+        // ========================================================
+        // REAL-TIME DIRECT-MANIPULATION TACTILE PAPER PEEL ENGINE
+        // ========================================================
+        let activeDragLeaf = null;
+        let dragDirection = 0; // 1 = Next, -1 = Prev
+        let dragTargetPage = 1;
+        let dragStartX = 0;
+        let dragStartY = 0;
+        let dragStartTime = 0;
+        let dragCurrentProgress = 0;
+        let dragMode = 'idle'; // 'idle', 'evaluating', 'peeling', 'scrolling'
 
-            const container = document.getElementById('pageBodyContainer');
-            const headerLeft = document.getElementById('pageHeaderLeft');
-            const footerChapter = document.getElementById('pageFooterChapter');
-            const footerNumber = document.getElementById('pageFooterNumber');
-            const currentChLabel = document.getElementById('currentChapterLabel');
+        // Physical Paper Curl Geometry & Shading Function
+        function applyRealtimePaperCurl(leaf, direction, progress, ry = 0) {
+            if (!leaf) return;
+            const p = Math.max(0, Math.min(1, progress));
+            const arcLift = Math.sin(p * Math.PI);
             const castShadow = document.getElementById('pageCastShadow');
 
-            const title = pageObj.chTitle || (currentLang === 'hm' ? 'Looj Mem Hnub Qub Ya' : 'ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ');
+            if (direction > 0) {
+                // Peeling Forward (Next): Right edge curls toward left (0deg -> -180deg)
+                const angle = -180 * p;
+                const zDepth = 88 * arcLift;
+                const cornerZ = -9 * arcLift * Math.max(-1, Math.min(1, ry));
+                const skewY = -4.2 * arcLift;
+                const scale = 1 - 0.022 * arcLift;
 
-            if (!animate) {
-                container.innerHTML = pageObj.html;
-                container.scrollTop = 0;
+                leaf.style.transform = `translateZ(${zDepth}px) rotateY(${angle}deg) rotateZ(${cornerZ}deg) skewY(${skewY}deg) scale(${scale})`;
+            } else {
+                // Peeling Backward (Prev): Left edge curls toward right (-180deg -> 0deg)
+                const angle = -180 + (180 * p);
+                const zDepth = 88 * arcLift;
+                const cornerZ = 9 * arcLift * Math.max(-1, Math.min(1, ry));
+                const skewY = 4.2 * arcLift;
+                const scale = 1 - 0.022 * arcLift;
 
-                headerLeft.innerText = title;
-                footerChapter.innerText = pageObj.chTitle || '';
-                footerNumber.innerText = (currentLang === 'hm') ? `Phab ${pageNum}` : `ໜ້າ ${pageNum}`;
-                currentChLabel.innerText = title;
-
-                document.getElementById('pageSlider').value = pageNum;
-                document.getElementById('pageProgressBadge').innerText = (currentLang === 'hm') ? 
-                    `Phab ${pageNum} / ${totalPages}` : `ໜ້າ ${pageNum} / ${totalPages}`;
-                return;
+                leaf.style.transform = `translateZ(${zDepth}px) rotateY(${angle}deg) rotateZ(${cornerZ}deg) skewY(${skewY}deg) scale(${scale})`;
             }
 
-            if (isFlipping) return;
-            isFlipping = true;
-            playPageTurnSound();
+            // Real-Time Dynamic Specular Highlight & Crease Shadows
+            const highlights = leaf.querySelectorAll('.curl-specular-ridge');
+            const shadows = leaf.querySelectorAll('.curl-crease-shadow');
+            const hVal = (arcLift * 0.95).toFixed(2);
+            const sVal = (arcLift * 0.65).toFixed(2);
+            highlights.forEach(el => el.style.opacity = hVal);
+            shadows.forEach(el => el.style.opacity = sVal);
 
+            if (castShadow) {
+                castShadow.style.opacity = (arcLift * 0.75).toFixed(2);
+            }
+        }
+
+        // Helper to Build the 3D Flipping Leaf Element
+        function createPaperLeaf(fromNum, toNum, direction) {
             const leafContainer = document.getElementById('flipLeafContainer');
-            const fromPageObj = (fromPageNum && currentPages[fromPageNum - 1]) ? currentPages[fromPageNum - 1] : pageObj;
+            const fromObj = currentPages[fromNum - 1];
+            const toObj = currentPages[toNum - 1];
+            if (!fromObj || !toObj) return null;
 
-            // Build Photorealistic Tactile Flipping Leaf
             const leaf = document.createElement('div');
-            const isNext = direction > 0;
-            leaf.className = `paper-curl-leaf ${isNext ? 'curl-anim-next' : 'curl-anim-prev'}`;
+            leaf.className = 'paper-curl-leaf';
 
-            const frontHtml = isNext ? fromPageObj.html : pageObj.html;
-            const backHtml = isNext ? pageObj.html : fromPageObj.html;
+            const isNext = direction > 0;
+            const frontHtml = isNext ? fromObj.html : toObj.html;
+            const backHtml = isNext ? toObj.html : fromObj.html;
 
             leaf.innerHTML = `
                 <div class="paper-curl-face front book-page-surface p-4 sm:p-7 overflow-hidden relative">
@@ -713,19 +739,16 @@
             `;
 
             leafContainer.appendChild(leaf);
+            return leaf;
+        }
 
-            // Animate dynamic cast shadow on destination page
-            if (castShadow) {
-                castShadow.style.opacity = '0.75';
-                setTimeout(() => {
-                    castShadow.style.opacity = '0';
-                }, 520);
-            }
+        function updateUIHeaderFooter(pageObj, pageNum) {
+            const headerLeft = document.getElementById('pageHeaderLeft');
+            const footerChapter = document.getElementById('pageFooterChapter');
+            const footerNumber = document.getElementById('pageFooterNumber');
+            const currentChLabel = document.getElementById('currentChapterLabel');
 
-            // Immediately set destination page on underlying canvas
-            container.innerHTML = pageObj.html;
-            container.scrollTop = 0;
-
+            const title = pageObj.chTitle || (currentLang === 'hm' ? 'Looj Mem Hnub Qub Ya' : 'ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ');
             headerLeft.innerText = title;
             footerChapter.innerText = pageObj.chTitle || '';
             footerNumber.innerText = (currentLang === 'hm') ? `Phab ${pageNum}` : `ໜ້າ ${pageNum}`;
@@ -734,36 +757,81 @@
             document.getElementById('pageSlider').value = pageNum;
             document.getElementById('pageProgressBadge').innerText = (currentLang === 'hm') ? 
                 `Phab ${pageNum} / ${totalPages}` : `ໜ້າ ${pageNum} / ${totalPages}`;
+        }
 
-            const animDuration = 680;
-            setTimeout(() => {
-                leaf.remove();
-                if (castShadow) castShadow.style.opacity = '0';
+        // Programmatic Smooth Page Turn (Buttons, Keyboard, TOC, Auto-flip)
+        function animateProgrammaticFlip(dir, targetNum) {
+            if (isFlipping) return;
+            isFlipping = true;
+            playPageTurnSound();
+
+            const leaf = createPaperLeaf(currentPageNum, targetNum, dir);
+            if (!leaf) {
                 isFlipping = false;
-            }, animDuration + 20);
+                return;
+            }
+
+            const container = document.getElementById('pageBodyContainer');
+            container.innerHTML = currentPages[targetNum - 1].html;
+            container.scrollTop = 0;
+
+            const duration = 560;
+            const startTime = performance.now();
+            const castShadow = document.getElementById('pageCastShadow');
+
+            function step(now) {
+                const elapsed = now - startTime;
+                const t = Math.min(1, elapsed / duration);
+                // Organic deceleration curve
+                const ease = 1 - Math.pow(1 - t, 3);
+
+                applyRealtimePaperCurl(leaf, dir, ease, 0.1);
+
+                if (t < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    leaf.remove();
+                    if (castShadow) castShadow.style.opacity = '0';
+                    currentPageNum = targetNum;
+                    const pageObj = currentPages[currentPageNum - 1];
+                    updateUIHeaderFooter(pageObj, currentPageNum);
+                    isFlipping = false;
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
+        // Render Page Content (Direct or Animated)
+        function renderPage(pageNum, animate = false, direction = 1, fromPageNum = null) {
+            const pageObj = currentPages[pageNum - 1];
+            if (!pageObj) return;
+
+            if (!animate) {
+                const container = document.getElementById('pageBodyContainer');
+                container.innerHTML = pageObj.html;
+                container.scrollTop = 0;
+                updateUIHeaderFooter(pageObj, pageNum);
+                return;
+            }
+
+            animateProgrammaticFlip(direction, pageNum);
         }
 
         function flipNext() {
             if (isFlipping || currentPageNum >= totalPages) return;
-            const fromPage = currentPageNum;
-            currentPageNum++;
-            renderPage(currentPageNum, true, 1, fromPage);
+            animateProgrammaticFlip(1, currentPageNum + 1);
         }
 
         function flipPrev() {
             if (isFlipping || currentPageNum <= 1) return;
-            const fromPage = currentPageNum;
-            currentPageNum--;
-            renderPage(currentPageNum, true, -1, fromPage);
+            animateProgrammaticFlip(-1, currentPageNum - 1);
         }
 
         function jumpToPage(num) {
             const target = Math.max(1, Math.min(totalPages, parseInt(num, 10)));
             if (target === currentPageNum || isFlipping) return;
             const dir = target > currentPageNum ? 1 : -1;
-            const fromPage = currentPageNum;
-            currentPageNum = target;
-            renderPage(currentPageNum, true, dir, fromPage);
+            animateProgrammaticFlip(dir, target);
         }
 
         function onSliderInput(val) {
@@ -905,31 +973,149 @@
             document.getElementById('zoomImage').style.transform = `scale(${zoomScale})`;
         }
 
-        // Mobile Touch Gestures (Swipe left = Next, Swipe right = Prev)
-        let touchStartX = 0;
-        let touchStartY = 0;
-        const bookCanvas = document.getElementById('bookCanvas');
+        // ========================================================
+        // INTERACTIVE POINTER / TOUCH PEEL GESTURE RECOGNIZER
+        // ========================================================
+        const canvasEl = document.getElementById('bookCanvas');
 
-        bookCanvas.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            touchStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
+        canvasEl.addEventListener('pointerdown', (e) => {
+            if (isFlipping) return;
+            // Ignore if clicking buttons, inputs, links, or inside modals
+            if (e.target.closest('button') || e.target.closest('a') || e.target.closest('input') || e.target.closest('#zoomModal')) return;
 
-        bookCanvas.addEventListener('touchend', (e) => {
-            const touchEndX = e.changedTouches[0].screenX;
-            const touchEndY = e.changedTouches[0].screenY;
-            const diffX = touchEndX - touchStartX;
-            const diffY = touchEndY - touchStartY;
+            dragMode = 'evaluating';
+            dragStartX = e.clientX;
+            dragStartY = e.clientY;
+            dragStartTime = performance.now();
+            dragCurrentProgress = 0;
+        });
 
-            // Only horizontal swipe if not scrolling vertically
-            if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
-                if (diffX < 0) {
-                    flipNext();
-                } else {
-                    flipPrev();
+        window.addEventListener('pointermove', (e) => {
+            if (dragMode === 'idle' || dragMode === 'scrolling') return;
+
+            const dx = e.clientX - dragStartX;
+            const dy = e.clientY - dragStartY;
+
+            if (dragMode === 'evaluating') {
+                // If vertical movement is dominant, yield to native scrolling
+                if (Math.abs(dy) > Math.abs(dx) * 1.25 && Math.abs(dy) > 7) {
+                    dragMode = 'scrolling';
+                    return;
+                }
+
+                // If horizontal movement crosses threshold, lock into paper curl
+                if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
+                    if (dx < 0 && currentPageNum < totalPages) {
+                        dragDirection = 1;
+                        dragTargetPage = currentPageNum + 1;
+                    } else if (dx > 0 && currentPageNum > 1) {
+                        dragDirection = -1;
+                        dragTargetPage = currentPageNum - 1;
+                    } else {
+                        dragMode = 'idle';
+                        return;
+                    }
+
+                    dragMode = 'peeling';
+                    isFlipping = true;
+                    playPageTurnSound();
+
+                    activeDragLeaf = createPaperLeaf(currentPageNum, dragTargetPage, dragDirection);
+                    if (!activeDragLeaf) {
+                        dragMode = 'idle';
+                        isFlipping = false;
+                        return;
+                    }
+
+                    // Reveal target page on underlying surface
+                    const container = document.getElementById('pageBodyContainer');
+                    container.innerHTML = currentPages[dragTargetPage - 1].html;
+                    container.scrollTop = 0;
+
+                    applyRealtimePaperCurl(activeDragLeaf, dragDirection, 0, 0);
+                    try { canvasEl.setPointerCapture(e.pointerId); } catch (_) {}
                 }
             }
-        }, { passive: true });
+
+            if (dragMode === 'peeling' && activeDragLeaf) {
+                if (e.cancelable) e.preventDefault();
+                const rect = canvasEl.getBoundingClientRect();
+                const progress = dragDirection > 0 ? 
+                    (-dx / (rect.width * 0.8)) : 
+                    (dx / (rect.width * 0.8));
+                dragCurrentProgress = Math.max(0, Math.min(1, progress));
+
+                const ry = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+                applyRealtimePaperCurl(activeDragLeaf, dragDirection, dragCurrentProgress, ry);
+            }
+        }, { passive: false });
+
+        window.addEventListener('pointerup', (e) => {
+            if (dragMode !== 'peeling' || !activeDragLeaf) {
+                dragMode = 'idle';
+                return;
+            }
+
+            try { canvasEl.releasePointerCapture(e.pointerId); } catch (_) {}
+
+            const dt = Math.max(1, performance.now() - dragStartTime);
+            const dx = e.clientX - dragStartX;
+            const velocity = Math.abs(dx) / dt; // px/ms
+
+            const shouldComplete = dragCurrentProgress > 0.32 || (velocity > 0.35 && dragCurrentProgress > 0.12);
+
+            finishInteractiveFlip(shouldComplete, dragCurrentProgress);
+            dragMode = 'idle';
+        });
+
+        window.addEventListener('pointercancel', (e) => {
+            if (dragMode === 'peeling' && activeDragLeaf) {
+                try { canvasEl.releasePointerCapture(e.pointerId); } catch (_) {}
+                finishInteractiveFlip(false, dragCurrentProgress);
+            }
+            dragMode = 'idle';
+        });
+
+        function finishInteractiveFlip(complete, fromProgress) {
+            const target = complete ? 1.0 : 0.0;
+            const leaf = activeDragLeaf;
+            const dir = dragDirection;
+            const targetPage = dragTargetPage;
+            const castShadow = document.getElementById('pageCastShadow');
+
+            const startP = fromProgress;
+            const duration = Math.max(180, Math.min(360, Math.abs(target - startP) * 360));
+            const startTime = performance.now();
+
+            function step(now) {
+                const elapsed = now - startTime;
+                const t = Math.min(1, elapsed / duration);
+                const ease = 1 - Math.pow(1 - t, 3);
+                const curP = startP + (target - startP) * ease;
+
+                applyRealtimePaperCurl(leaf, dir, curP, 0);
+
+                if (t < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    leaf.remove();
+                    activeDragLeaf = null;
+                    if (castShadow) castShadow.style.opacity = '0';
+
+                    if (complete) {
+                        currentPageNum = targetPage;
+                        const pageObj = currentPages[currentPageNum - 1];
+                        updateUIHeaderFooter(pageObj, currentPageNum);
+                    } else {
+                        const originalObj = currentPages[currentPageNum - 1];
+                        document.getElementById('pageBodyContainer').innerHTML = originalObj.html;
+                        document.getElementById('pageBodyContainer').scrollTop = 0;
+                    }
+                    isFlipping = false;
+                }
+            }
+            requestAnimationFrame(step);
+        }
 
         // Keyboard Navigation
         window.addEventListener('keydown', (e) => {
