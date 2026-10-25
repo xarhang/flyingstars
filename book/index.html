@@ -105,6 +105,7 @@
             position: absolute;
             inset: 0;
             transform-style: preserve-3d;
+            transform: translateZ(2px);
             pointer-events: none;
             z-index: 60;
         }
@@ -115,6 +116,7 @@
             bottom: 0;
             transform-style: preserve-3d;
             transform-origin: left center;
+            will-change: transform;
         }
 
         .strip-face {
@@ -128,11 +130,12 @@
 
         .strip-face.front {
             background-color: #fbf7ee;
+            transform: translateZ(1px);
         }
 
         .strip-face.back {
             background-color: #f4ede0;
-            transform: rotateY(180deg);
+            transform: rotateY(180deg) translateZ(1px);
         }
 
         .strip-inner-content {
@@ -140,6 +143,7 @@
             top: 0;
             box-sizing: border-box;
             overflow: hidden;
+            pointer-events: none;
         }
 
         .strip-shade {
@@ -633,7 +637,7 @@
         // ========================================================
         // 3D REALISTIC MULTI-STRIP CYLINDRICAL PAPER ROLL ENGINE
         // ========================================================
-        const NUM_MESH_STRIPS = 18;
+        const NUM_MESH_STRIPS = 14;
         let meshStrips = [];
         let activeRollRoot = null;
         let dragDirection = 0; // 1 = Next, -1 = Prev
@@ -665,8 +669,8 @@
 
             let parentEl = root;
             const isNext = dir > 0;
-            const frontHtml = isNext ? fromObj.html : toObj.html;
-            const backHtml = isNext ? toObj.html : fromObj.html;
+            // The turning sheet displays the turning page content, eliminating Z-fighting with destination
+            const turningContent = isNext ? fromObj.html : toObj.html;
 
             for (let i = 0; i < NUM_MESH_STRIPS; i++) {
                 const strip = document.createElement('div');
@@ -679,15 +683,13 @@
                 strip.innerHTML = `
                     <div class="strip-face front">
                         <div class="strip-inner-content book-page-surface p-4 sm:p-7" style="left: ${offsetLeft}px; width: ${stageW}px; height: ${stageH}px;">
-                            ${frontHtml}
+                            ${turningContent}
                         </div>
                         <div class="strip-shade front-shade"></div>
                     </div>
                     <div class="strip-face back">
-                        <div class="strip-inner-content p-4 sm:p-7 border-l border-amber-900/20" style="left: ${offsetLeft}px; width: ${stageW}px; height: ${stageH}px; transform: scaleX(-1);">
-                            <div class="opacity-20 filter blur-[0.4px]">
-                                ${backHtml}
-                            </div>
+                        <div class="strip-inner-content p-4 sm:p-7 border-l border-amber-900/20" style="left: ${offsetLeft}px; width: ${stageW}px; height: ${stageH}px; opacity: 0.12; filter: blur(0.4px);">
+                            ${turningContent}
                         </div>
                         <div class="strip-shade back-shade"></div>
                     </div>
@@ -695,17 +697,17 @@
 
                 parentEl.appendChild(strip);
                 meshStrips.push(strip);
-                parentEl = strip; // Nested strips form continuous cylinder curvature!
+                parentEl = strip; // Nested strips form continuous cylinder curvature without Z-fighting
             }
 
             return root;
         }
 
-        // Apply authentic continuous cylindrical roll across all 18 nested strips
+        // Apply authentic continuous cylindrical roll across all 14 nested strips
         function updatePaperRoll(dir, progress, ry = 0) {
             if (!activeRollRoot || meshStrips.length === 0) return;
             const p = Math.max(0, Math.min(1, progress));
-            const curlSpan = 4.8; // Width of the rolling cylinder in strips
+            const curlSpan = 4.2; // Width of the rolling cylinder in strips
             const castShadow = document.getElementById('pageCastShadow');
 
             if (castShadow) {
@@ -713,11 +715,11 @@
             }
 
             // Diagonal corner curl tilt (corner lifts when pulling from top or bottom)
-            const tiltZ = -5 * Math.sin(p * Math.PI) * Math.max(-1, Math.min(1, ry)) * dir;
-            activeRollRoot.style.transform = `rotateZ(${tiltZ}deg)`;
+            const tiltZ = -4.5 * Math.sin(p * Math.PI) * Math.max(-1, Math.min(1, ry)) * dir;
+            activeRollRoot.style.transform = `translateZ(2px) rotateZ(${tiltZ}deg)`;
 
             if (dir > 0) {
-                // NEXT: cylinder rolls from right (strip 17) to left (strip 0)
+                // NEXT: cylinder rolls from right (strip 13) to left (strip 0)
                 const startApex = NUM_MESH_STRIPS - curlSpan / 2;
                 const endApex = -curlSpan / 2;
                 const apex = startApex + (endApex - startApex) * p;
@@ -754,7 +756,7 @@
                     }
                 });
             } else {
-                // PREV: cylinder rolls from left (strip 0) to right (strip 17)
+                // PREV: cylinder rolls from left (strip 0) to right (strip 13)
                 const startApex = -curlSpan / 2;
                 const endApex = NUM_MESH_STRIPS - curlSpan / 2;
                 const apex = startApex + (endApex - startApex) * p;
