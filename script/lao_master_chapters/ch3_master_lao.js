@@ -64,12 +64,21 @@ module.exports = {
         </p>
 
         <!-- Figure 3.6 Posture -->
-        <figure class="book-figure my-3 text-center bg-stone-50/90 border border-stone-200 rounded-xl p-3 sm:p-4 shadow-sm flex flex-col items-center justify-center">
-          <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_6_posture_holding.png', 'ຮູບທີ 3.6: ທ່າຢືນ ແລະ ການຖືຈານເຂັມທິດຫຼົວຜານພາກສະໜາມ (Posture &amp; Luopan Holding Protocol)')">
-            <img src="../img/lao/fig_3_6_posture_holding.png" alt="Posture &amp; Luopan Holding Protocol" class="max-h-[195px] sm:max-h-[210px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="eager">
-          </div>
-          <figcaption class="text-xs sm:text-sm font-bold text-amber-950 mt-2.5 px-3 leading-relaxed text-center">ຮູບທີ 3.6: ທ່າຢືນ ແລະ ການຖືຈານເຂັມທິດຫຼົວຜານພາກສະໜາມ (Posture &amp; Luopan Holding Protocol)</figcaption>
-        </figure>
+        <div class="dual-plate-grid my-1.5">
+          <figure class="book-figure text-center bg-stone-50 border border-stone-200 rounded-xl p-2 shadow-xs flex flex-col items-center justify-between">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_6_posture_holding.png', 'ຮູບທີ 3.6-A: ແຜນວາດວິສະວະກຳທ່າຢືນ 90° &amp; ສາຍຕາ 45° (CAD Biomechanics Blueprint)')">
+              <img src="../img/lao/fig_3_6_posture_holding.png" alt="Posture CAD Blueprint" class="max-h-[180px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 180px;" loading="eager">
+            </div>
+            <figcaption class="text-[10.5px] font-bold text-amber-950 mt-1 leading-tight text-center">ຮູບທີ 3.6-A: ແຜນວາດວິສະວະກຳທ່າຢືນ (CAD Blueprint)</figcaption>
+          </figure>
+
+          <figure class="book-figure text-center bg-stone-50 border border-stone-200 rounded-xl p-2 shadow-xs flex flex-col items-center justify-between">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_6_posture_real.jpg', 'ຮູບທີ 3.6-B: ພາບຖ່າຍພາກສະໜາມຕົວຈິງ — ຊິນແສຖືຫຼົວຜານລະດັບສາຍບື 105cm, ສອກແນບແອວ, ສາຍຕາເລັງ 45°')">
+              <img src="../img/lao/fig_3_6_posture_real.jpg" alt="Posture Real Photo" class="max-h-[180px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 180px;" loading="eager">
+            </div>
+            <figcaption class="text-[10.5px] font-bold text-amber-950 mt-1 leading-tight text-center">ຮູບທີ 3.6-B: ພາບຖ່າຍພາກສະໜາມຕົວຈິງ (Field Photo)</figcaption>
+          </figure>
+        </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 my-3 text-xs">
           <div class="p-3.5 bg-stone-900 text-stone-100 rounded-xl border border-amber-500/30 space-y-2">
@@ -123,12 +132,21 @@ module.exports = {
         </div>
 
         <!-- Figure 3.7 Needle Calibration -->
-        <figure class="book-figure my-3 text-center bg-stone-50/90 border border-stone-200 rounded-xl p-3 sm:p-4 shadow-sm flex flex-col items-center justify-center">
-          <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_7_tianchi_alignment.png', 'ຮູບທີ 3.7: ການປັບເຂັມແມ່ເຫຼັກໃຫ້ລົງລັອກສະລອຍສະຫວັນ (Tian Chi Needle Settling to Hai Di Xian)')">
-            <img src="../img/lao/fig_3_7_tianchi_alignment.png" alt="Tian Chi Needle Settling to Hai Di Xian" class="max-h-[195px] sm:max-h-[210px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="eager">
-          </div>
-          <figcaption class="text-xs sm:text-sm font-bold text-amber-950 mt-2.5 px-3 leading-relaxed text-center">ຮູບທີ 3.7: ການປັບເຂັມແມ່ເຫຼັກໃຫ້ລົງລັອກສະລອຍສະຫວັນ (Tian Chi Needle Settling to Hai Di Xian)</figcaption>
-        </figure>
+        <div class="dual-plate-grid my-1.5">
+          <figure class="book-figure text-center bg-stone-50 border border-stone-200 rounded-xl p-2 shadow-xs flex flex-col items-center justify-between">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_7_tianchi_alignment.png', 'ຮູບທີ 3.7-A: ແຜນວາດກົນໄກສະລອຍສະຫວັນ (Tian Chi CAD Blueprint)')">
+              <img src="../img/lao/fig_3_7_tianchi_alignment.png" alt="Tian Chi CAD Blueprint" class="max-h-[180px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 180px;" loading="eager">
+            </div>
+            <figcaption class="text-[10.5px] font-bold text-amber-950 mt-1 leading-tight text-center">ຮູບທີ 3.7-A: ແຜນວາດກົນໄກສະລອຍສະຫວັນ (CAD)</figcaption>
+          </figure>
+
+          <figure class="book-figure text-center bg-stone-50 border border-stone-200 rounded-xl p-2 shadow-xs flex flex-col items-center justify-between">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_7_tianchi_real.jpg', 'ຮູບທີ 3.7-B: ພາບຖ່າຍ Macro Close-up ຈານທອງເຫຼືອງແທ້ — ປາຍເຂັມແມ່ເຫຼັກລົງລັອກເຄິ່ງກາງລະຫວ່າງ 2 ຈຸດໄຂ່ປາແດງຄູ່')">
+              <img src="../img/lao/fig_3_7_tianchi_real.jpg" alt="Tian Chi Macro Real Photo" class="max-h-[180px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 180px;" loading="eager">
+            </div>
+            <figcaption class="text-[10.5px] font-bold text-amber-950 mt-1 leading-tight text-center">ຮູບທີ 3.7-B: ພາບຖ່າຍ Macro ຈານທອງເຫຼືອງແທ້</figcaption>
+          </figure>
+        </div>
 
         <!-- 3-Point Triangulation -->
         <div class="p-4 bg-amber-50 rounded-xl border border-amber-300 space-y-2 text-xs">
@@ -307,12 +325,21 @@ module.exports = {
             <span class="text-xs bg-emerald-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ຊວງຊິງຕົ້າວຊຽງ (双星到向)</span>
           </div>
 
-          <figure class="book-figure my-1 text-center bg-stone-900/5 border border-stone-200 rounded-lg p-1 sm:p-1.5 shadow-xs flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case1_villa_floorplan.png', 'ຮູບທີ 3.8-B: ແປນເຮືອນວິນລາສະຖາປັດຕະຍະກຳ ຊ້ອນທັບຜັງດາວເຫີນ 9 ວັງ — ກໍລະນີສຶກສາທີ 1: ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)')">
-              <img src="../img/lao/fig_3_case1_villa_floorplan.png" alt="Case Study 1 Villa Floorplan Plate" class="max-h-[195px] sm:max-h-[210px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 200px;" loading="eager">
-            </div>
-            <figcaption class="text-[11px] sm:text-xs font-bold text-emerald-950 mt-1 px-1.5 leading-snug text-center">ຮູບທີ 3.8-B: ແປນເຮືອນວິນລາສະຖາປັດຕະຍະກຳ ຊ້ອນທັບຜັງດາວເຫີນ 9 ວັງ — ກໍລະນີສຶກສາທີ 1: ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)</figcaption>
-          </figure>
+          <div class="dual-plate-grid my-1.5">
+            <figure class="book-figure text-center bg-stone-900/5 border border-stone-200 rounded-lg p-1 shadow-xs flex flex-col items-center justify-between">
+              <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case1_villa_floorplan.png', 'ຮູບທີ 3.8-B1: ແປນເຮືອນວິນລາສະຖາປັດຕະຍະກຳ ຊ້ອນທັບຜັງດາວເຫີນ 9 ວັງ (180.0° Wu / 0.0° Zi)')">
+                <img src="../img/lao/fig_3_case1_villa_floorplan.png" alt="Case Study 1 Villa Floorplan Plate" class="max-h-[175px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 180px;" loading="eager">
+              </div>
+              <figcaption class="text-[10px] font-bold text-emerald-950 mt-1 leading-tight text-center">ແບບແປນ CAD 9 ວັງ (180.0° Wu)</figcaption>
+            </figure>
+
+            <figure class="book-figure text-center bg-stone-900/5 border border-stone-200 rounded-lg p-1 shadow-xs flex flex-col items-center justify-between">
+              <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case1_villa_real.jpg', 'ຮູບທີ 3.8-B2: ພາບຖ່າຍ Drone ສະພາບຕົວຈິງ — ເຮືອນວິນລາ 2 ຊັ້ນ ພ້ອມສະນ້ຳພຸໜ້າເຮືອນທິດໃຕ້ (180.0°)')">
+                <img src="../img/lao/fig_3_case1_villa_real.jpg" alt="Case Study 1 Villa Real Photo" class="max-h-[175px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 180px;" loading="eager">
+              </div>
+              <figcaption class="text-[10px] font-bold text-emerald-950 mt-1 leading-tight text-center">ພາບຖ່າຍ Drone ສະພາບແວດລ້ອມຕົວຈິງ</figcaption>
+            </figure>
+          </div>
         </div>
 
         <!-- Case 1: Explanation Block (Even Page) -->
@@ -398,12 +425,21 @@ module.exports = {
             <span class="text-xs bg-amber-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ຕູ້ນິລະໄພວັງດາວ 8-9 (財库安稳)</span>
           </div>
 
-          <figure class="book-figure my-1 text-center bg-stone-900/5 border border-stone-200 rounded-lg p-1 sm:p-1.5 shadow-xs flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case2_shophouse_floorplan.png', 'ຮູບທີ 3.11-B: ແປນຕຶກແຖວຮ້ານຄຳ ຊ້ອນທັບຜັງດາວປ່ຽນແທນ Ti Gua — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ')">
-              <img src="../img/lao/fig_3_case2_shophouse_floorplan.png" alt="Case Study 2 Shophouse Floorplan Plate" class="max-h-[195px] sm:max-h-[210px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 200px;" loading="eager">
-            </div>
-            <figcaption class="text-[11px] sm:text-xs font-bold text-amber-950 mt-1 px-1.5 leading-snug text-center">ຮູບທີ 3.11-B: ແປນຕຶກແຖວຮ້ານຄຳ ຊ້ອນທັບຜັງດາວປ່ຽນແທນ Ti Gua — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ (201.0° Ding / 21.0° Gui)</figcaption>
-          </figure>
+          <div class="dual-plate-grid my-1.5">
+            <figure class="book-figure text-center bg-stone-900/5 border border-stone-200 rounded-lg p-1 shadow-xs flex flex-col items-center justify-between">
+              <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case2_shophouse_floorplan.png', 'ຮູບທີ 3.11-B1: ແປນຕຶກແຖວຮ້ານຄຳ ຊ້ອນທັບຜັງດາວປ່ຽນແທນ Ti Gua (201.0° Ding)')">
+                <img src="../img/lao/fig_3_case2_shophouse_floorplan.png" alt="Case Study 2 Shophouse Floorplan Plate" class="max-h-[175px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 180px;" loading="eager">
+              </div>
+              <figcaption class="text-[10px] font-bold text-amber-950 mt-1 leading-tight text-center">ແບບແປນ CAD ຜັງດາວປ່ຽນແທນ</figcaption>
+            </figure>
+
+            <figure class="book-figure text-center bg-stone-900/5 border border-stone-200 rounded-lg p-1 shadow-xs flex flex-col items-center justify-between">
+              <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case2_shophouse_real.jpg', 'ຮູບທີ 3.11-B2: ພາບຖ່າຍພາກສະໜາມຕົວຈິງ — ການດຶງເຊືອກຂະໜານອອກມາຕັ້ງຫຼົວຜານ 3.5 ແມັດ ໜີສະໜາມແມ່ເຫຼັກປະຕູເຫຼັກ')">
+                <img src="../img/lao/fig_3_case2_shophouse_real.jpg" alt="Case Study 2 Shophouse Real Photo" class="max-h-[175px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 180px;" loading="eager">
+              </div>
+              <figcaption class="text-[10px] font-bold text-amber-950 mt-1 leading-tight text-center">ພາບຖ່າຍຕົວຈິງ: ດຶງເຊືອກໜີປະຕູເຫຼັກ 3.5m</figcaption>
+            </figure>
+          </div>
         </div>
 
         <!-- Case 2: Explanation Block (Even Page) -->
@@ -581,12 +617,21 @@ module.exports = {
             <span class="text-xs bg-purple-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ຈຸດສູນກາງໄທ້ຈີ໊ (Tai Ji Centroid)</span>
           </div>
 
-          <figure class="book-figure my-1 text-center bg-stone-900/5 border border-stone-200 rounded-lg p-1 sm:p-1.5 shadow-xs flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case4_factory_floorplan.png', 'ຮູບທີ 3.13-B: ແປນໂຮງງານ 5,000 m² ຊ້ອນທັບຜັງດາວ ແລະ ຈຸດສູນກາງໄທ້ຈີ໊ CAD — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ')">
-              <img src="../img/lao/fig_3_case4_factory_floorplan.png" alt="Case Study 4 Factory Floorplan Plate" class="max-h-[195px] sm:max-h-[210px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 200px;" loading="eager">
-            </div>
-            <figcaption class="text-[11px] sm:text-xs font-bold text-purple-950 mt-1 px-1.5 leading-snug text-center">ຮູບທີ 3.13-B: ແປນໂຮງງານ 5,000 m² ຊ້ອນທັບຜັງດາວ ແລະ ຈຸດສູນກາງໄທ້ຈີ໊ CAD — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ (135.0° Xun / 315.0° Qian)</figcaption>
-          </figure>
+          <div class="dual-plate-grid my-1.5">
+            <figure class="book-figure text-center bg-stone-900/5 border border-stone-200 rounded-lg p-1 shadow-xs flex flex-col items-center justify-between">
+              <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case4_factory_floorplan.png', 'ຮູບທີ 3.13-B1: ແປນໂຮງງານ 5,000 m² ຊ້ອນທັບຜັງດາວ ແລະ ຈຸດສູນກາງໄທ້ຈີ໊ CAD (135.0° Xun)')">
+                <img src="../img/lao/fig_3_case4_factory_floorplan.png" alt="Case Study 4 Factory Floorplan Plate" class="max-h-[175px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 180px;" loading="eager">
+              </div>
+              <figcaption class="text-[10px] font-bold text-purple-950 mt-1 leading-tight text-center">ແບບແປນ CAD ໂຮງງານ 5,000 m²</figcaption>
+            </figure>
+
+            <figure class="book-figure text-center bg-stone-900/5 border border-stone-200 rounded-lg p-1 shadow-xs flex flex-col items-center justify-between">
+              <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case4_factory_real.jpg', 'ຮູບທີ 3.13-B2: ພາບຖ່າຍ Drone ໂຮງງານແປຮູບໄມ້ຕົວຈິງ 5,000 m² — ປະຕູຮົ້ວລົດບັນທຸກທິດອາຄະເນ (135° Xun)')">
+                <img src="../img/lao/fig_3_case4_factory_real.jpg" alt="Case Study 4 Factory Real Photo" class="max-h-[175px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 180px;" loading="eager">
+              </div>
+              <figcaption class="text-[10px] font-bold text-purple-950 mt-1 leading-tight text-center">ພາບຖ່າຍ Drone ໂຮງງານຕົວຈິງ 5,000 m²</figcaption>
+            </figure>
+          </div>
         </div>
 
         <!-- Case 4: Explanation Block (Even Page) -->
@@ -674,12 +719,21 @@ module.exports = {
             <span class="text-xs bg-red-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ບິດປະຕູ +6.0° (Cured 100%)</span>
           </div>
 
-          <figure class="book-figure my-1 text-center bg-stone-900/5 border border-stone-200 rounded-lg p-1 sm:p-1.5 shadow-xs flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case5_door_tilting_floorplan.png', 'ຮູບທີ 3.10-B: ແປນເຮືອນບິດມຸມປະຕູ +6.0° (ຖອຍຮົ້ນ 15.7 cm) ຊ້ອນທັບຜັງດາວໃໝ່ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ')">
-              <img src="../img/lao/fig_3_case5_door_tilting_floorplan.png" alt="Case Study 5 Door Tilting Floorplan Plate" class="max-h-[195px] sm:max-h-[210px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 200px;" loading="eager">
-            </div>
-            <figcaption class="text-[11px] sm:text-xs font-bold text-red-950 mt-1 px-1.5 leading-snug text-center">ຮູບທີ 3.10-B: ແປນເຮືອນບິດມຸມປະຕູ +6.0° (ຖອຍຮົ້ນ 15.7 cm) ຊ້ອນທັບຜັງດາວໃໝ່ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ (22.5° → 28.5° Chou Mountain)</figcaption>
-          </figure>
+          <div class="dual-plate-grid my-1.5">
+            <figure class="book-figure text-center bg-stone-900/5 border border-stone-200 rounded-lg p-1 shadow-xs flex flex-col items-center justify-between">
+              <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case5_door_tilting_floorplan.png', 'ຮູບທີ 3.10-B1: ແຜນວາດເຕັກນິກການບິດກອບປະຕູ 6.0° (CAD Blueprint)')">
+                <img src="../img/lao/fig_3_case5_door_tilting_floorplan.png" alt="Case Study 5 Door Tilting Floorplan Plate" class="max-h-[175px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 180px;" loading="eager">
+              </div>
+              <figcaption class="text-[10px] font-bold text-red-950 mt-1 leading-tight text-center">ແຜນວາດ CAD ບິດກອບປະຕູ +6.0°</figcaption>
+            </figure>
+
+            <figure class="book-figure text-center bg-stone-900/5 border border-stone-200 rounded-lg p-1 shadow-xs flex flex-col items-center justify-between">
+              <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case5_door_tilting_real.jpg', 'ຮູບທີ 3.10-B2: ພາບຖ່າຍສະຖາປັດຕະຍະກຳຕົວຈິງ — ກອບປະຕູໄມ້ບິດມຸມ 6.0° (Door Tilting) ພ້ອມໂຖງຮັບຊີ່')">
+                <img src="../img/lao/fig_3_case5_door_tilting_real.jpg" alt="Case Study 5 Door Tilting Real Photo" class="max-h-[175px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" style="max-height: 180px;" loading="eager">
+              </div>
+              <figcaption class="text-[10px] font-bold text-red-950 mt-1 leading-tight text-center">ພາບຖ່າຍຕົວຈິງ: ບິດກອບປະຕູ 6.0°</figcaption>
+            </figure>
+          </div>
         </div>
 
         <!-- Case 5: Explanation Block (Even Page) -->
