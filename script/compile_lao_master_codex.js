@@ -325,27 +325,67 @@ function paginateLaoContent(chapters) {
     chId: 'colophon',
     chTitle: 'ຄຳນຳ & ປະຫວັດສາຍວິຊາ',
     html: `
-      <div class="p-5 sm:p-7 md:p-8 flex flex-col justify-between h-full text-xs sm:text-sm leading-relaxed text-stone-800">
+      <div class="p-6 sm:p-8 md:p-10 flex flex-col justify-between h-full text-xs sm:text-sm leading-relaxed text-stone-800 bg-[#fdfbf7] relative overflow-hidden select-none">
+        <!-- Classical Watermark Background -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(180,83,9,0.04),transparent_70%)] pointer-events-none"></div>
+
         <div>
-          <div class="flex items-center justify-between border-b-2 border-amber-800/40 pb-2.5 mb-3 sm:mb-4">
-            <h2 class="text-base sm:text-lg md:text-xl font-black text-amber-950">
-              ຄຳນຳ & ປະຫວັດຄວາມເປັນມາ
-            </h2>
-            <span class="text-[10px] sm:text-xs text-amber-700 font-bold tracking-widest">XUAN KONG CODEX</span>
+          <!-- Header with Seal Banner -->
+          <div class="flex items-center justify-between border-b-2 border-amber-800/60 pb-3 mb-4">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-widest text-amber-700 block">IMPERIAL PREFACE & HISTORICAL TRANSMISSION</span>
+              <h2 class="text-lg sm:text-xl md:text-2xl font-black text-amber-950 mt-0.5">
+                ຄຳນຳຄຳພີຫຼວງ & ສາຍທານປະຫວັດສາດ 5,000 ປີ
+              </h2>
+            </div>
+            <span class="bg-amber-900 text-amber-100 border border-amber-700 px-2.5 py-1 rounded text-[10px] font-bold tracking-widest uppercase shadow-sm">
+              玄空秘笈
+            </span>
           </div>
-          <p class="mb-3 text-justify">
-            ຄຳພີເຫຼັ້ມນີ້ຮຽບຮຽງຂຶ້ນຈາກສາຍວິຊາຮວງຈຸ້ຍດາວເຫີນ (Xuan Kong Fei Xing) ຂັ້ນສູງ ໂດຍປະສານມິຕິແຫ່ງ ມິຕິເວລາ (Time) ແລະ ມິຕິພື້ນທີ່ (Space) ເຂົ້າກັນຢ່າງວິທະຍາສາດ ລວມທັງ 12 ກໍລະນີສຶກສາຕົວຈິງ, ພູມສັນຖານຫຼວນໂຖວ, 16 ຮູບແບບຕອນດິນ, ແລະ ຕາຕະລາງດາວ 81 ຄູ່ ຢ່າງຄົບຖ້ວນ.
+
+          <!-- Body Text 1: The Essence of Xuan Kong -->
+          <p class="mb-3 text-justify leading-relaxed">
+            ຄຳພີ <strong>"ສານຸກົມຮວງຈຸ້ຍດາວເຫີນ ສະບັບສົມບູນ"</strong> ເຫຼັ້ມນີ້ ຄືການປະມວນອົງຄວາມຮູ້ແຫ່ງສາຍວິຊາ <strong>ສຽນຄົງເຟຍຊິງ (Xuan Kong Fei Xing 玄空飞星)</strong> ຂັ້ນສູງສຸດແຫ່ງລາຊະສຳນັກຈັກກະພັດຈີນບູຮານ. ວິຊານີ້ຄືສາດແຫ່ງການປະສານພະລັງງານລະຫວ່າງ <strong>"ມິຕິເວລາ" (Time)</strong> ຂອງດວງດາວໃນຈັກກະວານ ແລະ <strong>"ມິຕິພື້ນທີ່" (Space)</strong> ຂອງແຜ່ນດິນໂລກ ໃຫ້ເກີດຄວາມສົມດຸນສູງສຸດແກ່ຊີວິດມະນຸດ.
           </p>
-          <div class="bg-amber-50/90 border-l-4 border-amber-600 p-3 my-3 text-[11px] sm:text-xs italic text-amber-900 rounded-r leading-relaxed shadow-sm">
-            “ພູເຂົາຄວບຄຸມບາຣະມີ ແລະ ສຸຂະພາບແຫ່ງມະນຸດ (山管人丁), ສາຍນ້ຳຄວບຄຸມໂຊກລາບ ແລະ ຄວາມຮັ່ງມີ (水管财禄). ດາວພູຕ້ອງການຄວາມສະຫງົບ, ດາວນ້ຳຕ້ອງການຄວາມເຄື່ອນໄຫວ.”
+
+          <!-- Classical Couplet Callout -->
+          <div class="bg-amber-50/90 border-l-4 border-amber-700 p-3.5 my-3.5 rounded-r-xl shadow-sm text-xs space-y-1.5">
+            <div class="font-serif text-amber-950 font-bold text-center sm:text-left text-xs sm:text-sm">
+              “气乘风则散，界水则止。古人聚之使不散，行之使有止，故谓之风水。”
+            </div>
+            <div class="text-[11px] text-amber-900/90 leading-relaxed font-medium">
+              — <em>ອາຈານໃຫຍ່ ກົວຜູ (Guo Pu), ຄຳພີຝັງສົບ "ຈ້າງຊູ" (Zang Shu), ລາຊະວົງຈິນ ຄ.ສ 276–324</em><br>
+              <strong>ຄວາມໝາຍ:</strong> ພະລັງງານຊີ່ ຂີ່ໄປກັບສາຍລົມແລ້ວກະຈາຍຫາຍໄປ, ພົບສາຍນ້ຳແລ້ວຈຶ່ງຢຸດສະສົມ. ບັນພະບຸລຸດຈຶ່ງຮວບຮວມບໍ່ໃຫ້ກະຈາຍ ແລະ ຊັກນຳໃຫ້ສະສົມ ຈຶ່ງເອີ້ນວິຊານີ້ວ່າ <strong>"ຮວງຈຸ້ຍ" (ລົມ ແລະ ນ້ຳ)</strong>.
+            </div>
           </div>
+
+          <!-- Lineage Transmission Timeline -->
+          <div class="my-3 space-y-1.5 text-xs text-stone-700 border-t border-b border-amber-900/20 py-2.5">
+            <div class="font-bold text-amber-950 text-xs mb-1">ສາຍທານການສືບທອດແຫ່ງມະຫາປໍຣະມາຈານ 5 ຍຸກສະໄໝ:</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+              <div>• <strong>ຝູຊີ & ພະຍາອວີ່:</strong> ຕົ້ນກຳເນີດແຜ່ນຍັນຮືໂຕ້ (He Tu) ແລະ ລົ່ວຊູ (Luo Shu).</div>
+              <div>• <strong>ກົວຜູ (Guo Pu):</strong> ບິດາແຫ່ງຮວງຈຸ້ຍ ແລະ ຄຳພີຝັງສົບ Zang Shu.</div>
+              <div>• <strong>ຢາງຢຸນຊົງ (Yang Yun Song):</strong> ປໍຣະມາຈານລາຊະວົງຖັງ ຜູ້ແຕ່ງຄຳພີ Tian Yu Jing.</div>
+              <div>• <strong>ຈຽງຕ້າຫົງ (Jiang Da Hong):</strong> ຜູ້ປະພັນ Di Li Bian Zheng ລາຊະວົງໝິງ-ຊິງ.</div>
+              <div class="sm:col-span-2">• <strong>ເສິ່ນຈູ່ວຢົງ (Shen Zhu Reng):</strong> ວິລະບຸລຸດຜູ້ຖອດລະຫັດສຽນຄົງໃນຄຳພີ <em>Shen Shi Xuan Kong Xue</em> ສູ່ສາຍຕາຊາວໂລກ.</div>
+            </div>
+          </div>
+
+          <p class="text-justify text-xs text-stone-700 leading-relaxed">
+            ຄຳພີສະບັບນີ້ ບັນຈຸຄົບຖ້ວນທັງ <strong>24 ບົດຮຽນໃຫຍ່, 12 ກໍລະນີສຶກສາຕົວຈິງ, 105 ພູມສັນຖານຫຼວນໂຖວ, ສູດດາວປະສົມ 81 ຄູ່ຄົບ 100%, ພິມຂຽວ 24 ທິດທາງຍຸກ 9, ວິຊາດາວປ່ຽນແທນ 144 ແບບ, ແລະ ສູດປະຕູວັງຫຼວງ</strong> ເພື່ອໃຫ້ເປັນຄູ່ມືອັນຊົງຄຸນຄ່າແກ່ອະນຸຊົນຮຸ່ນຫຼັງຕະຫຼອດໄປ.
+          </p>
         </div>
-        <div class="border-t border-stone-200 pt-2.5 text-[10px] sm:text-[11px] text-stone-500 flex justify-between items-center">
-          <span>ສວຽນຄົງ ດາວເຫີນ ສະບັບສົມບູນ</span>
-          <span>© 2024–2043 Period 9</span>
+
+        <!-- Colophon Footer -->
+        <div class="border-t-2 border-amber-800/40 pt-3 flex justify-between items-center text-[10px] sm:text-xs text-stone-500 font-medium">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+            <span>ຄະນະອາຈານຊ່ຽວຊານຮວງຈຸ້ຍສຽນຄົງ ດາວເຫີນ</span>
+          </div>
+          <span class="font-bold text-amber-900 tracking-wider">三元九运 • 2024–2043 ຍຸກ 9 ທາດໄຟ</span>
         </div>
       </div>
-    `
+`
   });
 
   // Page 3: TOC Placeholder
