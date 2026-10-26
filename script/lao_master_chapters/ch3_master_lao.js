@@ -288,10 +288,10 @@ module.exports = {
           </div>
 
           <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_8_triangulation_map.png', 'ຮູບທີ 3.8: ຜັງການວັດແທກ 3 ຈຸດແບບສາມຫຼ່ຽມພາກສະໜາມ — ກໍລະນີສຶກສາທີ 1: ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)')">
-              <img src="../img/lao/fig_3_8_triangulation_map.png" alt="Case Study 1 Triangulation Map" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case1_luopan_villa_masterclass.png', 'ຮູບທີ 3.8: ວິທີໝຸນເຂັມທິດຫຼົວຜານ, ຜັງເຮືອນສະຖາປັດຕະຍະກຳ ແລະ ການໄລ່ກວ້າດາວເຫີນ — ກໍລະນີສຶກສາທີ 1: ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)')">
+              <img src="../img/lao/fig_3_case1_luopan_villa_masterclass.png" alt="Case Study 1 Luopan & Villa Masterclass Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
             </div>
-            <figcaption class="text-xs sm:text-sm font-bold text-emerald-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.8: ຜັງການວັດແທກ 3 ຈຸດແບບສາມຫຼ່ຽມພາກສະໜາມ — ກໍລະນີສຶກສາທີ 1: ເຮືອນວິນລາ ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)</figcaption>
+            <figcaption class="text-xs sm:text-sm font-bold text-emerald-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.8: ວິທີໝຸນເຂັມທິດຫຼົວຜານ, ຜັງເຮືອນສະຖາປັດຕະຍະກຳ ແລະ ການໄລ່ກວ້າດາວເຫີນ — ກໍລະນີສຶກສາທີ 1: ເຮືອນວິນລາ ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)</figcaption>
           </figure>
         </div>
 
@@ -359,10 +359,10 @@ module.exports = {
           </div>
 
           <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case2_shophouse.png', 'ຮູບທີ 3.11: ຜັງວັດແທກຕຶກແຖວການຄ້າ ແລະ ການຄິດໄລ່ຜັງດາວປ່ຽນແທນ — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ')">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case2_shophouse.png', 'ຮູບທີ 3.11: ວິທີໝຸນເຂັມທິດ, ແປນຕຶກແຖວຮ້ານຄຳ ແລະ ການໄລ່ຜັງດາວປ່ຽນແທນ — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ')">
               <img src="../img/lao/fig_3_case2_shophouse.png" alt="Case Study 2 Shophouse Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
             </div>
-            <figcaption class="text-xs sm:text-sm font-bold text-amber-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.11: ຜັງວັດແທກຕຶກແຖວການຄ້າ ແລະ ການຄິດໄລ່ຜັງດາວປ່ຽນແທນ — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ (201.0° Ding &rarr; Wei)</figcaption>
+            <figcaption class="text-xs sm:text-sm font-bold text-amber-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.11: ວິທີໝຸນເຂັມທິດ, ແປນຕຶກແຖວຮ້ານຄຳ ແລະ ການໄລ່ຜັງດາວປ່ຽນແທນ — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ (201.0° Ding / 21.0° Gui)</figcaption>
           </figure>
         </div>
 
@@ -430,10 +430,10 @@ module.exports = {
           </div>
 
           <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case3_condo.png', 'ຮູບທີ 3.12: ຜັງການຕັດສິນທິດຫັນໜ້າຄອນໂດຊັ້ນ 8 ແລະ ການເປີດຮັບຊີ່ແມ່ນ້ຳ — ກໍລະນີສຶກສາທີ 3: ທ່ານ ຄຳພັນ')">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case3_condo.png', 'ຮູບທີ 3.12: ວິທີໝຸນເຂັມທິດ, ແປນຫ້ອງຄອນໂດຊັ້ນ 8 ແລະ ການໄລ່ກວ້າດາວເຫີນຮັບຊີ່ແມ່ນ້ຳ — ກໍລະນີສຶກສາທີ 3: ທ່ານ ຄຳພັນ')">
               <img src="../img/lao/fig_3_case3_condo.png" alt="Case Study 3 Condo Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
             </div>
-            <figcaption class="text-xs sm:text-sm font-bold text-blue-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.12: ຜັງການຕັດສິນທິດຫັນໜ້າຄອນໂດຊັ້ນ 8 ແລະ ການເປີດຮັບຊີ່ແມ່ນ້ຳ — ກໍລະນີສຶກສາທີ 3: ທ່ານ ຄຳພັນ (270.0° You / 90.0° Mao)</figcaption>
+            <figcaption class="text-xs sm:text-sm font-bold text-blue-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.12: ວິທີໝຸນເຂັມທິດ, ແປນຫ້ອງຄອນໂດຊັ້ນ 8 ແລະ ການໄລ່ກວ້າດາວເຫີນຮັບຊີ່ແມ່ນ້ຳ — ກໍລະນີສຶກສາທີ 3: ທ່ານ ຄຳພັນ (270.0° You / 90.0° Mao)</figcaption>
           </figure>
         </div>
 
@@ -502,10 +502,10 @@ module.exports = {
           </div>
 
           <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case4_factory.png', 'ຮູບທີ 3.13: ຜັງການຫາຈຸດສູນກາງມວນສານ ແລະ ປະຕູຊີ່ຫຼັກໃນໂຮງງານອຸດສາຫະກຳ — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ')">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case4_factory.png', 'ຮູບທີ 3.13: ວິທີໝຸນເຂັມທິດ, ແປນໂຮງງານ 5,000 m² ແລະ ການໄລ່ກວ້າດາວເຫີນຫາປະຕູຊີ່ — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ')">
               <img src="../img/lao/fig_3_case4_factory.png" alt="Case Study 4 Factory Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
             </div>
-            <figcaption class="text-xs sm:text-sm font-bold text-purple-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.13: ຜັງການຫາຈຸດສູນກາງມວນສານ ແລະ ປະຕູຊີ່ຫຼັກໃນໂຮງງານອຸດສາຫະກຳ — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ (135.0° Xun Qi Mouth)</figcaption>
+            <figcaption class="text-xs sm:text-sm font-bold text-purple-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.13: ວິທີໝຸນເຂັມທິດ, ແປນໂຮງງານ 5,000 m² ແລະ ການໄລ່ກວ້າດາວເຫີນຫາປະຕູຊີ່ — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ (135.0° Xun / 315.0° Qian)</figcaption>
           </figure>
         </div>
 
@@ -575,10 +575,10 @@ module.exports = {
           </div>
 
           <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_10_door_tilting_cure.png', 'ຮູບທີ 3.10: ເຕັກນິກການບິດອົງສາປະຕູແກ້ໄຂເສັ້ນສູນສິ້ນຂົງຫວາງ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ')">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_10_door_tilting_cure.png', 'ຮູບທີ 3.10: ວິທີໝຸນເຂັມທິດ, ແປນບິດມຸມປະຕູ ແລະ ການໄລ່ກວ້າດາວເຫີນແກ້ໄຂເສັ້ນຂົງຫວາງ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ')">
               <img src="../img/lao/fig_3_10_door_tilting_cure.png" alt="Case Study 5 Door Tilting Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
             </div>
-            <figcaption class="text-xs sm:text-sm font-bold text-red-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.10: ເຕັກນິກການບິດອົງສາປະຕູແກ້ໄຂເສັ້ນສູນສິ້ນຂົງຫວາງ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ (22.5° → 28.5° Chou Mountain)</figcaption>
+            <figcaption class="text-xs sm:text-sm font-bold text-red-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.10: ວິທີໝຸນເຂັມທິດ, ແປນບິດມຸມປະຕູ ແລະ ການໄລ່ກວ້າດາວເຫີນແກ້ໄຂເສັ້ນຂົງຫວາງ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ (22.5° → 28.5° Chou Mountain)</figcaption>
           </figure>
         </div>
 
