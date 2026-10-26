@@ -22,11 +22,11 @@ function renderBookFig(file, caption) {
   const targetFile = fs.existsSync(path.resolve(rootDir, laoRelativePath)) ? laoRelativePath : file;
 
   return `
-    <figure class="book-figure my-2 text-center bg-stone-50/90 border border-stone-200 rounded-xl p-2 sm:p-2.5 shadow-sm">
-      <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block" onclick="openZoomInspector('../${targetFile}', '${caption.replace(/'/g, "\\'")}')">
-        <img src="../${targetFile}" alt="${caption}" class="max-h-40 sm:max-h-44 mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+    <figure class="book-figure my-2 text-center bg-stone-50/90 border border-stone-200 rounded-xl p-3 sm:p-4 shadow-sm flex flex-col items-center justify-center">
+      <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../${targetFile}', '${caption.replace(/'/g, "\\'")}')">
+        <img src="../${targetFile}" alt="${caption}" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
       </div>
-      <figcaption class="text-[11px] sm:text-xs font-semibold text-stone-600 mt-1 italic px-2 leading-tight">${caption}</figcaption>
+      <figcaption class="text-xs sm:text-sm font-bold text-amber-950 mt-2.5 px-3 leading-relaxed text-center">${caption}</figcaption>
     </figure>
   `;
 }
@@ -497,22 +497,18 @@ async function paginateLaoContent(chapters) {
 
       if (curBlocks.length > 0) {
         // Never break if current page is only chapter header (less than 400 chars)
-        const isTitleOnly = (curBlocks.length === 1 && curTextLen < 400);
+        const isTitleOnly = (curBlocks.length === 1 && curBlocks[0].isHeading);
 
         if (!isTitleOnly) {
-          // Rule 1: We already have 2 figures -> push before another figure or text
-          if (curFigs >= 2) pushCurrentPage();
-          // Rule 2: We have 1 figure and incoming is figure -> push
-          else if (curFigs === 1 && b.isFig) pushCurrentPage();
-          // Rule 3: We have 1 figure + text > 600 -> push
-          else if (curFigs === 1 && curTextLen > 600) pushCurrentPage();
-          // Rule 4: Incoming is Table and current page already has text > 500 -> push so table stays with its heading
+          // Rule 1: We already have a figure plate -> push so the figure page closes cleanly
+          if (curFigs >= 1) pushCurrentPage();
+          // Rule 2: Incoming is a figure plate and current page already has substantial text -> push so figure starts on a fresh page
+          else if (b.isFig && curTextLen > 450) pushCurrentPage();
+          // Rule 3: Incoming is Table and current page already has text > 500 -> push so table stays with its heading
           else if (b.isTable && curTextLen > 500) pushCurrentPage();
-          // Rule 5: Incoming is H2 heading and current page already has > 650 chars -> push to keep heading with its section!
+          // Rule 4: Incoming is H2 heading and current page already has > 650 chars -> push to keep heading with its section!
           else if (b.isH2 && curTextLen > 650) pushCurrentPage();
-          // Rule 6: Incoming is figure and current page has plenty of text (> 700 chars)
-          else if (b.isFig && curTextLen > 700) pushCurrentPage();
-          // Rule 7: Text capacity limit (~2,100 chars)
+          // Rule 5: Text capacity limit (~2,100 chars)
           else if (curTextLen > 800 && (curTextLen + b.textLen > 2100)) pushCurrentPage();
         }
       }
