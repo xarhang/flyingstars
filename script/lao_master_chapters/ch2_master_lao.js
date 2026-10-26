@@ -1,36 +1,36 @@
 /**
  * ch2_master_lao.js
- * ບົດທີ 2: ມິຕິເວລາ: 3 ຍຸກ 9 ວົງຮອບ (San Yuan Jiu Yun) ແລະ ຍຸກ 9 ທາດໄຟ (2024-2043)
+ * ບົດທີ 2: ມິຕິເວລາ: ສາມວົງຮອບ ເກົ້າຍຸກ (San Yuan Jiu Yun) ແລະ ຍຸກ 9 ທາດໄຟ (2024-2043)
  * (Comprehensive Masterclass Edition - Ultra In-Depth)
  */
 
 module.exports = {
   id: "ch2",
-  title: "ບົດທີ 2: ມິຕິເວລາ: 3 ຍຸກ 9 ວົງຮອບ (San Yuan Jiu Yun)",
+  title: "ບົດທີ 2: ມິຕິເວລາ: ສາມວົງຮອບ ເກົ້າຍຸກ (San Yuan Jiu Yun)",
   html: `
     <div class="chapter-content space-y-6">
       <div class="border-b-2 border-amber-800/40 pb-4 mb-6">
         <div class="text-xs font-bold uppercase tracking-widest text-amber-700">ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ • ພາກທີ 1: ທິດສະດີພື້ນຖານ</div>
-        <h1 class="doc-h1 text-2xl sm:text-3xl font-black text-amber-950 mt-1">ບົດທີ 2: ມິຕິເວລາ: 3 ຍຸກ 9 ວົງຮອບ (San Yuan Jiu Yun) ແລະ ຍຸກ 9 ທາດໄຟ (2024–2043)</h1>
+        <h1 class="doc-h1 text-2xl sm:text-3xl font-black text-amber-950 mt-1">ບົດທີ 2: ມິຕິເວລາ: ສາມວົງຮອບ ເກົ້າຍຸກ (San Yuan Jiu Yun) ແລະ ຍຸກ 9 ທາດໄຟ (2024–2043)</h1>
         <p class="text-sm font-semibold text-amber-900/80">ວົງຮອບດາລາສາດ 180 ປີ ແລະ ການຫັນປ່ຽນພະລັງງານສູ່ຍຸກດາວ 9 ສີມ່ວງ (Li Fire)</p>
       </div>
 
       <!-- Section 1 -->
       <section class="space-y-3">
-        <h2 class="doc-h2 text-lg sm:text-xl font-bold text-amber-900 border-l-4 border-amber-600 pl-3">1. ຫຼັກການດາລາສາດ: ຕົ້ນກຳເນີດແຫ່ງລະບົບ "3 ຍຸກ 9 ວົງຮອບ" (180 ປີ)</h2>
+        <h2 class="doc-h2 text-lg sm:text-xl font-bold text-amber-900 border-l-4 border-amber-600 pl-3">1. ຫຼັກການດາລາສາດ: ຕົ້ນກຳເນີດແຫ່ງລະບົບ "ສາມວົງຮອບ ເກົ້າຍຸກ" (180 ປີ)</h2>
         <p class="doc-p text-justify leading-relaxed">
           ລະບົບເວລາຂອງຮວງຈຸ້ຍດາວເຫີນ ບໍ່ໄດ້ເກີດຈາກການສົມມຸດຂຶ້ນຕາມໃຈ, ແຕ່ມີຮາກຖານມາຈາກ <strong>"ປະກົດການດາລາສາດຕົວຈິງແຫ່ງລະບົບສຸລິຍະຈັກກະວານ"</strong>. ບັນພະບຸລຸດຈີນໄດ້ສັງເກດວົງໂຄຈອນຂອງດາວເຄາະຂະໜາດໃຫຍ່ ໂດຍສະເພາະແມ່ນ <strong>ດາວພະຫັດ (Jupiter)</strong> ແລະ <strong>ດາວເສົາ (Saturn)</strong>:
         </p>
 
         <ul class="list-disc pl-6 space-y-2 text-stone-800 text-xs sm:text-sm">
           <li>
-            <strong>1 ຍຸກນ້ອຍ (1 Yun / 运) = 20 ປີ:</strong> ເກີດຂຶ້ນຈາກການທີ່ ດາວພະຫັດ (ໃຊ້ເວລາໂຄຈອນຮອບດວງຕາເວັນ ~12 ປີ) ແລະ ດາວເສົາ (ໃຊ້ເວລາໂຄຈອນ ~30 ປີ) ໂຄຈອນມາພົບກັນໃນແນວເສັ້ນຊື່ດຽວກັນ (Conjunction of Jupiter and Saturn) ທຸກໆປະມານ <strong>19.85 ປີ (ຕີເປັນເລກກົມຄື 20 ປີ)</strong>. ການພົບກັນຂອງສອງດາວມະຫາອຳນາດນີ້ ຈະປ່ຽນແປງສະໜາມແມ່ເຫຼັກທີ່ມຸ່ງໜ້າສູ່ໂລກຢ່າງຮຸນແຮງ.
+            <strong>1 ຍຸກ (1 Yun / 运) = 20 ປີ:</strong> ເກີດຂຶ້ນຈາກການທີ່ ດາວພະຫັດ (ໃຊ້ເວລາໂຄຈອນຮອບດວງຕາເວັນ ~12 ປີ) ແລະ ດາວເສົາ (ໃຊ້ເວລາໂຄຈອນ ~30 ປີ) ໂຄຈອນມາພົບກັນໃນແນວເສັ້ນຊື່ດຽວກັນ (Conjunction of Jupiter and Saturn) ທຸກໆປະມານ <strong>19.85 ປີ (ຕີເປັນເລກກົມຄື 20 ປີ)</strong>. ການພົບກັນຂອງສອງດາວມະຫາອຳນາດນີ້ ຈະປ່ຽນແປງສະໜາມແມ່ເຫຼັກທີ່ມຸ່ງໜ້າສູ່ໂລກຢ່າງຮຸນແຮງ.
           </li>
           <li>
-            <strong>1 ຍຸກໃຫຍ່ (1 Yuan / 元) = 60 ປີ (3 ຍຸກນ້ອຍ):</strong> ເທົ່າກັບ 1 ຮອບ <strong>ດອກໄມ້ 60 ປີ (Jia Zi / 六十甲子)</strong> ເຊິ່ງເປັນການປະສານກັນລະຫວ່າງ 10 ງ່າສະຫວັນ (Tian Gan) ແລະ 12 ກິ່ງແຜ່ນດິນ (Di Zhi).
+            <strong>1 ຮອບໃຫຍ່ (1 Yuan / 元) = 60 ປີ (3 ຍຸກ):</strong> ເທົ່າກັບ 1 ຮອບ <strong>ດອກໄມ້ 60 ປີ (Jia Zi / 六十甲子)</strong> ເຊິ່ງເປັນການປະສານກັນລະຫວ່າງ 10 ງ່າສະຫວັນ (Tian Gan) ແລະ 12 ກິ່ງແຜ່ນດິນ (Di Zhi).
           </li>
           <li>
-            <strong>1 ວົງຮອບໃຫຍ່ສູງສຸດ (1 Grand Cycle / 三元九运) = 180 ປີ (9 ຍຸກນ້ອຍ):</strong> ເກີດຂຶ້ນເມື່ອ <strong>ດາວເຄາະທັງ 9 ດວງໃນລະບົບສຸລິຍະ ໂຄຈອນມາຮຽງແຖວຢູ່ຂ້າງດຽວກັນຂອງດວງຕາເວັນ (Nine Planets Alignment)</strong> ເຊິ່ງຈະເກີດຂຶ້ນທຸກໆ 180 ປີ.
+            <strong>1 ວົງຮອບໃຫຍ່ສູງສຸດ (1 Grand Cycle / 三元九运) = 180 ປີ (9 ຍຸກ):</strong> ເກີດຂຶ້ນເມື່ອ <strong>ດາວເຄາະທັງ 9 ດວງໃນລະບົບສຸລິຍະ ໂຄຈອນມາຮຽງແຖວຢູ່ຂ້າງດຽວກັນຂອງດວງຕາເວັນ (Nine Planets Alignment)</strong> ເຊິ່ງຈະເກີດຂຶ້ນທຸກໆ 180 ປີ.
           </li>
         </ul>
 
@@ -38,8 +38,8 @@ module.exports = {
           <table class="w-full text-xs sm:text-sm border-collapse border border-amber-900/30 rounded-lg overflow-hidden shadow-sm">
             <thead>
               <tr class="bg-amber-950 text-amber-100 text-left">
-                <th class="p-2 sm:p-2.5 border border-amber-800">ຍຸກໃຫຍ່ (Yuan)</th>
-                <th class="p-2 sm:p-2.5 border border-amber-800">ຍຸກນ້ອຍ (Yun)</th>
+                <th class="p-2 sm:p-2.5 border border-amber-800">ຮອບໃຫຍ່ (Yuan)</th>
+                <th class="p-2 sm:p-2.5 border border-amber-800">ຍຸກ (Yun)</th>
                 <th class="p-2 sm:p-2.5 border border-amber-800">ໄລຍະເວລາ (ຄ.ສ)</th>
                 <th class="p-2 sm:p-2.5 border border-amber-800">ດາວປະຈຳຍຸກ</th>
                 <th class="p-2 sm:p-2.5 border border-amber-800">ທາດ</th>

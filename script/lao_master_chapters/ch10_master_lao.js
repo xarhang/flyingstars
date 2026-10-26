@@ -27,10 +27,10 @@ module.exports = {
           <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-300 shadow-sm space-y-2">
             <h3 class="font-bold text-emerald-950 text-sm flex items-center gap-2">
               <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-black">1</span>
-              ວັງຊານ ວັງສຸຍ (旺山旺向 - Wang Shan Wang Xiang)
+              ວັງຊານ ວັງຊຽງ (旺山旺向 - Wang Shan Wang Xiang)
             </h3>
             <p class="text-xs text-stone-700 leading-relaxed">
-              <strong>"ຈະເລີນທັງພູ ແລະ ຈະເລີນທັງນ້ຳ":</strong> ດາວພູປະຈຳຍຸກຕົກຢູ່ຕຳແໜ່ງພິງ (ຫຼັງເຮືອນ) ແລະ ດາວນ້ຳປະຈຳຍຸກຕົກຢູ່ຕຳແໜ່ງຫັນໜ້າ (ໜ້າເຮືອນ).
+              <strong>"ຈະເລີນທັງພູ ແລະ ຈະເລີນທັງໜ້າ (ທັງຄົນ ແລະ ເງິນທອງ)":</strong> ດາວພູປະຈຳຍຸກຕົກຢູ່ຕຳແໜ່ງພິງ (ຫຼັງເຮືອນ) ແລະ ດາວນ້ຳປະຈຳຍຸກຕົກຢູ່ຕຳແໜ່ງຫັນໜ້າ (ໜ້າເຮືອນ).
             </p>
             <div class="text-[11px] text-emerald-900 bg-emerald-100/70 p-2 rounded">
               <strong>ຜົນກະທົບ:</strong> ໂຄງສ້າງທີ່ສົມບູນແບບທີ່ສຸດ — ຜູ້ຢູ່ອາໄສມີສຸຂະພາບແຂງແຮງ, ອາຍຸໝັ້ນຂວັນຍືນ, ຄອບຄົວປອງດອງ, ແລະ ເງິນທອງໄຫຼມາເທມາບໍ່ຂາດສາຍ.
@@ -94,7 +94,7 @@ module.exports = {
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-2 font-bold text-center">
             <div class="p-3 bg-red-100/80 rounded-lg border border-red-300 text-red-950">
-              ❌ ບໍ່ມີຜັງ "ວັງຊານ ວັງສຸຍ" (Wang Shan Wang Xiang) ເລີຍແມ່ນແຕ່ທິດດຽວ!
+              ❌ ບໍ່ມີຜັງ "ວັງຊານ ວັງຊຽງ" (Wang Shan Wang Xiang) ເລີຍແມ່ນແຕ່ທິດດຽວ!
             </div>
             <div class="p-3 bg-red-100/80 rounded-lg border border-red-300 text-red-950">
               ❌ ບໍ່ມີຜັງ "ຊ່າງຊານ ເສຍສຸຍ" (Shang Shan Xia Shui) ເລີຍແມ່ນແຕ່ທິດດຽວ!

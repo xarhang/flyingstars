@@ -138,7 +138,7 @@ module.exports = {
           <div class="bg-stone-50 border border-stone-300 p-3.5 rounded-xl shadow-sm">
             <div class="font-black text-amber-900 text-sm mb-1.5 border-b border-amber-200 pb-1">📖 ພາກທີ 1: ທິດສະດີພື້ນຖານ ແລະ ເຄື່ອງມື (ບົດທີ 1–7)</div>
             <p class="text-xs text-stone-700 leading-relaxed">
-              ປູພື້ນຖານຢ່າງແໜ້ນໜາເລື່ອງ ພະລັງງານຊີ່, ຢິນ-ຢາງ, ວັດທະຈັກ 5 ທາດ, 3 ຍຸກ 9 ວົງຮອບ (San Yuan Jiu Yun), ການອ່ານຈານເຂັມທິດຫຼົວຜານ 24 ພູເຂົາ, ແລະ ການວາງຜັງ 9 ວັງໃນອາຄານ.
+              ປູພື້ນຖານຢ່າງແໜ້ນໜາເລື່ອງ ພະລັງງານຊີ່, ຢິນ-ຢາງ, ວັດທະຈັກ 5 ທາດ, ສາມວົງຮອບ ເກົ້າຍຸກ (San Yuan Jiu Yun), ການອ່ານຈານເຂັມທິດຫຼົວຜານ 24 ພູເຂົາ, ແລະ ການວາງຜັງ 9 ວັງໃນອາຄານ.
             </p>
           </div>
           <div class="bg-stone-50 border border-stone-300 p-3.5 rounded-xl shadow-sm">

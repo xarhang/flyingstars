@@ -304,7 +304,7 @@ function paginateLaoContent(chapters) {
             ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ
           </h1>
           <div class="text-xs sm:text-sm md:text-base font-bold text-amber-400/90 tracking-wider">
-            ສະບັບສົມບູນ 3 ຍຸກ 9 ວົງຮອບ (2024–2043)
+            ສະບັບສົມບູນ ສາມວົງຮອບ ເກົ້າຍຸກ (三元九运) • ເຈາະເລິກຍຸກ 9 (2024–2043)
           </div>
           <p class="text-[10px] sm:text-xs text-amber-100/80 font-medium max-w-sm mx-auto leading-relaxed border-t border-b border-amber-600/40 py-1.5 sm:py-2">
             24 ບົດຮຽນ • 12 ກໍລະນີສຶກສາຕົວຈິງ • 105 ພູມສັນຖານ • ສູດດາວປະສົມ 81 ຄູ່
