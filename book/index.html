@@ -691,12 +691,69 @@
             }
         }
 
+        // URL Parameter Sync & Deep Linking (?page=xx&lang=xx)
+        function getPageFromUrl() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                let p = parseInt(params.get('page') || params.get('p'), 10);
+                if (isNaN(p)) {
+                    const hash = (window.location.hash || '').replace('#', '');
+                    if (hash.startsWith('page=')) {
+                        p = parseInt(hash.replace('page=', ''), 10);
+                    } else if (/^\d+$/.test(hash)) {
+                        p = parseInt(hash, 10);
+                    }
+                }
+                return (!isNaN(p) && p >= 1) ? p : null;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function getLangFromUrl() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const l = (params.get('lang') || params.get('l') || '').toLowerCase();
+                if (l === 'hm' || l === 'hmong') return 'hm';
+                if (l === 'lo' || l === 'lao') return 'lo';
+                return null;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function updateUrlPage(pageNum) {
+            try {
+                const url = new URL(window.location.href);
+                url.searchParams.set('page', pageNum);
+                if (currentLang === 'hm') {
+                    url.searchParams.set('lang', 'hm');
+                } else {
+                    url.searchParams.delete('lang');
+                }
+                window.history.replaceState({ page: pageNum, lang: currentLang }, '', url.toString());
+            } catch (e) {
+                try {
+                    const search = `?page=${pageNum}${currentLang === 'hm' ? '&lang=hm' : ''}`;
+                    window.history.replaceState(null, '', search);
+                } catch (err) {}
+            }
+        }
+
         // Initialize Book
         function initBook() {
+            const urlLang = getLangFromUrl();
+            if (urlLang) currentLang = urlLang;
+
             currentPages = (currentLang === 'hm') ? HMONG_DATA.pages : LAO_DATA.pages;
             currentToc = (currentLang === 'hm') ? HMONG_DATA.tocEntries : LAO_DATA.tocEntries;
             totalPages = currentPages.length;
             
+            const urlPage = getPageFromUrl();
+            if (urlPage && urlPage >= 1 && urlPage <= totalPages) {
+                currentPageNum = urlPage;
+            }
+
             const slider = document.getElementById('pageSlider');
             slider.max = totalPages;
             slider.value = currentPageNum;
@@ -704,6 +761,7 @@
             renderPage(currentPageNum, false);
             updateTocList();
             updateHeaderLabels();
+            updateUrlPage(currentPageNum);
         }
 
         // ========================================================
@@ -979,6 +1037,9 @@
             document.getElementById('pageSlider').value = pageNum;
             document.getElementById('pageProgressBadge').innerText = (currentLang === 'hm') ? 
                 `Phab ${pageNum} / ${totalPages}` : `ໜ້າ ${pageNum} / ${totalPages}`;
+
+            // Sync URL parameter ?page=xx
+            updateUrlPage(pageNum);
         }
 
         // Programmatic Smooth Page Turn (Buttons, Keyboard, TOC, Auto-flip)
@@ -1062,7 +1123,7 @@
                 headerTitle.innerText = 'ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ ສະບັບສົມບູນ';
             }
 
-            currentPageNum = 1;
+            currentPageNum = Math.min(currentPageNum, (currentLang === 'hm' ? HMONG_DATA.pages.length : LAO_DATA.pages.length));
             initBook();
         }
 
@@ -1308,6 +1369,15 @@
                 closeZoomInspector();
                 const toc = document.getElementById('tocModal');
                 if (!toc.classList.contains('hidden')) toggleTocModal();
+            }
+        });
+
+        // Browser History Navigation (Back / Forward)
+        window.addEventListener('popstate', (e) => {
+            const urlPage = getPageFromUrl();
+            if (urlPage && urlPage >= 1 && urlPage <= totalPages && urlPage !== currentPageNum) {
+                renderPage(urlPage, false);
+                currentPageNum = urlPage;
             }
         });
 

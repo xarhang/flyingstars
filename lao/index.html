@@ -1226,10 +1226,21 @@
         li.addEventListener('click', () => loadChapter(idx));
         chapterNavList.appendChild(li);
       });
-      loadChapter(0);
+
+      let initIdx = 0;
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const chParam = params.get('ch') || params.get('chapter');
+        if (chParam) {
+          const found = chaptersData.findIndex((c, i) => c.id === chParam || String(i) === chParam);
+          if (found !== -1) initIdx = found;
+        }
+      } catch (e) {}
+
+      loadChapter(initIdx, false);
     }
 
-    function loadChapter(idx) {
+    function loadChapter(idx, updateHistory = true) {
       currentChapterIndex = idx;
       document.querySelectorAll('.chapter-nav-item').forEach((li, i) => {
         li.classList.toggle('active', i === idx);
@@ -1238,7 +1249,28 @@
       readerTitle.textContent = ch.title;
       readerContent.innerHTML = ch.html;
       window.scrollTo({ top: 120, behavior: 'smooth' });
+
+      if (updateHistory) {
+        try {
+          const url = new URL(window.location.href);
+          url.searchParams.set('ch', ch.id || idx);
+          window.history.replaceState({ ch: ch.id || idx }, '', url.toString());
+        } catch (e) {}
+      }
     }
+
+    window.addEventListener('popstate', () => {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const chParam = params.get('ch') || params.get('chapter');
+        if (chParam) {
+          const found = chaptersData.findIndex((c, i) => c.id === chParam || String(i) === chParam);
+          if (found !== -1 && found !== currentChapterIndex) {
+            loadChapter(found, false);
+          }
+        }
+      } catch (e) {}
+    });
 
     document.getElementById('btnFontInc').addEventListener('click', () => {
       if (readerFontSize < 20) {
