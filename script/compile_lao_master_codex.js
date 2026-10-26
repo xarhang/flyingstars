@@ -8,6 +8,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { chromium } = require('playwright');
 
 const rootDir = path.resolve(__dirname, '..');
 const laoMasterDir = path.join(__dirname, 'lao_master_chapters');
@@ -273,8 +274,8 @@ const bookChapters = laoMasterChapters.map(ch => ({
   html: ch.html + getChapterFigures(ch.id, true)
 }));
 
-// Pagination for book/index.html
-function paginateLaoContent(chapters) {
+// Pagination for book/index.html with tag-safe DOM block decomposition
+async function paginateLaoContent(chapters) {
   const pages = [];
   const tocEntries = [];
 
@@ -397,105 +398,128 @@ function paginateLaoContent(chapters) {
     html: ''
   });
 
-  // Paginate each chapter into readable pages
-  chapters.forEach((ch) => {
-    const startPage = pages.length + 1;
+  // Decompose chapters into atomic, tag-safe DOM blocks using headless browser
+  const browser = await chromium.launch({ headless: true });
+  const bPage = await browser.newPage();
+
+  const decomposed = await bPage.evaluate((allChapters) => {
+    function decompose(chHtml) {
+      const container = document.createElement('div');
+      container.innerHTML = chHtml;
+      const blocks = [];
+
+      function collectBlocks(node) {
+        if (!node) return;
+        const isTransparent = node === container || (node.classList && (
+          node.classList.contains('chapter-content') ||
+          node.tagName === 'SECTION' ||
+          node.classList.contains('space-y-6') ||
+          node.classList.contains('space-y-4') ||
+          node.classList.contains('space-y-3.5') ||
+          node.classList.contains('space-y-3')
+        ));
+
+        if (isTransparent && node.children && node.children.length > 0) {
+          Array.from(node.children).forEach(child => collectBlocks(child));
+          return;
+        }
+
+        blocks.push({
+          tag: node.tagName,
+          isH1: node.tagName === 'H1',
+          isH2: node.tagName === 'H2',
+          isH3: node.tagName === 'H3',
+          isHeading: /^H[123]$/.test(node.tagName),
+          isFig: node.tagName === 'FIGURE' || Boolean(node.querySelector('figure, img')),
+          isTable: node.tagName === 'TABLE' || Boolean(node.querySelector('table')),
+          html: node.outerHTML,
+          textLen: node.innerText ? node.innerText.trim().length : 0
+        });
+      }
+
+      collectBlocks(container);
+      return blocks;
+    }
+
+    return allChapters.map(ch => ({
+      id: ch.id,
+      title: ch.title,
+      blocks: decompose(ch.html)
+    }));
+  }, chapters);
+
+  await browser.close();
+
+  // Track starting page for each chapter (Cover=1, Colophon=2, TOC=3 -> 4)
+  let pageCounter = 3;
+
+  decomposed.forEach(ch => {
+    const chStartPage = pageCounter + 1;
     tocEntries.push({
       id: ch.id,
       title: ch.title,
-      page: startPage
+      page: chStartPage
     });
 
-    // Split on semantic blocks: h2, h3, figure, table, callouts
-    // Crucially: DO NOT split on <section> so chapter titles and opening sections flow naturally together!
-    const parts = ch.html.split(/(?=<h2|<figure|<div class="table-responsive|<div class="book-table|<table|<div class="doc-callout|<div class="book-box|<h3)/i);
+    let curBlocks = [];
+    let curTextLen = 0;
+    let curFigs = 0;
+    let curTables = 0;
 
-    const totalFigs = (ch.html.match(/<figure|<img/gi) || []).length;
-    const isOddFigs = totalFigs % 2 !== 0;
-
-    let currentParts = [];
-    let curPlainLen = 0;
-    let curFigCount = 0;
-    let curTableCount = 0;
-
-    function getPlain(str) {
-      return str.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-    }
-
-    function pushPage() {
-      if (currentParts.length === 0) return;
-      const html = currentParts.join('\n');
+    function pushCurrentPage() {
+      if (curBlocks.length === 0) return;
+      pageCounter++;
+      const innerHtml = curBlocks.map(b => b.html).join('\n');
       pages.push({
         chId: ch.id,
         chTitle: ch.title,
         html: `
           <div class="chapter-page p-4 sm:p-6 md:p-8 flex flex-col justify-between h-full text-stone-800 leading-relaxed text-xs sm:text-sm">
             <div class="page-content overflow-y-auto pr-1">
-              ${html}
+              ${innerHtml}
             </div>
           </div>
         `
       });
-      currentParts = [];
-      curPlainLen = 0;
-      curFigCount = 0;
-      curTableCount = 0;
+      curBlocks = [];
+      curTextLen = 0;
+      curFigs = 0;
+      curTables = 0;
     }
 
-    parts.forEach((part) => {
-      const trimmed = part.trim();
-      if (!trimmed) return;
+    for (let i = 0; i < ch.blocks.length; i++) {
+      const b = ch.blocks[i];
 
-      const partPlain = getPlain(trimmed);
-      const isFig = trimmed.includes('<figure') || trimmed.includes('<img');
-      const isTable = trimmed.includes('<table') || trimmed.includes('class="book-table') || trimmed.includes('class="table-responsive');
-      const isHeading = /^<(h1|h2|h3)/i.test(trimmed);
+      if (curBlocks.length > 0) {
+        // Never break if current page is only chapter header (less than 400 chars)
+        const isTitleOnly = (curBlocks.length === 1 && curTextLen < 400);
 
-      if (currentParts.length > 0) {
-        // Never break if current page is just the chapter title (less than 400 plain characters)
-        const isChapterTitleOnly = (curPlainLen < 400 && currentParts.length === 1);
-
-        if (!isChapterTitleOnly) {
-          // Rule A: Two figures already on this page -> push before 3rd figure or next block
-          if (curFigCount >= 2) {
-            pushPage();
-          }
-          // Rule B: One figure already on this page + substantial text (> 450 chars) -> push
-          else if (curFigCount === 1 && curPlainLen > 450 && (isFig || isTable || isHeading || partPlain.length > 300)) {
-            pushPage();
-          }
-          // Rule C: We have a table and already have text > 500 chars -> push
-          else if (curTableCount >= 1 && curPlainLen > 500) {
-            pushPage();
-          }
-          // Rule D: Upcoming is a figure
-          else if (isFig) {
-            // If total figures is odd and we have modest text (<= 850 chars), attach 1st figure to this text page so remaining figures pair up
-            if (isOddFigs && curFigCount === 0 && curPlainLen <= 850) {
-              // keep together
-            } else if (curPlainLen > 500) {
-              pushPage();
-            }
-          }
-          // Rule E: Major heading (h2) and current page is already well-filled (> 950 chars)
-          else if (isHeading && curPlainLen > 950) {
-            pushPage();
-          }
-          // Rule F: Content capacity limit (~1850 plain chars) and current page is already substantial (> 700 chars)
-          else if (curPlainLen > 700 && (curPlainLen + partPlain.length > 1850)) {
-            pushPage();
-          }
+        if (!isTitleOnly) {
+          // Rule 1: We already have 2 figures -> push before another figure or text
+          if (curFigs >= 2) pushCurrentPage();
+          // Rule 2: We have 1 figure and incoming is figure -> push
+          else if (curFigs === 1 && b.isFig) pushCurrentPage();
+          // Rule 3: We have 1 figure + text > 600 -> push
+          else if (curFigs === 1 && curTextLen > 600) pushCurrentPage();
+          // Rule 4: Incoming is Table and current page already has text > 500 -> push so table stays with its heading
+          else if (b.isTable && curTextLen > 500) pushCurrentPage();
+          // Rule 5: Incoming is H2 heading and current page already has > 650 chars -> push to keep heading with its section!
+          else if (b.isH2 && curTextLen > 650) pushCurrentPage();
+          // Rule 6: Incoming is figure and current page has plenty of text (> 700 chars)
+          else if (b.isFig && curTextLen > 700) pushCurrentPage();
+          // Rule 7: Text capacity limit (~2,100 chars)
+          else if (curTextLen > 800 && (curTextLen + b.textLen > 2100)) pushCurrentPage();
         }
       }
 
-      currentParts.push(trimmed);
-      curPlainLen += partPlain.length;
-      if (isFig) curFigCount++;
-      if (isTable) curTableCount++;
-    });
+      curBlocks.push(b);
+      curTextLen += b.textLen;
+      if (b.isFig) curFigs++;
+      if (b.isTable) curTables++;
+    }
 
-    if (currentParts.length > 0) {
-      pushPage();
+    if (curBlocks.length > 0) {
+      pushCurrentPage();
     }
   });
 
@@ -542,27 +566,29 @@ function paginateLaoContent(chapters) {
 }
 
 // 4. Update book/index.html
-const bookIndexPath = path.join(bookDir, 'index.html');
-if (fs.existsSync(bookIndexPath)) {
-  let bookHtml = fs.readFileSync(bookIndexPath, 'utf8');
-  const paginatedLao = paginateLaoContent(bookChapters);
+(async () => {
+  const bookIndexPath = path.join(bookDir, 'index.html');
+  if (fs.existsSync(bookIndexPath)) {
+    let bookHtml = fs.readFileSync(bookIndexPath, 'utf8');
+    const paginatedLao = await paginateLaoContent(bookChapters);
 
-  console.log(`Paginated Lao Master Codex into ${paginatedLao.pages.length} pages!`);
+    console.log(`Paginated Lao Master Codex into ${paginatedLao.pages.length} pages!`);
 
-  const laoStartMarker = 'const LAO_DATA = ';
-  const hmongMarker = 'const HMONG_DATA = ';
+    const laoStartMarker = 'const LAO_DATA = ';
+    const hmongMarker = 'const HMONG_DATA = ';
 
-  const laoStartIdx = bookHtml.indexOf(laoStartMarker);
-  const hmongIdx = bookHtml.indexOf(hmongMarker);
+    const laoStartIdx = bookHtml.indexOf(laoStartMarker);
+    const hmongIdx = bookHtml.indexOf(hmongMarker);
 
-  if (laoStartIdx !== -1 && hmongIdx !== -1) {
-    bookHtml = bookHtml.substring(0, laoStartIdx + laoStartMarker.length) +
-      JSON.stringify(paginatedLao) + ';\n        ' +
-      bookHtml.substring(hmongIdx);
-    
-    fs.writeFileSync(bookIndexPath, bookHtml, 'utf8');
-    console.log('Successfully updated book/index.html with master LAO_DATA!');
-  } else {
-    console.error('Could not locate LAO_DATA insertion point in book/index.html');
+    if (laoStartIdx !== -1 && hmongIdx !== -1) {
+      bookHtml = bookHtml.substring(0, laoStartIdx + laoStartMarker.length) +
+        JSON.stringify(paginatedLao) + ';\n        ' +
+        bookHtml.substring(hmongIdx);
+      
+      fs.writeFileSync(bookIndexPath, bookHtml, 'utf8');
+      console.log('Successfully updated book/index.html with master LAO_DATA!');
+    } else {
+      console.error('Could not locate LAO_DATA insertion point in book/index.html');
+    }
   }
-}
+})();
