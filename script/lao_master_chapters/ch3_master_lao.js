@@ -275,23 +275,43 @@ module.exports = {
           </table>
         </div>
 
-        <!-- Case 1: Plate Block (Odd Page) -->
+        <!-- Case 1: Part 1 - Macro Luopan Plate -->
         <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-emerald-600 shadow-md flex flex-col justify-between">
           <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-emerald-600/40 pb-2.5 mb-2">
             <div>
-              <span class="text-[10px] font-bold text-emerald-700 uppercase tracking-widest block">CASE STUDY 1: MODERN DETACHED VILLA</span>
+              <span class="text-[10px] font-bold text-emerald-700 uppercase tracking-widest block">CASE STUDY 1 • PART 1: FIELD LUOPAN CALIBRATION</span>
               <h3 class="font-black text-emerald-950 text-base sm:text-lg">
-                🏡 ກໍລະນີທີ 1: ທ່ານ ສົມສັກ — ເຮືອນວິນລາທັນສະໄໝ (ອົງສາເຈີ້ງຊ່ຽນບໍລິສຸດ)
+                🧭 ກໍລະນີທີ 1 (ພາກ 1): ເຕັກນິກການໝຸນ &amp; ອ່ານຄ່າຫຼົວຜານ 180.0° (ທ່ານ ສົມສັກ)
               </h3>
             </div>
             <span class="text-xs bg-emerald-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ອົງສາປອດໄພ: ເຈີ້ງຊ່ຽນ (Zheng Xian 100%)</span>
           </div>
 
           <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case1_luopan_villa_masterclass.png', 'ຮູບທີ 3.8: ວິທີໝຸນເຂັມທິດຫຼົວຜານ, ຜັງເຮືອນສະຖາປັດຕະຍະກຳ ແລະ ການໄລ່ກວ້າດາວເຫີນ — ກໍລະນີສຶກສາທີ 1: ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)')">
-              <img src="../img/lao/fig_3_case1_luopan_villa_masterclass.png" alt="Case Study 1 Luopan & Villa Masterclass Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case1_luopan_macro.png', 'ຮູບທີ 3.8-A: ເຕັກນິກການໝຸນ ແລະ ອ່ານຄ່າຫຼົວຜານພາກສະໜາມ — ກໍລະນີສຶກສາທີ 1: ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)')">
+              <img src="../img/lao/fig_3_case1_luopan_macro.png" alt="Case Study 1 Luopan Macro Plate" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
             </div>
-            <figcaption class="text-xs sm:text-sm font-bold text-emerald-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.8: ວິທີໝຸນເຂັມທິດຫຼົວຜານ, ຜັງເຮືອນສະຖາປັດຕະຍະກຳ ແລະ ການໄລ່ກວ້າດາວເຫີນ — ກໍລະນີສຶກສາທີ 1: ເຮືອນວິນລາ ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)</figcaption>
+            <figcaption class="text-xs sm:text-sm font-bold text-emerald-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.8-A: ເຕັກນິກການໝຸນ ແລະ ອ່ານຄ່າຫຼົວຜານພາກສະໜາມ — ກໍລະນີສຶກສາທີ 1: ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)</figcaption>
+          </figure>
+        </div>
+
+        <!-- Case 1: Part 2 - Architectural Floorplan & 9 Palaces -->
+        <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-emerald-600 shadow-md flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-emerald-600/40 pb-2.5 mb-2">
+            <div>
+              <span class="text-[10px] font-bold text-emerald-700 uppercase tracking-widest block">CASE STUDY 1 • PART 2: ARCHITECTURAL BLUEPRINT &amp; 9 PALACES</span>
+              <h3 class="font-black text-emerald-950 text-base sm:text-lg">
+                🏡 ກໍລະນີທີ 1 (ພາກ 2): ແປນເຮືອນວິນລາສະຖາປັດ ຊ້ອນທັບຜັງດາວ 9 ວັງ (ທ່ານ ສົມສັກ)
+              </h3>
+            </div>
+            <span class="text-xs bg-emerald-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ຊວງຊິງຕົ້າວຊຽງ (双星到向)</span>
+          </div>
+
+          <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case1_villa_floorplan.png', 'ຮູບທີ 3.8-B: ແປນເຮືອນວິນລາສະຖາປັດຕະຍະກຳ ຊ້ອນທັບຜັງດາວເຫີນ 9 ວັງ — ກໍລະນີສຶກສາທີ 1: ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)')">
+              <img src="../img/lao/fig_3_case1_villa_floorplan.png" alt="Case Study 1 Villa Floorplan Plate" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <figcaption class="text-xs sm:text-sm font-bold text-emerald-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.8-B: ແປນເຮືອນວິນລາສະຖາປັດຕະຍະກຳ ຊ້ອນທັບຜັງດາວເຫີນ 9 ວັງ — ກໍລະນີສຶກສາທີ 1: ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)</figcaption>
           </figure>
         </div>
 
@@ -346,23 +366,43 @@ module.exports = {
           </div>
         </div>
 
-        <!-- Case 2: Plate Block (Odd Page) -->
+        <!-- Case 2: Part 1 - Macro Luopan Plate -->
         <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-amber-600 shadow-md flex flex-col justify-between">
           <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-amber-600/40 pb-2.5 mb-2">
             <div>
-              <span class="text-[10px] font-bold text-amber-700 uppercase tracking-widest block">CASE STUDY 2: COMMERCIAL SHOPHOUSE</span>
+              <span class="text-[10px] font-bold text-amber-700 uppercase tracking-widest block">CASE STUDY 2 • PART 1: FIELD LUOPAN CALIBRATION</span>
               <h3 class="font-black text-amber-950 text-base sm:text-lg">
-                🏬 ກໍລະນີທີ 2: ທ່ານນາງ ມະນີວອນ — ຕຶກແຖວການຄ້າຮ້ານຂາຍຄຳ (ອົງສາບ່ຽງຈຽນສຽນ)
+                🧭 ກໍລະນີທີ 2 (ພາກ 1): ເຕັກນິກການໝຸນ &amp; ອ່ານຄ່າຫຼົວຜານບ່ຽງ 201.0° (ທ່ານນາງ ມະນີວອນ)
               </h3>
             </div>
             <span class="text-xs bg-amber-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ອົງສາບ່ຽງ: ຊຽນຊ່ຽນ (Jian Xian 替卦)</span>
           </div>
 
           <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case2_shophouse.png', 'ຮູບທີ 3.11: ວິທີໝຸນເຂັມທິດ, ແປນຕຶກແຖວຮ້ານຄຳ ແລະ ການໄລ່ຜັງດາວປ່ຽນແທນ — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ')">
-              <img src="../img/lao/fig_3_case2_shophouse.png" alt="Case Study 2 Shophouse Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case2_luopan_macro.png', 'ຮູບທີ 3.11-A: ເຕັກນິກການດຶງເຊືອກຂະໜານ ແລະ ອ່ານຄ່າຫຼົວຜານບ່ຽງ 201.0° — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ')">
+              <img src="../img/lao/fig_3_case2_luopan_macro.png" alt="Case Study 2 Luopan Macro Plate" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
             </div>
-            <figcaption class="text-xs sm:text-sm font-bold text-amber-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.11: ວິທີໝຸນເຂັມທິດ, ແປນຕຶກແຖວຮ້ານຄຳ ແລະ ການໄລ່ຜັງດາວປ່ຽນແທນ — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ (201.0° Ding / 21.0° Gui)</figcaption>
+            <figcaption class="text-xs sm:text-sm font-bold text-amber-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.11-A: ເຕັກນິກການດຶງເຊືອກຂະໜານ ແລະ ອ່ານຄ່າຫຼົວຜານບ່ຽງ 201.0° — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ (201.0° Ding / 21.0° Gui)</figcaption>
+          </figure>
+        </div>
+
+        <!-- Case 2: Part 2 - Architectural Floorplan & 9 Palaces -->
+        <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-amber-600 shadow-md flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-amber-600/40 pb-2.5 mb-2">
+            <div>
+              <span class="text-[10px] font-bold text-amber-700 uppercase tracking-widest block">CASE STUDY 2 • PART 2: ARCHITECTURAL BLUEPRINT &amp; 9 PALACES</span>
+              <h3 class="font-black text-amber-950 text-base sm:text-lg">
+                🏬 ກໍລະນີທີ 2 (ພາກ 2): ແປນຕຶກແຖວຮ້ານຄຳ ຊ້ອນທັບຜັງດາວປ່ຽນແທນ (ທ່ານນາງ ມະນີວອນ)
+              </h3>
+            </div>
+            <span class="text-xs bg-amber-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ຕູ້ນິລະໄພວັງດາວ 8-9 (財库安稳)</span>
+          </div>
+
+          <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case2_shophouse_floorplan.png', 'ຮູບທີ 3.11-B: ແປນຕຶກແຖວຮ້ານຄຳ ຊ້ອນທັບຜັງດາວປ່ຽນແທນ Ti Gua — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ')">
+              <img src="../img/lao/fig_3_case2_shophouse_floorplan.png" alt="Case Study 2 Shophouse Floorplan Plate" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <figcaption class="text-xs sm:text-sm font-bold text-amber-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.11-B: ແປນຕຶກແຖວຮ້ານຄຳ ຊ້ອນທັບຜັງດາວປ່ຽນແທນ Ti Gua — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ (201.0° Ding / 21.0° Gui)</figcaption>
           </figure>
         </div>
 
@@ -417,23 +457,43 @@ module.exports = {
           </div>
         </div>
 
-        <!-- Case 3: Plate Block (Odd Page) -->
+        <!-- Case 3: Part 1 - Macro Luopan Plate -->
         <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-blue-600 shadow-md flex flex-col justify-between">
           <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-blue-600/40 pb-2.5 mb-2">
             <div>
-              <span class="text-[10px] font-bold text-blue-700 uppercase tracking-widest block">CASE STUDY 3: HIGH-RISE CONDOMINIUM</span>
+              <span class="text-[10px] font-bold text-blue-700 uppercase tracking-widest block">CASE STUDY 3 • PART 1: FIELD LUOPAN CALIBRATION</span>
               <h3 class="font-black text-blue-950 text-base sm:text-lg">
-                🏢 ກໍລະນີທີ 3: ທ່ານ ຄຳພັນ — ຫ້ອງແຖວຄອນໂດຊັ້ນ 8 (ການຕັດສິນທິດຫັນໜ້າຢາງຊີ່)
+                🧭 ກໍລະນີທີ 3 (ພາກ 1): ເຕັກນິກການໝຸນ &amp; ອ່ານຄ່າຫຼົວຜານ 270.0° (ທ່ານ ຄຳພັນ)
               </h3>
             </div>
             <span class="text-xs bg-blue-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ການຕັດສິນທິດຫັນ: ຢາງຊີ່ (Yang Qi Facing)</span>
           </div>
 
           <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case3_condo.png', 'ຮູບທີ 3.12: ວິທີໝຸນເຂັມທິດ, ແປນຫ້ອງຄອນໂດຊັ້ນ 8 ແລະ ການໄລ່ກວ້າດາວເຫີນຮັບຊີ່ແມ່ນ້ຳ — ກໍລະນີສຶກສາທີ 3: ທ່ານ ຄຳພັນ')">
-              <img src="../img/lao/fig_3_case3_condo.png" alt="Case Study 3 Condo Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case3_luopan_macro.png', 'ຮູບທີ 3.12-A: ເຕັກນິກການວັດແທກຫຼົວຜານແວ່ນເລື່ອນລະບຽງ 270.0° You — ກໍລະນີສຶກສາທີ 3: ທ່ານ ຄຳພັນ')">
+              <img src="../img/lao/fig_3_case3_luopan_macro.png" alt="Case Study 3 Luopan Macro Plate" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
             </div>
-            <figcaption class="text-xs sm:text-sm font-bold text-blue-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.12: ວິທີໝຸນເຂັມທິດ, ແປນຫ້ອງຄອນໂດຊັ້ນ 8 ແລະ ການໄລ່ກວ້າດາວເຫີນຮັບຊີ່ແມ່ນ້ຳ — ກໍລະນີສຶກສາທີ 3: ທ່ານ ຄຳພັນ (270.0° You / 90.0° Mao)</figcaption>
+            <figcaption class="text-xs sm:text-sm font-bold text-blue-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.12-A: ເຕັກນິກການວັດແທກຫຼົວຜານແວ່ນເລື່ອນລະບຽງ 270.0° You — ກໍລະນີສຶກສາທີ 3: ທ່ານ ຄຳພັນ (270.0° You / 90.0° Mao)</figcaption>
+          </figure>
+        </div>
+
+        <!-- Case 3: Part 2 - Architectural Floorplan & 9 Palaces -->
+        <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-blue-600 shadow-md flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-blue-600/40 pb-2.5 mb-2">
+            <div>
+              <span class="text-[10px] font-bold text-blue-700 uppercase tracking-widest block">CASE STUDY 3 • PART 2: ARCHITECTURAL BLUEPRINT &amp; 9 PALACES</span>
+              <h3 class="font-black text-blue-950 text-base sm:text-lg">
+                🏢 ກໍລະນີທີ 3 (ພາກ 2): ແປນຫ້ອງຄອນໂດຊັ້ນ 8 ຊ້ອນທັບຜັງດາວ (ທ່ານ ຄຳພັນ)
+              </h3>
+            </div>
+            <span class="text-xs bg-blue-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ລະບຽງຮັບຊີ່ແມ່ນ້ຳຂອງ (临水纳财)</span>
+          </div>
+
+          <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case3_condo_floorplan.png', 'ຮູບທີ 3.12-B: ແປນຫ້ອງຄອນໂດຊັ້ນ 8 ຊ້ອນທັບຜັງດາວ ແລະ ການເປີດຮັບຊີ່ແມ່ນ້ຳຂອງ — ກໍລະນີສຶກສາທີ 3: ທ່ານ ຄຳພັນ')">
+              <img src="../img/lao/fig_3_case3_condo_floorplan.png" alt="Case Study 3 Condo Floorplan Plate" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <figcaption class="text-xs sm:text-sm font-bold text-blue-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.12-B: ແປນຫ້ອງຄອນໂດຊັ້ນ 8 ຊ້ອນທັບຜັງດາວ ແລະ ການເປີດຮັບຊີ່ແມ່ນ້ຳຂອງ — ກໍລະນີສຶກສາທີ 3: ທ່ານ ຄຳພັນ (270.0° You / 90.0° Mao)</figcaption>
           </figure>
         </div>
 
@@ -489,23 +549,43 @@ module.exports = {
           </div>
         </div>
 
-        <!-- Case 4: Plate Block (Odd Page) -->
+        <!-- Case 4: Part 1 - Macro Luopan Plate -->
         <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-purple-600 shadow-md flex flex-col justify-between">
           <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-purple-600/40 pb-2.5 mb-2">
             <div>
-              <span class="text-[10px] font-bold text-purple-700 uppercase tracking-widest block">CASE STUDY 4: INDUSTRIAL FACTORY COMPLEX</span>
+              <span class="text-[10px] font-bold text-purple-700 uppercase tracking-widest block">CASE STUDY 4 • PART 1: FIELD LUOPAN CALIBRATION</span>
               <h3 class="font-black text-purple-950 text-base sm:text-lg">
-                🏭 ກໍລະນີທີ 4: ທ່ານ ບຸນມີ — ໂຮງງານອຸດສາຫະກຳ ແລະ ສາງສິນຄ້າ (ການຫາຈຸດສູນກາງໄທ້ຈີ໊)
+                🧭 ກໍລະນີທີ 4 (ພາກ 1): ເຕັກນິກການໝຸນ &amp; ອ່ານຄ່າຫຼົວຜານ 135.0° (ທ່ານ ບຸນມີ)
               </h3>
             </div>
             <span class="text-xs bg-purple-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ການຫາຈຸດສູນກາງ: ໄທ້ຈີ໊ (Geometric Centroid / Tai Ji)</span>
           </div>
 
           <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case4_factory.png', 'ຮູບທີ 3.13: ວິທີໝຸນເຂັມທິດ, ແປນໂຮງງານ 5,000 m² ແລະ ການໄລ່ກວ້າດາວເຫີນຫາປະຕູຊີ່ — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ')">
-              <img src="../img/lao/fig_3_case4_factory.png" alt="Case Study 4 Factory Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case4_luopan_macro.png', 'ຮູບທີ 3.13-A: ເຕັກນິກການວັດແທກຫຼົວຜານກາງແຈ້ງ 15 m ຫຼົບສະໜາມໄຟຟ້າ — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ')">
+              <img src="../img/lao/fig_3_case4_luopan_macro.png" alt="Case Study 4 Luopan Macro Plate" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
             </div>
-            <figcaption class="text-xs sm:text-sm font-bold text-purple-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.13: ວິທີໝຸນເຂັມທິດ, ແປນໂຮງງານ 5,000 m² ແລະ ການໄລ່ກວ້າດາວເຫີນຫາປະຕູຊີ່ — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ (135.0° Xun / 315.0° Qian)</figcaption>
+            <figcaption class="text-xs sm:text-sm font-bold text-purple-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.13-A: ເຕັກນິກການວັດແທກຫຼົວຜານກາງແຈ້ງ 15 m ຫຼົບສະໜາມໄຟຟ້າ — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ (135.0° Xun / 315.0° Qian)</figcaption>
+          </figure>
+        </div>
+
+        <!-- Case 4: Part 2 - Architectural Floorplan & 9 Palaces -->
+        <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-purple-600 shadow-md flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-purple-600/40 pb-2.5 mb-2">
+            <div>
+              <span class="text-[10px] font-bold text-purple-700 uppercase tracking-widest block">CASE STUDY 4 • PART 2: ARCHITECTURAL BLUEPRINT &amp; 9 PALACES</span>
+              <h3 class="font-black text-purple-950 text-base sm:text-lg">
+                🏭 ກໍລະນີທີ 4 (ພາກ 2): ແປນໂຮງງານ 5,000 m² ຊ້ອນທັບຜັງດາວ (ທ່ານ ບຸນມີ)
+              </h3>
+            </div>
+            <span class="text-xs bg-purple-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ຈຸດສູນກາງໄທ້ຈີ໊ (Tai Ji Centroid)</span>
+          </div>
+
+          <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case4_factory_floorplan.png', 'ຮູບທີ 3.13-B: ແປນໂຮງງານ 5,000 m² ຊ້ອນທັບຜັງດາວ ແລະ ຈຸດສູນກາງໄທ້ຈີ໊ CAD — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ')">
+              <img src="../img/lao/fig_3_case4_factory_floorplan.png" alt="Case Study 4 Factory Floorplan Plate" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <figcaption class="text-xs sm:text-sm font-bold text-purple-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.13-B: ແປນໂຮງງານ 5,000 m² ຊ້ອນທັບຜັງດາວ ແລະ ຈຸດສູນກາງໄທ້ຈີ໊ CAD — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ (135.0° Xun / 315.0° Qian)</figcaption>
           </figure>
         </div>
 
@@ -562,23 +642,43 @@ module.exports = {
           </div>
         </div>
 
-        <!-- Case 5: Plate Block (Odd Page) -->
+        <!-- Case 5: Part 1 - Macro Luopan Plate -->
         <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-red-600 shadow-md flex flex-col justify-between">
           <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-red-600/40 pb-2.5 mb-2">
             <div>
-              <span class="text-[10px] font-bold text-red-700 uppercase tracking-widest block">CASE STUDY 5: DEADLY KONG WANG VOID LINE</span>
+              <span class="text-[10px] font-bold text-red-700 uppercase tracking-widest block">CASE STUDY 5 • PART 1: FIELD LUOPAN CALIBRATION</span>
               <h3 class="font-black text-red-950 text-base sm:text-lg">
-                ☠️ ກໍລະນີທີ 5: ທ່ານ ດາວອນ — ເຮືອນຕິດເຄາະຮ້າຍຕົກ "ເສັ້ນຂົງຫວາງ" (ການບິດປະຕູແກ້ໄຂ)
+                🧭 ກໍລະນີທີ 5 (ພາກ 1): ເຕັກນິກການໝຸນ &amp; ອ່ານຄ່າຫຼົວຜານແກ້ໄຂຂົງຫວາງ (ທ່ານ ດາວອນ)
               </h3>
             </div>
             <span class="text-xs bg-red-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ເສັ້ນສູນສິ້ນ: ຂົງຫວາງ (Kong Wang 空亡)</span>
           </div>
 
           <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
-            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_10_door_tilting_cure.png', 'ຮູບທີ 3.10: ວິທີໝຸນເຂັມທິດ, ແປນບິດມຸມປະຕູ ແລະ ການໄລ່ກວ້າດາວເຫີນແກ້ໄຂເສັ້ນຂົງຫວາງ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ')">
-              <img src="../img/lao/fig_3_10_door_tilting_cure.png" alt="Case Study 5 Door Tilting Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case5_luopan_macro.png', 'ຮູບທີ 3.10-A: ເຕັກນິກການບິດໝຸນຫຼົວຜານແກ້ໄຂເສັ້ນມະຫາຂົງຫວາງ 22.5° → 28.5° ໂຈ່ວ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ')">
+              <img src="../img/lao/fig_3_case5_luopan_macro.png" alt="Case Study 5 Luopan Macro Plate" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
             </div>
-            <figcaption class="text-xs sm:text-sm font-bold text-red-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.10: ວິທີໝຸນເຂັມທິດ, ແປນບິດມຸມປະຕູ ແລະ ການໄລ່ກວ້າດາວເຫີນແກ້ໄຂເສັ້ນຂົງຫວາງ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ (22.5° → 28.5° Chou Mountain)</figcaption>
+            <figcaption class="text-xs sm:text-sm font-bold text-red-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.10-A: ເຕັກນິກການບິດໝຸນຫຼົວຜານແກ້ໄຂເສັ້ນມະຫາຂົງຫວາງ 22.5° → 28.5° ໂຈ່ວ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ</figcaption>
+          </figure>
+        </div>
+
+        <!-- Case 5: Part 2 - Architectural Floorplan & 9 Palaces -->
+        <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-red-600 shadow-md flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-red-600/40 pb-2.5 mb-2">
+            <div>
+              <span class="text-[10px] font-bold text-red-700 uppercase tracking-widest block">CASE STUDY 5 • PART 2: ARCHITECTURAL BLUEPRINT &amp; 9 PALACES</span>
+              <h3 class="font-black text-red-950 text-base sm:text-lg">
+                🚪 ກໍລະນີທີ 5 (ພາກ 2): ແປນເຮືອນບິດມຸມປະຕູ +6.0° ຊ້ອນທັບຜັງດາວໃໝ່ (ທ່ານ ດາວອນ)
+              </h3>
+            </div>
+            <span class="text-xs bg-red-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ບິດປະຕູ +6.0° (Cured 100%)</span>
+          </div>
+
+          <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case5_door_tilting_floorplan.png', 'ຮູບທີ 3.10-B: ແປນເຮືອນບິດມຸມປະຕູ +6.0° (ຖອຍຮົ້ນ 15.7 cm) ຊ້ອນທັບຜັງດາວໃໝ່ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ')">
+              <img src="../img/lao/fig_3_case5_door_tilting_floorplan.png" alt="Case Study 5 Door Tilting Floorplan Plate" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <figcaption class="text-xs sm:text-sm font-bold text-red-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.10-B: ແປນເຮືອນບິດມຸມປະຕູ +6.0° (ຖອຍຮົ້ນ 15.7 cm) ຊ້ອນທັບຜັງດາວໃໝ່ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ (22.5° → 28.5° Chou Mountain)</figcaption>
           </figure>
         </div>
 

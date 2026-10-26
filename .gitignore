@@ -58,6 +58,7 @@
 !/script/lao_master_chapters/**
 !/script/compile_lao_master_codex.js
 !/script/generate_ch3_masterclass*.js
+!/script/generate_ch3_separated_plates.js
 
 # Whitelist /pahawh web app
 !/pahawh/
