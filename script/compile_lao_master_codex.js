@@ -21,9 +21,9 @@ function renderBookFig(file, caption) {
   const targetFile = fs.existsSync(path.resolve(rootDir, laoRelativePath)) ? laoRelativePath : file;
 
   return `
-    <figure class="book-figure my-5 text-center bg-stone-50 border border-stone-200 rounded-xl p-3 shadow-sm">
+    <figure class="book-figure my-3.5 text-center bg-stone-50/90 border border-stone-200 rounded-xl p-3 shadow-sm">
       <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block" onclick="openZoomInspector('../${targetFile}', '${caption.replace(/'/g, "\\'")}')">
-        <img src="../${targetFile}" alt="${caption}" class="max-h-64 sm:max-h-72 mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+        <img src="../${targetFile}" alt="${caption}" class="max-h-52 sm:max-h-56 mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
       </div>
       <figcaption class="text-xs font-semibold text-stone-600 mt-2 italic px-2 leading-relaxed">${caption}</figcaption>
     </figure>
@@ -406,69 +406,96 @@ function paginateLaoContent(chapters) {
       page: startPage
     });
 
-    const targetLen = 1300;
-    const parts = ch.html.split(/(?=<h2|<figure|<div class="table-responsive|<div class="book-table|<div class="doc-callout|<div class="book-box|<h3|<section)/i);
-    
-    let currentContent = '';
-    let approxLen = 0;
+    // Split on semantic blocks: h2, h3, figure, table, callouts
+    // Crucially: DO NOT split on <section> so chapter titles and opening sections flow naturally together!
+    const parts = ch.html.split(/(?=<h2|<figure|<div class="table-responsive|<div class="book-table|<table|<div class="doc-callout|<div class="book-box|<h3)/i);
 
-    parts.forEach(part => {
-      const trimmed = part.trim();
-      if (!trimmed) return;
+    const totalFigs = (ch.html.match(/<figure|<img/gi) || []).length;
+    const isOddFigs = totalFigs % 2 !== 0;
 
-      const isFig = trimmed.startsWith('<figure') || trimmed.includes('<img');
-      const isTable = trimmed.startsWith('<div class="table-responsive') || trimmed.startsWith('<div class="book-table') || trimmed.includes('<table');
+    let currentParts = [];
+    let curPlainLen = 0;
+    let curFigCount = 0;
+    let curTableCount = 0;
 
-      if (approxLen > 450 && (approxLen + trimmed.length > targetLen || isFig || isTable)) {
-        if (currentContent.trim()) {
-          pages.push({
-            chId: ch.id,
-            chTitle: ch.title,
-            html: `
-              <div class="chapter-page p-4 sm:p-6 md:p-8 flex flex-col justify-between h-full text-stone-800 leading-relaxed text-xs sm:text-sm">
-                <div class="page-content overflow-y-auto pr-1">
-                  ${currentContent}
-                </div>
-              </div>
-            `
-          });
-          currentContent = '';
-          approxLen = 0;
-        }
-      }
+    function getPlain(str) {
+      return str.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    }
 
-      currentContent += '\n' + trimmed;
-      approxLen += trimmed.length;
-
-      if ((isFig || isTable) && approxLen > 650) {
-        pages.push({
-          chId: ch.id,
-          chTitle: ch.title,
-          html: `
-            <div class="chapter-page p-4 sm:p-6 md:p-8 flex flex-col justify-between h-full text-stone-800 leading-relaxed text-xs sm:text-sm">
-              <div class="page-content overflow-y-auto pr-1">
-                ${currentContent}
-              </div>
-            </div>
-          `
-        });
-        currentContent = '';
-        approxLen = 0;
-      }
-    });
-
-    if (currentContent.trim()) {
+    function pushPage() {
+      if (currentParts.length === 0) return;
+      const html = currentParts.join('\n');
       pages.push({
         chId: ch.id,
         chTitle: ch.title,
         html: `
           <div class="chapter-page p-4 sm:p-6 md:p-8 flex flex-col justify-between h-full text-stone-800 leading-relaxed text-xs sm:text-sm">
             <div class="page-content overflow-y-auto pr-1">
-              ${currentContent}
+              ${html}
             </div>
           </div>
         `
       });
+      currentParts = [];
+      curPlainLen = 0;
+      curFigCount = 0;
+      curTableCount = 0;
+    }
+
+    parts.forEach((part) => {
+      const trimmed = part.trim();
+      if (!trimmed) return;
+
+      const partPlain = getPlain(trimmed);
+      const isFig = trimmed.includes('<figure') || trimmed.includes('<img');
+      const isTable = trimmed.includes('<table') || trimmed.includes('class="book-table') || trimmed.includes('class="table-responsive');
+      const isHeading = /^<(h1|h2|h3)/i.test(trimmed);
+
+      if (currentParts.length > 0) {
+        // Never break if current page is just the chapter title (less than 400 plain characters)
+        const isChapterTitleOnly = (curPlainLen < 400 && currentParts.length === 1);
+
+        if (!isChapterTitleOnly) {
+          // Rule A: Two figures already on this page -> push before 3rd figure or next block
+          if (curFigCount >= 2) {
+            pushPage();
+          }
+          // Rule B: One figure already on this page + substantial text (> 450 chars) -> push
+          else if (curFigCount === 1 && curPlainLen > 450 && (isFig || isTable || isHeading || partPlain.length > 300)) {
+            pushPage();
+          }
+          // Rule C: We have a table and already have text > 500 chars -> push
+          else if (curTableCount >= 1 && curPlainLen > 500) {
+            pushPage();
+          }
+          // Rule D: Upcoming is a figure
+          else if (isFig) {
+            // If total figures is odd and we have modest text (<= 850 chars), attach 1st figure to this text page so remaining figures pair up
+            if (isOddFigs && curFigCount === 0 && curPlainLen <= 850) {
+              // keep together
+            } else if (curPlainLen > 500) {
+              pushPage();
+            }
+          }
+          // Rule E: Major heading (h2) and current page is already well-filled (> 950 chars)
+          else if (isHeading && curPlainLen > 950) {
+            pushPage();
+          }
+          // Rule F: Content capacity limit (~1850 plain chars) and current page is already substantial (> 700 chars)
+          else if (curPlainLen > 700 && (curPlainLen + partPlain.length > 1850)) {
+            pushPage();
+          }
+        }
+      }
+
+      currentParts.push(trimmed);
+      curPlainLen += partPlain.length;
+      if (isFig) curFigCount++;
+      if (isTable) curTableCount++;
+    });
+
+    if (currentParts.length > 0) {
+      pushPage();
     }
   });
 
