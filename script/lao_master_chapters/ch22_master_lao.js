@@ -1,71 +1,75 @@
 /**
  * ch22_master_lao.js
- * ບົດທີ 22: ເຄັດລັບປະຕູວັງຫຼວງ (Cheng Men Jue) ແລະ ນ້ຳມະຫາເສດຖີ
+ * ບົດທີ 22: ສູດປະຕູວັງຫຼວງ (Castle Gate Formula - Cheng Men Jue)
  * (Comprehensive Masterclass Edition - Ultra In-Depth)
  */
 
 module.exports = {
   id: "ch22",
-  title: "ບົດທີ 22: ເຄັດລັບປະຕູວັງຫຼວງ ແລະ ນ້ຳມະຫາເສດຖີ",
+  title: "ບົດທີ 22: ສູດປະຕູວັງຫຼວງ",
   html: `
     <div class="chapter-content space-y-6">
       <div class="border-b-2 border-amber-800/40 pb-4 mb-6">
-        <div class="text-xs font-bold uppercase tracking-widest text-amber-700">ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ • ພາກທີ 7: ຄັງແຜນຜັງດາວເຫີນຍຸກ 9 ສະບັບສົມບູນ</div>
-        <h1 class="doc-h1 text-2xl sm:text-3xl font-black text-amber-950 mt-1">ບົດທີ 22: ເຄັດລັບປະຕູວັງຫຼວງ (Cheng Men Jue / 城门诀) ແລະ ນ້ຳມະຫາເສດຖີ</h1>
-        <p class="text-sm font-semibold text-amber-900/80">ເຄັດລັບຊັ້ນສູງສຸດແຫ່ງສຳນັກສຽນຄົງ: ສູດເປີດປະຕູຂ້າງດູດຊັບ ແລະ ການກະຕຸ້ນນ້ຳມະຫາເສດຖີຍຸກ 9</p>
+        <div class="text-xs font-bold uppercase tracking-widest text-amber-700">ຄຳພີສານຸກົມຮວງຈຸ້ຍດາວເຫີນ • ພາກທີ 6: ວິຊາລັບຂັ້ນສູງສຸດ</div>
+        <h1 class="doc-h1 text-2xl sm:text-3xl font-black text-amber-950 mt-1">ບົດທີ 22: ສູດປະຕູວັງຫຼວງ (Castle Gate Formula - Cheng Men Jue 城门诀)</h1>
+        <p class="text-sm font-semibold text-amber-900/80">ເຄັດວິຊາປະຕູສຸກເສີນ, ເງື່ອນໄຂສັກສິດ 3 ປະການ, ຫຼັກການເຈີ້ງເສີນ-ຫຼິງເສີນ ແລະ ການກະຕຸ້ນໂຊກລາບມະຫາສານໃນຍຸກ 9</p>
       </div>
 
-      <!-- Section 1: Intro to Castle Gate -->
-      <section class="space-y-3">
-        <h2 class="doc-h2 text-lg sm:text-xl font-bold text-amber-900 border-l-4 border-amber-600 pl-3">1. ປະຕູວັງຫຼວງ (Cheng Men Jue 城门诀) ແມ່ນຫຍັງ?</h2>
+      <!-- Section 1: Military Origin & Theory -->
+      <section class="space-y-4">
+        <h2 class="doc-h2 text-lg sm:text-xl font-bold text-amber-900 border-l-4 border-amber-600 pl-3">1. ຕົ້ນກຳເນີດ ແລະ ຫຼັກການຂອງສູດປະຕູວັງຫຼວງ (Castle Gate Theory)</h2>
         <p class="doc-p text-justify leading-relaxed">
-          ໃນສະໄໝບູຮານ, ກຳແພງເມືອງຫຼວງຈະມີປະຕູໃຫຍ່ຢູ່ໃຈກາງ ແລະ ມີ <strong>"ປະຕູປ້ອມຄ້າຍ / ປະຕູຂ້າງ" (Castle Gate)</strong> ຢູ່ສອງຟາກຂ້າງ. ເມື່ອຂ້າສຶກບຸກ ຫຼື ນ້ຳຖ້ວມ ປະຕູຂ້າງນີ້ຈະເປັນທາງລອດທີ່ປອດໄພທີ່ສຸດ.
+          ໃນສະໄໝບູຮານ, ປ້ອມປາການເມືອງຫຼວງຂອງຈັກກະພັດ ຈະມີປະຕູໃຫຍ່ດ້ານໜ້າສຳລັບການສັນຈອນປົກກະຕິ. ແຕ່ຖ້າເກີດສົງຄາມ ຫຼື ປະຕູໃຫຍ່ຖືກປິດລ້ອມ: <strong>"ປະຕູວັງຫຼວງ" (Cheng Men 城门)</strong> ເຊິ່ງເປັນປະຕູລັບດ້ານຂ້າງ ຈະຖືກເປີດອອກເພື່ອລຳລຽງສະບຽງອາຫານ, ກອງກຳລັງເສີມ, ແລະ ເສັ້ນທາງຫຼົບໜີສຸກເສີນ!
         </p>
-        <div class="p-3.5 bg-emerald-50 rounded-xl border border-emerald-300 text-xs text-stone-800 leading-relaxed">
-          <p class="font-bold text-emerald-950 text-sm">ຄຸນຄ່າໃນວິຊາຮວງຈຸ້ຍ:</p>
-          <p class="mt-1">
-            ຖ້າເຮືອນຫຼັງໃດຕິດຜັງທີ່ດ້ອຍໂຊກລາບ ຫຼື ປະຕູໃຫຍ່ບໍ່ສາມາດຮັບພະລັງດາວ 9 ໄດ້ໂດຍກົງ, ອາຈານຮວງຈຸ້ຍຈະໃຊ້ <strong>"ສູດປະຕູວັງຫຼວງ" (Cheng Men Jue)</strong> ເພື່ອເຈາະເປີດປະຕູຂ້າງ (Side Door) ຫຼື ວາງນ້ຳພຸໃນຕຳແໜ່ງປະຕູວັງຫຼວງ ເຊິ່ງຈະຊ່ວຍ <strong>ດູດເອົາພະລັງໂຊກລາບອັນມະຫາສານເຂົ້າມາທັນທີ</strong> ປຽບເໝືອນການຕໍ່ທໍ່ດູດຊັບໂດຍກົງ!
+        <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-300 text-xs text-stone-800 space-y-2 leading-relaxed">
+          <p class="font-bold text-emerald-950 text-sm">ໃນວິຊາຮວງຈຸ້ຍດາວເຫີນ:</p>
+          <p class="doc-p text-justify">
+            ຖ້າປະຕູໃຫຍ່ໜ້າເຮືອນ (Facing Palace) ຕົກຢູ່ໃນຕຳແໜ່ງດາວທີ່ເສື່ອມຖອຍ ຫຼື ບໍ່ສາມາດເປີດຮັບໂຊກລາບໄດ້ຢ່າງເຕັມເມັດເຕັມໜ່ວຍ, ອາຈານຮວງຈຸ້ຍຈະໃຊ້ <strong>"ສູດປະຕູວັງຫຼວງ"</strong> ເພື່ອຊອກຫາ <strong>ປະຕູຮອງ (Auxiliary Door) ຢູ່ດ້ານຂ້າງ</strong> ທີ່ສາມາດດຶງດູດເອົາພະລັງງານ <em>"ດາວປະຈຳຍຸກທີ່ຮຸ່ງເຮືອງສູງສຸດ"</em> ເຂົ້າມາສູ່ເຮືອນໄດ້ຢ່າງວ່ອງໄວ ເຮັດໃຫ້ທຸລະກິດຟື້ນຕົວຢ່າງກ້າວກະໂດດ!
           </p>
         </div>
       </section>
 
-      <!-- Section 2: Castle Gate Formula -->
-      <section class="space-y-3">
-        <h2 class="doc-h2 text-lg sm:text-xl font-bold text-amber-900 border-l-4 border-amber-600 pl-3">2. ເງື່ອນໄຂສັກສິດ 3 ປະການໃນການໃຊ້ປະຕູວັງຫຼວງ</h2>
-        
-        <div class="space-y-3 text-xs">
-          <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
-            <h3 class="font-bold text-amber-950 text-sm">1. ຕ້ອງມີຈຸດລວມກະແສນ້ຳ ຫຼື ທາງແຍກ (San Cha Kou 三叉口):</h3>
-            <p class="text-stone-700 mt-1 leading-relaxed">
-              ຕຳແໜ່ງປະຕູວັງຫຼວງ (ຢູ່ເບື້ອງຊ້າຍ ຫຼື ຂວາ ຂອງທິດຫັນໜ້າ 45 ອົງສາ) ຕ້ອງມີ <strong>ສາຍນ້ຳມາລວມກັນ, ວົງວຽນ, ສີ່ແຍກ, ຫຼື ທາງສາມແຍກ</strong> ທີ່ມີລົດແລ່ນຜ່ານຕະຫຼອດເວລາ ເພື່ອກວນພະລັງງານໃຫ້ເຄື່ອນໄຫວ.
+      <!-- Section 2: Three Sacred Conditions -->
+      <section class="space-y-4">
+        <h2 class="doc-h2 text-lg sm:text-xl font-bold text-amber-900 border-l-4 border-amber-600 pl-3">2. ເງື່ອນໄຂສັກສິດ 3 ປະການຂອງປະຕູວັງຫຼວງ (Three Sacred Conditions)</h2>
+        <p class="doc-p text-justify leading-relaxed">
+          ການເປີດປະຕູວັງຫຼວງບໍ່ແມ່ນຈະເປີດໄດ້ຕາມໃຈມັກ! ຕ້ອງຜ່ານການກວດສອບ <strong>3 ເງື່ອນໄຂທີ່ເຄັ່ງຄັດທີ່ສຸດ</strong>:
+        </p>
+
+        <div class="space-y-3">
+          <div class="p-4 bg-stone-50 rounded-xl border-l-4 border-amber-700 shadow-sm space-y-1">
+            <h3 class="font-bold text-amber-950 text-sm">ເງື່ອນໄຂທີ 1: ຕ້ອງເປັນຄູ່ເລກຮືໂຕ້ (He Tu Numerical Pairing)</h3>
+            <p class="text-xs text-stone-700 leading-relaxed">
+              ທິດປະຕູວັງຫຼວງຕ້ອງເປັນ 1 ໃນ 2 ວັງທີ່ຢູ່ຕິດກັບທິດໜ້າເຮືອນ ແລະ ເມື່ອນຳເລກກົ້ວດັ້ງເດີມຂອງທິດນັ້ນມາຈັບຄູ່ກັບເລກກົ້ວໜ້າເຮືອນ ຕ້ອງໄດ້ຄູ່ເລກຮືໂຕ້: <strong>1-6 (ນ້ຳ), 2-7 (ໄຟ), 3-8 (ໄມ້), ຫຼື 4-9 (ທອງ)</strong> ເທົ່ານັ້ນ! ເອີ້ນວ່າ <em>"ປະຕູວັງຫຼວງແທ້" (Zheng Cheng Men 正城门)</em>.
             </p>
           </div>
 
-          <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
-            <h3 class="font-bold text-amber-950 text-sm">2. ຄູ່ສົມພົງຕາມຫຼັກຮົ່ວຖູ (He Tu Pairing):</h3>
-            <p class="text-stone-700 mt-1 leading-relaxed">
-              ທິດປະຕູວັງຫຼວງ ຕ້ອງມີຄວາມສຳພັນແບບ <strong>ຮົ່ວຖູ (1-6, 2-7, 3-8, 4-9)</strong> ກັບທິດຫັນໜ້າຂອງເຮືອນ. ຕົວຢ່າງ: ຖ້າໜ້າເຮືອນຫັນທິດໃຕ້ (Li - 9), ປະຕູວັງຫຼວງຈະຕ້ອງເປັນທິດ Xun (SE - 4) ເພາະ 4 ແລະ 9 ເປັນຄູ່ມິດຮົ່ວຖູທາດຄຳ.
+          <div class="p-4 bg-stone-50 rounded-xl border-l-4 border-amber-700 shadow-sm space-y-1">
+            <h3 class="font-bold text-amber-950 text-sm">ເງື່ອນໄຂທີ 2: ການທົດສອບການເຫີນດາວ (Flying Star Parity Test)</h3>
+            <p class="text-xs text-stone-700 leading-relaxed">
+              ເມື່ອນຳເອົາດາວຍຸກທີ່ຕົກຢູ່ທິດປະຕູວັງຫຼວງນັ້ນ ມາວາງລົງສູນກາງ ແລ້ວກວດສອບຂົ້ວ ຢິນ/ຢາງ ຕາມສາຍມັງກອນ: <strong>ດາວໜ່ວຍນັ້ນຈະຕ້ອງ "ເຫີນເດີນໜ້າ" (Shun Fei / +) ເທົ່ານັ້ນ</strong>! ເພື່ອໃຫ້ດາວທີ່ຮຸ່ງເຮືອງປະຈຳຍຸກ (ເລກ 9 ໃນຍຸກ 9) ບິນໄປຕົກຢູ່ທີ່ປະຕູວັງຫຼວງນັ້ນພໍດີ! ຖ້າເຫີນຖອຍຫຼັງ (-) ແລ້ວໄດ້ດາວຮ້າຍ ຫ້າມເປີດເດັດຂາດ.
             </p>
           </div>
 
-          <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
-            <h3 class="font-bold text-amber-950 text-sm">3. ດາວນ້ຳຕ້ອງເປັນດາວຮຸ່ງເຮືອງ (Wang Xing 旺星):</h3>
-            <p class="text-stone-700 mt-1 leading-relaxed">
-              ເມື່ອນຳເອົາເລກຂອງປະຕູວັງຫຼວງມາບິນທົດສອບ, ດາວທີ່ມາຕົກຢູ່ປະຕູວັງຫຼວງນັ້ນ <strong>ຕ້ອງເປັນດາວ 9 (ໃນຍຸກ 9) ຫຼື ດາວ 1</strong> ຈຶ່ງຈະສາມາດເປີດໃຊ້ໄດ້! ຖ້າບິນແລ້ວໄດ້ດາວ 5 ຫຼື 2 ຫ້າມເປີດເດັດຂາດ!
+          <div class="p-4 bg-stone-50 rounded-xl border-l-4 border-amber-700 shadow-sm space-y-1">
+            <h3 class="font-bold text-amber-950 text-sm">ເງື່ອນໄຂທີ 3: ພູມສັນຖານຕົວຈິງຕ້ອງມີ "ນ້ຳ ຫຼື ທາງແຍກ" (Physical Water Junction)</h3>
+            <p class="text-xs text-stone-700 leading-relaxed">
+              ໃນໂລກກາຍະພາບ, ຕຳແໜ່ງປະຕູວັງຫຼວງນັ້ນ <strong>ຕ້ອງມີສາຍນ້ຳມາບັນຈົບກັນ, ໂຄ້ງນ້ຳ, ວົງວຽນ, ຫຼື ສີ່ແຍກຖະໜົນໃຫຍ່</strong> ທີ່ມີການເຄື່ອນໄຫວຂອງລົດລາພາຫະນະຢ່າງຄຶກຄື້ນ ເພື່ອເປັນຕົວຈຸດຊະນວນພະລັງງານ!
             </p>
           </div>
         </div>
       </section>
 
-      <!-- Section 3: Activating Wealth Water in Period 9 -->
-      <section class="space-y-3">
-        <h2 class="doc-h2 text-lg sm:text-xl font-bold text-amber-900 border-l-4 border-amber-600 pl-3">3. ການຈັດວາງ "ນ້ຳມະຫາເສດຖີ" ໃນຍຸກ 9 (Period 9 Water Activation)</h2>
-        <div class="p-3.5 bg-blue-50 rounded-xl border border-blue-200 text-xs text-stone-800 space-y-2 leading-relaxed">
-          <p class="font-bold text-blue-950 text-sm">ກົດຫຼັກ: "ເຈິ້ງເສີນ ຄວບຄຸມພູ, ຫຼິງເສີນ ຄວບຄຸມນ້ຳ" (Zheng Shen Jian Shan, Ling Shen Jian Shui):</p>
-          <ul class="list-disc pl-5 space-y-1">
-            <li><strong>ເຈິ້ງເສີນຍຸກ 9 (Zheng Shen 正神):</strong> ຄື <strong>ທິດໃຕ້ (Li / South)</strong>. ທິດໃຕ້ເປັນທິດເຈົ້າພາບ ຕ້ອງການ <strong>"ພູ" (ຄວາມໜັກແໜ້ນ, ຝາທຶບ, ຕຶກສູງ)</strong> ເພື່ອຄຸ້ມຄອງສຸຂະພາບ ແລະ ບາຣະມີ. <em>ຫ້າມມີສະນ້ຳຂະໜາດໃຫຍ່ຢູ່ທິດໃຕ້ເດັດຂາດ ເພາະນ້ຳຈະມອດໄຟຍຸກ 9!</em></li>
-            <li><strong>ຫຼິງເສີນຍຸກ 9 (Ling Shen 零神 - ທິດນ້ຳມະຫາເສດຖີ):</strong> ຄື <strong>ທິດເໜືອ (Kan / North)</strong>. ທິດເໜືອຢູ່ກົງກັນຂ້າມ 180 ອົງສາກັບຍຸກ 9, ເປັນຕຳແໜ່ງນ້ຳມະຫາໂຊກລາບສູງສຸດຂອງ 20 ປີນີ້! ການຕັ້ງ <strong>ສະລອຍນ້ຳ, ອ່າງນ້ຳພຸໃຫຍ່, ຫຼື ໜອງປາຄາບ ຢູ່ທິດເໜືອ</strong> ຈະກະຕຸ້ນຄວາມຮັ່ງມີຢ່າງມະຫາສານຕະຫຼອດຍຸກ 9 (2024–2043)!</li>
-            <li><strong>ຈ້າວເສີນຍຸກ 9 (Zhao Shen 照神 - ທິດນ້ຳຮອງ):</strong> ຄື <strong>ທິດ SE (Xun)</strong>, ສາມາດວາງນ້ຳພຸຂະໜາດກາງເພື່ອເສີມໂຊກລາບໄດ້ເຊັ່ນກັນ.</li>
+      <!-- Section 3: Period 9 Zheng Shen & Ling Shen Formula -->
+      <section class="space-y-4">
+        <h2 class="doc-h2 text-lg sm:text-xl font-bold text-amber-900 border-l-4 border-amber-600 pl-3">3. ສູດເຈີ້ງເສີນ ແລະ ຫຼິງເສີນ ໃນຍຸກ 9 (Zheng Shen & Ling Shen)</h2>
+        <div class="p-4 bg-amber-50 rounded-xl border border-amber-300 text-xs text-stone-800 space-y-2 leading-relaxed">
+          <p class="font-bold text-amber-950 text-sm">
+            🌊 ຫຼັກການຄຳພີ: "ເຈີ້ງເສີນເຫັນພູ, ຫຼິງເສີນເຫັນນ້ຳ" (Zheng Shen Jian Shan, Ling Shen Jian Shui)
+          </p>
+          <ul class="list-disc pl-5 space-y-1.5 leading-relaxed text-stone-700">
+            <li><strong>ເຈີ້ງເສີນ (Zheng Shen 正神 - ພະລັງງານຫຼັກ):</strong> ໃນຍຸກ 9 ຕຳແໜ່ງເຈີ້ງເສີນຄື <strong>ທິດໃຕ້ (Li 离 9)</strong>. <em>ທິດໃຕ້ຕ້ອງການ "ພູເຂົາ" ຫຼື ອາຄານສູງທີ່ໜັກແໜ້ນ (ຫ້າມມີນ້ຳເດັດຂາດ)</em> ເພື່ອຄຸ້ມຄອງສຸຂະພາບ ແລະ ບາຣະມີ.</li>
+            <li><strong>ຫຼິງເສີນ (Ling Shen 零神 - ພະລັງງານໂຊກລາບ):</strong> ຢູ່ກົງກັນຂ້າມ 180 ອົງສາສະເໝີ. ໃນຍຸກ 9 ຕຳແໜ່ງຫຼິງເສີນຄື <strong>ທິດເໜືອ (Kan 坎 1)</strong>. <em>ທິດເໜືອຕ້ອງການ "ນ້ຳເຄື່ອນໄຫວ, ສະລອຍນ້ຳ, ທະເລສາບ, ຫຼື ປະຕູໃຫຍ່"</em>! ຖ້າທິດເໜືອມີນ້ຳ ຈະຮັ່ງມີມະຫາສານຕະຫຼອດ 20 ປີຂອງຍຸກ 9!</li>
           </ul>
         </div>
       </section>
