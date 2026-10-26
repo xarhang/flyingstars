@@ -22,11 +22,11 @@ function renderBookFig(file, caption) {
   const targetFile = fs.existsSync(path.resolve(rootDir, laoRelativePath)) ? laoRelativePath : file;
 
   return `
-    <figure class="book-figure my-3.5 text-center bg-stone-50/90 border border-stone-200 rounded-xl p-3 shadow-sm">
+    <figure class="book-figure my-2 text-center bg-stone-50/90 border border-stone-200 rounded-xl p-2 sm:p-2.5 shadow-sm">
       <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block" onclick="openZoomInspector('../${targetFile}', '${caption.replace(/'/g, "\\'")}')">
-        <img src="../${targetFile}" alt="${caption}" class="max-h-52 sm:max-h-56 mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+        <img src="../${targetFile}" alt="${caption}" class="max-h-40 sm:max-h-44 mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
       </div>
-      <figcaption class="text-xs font-semibold text-stone-600 mt-2 italic px-2 leading-relaxed">${caption}</figcaption>
+      <figcaption class="text-[11px] sm:text-xs font-semibold text-stone-600 mt-1 italic px-2 leading-tight">${caption}</figcaption>
     </figure>
   `;
 }
