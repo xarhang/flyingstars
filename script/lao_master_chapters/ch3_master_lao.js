@@ -63,6 +63,14 @@ module.exports = {
           ການວັດແທກອົງສາໃນວິຊາດາວເຫີນຮຽກຮ້ອງຄວາມຊັດເຈນລະດັບ 0.5 ອົງສາ ເພາະການຜິດພາດພຽງເລັກນ້ອຍອາດປ່ຽນຈາກ "ດາວຮັ່ງມີ" ກາຍເປັນ "ດາວໂຈນປົ້ນ" ຫຼື ຕົກ "ເສັ້ນສູນສິ້ນ" (Kong Wang) ໄດ້ທັນທີ. ຂັ້ນຕອນມາດຕະຖານມີດັ່ງນີ້:
         </p>
 
+        <!-- Figure 3.6 Posture -->
+        <figure class="book-figure my-3 text-center bg-stone-50/90 border border-stone-200 rounded-xl p-3 sm:p-4 shadow-sm flex flex-col items-center justify-center">
+          <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_6_posture_holding.png', 'ຮູບທີ 3.6: ທ່າຢືນ ແລະ ການຖືຈານເຂັມທິດຫຼົວຜານພາກສະໜາມ (Posture &amp; Luopan Holding Protocol)')">
+            <img src="../img/lao/fig_3_6_posture_holding.png" alt="Posture &amp; Luopan Holding Protocol" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+          </div>
+          <figcaption class="text-xs sm:text-sm font-bold text-amber-950 mt-2.5 px-3 leading-relaxed text-center">ຮູບທີ 3.6: ທ່າຢືນ ແລະ ການຖືຈານເຂັມທິດຫຼົວຜານພາກສະໜາມ (Posture &amp; Luopan Holding Protocol)</figcaption>
+        </figure>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 my-3 text-xs">
           <div class="p-3.5 bg-stone-900 text-stone-100 rounded-xl border border-amber-500/30 space-y-2">
             <h3 class="font-bold text-amber-400 text-sm flex items-center gap-2">
@@ -70,9 +78,10 @@ module.exports = {
               ທ່າຢືນ ແລະ ການຖືຫຼົວຜານ (Posture & Grip)
             </h3>
             <p class="text-stone-300 leading-relaxed text-justify">
-              • ຢືນແຍກຕີນກວ້າງເທົ່າບ່າ, ຫຼັງຊື່, ຫັນໜ້າໄປທາງທິດທີ່ຕ້ອງການວັດ.<br>
-              • ຖືຈານຫຼົວຜານດ້ວຍສອງມື ໃຫ້ແນບຢູ່ <strong>ລະດັບສາຍບື (ລະດັບແອວ / Dan Tian 丹田)</strong>.<br>
-              • ປັບລະດັບນ້ຳ (Spirit Level) ທີ່ຕິດຢູ່ເທິງຫຼົວຜານໃຫ້ຟອງອາກາດຢູ່ໃຈກາງວົງມົນພໍດີ ເພື່ອໃຫ້ຈານຂະໜານກັບແນວຮາບຂອງໂລກ 100%.
+              • ຢືນແຍກຕີນກວ້າງເທົ່າບ່າ (40–45 cm), ນ້ຳໜັກ 50:50, ຫຼັງຊື່ 90° ຕັ້ງສາກກັບໜ້າດິນ.<br>
+              • ຖືຈານຫຼົວຜານດ້ວຍສອງມື ໃຫ້ແນບຢູ່ <strong>ລະດັບສາຍບື (ລະດັບແອວ / Dan Tian 丹田 100–105 cm)</strong> ຂໍ້ສອກແນບແໜ້ນກັບສອງຂ້າງແອວ.<br>
+              • ປັບລະດັບນ້ຳ (Spirit Level) ໃຫ້ຟອງອາກາດຢູ່ໃຈກາງວົງມົນພໍດີ ເພື່ອໃຫ້ຈານຂະໜານກັບແນວຮາບ 180°.<br>
+              • ສາຍຕາກົ້ມແນມ 45° ສະເພາະຈານເຂັມທິດ ຫ້າມກົ້ມຄໍ ຫຼື ໂນ້ມຕົວ.
             </p>
           </div>
 
@@ -82,7 +91,7 @@ module.exports = {
               ການເລັງເສັ້ນກາບາກ (Cross-Wire Alignment)
             </h3>
             <p class="text-stone-300 leading-relaxed text-justify">
-              • ຫຼົວຜານຈະມີເຊືອກສີແດງ 2 ເສັ້ນຕັດກັນເປັນຮູບກາບາກ <strong>"ທຽນຊິນສືຈື້" (Tian Xin Shi Zi 天心十字)</strong>.<br>
+              • ຫຼົວຜານຈະມີເຊືອກສີແດງ 2 ເສັ້ນຕັດກັນເປັນຮູບກາບາກ <strong>"ທຽນຊິນສືຈື້" (Tian Xin Shi Zi 天心十字)</strong> ຕັດກັນ 90° ພໍດີ.<br>
               • ໃຫ້ແນວຂອບດ້ານໜ້າຂອງຈານສີ່ຫຼ່ຽມ (Wai Pan) ຂະໜານກັບແນວກຳແພງໜ້າເຮືອນ ຫຼື ຂອບປະຕູໃຫຍ່ຢ່າງແນ່ນອນ.<br>
               • ເສັ້ນເຊືອກແນວດັ້ງຈະແທນ <strong>"ແກນນັ່ງ-ຫັນໜ້າ" (Sitting-Facing Axis)</strong> ຂອງເຮືອນ.
             </p>
@@ -95,7 +104,7 @@ module.exports = {
             </h3>
             <p class="text-stone-300 leading-relaxed text-justify">
               • ໃຊ້ນິ້ວໂປ້ມືທັງສອງ ຄ່ອຍໆໝຸນ <strong>ຈານກົມພາຍໃນ (Nei Pan)</strong> ຊ້າໆ ຈົນກວ່າເຂັມແມ່ເຫຼັກສີແດງຈະຢຸດນິ້ງ.<br>
-              • ປັບໃຫ້ປາຍເຂັມແມ່ເຫຼັກທັບຊ້ອນກົງກັບ <strong>ເສັ້ນແດງໃຕ້ທະເລ (Hai Di Xian)</strong> ໂດຍປາຍເຂັມທີ່ມີຮູ/ຈຸດແດງ ຕ້ອງກົງກັບຈຸດແດງສອງຈຸດຂອງທິດໃຕ້ພໍດີ.<br>
+              • ປັບໃຫ້ປາຍເຂັມແມ່ເຫຼັກທັບຊ້ອນກົງກັບ <strong>ເສັ້ນແດງໃຕ້ທະເລ (Hai Di Xian)</strong> ໂດຍປາຍເຂັມທີ່ມີຮູ/ວົງແຫວນແດງ ຕ້ອງກົງກັບຈຸດແດງສອງຈຸດຂອງທິດໃຕ້ (180°) ພໍດີ.<br>
               • ເມື່ອເຂັມເຂົ້າລັອກແລ້ວ ຫ້າມຂະຫຍັບມືອີກ.
             </p>
           </div>
@@ -113,6 +122,14 @@ module.exports = {
           </div>
         </div>
 
+        <!-- Figure 3.7 Needle Calibration -->
+        <figure class="book-figure my-3 text-center bg-stone-50/90 border border-stone-200 rounded-xl p-3 sm:p-4 shadow-sm flex flex-col items-center justify-center">
+          <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_7_tianchi_alignment.png', 'ຮູບທີ 3.7: ການປັບເຂັມແມ່ເຫຼັກໃຫ້ລົງລັອກສະລອຍສະຫວັນ (Tian Chi Needle Settling to Hai Di Xian)')">
+            <img src="../img/lao/fig_3_7_tianchi_alignment.png" alt="Tian Chi Needle Settling to Hai Di Xian" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+          </div>
+          <figcaption class="text-xs sm:text-sm font-bold text-amber-950 mt-2.5 px-3 leading-relaxed text-center">ຮູບທີ 3.7: ການປັບເຂັມແມ່ເຫຼັກໃຫ້ລົງລັອກສະລອຍສະຫວັນ (Tian Chi Needle Settling to Hai Di Xian)</figcaption>
+        </figure>
+
         <!-- 3-Point Triangulation -->
         <div class="p-4 bg-amber-50 rounded-xl border border-amber-300 space-y-2 text-xs">
           <h3 class="font-bold text-amber-950 text-sm">📐 ຫຼັກການວັດແທກ 3 ຈຸດແບບສາມຫຼ່ຽມ (3-Point Triangulation Protocol):</h3>
@@ -127,7 +144,7 @@ module.exports = {
               <strong>ຈຸດ B (ກາງເດີ່ນບ້ານ):</strong> ຖອຍອອກມາ 3–5 ແມັດ ໃນຈຸດທີ່ໂລ່ງແຈ້ງປອດເຫຼັກ ແລະ ສາຍໄຟ.
             </div>
             <div class="p-2.5 bg-white rounded border border-amber-200 shadow-xs">
-              <strong>ຈຸດ C (ແນວກຳແພງຮົ້ວ/ຖະໜົນ):</strong> ວັດທຽບແນວສາຍທາງໃຫຍ່ ແລະ ແນວສັນຫຼັງຄາເຮືອນ.
+              <strong>ຈຸດ C (ແນວກຳແພງຮົ້ວ/ຖະໜົນ):</strong> ວັດທຽບແນວສາຍທາງໃຫຍ່ ແລະ ແນວສັນຫຼັງຄາເຮືອນ (9.0 ແມັດ).
             </div>
           </div>
           <p class="text-[11px] text-amber-900 font-semibold mt-1">
@@ -143,6 +160,14 @@ module.exports = {
           ແຕ່ລະພູເຂົາໃນ 24 ທິດເຂົາ ມີຄວາມກວ້າງພຽງ <strong>15 ອົງສາ</strong> (360° ÷ 24 = 15°). ໃນທາງວິຊາດາວເຫີນຂັ້ນສູງ, 15 ອົງສານີ້ ຖືກແບ່ງອອກເປັນ 3 ລະດັບຄວາມປອດໄພທີ່ຊິນແສຕ້ອງກວດສອບຢ່າງເຂັ້ມງວດ:
         </p>
 
+        <!-- Figure 3.9 Degree Boundaries -->
+        <figure class="book-figure my-3 text-center bg-stone-50/90 border border-stone-200 rounded-xl p-3 sm:p-4 shadow-sm flex flex-col items-center justify-center">
+          <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_9_degree_boundaries.png', 'ຮູບທີ 3.9: ແຜນວາດການແບ່ງ 3 ເຂດອົງສາໃນ 1 ພູເຂົາ (Zheng Xian, Jian Xian, Kong Wang)')">
+            <img src="../img/lao/fig_3_9_degree_boundaries.png" alt="Degree Boundaries System" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+          </div>
+          <figcaption class="text-xs sm:text-sm font-bold text-amber-950 mt-2.5 px-3 leading-relaxed text-center">ຮູບທີ 3.9: ແຜນວາດການແບ່ງ 3 ເຂດອົງສາໃນ 1 ພູເຂົາ (Zheng Xian, Jian Xian, Kong Wang)</figcaption>
+        </figure>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3 my-2 text-xs">
           <!-- Zheng Xian -->
           <div class="p-3.5 bg-emerald-50 rounded-xl border-2 border-emerald-500 shadow-sm space-y-1.5">
@@ -151,7 +176,7 @@ module.exports = {
               <span class="px-2 py-0.5 bg-emerald-600 text-white rounded text-[10px] font-bold">ປອດໄພສູງສຸດ</span>
             </div>
             <p class="text-emerald-900 leading-relaxed text-justify">
-              • <strong>ຂອບເຂດ:</strong> ອົງສາຕົກຢູ່ <strong>ກາງພູເຂົາ ບໍ່ບ່ຽງເກີນ ±1.5 ອົງສາ</strong> ຈາກເສັ້ນສູນກາງຂອງພູເຂົານັ້ນ.<br>
+              • <strong>ຂອບເຂດ:</strong> ອົງສາຕົກຢູ່ <strong>ກາງພູເຂົາ ບໍ່ບ່ຽງເກີນ ±1.5 ອົງສາ</strong> ຈາກເສັ້ນສູນກາງຂອງພູເຂົານັ້ນ (ກວ້າງ 3.0°).<br>
               • <strong>ສະຖານະ:</strong> ພະລັງງານຊີ່ບໍລິສຸດ 100%, ບໍ່ມີພະລັງອື່ນມາປົນເປື້ອນ.<br>
               • <strong>ການນຳໃຊ້:</strong> ໃຊ້ຜັງດາວປົກກະຕິ (Xia Po Gua 下卦) ໂດຍກົງ. ເຮືອນຈະຮຸ່ງເຮືອງ, ສຸຂະພາບແຂງແຮງ, ໂຊກລາບສະໝ່ຳສະເໝີ.
             </p>
@@ -186,90 +211,423 @@ module.exports = {
       </section>
 
       <!-- Section 4: 5 Real-World Case Studies with People & Field Calculations -->
-      <section class="space-y-4">
+      <section class="space-y-6">
         <h2 class="doc-h2 text-lg sm:text-xl font-bold text-amber-900 border-l-4 border-amber-600 pl-3">4. ຫ້າກໍລະນີສຶກສາຕົວຈິງ ພ້ອມວິທີວັດແທກ ແລະ ຄິດໄລ່ລະອຽດ (5 Masterclass Field Cases)</h2>
         <p class="doc-p text-justify leading-relaxed">
-          ເພື່ອໃຫ້ເຂົ້າໃຈວິທີການນຳໃຊ້ເຂັມທິດຫຼົວຜານໃນຊີວິດຈິງ, ຕໍ່ໄປນີ້ຄື 5 ກໍລະນີສຶກສາຕົວຈິງ ພ້ອມການຍົກຕົວຢ່າງເຈົ້າຂອງເຮືອນ 5 ທ່ານ ທີ່ປະສົບກັບສະຖານະການແຕກຕ່າງກັນ:
+          ເພື່ອໃຫ້ເຂົ້າໃຈວິທີການນຳໃຊ້ເຂັມທິດຫຼົວຜານໃນຊີວິດຈິງ, ຕໍ່ໄປນີ້ຄື 5 ກໍລະນີສຶກສາຕົວຈິງ ພ້ອມການຍົກຕົວຢ່າງເຈົ້າຂອງເຮືອນ 5 ທ່ານ ທີ່ປະສົບກັບສະຖານະການແຕກຕ່າງກັນ ພ້ອມແຜນວາດເຕັກນິກ ແລະ ຂັ້ນຕອນການຄິດໄລ່ຜັງດາວລະອຽດ:
         </p>
 
-        <div class="space-y-4">
-          <!-- Case 1 -->
-          <div class="p-4 bg-stone-50 rounded-xl border-l-4 border-emerald-600 shadow-sm space-y-2">
-            <div class="flex flex-wrap items-center justify-between gap-1 border-b border-stone-200 pb-2">
-              <h3 class="font-bold text-emerald-950 text-sm">
-                🏡 ກໍລະນີທີ 1: ທ່ານ ສົມສັກ — ເຮືອນວິນລາທັນສະໄໝ (Modern Detached Villa)
+        <!-- Executive Matrix Table of 5 Field Cases -->
+        <div class="overflow-x-auto my-3 border border-stone-200 rounded-xl shadow-xs">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-amber-950 text-amber-200 font-bold border-b border-amber-800">
+                <th class="p-2 sm:p-2.5">ກໍລະນີສຶກສາ</th>
+                <th class="p-2 sm:p-2.5">ເຈົ້າຂອງອາຄານ</th>
+                <th class="p-2 sm:p-2.5">ປະເພດອາຄານ</th>
+                <th class="p-2 sm:p-2.5">ອົງສາ &amp; ພູເຂົາ</th>
+                <th class="p-2 sm:p-2.5">ສະຖານະເສັ້ນ</th>
+                <th class="p-2 sm:p-2.5">ມາດຕະການແກ້ໄຂ / ຜົນລັບ</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-stone-200 bg-white text-stone-800">
+              <tr class="hover:bg-emerald-50/50">
+                <td class="p-2 sm:p-2.5 font-bold text-emerald-800">Case 1</td>
+                <td class="p-2 sm:p-2.5 font-semibold">ທ່ານ ສົມສັກ</td>
+                <td class="p-2 sm:p-2.5">ວິນລາຫຼູຫຼາ 2 ຊັ້ນ</td>
+                <td class="p-2 sm:p-2.5">180.0° Wu (ທິດໃຕ້)</td>
+                <td class="p-2 sm:p-2.5"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">ເຈີ້ງຊ່ຽນ 100%</span></td>
+                <td class="p-2 sm:p-2.5">ດາວຄູ່ຮອດໜ້າ / ຂຸດສະນ້ຳພຸຮັບຊັບ</td>
+              </tr>
+              <tr class="hover:bg-amber-50/50">
+                <td class="p-2 sm:p-2.5 font-bold text-amber-800">Case 2</td>
+                <td class="p-2 sm:p-2.5 font-semibold">ທ່ານນາງ ມະນີວອນ</td>
+                <td class="p-2 sm:p-2.5">ຕຶກແຖວຮ້ານຄຳ 3 ຊັ້ນ</td>
+                <td class="p-2 sm:p-2.5">201.0° Ding &rarr; Wei</td>
+                <td class="p-2 sm:p-2.5"><span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold">ຊຽນຊ່ຽນ ບ່ຽງ +6°</span></td>
+                <td class="p-2 sm:p-2.5">ຜັງດາວປ່ຽນແທນ Ti Gua / ຍ້າຍຕູ້ນິລະໄພ</td>
+              </tr>
+              <tr class="hover:bg-blue-50/50">
+                <td class="p-2 sm:p-2.5 font-bold text-blue-800">Case 3</td>
+                <td class="p-2 sm:p-2.5 font-semibold">ທ່ານ ຄຳພັນ</td>
+                <td class="p-2 sm:p-2.5">ຄອນໂດມິນຽມ ຊັ້ນ 8</td>
+                <td class="p-2 sm:p-2.5">270.0° You (ທິດໄກ່)</td>
+                <td class="p-2 sm:p-2.5"><span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[10px] font-bold">ຢາງຊີ່ 100%</span></td>
+                <td class="p-2 sm:p-2.5">ຕັດສິນທິດຫັນຕາມແສງ / ຮັບຊີ່ແມ່ນ້ຳຂອງ</td>
+              </tr>
+              <tr class="hover:bg-purple-50/50">
+                <td class="p-2 sm:p-2.5 font-bold text-purple-800">Case 4</td>
+                <td class="p-2 sm:p-2.5 font-semibold">ທ່ານ ບຸນມີ</td>
+                <td class="p-2 sm:p-2.5">ໂຮງງານອຸດສາຫະກຳ</td>
+                <td class="p-2 sm:p-2.5">135.0° Xun (ອີສານ)</td>
+                <td class="p-2 sm:p-2.5"><span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 text-[10px] font-bold">ສູນກາງໄທ້ຈີ໊</span></td>
+                <td class="p-2 sm:p-2.5">ຄິດໄລ່ CAD Centroid / ປະຕູລົດບັນທຸກ</td>
+              </tr>
+              <tr class="hover:bg-red-50/50">
+                <td class="p-2 sm:p-2.5 font-bold text-red-800">Case 5</td>
+                <td class="p-2 sm:p-2.5 font-semibold">ທ່ານ ດາວອນ</td>
+                <td class="p-2 sm:p-2.5">ເຮືອນວິນລາທັນສະໄໝ</td>
+                <td class="p-2 sm:p-2.5">22.5° Gui &rarr; Chou</td>
+                <td class="p-2 sm:p-2.5"><span class="px-2 py-0.5 rounded-full bg-red-100 text-red-800 text-[10px] font-bold">ມະຫາຂົງຫວາງ ☠️</span></td>
+                <td class="p-2 sm:p-2.5">ບິດກອບປະຕູ 6.0° ໜີເສັ້ນສູນສິ້ນ</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Case 1: Plate Block (Odd Page) -->
+        <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-emerald-600 shadow-md flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-emerald-600/40 pb-2.5 mb-2">
+            <div>
+              <span class="text-[10px] font-bold text-emerald-700 uppercase tracking-widest block">CASE STUDY 1: MODERN DETACHED VILLA</span>
+              <h3 class="font-black text-emerald-950 text-base sm:text-lg">
+                🏡 ກໍລະນີທີ 1: ທ່ານ ສົມສັກ — ເຮືອນວິນລາທັນສະໄໝ (ອົງສາເຈີ້ງຊ່ຽນບໍລິສຸດ)
               </h3>
-              <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">ອົງສາປອດໄພ: ເຈີ້ງຊ່ຽນ (Zheng Xian)</span>
             </div>
-            <p class="text-xs text-stone-700 leading-relaxed text-justify">
-              • <strong>ສະພາບອາຄານ:</strong> ທ່ານ ສົມສັກ ໄດ້ຊື້ດິນປຸກເຮືອນວິນລາ 2 ຊັ້ນ ໂຄງສ້າງເບຕົງເສີມເຫຼັກ ພ້ອມປະຕູຮົ້ວເຫຼັກອັດຕະໂນມັດຂະໜາດໃຫຍ່.<br>
-              • <strong>ວິທີວັດແທກຕົວຈິງ:</strong> ຊິນແສໄດ້ພາ ທ່ານ ສົມສັກ ອອກມາວັດແທກຢູ່ເດີ່ນຫຍ້າກາງແຈ້ງ ຫ່າງຈາກປະຕູຮົ້ວເຫຼັກ 4 ແມັດ ເພື່ອຫຼົບສະໜາມແມ່ເຫຼັກ. ຕັ້ງລະດັບນ້ຳຫຼົວຜານໃຫ້ຂະໜານກັບແນວກຳແພງໜ້າເຮືອນ. ເຂັມແມ່ເຫຼັກຊີ້ກົງກັບເສັ້ນແດງໃຕ້ທະເລພໍດີ.<br>
-              • <strong>ຜົນການອ່ານອົງສາ:</strong> ດ້ານໜ້າອ່ານໄດ້ <strong>180° (ທິດໃຕ້ / ພູເຂົາ ອູ່ 午)</strong>. ທິດນັ່ງດ້ານຫຼັງຄື <strong>0°/360° (ທິດເໜືອ / ພູເຂົາ ຈື໋ 子)</strong>.<br>
-              • <strong>ວິທີວິເຄາະ ແລະ ຄິດໄລ່:</strong> ພູເຂົາ ອູ່ (Wu) ມີຂອບເຂດ 172.5° ຫາ 187.5°, ເສັ້ນສູນກາງຄື 180.0° ພໍດີ! ເບື້ອງບ່ຽງ = 0.0°! ນີ້ຄື <strong>"ເຈີ້ງຊ່ຽນບໍລິສຸດ 100%"</strong>. ໃນຍຸກ 9 (2024–2043), ຜັງດາວ ຈື໋-ອູ່ (Zi-Wu) ຄືຜັງ <strong>"ຊ່ວງຊິງຕົ້າຊຽງ" (Shuang Xing Dao Xiang ດາວຄູ່ຮອດໜ້າ)</strong>. ດາວ 9 ພູ ແລະ ດາວ 9 ນ້ຳ ມາຊຸມນຸມກັນຢູ່ໜ້າເຮືອນ! ຊິນແສຈຶ່ງແນະນຳໃຫ້ ທ່ານ ສົມສັກ ຂຸດສະນ້ຳພຸພ້ອມສວນຫີນຢູ່ໜ້າເຮືອນ ສົ່ງຜົນໃຫ້ທຸລະກິດການຄ້າຂາຍຂອງທ່ານ ຂະຫຍາຍໂຕຢ່າງວ່ອງໄວໃນຍຸກ 9.
-            </p>
+            <span class="text-xs bg-emerald-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ອົງສາປອດໄພ: ເຈີ້ງຊ່ຽນ (Zheng Xian 100%)</span>
           </div>
 
-          <!-- Case 2 -->
-          <div class="p-4 bg-stone-50 rounded-xl border-l-4 border-amber-600 shadow-sm space-y-2">
-            <div class="flex flex-wrap items-center justify-between gap-1 border-b border-stone-200 pb-2">
-              <h3 class="font-bold text-amber-950 text-sm">
-                🏬 ກໍລະນີທີ 2: ທ່ານນາງ ມະນີວອນ — ຕຶກແຖວການຄ້າ (Commercial Shophouse / Townhouse)
-              </h3>
-              <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">ອົງສາບ່ຽງ: ຊຽນຊ່ຽນ (Jian Xian 替卦)</span>
+          <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_8_triangulation_map.png', 'ຮູບທີ 3.8: ຜັງການວັດແທກ 3 ຈຸດແບບສາມຫຼ່ຽມພາກສະໜາມ — ກໍລະນີສຶກສາທີ 1: ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)')">
+              <img src="../img/lao/fig_3_8_triangulation_map.png" alt="Case Study 1 Triangulation Map" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
             </div>
-            <p class="text-xs text-stone-700 leading-relaxed text-justify">
-              • <strong>ສະພາບອາຄານ:</strong> ທ່ານນາງ ມະນີວອນ ເປີດຮ້ານຂາຍຄຳໃນຕຶກແຖວ 3 ຊັ້ນ ໜ້າແຄບ ຫຼັງຍາວ. ດ້ານໜ້າຕິດປະຕູມ້ວນເຫຼັກຂະໜາດໃຫຍ່ ເຊິ່ງເຮັດໃຫ້ເຂັມທິດແກວ່ງໄປມາ.<br>
-              • <strong>ວິທີວັດແທກຕົວຈິງ:</strong> ຊິນແສບໍ່ວັດແທກໜ້າປະຕູມ້ວນເຫຼັກ, ແຕ່ໃຊ້ມາດຕະການ <strong>"ວັດທຽບແນວກຳແພງແບ່ງຮ່ວມ (Party Wall Alignment)"</strong> ໂດຍດຶງເຊືອກຂະໜານກັບກຳແພງປູນລົງມາຫາແນວທາງຍ່າງຄົນຍ່າງກາງແຈ້ງ ຫ່າງຈາກປະຕູ 3 ແມັດ.<br>
-              • <strong>ຜົນການອ່ານອົງສາ:</strong> ອ່ານໄດ້ <strong>201.0° (ທິດໃຕ້ສຽງຕາເວັນຕົກ / ພູເຂົາ ຕິ່ງ 丙 ບ່ຽງໄປຫາ ອູ່ 午)</strong>.<br>
-              • <strong>ວິທີວິເຄາະ ແລະ ຄິດໄລ່:</strong> ເສັ້ນສູນກາງຂອງພູເຂົາ ຕິ່ງ (Bing) ຄື 165°, ສ່ວນພູເຂົາ ຕິ່ງ ມີຂອບເຂດ 157.5° ຫາ 172.5°... ແຕ່ຄ່າທີ່ວັດໄດ້ 201° ຕົກຢູ່ລະຫວ່າງ ພູເຂົາ ຕິ່ງ (Ding 197.5° ຫາ 202.5°). ເສັ້ນສູນກາງຂອງ ຕິ່ງ (Ding) ຄື 195°. ຄ່າ 201° ບ່ຽງເບນອອກຈາກສູນກາງເຖິງ <strong>6.0° ບ່ຽງໄປຫາ ພູເຂົາ ໝຸຍ (Wei 202.5°)!</strong> ເນື່ອງຈາກບ່ຽງເກີນ 3.0° ແຕ່ບໍ່ທັນຕົກເສັ້ນສູນສິ້ນ, <strong>ຫ້າມໃຊ້ຜັງດາວປົກກະຕິເດັດຂາດ!</strong> ຕ້ອງປ່ຽນມາໃຊ້ <strong>"ຜັງດາວປ່ຽນແທນ" (Ti Gua 替卦)</strong> ໂດຍດາວ 9 ຕ້ອງປ່ຽນເປັນດາວເລກອື່ນຕາມສູດຄຳກອນລັບ. ຫາກຄິດໄລ່ຜິດພາດ ຈະຕັ້ງຕຳແໜ່ງຕູ້ນິລະໄພຜິດທິດ ເຮັດໃຫ້ເງິນຄຳຮົ່ວໄຫຼ.
-            </p>
+            <figcaption class="text-xs sm:text-sm font-bold text-emerald-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.8: ຜັງການວັດແທກ 3 ຈຸດແບບສາມຫຼ່ຽມພາກສະໜາມ — ກໍລະນີສຶກສາທີ 1: ເຮືອນວິນລາ ທ່ານ ສົມສັກ (180.0° Wu / 0.0° Zi)</figcaption>
+          </figure>
+        </div>
+
+        <!-- Case 1: Explanation Block (Even Page) -->
+        <div class="case-explanation-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-emerald-600/70 shadow-md flex flex-col gap-2.5 text-xs leading-relaxed">
+          <div class="flex items-center justify-between border-b-2 border-emerald-600/40 pb-1.5">
+            <h4 class="font-black text-emerald-950 text-sm sm:text-base">
+              📋 ຂັ້ນຕອນວິເຄາະ &amp; ການຄິດໄລ່ລະອຽດ 5 ຂັ້ນຕອນ (5-Step Masterclass Breakdown)
+            </h4>
+            <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">ກໍລະນີສຶກສາທີ 1: ທ່ານ ສົມສັກ</span>
           </div>
 
-          <!-- Case 3 -->
-          <div class="p-4 bg-stone-50 rounded-xl border-l-4 border-blue-600 shadow-sm space-y-2">
-            <div class="flex flex-wrap items-center justify-between gap-1 border-b border-stone-200 pb-2">
-              <h3 class="font-bold text-blue-950 text-sm">
-                🏢 ກໍລະນີທີ 3: ທ່ານ ຄຳພັນ — ຫ້ອງແຖວຄອນໂດຊັ້ນ 8 (High-Rise Condominium)
-              </h3>
-              <span class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">ການຕັດສິນທິດຫັນໜ້າ (Facing Decision)</span>
+          <div class="case-grid gap-2 text-xs">
+            <div class="p-2.5 bg-white rounded-xl border border-emerald-200 flex flex-col gap-1">
+              <strong class="text-emerald-950 font-bold block text-xs">❶ ສະພາບອາຄານ &amp; ໂຄງສ້າງຕົວຈິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                ທ່ານ ສົມສັກ ສ້າງເຮືອນວິນລາ 2 ຊັ້ນ ໂຄງສ້າງເບຕົງເສີມເຫຼັກ (RC) ພ້ອມປະຕູຮົ້ວເຫຼັກອັດຕະໂນມັດ 8m, ເດີ່ນຫຍ້າກວ້າງ 12m. ມີແຫຼ່ງກວນສະໜາມແມ່ເຫຼັກຈາກຄານເຫຼັກ ແລະ ປະຕູຮົ້ວໂລຫະ.
+              </p>
             </div>
-            <p class="text-xs text-stone-700 leading-relaxed text-justify">
-              • <strong>ສະພາບອາຄານ:</strong> ທ່ານ ຄຳພັນ ອາໄສຢູ່ຄອນໂດຊັ້ນ 8. ປະຕູຫ້ອງເປີດອອກສູ່ທາງຍ່າງມືດໆພາຍໃນອາຄານ, ແຕ່ຫ້ອງຮັບແຂກມີປະຕູແວ່ນບານເລື່ອນຂະໜາດໃຫຍ່ເປີດອອກສູ່ລະບຽງທີ່ເຫັນວິວແມ່ນ້ຳຂອງ ແລະ ຮັບແສງແດດເຕັມທີ່.<br>
-              • <strong>ວິທີຕັດສິນທິດຫັນໜ້າ:</strong> ໃນວິຊາດາວເຫີນຂັ້ນສູງ, <strong>"ທິດຫັນໜ້າ ຄືທິດທີ່ຊີ່ (Qi), ແສງສະຫວ່າງ, ແລະ ການເຄື່ອນໄຫວໄຫຼເຂົ້າມາຫຼາຍທີ່ສຸດ (Yang Qi Facing)"</strong>. ປະຕູຫ້ອງຂອງ ທ່ານ ຄຳພັນ ເປັນທາງຍ່າງມືດໄຮ້ລົມ, ສ່ວນລະບຽງເປັນຈຸດຮັບແສງ ແລະ ລົມທັງໝົດ. ດັ່ງນັ້ນ, <strong>ທິດຫັນໜ້າຂອງຫ້ອງຄື ທິດລະບຽງ ບໍ່ແມ່ນປະຕູຫ້ອງ!</strong><br>
-              • <strong>ວິທີວັດແທກ:</strong> ຊິນແສລົງມາວັດທິດລວມຂອງຕົວຕຶກໃຫຍ່ຢູ່ຊັ້ນລຸ່ມສຸດ (Ground Floor) ເພື່ອຫາແກນສະໜາມແມ່ເຫຼັກທີ່ແທ້ຈິງຂອງແຜ່ນດິນ, ແລ້ວຈຶ່ງຂຶ້ນມາວັດທຽບແນວລະບຽງຢູ່ຊັ້ນ 8. ວັດໄດ້ <strong>270° (ທິດໄກ່ / ພູເຂົາ ຢິວ 酉)</strong>. ຜັງດາວຫ້ອງຂອງທ່ານ ຄຳພັນ ຈຶ່ງເປັນ <strong>"ນັ່ງເມົາ (Mao ຕາເວັນອອກ) ຫັນໜ້າຫາ ຢິວ (You ຕາເວັນຕົກ)"</strong>.
-            </p>
+
+            <div class="p-2.5 bg-white rounded-xl border border-emerald-200 flex flex-col gap-1">
+              <strong class="text-emerald-950 font-bold block text-xs">❷ ວິທີຕັ້ງ &amp; ການໃຊ້ເຂັມທິດຫຼົວຜານ:</strong>
+              <p class="text-stone-700 text-justify">
+                ໃຊ້ <strong>"ຫຼັກການວັດແທກ 3 ຈຸດແບບສາມຫຼ່ຽມ" (Triangulation)</strong>: ຈຸດ A ຫ່າງປະຕູ 1.5m (180.0°), ຈຸດ B ກາງເດີ່ນ 4.5m ປອດໂລຫະ 100% ຈັບຫຼົວຜານແນບແອວລະດັບນ້ຳທ່ຽງ (180.5°), ຈຸດ C ໜ້າຮົ້ວ 9.0m (180.0°). ຄ່າສະເລ່ຍ = <strong>180.17°</strong>, ຄວາມຜິດດ່ຽງ Δ = 0.5° (≤ 1.5° ປອດໄພສູງສຸດ).
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-white rounded-xl border border-emerald-200 flex flex-col gap-1">
+              <strong class="text-emerald-950 font-bold block text-xs">❸ ການອ່ານຄ່າອົງສາ &amp; ທິດຫັນ-ທິດພິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                • <strong>ທິດຫັນໜ້າ (Facing 向):</strong> <strong>180.0° (ທິດໃຕ້ / ພູເຂົາ ອູ່ 午 / S2)</strong>.<br>
+                • <strong>ທິດພິງຫຼັງ (Sitting 坐):</strong> <strong>0.0°/360.0° (ທິດເໜືອ / ພູເຂົາ ຈື໋ 子 / N2)</strong>.<br>
+                • ພູເຂົາ ອູ່ (172.5° – 187.5°) ເສັ້ນກາງ 180° → <strong>"ເຈີ້ງຊ່ຽນ (Zheng Xian) ບໍລິສຸດ 100%"</strong>.
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-white rounded-xl border border-emerald-200 flex flex-col gap-1">
+              <strong class="text-emerald-950 font-bold block text-xs">❹ ວິທີໄລ່ຜັງດາວເຫີນຍຸກ 9 ແບບລະອຽດ:</strong>
+              <p class="text-stone-700 text-justify">
+                • ດາວ 9 ເຂົ້າກາງ. ດາວພູຫຼັງ (Zi) ເລກ 8 ຢູ່ກວ້າເກິ້ນ (ທຽນຫງວນ ທາດຢິນ) → <strong>ເຫີນຖອຍ (-)</strong>: 8 → 7 → 6 → 5 → 4 → 3 → 2 → 1 → 9.<br>
+                • ດາວນ້ຳໜ້າ (Wu) ເລກ 1 ຢູ່ກວ້າຂຳ (ທຽນຫງວນ ທາດຢາງ) → <strong>ເຫີນໜ້າ (+)</strong>: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9.<br>
+                • ຜົນ: ຕົກຮູບແບບ <strong>"ຊວງຊິງຕົ້າວຊຽງ" (Shuang Xing Dao Xiang)</strong> — ດາວ 9 ພູ ແລະ ດາວ 9 ນ້ຳ ຊຸມນຸມຢູ່ໜ້າເຮືອນ (ທິດໃຕ້)!
+              </p>
+            </div>
+
+            <div class="col-span-full p-2.5 bg-white rounded-xl border border-emerald-200 flex flex-col gap-1">
+              <strong class="text-emerald-950 font-bold block text-xs">❺ ການຈັດວາງຮວງຈຸ້ຍ &amp; ມາດຕະການແກ້ໄຂຕົວຈິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                ຂຸດສະນ້ຳພຸເຄື່ອນໄຫວຢູ່ເບື້ອງຊ້າຍໜ້າເຮືອນ (ມັງກອນຂຽວ) ເພື່ອກະຕຸ້ນດາວນ້ຳ 9 ດຶງດູດໂຊກລາບເງິນຄຳ; ສ້າງສວນຫີນ ແລະ ປູກຕົ້ນໄມ້ສູງໃຫຍ່ໄວ້ດ້ານຫຼັງສະນ້ຳ ເພື່ອດຶງບາຣະມີດາວພູ 9 ສົ່ງເສີມສຸຂະພາບ, ອຳນາດ, ແລະ ຄວາມສຸກຂອງຄອບຄົວ.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 2: Plate Block (Odd Page) -->
+        <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-amber-600 shadow-md flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-amber-600/40 pb-2.5 mb-2">
+            <div>
+              <span class="text-[10px] font-bold text-amber-700 uppercase tracking-widest block">CASE STUDY 2: COMMERCIAL SHOPHOUSE</span>
+              <h3 class="font-black text-amber-950 text-base sm:text-lg">
+                🏬 ກໍລະນີທີ 2: ທ່ານນາງ ມະນີວອນ — ຕຶກແຖວການຄ້າຮ້ານຂາຍຄຳ (ອົງສາບ່ຽງຈຽນສຽນ)
+              </h3>
+            </div>
+            <span class="text-xs bg-amber-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ອົງສາບ່ຽງ: ຊຽນຊ່ຽນ (Jian Xian 替卦)</span>
           </div>
 
-          <!-- Case 4 -->
-          <div class="p-4 bg-stone-50 rounded-xl border-l-4 border-purple-600 shadow-sm space-y-2">
-            <div class="flex flex-wrap items-center justify-between gap-1 border-b border-stone-200 pb-2">
-              <h3 class="font-bold text-purple-950 text-sm">
-                🏭 ກໍລະນີທີ 4: ທ່ານ ບຸນມີ — ໂຮງງານ ແລະ ສາງສິນຄ້າ (Industrial Factory Complex)
-              </h3>
-              <span class="text-xs bg-purple-100 text-purple-800 px-2 py-0.5 rounded font-bold">ການຫາຈຸດສູນກາງມວນສານ (Tai Ji Centroid)</span>
+          <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case2_shophouse.png', 'ຮູບທີ 3.11: ຜັງວັດແທກຕຶກແຖວການຄ້າ ແລະ ການຄິດໄລ່ຜັງດາວປ່ຽນແທນ — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ')">
+              <img src="../img/lao/fig_3_case2_shophouse.png" alt="Case Study 2 Shophouse Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
             </div>
-            <p class="text-xs text-stone-700 leading-relaxed text-justify">
-              • <strong>ສະພາບອາຄານ:</strong> ທ່ານ ບຸນມີ ເປັນເຈົ້າຂອງໂຮງງານແປຮູບໄມ້ຂະໜາດ 5,000 ຕາແມັດ, ມີປະຕູໂຮງງານເຖິງ 4 ດ້ານ ສຳລັບລົດບັນທຸກເຂົ້າ-ອອກ, ແລະ ມີເຄື່ອງຈັກຂະໜາດໃຫຍ່ທີ່ສ້າງສະໜາມໄຟຟ້າແຮງສູງ.<br>
-              • <strong>ວິທີວັດແທກຕົວຈິງ:</strong> ຊິນແສບໍ່ສາມາດຢືນວັດພາຍໃນໂຮງງານໄດ້ເລີຍ ເພາະເຂັມທິດແກວ່ງ 360 ອົງສາ ຍ້ອນມໍເຕີ້ໄຟຟ້າ. ຊິນແສຈຶ່ງນຳເອົາ <strong>ແຜນຜັງພິມຂຽວສະຖາປັດ (Architectural Blueprint)</strong> ມາຄຳນວນຫາ <strong>"ຈຸດສູນກາງມວນສານ" (Geometric Centroid / Tai Ji 太极)</strong> ດ້ວຍຫຼັກຟີຊິກສ໌.<br>
-              • <strong>ວິທີວິເຄາະ:</strong> ວັດອົງສາກຳແພງຫຼັກຈາກພາຍນອກຫ່າງໂຮງງານ 15 ແມັດ. ພົບວ່າ <strong>ປະຕູດ້ານທິດຕາເວັນອອກສຽງໃຕ້ (ທິດຊຸ່ນ 巽)</strong> ເປັນປະຕູທີ່ລົດບັນທຸກແລ່ນເຂົ້າ-ອອກຫຼາຍທີ່ສຸດ (90% ຂອງການສັນຈອນ). ຊິນແສຈຶ່ງກຳນົດໃຫ້ປະຕູນີ້ເປັນ <strong>"ປະຕູຊີ່ຫຼັກ" (Qi Mouth / Qi Men)</strong> ໃນການດຶງພະລັງງານ. ພ້ອມທັງຈັດວາງຫ້ອງການບັນຊີໄວ້ໃນວັງດາວ 9-1 ທີ່ເກີດຂຶ້ນຈາກການຄິດໄລ່.
-            </p>
+            <figcaption class="text-xs sm:text-sm font-bold text-amber-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.11: ຜັງວັດແທກຕຶກແຖວການຄ້າ ແລະ ການຄິດໄລ່ຜັງດາວປ່ຽນແທນ — ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ (201.0° Ding &rarr; Wei)</figcaption>
+          </figure>
+        </div>
+
+        <!-- Case 2: Explanation Block (Even Page) -->
+        <div class="case-explanation-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-amber-600/70 shadow-md flex flex-col gap-2.5 text-xs leading-relaxed">
+          <div class="flex items-center justify-between border-b-2 border-amber-600/40 pb-1.5">
+            <h4 class="font-black text-amber-950 text-sm sm:text-base">
+              📋 ຂັ້ນຕອນວິເຄາະ &amp; ການຄິດໄລ່ລະອຽດ 5 ຂັ້ນຕອນ (5-Step Masterclass Breakdown)
+            </h4>
+            <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">ກໍລະນີສຶກສາທີ 2: ທ່ານນາງ ມະນີວອນ</span>
           </div>
 
-          <!-- Case 5 -->
-          <div class="p-4 bg-red-50 rounded-xl border-l-4 border-red-600 shadow-sm space-y-2">
-            <div class="flex flex-wrap items-center justify-between gap-1 border-b border-red-200 pb-2">
-              <h3 class="font-bold text-red-950 text-sm">
-                ☠️ ກໍລະນີທີ 5: ທ່ານ ດາວອນ — ເຮືອນຕິດເຄາະຮ້າຍຕົກ "ເສັ້ນຂົງຫວາງ" (Deadly Kong Wang Void Line)
-              </h3>
-              <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded font-bold">ເສັ້ນສູນສິ້ນ: ຂົງຫວາງ (Kong Wang)</span>
+          <div class="case-grid gap-2 text-xs">
+            <div class="p-2.5 bg-white rounded-xl border border-amber-200 flex flex-col gap-1">
+              <strong class="text-amber-950 font-bold block text-xs">❶ ສະພາບອາຄານ &amp; ໂຄງສ້າງຕົວຈິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                ທ່ານນາງ ມະນີວອນ ເປີດຮ້ານຂາຍຄຳໃນຕຶກແຖວ 3 ຊັ້ນ ໜ້າແຄບ 4m ຫຼັງຍາວ 20m. ດ້ານໜ້າຕິດປະຕູມ້ວນເຫຼັກມໍເຕີ້ໄຟຟ້າຂະໜາດ 4x3.5m ເຊິ່ງສ້າງສະໜາມແມ່ເຫຼັກກວນເຂັມທິດແກວ່ງ ±18° ເມື່ອວັດແທກໃກ້ປະຕູ.
+              </p>
             </div>
-            <p class="text-xs text-red-950 leading-relaxed text-justify">
-              • <strong>ສະພາບອາຄານ:</strong> ທ່ານ ດາວອນ ໄດ້ສ້າງເຮືອນຫຼັງໃໝ່ແລ້ວຍ້າຍເຂົ້າຢູ່ໄດ້ພຽງ 1 ປີ. ປາກົດວ່າຄອບຄົວເກີດບັນຫາໜັກ: ພັນລະຍາປ່ວຍເປັນພະຍາດຊ້ຳເຮື້ອຊອກສາເຫດບໍ່ພົບ, ທຸລະກິດຖືກໂກງເງິນຫຼາຍຕື້ກີບ, ແລະ ຄົນໃນເຮືອນມັກຝັນເຫັນສິ່ງລຶກລັບມາລົບກວນ.<br>
-              • <strong>ຜົນການວັດແທກດ້ວຍຫຼົວຜານ:</strong> ຊິນແສໄດ້ວັດແທກ 3 ຈຸດຢ່າງລະອຽດ ພົບວ່າໜ້າເຮືອນຫັນໜ້າໄປທີ່ <strong>22.5° ພໍດີເປະ!</strong><br>
-              • <strong>ວິທີວິເຄາະ ແລະ ຄິດໄລ່:</strong> ອົງສາ <strong>22.5° ຄື "ເສັ້ນແບ່ງເຂດລະຫວ່າງ 2 ໂປຍກວ້າ"</strong> — ຄືເສັ້ນແບ່ງລະຫວ່າງ <em>ທິດເໜືອ (ກວ້າຂຳ / ພູເຂົາ ກຸ້ຍ 癸)</em> ແລະ <em>ທິດອີສານ (ກວ້າເກິ້ນ / ພູເຂົາ ທິວ 丑)</em>! ນີ້ຄືເສັ້ນ <strong>"ມະຫາຂົງຫວາງ" (Da Kong Wang 大空亡)</strong> ທີ່ຮ້າຍແຮງທີ່ສຸດໃນຮວງຈຸ້ຍ!<br>
-              • <strong>ຄຳອະທິບາຍ:</strong> ພະລັງງານຊີ່ແຫ່ງທິດເໜືອ (ທາດນ້ຳ) ແລະ ທິດອີສານ (ທາດດິນ) ປະທະກັນຢູ່ເສັ້ນນີ້ຢ່າງຮຸນແຮງ. ເຮືອນທີ່ຕັ້ງຢູ່ເທິງເສັ້ນນີ້ ຈະປຽບເໝືອນຄົນທີ່ຢືນຢູ່ປາກປ່ອງພູເຂົາໄຟ ບໍ່ມີພະລັງງານສະໜັບສະໜູນ, ເຮັດໃຫ້ເກີດຄວາມສູນເສຍ ແລະ ພະລັງງານດ້ານລົບເຂົ້າມາສິງສູ່.<br>
-              • <strong>ວິທີແກ້ໄຂຂັ້ນເດັດຂາດ (Cure):</strong> ເນື່ອງຈາກຕົວເຮືອນໃຫຍ່ບໍ່ສາມາດທຸບຍ້າຍໄດ້, ຊິນແສຈຶ່ງສັ່ງໃຫ້ <strong>"ບິດອົງສາປະຕູໃຫຍ່" (Door Tilting / Xie Men 斜门)</strong> ໂດຍການຮື້ຖອນກອບປະຕູໃຫຍ່ ແລ້ວກໍ່ອຽງບ່ຽງໄປທາງຂວາ 6 ອົງສາ ໃຫ້ຫັນໄປທີ່ <strong>28.5° (ເຂົ້າສູ່ພູເຂົາ ທິວ 丑 ເຂດເຈີ້ງຊ່ຽນປອດໄພ)</strong>. ພາຍຫຼັງດັດແປງພຽງ 3 ເດືອນ, ສຸຂະພາບຂອງພັນລະຍາກໍ່ຟື້ນຕົວ ແລະ ການເງິນເລີ່ມກັບມາດີຂຶ້ນຢ່າງມະຫັດສະຈັນ!
-            </p>
+
+            <div class="p-2.5 bg-white rounded-xl border border-amber-200 flex flex-col gap-1">
+              <strong class="text-amber-950 font-bold block text-xs">❷ ວິທີຕັ້ງ &amp; ການໃຊ້ເຂັມທິດຫຼົວຜານ:</strong>
+              <p class="text-stone-700 text-justify">
+                ຫ້າມວັດໜ້າປະຕູມ້ວນເຫຼັກ! ໃຊ້ມາດຕະການ <strong>"ດຶງເຊືອກຂະໜານແນວກຳແພງແບ່ງຮ່ວມ" (Party Wall Alignment Protocol)</strong>: ດຶງສາຍເຊືອກໄນລອນຂະໜານແນວເສົາຫຼັກອອກມານອກອາຄານ 3.5 ແມັດ ສູ່ທາງຍ່າງກາງແຈ້ງ ປອດໂລຫະ 100% ຕັ້ງຂາຕັ້ງໄມ້ແລ້ວວາງຫຼົວຜານທາບສາຍເຊືອກ.
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-white rounded-xl border border-amber-200 flex flex-col gap-1">
+              <strong class="text-amber-950 font-bold block text-xs">❸ ການອ່ານຄ່າອົງສາ &amp; ທິດຫັນ-ທິດພິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                • <strong>ທິດຫັນໜ້າ (Facing 向):</strong> <strong>201.0° (ທິດໃຕ້ສຽງຕາເວັນຕົກ / ພູເຂົາ ຕິ່ງ 丁)</strong>.<br>
+                • <strong>ທິດພິງຫຼັງ (Sitting 坐):</strong> <strong>21.0° (ທິດເໜືອສຽງອີສານ / ພູເຂົາ ກຸ້ຍ 癸)</strong>.<br>
+                • ເສັ້ນກາງ ຕິ່ງ ຄື 195.0°. ຄ່າທີ່ວັດໄດ້ 201.0° ບ່ຽງເບນ +6.0° ໄປຫາພູເຂົາ ໝຸຍ (Wei) → ເກີນ 4.5° ຕົກເຂດ <strong>"ຊຽນຊ່ຽນ (Jian Xian)" ຕ້ອງໃຊ້ຜັງດາວປ່ຽນແທນ</strong>!
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-white rounded-xl border border-amber-200 flex flex-col gap-1">
+              <strong class="text-amber-950 font-bold block text-xs">❹ ວິທີໄລ່ຜັງດາວເຫີນຍຸກ 9 ແບບລະອຽດ:</strong>
+              <p class="text-stone-700 text-justify">
+                • <strong>ຫ້າມໃຊ້ຜັງດາວປົກກະຕິເດັດຂາດ!</strong> ຕ້ອງໃຊ້ສູດ <strong>"ຜັງດາວປ່ຽນແທນ" (Ti Gua 替卦)</strong> ຕາມຄຳກອນບູຮານ: ພູເຂົາ ຕິ່ງ ບ່ຽງຫາ ໝຸຍ ປ່ຽນດາວນ້ຳເລກ 2 (Ju Men) ເປັນ <strong>ດາວ 1 (Tan Lang)</strong>!<br>
+                • ດາວ 1 ເຂົ້າກາງ ເປັນທາດຢາງ ເຫີນໜ້າ (+): 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9.<br>
+                • ຜົນ: ເຮັດໃຫ້ວັງດາວ 8-9 (ວັງໂຊກລາບແທ້ຈິງແຫ່ງຍຸກ) ຍ້າຍມາຕົກຢູ່ຈຸດເຄິ່ງກາງຫ້ອງຄ້າຂາຍ.
+              </p>
+            </div>
+
+            <div class="col-span-full p-2.5 bg-white rounded-xl border border-amber-200 flex flex-col gap-1">
+              <strong class="text-amber-950 font-bold block text-xs">❺ ການຈັດວາງຮວງຈຸ້ຍ &amp; ມາດຕະການແກ້ໄຂຕົວຈິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                ຍ້າຍຕູ້ນິລະໄພ ແລະ ໂຕະເກັບເງິນຈາກໜ້າຮ້ານ ມາວາງໄວ້ໃນວັງດາວ 8-9 (ວັງໂຊກລາບທີ່ເກີດຈາກຜັງດາວປ່ຽນແທນ) ເພື່ອລັອກຊັບສິນ; ຕິດຜ້າມ່ານນ້ຳໄຫຼຂະໜາດນ້ອຍຢູ່ປະຕູທາງເຂົ້າ ເພື່ອດັບສະໜາມແມ່ເຫຼັກຮ້ອນຂອງປະຕູເຫຼັກ ແລະ ຊັກນຳກະແສຊີ່ເຂົ້າສູ່ຮ້ານ ເຮັດໃຫ້ຍອດຂາຍຄຳເພີ່ມຂຶ້ນ 4 ເທົ່າ.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 3: Plate Block (Odd Page) -->
+        <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-blue-600 shadow-md flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-blue-600/40 pb-2.5 mb-2">
+            <div>
+              <span class="text-[10px] font-bold text-blue-700 uppercase tracking-widest block">CASE STUDY 3: HIGH-RISE CONDOMINIUM</span>
+              <h3 class="font-black text-blue-950 text-base sm:text-lg">
+                🏢 ກໍລະນີທີ 3: ທ່ານ ຄຳພັນ — ຫ້ອງແຖວຄອນໂດຊັ້ນ 8 (ການຕັດສິນທິດຫັນໜ້າຢາງຊີ່)
+              </h3>
+            </div>
+            <span class="text-xs bg-blue-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ການຕັດສິນທິດຫັນ: ຢາງຊີ່ (Yang Qi Facing)</span>
+          </div>
+
+          <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case3_condo.png', 'ຮູບທີ 3.12: ຜັງການຕັດສິນທິດຫັນໜ້າຄອນໂດຊັ້ນ 8 ແລະ ການເປີດຮັບຊີ່ແມ່ນ້ຳ — ກໍລະນີສຶກສາທີ 3: ທ່ານ ຄຳພັນ')">
+              <img src="../img/lao/fig_3_case3_condo.png" alt="Case Study 3 Condo Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <figcaption class="text-xs sm:text-sm font-bold text-blue-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.12: ຜັງການຕັດສິນທິດຫັນໜ້າຄອນໂດຊັ້ນ 8 ແລະ ການເປີດຮັບຊີ່ແມ່ນ້ຳ — ກໍລະນີສຶກສາທີ 3: ທ່ານ ຄຳພັນ (270.0° You / 90.0° Mao)</figcaption>
+          </figure>
+        </div>
+
+        <!-- Case 3: Explanation Block (Even Page) -->
+        <div class="case-explanation-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-blue-600/70 shadow-md flex flex-col gap-2.5 text-xs leading-relaxed">
+          <div class="flex items-center justify-between border-b-2 border-blue-600/40 pb-1.5">
+            <h4 class="font-black text-blue-950 text-sm sm:text-base">
+              📋 ຂັ້ນຕອນວິເຄາະ &amp; ການຄິດໄລ່ລະອຽດ 5 ຂັ້ນຕອນ (5-Step Masterclass Breakdown)
+            </h4>
+            <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded">ກໍລະນີສຶກສາທີ 3: ທ່ານ ຄຳພັນ</span>
+          </div>
+
+          <div class="case-grid gap-2 text-xs">
+            <div class="p-2.5 bg-white rounded-xl border border-blue-200 flex flex-col gap-1">
+              <strong class="text-blue-950 font-bold block text-xs">❶ ສະພາບອາຄານ &amp; ໂຄງສ້າງຕົວຈິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                ທ່ານ ຄຳພັນ ອາໄສຢູ່ຄອນໂດຊັ້ນ 8 ໃນອາຄານ 25 ຊັ້ນ. ປະຕູເຂົ້າຫ້ອງເປີດອອກສູ່ທາງຍ່າງມືດໆພາຍໃນອາຄານ (Yin Qi), ຂະນະທີ່ຫ້ອງຮັບແຂກມີປະຕູແວ່ນບານເລື່ອນຂະໜາດ 3.5m ເປີດອອກສູ່ລະບຽງກວ້າງ ຮັບແສງແດດເຕັມທີ່ ແລະ ເຫັນວິວແມ່ນ້ຳຂອງ.
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-white rounded-xl border border-blue-200 flex flex-col gap-1">
+              <strong class="text-blue-950 font-bold block text-xs">❷ ວິທີຕັ້ງ &amp; ການໃຊ້ເຂັມທິດຫຼົວຜານ:</strong>
+              <p class="text-stone-700 text-justify">
+                ນຳໃຊ້ <strong>"ກົດເກນຢາງຊີ່ຕັດສິນທິດຫັນ" (以向为阳 - Yang Qi Rule)</strong>: ໃນຕຶກສູງ ປະຕູຫ້ອງໄຮ້ລົມໄຮ້ແສງບໍ່ແມ່ນທິດຫັນ! ທິດຫັນແທ້ຈິງຄື ທິດລະບຽງ 270.0°. ຂັ້ນຕອນວັດ: (1) ລົງມາວັດອົງສາແກນຫຼັກຕຶກໃຫຍ່ຊັ້ນລຸ່ມສຸດ (Ground Floor) ຫ່າງຕຶກ 10m ໄດ້ 270.0°; (2) ຂຶ້ນມາວັດແນວປະຕູແວ່ນລະບຽງຊັ້ນ 8 ໄດ້ 270.0° ກົງກັນ 100%.
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-white rounded-xl border border-blue-200 flex flex-col gap-1">
+              <strong class="text-blue-950 font-bold block text-xs">❸ ການອ່ານຄ່າອົງສາ &amp; ທິດຫັນ-ທິດພິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                • <strong>ທິດຫັນໜ້າ (Facing 向 - ລະບຽງ):</strong> <strong>270.0° (ທິດໄກ່ / ພູເຂົາ ຢິວ 酉 / W2)</strong>.<br>
+                • <strong>ທິດພິງຫຼັງ (Sitting 坐 - ຫຼັງຫ້ອງ):</strong> <strong>90.0° (ທິດກະຕ່າຍ / ພູເຂົາ ເມົາ 卯 / E2)</strong>.<br>
+                • ອົງສາ 270.0° ຕົກກາງແກນ ຢິວ (262.5° – 277.5°) → <strong>"ເຈີ້ງຊ່ຽນ (Zheng Xian) 100%"</strong>.
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-white rounded-xl border border-blue-200 flex flex-col gap-1">
+              <strong class="text-blue-950 font-bold block text-xs">❹ ວິທີໄລ່ຜັງດາວເຫີນຍຸກ 9 ແບບລະອຽດ:</strong>
+              <p class="text-stone-700 text-justify">
+                • ຕັ້ງຜັງດາວຍຸກ 9 ນັ່ງເມົາ-ຫັນຢິວ (Mao-You). ດາວ 9 ເຂົ້າກາງ.<br>
+                • ດາວພູ (East - Mao) ເລກ 1 ຢູ່ກວ້າຂຳ (ທຽນຫງວນ ທາດຢາງ) → <strong>ເຫີນໜ້າ (+)</strong>: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9.<br>
+                • ດາວນ້ຳ (West - You) ເລກ 8 ຢູ່ກວ້າເກິ້ນ (ທຽນຫງວນ ທາດຢິນ) → <strong>ເຫີນຖອຍ (-)</strong>: 8 → 7 → 6 → 5 → 4 → 3 → 2 → 1 → 9.<br>
+                • ຜົນ: ດາວນ້ຳ 9 ມ່ວງ (ດາວໂຊກລາບສູງສຸດແຫ່ງຍຸກ) ບິນມາສະຖິດຢູ່ລະບຽງທິດຕາເວັນຕົກພໍດີ!
+              </p>
+            </div>
+
+            <div class="col-span-full p-2.5 bg-white rounded-xl border border-blue-200 flex flex-col gap-1">
+              <strong class="text-blue-950 font-bold block text-xs">❺ ການຈັດວາງຮວງຈຸ້ຍ &amp; ມາດຕະການແກ້ໄຂຕົວຈິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                ເປີດຜ້າມ່ານລະບຽງໃຫ້ກວ້າງ ວາງໂຕະເຮັດວຽກ ແລະ ໂຊຟາຫ້ອງຮັບແຂກໃຫ້ຫັນໜ້າຫາລະບຽງ ເພື່ອດູດຊັບພະລັງນ້ຳ Virtual Water ຈາກແມ່ນ້ຳຂອງເຂົ້າມາສູ່ຫ້ອງ; ຕັ້ງຫີນຄຼິສຕອລສີມ່ວງໄວ້ຈຸດພິງຫຼັງຫ້ອງ ເພື່ອເສີມສຸຂະພາບ ແລະ ຄວາມໝັ້ນຄົງໃນໜ້າທີ່ການງານ.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 4: Plate Block (Odd Page) -->
+        <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-purple-600 shadow-md flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-purple-600/40 pb-2.5 mb-2">
+            <div>
+              <span class="text-[10px] font-bold text-purple-700 uppercase tracking-widest block">CASE STUDY 4: INDUSTRIAL FACTORY COMPLEX</span>
+              <h3 class="font-black text-purple-950 text-base sm:text-lg">
+                🏭 ກໍລະນີທີ 4: ທ່ານ ບຸນມີ — ໂຮງງານອຸດສາຫະກຳ ແລະ ສາງສິນຄ້າ (ການຫາຈຸດສູນກາງໄທ້ຈີ໊)
+              </h3>
+            </div>
+            <span class="text-xs bg-purple-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ການຫາຈຸດສູນກາງ: ໄທ້ຈີ໊ (Geometric Centroid / Tai Ji)</span>
+          </div>
+
+          <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_case4_factory.png', 'ຮູບທີ 3.13: ຜັງການຫາຈຸດສູນກາງມວນສານ ແລະ ປະຕູຊີ່ຫຼັກໃນໂຮງງານອຸດສາຫະກຳ — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ')">
+              <img src="../img/lao/fig_3_case4_factory.png" alt="Case Study 4 Factory Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <figcaption class="text-xs sm:text-sm font-bold text-purple-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.13: ຜັງການຫາຈຸດສູນກາງມວນສານ ແລະ ປະຕູຊີ່ຫຼັກໃນໂຮງງານອຸດສາຫະກຳ — ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ (135.0° Xun Qi Mouth)</figcaption>
+          </figure>
+        </div>
+
+        <!-- Case 4: Explanation Block (Even Page) -->
+        <div class="case-explanation-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-purple-600/70 shadow-md flex flex-col gap-2.5 text-xs leading-relaxed">
+          <div class="flex items-center justify-between border-b-2 border-purple-600/40 pb-1.5">
+            <h4 class="font-black text-purple-950 text-sm sm:text-base">
+              📋 ຂັ້ນຕອນວິເຄາະ &amp; ການຄິດໄລ່ລະອຽດ 5 ຂັ້ນຕອນ (5-Step Masterclass Breakdown)
+            </h4>
+            <span class="text-[10px] bg-purple-100 text-purple-800 font-bold px-2 py-0.5 rounded">ກໍລະນີສຶກສາທີ 4: ທ່ານ ບຸນມີ</span>
+          </div>
+
+          <div class="case-grid gap-2 text-xs">
+            <div class="p-2.5 bg-white rounded-xl border border-purple-200 flex flex-col gap-1">
+              <strong class="text-purple-950 font-bold block text-xs">❶ ສະພາບອາຄານ &amp; ໂຄງສ້າງຕົວຈິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                ທ່ານ ບຸນມີ ເປັນເຈົ້າຂອງໂຮງງານແປຮູບໄມ້ 5,000 ຕາແມັດ, ໂຄງສ້າງເຫຼັກ Truss, ມີປະຕູໂຮງງານ 4 ດ້ານສຳລັບລົດບັນທຸກເຂົ້າ-ອອກ, ແລະ ມີເຄື່ອງຈັກຕັດໄມ້ກຳລັງສູງກວນສະໜາມແມ່ເຫຼັກຈົນເຂັມທິດແກວ່ງ 360° ພາຍໃນໂຮງງານ.
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-white rounded-xl border border-purple-200 flex flex-col gap-1">
+              <strong class="text-purple-950 font-bold block text-xs">❷ ວິທີຕັ້ງ &amp; ການໃຊ້ເຂັມທິດຫຼົວຜານ:</strong>
+              <p class="text-stone-700 text-justify">
+                ຫ້າມຢືນວັດພາຍໃນໂຮງງານ! ນຳໃຊ້ <strong>"ວິທີຄິດໄລ່ຈຸດສູນກາງມວນສານ CAD" (Geometric Centroid / Tai Ji 太极)</strong>: ນຳແປນພິມຂຽວ CAD ມາແຕ້ມເສັ້ນຕັດທະແຍງມຸມຫາຈຸດສູນກາງແທ້ຈິງ; ແລ້ວອອກມາວັດອົງສາກຳແພງຫຼັກຈາກພາຍນອກຫ່າງໂຮງງານ 15 ແມັດ ດ້ວຍຂາຕັ້ງໄມ້ປອດໂລຫະ.
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-white rounded-xl border border-purple-200 flex flex-col gap-1">
+              <strong class="text-purple-950 font-bold block text-xs">❸ ການອ່ານຄ່າອົງສາ &amp; ທິດຫັນ-ທິດພິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                • ປະຕູດ້ານ <strong>ທິດຕາເວັນອອກສຽງໃຕ້ (135.0° / ພູເຂົາ ຊຸ່ນ 巽)</strong> ມີລົດບັນທຸກສິນຄ້າເຂົ້າ-ອອກ 90% ຈຶ່ງກຳນົດເປັນ <strong>"ປະຕູຊີ່ຫຼັກ" (Qi Mouth)</strong>.<br>
+                • <strong>ທິດຫັນໜ້າ (Facing 向):</strong> <strong>135.0° (ທິດຊຸ່ນ 巽)</strong>.<br>
+                • <strong>ທິດພິງຫຼັງ (Sitting 坐):</strong> <strong>315.0° (ທິດສຽນ 乾)</strong>.<br>
+                • 135.0° ຕົກກາງພູເຂົາ ຊຸ່ນ (127.5° – 142.5°) → <strong>"ເຈີ້ງຊ່ຽນ (Zheng Xian) 100%"</strong>.
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-white rounded-xl border border-purple-200 flex flex-col gap-1">
+              <strong class="text-purple-950 font-bold block text-xs">❹ ວິທີໄລ່ຜັງດາວເຫີນຍຸກ 9 ແບບລະອຽດ:</strong>
+              <p class="text-stone-700 text-justify">
+                • ຕັ້ງຜັງດາວຍຸກ 9 ນັ່ງສຽນ-ຫັນຊຸ່ນ (Qian-Xun). ດາວ 9 ເຂົ້າກາງ.<br>
+                • ດາວພູ (NW - Qian) ເລກ 2 ຢູ່ກວ້າຄຸນ (ທຽນຫງວນ ທາດຢາງ) → <strong>ເຫີນໜ້າ (+)</strong>: 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 1.<br>
+                • ດາວນ້ຳ (SE - Xun) ເລກ 7 ຢູ່ກວ້າຕຸ່ຍ (ທຽນຫງວນ ທາດຢາງ) → <strong>ເຫີນໜ້າ (+)</strong>: 7 → 8 → 9 → 1 → 2 → 3 → 4 → 5 → 6.<br>
+                • ຜົນ: ດາວນ້ຳ 9 ມ່ວງ ບິນມາຕົກຢູ່ປະຕູຊີ່ຫຼັກທິດຕາເວັນອອກສຽງໃຕ້ (Xun) ຢ່າງໜ້າອັດສະຈັນ!
+              </p>
+            </div>
+
+            <div class="col-span-full p-2.5 bg-white rounded-xl border border-purple-200 flex flex-col gap-1">
+              <strong class="text-purple-950 font-bold block text-xs">❺ ການຈັດວາງຮວງຈຸ້ຍ &amp; ມາດຕະການແກ້ໄຂຕົວຈິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                ຍ້າຍຫ້ອງການບໍລິຫານ, ຫ້ອງຜູ້ຈັດການ ແລະ ຫ້ອງບັນຊີ ມາຕັ້ງຢູ່ຕິດປະຕູຊຸ່ນ ເພື່ອດູດຊັບດາວ 9 ເຮັດໃຫ້ກຳໄລເພີ່ມຂຶ້ນ 300%; ຍ້າຍມໍເຕີ້ ແລະ ເຄື່ອງຈັກຕັດໄມ້ສຽງດັງໄປໄວ້ໃນວັງດາວ 5 ເຫຼືອງ (ທິດເໜືອ) ພ້ອມແຂວນກະດິ່ງລົມໂລຫະ 6 ທໍ່ ເພື່ອສະກົດຂົ່ມດາວຮ້າຍ 5 ເຫຼືອງ.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 5: Plate Block (Odd Page) -->
+        <div class="case-plate-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-red-600 shadow-md flex flex-col justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-red-600/40 pb-2.5 mb-2">
+            <div>
+              <span class="text-[10px] font-bold text-red-700 uppercase tracking-widest block">CASE STUDY 5: DEADLY KONG WANG VOID LINE</span>
+              <h3 class="font-black text-red-950 text-base sm:text-lg">
+                ☠️ ກໍລະນີທີ 5: ທ່ານ ດາວອນ — ເຮືອນຕິດເຄາະຮ້າຍຕົກ "ເສັ້ນຂົງຫວາງ" (ການບິດປະຕູແກ້ໄຂ)
+              </h3>
+            </div>
+            <span class="text-xs bg-red-600 text-white px-3 py-1 rounded-full font-bold shadow-xs">ເສັ້ນສູນສິ້ນ: ຂົງຫວາງ (Kong Wang 空亡)</span>
+          </div>
+
+          <figure class="book-figure my-2 text-center bg-stone-900/5 border border-stone-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center justify-center">
+            <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block w-full flex justify-center" onclick="openZoomInspector('../img/lao/fig_3_10_door_tilting_cure.png', 'ຮູບທີ 3.10: ເຕັກນິກການບິດອົງສາປະຕູແກ້ໄຂເສັ້ນສູນສິ້ນຂົງຫວາງ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ')">
+              <img src="../img/lao/fig_3_10_door_tilting_cure.png" alt="Case Study 5 Door Tilting Blueprint" class="max-h-[460px] sm:max-h-[500px] w-auto max-w-full mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
+            </div>
+            <figcaption class="text-xs sm:text-sm font-bold text-red-950 mt-2 px-3 leading-relaxed text-center">ຮູບທີ 3.10: ເຕັກນິກການບິດອົງສາປະຕູແກ້ໄຂເສັ້ນສູນສິ້ນຂົງຫວາງ — ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ (22.5° → 28.5° Chou Mountain)</figcaption>
+          </figure>
+        </div>
+
+        <!-- Case 5: Explanation Block (Even Page) -->
+        <div class="case-explanation-block p-4 sm:p-5 bg-stone-50 rounded-2xl border-2 border-red-600/70 shadow-md flex flex-col gap-2.5 text-xs leading-relaxed">
+          <div class="flex items-center justify-between border-b-2 border-red-600/40 pb-1.5">
+            <h4 class="font-black text-red-950 text-sm sm:text-base">
+              📋 ຂັ້ນຕອນວິເຄາະ &amp; ການຄິດໄລ່ລະອຽດ 5 ຂັ້ນຕອນ (5-Step Masterclass Breakdown)
+            </h4>
+            <span class="text-[10px] bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded">ກໍລະນີສຶກສາທີ 5: ທ່ານ ດາວອນ</span>
+          </div>
+
+          <div class="case-grid gap-2 text-xs">
+            <div class="p-2.5 bg-white rounded-xl border border-red-200 flex flex-col gap-1">
+              <strong class="text-red-950 font-bold block text-xs">❶ ສະພາບອາຄານ &amp; ໂຄງສ້າງຕົວຈິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                ທ່ານ ດາວອນ ສ້າງເຮືອນວິນລາຫຼັງໃໝ່ແລ້ວຍ້າຍເຂົ້າຢູ່ພຽງ 1 ປີ ເກີດບັນຫາໜັກ: ພັນລະຍາປ່ວຍຊ້ຳເຮື້ອບໍ່ຮູ້ສາເຫດ, ທຸລະກິດຮັບເໝົາຖືກໂກງເງິນ 15 ຕື້ກີບ, ຄົນໃນເຮືອນມັກຝັນເຫັນສິ່ງລຶກລັບມາລົບກວນທຸກຄືນ.
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-white rounded-xl border border-red-200 flex flex-col gap-1">
+              <strong class="text-red-950 font-bold block text-xs">❷ ວິທີຕັ້ງ &amp; ການໃຊ້ເຂັມທິດຫຼົວຜານ:</strong>
+              <p class="text-stone-700 text-justify">
+                ຊິນແສວັດແທກ 3 ຈຸດແບບສາມຫຼ່ຽມ (ໜ້າປະຕູໃຫຍ່, ກາງເດີ່ນ, ແລະ ປະຕູຮົ້ວ). ທັງ 3 ຈຸດ ອ່ານຄ່າຕົກກົງກັນພໍດີເປະຄື <strong>22.5°</strong> (ຄວາມຜິດດ່ຽງ Δ = 0.0°).
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-white rounded-xl border border-red-200 flex flex-col gap-1">
+              <strong class="text-red-950 font-bold block text-xs">❸ ການອ່ານຄ່າອົງສາ &amp; ວິເຄາະເສັ້ນມະຫາຂົງຫວາງ:</strong>
+              <p class="text-stone-700 text-justify">
+                • ອົງສາ <strong>22.5° ຄື "ເສັ້ນແບ່ງເຂດລະຫວ່າງ 2 ໂປຍກວ້າ"</strong> — ລະຫວ່າງ <em>ທິດເໜືອ (ກວ້າຂຳ / ພູເຂົາ ກຸ້ຍ 癸)</em> ແລະ <em>ທິດອີສານ (ກວ້າເກິ້ນ / ພູເຂົາ ທິວ 丑)</em>!<br>
+                • ນີ້ຄືເສັ້ນ <strong>"ມະຫາຂົງຫວາງ" (Da Kong Wang 大空亡)</strong> ພະລັງງານທາດນ້ຳ (ເໜືອ) ແລະ ທາດດິນ (ອີສານ) ປະທະກັນ ຜັງດາວແຕກສະຫຼາຍ ຊີ່ຂາດຕອນ ປຽບເໝືອນຄົນຢືນຢູ່ປາກປ່ອງພູເຂົາໄຟ.
+              </p>
+            </div>
+
+            <div class="p-2.5 bg-white rounded-xl border border-red-200 flex flex-col gap-1">
+              <strong class="text-red-950 font-bold block text-xs">❹ ວິທີຄິດໄລ່ການບິດປະຕູ &amp; ຜົນລັບ:</strong>
+              <p class="text-stone-700 text-justify">
+                • <strong>ວິທີແກ້ໄຂຂັ້ນເດັດຂາດ:</strong> ຮື້ຖອນກອບປະຕູໃຫຍ່ ແລ້ວກໍ່ບິດອຽງໄປທາງຂວາ <strong>+6.0° (ຖອຍກອບຂວາ 15.7 cm)</strong> ໃຫ້ຫັນໄປທີ່ <strong>28.5°</strong>!<br>
+                • <strong>ຜົນ:</strong> ອົງສາ 28.5° ຕົກເຂົ້າສູ່ <strong>"ພູເຂົາ ທິວ (Chou 丑)"</strong> ເຊິ່ງເປັນເຂດ <strong>ເຈີ້ງຊ່ຽນປອດໄພ 100%</strong>. ປ່ຽນຜັງເຮືອນມາເປັນ <strong>"ພິງ ໝຸຍ (208.5°) ຫັນໜ້າ ທິວ (28.5°)"</strong> ດາວໂຊກລາບຍຸກ 9 ໄຫຼເຂົ້າປະຕູທັນທີ.
+              </p>
+            </div>
+
+            <div class="col-span-full p-2.5 bg-white rounded-xl border border-red-200 flex flex-col gap-1">
+              <strong class="text-red-950 font-bold block text-xs">❺ ການຈັດວາງຮວງຈຸ້ຍ &amp; ຜົນລັບຕົວຈິງ:</strong>
+              <p class="text-stone-700 text-justify">
+                ວາງອ່າງນ້ຳລົ້ນເຄື່ອນໄຫວຢູ່ໜ້າປະຕູໃໝ່ (ທິດ 28.5°) ເພື່ອດຶງດູດຊີ່ໂຊກລາບດາວ 9 ມ່ວງ; ວາງກ້ອນຫີນທຳມະຊາດຂະໜາດໃຫຍ່ໄວ້ດ້ານຫຼັງເຮືອນ (ທິດ 208.5° ພູເຂົາ ໝຸຍ) ເພື່ອຄ້ຳຈຸນບາຣະມີ ແລະ ສຸຂະພາບ. <strong>ຜົນລັບຕົວຈິງ:</strong> ພາຍຫຼັງດັດແປງພຽງ 3 ເດືອນ ສຸຂະພາບພັນລະຍາຟື້ນຕົວສົມບູນ, ແລະ ທ່ານ ດາວອນ ໄດ້ຮັບສັນຍາກໍ່ສ້າງໃຫຍ່ ມູນຄ່າ 15 ຕື້ກີບ!
+              </p>
+            </div>
           </div>
         </div>
       </section>

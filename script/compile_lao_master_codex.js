@@ -82,12 +82,7 @@ function getChapterFigures(chId, isBook = true) {
       render('img/fig_3_2_loshu_trigrams.png', 'ຮູບທີ 3.2: ຜັງ 9 ວັງລົ່ວຊູ ແລະ 4 ມຸມກວ້າ (Four Corner Trigrams: Qian, Kun, Gen, Xun)') +
       render('img/fig_3_5_24_mountains.png', 'ຮູບທີ 3.3: ວົງແຫວນ 24 ທິດເຂົາ (24 Mountains Dial)') +
       render('img/fig_3_7_tianchi.png', 'ຮູບທີ 3.4: ສະສະຫວັນ (Tian Chi) ໃຈກາງເຂັມທິດ ພ້ອມເສັ້ນແດງນຳທິດ') +
-      render('img/fig_3_8_seated_house.png', 'ຮູບທີ 3.5: ຫຼັກການ ນັ່ງ ແລະ ຫັນໜ້າ (Sitting & Facing)') +
-      render('img/lao/fig_3_6_posture_holding.png', 'ຮູບທີ 3.6: ທ່າຢືນ ແລະ ການຖືຈານເຂັມທິດຫຼົວຜານພາກສະໜາມ (Posture & Luopan Holding Protocol)') +
-      render('img/lao/fig_3_7_tianchi_alignment.png', 'ຮູບທີ 3.7: ການປັບເຂັມແມ່ເຫຼັກໃຫ້ລົງລັອກສະລອຍສະຫວັນ (Tian Chi Needle Settling to Hai Di Xian)') +
-      render('img/lao/fig_3_8_triangulation_map.png', 'ຮູບທີ 3.8: ຜັງການວັດແທກ 3 ຈຸດແບບສາມຫຼ່ຽມພາກສະໜາມ (3-Point Triangulation Protocol)') +
-      render('img/lao/fig_3_9_degree_boundaries.png', 'ຮູບທີ 3.9: ແຜນວາດການແບ່ງ 3 ເຂດອົງສາໃນ 1 ພູເຂົາ (Zheng Xian, Jian Xian, Kong Wang)') +
-      render('img/lao/fig_3_10_door_tilting_cure.png', 'ຮູບທີ 3.10: ເຕັກນິກການບິດອົງສາປະຕູແກ້ໄຂເສັ້ນສູນສິ້ນຂົງຫວາງ (Door Tilting Qi Realignment Technique)');
+      render('img/fig_3_8_seated_house.png', 'ຮູບທີ 3.5: ຫຼັກການ ນັ່ງ ແລະ ຫັນໜ້າ (Sitting & Facing)');
   } else if (chId === 'ch4') {
     figs = 
       render('img/fig_4_1_celestial_clock.png', 'ຮູບທີ 4.1: ກຸ່ມດາວຈວຍຕັກນ້ຳເໜືອ (Ursa Major / Beidou) ໂມງດາລາສາດແຫ່ງຈັກກະວານ') +
@@ -418,10 +413,7 @@ async function paginateLaoContent(chapters) {
         const isTransparent = node === container || (node.classList && (
           node.classList.contains('chapter-content') ||
           node.tagName === 'SECTION' ||
-          node.classList.contains('space-y-6') ||
-          node.classList.contains('space-y-4') ||
-          node.classList.contains('space-y-3.5') ||
-          node.classList.contains('space-y-3')
+          Array.from(node.classList).some(c => c.startsWith('space-y-'))
         ));
 
         if (isTransparent && node.children && node.children.length > 0) {
