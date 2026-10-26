@@ -24,9 +24,6 @@ function renderBookFig(file, caption) {
     <figure class="book-figure my-5 text-center bg-stone-50 border border-stone-200 rounded-xl p-3 shadow-sm">
       <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block" onclick="openZoomInspector('../${targetFile}', '${caption.replace(/'/g, "\\'")}')">
         <img src="../${targetFile}" alt="${caption}" class="max-h-64 sm:max-h-72 mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
-        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition flex items-center justify-center">
-          <span class="opacity-0 group-hover:opacity-100 bg-black/75 text-white text-[11px] px-2.5 py-1 rounded-full shadow transition pointer-events-none">🔍 ຄລິກເພື່ອສ່ອງຂະຫຍາຍ (Zoom)</span>
-        </div>
       </div>
       <figcaption class="text-xs font-semibold text-stone-600 mt-2 italic px-2 leading-relaxed">${caption}</figcaption>
     </figure>
@@ -43,9 +40,6 @@ function renderPortalFig(file, caption) {
     <figure class="my-6 text-center bg-stone-50 border border-stone-200 rounded-xl p-4 shadow-sm">
       <div class="relative group cursor-zoom-in overflow-hidden rounded-lg inline-block" onclick="openZoomInspector('../${targetFile}', '${caption.replace(/'/g, "\\'")}')">
         <img src="../${targetFile}" alt="${caption}" class="max-h-80 mx-auto object-contain rounded transition duration-200 group-hover:scale-[1.02]" loading="lazy">
-        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition flex items-center justify-center">
-          <span class="opacity-0 group-hover:opacity-100 bg-black/75 text-white text-xs px-3 py-1 rounded-full shadow transition pointer-events-none">🔍 ຄລິກເພື່ອສ່ອງຂະຫຍາຍ (Zoom)</span>
-        </div>
       </div>
       <figcaption class="text-xs sm:text-sm font-semibold text-stone-600 mt-2.5 italic px-2 leading-relaxed">${caption}</figcaption>
     </figure>
