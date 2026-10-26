@@ -658,7 +658,7 @@
             if (body) { body.innerHTML = pageObj.html; body.scrollTop = 0; }
         }
 
-        // Builds the fold overlay. Underlying surface always shows the destination page.
+        // Builds the fold overlay with 3D paper cylinder roll and realistic depth
         function startFold(dir, targetNum) {
             const holder = document.getElementById('flipLeafContainer');
             const surface = document.getElementById('activePageSurface');
@@ -668,18 +668,17 @@
 
             const W = surface.offsetWidth;
             const H = surface.offsetHeight;
-            const BIG = Math.ceil(Math.hypot(W, H)) * 2;
             holder.innerHTML = '';
 
             const origBody = document.getElementById('pageBodyContainer');
             const keepScroll = origBody.scrollTop;
 
+            // Clone the current page surface for the peeling leaf
             const clone = surface.cloneNode(true);
             ['pageCastShadow', 'cornerNextTab', 'cornerPrevTab'].forEach(id => {
                 const n = clone.querySelector('#' + id);
                 if (n) n.remove();
             });
-            if (dir < 0) applyChromeTo(clone, tgtObj, targetNum);
             clone.querySelectorAll('[id]').forEach(n => n.removeAttribute('id'));
             clone.removeAttribute('id');
             clone.style.position = 'absolute';
@@ -687,38 +686,35 @@
             clone.style.top = '0px';
             clone.style.width = W + 'px';
             clone.style.height = H + 'px';
-            clone.style.willChange = 'transform';
+            clone.style.willChange = 'clip-path';
 
-            const mk = (css) => { const d = document.createElement('div'); d.style.cssText = css; return d; };
+            const stage = document.createElement('div');
+            stage.style.cssText = 'position:absolute;inset:0;overflow:hidden;border-radius:16px;pointer-events:none;';
 
-            const stage = mk('position:absolute;inset:0;overflow:hidden;border-radius:16px;pointer-events:none;');
-            const destShadow = mk(`position:absolute;left:0;top:0;width:120px;height:${BIG}px;transform-origin:0 0;background:linear-gradient(to right,rgba(0,0,0,.36),rgba(0,0,0,.13) 35%,rgba(0,0,0,0));`);
-            const frontWrap = mk('position:absolute;inset:0;');
-            const frontShade = mk(`position:absolute;left:0;top:0;width:80px;height:${BIG}px;transform-origin:0 0;background:linear-gradient(to left,rgba(0,0,0,.22),rgba(0,0,0,.07) 40%,rgba(0,0,0,0));`);
-            const flapWrap = mk('position:absolute;inset:0;filter:drop-shadow(-4px 3px 8px rgba(0,0,0,.40));');
-            const flap = mk(`position:absolute;left:0;top:0;width:${W}px;height:${H}px;transform-origin:0 0;background:#efe6d2;`);
-            const flapShade = mk(`position:absolute;left:0;top:0;width:220px;height:${BIG}px;transform-origin:0 0;background:linear-gradient(to right,rgba(0,0,0,.36) 0px,rgba(0,0,0,.10) 9px,rgba(255,255,255,.60) 28px,rgba(255,255,255,.14) 75px,rgba(0,0,0,.05) 140px,rgba(0,0,0,.12) 220px);`);
-
+            const frontWrap = document.createElement('div');
+            frontWrap.style.cssText = 'position:absolute;inset:0;';
             frontWrap.appendChild(clone);
-            frontWrap.appendChild(frontShade);
-            flap.appendChild(flapShade);
-            flapWrap.appendChild(flap);
-            stage.appendChild(destShadow);
+
+            const rollCanvas = document.createElement('canvas');
+            rollCanvas.width = W;
+            rollCanvas.height = H;
+            rollCanvas.style.cssText = 'position:absolute;inset:0;pointer-events:none;';
+            const ctx = rollCanvas.getContext('2d');
+
             stage.appendChild(frontWrap);
-            stage.appendChild(flapWrap);
+            stage.appendChild(rollCanvas);
             holder.appendChild(stage);
 
             const cb = clone.querySelector('.page-content');
-            if (dir > 0 && cb) cb.scrollTop = keepScroll;
+            if (cb) cb.scrollTop = keepScroll;
 
-            foldState = { W, H, BIG, stage, destShadow, frontWrap, frontShade, flap, flapShade };
+            // Underlying surface displays target page immediately
+            origBody.innerHTML = tgtObj.html;
+            origBody.scrollTop = 0;
+            updateUIHeaderFooter(tgtObj, targetNum);
+
+            foldState = { dir, targetNum, W, H, stage, frontWrap, rollCanvas, ctx };
             activeRollRoot = stage;
-
-            if (dir > 0) {
-                origBody.innerHTML = tgtObj.html;
-                origBody.scrollTop = 0;
-                updateUIHeaderFooter(tgtObj, targetNum);
-            }
             return true;
         }
 
@@ -727,52 +723,163 @@
             const s = foldState;
             if (!s) return;
             const p = Math.max(0, Math.min(1, progress));
-            const pn = dir > 0 ? p : 1 - p;
+            const ctx = s.ctx;
             const W = s.W, H = s.H;
-            const fx = W * (1 - pn);
+            ctx.clearRect(0, 0, W, H);
 
-            const amp = Math.sin(Math.PI * Math.pow(pn, 0.6));
-            const thetaDeg = -amp * (5 + 7 * Math.max(-1, Math.min(1, ry)));
-            const th = thetaDeg * Math.PI / 180;
-            const t = Math.tan(th);
-            const xTop = fx - (H / 2) * t;
-            const xBot = fx + (H / 2) * t;
+            if (p <= 0.001) {
+                s.frontWrap.style.clipPath = 'none';
+                return;
+            }
+            if (p >= 0.999) {
+                s.frontWrap.style.clipPath = 'polygon(0 0, 0 0, 0 0, 0 0)';
+                return;
+            }
 
-            s.frontWrap.style.clipPath = `polygon(0px 0px, ${xTop}px 0px, ${xBot}px ${H}px, 0px ${H}px)`;
-            s.flap.style.clipPath = `polygon(${xTop}px 0px, ${xBot}px ${H}px, ${W}px ${H}px, ${W}px 0px)`;
+            // In dir > 0 (Next): Roll travels right (W) -> left (0). Current page is on left (0 to roll)
+            // In dir < 0 (Prev): Roll travels left (0) -> right (W). Current page is on right (roll to W)
+            const cx = dir > 0 ? W * (1 - p) : W * p;
+            const radius = Math.min(36, Math.max(6, 36 * Math.sin(Math.PI * Math.pow(p, 0.7))));
+            const rollWidth = radius * 2.2;
 
-            const c2 = Math.cos(2 * th), s2 = Math.sin(2 * th);
-            const e = fx - (-c2 * fx + s2 * H / 2);
-            const f = H / 2 - (s2 * fx + c2 * H / 2);
-            s.flap.style.transform = `matrix(${-c2}, ${s2}, ${s2}, ${c2}, ${e}, ${f})`;
+            const tilt = Math.max(-1, Math.min(1, ry));
+            const angleRad = Math.max(-0.18, Math.min(0.18, tilt * 0.14));
+            const tanA = Math.tan(angleRad);
 
-            const frame = `translate(${fx}px, ${H / 2}px) rotate(${-thetaDeg}deg) translate(0px, ${-s.BIG / 2}px)`;
-            s.flapShade.style.transform = frame;
-            s.destShadow.style.transform = frame;
-            s.frontShade.style.transform = `${frame} translate(-80px, 0px)`;
+            const topX = cx + (H / 2) * tanA;
+            const botX = cx - (H / 2) * tanA;
 
-            const o = Math.min(1, pn * 10).toFixed(3);
-            s.flapShade.style.opacity = o;
-            s.destShadow.style.opacity = o;
-            s.frontShade.style.opacity = o;
+            if (dir > 0) {
+                // Forward: current page is clipped to the left of the roll
+                const baseOffset = -rollWidth * 0.35;
+                const bTop = Math.max(0, topX + baseOffset);
+                const bBot = Math.max(0, botX + baseOffset);
+                s.frontWrap.style.clipPath = `polygon(0px 0px, ${bTop}px 0px, ${bBot}px ${H}px, 0px ${H}px)`;
+                drawRollCylinder(ctx, W, H, cx, topX, botX, angleRad, rollWidth, p, 1);
+            } else {
+                // Backward: current page is clipped to the right of the roll
+                const baseOffset = rollWidth * 0.35;
+                const bTop = Math.min(W, topX + baseOffset);
+                const bBot = Math.min(W, botX + baseOffset);
+                s.frontWrap.style.clipPath = `polygon(${bTop}px 0px, ${W}px 0px, ${W}px ${H}px, ${bBot}px ${H}px)`;
+                drawRollCylinder(ctx, W, H, cx, topX, botX, angleRad, rollWidth, p, -1);
+            }
+        }
+
+        function drawRollCylinder(ctx, W, H, cx, topX, botX, angleRad, rollWidth, p, dir) {
+            ctx.save();
+
+            // 1. Drop shadow cast onto destination page
+            ctx.save();
+            ctx.beginPath();
+            if (dir > 0) {
+                ctx.moveTo(topX, 0);
+                ctx.lineTo(W, 0);
+                ctx.lineTo(W, H);
+                ctx.lineTo(botX, H);
+            } else {
+                ctx.moveTo(0, 0);
+                ctx.lineTo(topX, 0);
+                ctx.lineTo(botX, H);
+                ctx.lineTo(0, H);
+            }
+            ctx.closePath();
+            ctx.clip();
+
+            ctx.translate(cx, H / 2);
+            ctx.rotate(-angleRad);
+
+            const shadowDist = Math.max(16, Math.min(140, rollWidth * 2.5));
+            const sAlpha = (0.48 * Math.sin(Math.PI * p)).toFixed(3);
+            const shadowGrad = ctx.createLinearGradient(0, 0, dir * shadowDist, 0);
+            shadowGrad.addColorStop(0, `rgba(0,0,0,${sAlpha})`);
+            shadowGrad.addColorStop(0.2, `rgba(0,0,0,${(sAlpha * 0.55).toFixed(3)})`);
+            shadowGrad.addColorStop(0.6, `rgba(0,0,0,${(sAlpha * 0.18).toFixed(3)})`);
+            shadowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+
+            ctx.fillStyle = shadowGrad;
+            ctx.fillRect(dir > 0 ? 0 : -shadowDist, -H * 1.5, shadowDist, H * 3);
+            ctx.restore();
+
+            // 2. 3D Cylindrical Roll Body
+            ctx.save();
+            ctx.translate(cx, H / 2);
+            ctx.rotate(-angleRad);
+
+            const baseOffset = -dir * rollWidth * 0.35;
+            const rollExtent = dir * rollWidth;
+
+            const cylGrad = ctx.createLinearGradient(baseOffset, 0, rollExtent, 0);
+            cylGrad.addColorStop(0, '#e3d8c5');
+            cylGrad.addColorStop(0.18, '#f7f1e5');
+            cylGrad.addColorStop(0.42, '#ffffff'); // Ridge highlight
+            cylGrad.addColorStop(0.68, '#ebdcc3');
+            cylGrad.addColorStop(0.88, '#ceba96');
+            cylGrad.addColorStop(1.0, '#a8926d');
+
+            ctx.fillStyle = cylGrad;
+            ctx.shadowColor = 'rgba(0,0,0,0.32)';
+            ctx.shadowBlur = 10;
+            ctx.shadowOffsetX = -dir * 3;
+
+            const startX = Math.min(baseOffset, rollExtent);
+            const widthX = Math.abs(rollExtent - baseOffset);
+            ctx.fillRect(startX, -H * 1.5, widthX, H * 3);
+
+            // Crest Highlight Specular Line
+            ctx.shadowColor = 'transparent';
+            ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+            ctx.lineWidth = 1.6;
+            ctx.beginPath();
+            const crestX = baseOffset + (rollExtent - baseOffset) * 0.42;
+            ctx.moveTo(crestX, -H * 1.5);
+            ctx.lineTo(crestX, H * 3);
+            ctx.stroke();
+
+            // 3. Reverse side of paper flap
+            const flapReach = Math.min(rollWidth * 1.25, (dir > 0 ? cx : W - cx) * 0.9);
+            if (flapReach > 4) {
+                const flapStartX = dir > 0 ? -flapReach : 0;
+                const backGrad = ctx.createLinearGradient(flapStartX, 0, flapStartX + flapReach, 0);
+                backGrad.addColorStop(0, dir > 0 ? '#f2e8d5' : '#dbc8a4');
+                backGrad.addColorStop(0.5, '#ebdcbf');
+                backGrad.addColorStop(1, dir > 0 ? '#dbc8a4' : '#f2e8d5');
+
+                ctx.fillStyle = backGrad;
+                ctx.fillRect(flapStartX, -H * 1.5, flapReach, H * 3);
+
+                // Inner roll shadow
+                const innerTrough = ctx.createLinearGradient(flapStartX, 0, flapStartX + flapReach, 0);
+                innerTrough.addColorStop(0, 'rgba(0,0,0,0.14)');
+                innerTrough.addColorStop(0.5, 'rgba(0,0,0,0.02)');
+                innerTrough.addColorStop(1, 'rgba(0,0,0,0.22)');
+                ctx.fillStyle = innerTrough;
+                ctx.fillRect(flapStartX, -H * 1.5, flapReach, H * 3);
+
+                // Gold page trim line along the curled edge
+                ctx.strokeStyle = '#b8944d';
+                ctx.lineWidth = 1.4;
+                ctx.beginPath();
+                const trimX = dir > 0 ? -flapReach : flapReach;
+                ctx.moveTo(trimX, -H * 1.5);
+                ctx.lineTo(trimX, H * 3);
+                ctx.stroke();
+            }
+
+            ctx.restore();
+            ctx.restore();
         }
 
         function endFold(dir, targetNum, complete) {
             const holder = document.getElementById('flipLeafContainer');
             const container = document.getElementById('pageBodyContainer');
-            if (dir > 0) {
-                if (complete) {
-                    currentPageNum = targetNum;
-                } else {
-                    container.innerHTML = currentPages[currentPageNum - 1].html;
-                    container.scrollTop = 0;
-                    updateUIHeaderFooter(currentPages[currentPageNum - 1], currentPageNum);
-                }
-            } else if (complete) {
-                container.innerHTML = currentPages[targetNum - 1].html;
-                container.scrollTop = 0;
+            if (complete) {
                 currentPageNum = targetNum;
-                updateUIHeaderFooter(currentPages[targetNum - 1], targetNum);
+                updateUIHeaderFooter(currentPages[currentPageNum - 1], currentPageNum);
+            } else {
+                container.innerHTML = currentPages[currentPageNum - 1].html;
+                container.scrollTop = 0;
+                updateUIHeaderFooter(currentPages[currentPageNum - 1], currentPageNum);
             }
             holder.innerHTML = '';
             foldState = null;
