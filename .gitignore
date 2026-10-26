@@ -54,6 +54,9 @@
 !/script/build_pahawh_web_portal.js
 !/script/rpa_to_pahawh_converter.js
 !/script/render_monograph_html.js
+!/script/lao_master_chapters/
+!/script/lao_master_chapters/**
+!/script/compile_lao_master_codex.js
 
 # Whitelist /pahawh web app
 !/pahawh/
